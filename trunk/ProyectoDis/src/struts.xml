@@ -10,23 +10,12 @@
 	<constant name="struts.ui.theme" value="xhtml" />
   	<constant name="struts.devMode" value="true" />
 
+	<include file="pe/com/terrapuerto/commons/action/struts-commons.xml"/>
 	
-	<package name="sicogas-tiles" extends="struts-default">
-		<result-types>
-			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
-		</result-types>
-	</package>
-
-	<package name="control" extends="struts-default, sicogas-tiles">
-					
-		<action name="loginsicogas" class="net.grupointigas.sicogas.commons.action.LoginAction">
-			<result >login.jsp</result>		
-			<result name="login" type="tiles">homeSicogas</result>
-			<result name="input">login.jsp</result>
-			<result name="error">login.jsp</result>
-			
+	<package name="index" namespace="/" extends="struts-default,tiles-default">
+		<action name="index">
+			<result>login.jsp</result>
 		</action>
-		
 	</package>
 	
 </struts>
