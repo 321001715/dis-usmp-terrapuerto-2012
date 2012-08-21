@@ -21,7 +21,10 @@ public class JPATClienteDAO implements TClienteDAO {
 	public List<TCliente> findAll() {
 		String jpql = "Select o from TCliente o";
 		Query q = em.createQuery(jpql);
+			
 		return q.getResultList();
+		
+
 	}
 
 	@Override

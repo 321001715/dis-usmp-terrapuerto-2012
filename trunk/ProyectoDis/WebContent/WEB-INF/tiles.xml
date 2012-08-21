@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="homeTerrapuerto" template="/prinContenedor.jsp">
+      <put-attribute name="title"   value="Sistema Terrapuerto"/>
+      <put-attribute name="header"  value="/prinHeader.jsp"/>
+      <put-attribute name="menu"    value="/prinMenu.jsp"/>
+      <put-attribute name="body"    value="/prinBody.jsp"/>
+      <put-attribute name="footer"  value="/prinFooter.jsp"/>
+  </definition>  
+  
+  <definition name="registro-cliente" extends="homeTerrapuerto">
+      <put-attribute name="title"   value="Registro Cliente"/>
+      <put-attribute name="body"    value="/cliente/registrarCliente.jsp"/>
+  </definition>
+  
+  <definition name="edicion-cliente" extends="homeTerrapuerto">
+      <put-attribute name="title"   value="Edicion Cliente"/>
+      <put-attribute name="body"    value="/cliente/editarCliente.jsp"/>
+  </definition>
+
+  <definition name="lista-clientes" extends="homeTerrapuerto">
+      <put-attribute name="title"   value="Listado Clientes"/>
+      <put-attribute name="body"    value="/cliente/listarClientes.jsp"/>
+  </definition>
+   
+  <definition name="mensaje-global" extends="homeTerrapuerto">
+      <put-attribute name="title"   value="Mensajes del Sistema"/>
+      <put-attribute name="body"    value="/mensaje.jsp"/>
+  </definition>    
+    
+</tiles-definitions>

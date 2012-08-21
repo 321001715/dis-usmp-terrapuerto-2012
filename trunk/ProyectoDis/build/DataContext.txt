@@ -1,0 +1,9 @@
+ 	<Resource name="jdbc/bdtest"
+            auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="com.mysql.jdbc.Driver"
+            maxActive="20"
+            maxIdle="2"
+            password="root"
+            url="jdbc:mysql://localhost:3306/bdtest"
+            username="root"/>

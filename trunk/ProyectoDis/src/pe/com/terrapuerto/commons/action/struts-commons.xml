@@ -4,41 +4,10 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="common" namespace="/" extends="struts-default,tiles-default">
-	
-		<!--global-results>
-			<result type="redirectAction" name="login">
-				<param name="actionName">index</param>
-				<param name="namespace">/</param>
-			</result>
-		</global-results>
-	
-		<action name="login" class="edu.usmp.mgif.action.AutenticarAction" method="login">
-			<result type="redirectAction" name="success">
-				<param name="namespace">/</param>
-				<param name="actionName">listar-incidencias</param>
-				<param name="method">listar</param>
-			</result>
-			<result type="redirectAction" name="cliente">
-				<param name="namespace">/</param>
-				<param name="actionName">registrar-incidencia</param>
-				<param name="method">input</param>
-			</result>
-			<result type="tiles" name="error">login</result>
-		</action>
 		
-		<action name="logout" class="edu.usmp.mgif.action.AutenticarAction" method="logout">
-			<result type="tiles" name="success">login</result>
+		<action name="loginTerrapuerto" class="pe.com.terrapuerto.commons.action.LoginUserAction">
+			<result type="tiles" name="success">homeTerrapuerto</result>
 		</action>
-		
-		<action name="registrar-incidencia" class="edu.usmp.mgif.action.RegistrarIncidenciaAction" method="{1}">
-			<result type="tiles" name="input">cliente-registrar-incidencia</result>
-			<result type="tiles" name="cliente">cliente-registrar-incidencia</result>
-			<result type="tiles" name="cliente-exito">cliente-registrar-incidencia-resultado</result>
-		</action>
-		
-		<action name="listar-incidencias" class="edu.usmp.mgif.action.ListarIncidenciasAction" method="{1}">
-			<result type="tiles" name="personal">personal-listar-incidencias</result>
-			<result type="tiles" name="jefe">jefe-listar-incidencias</result>
-		</action-->
+
 	</package>
 </struts>
