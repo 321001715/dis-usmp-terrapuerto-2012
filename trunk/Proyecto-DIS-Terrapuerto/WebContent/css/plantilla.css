@@ -10,7 +10,6 @@ div#logo{
 	
 }
 
-
 div#bg{
 	background: url(../img/bg.png) bottom; /*Imagen de fondo*/
 	height: 100%;
@@ -18,8 +17,8 @@ div#bg{
 	top: 0px;
 	position:absolute;
 	z-index: -1;
-
 }
+
 div#login{
 	width:260px;
 	height: 100px;

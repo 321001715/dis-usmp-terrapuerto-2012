@@ -15,16 +15,15 @@
 
 <div id="izquierda">
 
-	<s:form action="loginAdmin" >
-		<s:textfield name="usuario.usernameUsu" label="Usuario" id="form_login_input"/>
-		<s:password name="usuario.passwordUsu" label="Password" id="form_login_input"/>
+	<s:form action="loginAdmin">
+		<s:textfield name="usuario.usernameUsu" label="Usuario"/>
+		<s:password name="usuario.passwordUsu" label="Password"/>
 		<s:submit value="" cssClass="btn_iniciar_sesion"/>
 	</s:form>
 </div>
 
 <div id="derecha_login" >
 	<img src="<s:url value='/img/persona_login.png'/>" />
-	<img src="<s:url value='/img/btn_registrar_login.png'/>" class="btn_registrar" />
 </div>
 
 
