@@ -1,9 +1,10 @@
- 	<Resource name="jdbc/bdtest"
+ 	<Resource name="jdbc/bdterrapuerto"
             auth="Container"
             type="javax.sql.DataSource"
             driverClassName="com.mysql.jdbc.Driver"
-            maxActive="20"
-            maxIdle="2"
+            maxActive="1000"
+            maxIdle="500"
             password="root"
-            url="jdbc:mysql://localhost:3306/bdtest"
-            username="root"/>
+            username="root"
+            url="jdbc:mysql://localhost:3306/terra"
+            />

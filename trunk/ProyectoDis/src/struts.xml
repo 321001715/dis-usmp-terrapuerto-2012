@@ -12,9 +12,9 @@
 
 	<include file="pe/com/terrapuerto/commons/action/struts-commons.xml"/>
 	
-	<package name="index" namespace="/" extends="struts-default,tiles-default">
-		<action name="index">
-			<result>login.jsp</result>
+	<package name="index" namespace="/" extends="struts-default">
+		<action name="indexadmin">
+			<result>loginAdministrador.jsp</result>
 		</action>
 	</package>
 	

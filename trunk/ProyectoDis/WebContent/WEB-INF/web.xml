@@ -4,13 +4,13 @@
   
 	<context-param>
 		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
-		<param-value>/WEB-INF/tiles.xml</param-value>
+		<param-value>/WEB-INF/tiles-global.xml</param-value>
 	</context-param>
   
  	<listener>
  		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
  	</listener>
-  
+ 	
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
