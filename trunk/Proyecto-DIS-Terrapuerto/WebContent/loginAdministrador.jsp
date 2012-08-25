@@ -24,6 +24,7 @@
 
 <div id="derecha_login" >
 	<img src="<s:url value='/img/persona_login.png'/>" />
+	<img src="<s:url value='/img/btn_registrar_login.png'/>" class="btn_registrar"/>
 </div>
 
 
