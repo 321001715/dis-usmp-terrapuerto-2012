@@ -16,6 +16,14 @@
 			<result type="tiles" name="success">home-admin-terrapuerto</result>
 			<result name="error">loginAdministrador.jsp</result>
 		</action>
+		
+		<action name="mantenerEmpresa" class="pe.com.terrapuerto.commons.action.MantenerEmpresaTranspAction">
+			<result type="tiles">registro-empresa</result>
+			<result name="registra" type="tiles">registro-empresa</result>
+			<result name="edita" type="tiles">edicion-empresa</result>
+			<result name="actualiza" type="tiles">lista-empresas</result>
+			<result name="elimina" type="tiles">lista-empresas</result>
+		</action>
 
 	</package>
 </struts>

@@ -5,17 +5,19 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-
 import pe.com.terrapuerto.commons.util.Utilitario;
 import pe.com.terrapuerto.model.TCliente;
+import pe.com.terrapuerto.model.TEmpresaTransporte;
 import pe.com.terrapuerto.model.TServicio;
 import pe.com.terrapuerto.model.TUsuario;
 import pe.com.terrapuerto.model.TVehiculo;
 import pe.com.terrapuerto.model.dao.TClienteDAO;
+import pe.com.terrapuerto.model.dao.TEmpresaTransporteDAO;
 import pe.com.terrapuerto.model.dao.TServicioDAO;
 import pe.com.terrapuerto.model.dao.TUsuarioDAO;
 import pe.com.terrapuerto.model.dao.TVehiculoDAO;
 import pe.com.terrapuerto.model.dao.jpa.JPATClienteDAO;
+import pe.com.terrapuerto.model.dao.jpa.JPATEmpresaTransporteDAO;
 import pe.com.terrapuerto.model.dao.jpa.JPATServicioDAO;
 import pe.com.terrapuerto.model.dao.jpa.JPATUsuarioDAO;
 import pe.com.terrapuerto.model.dao.jpa.JPATVehiculoDAO;
@@ -29,6 +31,7 @@ public class MantenimientoService {
 	private TServicioDAO servicioDAO;
 	private TUsuarioDAO usuarioDAO;
 	private TVehiculoDAO vehiculoDAO;
+	private TEmpresaTransporteDAO empresaTransporteDAO;
 	
 	public MantenimientoService(){
 		// Origen de la conexion a travez del EntityManager
@@ -38,7 +41,8 @@ public class MantenimientoService {
 		clienteDAO = new JPATClienteDAO(em);
 		servicioDAO = new JPATServicioDAO(em);
 		usuarioDAO = new JPATUsuarioDAO(em);
-		vehiculoDAO = new JPATVehiculoDAO(em);		
+		vehiculoDAO = new JPATVehiculoDAO(em);
+		empresaTransporteDAO = new JPATEmpresaTransporteDAO(em);		
 	}
 	
 	//
@@ -164,7 +168,7 @@ public class MantenimientoService {
 	//	Mantenimiento Entidad TUsuario
 	//
 	
-	// Retorna una lista de los usuarios
+	// Retorna una lista de los Usuarios
 	public List<TUsuario> listarUsuarios() {
 		return usuarioDAO.findAll();
 	}
@@ -189,7 +193,7 @@ public class MantenimientoService {
 		return o;
 	}
 		
-	// Actualiza Datos de Servicio
+	// Actualiza Datos de Usuario
 	public TUsuario actualizarUsuario(TUsuario o) {
 		EntityTransaction tx = em.getTransaction();
 		try {
@@ -204,7 +208,7 @@ public class MantenimientoService {
 		return o;
 	}
 	
-	// Elimina Datos de Servicio
+	// Elimina Datos de Usuario
 	public TUsuario eliminarUsuario(TUsuario o) {
 		EntityTransaction tx = em.getTransaction();
 		try {
@@ -223,7 +227,7 @@ public class MantenimientoService {
 	//	Mantenimiento Entidad TVehiculo
 	//
 	
-	// Retorna una lista de los usuarios
+	// Retorna una lista de los Vehiculo
 	public List<TVehiculo> listarVehiculos() {
 		return vehiculoDAO.findAll();
 	}
@@ -233,7 +237,7 @@ public class MantenimientoService {
 		return vehiculoDAO.findById(o);
 	}	
 	
-	// Registro datos Usuario
+	// Registro datos Vehiculo
 	public TVehiculo registrarVehiculo(TVehiculo o) {
 		EntityTransaction tx = em.getTransaction();
 		try {
@@ -248,7 +252,7 @@ public class MantenimientoService {
 		return o;
 	}
 		
-	// Actualiza Datos de Servicio
+	// Actualiza Datos de Vehiculo
 	public TVehiculo actualizarVehiculo(TVehiculo o) {
 		EntityTransaction tx = em.getTransaction();
 		try {
@@ -263,7 +267,7 @@ public class MantenimientoService {
 		return o;
 	}
 	
-	// Elimina Datos de Servicio
+	// Elimina Datos de Vehiculo
 	public TVehiculo eliminarVehiculo(TVehiculo o) {
 		EntityTransaction tx = em.getTransaction();
 		try {
@@ -278,5 +282,64 @@ public class MantenimientoService {
 		return o;
 	}
 		
+
+	//
+	//	Mantenimiento Entidad TEmpresa de Transporte
+	//
+	
+	// Retorna una lista de las Empresa Transporte
+	public List<TEmpresaTransporte> listarEmpresas() {
+		return empresaTransporteDAO.findAll();
+	}
+	
+	// Cuidado! Para realizar consultas NO se debe generar UNA TRANSACCION
+	public TEmpresaTransporte buscarEmpresaTransxId(TEmpresaTransporte o) {
+		return empresaTransporteDAO.findById(o);
+	}	
+	
+	// Registro datos Empresa Transporte
+	public TEmpresaTransporte registrarEmpresaTrans(TEmpresaTransporte o) {
+		EntityTransaction tx = em.getTransaction();
+		try {
+			tx.begin();				
+			empresaTransporteDAO.insert(o);
+			tx.commit();			
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+			throw new RuntimeException("Lo sentimos, no se pudo registrar empresa");
+		}
+		return o;
+	}
+		
+	// Actualiza Datos de Empresa Transporte
+	public TEmpresaTransporte actualizarEmpresaTransp(TEmpresaTransporte o) {
+		EntityTransaction tx = em.getTransaction();
+		try {
+			tx.begin();				
+			empresaTransporteDAO.update(o);
+			tx.commit();			
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+			throw new RuntimeException("Lo sentimos, no se pudo actualizar Empresa");
+		}
+		return o;
+	}
+	
+	// Elimina Datos de Empresa Transporte
+	public TEmpresaTransporte eliminarEmpresaTrans(TEmpresaTransporte o) {
+		EntityTransaction tx = em.getTransaction();
+		try {
+			tx.begin();				
+			empresaTransporteDAO.delete(o);
+			tx.commit();			
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.rollback();
+			throw new RuntimeException("Lo sentimos, no se pudo eliminar Empresa");
+		}
+		return o;
+	}
 	
 }

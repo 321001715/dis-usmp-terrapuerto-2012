@@ -53,6 +53,7 @@ public class JPATUsuarioDAO implements TUsuarioDAO {
 		Query q = em.createQuery(jpql);
 		q.setParameter(1, o.getUsernameUsu());
 		q.setParameter(2, "SI");
+		q.setMaxResults(1);
 		return (TUsuario) q.getSingleResult();
 	}
 
