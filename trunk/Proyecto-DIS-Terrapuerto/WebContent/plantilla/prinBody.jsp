@@ -1,1 +1,4 @@
-<p>Bienvenido a la Intranet</p>
+<div id="bg"></div>
+<div style="float: right;">
+HOLAAAAAAAAA
+</div>

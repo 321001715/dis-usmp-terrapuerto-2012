@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>.:Sicogas-Software Comercial:.</title>
+<title>.:Sistema Terrapuerto - Administrador:.</title>
 <link rel="stylesheet" href="css/plantilla.css" type="text/css">	
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/sliding_effect.js"></script>
@@ -18,10 +18,10 @@
 	<div id="header">
 		<tiles:insertAttribute name="header" /> 
 	</div>
-	<div id="left">
+	<div id="left" style="width: 20%;">
 		<tiles:insertAttribute name="menu" />
 	</div>
-	<div id="right">
+	<div id="right" style="width: 31%;">
 		<tiles:insertAttribute name="body" />
 	</div>
 	<div style="clear: both;"> </div>
@@ -29,5 +29,7 @@
 		<tiles:insertAttribute name="footer" />
 	</div>
 </div>
+
+
 </body>
 </html>

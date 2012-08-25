@@ -9,7 +9,7 @@
 			<li><a href="<s:url action='buscarvehiculos-%{1}'/>">Buscar Vehiculos</a></li>
 			<li><a href="<s:url action='buscarencargados'/>">Buscar Encargados</a></li>
 		</ul>
-	</sj:accordionItem>
+	</sj:accordionItem> 
 	<sj:accordionItem title="Distribucion" onClickTopics="loadAccordionDiv">
 		<ul>
 			<li><a href="<s:url action='mantenerproducto'/>">Registrar Producto</a></li>
