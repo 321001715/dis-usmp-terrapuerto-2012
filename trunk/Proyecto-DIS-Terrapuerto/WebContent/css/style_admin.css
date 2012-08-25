@@ -54,11 +54,6 @@ margin: 22px auto 51px auto;
 
 }
 
-div#floatLeft {
-float: left;
-
-}
-
 div#contenedor{
 	width: 935px;
 	margin-left: auto;
@@ -69,5 +64,20 @@ div#izquierda{
 	float: left;
 	width:260px;
 	height: 100px;
+	margin-top: 45px
 }
+
+.btn_registrar{
+	float: right;
+	margin-top: 60px;
+	margin-right: 9px;
+}
+textfield #form_login {
+	width: 45px:
+	
+}
+#form_login_input{
+	width: 287px;
+}
+
 
