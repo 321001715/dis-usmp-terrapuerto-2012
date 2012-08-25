@@ -13,7 +13,7 @@
 	<package name="common" namespace="/" extends="struts-default,tiles-default">
 		
 		<action name="loginAdmin" class="pe.com.terrapuerto.commons.action.LoginUserAction">
-			<result type="tiles" name="success">homeTerrapuerto</result>
+			<result type="tiles" name="success">home-admin-terrapuerto</result>
 		</action>
 
 	</package>
