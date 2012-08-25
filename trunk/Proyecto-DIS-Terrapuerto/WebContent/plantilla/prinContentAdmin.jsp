@@ -18,13 +18,12 @@
 	<div id="header">
 		<tiles:insertAttribute name="header" /> 
 	</div>
-	<div id="left" style="width: 20%;">
+	<div id="left" style="width: 20%; margin-left: 15px;margin-top: 30px;">
 		<tiles:insertAttribute name="menu" />
 	</div>
 	<div id="right" style="width: 31%;">
 		<tiles:insertAttribute name="body" />
 	</div>
-	<div style="clear: both;"> </div>
 	<div id="footer">
 		<tiles:insertAttribute name="footer" />
 	</div>
