@@ -46,7 +46,7 @@ public class JPATClienteDAO implements TClienteDAO {
 
 	@Override
 	public TCliente findById(TCliente o) {
-		TCliente cliente = em.find(TCliente.class, o.getIdCliente());		
+		TCliente cliente = em.find(TCliente.class, o.getIdUsu());		
 		return cliente;	
 	}
 

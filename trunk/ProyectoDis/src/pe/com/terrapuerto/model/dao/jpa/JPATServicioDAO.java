@@ -43,7 +43,7 @@ public class JPATServicioDAO implements TServicioDAO {
 
 	@Override
 	public TServicio findById(TServicio o) {
-		TServicio servicio = em.find(TServicio.class, o.getIdServicio());		
+		TServicio servicio = em.find(TServicio.class, o.getIdServ());		
 		return servicio;	
 	}
 

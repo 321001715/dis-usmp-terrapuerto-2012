@@ -3,6 +3,7 @@ package pe.com.terrapuerto.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 /**
@@ -16,17 +17,25 @@ public class TUsuario implements Serializable {
 	private int idUsu;
 	private String apematUsu;
 	private String apepatUsu;
-	private String emailUsu;
-	private Date fechanacUsu;
-	private Date fecharegUsu;
-	private String nomPropietarioUsu;
+	private String dirUsu;
+	private String distVend;
+	private Date fechamodUsu;
+	private Date fechregUsu;
+	private String nombreUsu;
+	private String nrodocUsu;
 	private String passwordUsu;
+	private String teleVend;
 	private String usernameUsu;
+	private int usumodUsu;
+	private int usuregUsu;
+	private String vigenciaUsu;
 	private TCliente TCliente;
-	private TProveedor TProveedor;
+	private Set<TDocumentoVenta> TDocumentoVentas;
+	private Set<TReserva> TReservas;
+	private TTrabajador TTrabajador;
 
-	public TUsuario() {
-	}
+    public TUsuario() {
+    }
 
 
 	@Id
@@ -41,7 +50,7 @@ public class TUsuario implements Serializable {
 	}
 
 
-	@Column(name="apemat_usu", length=25)
+	@Column(name="apemat_usu", length=45)
 	public String getApematUsu() {
 		return this.apematUsu;
 	}
@@ -51,7 +60,7 @@ public class TUsuario implements Serializable {
 	}
 
 
-	@Column(name="apepat_usu", length=25)
+	@Column(name="apepat_usu", length=45)
 	public String getApepatUsu() {
 		return this.apepatUsu;
 	}
@@ -61,49 +70,69 @@ public class TUsuario implements Serializable {
 	}
 
 
-	@Column(name="email_usu", length=30)
-	public String getEmailUsu() {
-		return this.emailUsu;
+	@Column(name="dir_usu", length=45)
+	public String getDirUsu() {
+		return this.dirUsu;
 	}
 
-	public void setEmailUsu(String emailUsu) {
-		this.emailUsu = emailUsu;
-	}
-
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="fechanac_usu")
-	public Date getFechanacUsu() {
-		return this.fechanacUsu;
-	}
-
-	public void setFechanacUsu(Date fechanacUsu) {
-		this.fechanacUsu = fechanacUsu;
+	public void setDirUsu(String dirUsu) {
+		this.dirUsu = dirUsu;
 	}
 
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="fechareg_usu")
-	public Date getFecharegUsu() {
-		return this.fecharegUsu;
+	@Column(name="dist_vend", length=45)
+	public String getDistVend() {
+		return this.distVend;
 	}
 
-	public void setFecharegUsu(Date fecharegUsu) {
-		this.fecharegUsu = fecharegUsu;
-	}
-
-
-	@Column(name="nom_propietario_usu", length=30)
-	public String getNomPropietarioUsu() {
-		return this.nomPropietarioUsu;
-	}
-
-	public void setNomPropietarioUsu(String nomPropietarioUsu) {
-		this.nomPropietarioUsu = nomPropietarioUsu;
+	public void setDistVend(String distVend) {
+		this.distVend = distVend;
 	}
 
 
-	@Column(name="password_usu", length=20)
+    @Temporal( TemporalType.TIMESTAMP)
+	@Column(name="fechamod_usu")
+	public Date getFechamodUsu() {
+		return this.fechamodUsu;
+	}
+
+	public void setFechamodUsu(Date fechamodUsu) {
+		this.fechamodUsu = fechamodUsu;
+	}
+
+
+    @Temporal( TemporalType.TIMESTAMP)
+	@Column(name="fechreg_usu")
+	public Date getFechregUsu() {
+		return this.fechregUsu;
+	}
+
+	public void setFechregUsu(Date fechregUsu) {
+		this.fechregUsu = fechregUsu;
+	}
+
+
+	@Column(name="nombre_usu", length=45)
+	public String getNombreUsu() {
+		return this.nombreUsu;
+	}
+
+	public void setNombreUsu(String nombreUsu) {
+		this.nombreUsu = nombreUsu;
+	}
+
+
+	@Column(name="nrodoc_usu", length=15)
+	public String getNrodocUsu() {
+		return this.nrodocUsu;
+	}
+
+	public void setNrodocUsu(String nrodocUsu) {
+		this.nrodocUsu = nrodocUsu;
+	}
+
+
+	@Column(name="password_usu", length=45)
 	public String getPasswordUsu() {
 		return this.passwordUsu;
 	}
@@ -113,13 +142,53 @@ public class TUsuario implements Serializable {
 	}
 
 
-	@Column(name="username_usu", length=20)
+	@Column(name="tele_vend", length=45)
+	public String getTeleVend() {
+		return this.teleVend;
+	}
+
+	public void setTeleVend(String teleVend) {
+		this.teleVend = teleVend;
+	}
+
+
+	@Column(name="username_usu", length=45)
 	public String getUsernameUsu() {
 		return this.usernameUsu;
 	}
 
 	public void setUsernameUsu(String usernameUsu) {
 		this.usernameUsu = usernameUsu;
+	}
+
+
+	@Column(name="usumod_usu")
+	public int getUsumodUsu() {
+		return this.usumodUsu;
+	}
+
+	public void setUsumodUsu(int usumodUsu) {
+		this.usumodUsu = usumodUsu;
+	}
+
+
+	@Column(name="usureg_usu")
+	public int getUsuregUsu() {
+		return this.usuregUsu;
+	}
+
+	public void setUsuregUsu(int usuregUsu) {
+		this.usuregUsu = usuregUsu;
+	}
+
+
+	@Column(name="vigencia_usu", nullable=false, length=15)
+	public String getVigenciaUsu() {
+		return this.vigenciaUsu;
+	}
+
+	public void setVigenciaUsu(String vigenciaUsu) {
+		this.vigenciaUsu = vigenciaUsu;
 	}
 
 
@@ -132,16 +201,38 @@ public class TUsuario implements Serializable {
 	public void setTCliente(TCliente TCliente) {
 		this.TCliente = TCliente;
 	}
+	
 
+	//bi-directional many-to-one association to TDocumentoVenta
+	@OneToMany(mappedBy="TUsuario")
+	public Set<TDocumentoVenta> getTDocumentoVentas() {
+		return this.TDocumentoVentas;
+	}
 
-	//bi-directional one-to-one association to TProveedor
+	public void setTDocumentoVentas(Set<TDocumentoVenta> TDocumentoVentas) {
+		this.TDocumentoVentas = TDocumentoVentas;
+	}
+	
+
+	//bi-directional many-to-one association to TReserva
+	@OneToMany(mappedBy="TUsuario")
+	public Set<TReserva> getTReservas() {
+		return this.TReservas;
+	}
+
+	public void setTReservas(Set<TReserva> TReservas) {
+		this.TReservas = TReservas;
+	}
+	
+
+	//bi-directional one-to-one association to TTrabajador
 	@OneToOne(mappedBy="TUsuario", fetch=FetchType.LAZY)
-	public TProveedor getTProveedor() {
-		return this.TProveedor;
+	public TTrabajador getTTrabajador() {
+		return this.TTrabajador;
 	}
 
-	public void setTProveedor(TProveedor TProveedor) {
-		this.TProveedor = TProveedor;
+	public void setTTrabajador(TTrabajador TTrabajador) {
+		this.TTrabajador = TTrabajador;
 	}
-
+	
 }
