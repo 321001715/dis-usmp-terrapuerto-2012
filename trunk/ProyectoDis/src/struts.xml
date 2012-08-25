@@ -9,7 +9,7 @@
 	<constant name="struts.configuration.xml.reload" value="false" />
 	<constant name="struts.ui.theme" value="xhtml" />
   	<constant name="struts.devMode" value="true" />
-
+	
 	<include file="pe/com/terrapuerto/commons/action/struts-commons.xml"/>
 	
 	<package name="index" namespace="/" extends="struts-default">
