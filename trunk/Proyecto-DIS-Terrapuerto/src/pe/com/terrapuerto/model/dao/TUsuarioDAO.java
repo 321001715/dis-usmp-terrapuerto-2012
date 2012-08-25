@@ -15,4 +15,6 @@ public interface TUsuarioDAO {
 	public void delete(TUsuario o);
 	
 	public TUsuario findById(TUsuario o);
+	
+	public TUsuario findByUser(TUsuario o);
 }

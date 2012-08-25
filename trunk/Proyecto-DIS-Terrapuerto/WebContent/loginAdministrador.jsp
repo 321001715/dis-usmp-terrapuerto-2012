@@ -11,7 +11,8 @@
 <body>
 <div id="bg"></div>
 <div id="login">
-	<s:form action="loginTerrapuerto">
+	<s:property value="mensaje" />
+	<s:form action="loginAdmin">
 		<s:textfield name="usuario.usernameUsu" label="Usuario"/>
 		<s:password name="usuario.passwordUsu" label="Password"/>
 		<s:submit value="Ingresar"/>

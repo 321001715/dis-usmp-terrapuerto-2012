@@ -47,4 +47,13 @@ public class JPATUsuarioDAO implements TUsuarioDAO {
 		return usuario;	
 	}
 
+	@Override
+	public TUsuario findByUser(TUsuario o) {
+		String jpql = "Select o from TUsuario o where o.usernameUsu=?1 and o.vigenciaUsu=?2";
+		Query q = em.createQuery(jpql);
+		q.setParameter(1, o.getUsernameUsu());
+		q.setParameter(2, "SI");
+		return (TUsuario) q.getSingleResult();
+	}
+
 }
