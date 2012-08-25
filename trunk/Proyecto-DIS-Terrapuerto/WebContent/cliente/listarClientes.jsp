@@ -1,29 +1,29 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<h2>Listado de Productos</h2>
+<h2>Listado de Clientes</h2>
 <table>
 	<thead>
 		<tr bgcolor="#CCCCCC">
 			<th>&nbsp;</th>				
-			<th><strong>Codigo</strong></th>
+			<th><strong>Apellido Paterno</strong></th>
+			<th><strong>Apellido Materno</strong></th>
 			<th><strong>Nombre</strong></th>
-			<th><strong>Tipo</strong></th>	
-			<th><strong>Unidad</strong></th>
+			<th><strong>Direccion</strong></th>
+			<th><strong>Telefono</strong></th>
 		</tr>
 	</thead>
 	<tbody>
-		<s:iterator value="listaproductos" status="productosStatus">
-			<tr bgcolor="<s:if test="#productosStatus.odd == true ">#FFD1A8</s:if><s:else>#FFFFFF</s:else>">
+		<s:iterator value="listaClientes" status="clientesStatus">
+			<tr bgcolor="<s:if test="#clientesStatus.odd == true ">#FFD1A8</s:if><s:else>#FFFFFF</s:else>">
 				<td>
-					<s:if test="tipoBuscar == 1 ">
-						<a href="<s:url action='mantenerproducto-%{codProd}' method='editar'/>">Editar</a>					
-						<a href="<s:url action='mantenerproducto-%{codProd}' method='eliminar'/>">Eliminar</a>
-					</s:if>
-					<s:elseif test="tipoBuscar == 2 ">
+					
+						<a href="<s:url action='mantenerCliente-%{idUsu}' method='editar'/>">Editar</a>					
+						<a href="<s:url action='mantenerCliente-%{idUsu}' method='eliminar'/>">Eliminar</a>
+										
 						<a href="<s:url action='generarcontrolmovimiento'/>">Seleccionar</a>
-					</s:elseif>	
-					<s:else>
+					
+					
 					<a href="<s:url action='registrarpedido-%{codProd}' method='buscarproducto'/>">Seleccionar</a>
-					</s:else>			
+							
 				</td>
 				
 				<td>
