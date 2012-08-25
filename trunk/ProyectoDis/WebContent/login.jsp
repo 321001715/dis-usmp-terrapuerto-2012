@@ -6,12 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Usuario Administrador</title>
+<link rel="stylesheet" href="css/style_admin.css" type="text/css">	
 </head>
 <body>
-<s:form action="loginTerrapuerto">
-	<s:textfield name="usuario.usernameUsu" label="Usuario"/>
-	<s:password name="usuario.passwordUsu" label="Password"/>
-	<s:submit value="Ingresar"/>
-</s:form>
+<div id="bg"></div>
+<div id="login">
+	<s:form action="loginTerrapuerto">
+		<s:textfield name="usuario.usernameUsu" label="Usuario"/>
+		<s:password name="usuario.passwordUsu" label="Password"/>
+		<s:submit value="Ingresar"/>
+	</s:form>
+</div>
+<div id="footer"></div>
 </body>
 </html>
