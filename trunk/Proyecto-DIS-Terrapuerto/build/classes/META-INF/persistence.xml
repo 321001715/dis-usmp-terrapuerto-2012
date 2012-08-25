@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="my-persistence-unit" transaction-type="RESOURCE_LOCAL">
+	
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		
+		<non-jta-data-source>java:comp/env/jdbc/bdterrapuerto</non-jta-data-source>
+		
+		<class>pe.com.terrapuerto.model.TAsiento</class>
+		<class>pe.com.terrapuerto.model.TAsientoPK</class>
+		<class>pe.com.terrapuerto.model.TCliente</class>
+		<class>pe.com.terrapuerto.model.TDetalleDocumentoVenta</class>
+		<class>pe.com.terrapuerto.model.TDetalleDocumentoVentaPK</class>
+		<class>pe.com.terrapuerto.model.TDocumentoVenta</class>
+		<class>pe.com.terrapuerto.model.TEmpresaTransporte</class>
+		<class>pe.com.terrapuerto.model.TLocal</class>
+		<class>pe.com.terrapuerto.model.TLocalPK</class>
+		<class>pe.com.terrapuerto.model.TPasajero</class>
+		<class>pe.com.terrapuerto.model.TProveedor</class>
+		<class>pe.com.terrapuerto.model.TReserva</class>
+		<class>pe.com.terrapuerto.model.TRuta</class>
+		<class>pe.com.terrapuerto.model.TServicio</class>
+		<class>pe.com.terrapuerto.model.TLocal</class>
+		<class>pe.com.terrapuerto.model.TLocalPK</class>
+		<class>pe.com.terrapuerto.model.TProveedor</class>
+		<class>pe.com.terrapuerto.model.TServicio</class>
+		<class>pe.com.terrapuerto.model.TTrabajador</class>
+		<class>pe.com.terrapuerto.model.TUsuario</class>
+		<class>pe.com.terrapuerto.model.TVehiculo</class>
+		<class>pe.com.terrapuerto.model.TViaje</class>
+		<class>pe.com.terrapuerto.model.TViajeAsiento</class>
+		<class>pe.com.terrapuerto.model.TViajeAsientoPK</class>
+		
+		<properties>
+			<property name="eclipselink.session.customizer" value="pe.com.terrapuerto.commons.util.JPAEclipseLinkSessionCustomizer"/>
+			<property name="eclipselink.jdbc.bind-parameters" value="false"/>
+			
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+			<property name="eclipselink.ddl-generation.output-mode" value="terra" />
+		</properties>
+	</persistence-unit>
+</persistence>
