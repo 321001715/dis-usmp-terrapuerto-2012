@@ -10,14 +10,26 @@
 </head>
 <body>
 <div id="bg"></div>
-<div id="login">
-	<s:property value="mensaje" />
-	<s:form action="loginAdmin">
+
+<div id="contenedor">
+
+<div id="izquierda">
+
+	<s:form action="loginTerrapuerto">
 		<s:textfield name="usuario.usernameUsu" label="Usuario"/>
 		<s:password name="usuario.passwordUsu" label="Password"/>
-		<s:submit value="Ingresar"/>
+		<s:submit value="" cssClass="btn_iniciar_sesion"/>
 	</s:form>
 </div>
+
+<div id="derecha_login" >
+	<img src="<s:url value='/img/persona_login.png'/>" />
+</div>
+
+
+</div>
+
+
 <div id="footer"></div>
 </body>
 </html>

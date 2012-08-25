@@ -4,6 +4,7 @@ body{
 	background: #FFF; /*Imagen de fondo*/
 	font-family: "Arial";
 	font-size: 12px;
+	background: url(../img/bg.png) bottom; /*Imagen de fondo*/
 }
 div#logo{
 	
@@ -25,6 +26,7 @@ div#login{
 	background: #FFF;
 	padding: 40px;
 	border-radius:20px;
+
 }
 div#footer{
 	position: fixed;
@@ -33,3 +35,39 @@ div#footer{
 	height: 50px;
 	background: url(../img/footer.png) bottom;
 }
+
+.btn_iniciar_sesion{
+	background: url(../img/btn_iniciarSesion_login.png) bottom no-repeat;
+	width: 100%;
+	border: 0px;
+	height: 35px;
+	
+}
+
+div#derecha_login {
+width: 475px;
+height: 521px;
+overflow: hidden;
+background: #CCC;
+float: right;
+margin: 22px auto 51px auto;
+
+}
+
+div#floatLeft {
+float: left;
+
+}
+
+div#contenedor{
+	width: 935px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#izquierda{
+	float: left;
+	width:260px;
+	height: 100px;
+}
+
