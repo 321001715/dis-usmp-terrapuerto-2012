@@ -27,19 +27,19 @@
       <put-attribute name="body"    value="/cliente/listarClientes.jsp"/>
   </definition>
   
-    <definition name="registro-empresa" extends="home-admin-terrapuerto">
+  <definition name="registro-empresa" extends="home-admin-terrapuerto">
       <put-attribute name="title"   value="Registrar Empresa"/>
-      <put-attribute name="body"    value="/cliente/registrarCliente.jsp"/>
+      <put-attribute name="body"    value="/empresa/registrarEmpresa.jsp"/>
   </definition>
   
   <definition name="edicion-empresa" extends="home-admin-terrapuerto">
-      <put-attribute name="title"   value="Editar Cliente"/>
-      <put-attribute name="body"    value="/cliente/editarCliente.jsp"/>
+      <put-attribute name="title"   value="Editar Empresa"/>
+      <put-attribute name="body"    value="/empresa/editarEmpresa.jsp"/>
   </definition>
 
   <definition name="lista-empresas" extends="home-admin-terrapuerto">
-      <put-attribute name="title"   value="Listado de Clientes"/>
-      <put-attribute name="body"    value="/cliente/listarClientes.jsp"/>
+      <put-attribute name="title"   value="Listado de Empresas"/>
+      <put-attribute name="body"    value="/empresa/listarEmpresa.jsp"/>
   </definition>
    
   <definition name="mensaje-global" extends="home-admin-terrapuerto">
