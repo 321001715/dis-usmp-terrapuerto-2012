@@ -14,6 +14,7 @@
 		
 		<action name="loginAdmin" class="pe.com.terrapuerto.commons.action.LoginUserAction">
 			<result type="tiles" name="success">home-admin-terrapuerto</result>
+			<result name="error">loginAdministrador.jsp</result>
 		</action>
 
 	</package>
