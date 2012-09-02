@@ -41,6 +41,7 @@
 					</tr> 
 					<%	for (int i = 0; i < empresa.size(); i++) {	%>
 					<tr>
+					<!-- CORREGIR ESTA WEBADA -->
 						<td><%=empresa.get(i).getCodEmpre()%></td>
 						<td><%=empresa.get(i).getRuc()%></td>
 						<td><%=empresa.get(i).getRazSocial()%></td>
