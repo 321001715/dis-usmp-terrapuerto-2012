@@ -38,7 +38,7 @@
 						<th>Telefono</th>
 						<th>Sexo</th>
 						<th>Estado</th>
-						
+						<!-- CORREGIR ESTA WEBADA -->
 						<th colspan="2">Acciones</th>
 					</tr>
 					<%	for (int i = 0; i < usuarios.size(); i++) {	%>
