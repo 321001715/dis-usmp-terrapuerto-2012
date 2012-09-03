@@ -13,6 +13,9 @@
 	Vector<Proveedor> proveedores = (Vector<Proveedor>)request.getAttribute("proveedores");
 %>
 
+<%
+	if(proveedores.size() != 0){
+%>
 <table border="1" cellspacing="0" cellpadding="0">
 	<tr>
 		<th>C&oacute;digo</th>
@@ -32,6 +35,8 @@
 	</tr>
 	<%} %>
 </table>
-
+<%}else{%>
+<font color="red">No se encontraron resultados para la consulta.</font>
+<%} %>
 </body>
 </html>
