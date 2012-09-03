@@ -8,23 +8,24 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
 	public boolean registrarProveedor(Proveedor proveedor) {
-int filas_afectadas = 0;
+		int filas_afectadas = 0;
 		
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "INSERT INTO T_PROVEEDOR(ruc, razSocial, razCom, direccion, tel) VALUES ("+proveedor.getRuc()+", '"+proveedor.getRazonSocial()+"');";
+			String sql = "INSERT INTO T_PROVEEDOR(ruc, razSocial, razCom, direccion, tel, estado) " +
+					"VALUES ("+proveedor.getRuc()+", '"+proveedor.getRazonSocial()+"', "+proveedor.getRazCom()+", "+proveedor.getDirec()+", "+proveedor.getTel()+", '"+Constantes.ESTADO_ACTIVO+"');";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
 			
-		} catch (Exception e) {
-			System.out.print(e.getMessage());
+		} catch (Exception e) {			
 			e.printStackTrace();
 		}
 		
