@@ -11,13 +11,13 @@
 
 <%
 	Proveedor proveedor = (Proveedor)request.getAttribute("proveedor");
-	String mensaje = (String)request.getParameter("mensaje");
+	String mensaje = (String)request.getAttribute("mensaje");
 %>
 
 <h2>Modificar proveedor</h2>
 
 	<%@include file="buscar_proveedor.jsp" %>
-
+	<br><hr><br>
 	<form action="ServletProveedor" method="post">
 		<input type="hidden" name="tipo" value="modificar">
 		<%if(proveedor != null){ %>
@@ -64,8 +64,8 @@
 				<td></td>
 			</tr>
 		</table>
-		<%}else{ %>
-			<font color="red">No se encontraron resultados para la consulta.</font>
+		<%}else if(mensaje != null){ %>
+			<font color="red"><%=mensaje %></font>
 		<%} %>
 	</form>
 </body>

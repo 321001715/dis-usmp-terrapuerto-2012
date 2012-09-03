@@ -160,11 +160,14 @@ public class ServletProveedor extends HttpServlet {
 			Proveedor proveedor = new Proveedor();			
 			
 			try {
-				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("idProveedor")));			
-				proveedor = service.consultarProveedor(proveedor);				
+				int id = Integer.parseInt(request.getParameter("idProveedor"));
+				proveedor.setIdProveedor(id);			
+				proveedor = service.consultarProveedor(proveedor);
+				if(proveedor == null) mensaje = "No se encontraron resultados para su consulta. [Proveedor cod."+id+"]";
+				else mensaje = "";
 				request.setAttribute("proveedor", proveedor);				
-				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
 				
+				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -179,7 +182,7 @@ public class ServletProveedor extends HttpServlet {
 				
 			}			
 		}		
-		
+		System.out.println(mensaje);
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}
