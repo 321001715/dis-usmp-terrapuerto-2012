@@ -47,7 +47,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					"ruc = "+proveedor.getRuc()+
 					", razSocial = '"+ proveedor.getRazonSocial() + 
 					"', razCom = '"+proveedor.getRazCom()+
-					"', direccion = '"+proveedor.getDirec()+
+					"', direccion = '"+proveedor.getDireccion()+
 					"', tel = "+proveedor.getTel()+
 					" WHERE IDPROVEEDOR = "+proveedor.getIdProveedor()+";";
 			filas_afectadas = stmt.executeUpdate(query);				
@@ -77,7 +77,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				nuevo.setRuc(rs.getString("ruc"));				
 				nuevo.setRazonSocial(rs.getString("razSocial"));
 				nuevo.setRazCom(rs.getString("razCom"));
-				nuevo.setDirec(rs.getString("direccion"));
+				nuevo.setDireccion(rs.getString("direccion"));
 				nuevo.setTel(rs.getInt("tel"));
 			}
 			con.close();
@@ -127,7 +127,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				proveedor.setRuc(rs.getString("ruc"));				
 				proveedor.setRazonSocial(rs.getString("razSocial"));
 				proveedor.setRazCom(rs.getString("razCom"));
-				proveedor.setDirec(rs.getString("direccion"));
+				proveedor.setDireccion(rs.getString("direccion"));
 				proveedor.setTel(rs.getInt("tel"));
 				
 				proveedores.add(proveedor);
