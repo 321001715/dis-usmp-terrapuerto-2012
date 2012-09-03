@@ -18,9 +18,8 @@
 		<br><br>
 <%} %>
 <a href="registrar_proveedor.jsp">Registrar Proveedor</a><br>
-<a href="eliminar_proveedor.jsp">Eliminar Proveedor</a><br>
-<a href="modificar_proveedor.jsp">Modificar Proveedor</a><br>
 <a href="ServletProveedor?tipo=listar&destino=<%=Constantes.ELIMINAR_PROVEEDOR%>">Eliminar Proveedor</a></li>
+<a href="modificar_proveedor.jsp">Modificar Proveedor</a><br>
 <br><hr><br>
 <%@include file="listar_proveedores.jsp" %>
 
