@@ -6,9 +6,10 @@ public class Proveedor {
 	private String ruc;
 	private String razonSocial;
 	private String razCom;
-	private String direc;
+	private String direccion;
 	private int tel;
-	private long usuario;
+	private String usuario;
+	private String clave;
 	private String estado;
 	
 	public long getIdProveedor() {
@@ -43,12 +44,12 @@ public class Proveedor {
 		this.razCom = razCom;
 	}
 	
-	public String getDirec() {
-		return direc;
+	public String getDireccion() {
+		return direccion;
 	}
 	
-	public void setDirec(String direc) {
-		this.direc = direc;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	
 	public int getTel() {
@@ -59,12 +60,20 @@ public class Proveedor {
 		this.tel = tel;
 	}
 	
-	public long getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 	
-	public void setUsuario(long usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	
+	public String getClave() {
+		return clave;
+	}
+	
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 	
 	public String getEstado() {
