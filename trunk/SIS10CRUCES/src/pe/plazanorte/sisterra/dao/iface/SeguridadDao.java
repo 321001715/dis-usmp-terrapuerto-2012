@@ -8,7 +8,7 @@ import pe.plazanorte.sisterra.entidades.*;
 public interface SeguridadDao {
 	
 	public Vector<Usuario> listarUsuario () throws Exception;
-	public int registrarUsuario(Usuario usuario);
+	public boolean registrarUsuario(Usuario usuario);
 	public boolean modificarUsuario(Usuario usuario);
 	public int eliminarUsuario(int id);
 	public boolean consultarUsuario(Usuario usuario);
