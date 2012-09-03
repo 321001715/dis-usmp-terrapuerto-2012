@@ -13,8 +13,8 @@ public class Constantes {
 	 */
 	public static final int MENU_PRINCIPAL = 1;
 	public static final int ELIMINAR_PROVEEDOR = 2;
-	public static final int MANTENER_PROVEEDOR = 3;	
-	
+	public static final int MANTENER_PROVEEDOR = 3;
+	public static final int MODIFICAR_PROVEEDOR = 3;	
 	
 	/*
 	 * PERFILES
