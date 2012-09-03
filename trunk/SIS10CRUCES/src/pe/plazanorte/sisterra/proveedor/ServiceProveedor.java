@@ -31,7 +31,7 @@ public class ServiceProveedor {
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();		
 		proveedor = proveedorDao.consultarProveedor(proveedor);
 		if(proveedor != null) return proveedor;
-		else return null;
+		else return proveedor;
 	}
 
 	public Vector<Proveedor> listarProveedores() {
