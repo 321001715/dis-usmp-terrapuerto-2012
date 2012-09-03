@@ -39,27 +39,24 @@ public class ServletProveedor extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		
-		if(tipo.equalsIgnoreCase("listar")){	
-			
-			try {								
+		if(tipo.equalsIgnoreCase("listar")){						
+		
+			try {
 				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
 				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);					
-			} catch (Exception e) {
-				
-			}
-			try {
+				request.setAttribute("proveedores", proveedores);	
 				String origen = request.getParameter("origen");
 				if(origen == null){
 					rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");
 				}else if(Integer.parseInt(origen) == Constantes.MENU_PRINCIPAL){
 					rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
 				}
+				request.setAttribute("proveedores", proveedores);	
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
 		}else if(tipo.equalsIgnoreCase("consultar")){
-			Proveedor proveedor = new Proveedor();			
+			/*Proveedor proveedor = new Proveedor();			
 			
 			try {
 				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("idProveedor")));			
@@ -69,7 +66,7 @@ public class ServletProveedor extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}*/
 		}
 		
 		request.setAttribute("mensaje", mensaje);		
