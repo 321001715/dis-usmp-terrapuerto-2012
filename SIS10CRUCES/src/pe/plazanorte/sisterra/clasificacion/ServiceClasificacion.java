@@ -1,5 +1,5 @@
 package pe.plazanorte.sisterra.clasificacion;
 
-public class ServiceServicios {
+public class ServiceClasificacion {
 
 }

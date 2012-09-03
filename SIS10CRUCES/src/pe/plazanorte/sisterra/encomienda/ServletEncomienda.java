@@ -1,4 +1,4 @@
-package pe.plazanorte.sisterra.clasificacion;
+package pe.plazanorte.sisterra.encomienda;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ServletServicios
+ * Servlet implementation class ServletEncomienda
  */
-@WebServlet("/ServletServicios")
-public class ServletServicios extends HttpServlet {
+@WebServlet("/ServletEncomienda")
+public class ServletEncomienda extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletServicios() {
+    public ServletEncomienda() {
         super();
         // TODO Auto-generated constructor stub
     }
