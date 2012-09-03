@@ -8,15 +8,11 @@
 </head>
 <body>
 
+	<h2>Registrar Proveedor</h2>
+
 	<form action="ServletProveedor" method="post">
 		<input type="hidden" name="tipo" value="registrar">
-		<table>
-			<tr>
-				<td>Codigo de Empresa</td>
-				<td><input type="text" name="codigo"></td>
-				<td ></td>
-				<td></td>
-			</tr>
+		<table>			
 			<tr>
 				<td>RUC</td>
 				<td><input type="text" name="ruc"></td>
@@ -25,13 +21,13 @@
 			</tr>
 			<tr>
 				<td>Razon Social</td>
-				<td><input type="text" name="razon_social"></td>
+				<td><input type="text" name="razon_social" readonly="readonly"></td>
 				<td colspan=2></td>
 				
 			</tr>
 			<tr>
 				<td>Razon Comercial</td>
-				<td><input type="text" name="razon_comercial"></td>
+				<td><input type="text" name="razon_comercial" readonly="readonly"></td>
 				<td colspan='2'></td>
 				
 			</tr>
@@ -49,7 +45,7 @@
 			</tr>
 			<tr>
 				<td><input value=Agregar type="submit"></td>
-				<td><input value=Modificar type="submit"></td>
+				<td></td>
 				<td></td>
 				<td></td>
 			</tr>
