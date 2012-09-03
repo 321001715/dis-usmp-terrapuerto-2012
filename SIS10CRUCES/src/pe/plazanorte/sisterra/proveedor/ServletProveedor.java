@@ -180,7 +180,7 @@ public class ServletProveedor extends HttpServlet {
 				request.setAttribute("proveedores", proveedores);
 				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");				
 			} catch (Exception e) {
-				
+				e.printStackTrace();
 			}			
 		}				
 		request.setAttribute("mensaje", mensaje);		
