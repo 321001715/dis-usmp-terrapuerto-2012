@@ -12,37 +12,30 @@
 
 	<form action="ServletProveedor" method="post">
 		<input type="hidden" name="tipo" value="registrar">
-		<table>			
+		<table cellspacing="15px">			
 			<tr>
 				<td>RUC</td>
-				<td><input type="text" name="ruc" maxlength="11"></td>
-				<td colspan='2'></td>
+				<td><input type="text" name="ruc" maxlength="11"></td>				
 			</tr>
 			<tr>
 				<td>Razon Social</td>
-				<td><input type="text" name="razon_social"></td>
-				<td colspan=2></td>
-				
+				<td><input type="text" name="razon_social"></td>			
 			</tr>
 			<tr>
 				<td>Razon Comercial</td>
-				<td><input type="text" name="razon_comercial"></td>
-				<td colspan='2'></td>
-				
+				<td><input type="text" name="razon_comercial"></td>			
 			</tr>
 			<tr>
 				<td>Direccion</td>
-				<td><input type="text" name="direccion"></td>
-				<td colspan='2'></td>
+				<td><input type="text" name="direccion"></td>				
 			</tr>
 			<tr>
 				<td>Telefono</td>
-				<td><input type="text" name="telefono" maxlength="9"></td>
-				<td colspan='2'></td>
+				<td><input type="text" name="telefono" maxlength="9"></td>				
 			</tr>
 			<tr>
 				<td><input value=Agregar type="submit"></td>
-				<td colspan='3'></td>
+				<td></td>
 			</tr>
 		</table>
 	</form>

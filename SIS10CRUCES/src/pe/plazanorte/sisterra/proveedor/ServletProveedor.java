@@ -89,7 +89,6 @@ public class ServletProveedor extends HttpServlet {
 	
 		if(tipo.equalsIgnoreCase("registrar")) {
 			
-			long codigo = Long.parseLong(request.getParameter("codigo"));
 			String ruc = request.getParameter("ruc");
 			String razonSocial = request.getParameter("razon_social");
 			String razonComercial = request.getParameter("razon_comercial");
@@ -98,7 +97,6 @@ public class ServletProveedor extends HttpServlet {
 			
 			try {
 				Proveedor proveedor = new Proveedor();
-				proveedor.setIdProveedor(codigo);
 				proveedor.setRuc(ruc);	
 				proveedor.setRazonSocial(razonSocial);
 				proveedor.setRazCom(razonComercial);
