@@ -15,7 +15,7 @@ import pe.plazanorte.sisterra.util.Constantes;
 /**
  * Servlet implementation class ServletEmpresa
  */
-@WebServlet("/ServletProveedor")
+@WebServlet("/ServletSeguridad") //MODIFICADO
 public class ServletSeguridad extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
