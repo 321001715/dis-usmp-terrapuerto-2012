@@ -1,18 +1,13 @@
 package pe.plazanorte.sisterra.proveedor;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Vector;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import pe.plazanorte.sisterra.dao.mysql.MySqlProveedorDAO;
-import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.util.Constantes;
 
@@ -56,7 +51,7 @@ public class ServletProveedor extends HttpServlet {
 				String origen = request.getParameter("origen");
 				if(origen == null){
 					rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");
-				}else if(Integer.parseInt(origen) == pe.plazanorte.sisterra.util.Constantes.MENU_PRINCIPAL){
+				}else if(Integer.parseInt(origen) == Constantes.MENU_PRINCIPAL){
 					rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
 				}
 			} catch (Exception e) {
