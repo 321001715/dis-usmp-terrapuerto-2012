@@ -48,7 +48,7 @@
 			</tr>
 			<tr>
 				<td>Direccion</td>
-				<td><input type="text" name="direccion" value="<%=proveedor.getDirec() %>"></td>
+				<td><input type="text" name="direccion" value="<%=proveedor.getDireccion() %>"></td>
 				<td>Usuario</td>
 				<td><select></select></td>
 			</tr>
