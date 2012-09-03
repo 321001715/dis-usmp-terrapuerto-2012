@@ -17,6 +17,7 @@
 <h2>Modificar proveedor</h2>
 	<form action="ServletProveedor" method="post">
 		<input type="hidden" name="tipo" value="modificar">
+		<%if(proveedor != null){ %>
 		<table>
 			<tr>
 				<td>Codigo de Empresa</td>
@@ -60,6 +61,9 @@
 				<td></td>
 			</tr>
 		</table>
+		<%}else{ %>
+			<font color="red">No se encontraron resultados para la consulta.</font>
+		<%} %>
 	</form>
 </body>
 </html>

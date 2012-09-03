@@ -37,7 +37,7 @@ public class ServiceProveedor {
 	public Vector<Proveedor> listarProveedores() {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();	
-		Vector<Proveedor> proveedores = new Vector<Proveedor>();
+		Vector<Proveedor> proveedores = null;
 		proveedores = proveedorDao.listarProveedores();
 		
 		if(proveedores != null) return proveedores;
