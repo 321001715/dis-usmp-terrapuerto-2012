@@ -24,7 +24,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					"VALUES ("+proveedor.getRuc()+", '"+proveedor.getRazonSocial()+"', '"+proveedor.getRazCom()+"', '"+proveedor.getDirec()+"', "+proveedor.getTel()+", '"+Constantes.ESTADO_ACTIVO+"');";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
-			
+			con.close();
 		} catch (Exception e) {			
 			e.printStackTrace();
 		}
@@ -47,13 +47,12 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					"ruc = "+proveedor.getRuc()+
 					", razSocial = '"+ proveedor.getRazonSocial() + 
 					"', razCom = '"+proveedor.getRazCom()+
-					"', direc = '"+proveedor.getDirec()+
+					"', direccion = '"+proveedor.getDirec()+
 					"', tel = "+proveedor.getTel()+
 					" WHERE IDPROVEEDOR = "+proveedor.getIdProveedor()+";";
 			filas_afectadas = stmt.executeUpdate(query);				
-			
+			con.close();
 		} catch (Exception e) {
-			System.out.print(e.getMessage());
 			e.printStackTrace();
 		}		
 		if(filas_afectadas == 1)
@@ -77,7 +76,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				proveedor.setRuc(rs.getString("ruc"));				
 				proveedor.setRazonSocial(rs.getString("razSocial"));
 				proveedor.setRazCom(rs.getString("razCom"));
-				proveedor.setDirec(rs.getString("direc"));
+				proveedor.setDirec(rs.getString("direccion"));
 				proveedor.setTel(rs.getInt("tel"));
 			}
 			con.close();
@@ -100,7 +99,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			String query = "DELETE FROM T_PROVEEDOR WHERE IDPROVEEDOR LIKE "+id+";";
 			
 			filas_afectadas = stmt.executeUpdate(query);		
-			
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -127,7 +126,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				proveedor.setRuc(rs.getString("ruc"));				
 				proveedor.setRazonSocial(rs.getString("razSocial"));
 				proveedor.setRazCom(rs.getString("razCom"));
-				proveedor.setDirec(rs.getString("direc"));
+				proveedor.setDirec(rs.getString("direccion"));
 				proveedor.setTel(rs.getInt("tel"));
 				
 				proveedores.add(proveedor);
