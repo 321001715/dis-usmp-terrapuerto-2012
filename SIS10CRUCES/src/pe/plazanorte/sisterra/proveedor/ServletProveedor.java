@@ -59,19 +59,20 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}			
 		}else if(tipo.equalsIgnoreCase("consultar")){
-			/*Proveedor proveedor = new Proveedor();			
-			
+			Proveedor proveedor = new Proveedor();	
+			int destino = Integer.parseInt(request.getParameter("destino"));			
 			try {
 				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("idProveedor")));			
 				proveedor = service.consultarProveedor(proveedor);				
-				request.setAttribute("proveedor", proveedor);				
-				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");
-				
+				request.setAttribute("proveedor", proveedor);						
 			} catch (Exception e) {
 				e.printStackTrace();
-			}*/
-		}
-		
+			}
+			
+			if(destino == Constantes.MODIFICAR_PROVEEDOR){
+				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
+			}		
+		}		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}

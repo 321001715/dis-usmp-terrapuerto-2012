@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Proveedor"%>
 <%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -25,8 +26,8 @@
 		<td><%=proveedores.get(i).getRuc() %></td>
 		<td><%=proveedores.get(i).getRazonSocial() %></td>
 		<td><%=proveedores.get(i).getRazCom()%></td>
-		<td><a href="ServletProveedor?tipo=consultar&codigo=<%=proveedores.get(i).getIdProveedor()%>" target="_blank">Consultar</a></td>
-		<td><a href="ServletProveedor?tipo=eliminar&codigo=<%=proveedores.get(i).getIdProveedor()%>">Deshabilitar</a></td>
+		<td><a href="ServletProveedor?tipo=consultar&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Consultar</a></td>
+		<td><a href="ServletProveedor?tipo=eliminar&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Deshabilitar</a></td>
 	</tr>
 	<%} %>
 </table>
