@@ -17,7 +17,7 @@
 	if(proveedores.size() != 0){
 %>
 
-<table border="1" cellspacing="0" cellpadding="0">
+<table border="1" cellspacing="1px" cellpadding="5px">
 	<tr>
 		<th>C&oacute;digo</th>
 		<th>RUC</th>
@@ -27,7 +27,7 @@
 	</tr>
 	<%for(int i=0; i<proveedores.size(); i++){ %>
 	<tr>
-		<td><%=proveedores.get(i).getIdProveedor() %></td>
+		<td align="right"><%=proveedores.get(i).getIdProveedor() %></td>
 		<td><%=proveedores.get(i).getRuc() %></td>
 		<td><%=proveedores.get(i).getRazonSocial() %></td>
 		<td><%=proveedores.get(i).getRazCom()%></td>
