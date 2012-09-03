@@ -14,13 +14,13 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
 	public boolean registrarProveedor(Proveedor proveedor) {
-		int filas_afectadas = 0;
+int filas_afectadas = 0;
 		
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "INSERT INTO proy1.T_PROVEEDOR(ruc, razSocial, razCom, direc, tel) VALUES ("+proveedor.getIdProveedor()+", "+proveedor.getRuc()+");";
+			String sql = "INSERT INTO T_PROVEEDOR(ruc, razSocial, razCom, direccion, tel) VALUES ("+proveedor.getRuc()+", '"+proveedor.getRazonSocial()+"');";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
 			
@@ -43,7 +43,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "UPDATE proy1.T_PROVEEDOR SET " +
+			String query = "UPDATE T_PROVEEDOR SET " +
 					"ruc = "+proveedor.getRuc()+
 					", razSocial = '"+ proveedor.getRazonSocial() + 
 					"', razCom = '"+proveedor.getRazCom()+
@@ -68,7 +68,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM proy1.T_PROVEEDOR WHERE IDPROVEEDOR = '"+id+"';";
+			String query = "SELECT * FROM T_PROVEEDOR WHERE IDPROVEEDOR = '"+id+"';";
 			
 			ResultSet rs =	stmt.executeQuery(query);	
 		
@@ -97,7 +97,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "DELETE FROM proy1.T_PROVEEDOR WHERE IDPROVEEDOR LIKE "+id+";";
+			String query = "DELETE FROM T_PROVEEDOR WHERE IDPROVEEDOR LIKE "+id+";";
 			
 			filas_afectadas = stmt.executeUpdate(query);		
 			
@@ -116,7 +116,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM proy1.T_PROVEEDOR;";				
+			String query = "SELECT * FROM T_PROVEEDOR;";				
 			Proveedor proveedor = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
