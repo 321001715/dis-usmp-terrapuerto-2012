@@ -45,13 +45,11 @@ public class ServletProveedor extends HttpServlet {
 				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
 				proveedores = service.listarProveedores();
 				request.setAttribute("proveedores", proveedores);	
-				String destino = request.getParameter("destino");
-				if(destino == null){
+				String origen = request.getParameter("origen");
+				if(origen == null){
 					rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");
-				}else if(Integer.parseInt(destino) == Constantes.MANTENER_PROVEEDOR){
+				}else if(Integer.parseInt(origen) == Constantes.MENU_PRINCIPAL){
 					rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-				}else if(Integer.parseInt(destino) == Constantes.ELIMINAR_PROVEEDOR){
-					rd = getServletContext().getRequestDispatcher("/eliminar_proveedor.jsp");
 				}
 				request.setAttribute("proveedores", proveedores);	
 			} catch (Exception e) {

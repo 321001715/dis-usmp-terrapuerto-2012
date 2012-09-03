@@ -11,9 +11,9 @@
 
 	<h2>Men&uacute; principal</h2>
 		<ul>
-              <li><a href="<%=application.getContextPath() %>/Usuarios?origen=1" class="addorder">Gestion de Usuarios</a></li>
-			<li><a href="ServletProveedor?tipo=listar&destino=<%=Constantes.MANTENER_PROVEEDOR%>">Gestion de Proveedores</a></li>
-			<li><a href="gestion_empresas.jsp" class="invoices">Gestion de Empresas</a></li>
+              <li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">Gestion de Usuarios</a></li>
+			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">Gestion de Proveedores</a></li>
+			<li><a href="gestion_empresas.jsp" class="invoices">Gestion de Perfiles</a></li>
         </ul>
 </body>
 </html>
