@@ -8,7 +8,6 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
-import pe.plazanorte.sisterra.entidades.Usuario;
 
 public class MySqlProveedorDAO implements ProveedorDAO {
 
