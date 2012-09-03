@@ -11,18 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import beans.HabitacionBean;
-import beans.ReservaBean;
-import beans.TipoBean;
-import beans.UsuarioBean;
-
-import dao.iface.HabitacionDao;
-import dao.iface.ReservaDao;
-import dao.iface.TipoDao;
-import dao.iface.UsuarioDao;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDao;
-import pe.plazanorte.sisterra.daofactory.DAOFactory;;
+import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
 /**
