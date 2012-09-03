@@ -24,7 +24,7 @@ public class Constantes {
 	public static final int PERFIL_COUNTER = 4;
 	
 	/*
-	 * ESTADOS USUARIO
+	 * ESTADOS USUARIO - PROVEEDOR
 	 */	
 	public static final int ESTADO_ACTIVO = 1;
 	public static final int ESTADO_INHABILITADO = 2;
