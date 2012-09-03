@@ -53,6 +53,7 @@ public class ServletProveedor extends HttpServlet {
 				}else if(Integer.parseInt(destino) == Constantes.ELIMINAR_PROVEEDOR){
 					rd = getServletContext().getRequestDispatcher("/eliminar_proveedor.jsp");
 				}
+				
 				request.setAttribute("proveedores", proveedores);	
 			} catch (Exception e) {
 				e.printStackTrace();
