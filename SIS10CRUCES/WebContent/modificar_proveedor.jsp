@@ -70,41 +70,32 @@
 		<%if(proveedor != null){ %>
 		<table>
 			<tr>
-				<td>Codigo de Empresa</td>
-				<td><input type="text" name="codigo" value="<%=proveedor.getIdProveedor() %>"></td>
-				<td ></td>
-				<td></td>
+				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
+			</tr>
+			<tr>
+				<td>C&oacute;digo</td>
+				<td><input type="text" name="idProveedor" maxlength="11" value="<%=proveedor.getIdProveedor() %>" readonly="readonly"></td>				
 			</tr>
 			<tr>
 				<td>RUC</td>
-				<td><input type="text" name="ruc" value="<%=proveedor.getRuc() %>"></td>
-				<td><input value= Buscar type="submit" ></td>
-				<td></td>
-			</tr>
+				<td><input type="text" name="ruc" maxlength="11" value="<%=proveedor.getRuc() %>" readonly="readonly"></td>				
+			</tr>		
 			<tr>
 				<td>Razon Social</td>
-				<td><input type="text" name="razon_social" value="<%=proveedor.getRazonSocial() %>"></td>
-				<td colspan=2></td>
-				
+				<td><input type="text" name="razon_social" value="<%=proveedor.getRazonSocial()%>"></td>			
 			</tr>
 			<tr>
 				<td>Razon Comercial</td>
-				<td><input type="text" name="razon_comercial" value="<%=proveedor.getRazCom() %>"></td>
-				<td colspan='2'></td>
-				
+				<td><input type="text" name="razon_comercial" value="<%=proveedor.getRazCom()%>"></td>			
 			</tr>
 			<tr>
 				<td>Direccion</td>
-				<td><input type="text" name="direccion" value="<%=proveedor.getDireccion() %>"></td>
-				<td>Usuario</td>
-				<td><select></select></td>
+				<td><input type="text" name="direccion" value="<%=proveedor.getDireccion()%>"></td>				
 			</tr>
 			<tr>
 				<td>Telefono</td>
-				<td><input type="text" name="telefono" value="<%=proveedor.getTel() %>"></td>
-				<td>Estado</td>
-				<td><select></select></td>
-			</tr>
+				<td><input type="text" name="telefono" value="<%=proveedor.getTel()%>" maxlength="9"></td>				
+			</tr>			
 			<tr>				
 				<td colspan="2"><input value=Modificar type="submit"></td>
 				<td></td>
@@ -139,40 +130,7 @@
 	<form action="ServletProveedor" method="post" name="registrar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="registrar">
 		<table cellspacing="10px">			
-			<tr>
-				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
-			</tr>
-			<tr>
-				<td>RUC</td>
-				<td><input type="text" name="ruc" maxlength="11"></td>				
-			</tr>
-			<tr>
-				<td>Razon Social</td>
-				<td><input type="text" name="razon_social"></td>			
-			</tr>
-			<tr>
-				<td>Razon Comercial</td>
-				<td><input type="text" name="razon_comercial"></td>			
-			</tr>
-			<tr>
-				<td>Direccion</td>
-				<td><input type="text" name="direccion"></td>				
-			</tr>
-			<tr>
-				<td>Telefono</td>
-				<td><input type="text" name="telefono" maxlength="9"></td>				
-			</tr>
-			<tr>
-				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
-			</tr>
-			<tr>
-				<td>Usuario</td>	
-				<td><input type="text" name="usuario"></td>					
-			</tr>
-			<tr>
-				<td>Clave</td>	
-				<td><input type="password" name="clave"></td>					
-			</tr>
+			
 			<tr>
 				<td><input type="submit" value=Agregar type="submit"></td>
 				<td><input type="reset" value="Limpiar campos" type="submit"></td>
