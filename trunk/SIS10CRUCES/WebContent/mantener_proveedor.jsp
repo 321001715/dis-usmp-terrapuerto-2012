@@ -17,10 +17,12 @@
 		<font color="red"><%= mensaje%></font>
 		<br><br>
 <%} %>
-<a href="registrar_proveedor.jsp">Registrar Proveedor</a><br>
-<a href="ServletProveedor?tipo=listar&destino=<%=Constantes.ELIMINAR_PROVEEDOR%>">Eliminar Proveedor</a></li>
-<a href="modificar_proveedor.jsp">Modificar Proveedor</a><br>
-<br><hr><br>
-<%@include file="listar_proveedores.jsp" %>
+	<ul>
+		<li><a href="registrar_proveedor.jsp">Registrar Proveedor</a></li>
+		<li><a href="ServletProveedor?tipo=listar&destino=<%=Constantes.ELIMINAR_PROVEEDOR%>">Eliminar Proveedor</a></li>
+		<li><a href="modificar_proveedor.jsp">Modificar Proveedor</a></li>
+	</ul>
+	<br><hr><br>
+	<%@include file="listar_proveedores.jsp" %>
 
 </html>
