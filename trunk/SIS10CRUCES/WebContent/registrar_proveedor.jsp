@@ -14,6 +14,9 @@
 		<input type="hidden" name="tipo" value="registrar">
 		<table cellspacing="15px">			
 			<tr>
+				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
+			</tr>
+			<tr>
 				<td>RUC</td>
 				<td><input type="text" name="ruc" maxlength="11"></td>				
 			</tr>
@@ -32,6 +35,17 @@
 			<tr>
 				<td>Telefono</td>
 				<td><input type="text" name="telefono" maxlength="9"></td>				
+			</tr>
+			<tr>
+				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
+			</tr>
+			<tr>
+				<td>Usuario</td>	
+				<td><input type="text" name="usuario"></td>					
+			</tr>
+			<tr>
+				<td>Clave</td>	
+				<td><input type="text" name="clave"></td>					
 			</tr>
 			<tr>
 				<td><input value=Agregar type="submit"></td>
