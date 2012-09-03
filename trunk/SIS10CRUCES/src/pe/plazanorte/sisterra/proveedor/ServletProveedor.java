@@ -101,7 +101,7 @@ public class ServletProveedor extends HttpServlet {
 				proveedor.setRazonSocial(razonSocial);
 				proveedor.setRazCom(razonComercial);
 				proveedor.setTel(telefono);
-				proveedor.setDirec(direccion);				
+				proveedor.setDireccion(direccion);				
 				
 				boolean retorno = service.agregarProveedor(proveedor);				
 				
@@ -130,7 +130,7 @@ public class ServletProveedor extends HttpServlet {
 				proveedor.setRazonSocial(razonSocial);
 				proveedor.setRazCom(razonComercial);
 				proveedor.setTel(telefono);
-				proveedor.setDirec(direccion);				
+				proveedor.setDireccion(direccion);				
 				
 				boolean retorno = service.modificarProveedor(proveedor);				
 				
