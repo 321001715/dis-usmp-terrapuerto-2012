@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pe.plazanorte.sisterra.dao.iface.SeguridadDao;
+import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
@@ -36,7 +36,7 @@ public class Usuarios extends HttpServlet {
 		
 		try {	
 			DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-			SeguridadDao miusuariodao = mysqlFactory.getSeguridadDao();
+			SeguridadDAO miusuariodao = mysqlFactory.getSeguridadDAO();
 			
 			String origen = request.getParameter("origen");
 			

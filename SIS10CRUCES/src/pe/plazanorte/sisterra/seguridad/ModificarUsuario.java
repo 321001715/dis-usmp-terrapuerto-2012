@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pe.plazanorte.sisterra.dao.iface.SeguridadDao;
+import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
@@ -41,11 +41,11 @@ public class ModificarUsuario extends HttpServlet {
 			
 			if(origen.equals("gestion_usuarios")){
 				
-				SeguridadDao miusuariodao = mysqlfFactory.getSeguridadDao();
+				SeguridadDAO miusuariodao = mysqlfFactory.getSeguridadDAO();
 				
 				Usuario usuario = new Usuario();
 				usuario.setId(Integer.parseInt(request.getParameter("txt_id")));
-				usuario.setNombre(request.getParameter("txt_nombre"));
+				usuario.setNombres(request.getParameter("txt_nombre"));
 				usuario.setApellido(request.getParameter("txt_apellido"));
 				usuario.setDocumento(Integer.parseInt(request.getParameter("txt_documento")));
 				usuario.setSexo(request.getParameter("txt_sexo"));
