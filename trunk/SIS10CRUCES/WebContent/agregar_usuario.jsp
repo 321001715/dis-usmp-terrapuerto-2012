@@ -89,7 +89,7 @@
 	</form>
                 
 		</div>
-		<div id="sidebar"><%@ include file="sidebar.jsp" %></div>
+	
 	</div>
 	<div id="footer"><%@ include file="footer.jsp" %></div>
 </div>
