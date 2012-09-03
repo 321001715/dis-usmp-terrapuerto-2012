@@ -2,7 +2,7 @@ package pe.plazanorte.sisterra.dao.mysql;
 import pe.plazanorte.sisterra.dao.iface.ClasificacionDAO;
 import pe.plazanorte.sisterra.entidades.Servicio;
 
-public class MySqlClasificacionDao implements ClasificacionDAO {
+public class MySqlClasificacionDAO implements ClasificacionDAO {
 
 	@Override
 	public boolean registrarServicio(Servicio servicio) {

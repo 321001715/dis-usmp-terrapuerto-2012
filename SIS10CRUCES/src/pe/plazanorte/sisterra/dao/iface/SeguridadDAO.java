@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.entidades.*;
 
-public interface SeguridadDao {
+public interface SeguridadDAO {
 	
 	public Vector<Usuario> listarUsuario () throws Exception;
 	public boolean registrarUsuario(Usuario usuario);

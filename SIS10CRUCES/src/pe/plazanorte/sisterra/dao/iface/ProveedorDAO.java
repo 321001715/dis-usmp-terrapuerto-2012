@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.entidades.Proveedor;
 
-public interface ProveedorDao {
+public interface ProveedorDAO {
 
 	public boolean registrarProveedor(Proveedor proveedor);
 	public Proveedor consultarProveedor(Proveedor proveedor);

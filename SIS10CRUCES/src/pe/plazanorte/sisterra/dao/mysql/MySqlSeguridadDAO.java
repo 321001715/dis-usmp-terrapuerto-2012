@@ -9,10 +9,10 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 
 import pe.plazanorte.sisterra.entidades.Perfil;
-import pe.plazanorte.sisterra.dao.iface.SeguridadDao;
+import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
-public class MySqlSeguridadDao implements SeguridadDao {
+public class MySqlSeguridadDAO implements SeguridadDao {
 
 	@Override
 	public boolean registrarUsuario(Usuario usuario) {
