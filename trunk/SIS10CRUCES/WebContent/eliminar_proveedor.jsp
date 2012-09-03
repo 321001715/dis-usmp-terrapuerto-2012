@@ -12,5 +12,7 @@
 		Id el proveedor a eliminar: <input type="text" name="id" >
 		<input type="submit" value="Eliminar">
 	</form>
+	<br><hr><br>
+	<%@include file="listar_proveedores.jsp" %>
 </body>
 </html>

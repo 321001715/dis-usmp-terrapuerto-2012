@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,9 +19,9 @@
 <%} %>
 <a href="registrar_proveedor.jsp">Registrar Proveedor</a><br>
 <a href="eliminar_proveedor.jsp">Eliminar Proveedor</a><br>
-<a href="modificar_proveedor.jsp">Consultar Proveedor</a><br>
-<a href="ServletProveedor?tipo=listar">Listar Proveedor</a><br><br><br>
- 
+<a href="modificar_proveedor.jsp">Modificar Proveedor</a><br>
+<a href="ServletProveedor?tipo=listar&destino=<%=Constantes.ELIMINAR_PROVEEDOR%>">Eliminar Proveedor</a></li>
+<br><hr><br>
 <%@include file="listar_proveedores.jsp" %>
 
 </html>
