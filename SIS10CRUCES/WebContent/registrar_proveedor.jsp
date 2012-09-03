@@ -18,7 +18,7 @@
 			return false;
 		}
 		if(document.registrar.razon_comercial.value.length == 0){
-			alert("Debe llenar el campo Razón social.");
+			alert("Debe llenar el campo Razón comercial.");
 			document.registrar.razon_comercial.focus();
 			return false;
 		}
@@ -57,7 +57,7 @@
 
 	<form action="ServletProveedor" method="post" name="registrar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="registrar">
-		<table cellspacing="15px">			
+		<table cellspacing="10px">			
 			<tr>
 				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
 			</tr>
@@ -90,11 +90,11 @@
 			</tr>
 			<tr>
 				<td>Clave</td>	
-				<td><input type="text" name="clave"></td>					
+				<td><input type="password" name="clave"></td>					
 			</tr>
 			<tr>
 				<td><input type="submit" value=Agregar type="submit"></td>
-				<td></td>
+				<td><input type="reset" value="Limpiar campos" type="submit"></td>
 			</tr>
 		</table>
 	</form>

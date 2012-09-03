@@ -15,6 +15,9 @@
 %>
 
 <h2>Modificar proveedor</h2>
+
+	<%@include file="buscar_proveedor.jsp" %>
+
 	<form action="ServletProveedor" method="post">
 		<input type="hidden" name="tipo" value="modificar">
 		<%if(proveedor != null){ %>
