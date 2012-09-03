@@ -9,7 +9,7 @@ public class Constantes {
 	 */
 	
 	/*
-	 * INTERFACES
+	 * INTERFACES DESTINO
 	 */
 	public static final int MENU_PRINCIPAL = 1;
 	public static final int ELIMINAR_PROVEEDOR = 2;
