@@ -160,6 +160,7 @@ public class ServletProveedor extends HttpServlet {
 			Proveedor proveedor = new Proveedor();			
 			
 			try {
+				//VALIDAR EL INGRESO DE STRING
 				int id = Integer.parseInt(request.getParameter("idProveedor"));
 				proveedor.setIdProveedor(id);			
 				proveedor = service.consultarProveedor(proveedor);
@@ -181,8 +182,7 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				
 			}			
-		}		
-		System.out.println(mensaje);
+		}				
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}
