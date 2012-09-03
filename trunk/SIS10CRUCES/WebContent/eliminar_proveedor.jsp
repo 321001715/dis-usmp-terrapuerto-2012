@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h2>Eliminar proveedor</h2>
 	<form action="ServletProveedor" method="post">
 		<input type="hidden" name="tipo" value="eliminar">
 		Id el proveedor a eliminar: <input type="text" name="id" >
