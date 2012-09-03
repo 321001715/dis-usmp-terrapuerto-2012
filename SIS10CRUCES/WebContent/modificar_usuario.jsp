@@ -11,7 +11,7 @@
 <%
 	Usuario usuario = (Usuario)request.getAttribute("usuario");
 	String mensaje = (String)request.getAttribute("mensaje");
-%>
+%> 
 
 <h2>Modificar Usuario</h2>
 

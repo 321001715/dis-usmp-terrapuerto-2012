@@ -7,7 +7,7 @@
 <title>PRUEBA</title>
 </head>
 <body>
-<h2>Mantener proveedor</h2>
+<h2>Mantener Usuario</h2>
 <%
 	String mensaje = (String)request.getParameter("mensaje");
 %>

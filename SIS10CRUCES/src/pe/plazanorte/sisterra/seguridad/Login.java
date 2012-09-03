@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import pe.plazanorte.sisterra.dao.iface.SeguridadDao;
+import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
+
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
@@ -52,7 +53,7 @@ public class Login extends HttpServlet {
 				
 				DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 				
-				SeguridadDao usudao = mysqlFactory.getSeguridadDao();		
+				SeguridadDAO usudao = mysqlFactory.getSeguridadDAO();		
 				
 				Usuario usubean = usudao.validarUsuario(usu);
 				

@@ -12,7 +12,7 @@
 <%
 	Vector<Proveedor> proveedores = (Vector<Proveedor>)request.getAttribute("proveedores");
 %>
-
+ 
 <%
 	if(proveedores.size() != 0){
 %>

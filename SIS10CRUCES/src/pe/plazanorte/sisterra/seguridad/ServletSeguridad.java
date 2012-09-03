@@ -50,7 +50,7 @@ public class ServletSeguridad extends HttpServlet {
 				if(origen == null){
 					rd = getServletContext().getRequestDispatcher("/listar_usuarios.jsp");
 				}else if(Integer.parseInt(origen) == Constantes.MENU_PRINCIPAL){
-					rd = getServletContext().getRequestDispatcher("/mantener_usuarios.jsp");
+					rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
 				}
 				request.setAttribute("usuarios", usuarios);	
 			} catch (Exception e) {
@@ -136,7 +136,7 @@ public class ServletSeguridad extends HttpServlet {
 				proveedor.setRazonSocial(razonSocial);
 				proveedor.setRazCom(razonComercial);
 				proveedor.setTel(telefono);
-				proveedor.setDirec(direccion);				
+				proveedor.setDireccion(direccion);				
 				
 				boolean retorno = service.modificarUsuario(usuario);				
 				
