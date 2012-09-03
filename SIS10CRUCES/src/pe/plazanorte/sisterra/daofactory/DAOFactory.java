@@ -1,7 +1,7 @@
 package pe.plazanorte.sisterra.daofactory;
 
-import pe.plazanorte.sisterra.dao.iface.ProveedorDao;
-import pe.plazanorte.sisterra.dao.iface.SeguridadDao;
+import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
+import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 
 public abstract class DAOFactory {
 
@@ -9,8 +9,8 @@ public abstract class DAOFactory {
 	public static final int SQLSERVER = 2;
 	public static final int ORACLE = 3;
 	
-	public abstract SeguridadDao getSeguridadDao();
-	public abstract ProveedorDao getProveedorDao();
+	public abstract SeguridadDAO getSeguridadDAO();
+	public abstract ProveedorDAO getProveedorDAO();
 	
 	public static DAOFactory getDAOFactory(int factory){
 		switch(factory){

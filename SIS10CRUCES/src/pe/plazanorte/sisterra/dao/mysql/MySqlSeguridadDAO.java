@@ -12,7 +12,7 @@ import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
-public class MySqlSeguridadDAO implements SeguridadDao {
+public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public boolean registrarUsuario(Usuario usuario) {
