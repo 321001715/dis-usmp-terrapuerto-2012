@@ -15,7 +15,7 @@ public class MySqlDAOFactory extends DAOFactory{
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/proy1";
+			String url = "jdbc:mysql://localhost:3306/bd_cruces";
 			conexion = DriverManager.getConnection(url, "root", "root");
 			
 		} catch (Exception e) {
