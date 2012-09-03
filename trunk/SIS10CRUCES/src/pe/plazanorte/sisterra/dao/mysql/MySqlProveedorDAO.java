@@ -10,7 +10,7 @@ import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
-public class MySqlProveedorDao implements ProveedorDao {
+public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
 	public boolean registrarProveedor(Proveedor proveedor) {
