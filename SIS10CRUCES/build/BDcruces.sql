@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generaciÃ³n: 03-09-2012 a las 18:43:42
--- VersiÃ³n del servidor: 5.5.25a
--- VersiÃ³n de PHP: 5.4.4
+-- Tiempo de generación: 03-09-2012 a las 19:32:58
+-- Versión del servidor: 5.5.25a
+-- Versión de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -102,6 +102,22 @@ CREATE TABLE IF NOT EXISTS `t_ciudad` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `t_clasificasion`
+--
+
+CREATE TABLE IF NOT EXISTS `t_clasificasion` (
+  `idTipoServicio` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(30) COLLATE armscii8_bin NOT NULL,
+  `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaInsert` datetime DEFAULT NULL,
+  `usuarioUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaUpdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`idTipoServicio`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `t_departamento`
 --
 
@@ -137,6 +153,22 @@ CREATE TABLE IF NOT EXISTS `t_pasajero` (
   `apeMat` text COLLATE armscii8_bin NOT NULL,
   `dni` int(11) NOT NULL,
   PRIMARY KEY (`idPasajero`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_perfil`
+--
+
+CREATE TABLE IF NOT EXISTS `t_perfil` (
+  `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `perfil` text COLLATE armscii8_bin NOT NULL,
+  `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaInsert` datetime DEFAULT NULL,
+  `usuarioUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaUpdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`idTipoUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -398,3 +430,4 @@ ALTER TABLE `t_viaje`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
