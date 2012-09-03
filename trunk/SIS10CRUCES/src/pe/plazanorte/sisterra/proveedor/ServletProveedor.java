@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pe.plazanorte.sisterra.dao.mysql.MySqlProveedorDao;
+import pe.plazanorte.sisterra.dao.mysql.MySqlProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.util.Constantes;

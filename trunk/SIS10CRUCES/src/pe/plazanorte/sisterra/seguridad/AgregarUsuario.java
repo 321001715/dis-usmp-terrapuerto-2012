@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import pe.plazanorte.sisterra.dao.iface.SeguridadDao;
+import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
@@ -45,7 +45,7 @@ public class AgregarUsuario extends HttpServlet {
 		try {
 			DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 			
-			SeguridadDao miusuariodao = mysqlFactory.getSeguridadDao();
+			SeguridadDAO miusuariodao = mysqlFactory.getSeguridadDAO();
 			Usuario unusuario = new Usuario();
 			unusuario.setUsuario(request.getParameter("txt_usuario"));
 			unusuario.setClave(request.getParameter("txt_pass"));
