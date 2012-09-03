@@ -36,4 +36,12 @@
     <servlet-name>servletProveedor</servlet-name>
     <url-pattern>/ServletProveedor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>servletUsuario</servlet-name>
+    <servlet-class>pe.plazanorte.sisterra.seguridad.ServletUsuario</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletUsuario</servlet-name>
+    <url-pattern>/ServletUsuario</url-pattern>
+  </servlet-mapping>
 </web-app>
