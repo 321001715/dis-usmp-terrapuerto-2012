@@ -15,39 +15,34 @@
 		<table>			
 			<tr>
 				<td>RUC</td>
-				<td><input type="text" name="ruc"></td>
-				<td><input value= Buscar type="submit"></td>
-				<td></td>
+				<td><input type="text" name="ruc" maxlength="11"></td>
+				<td colspan='2'></td>
 			</tr>
 			<tr>
 				<td>Razon Social</td>
-				<td><input type="text" name="razon_social" readonly="readonly"></td>
+				<td><input type="text" name="razon_social"></td>
 				<td colspan=2></td>
 				
 			</tr>
 			<tr>
 				<td>Razon Comercial</td>
-				<td><input type="text" name="razon_comercial" readonly="readonly"></td>
+				<td><input type="text" name="razon_comercial"></td>
 				<td colspan='2'></td>
 				
 			</tr>
 			<tr>
 				<td>Direccion</td>
 				<td><input type="text" name="direccion"></td>
-				<td>Usuario</td>
-				<td><select></select></td>
+				<td colspan='2'></td>
 			</tr>
 			<tr>
 				<td>Telefono</td>
-				<td><input type="text" name="telefono"></td>
-				<td>Estado</td>
-				<td><select></select></td>
+				<td><input type="text" name="telefono" maxlength="9"></td>
+				<td colspan='2'></td>
 			</tr>
 			<tr>
 				<td><input value=Agregar type="submit"></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td colspan='3'></td>
 			</tr>
 		</table>
 	</form>
