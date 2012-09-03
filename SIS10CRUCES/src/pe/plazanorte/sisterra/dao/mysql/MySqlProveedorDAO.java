@@ -21,7 +21,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 			
 			String sql = "INSERT INTO T_PROVEEDOR(ruc, razSocial, razCom, direccion, tel, estado) " +
-					"VALUES ("+proveedor.getRuc()+", '"+proveedor.getRazonSocial()+"', "+proveedor.getRazCom()+", "+proveedor.getDirec()+", "+proveedor.getTel()+", '"+Constantes.ESTADO_ACTIVO+"');";
+					"VALUES ("+proveedor.getRuc()+", '"+proveedor.getRazonSocial()+"', '"+proveedor.getRazCom()+"', '"+proveedor.getDirec()+"', "+proveedor.getTel()+", '"+Constantes.ESTADO_ACTIVO+"');";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
 			
