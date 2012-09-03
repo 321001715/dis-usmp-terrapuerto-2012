@@ -1,4 +1,4 @@
-package pe.plazanorte.sistema.proveedor;
+package pe.plazanorte.sisterra.proveedor;
 
 import java.util.Vector;
 
