@@ -64,20 +64,21 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	@Override
 	public Proveedor consultarProveedor(Proveedor proveedor) {		
 		long id = proveedor.getIdProveedor();
+		Proveedor nuevo = null;
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PROVEEDOR WHERE IDPROVEEDOR = '"+id+"';";
-			
+			String query = "SELECT * FROM T_PROVEEDOR WHERE IDPROVEEDOR = '"+id+"';";			
 			ResultSet rs =	stmt.executeQuery(query);	
-		
+					
 			if(rs.next()){		
-				proveedor.setIdProveedor(rs.getLong("idProveedor"));
-				proveedor.setRuc(rs.getString("ruc"));				
-				proveedor.setRazonSocial(rs.getString("razSocial"));
-				proveedor.setRazCom(rs.getString("razCom"));
-				proveedor.setDirec(rs.getString("direccion"));
-				proveedor.setTel(rs.getInt("tel"));
+				nuevo = new Proveedor();
+				nuevo.setIdProveedor(rs.getLong("idProveedor"));
+				nuevo.setRuc(rs.getString("ruc"));				
+				nuevo.setRazonSocial(rs.getString("razSocial"));
+				nuevo.setRazCom(rs.getString("razCom"));
+				nuevo.setDirec(rs.getString("direccion"));
+				nuevo.setTel(rs.getInt("tel"));
 			}
 			con.close();
 		} catch (Exception e) {			
@@ -85,7 +86,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		} finally {
 			
 		}
-		return proveedor;
+		return nuevo;
 	}
 
 	@Override
