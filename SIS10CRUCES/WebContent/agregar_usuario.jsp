@@ -41,8 +41,8 @@
 			</tr>
 			<tr>
 				<td>Numero de Documento</td>
-				<td><input></td>
-				<td><input type="submit" style="width: 56px;" name="txt_dni"/></td>
+				<td><input name="txt_dni" /></td>
+				<td><input type="submit" style="width: 56px;" /></td>
 				<td></td>
 			</tr>
 			<tr>

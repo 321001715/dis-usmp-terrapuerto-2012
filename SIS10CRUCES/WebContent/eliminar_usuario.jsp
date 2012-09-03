@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="ServletSeguridad" method="post">
+		<input type="hidden" name="tipo" value="eliminar">
+		Id el Usuario a eliminar: <input type="text" name="id" >
+		<input type="submit" value="Eliminar">
+	</form>
 </body>
 </html>
