@@ -2,6 +2,12 @@ package pe.plazanorte.sisterra.util;
 
 public class Constantes {
 	
+	/**
+	 * Esta clase almacena todas las constantes que se pudieran usar en la programación para
+	 * no confundirnos colocando diferentes cosas cada uno que pudieran ser las mismas, si 
+	 * tiene alguna constante que agregar agregenla como las que estan abajo, con mayuscula y public static final
+	 */
+	
 	/*
 	 * INTERFACES
 	 */
@@ -19,8 +25,7 @@ public class Constantes {
 	
 	/*
 	 * ESTADOS USUARIO
-	 */
-	
+	 */	
 	public static final int ESTADO_ACTIVO = 1;
 	public static final int ESTADO_INHABILITADO = 2;
 }
