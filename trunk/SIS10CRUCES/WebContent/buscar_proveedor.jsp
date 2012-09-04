@@ -8,11 +8,16 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 function validar(){
-	if(document.buscar.ruc.value.length == 0 && document.buscar.razSocial.value.length == 0){
+	
+	if(document.buscar.ruc.value.length == 0 && document.buscar.razSocial.value.length == 0){		
 		alert("Debe llenar alguna condición de búsqueda.");
-		document.buscar.ruc.focus();
+		document.buscar.ruc.focus();				
 		return false;
-	}
+	}else if(isNaN(document.buscar.ruc.value)){		
+		alert("Número de RUC no válido.");
+		document.buscar.ruc.focus();	
+		return false;
+	}	
 	return true;
 }
 </script>
