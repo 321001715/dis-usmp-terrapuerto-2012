@@ -13,10 +13,11 @@
 	String mensaje = (String)request.getParameter("mensaje");
 %>
 <%@include file="buscar_proveedor.jsp" %>
+<br>
 <% if(mensaje != null){ %>	
 		<font color="red"><%= mensaje%></font>
-		<br><br>
-<%} %>
+		<br>
+<%} %>	
 	<a href="registrar_proveedor.jsp">Registrar Proveedor</a>
 	<br><hr><br>
 	<%@include file="listar_proveedores.jsp" %>
