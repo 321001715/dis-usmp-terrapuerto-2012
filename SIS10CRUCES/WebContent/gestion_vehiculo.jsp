@@ -7,6 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="">
+		<table>
+			<tr>
+				<td>Código de vehículo</td>
+				<td><input type="text" name="codigo"></td>
+				
+				<td>Modelo</td>
+				<td><input type="text" name="modelo"></td>
+			</tr>
+			<tr>
+				<td>Marca</td>
+				<td><input type="text" name="marca"></td>
+				
+				<td>Placa</td>
+				<td><input type="text" name="placa"></td>
+			</tr>
+			
+		</table>
+	</form>
 </body>
 </html>
