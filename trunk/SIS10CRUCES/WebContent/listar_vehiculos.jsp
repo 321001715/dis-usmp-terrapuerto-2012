@@ -15,18 +15,20 @@
 <table border="1" cellspacing="1px" cellpadding="5px">
 	<tr>
 		<th>C&oacute;digo</th>
-		<th>RUC</th>
-		<th>Razón social</th>
-		<th>Razón comercial</th>
+		<th>Marca</th>
+		<th>Modelo</th>
+		<th>Placa</th>
+		<th>Nro. asientos</th>
 		<th>Estado</th>
 		<th>Acci&oacute;n</th>
 	</tr>
 	<%for(int i=0; i<vehiculos.size(); i++){ %>
 	<tr>
-		<td align="right"><%=vehiculos.get(i).getIdVehiculo() %></td>
-		<td><%=vehiculos.get(i).getRuc() %></td>
-		<td><%=vehiculos.get(i).getRazonSocial() %></td>
-		<td><%=vehiculos.get(i).getRazCom()%></td>
+		<td align="right"><%=vehiculos.get(i).getCodVehiculo() %></td>
+		<td><%=vehiculos.get(i).getMarca() %></td>
+		<td><%=vehiculos.get(i).getModelo()%></td>
+		<td><%=vehiculos.get(i).getPlaca()%></td>
+		<td><%=vehiculos.get(i).getNumAsientos()%></td>
 		<td align="center"><%=vehiculos.get(i).getEstado()%></td>
 		<td><a href="ServletProveedor?tipo=consultar&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idVehiculo=<%=vehiculos.get(i).getIdProveedor()%>">Modificar</a></td>		
 	</tr>
