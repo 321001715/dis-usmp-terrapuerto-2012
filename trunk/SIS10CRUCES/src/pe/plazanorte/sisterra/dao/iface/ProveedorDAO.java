@@ -8,7 +8,7 @@ public interface ProveedorDAO {
 
 	public boolean registrarProveedor(Proveedor proveedor);
 	public Proveedor consultarProveedor(Proveedor proveedor);
-	public boolean eliminarProveedor(Proveedor proveedor);
+//	public boolean deshabilitarProveedor(Proveedor proveedor);
 	public boolean modificarProveedor(Proveedor proveedor);
 	public Vector<Proveedor> listarProveedores();
 	public Vector<Proveedor> buscarProveedores(String ruc, String razSocial);
