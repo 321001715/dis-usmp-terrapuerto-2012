@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,6 +9,8 @@
 </head>
 <body>	
 	<form action="ServletProveedor">
+		<input type="hidden" name="tipo" value="regsitrar">
+		<input type="hidden" name="destino" value="<%=Constantes.GESTIONAR_VEHICULOS%>">
 		<table>
 			<tr>
 				<td>Código de vehículo</td>
