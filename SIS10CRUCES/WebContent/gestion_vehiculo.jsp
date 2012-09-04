@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="">
+
+	<h2>Gestión de vehículos</h2>
+	
+	<form action="ServletProveedor">
 		<table>
 			<tr>
 				<td>Código de vehículo</td>
@@ -15,6 +18,8 @@
 				
 				<td>Modelo</td>
 				<td><input type="text" name="modelo"></td>
+				
+				<td rowspan="2" valign="top"><input type="submit" value="Buscar"></td>
 			</tr>
 			<tr>
 				<td>Marca</td>
@@ -22,8 +27,7 @@
 				
 				<td>Placa</td>
 				<td><input type="text" name="placa"></td>
-			</tr>
-			
+			</tr>			
 		</table>
 	</form>
 </body>
