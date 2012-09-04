@@ -184,7 +184,7 @@ public class ServletProveedor extends HttpServlet {
 				request.setAttribute("proveedores", proveedores);
 				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");				
 			} catch (Exception e) {
-				
+				e.printStackTrace();
 			}			
 		}else if(tipo.equalsIgnoreCase("filtro")){
 			int destino = Integer.parseInt(request.getParameter("destino"));
