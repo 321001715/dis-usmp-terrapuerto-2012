@@ -18,6 +18,7 @@
 		<th>RUC</th>
 		<th>Razón social</th>
 		<th>Razón comercial</th>
+		<th>Estado</th>
 		<th colspan="2">Acci&oacute;n</th>
 	</tr>
 	<%for(int i=0; i<proveedores.size(); i++){ %>
@@ -26,8 +27,9 @@
 		<td><%=proveedores.get(i).getRuc() %></td>
 		<td><%=proveedores.get(i).getRazonSocial() %></td>
 		<td><%=proveedores.get(i).getRazCom()%></td>
+		<td><%=proveedores.get(i).getEstado()%></td>
 		<td><a href="ServletProveedor?tipo=consultar&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Modificar</a></td>
-		<td><a href="ServletProveedor?tipo=eliminar&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Deshabilitar</a></td>
+		<td><a href="ServletProveedor?tipo=eliminar&destino=<%=Constantes.MANTENER_PROVEEDOR %>&&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Deshabilitar</a></td>
 	</tr>
 	<%} %>
 </table>
