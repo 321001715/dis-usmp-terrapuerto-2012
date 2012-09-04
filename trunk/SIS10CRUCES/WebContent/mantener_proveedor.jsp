@@ -17,10 +17,7 @@
 		<font color="red"><%= mensaje%></font>
 		<br><br>
 <%} %>
-	<ul>
-		<li><a href="registrar_proveedor.jsp">Registrar Proveedor</a></li>
-		<li><a href="ServletProveedor?tipo=listar&destino=<%=Constantes.ELIMINAR_PROVEEDOR%>">Eliminar Proveedor</a></li>
-	</ul>
+	<a href="registrar_proveedor.jsp">Registrar Proveedor</a>
 	<br><hr><br>
 	<%@include file="listar_proveedores.jsp" %>
 
