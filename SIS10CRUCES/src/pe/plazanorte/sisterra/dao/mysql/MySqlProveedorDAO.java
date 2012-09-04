@@ -48,7 +48,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					"', razCom = '"+proveedor.getRazCom()+
 					"', direccion = '"+proveedor.getDireccion()+
 					"', tel = "+proveedor.getTel()+
-					"', estado = '"+proveedor.getEstado()+
+					", estado = '"+proveedor.getEstado()+
 					"' WHERE IDPROVEEDOR = "+proveedor.getIdProveedor()+";";
 			filas_afectadas = stmt.executeUpdate(query);				
 			con.close();
@@ -89,9 +89,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		}
 		return nuevo;
 	}
-
+/*
 	@Override
-	public boolean eliminarProveedor(Proveedor proveedor) {
+	public boolean deshabilitarProveedor(Proveedor proveedor) {
 		
 		long id = proveedor.getIdProveedor();
 		int filas_afectadas = 0;
@@ -110,7 +110,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		
 		return false;
 	}
-
+*/
 	@Override
 	public Vector<Proveedor> listarProveedores() {	
 		Vector<Proveedor> proveedores = new Vector<Proveedor>();;
