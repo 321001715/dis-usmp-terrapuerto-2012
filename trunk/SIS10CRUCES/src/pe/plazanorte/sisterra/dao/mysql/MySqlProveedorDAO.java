@@ -146,7 +146,16 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"' AND RAZSOCIAL LIKE '"+razSocial+"';";				
+			String query = "";
+			
+			if(ruc.length() == 0)
+				query = "SELECT * FROM T_PROVEEDOR WHERE RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"';";
+			else if(razSocial.length() == 0)
+				query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%'";
+			else
+				query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%' AND (RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"');";
+			
+							
 			Proveedor proveedor = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
