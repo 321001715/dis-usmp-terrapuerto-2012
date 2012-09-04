@@ -24,7 +24,7 @@
 	<div id="wrapper">
 		<div id="content" style="height: 210px;">
             
-            <form action="Agregar" method="post">
+            <form action="ServletSeguridad" name="registrar" method="post">
             	
 		<table>
 			<tr>
@@ -42,7 +42,7 @@
 			<tr>
 				<td>Numero de Documento</td>
 				<td><input name="txt_dni" /></td>
-				<td><input type="submit" style="width: 56px;" /></td>
+				<td></td>
 				<td></td>
 			</tr>
 			<tr>
@@ -80,8 +80,8 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><input value=Agregar type="submit"></td>
-				<td><input value="Modificar" type="submit"></td>
+				<td><input value="Agregar" type="submit"/></td>
+				
 				<td></td>
 				<td></td>
 			</tr>
@@ -91,7 +91,7 @@
 		</div>
 	
 	</div>
-	<div id="footer"><%@ include file="footer.jsp" %></div>
+	
 </div>
 </body>
 </html>

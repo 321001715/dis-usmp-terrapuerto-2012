@@ -13,6 +13,7 @@ public interface SeguridadDAO {
 	public boolean eliminarUsuario(Usuario usuario);
 	public Usuario consultarUsuario(Usuario usuario);
 	public Usuario validarUsuario(Usuario usuario);
+	
 	public boolean registrarPerfil(Perfil perfil);
 	public boolean modificarPerfil(Perfil perfil);
 	public boolean eliminarPerfil(Perfil perfil);
