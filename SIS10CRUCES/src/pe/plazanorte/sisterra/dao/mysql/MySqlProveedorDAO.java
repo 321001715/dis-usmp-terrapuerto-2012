@@ -78,6 +78,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				nuevo.setRazonSocial(rs.getString("razSocial"));
 				nuevo.setRazCom(rs.getString("razCom"));
 				nuevo.setDireccion(rs.getString("direccion"));
+				nuevo.setEstado(rs.getString("estado"));
 				nuevo.setTel(rs.getInt("tel"));
 			}
 			con.close();
@@ -97,7 +98,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "DELETE FROM T_PROVEEDOR WHERE IDPROVEEDOR LIKE "+id+";";
+			String query = "UPDATE T_PROVEEDOR SET ESTADO = '"+Constantes.ESTADO_INHABILITADO+"' WHERE IDPROVEEDOR LIKE "+id+";";
 			
 			filas_afectadas = stmt.executeUpdate(query);		
 			con.close();
@@ -128,6 +129,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				proveedor.setRazonSocial(rs.getString("razSocial"));
 				proveedor.setRazCom(rs.getString("razCom"));
 				proveedor.setDireccion(rs.getString("direccion"));
+				proveedor.setEstado(rs.getString("estado"));
 				proveedor.setTel(rs.getInt("tel"));
 				
 				proveedores.add(proveedor);
