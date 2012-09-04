@@ -11,5 +11,6 @@ public interface ProveedorDAO {
 	public boolean eliminarProveedor(Proveedor proveedor);
 	public boolean modificarProveedor(Proveedor proveedor);
 	public Vector<Proveedor> listarProveedores();
+	public Vector<Proveedor> buscarProveedores(String ruc, String razSocial);
 	
 }

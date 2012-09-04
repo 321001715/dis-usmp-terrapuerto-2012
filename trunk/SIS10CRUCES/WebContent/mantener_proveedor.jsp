@@ -12,7 +12,7 @@
 <%
 	String mensaje = (String)request.getParameter("mensaje");
 %>
-
+<%@include file="buscar_proveedor.jsp" %>
 <% if(mensaje != null){ %>	
 		<font color="red"><%= mensaje%></font>
 		<br><br>
@@ -20,7 +20,6 @@
 	<ul>
 		<li><a href="registrar_proveedor.jsp">Registrar Proveedor</a></li>
 		<li><a href="ServletProveedor?tipo=listar&destino=<%=Constantes.ELIMINAR_PROVEEDOR%>">Eliminar Proveedor</a></li>
-		<li><a href="modificar_proveedor.jsp">Modificar Proveedor</a></li>
 	</ul>
 	<br><hr><br>
 	<%@include file="listar_proveedores.jsp" %>

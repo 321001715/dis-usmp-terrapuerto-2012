@@ -43,10 +43,10 @@ public class ServiceProveedor {
 		return proveedorDao.modificarProveedor(proveedor);		 
 	}
 	
-	public Vector<Proveedor> buscarProveedores(int ruc) {
+	public Vector<Proveedor> buscarProveedores(String ruc, String razSocial) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		return proveedorDao.listarProveedores();
+		return proveedorDao.buscarProveedores(ruc, razSocial);
 	}
 }
