@@ -159,7 +159,11 @@ public class ServletProveedor extends HttpServlet {
 				if(retorno) mensaje = "Proveedor modificado con éxito.";
 				else mensaje = "Error, no se pudo modificar el proveedor.";	
 				
-				rd = getServletContext().getRequestDispatcher("/index.jsp");
+				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
+				proveedores = service.listarProveedores();
+				request.setAttribute("proveedores", proveedores);	
+				
+				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
