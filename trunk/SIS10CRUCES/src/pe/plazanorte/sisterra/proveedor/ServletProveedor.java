@@ -72,7 +72,25 @@ public class ServletProveedor extends HttpServlet {
 			if(destino == Constantes.MODIFICAR_PROVEEDOR){
 				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
 			}		
+		} else if(tipo.equalsIgnoreCase("eliminar")){
+			Proveedor proveedor = new Proveedor();	
+			int destino = Integer.parseInt(request.getParameter("destino"));			
+			try {
+				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("idProveedor")));			
+				boolean respuesta = service.eliminarProveedor(proveedor);
+				if(respuesta){
+					request.setAttribute("proveedor", proveedor);
+					mensaje = "Proveedor deshabilitado.";
+				}else {mensaje = "Ocurrió un error."; }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if(destino == Constantes.MODIFICAR_PROVEEDOR){
+				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
+			}		
 		}
+		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}
@@ -123,6 +141,7 @@ public class ServletProveedor extends HttpServlet {
 			String razonSocial = request.getParameter("razon_social");
 			String razonComercial = request.getParameter("razon_comercial");
 			int telefono = Integer.parseInt(request.getParameter("telefono"));
+			String estado = request.getParameter("estado");
 			String direccion = request.getParameter("direccion");			
 			
 			try {
@@ -131,6 +150,7 @@ public class ServletProveedor extends HttpServlet {
 				proveedor.setRuc(ruc);	
 				proveedor.setRazonSocial(razonSocial);
 				proveedor.setRazCom(razonComercial);
+				proveedor.setEstado(estado);
 				proveedor.setTel(telefono);
 				proveedor.setDireccion(direccion);				
 				
