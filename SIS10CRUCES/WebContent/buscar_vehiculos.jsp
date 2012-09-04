@@ -6,10 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-
-	<h2>Gestión de vehículos</h2>
-	
+<body>	
 	<form action="ServletProveedor">
 		<table>
 			<tr>
