@@ -72,7 +72,7 @@ public class ServletProveedor extends HttpServlet {
 			if(destino == Constantes.MODIFICAR_PROVEEDOR){
 				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
 			}		
-		}		
+		}
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}
@@ -186,6 +186,21 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				
 			}			
+		}else if(tipo.equalsIgnoreCase("filtro")){
+			int destino = Integer.parseInt(request.getParameter("destino"));
+			String ruc = request.getParameter("ruc");
+			String razSocial = request.getParameter("razSocial");
+			Vector<Proveedor> proveedores = null;
+			try {
+				proveedores = service.buscarProveedores(ruc, razSocial);				
+				request.setAttribute("proveedores", proveedores);						
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if(destino == Constantes.MANTENER_PROVEEDOR){
+				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+			}
 		}				
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);

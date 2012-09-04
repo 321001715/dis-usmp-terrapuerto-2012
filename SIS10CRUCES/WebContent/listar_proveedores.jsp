@@ -26,7 +26,7 @@
 		<td><%=proveedores.get(i).getRuc() %></td>
 		<td><%=proveedores.get(i).getRazonSocial() %></td>
 		<td><%=proveedores.get(i).getRazCom()%></td>
-		<td><a href="ServletProveedor?tipo=consultar&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Consultar</a></td>
+		<td><a href="ServletProveedor?tipo=consultar&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Modificar</a></td>
 		<td><a href="ServletProveedor?tipo=eliminar&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Deshabilitar</a></td>
 	</tr>
 	<%} %>
