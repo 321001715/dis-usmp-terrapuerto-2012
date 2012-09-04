@@ -28,6 +28,6 @@ public class Constantes {
 	/*
 	 * ESTADOS USUARIO - PROVEEDOR
 	 */	
-	public static final int ESTADO_ACTIVO = 1;
-	public static final int ESTADO_INHABILITADO = 2;
+	public static final String ESTADO_ACTIVO = "ACTIVO";
+	public static final String ESTADO_INHABILITADO = "INHABILITADO";
 }
