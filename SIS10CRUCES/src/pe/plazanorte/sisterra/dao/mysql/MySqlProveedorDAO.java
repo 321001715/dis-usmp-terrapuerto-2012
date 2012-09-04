@@ -140,5 +140,35 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		}
 		return proveedores;
 	}
+	
+	public Vector<Proveedor> buscarProveedores(String ruc) {
+		Vector<Proveedor> proveedores = new Vector<Proveedor>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"';";				
+			Proveedor proveedor = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				proveedor = new Proveedor();
+				
+				proveedor.setIdProveedor(rs.getLong("idProveedor"));
+				proveedor.setRuc(rs.getString("ruc"));				
+				proveedor.setRazonSocial(rs.getString("razSocial"));
+				proveedor.setRazCom(rs.getString("razCom"));
+				proveedor.setDireccion(rs.getString("direccion"));
+				proveedor.setTel(rs.getInt("tel"));
+				
+				proveedores.add(proveedor);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return proveedores;
+	}
 
 }
