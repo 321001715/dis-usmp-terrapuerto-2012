@@ -4,9 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>PRUEBA</title>
 </head>
 <body>
+<h2>Mantener Perfiles</h2>
+<%
+	String mensaje = (String)request.getParameter("mensaje");
+%>
 
-</body>
+<% if(mensaje != null){ %>	
+		<font color="red"><%= mensaje%></font>
+		<br><br>
+<%} %>
+<a href="registrar_perfil.jsp">Registrar Perfil</a><br>
+<a href="eliminar_perfil.jsp">Eliminar Perfil</a><br>
+<a href="modificar_perfil.jsp">Consultar Perfil</a><br>
+<a href="ServletSeguridad?tipo=listar">Listar Perfiles</a><br><br><br>
+ 
+<%@include file="listar_perfiles.jsp" %>
+
 </html>
