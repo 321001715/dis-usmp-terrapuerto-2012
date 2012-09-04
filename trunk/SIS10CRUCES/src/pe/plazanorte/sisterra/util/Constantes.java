@@ -16,6 +16,8 @@ public class Constantes {
 	public static final int MANTENER_PROVEEDOR = 3;
 	public static final int MODIFICAR_PROVEEDOR = 3;	
 	
+	public static final int GESTIONAR_VEHICULOS = 5;
+	
 	/*
 	 * PERFILES
 	 */
