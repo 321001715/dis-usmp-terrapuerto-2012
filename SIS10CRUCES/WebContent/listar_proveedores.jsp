@@ -27,7 +27,7 @@
 		<td><%=proveedores.get(i).getRuc() %></td>
 		<td><%=proveedores.get(i).getRazonSocial() %></td>
 		<td><%=proveedores.get(i).getRazCom()%></td>
-		<td><%=proveedores.get(i).getEstado()%></td>
+		<td align="center"><%=proveedores.get(i).getEstado()%></td>
 		<td><a href="ServletProveedor?tipo=consultar&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Modificar</a></td>		
 	</tr>
 	<%} %>
