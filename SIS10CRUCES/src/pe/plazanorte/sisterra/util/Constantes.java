@@ -15,8 +15,11 @@ public class Constantes {
 	public static final int ELIMINAR_PROVEEDOR = 2;
 	public static final int MANTENER_PROVEEDOR = 3;
 	public static final int MODIFICAR_PROVEEDOR = 3;	
-	
 	public static final int GESTIONAR_VEHICULOS = 5;
+	
+	public static final int MANTENER_CLASIFICACION = 6;
+	public static final int MODIFICAR_CLASIFICACION = 6;
+	public static final int ELIMINAR_CLASIFICACION = 7;
 	
 	/*
 	 * PERFILES
@@ -32,4 +35,7 @@ public class Constantes {
 	 */	
 	public static final String ESTADO_ACTIVO = "ACTIVO";
 	public static final String ESTADO_INHABILITADO = "INHABILITADO";
+	
+	
+	
 }
