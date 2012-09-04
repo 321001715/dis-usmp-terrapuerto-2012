@@ -141,12 +141,12 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return proveedores;
 	}
 	
-	public Vector<Proveedor> buscarProveedores(String ruc) {
+	public Vector<Proveedor> buscarProveedores(String ruc, String razSocial) {
 		Vector<Proveedor> proveedores = new Vector<Proveedor>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"';";				
+			String query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"' AND RAZSOCIAL LIKE '"+razSocial+"';";				
 			Proveedor proveedor = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
