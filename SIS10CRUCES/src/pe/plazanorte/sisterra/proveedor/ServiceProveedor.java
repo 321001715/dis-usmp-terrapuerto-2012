@@ -12,44 +12,41 @@ public class ServiceProveedor {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		boolean resultado = proveedorDao.registrarProveedor(proveedor);
-		if(resultado) return true;
-		else return false;
+		return proveedorDao.registrarProveedor(proveedor);		
 	}
 
 	public boolean eliminarProveedor(Proveedor proveedor) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		boolean resultado = proveedorDao.eliminarProveedor(proveedor);
-		if(resultado) return true;
-		else return false;
+		return  proveedorDao.eliminarProveedor(proveedor);		
 	}	
 	
 	public Proveedor consultarProveedor(Proveedor proveedor) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();		
-		proveedor = proveedorDao.consultarProveedor(proveedor);
-		if(proveedor != null) return proveedor;
-		else return proveedor;
+		return proveedorDao.consultarProveedor(proveedor);
 	}
 
 	public Vector<Proveedor> listarProveedores() {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();	
-		Vector<Proveedor> proveedores = null;
-		proveedores = proveedorDao.listarProveedores();
+		Vector<Proveedor> proveedores = proveedorDao.listarProveedores();
 		
-		if(proveedores != null) return proveedores;
-		else return null;
+		return proveedores;
 	}
 	
 	public boolean modificarProveedor(Proveedor proveedor) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		boolean resultado = proveedorDao.modificarProveedor(proveedor);
-		if(resultado) return true;
-		else return false;
+		return proveedorDao.modificarProveedor(proveedor);		 
+	}
+	
+	public Vector<Proveedor> buscarProveedores(int ruc) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.listarProveedores();
 	}
 }
