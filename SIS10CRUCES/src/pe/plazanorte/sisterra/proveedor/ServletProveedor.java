@@ -73,7 +73,7 @@ public class ServletProveedor extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
 			}		
 		} else if(tipo.equalsIgnoreCase("eliminar")){
-			Proveedor proveedor = new Proveedor();	
+		/*	Proveedor proveedor = new Proveedor();	
 			int destino = Integer.parseInt(request.getParameter("destino"));			
 			try {
 				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("idProveedor")));			
@@ -88,7 +88,7 @@ public class ServletProveedor extends HttpServlet {
 			
 			if(destino == Constantes.MODIFICAR_PROVEEDOR){
 				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
-			}		
+			}	*/	
 		}
 		
 		request.setAttribute("mensaje", mensaje);		
@@ -167,7 +167,7 @@ public class ServletProveedor extends HttpServlet {
 			
 		}else if(tipo.equalsIgnoreCase("eliminar")) {
 			
-			try {
+			/*try {
 				Proveedor proveedor = new Proveedor();
 				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("id")));
 			
@@ -177,7 +177,7 @@ public class ServletProveedor extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}*/
 			
 		}else if(tipo.equalsIgnoreCase("consultar")) {
 			

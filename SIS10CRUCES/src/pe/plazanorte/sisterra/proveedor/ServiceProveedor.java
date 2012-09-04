@@ -15,12 +15,12 @@ public class ServiceProveedor {
 		return proveedorDao.registrarProveedor(proveedor);		
 	}
 
-	public boolean eliminarProveedor(Proveedor proveedor) {
+	/*public boolean deshabilitarProveedor(Proveedor proveedor) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		return  proveedorDao.eliminarProveedor(proveedor);		
-	}	
+		return  proveedorDao.deshabilitarProveedor(proveedor);		
+	}*/	
 	
 	public Proveedor consultarProveedor(Proveedor proveedor) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
