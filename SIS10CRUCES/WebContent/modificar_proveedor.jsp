@@ -95,6 +95,15 @@
 			<tr>
 				<td>Telefono</td>
 				<td><input type="text" name="telefono" value="<%=proveedor.getTel()%>" maxlength="9"></td>				
+			</tr>
+			<tr>
+				<td>Estado del proveedor</td>
+				<td>
+					<select name="estado">						
+						<option value="<%=Constantes.ESTADO_ACTIVO%>" <%if(proveedor.getEstado().equals(Constantes.ESTADO_ACTIVO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_ACTIVO%></option>
+						<option value="<%=Constantes.ESTADO_INHABILITADO%>" <%if(proveedor.getEstado().equals(Constantes.ESTADO_INHABILITADO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_INHABILITADO%></option>
+					</select>				
+				</td>				
 			</tr>			
 			<tr>				
 				<td colspan="2"><input value=Modificar type="submit"></td>
