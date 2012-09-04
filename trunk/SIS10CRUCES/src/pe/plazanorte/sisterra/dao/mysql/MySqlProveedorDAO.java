@@ -44,12 +44,12 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 			
 			String query = "UPDATE T_PROVEEDOR SET " +
-					"ruc = "+proveedor.getRuc()+
-					", razSocial = '"+ proveedor.getRazonSocial() + 
+					"razSocial = '"+ proveedor.getRazonSocial() + 
 					"', razCom = '"+proveedor.getRazCom()+
 					"', direccion = '"+proveedor.getDireccion()+
 					"', tel = "+proveedor.getTel()+
-					" WHERE IDPROVEEDOR = "+proveedor.getIdProveedor()+";";
+					"', estado = '"+proveedor.getEstado()+
+					"' WHERE IDPROVEEDOR = "+proveedor.getIdProveedor()+";";
 			filas_afectadas = stmt.executeUpdate(query);				
 			con.close();
 		} catch (Exception e) {
@@ -169,6 +169,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				proveedor.setRazonSocial(rs.getString("razSocial"));
 				proveedor.setRazCom(rs.getString("razCom"));
 				proveedor.setDireccion(rs.getString("direccion"));
+				proveedor.setEstado(rs.getString("estado"));
 				proveedor.setTel(rs.getInt("tel"));
 				
 				proveedores.add(proveedor);
