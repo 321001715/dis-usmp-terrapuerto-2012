@@ -110,10 +110,10 @@
 				<td></td>
 				<td></td>
 			</tr>
-		</table>
-		<%}else if(mensaje != null){ %>
+		</table>		
+	</form>
+	<%}else if(mensaje != null){ %>
 			<font color="red"><%=mensaje %></font>
 		<%} %>
-	</form>
 </body>
 </html>
