@@ -36,6 +36,12 @@ public class Constantes {
 	public static final String ESTADO_ACTIVO = "ACTIVO";
 	public static final String ESTADO_INHABILITADO = "INHABILITADO";
 	
-	
+	/*
+	 * ACCIONES
+	 */
+	public static final String ACCION_REGISTRAR_PROVEEDOR = "registrar_proveedor";
+	public static final String ACCION_MODIFICAR_PROVEEDOR = "modificar_proveedor";
+	public static final String ACCION_FILTRO_PROVEEDOR = "filtro_proveedor";
+	public static final String ACCION_LISTAR_PROVEEDOR = "listar_proveedor";
 	
 }
