@@ -352,8 +352,9 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setNumPiso(numPiso);
 				vehiculo.setNumAsientos(numAsientos);
 				vehiculo.setObs(obs);
+				vehiculo.setEstado(obs);
 				
-				boolean retorno = service.agregarVehiculo(vehiculo);				
+				boolean retorno = service.modificarVehiculo(vehiculo);				
 				
 				if(retorno) mensaje = "Vehículo modificado con éxito.";
 				else mensaje = "Error, no se pudo modificar el vehículo.";	
