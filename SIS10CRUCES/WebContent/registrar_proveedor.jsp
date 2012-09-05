@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,7 +57,7 @@
 	<h2>Registrar Proveedor</h2>
 
 	<form action="ServletProveedor" method="post" name="registrar" onsubmit="return validar()">
-		<input type="hidden" name="tipo" value="registrar">
+		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_PROVEEDOR%>">
 		<table cellspacing="10px">			
 			<tr>
 				<td colspan="2"><h3>Datos del Proveedor</h3></td>					

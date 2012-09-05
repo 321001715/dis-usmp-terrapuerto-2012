@@ -42,7 +42,7 @@ public class ServletProveedor extends HttpServlet {
 		
 		//*****************************INICIO MANTENER PROVEEDOR*****************************//
 		
-		if(tipo.equalsIgnoreCase("listar")){						
+		if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)){						
 		
 			try {
 				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
@@ -61,7 +61,7 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(tipo.equalsIgnoreCase("consultar")){
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_PROVEEDOR)){
 			Proveedor proveedor = new Proveedor();	
 			int destino = Integer.parseInt(request.getParameter("destino"));			
 			try {
@@ -116,7 +116,7 @@ public class ServletProveedor extends HttpServlet {
 		
 		//*****************************INICIO MANTENER PROVEEDOR*****************************//
 		
-		if(tipo.equalsIgnoreCase("registrar")) {
+		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_PROVEEDOR)) {
 			
 			String ruc = request.getParameter("ruc");
 			String razonSocial = request.getParameter("razon_social");
@@ -143,7 +143,7 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}else if(tipo.equalsIgnoreCase("modificar")) {
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_PROVEEDOR)) {
 			
 			long codigo = Long.parseLong(request.getParameter("codigo"));
 			String ruc = request.getParameter("ruc");
@@ -192,7 +192,7 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}*/
 			
-		}else if(tipo.equalsIgnoreCase("consultar")) {
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_PROVEEDOR)) {
 			
 			Proveedor proveedor = new Proveedor();			
 			
@@ -209,7 +209,7 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(tipo.equalsIgnoreCase("listar")){
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)){
 			
 			try {								
 				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
@@ -219,7 +219,7 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(tipo.equalsIgnoreCase("filtro")){
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_PROVEEDOR)){
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			String ruc = request.getParameter("ruc");
 			String razSocial = request.getParameter("razSocial");
