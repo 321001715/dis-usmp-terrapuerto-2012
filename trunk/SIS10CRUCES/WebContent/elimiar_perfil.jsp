@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>Eliminar perfil</h2>
+	<form action="ServletSeguridad" method="post">
+		<input type="hidden" name="tipo" value="eliminarPerfil">
+		Id del perfil a eliminar: <input type="text" name="id" >
+		<input type="submit" value="Eliminar">
+	</form>
+	<br><hr><br>
+	<%@include file="listar_perfiles.jsp" %>
 </body>
 </html>

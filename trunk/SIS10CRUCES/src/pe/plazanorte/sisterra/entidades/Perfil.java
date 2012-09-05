@@ -4,7 +4,6 @@ public class Perfil {
 	
 	private long id;
 	private String nombre;
-	private int[][] permisos;
 	private String descripcion;
 	
 	public long getId() {
@@ -21,14 +20,6 @@ public class Perfil {
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	
-	public int[][] getPermisos() {
-		return permisos;
-	}
-	
-	public void setPermisos(int[][] permisos) {
-		this.permisos = permisos;
 	}
 	
 	public String getDescripcion() {

@@ -21,6 +21,15 @@ public class Constantes {
 	public static final int MODIFICAR_CLASIFICACION = 6;
 	public static final int ELIMINAR_CLASIFICACION = 7;
 	
+	public static final int ELIMINAR_PERFIL = 8;
+	public static final int MANTENER_PERFIL = 9;
+	public static final int MODIFICAR_PERFIL = 10;
+	
+	public static final int ELIMINAR_USUARIO = 11;
+	public static final int MANTENER_USUARIO = 12;
+	public static final int MODIFICAR_USUARIO = 13;
+	
+	
 	/*
 	 * PERFILES
 	 */

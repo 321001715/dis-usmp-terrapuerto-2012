@@ -25,7 +25,7 @@
 		<div id="content" style="height: 210px;">
             
             <form action="ServletSeguridad" name="registrar" method="post">
-            	
+            <input type="hidden" name="tipo" value="registrar">	
 		<table>
 			<tr>
 				
@@ -80,7 +80,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><input value="Agregar" type="submit"/></td>
+				<td><input value="Agregar" type="submit" /></td>
 				
 				<td></td>
 				<td></td>
