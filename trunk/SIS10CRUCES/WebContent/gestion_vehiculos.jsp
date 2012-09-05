@@ -11,6 +11,8 @@
 	
 	<%@include file="buscar_vehiculos.jsp" %>
 	
+	<br><a href="registrar_vehiculo.jsp">Registrar vehículo</a>
+	
 	<br><hr><br>
 	
 	<%@include file="listar_vehiculos.jsp" %>
