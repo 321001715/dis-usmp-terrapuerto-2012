@@ -45,4 +45,10 @@ public class Constantes {
 	public static final String ACCION_LISTAR_PROVEEDOR = "listar_proveedor";
 	public static final String ACCION_CONSULTAR_PROVEEDOR = "consultar_proveedor";
 	
+	public static final String ACCION_REGISTRAR_VEHICULO = "registrar_vehiculo";
+	public static final String ACCION_MODIFICAR_VEHICULO = "modificar_vehiculo";
+	public static final String ACCION_FILTRO_VEHICULO = "filtro_vehiculo";
+	public static final String ACCION_LISTAR_VEHICULO = "listar_vehiculo";
+	public static final String ACCION_CONSULTAR_VEHICULO = "consultar_vehiculo";
+	
 }
