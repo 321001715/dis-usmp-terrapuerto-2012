@@ -11,7 +11,7 @@
 <body>
 
 <%
-	Vehiculo vehiculo = (Vehiculo)request.getParameter("vehiculo");
+	Vehiculo vehiculo = (Vehiculo)request.getAttribute("vehiculo");
 %>
 
 <h2>Registro de veh&iacute;culo</h2>
@@ -40,8 +40,17 @@
 			<td><input type="text" name="numAsientos" value="<%=vehiculo.getNumAsientos() %>"></td>
 		</tr>
 		<tr>
+				<td>Estado del veh&iacute;culo</td>
+				<td>
+					<select name="estado">						
+						<option value="<%=Constantes.ESTADO_ACTIVO%>" <%if(vehiculo.getEstado().equals(Constantes.ESTADO_ACTIVO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_ACTIVO%></option>
+						<option value="<%=Constantes.ESTADO_INHABILITADO%>" <%if(vehiculo.getEstado().equals(Constantes.ESTADO_INHABILITADO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_INHABILITADO%></option>
+					</select>				
+				</td>				
+			</tr>		
+		<tr>
 			<td>Observaciones</td>
-			<td rowspan="2"><textarea rows="3" cols="16" name="obs" value="<%=vehiculo.getObs() %>"></textarea></td>
+			<td rowspan="2"><textarea rows="3" cols="16" name="obs"><%=vehiculo.getObs() %></textarea></td>
 		</tr>
 		<tr>
 			<td></td>			
