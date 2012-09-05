@@ -136,9 +136,13 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarProveedor(proveedor);				
 				
 				if(retorno) mensaje = "Proveedor agregado con éxito.";
-				else mensaje = "Error, no se pudo registrar el proveedor.";	
+				else mensaje = "Error, no se pudo registrar el proveedor.";
 				
-				rd = getServletContext().getRequestDispatcher("/index.jsp");
+				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
+				proveedores = service.listarProveedores();
+				request.setAttribute("proveedores", proveedores);	
+				
+				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -263,6 +267,8 @@ public class ServletProveedor extends HttpServlet {
 				
 				if(retorno) mensaje = "Vehículo agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el vehículo.";	
+				
+				
 				
 				rd = getServletContext().getRequestDispatcher("/index.jsp");
 				
