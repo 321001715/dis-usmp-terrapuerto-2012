@@ -119,18 +119,18 @@ public class ServletProveedor extends HttpServlet {
 						e.printStackTrace();
 					}			
 				}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VEHICULO)){
-					Proveedor proveedor = new Proveedor();	
+					Vehiculo vehiculo = new Vehiculo();	
 					int destino = Integer.parseInt(request.getParameter("destino"));			
 					try {
-						proveedor.setIdProveedor(Integer.parseInt(request.getParameter("idProveedor")));			
-						proveedor = service.consultarProveedor(proveedor);				
-						request.setAttribute("proveedor", proveedor);						
+						vehiculo.setIdProveedor(Integer.parseInt(request.getParameter("idVehiculo")));			
+						vehiculo = service.consultarVehiculo(vehiculo);				
+						request.setAttribute("vehiculo", vehiculo);				
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					
-					if(destino == Constantes.MODIFICAR_PROVEEDOR){
-						rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
+					if(destino == Constantes.MODIFICAR_VEHICULO){
+						rd = getServletContext().getRequestDispatcher("/modificar_vehiculo.jsp");
 					}		
 				} else if(tipo.equalsIgnoreCase("eliminar")){
 				/*	Proveedor proveedor = new Proveedor();	
