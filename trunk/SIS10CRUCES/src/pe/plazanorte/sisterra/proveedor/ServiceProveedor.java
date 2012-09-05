@@ -80,10 +80,10 @@ public class ServiceProveedor {
 		return proveedorDao.modificarVehiculo(vehiculo);		 
 	}
 	
-	public Vector<Proveedor> buscarVehiculo(String ruc, String razSocial) {
+	public Vector<Proveedor> buscarVehiculo(Vehiculo vehiculo) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		return proveedorDao.buscarVehiculo(ruc, razSocial);
+		return proveedorDao.buscarVehiculos(vehiculo);
 	}
 }

@@ -19,5 +19,6 @@ public interface ProveedorDAO {
 	public Vector<Vehiculo> listarVehiculos();
 	public Vehiculo consultarVehiculo(Vehiculo vehiculo);
 	public boolean modificarVehiculo(Vehiculo vehiculo);
+	public Vector<Proveedor> buscarVehiculos(Vehiculo vehiculo);
 	
 }
