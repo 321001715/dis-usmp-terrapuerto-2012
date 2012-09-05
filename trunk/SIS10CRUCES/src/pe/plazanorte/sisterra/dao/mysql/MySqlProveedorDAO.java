@@ -255,8 +255,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			String query = "SELECT * FROM T_VEHICULO WHERE IDVEHICULO = '"+id+"';";			
 			ResultSet rs =	stmt.executeQuery(query);	
 					
-			if(rs.next()){		
-				nuevo.setIdProveedor(rs.getLong("idProveedor"));
+			if(rs.next()){
+				nuevo = new Vehiculo();
+				nuevo.setIdVehiculo(rs.getLong("idVehiculo"));
 				nuevo.setMarca(rs.getString("marca"));				
 				nuevo.setModelo(rs.getString("modelo"));
 				nuevo.setPlaca(rs.getString("placa"));
@@ -264,6 +265,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				nuevo.setNumAsientos(rs.getInt("numAsientos"));
 				nuevo.setObs(rs.getString("obs"));
 				nuevo.setEstado(rs.getString("estado"));
+				nuevo.setIdProveedor(rs.getLong("idProveedor"));
 			}
 			con.close();
 		} catch (Exception e) {			
