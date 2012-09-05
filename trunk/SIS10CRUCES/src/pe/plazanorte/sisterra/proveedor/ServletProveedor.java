@@ -39,6 +39,9 @@ public class ServletProveedor extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		
+		
+		//*****************************INICIO MANTENER PROVEEDOR*****************************//
+		
 		if(tipo.equalsIgnoreCase("listar")){						
 		
 			try {
@@ -90,6 +93,9 @@ public class ServletProveedor extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");
 			}	*/	
 		}
+		
+		//*****************************FIN MANTENER PROVEEDOR*****************************//
+		
 		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
