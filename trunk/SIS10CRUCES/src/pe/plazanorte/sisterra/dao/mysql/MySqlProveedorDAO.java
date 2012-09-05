@@ -247,13 +247,51 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
 	public Vehiculo consultarVehiculo(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
-		return null;
+		long id = vehiculo.getIdProveedor();
+		Vehiculo nuevo = null;
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_VEHICULO WHERE IDVEHICULO = '"+id+"';";			
+			ResultSet rs =	stmt.executeQuery(query);	
+					
+			if(rs.next()){		
+				nuevo.setIdProveedor(rs.getLong("idProveedor"));
+				nuevo.setMarca(rs.getString("marca"));				
+				nuevo.setModelo(rs.getString("modelo"));
+				nuevo.setPlaca(rs.getString("placa"));
+				nuevo.setNumPiso(rs.getInt("numPiso"));
+				nuevo.setNumAsientos(rs.getInt("numAsientos"));
+				nuevo.setObs(rs.getString("obs"));
+				nuevo.setEstado(rs.getString("estado"));
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return nuevo;
 	}
 
 	@Override
 	public boolean modificarVehiculo(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String query = "UPDATE T_VEHICULO SET " +
+					";";
+			filas_afectadas = stmt.executeUpdate(query);				
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		if(filas_afectadas == 1)
+			return true;
+		
 		return false;
 	}
 
