@@ -5,6 +5,7 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 
 public class ServiceProveedor {
 
@@ -48,5 +49,10 @@ public class ServiceProveedor {
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
 		return proveedorDao.buscarProveedores(ruc, razSocial);
+	}
+
+	public boolean agregarVehiculo(Vehiculo vehiculo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
