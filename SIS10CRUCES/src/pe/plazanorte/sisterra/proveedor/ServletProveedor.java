@@ -107,6 +107,9 @@ public class ServletProveedor extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 	
+		
+		//*****************************INICIO MANTENER PROVEEDOR*****************************//
+		
 		if(tipo.equalsIgnoreCase("registrar")) {
 			
 			String ruc = request.getParameter("ruc");
@@ -226,6 +229,11 @@ public class ServletProveedor extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
 			}
 		}				
+		
+		//*****************************FIN MANTENER PROVEEDOR*****************************//
+		
+		
+		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}
