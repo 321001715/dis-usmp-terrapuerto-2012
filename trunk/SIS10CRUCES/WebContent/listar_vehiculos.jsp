@@ -24,7 +24,7 @@
 	</tr>
 	<%for(int i=0; i<vehiculos.size(); i++){ %>
 	<tr>
-		<td align="right"><%=vehiculos.get(i).getCodVehiculo() %></td>
+		<td align="right"><%=vehiculos.get(i).getIdVehiculo() %></td>
 		<td><%=vehiculos.get(i).getMarca() %></td>
 		<td><%=vehiculos.get(i).getModelo()%></td>
 		<td><%=vehiculos.get(i).getPlaca()%></td>
