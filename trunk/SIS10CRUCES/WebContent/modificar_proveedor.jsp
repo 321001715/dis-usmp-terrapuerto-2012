@@ -66,7 +66,7 @@
 	<%@include file="buscar_proveedor.jsp" %>
 	<br><hr>
 	<form action="ServletProveedor" method="post">
-		<input type="hidden" name="tipo" value="<%=Constantes.MODIFICAR_PROVEEDOR%>">
+		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_PROVEEDOR%>">
 		<%if(proveedor != null){ %>
 		<table cellspacing="10px">
 			<tr>

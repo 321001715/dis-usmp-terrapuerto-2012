@@ -24,7 +24,7 @@ function validar(){
 </head>
 <body>
 <form name="buscar" action="ServletProveedor" method="post" onsubmit="return validar()">
-	<input type="hidden" name="tipo" value="filtro">
+	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_PROVEEDOR%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MANTENER_PROVEEDOR%>">
 	RUC <input type="text" name="ruc" maxlength="9">
 	Raz&oacute;n social <input type="text" name="razSocial">
