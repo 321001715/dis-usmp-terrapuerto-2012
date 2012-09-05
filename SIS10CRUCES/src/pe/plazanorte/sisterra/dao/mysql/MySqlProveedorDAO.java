@@ -8,10 +8,13 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlProveedorDAO implements ProveedorDAO {
 
+	//**************************INICIO MANTENER PROVEEDOR******************************//
+	
 	@Override
 	public boolean registrarProveedor(Proveedor proveedor) {
 		int filas_afectadas = 0;
@@ -113,7 +116,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 */
 	@Override
 	public Vector<Proveedor> listarProveedores() {	
-		Vector<Proveedor> proveedores = new Vector<Proveedor>();;
+		Vector<Proveedor> proveedores = new Vector<Proveedor>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
@@ -182,5 +185,84 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		}
 		return proveedores;
 	}
+
+	//**************************FIN MANTENER PROVEEDOR******************************//
+	
+	
+	//**************************INICIO GESTIONAR VEHICULO******************************//
+	
+	@Override
+	public boolean registrarVehiculo(Vehiculo vehiculo) {
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String sql = "INSERT INTO T_VEHICULO(marca, modelo, placa, numPiso, numAsientos, obs,  estado) " +
+					"VALUES ("+vehiculo.getMarca()+", '"+vehiculo.getModelo()+"', '"+vehiculo.getPlaca()+"', '"+vehiculo.getNumPiso()+"', "+vehiculo.getNumAsientos()+", '"+vehiculo.getObs()+"', '"+Constantes.ESTADO_ACTIVO+"');";
+			
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		if(filas_afectadas == 1)
+			return true;
+		
+		return false;
+	}
+
+	@Override
+	public Vector<Vehiculo> listarVehiculos() {
+		Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_VEHICULO;";				
+			Vehiculo vehiculo = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				vehiculo = new Vehiculo();
+				
+				vehiculo.setIdProveedor(rs.getLong("idProveedor"));
+				vehiculo.setMarca(rs.getString("marca"));				
+				vehiculo.setModelo(rs.getString("modelo"));
+				vehiculo.setPlaca(rs.getString("placa"));
+				vehiculo.setNumPiso(rs.getInt("numPiso"));
+				vehiculo.setNumAsientos(rs.getInt("numAsientos"));
+				vehiculo.setObs(rs.getString("obs"));
+				vehiculo.setEstado(rs.getString("estado"));
+				
+				vehiculos.add(vehiculo);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		return vehiculos;
+	}
+
+	@Override
+	public Vehiculo consultarVehiculo(Vehiculo vehiculo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean modificarVehiculo(Vehiculo vehiculo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Vector<Proveedor> buscarVehiculos(Vehiculo vehiculo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	//**************************FIN GESTIONAR VEHICULO******************************//
 
 }
