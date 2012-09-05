@@ -51,8 +51,21 @@ public class ServiceProveedor {
 		return proveedorDao.buscarProveedores(ruc, razSocial);
 	}
 
+	
+	//*************************INICIO GESTIONAR VEHICULO******************************//
+	
 	public boolean agregarVehiculo(Vehiculo vehiculo) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Vector<Vehiculo> listarVehiculos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Vehiculo consultarVehiculo(Vehiculo vehiculo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -9,8 +9,8 @@
 </head>
 <body>	
 	<form action="ServletProveedor">
-		<input type="hidden" name="tipo" value="regsitrar">
-		<input type="hidden" name="destino" value="<%=Constantes.GESTIONAR_VEHICULOS%>">
+		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_VEHICULO %>">
+		<input type="hidden" name="destino" value="<%=Constantes.GESTIONAR_VEHICULO%>">
 		<table>
 			<tr>
 				<td>Código de vehículo</td>
