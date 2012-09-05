@@ -329,7 +329,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculos = service.listarVehiculos();
 				request.setAttribute("vehiculos", vehiculos);	
 				
-				rd = getServletContext().getRequestDispatcher("/gestion_vehiculo.jsp");
+				rd = getServletContext().getRequestDispatcher("/gestion_vehiculos.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
