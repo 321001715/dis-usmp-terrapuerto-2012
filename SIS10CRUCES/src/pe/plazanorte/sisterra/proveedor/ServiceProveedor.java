@@ -55,17 +55,35 @@ public class ServiceProveedor {
 	//*************************INICIO GESTIONAR VEHICULO******************************//
 	
 	public boolean agregarVehiculo(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
-		return false;
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.registrarVehiculo(vehiculo);		
 	}
 
 	public Vector<Vehiculo> listarVehiculos() {
-		// TODO Auto-generated method stub
-		return null;
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();	
+		return proveedorDao.listarVehiculos();
 	}
 
 	public Vehiculo consultarVehiculo(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
-		return null;
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();		
+		return proveedorDao.consultarVehiculo(vehiculo);
+	}
+	
+	public boolean modificarVehiculo(Vehiculo vehiculo) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.modificarVehiculo(vehiculo);		 
+	}
+	
+	public Vector<Proveedor> buscarVehiculo(String ruc, String razSocial) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.buscarVehiculo(ruc, razSocial);
 	}
 }
