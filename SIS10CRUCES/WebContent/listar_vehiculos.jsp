@@ -30,7 +30,7 @@
 		<td><%=vehiculos.get(i).getPlaca()%></td>
 		<td><%=vehiculos.get(i).getNumAsientos()%></td>
 		<td align="center"><%=vehiculos.get(i).getEstado()%></td>
-		<td><a href="ServletProveedor?tipo=consultar&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idVehiculo=<%=vehiculos.get(i).getIdProveedor()%>">Modificar</a></td>		
+		<td><a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_VEHICULO %>&destino=<%=Constantes.MODIFICAR_VEHICULO %>&idVehiculo=<%=vehiculos.get(i).getIdVehiculo()%>">Modificar</a></td>		
 	</tr>
 	<%} %>
 </table>
