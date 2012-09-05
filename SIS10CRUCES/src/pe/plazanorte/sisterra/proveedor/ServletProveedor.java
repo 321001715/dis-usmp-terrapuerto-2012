@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.util.Constantes;
 
 /**
@@ -239,6 +240,116 @@ public class ServletProveedor extends HttpServlet {
 		//*****************************FIN MANTENER PROVEEDOR*****************************//
 		
 		
+		//*****************************INICIO GESTIONAR VEHICULO*****************************//
+		
+		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VEHICULO)) {
+			
+			String marca = request.getParameter("marca");
+			String modelo = request.getParameter("modelo");
+			String placa = request.getParameter("placa");
+			int numPiso = Integer.parseInt(request.getParameter("numPiso"));
+			int numAsientos = Integer.parseInt(request.getParameter("numAsientos"));
+			String obs = request.getParameter("obs");
+			
+			try {
+				Vehiculo vehiculo = new Vehiculo();
+				vehiculo.setMarca(marca);
+				vehiculo.setModelo(modelo);
+				vehiculo.setPlaca(placa);
+				vehiculo.setNumPiso(numPiso);
+				vehiculo.setNumAsientos(numAsientos);
+				
+				boolean retorno = service.agregarVehiculo(vehiculo);				
+				
+				if(retorno) mensaje = "Vehículo agregado con éxito.";
+				else mensaje = "Error, no se pudo registrar el vehículo.";	
+				
+				rd = getServletContext().getRequestDispatcher("/index.jsp");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VEHICULO)) {
+			
+			long codigo = Long.parseLong(request.getParameter("codigo"));
+			String ruc = request.getParameter("ruc");
+			String razonSocial = request.getParameter("razon_social");
+			String razonComercial = request.getParameter("razon_comercial");
+			int telefono = Integer.parseInt(request.getParameter("telefono"));
+			String estado = request.getParameter("estado");
+			String direccion = request.getParameter("direccion");			
+			
+			try {
+				Proveedor proveedor = new Proveedor();
+				proveedor.setIdProveedor(codigo);
+				proveedor.setRuc(ruc);	
+				proveedor.setRazonSocial(razonSocial);
+				proveedor.setRazCom(razonComercial);
+				proveedor.setEstado(estado);
+				proveedor.setTel(telefono);
+				proveedor.setDireccion(direccion);				
+				
+				boolean retorno = service.modificarProveedor(proveedor);				
+				
+				if(retorno) mensaje = "Proveedor modificado con éxito.";
+				else mensaje = "Error, no se pudo modificar el proveedor.";	
+				
+				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
+				proveedores = service.listarProveedores();
+				request.setAttribute("proveedores", proveedores);	
+				
+				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+			
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VEHICULO)) {
+			
+			Proveedor proveedor = new Proveedor();			
+			
+			try {				
+				int id = Integer.parseInt(request.getParameter("idProveedor"));
+				proveedor.setIdProveedor(id);			
+				proveedor = service.consultarProveedor(proveedor);
+				if(proveedor == null) mensaje = "No se encontraron resultados para su consulta. [Proveedor cod."+id+"]";
+				else mensaje = "";
+				request.setAttribute("proveedor", proveedor);				
+				
+				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VEHICULO)){
+			
+			try {								
+				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
+				proveedores = service.listarProveedores();
+				request.setAttribute("proveedores", proveedores);
+				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_PROVEEDOR)){
+			int destino = Integer.parseInt(request.getParameter("destino"));
+			String ruc = request.getParameter("ruc");
+			String razSocial = request.getParameter("razSocial");
+			Vector<Proveedor> proveedores = null;
+			try {
+				proveedores = service.buscarProveedores(ruc, razSocial);				
+				request.setAttribute("proveedores", proveedores);						
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if(destino == Constantes.MANTENER_PROVEEDOR){
+				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+			}
+		}	
+		
+		//*****************************FIN GESTIONAR VEHICULO*****************************//
+
 		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
