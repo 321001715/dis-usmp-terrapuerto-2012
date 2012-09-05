@@ -14,7 +14,7 @@
             <li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">Gestion de Usuarios</a></li>
 			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_PROVEEDOR %>&destino=<%=Constantes.MANTENER_PROVEEDOR%>">Gestion de Proveedores</a></li>
 			<li><a href="gestion_empresas.jsp" class="invoices">Gestion de Perfiles</a></li>
-			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.MANTENER_PROVEEDOR%>">Gestion de Veh&iacute;culos</a></li>
+			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gestion de Veh&iacute;culos</a></li>
         </ul>
 </body>
 </html>
