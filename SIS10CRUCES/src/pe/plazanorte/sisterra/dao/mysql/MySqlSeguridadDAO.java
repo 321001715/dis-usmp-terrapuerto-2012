@@ -11,12 +11,30 @@ import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Usuario;
+import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public boolean registrarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String sql = "INSERT INTO T_USUARIO(usuario, clave, estado, dni, nombres, apePat, apeMat) " +
+					"VALUES ("+"'"+usuario.getUsuario()+"', '"+usuario.getClave()+"', '"+usuario.getEstado()+"', '"+usuario.getDni()+"', '"+usuario.getNombres()+"', '"+usuario.getApePat()+"', '"+usuario.getApeMat()+"'"+");";
+			
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		if(filas_afectadas == 1)
+			return true;
+		
 		return false;
 	}
 
@@ -29,9 +47,9 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	
 	
 	@Override
-	public boolean consultarUsuario(Usuario usuario) {
+	public Usuario consultarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
-		return false;
+		return usuario;
 	}
 
 	@Override
@@ -97,9 +115,9 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	@Override
-	public int eliminarUsuario(int id) {
+	public boolean eliminarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 }

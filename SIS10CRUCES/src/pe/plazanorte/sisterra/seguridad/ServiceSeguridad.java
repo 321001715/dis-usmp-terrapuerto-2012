@@ -14,9 +14,7 @@ public class ServiceSeguridad {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
 		
-		boolean resultado = seguridadDao.registrarUsuario(usuario);
-		if(resultado) return true;
-		else return false;
+		return seguridadDao.registrarUsuario(usuario);
 	}
 
 	public boolean eliminarUsuario(Usuario usuario) {

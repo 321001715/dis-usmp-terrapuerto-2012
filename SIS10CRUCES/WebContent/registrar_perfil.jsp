@@ -5,39 +5,46 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function validar(){
+		if(document.registrar.nombre.value.length == 0){
+			alert("Debe llenar el campo Nombre.");
+			document.registrar.ruc.focus();
+			return false;
+		}
+		if(document.registrar.descripcion.value.length == 0){
+			alert("Debe llenar el campo Descripcion.");
+			document.registrar.razon_social.focus();
+			return false;
+		}
+		
+		return true;
+	}	
+</script>
 </head>
 <body>
-<h2>Registrar Perfil</h2>
 
-	<form action="ServletProveedor" method="post" name="registrar" onsubmit="return validar()">
-		<input type="hidden" name="tipo" value="registrar">
+	<h2>Registrar Perfil</h2>
+
+	<form action="ServletSeguridad" method="post" name="registrarperfil" onsubmit="return validar()">
+		<input type="hidden" name="tipo" value="registrarPerfil">
 		<table cellspacing="10px">			
+			<tr>
+				<td colspan="2"><h3>Detalle del Perfil</h3></td>					
+			</tr>
+			<tr>
+				<td>Nombre</td>
+				<td><input type="text" name="nombre" maxlength="11"></td>				
+			</tr>
+			<tr>
+				<td>Descripcion</td>
+				<td><input type="text" name="descripcion"></td>			
+			</tr>
+	
+			
 			
 			<tr>
-				<td>RUC</td>
-				<td><input type="text" name="ruc" maxlength="11"></td>				
-			</tr>
-			<tr>
-				<td>Razon Social</td>
-				<td><input type="text" name="razon_social"></td>			
-			</tr>
-			<tr>
-				<td>Razon Comercial</td>
-				<td><input type="text" name="razon_comercial"></td>			
-			</tr>
-			<tr>
-				<td>Direccion</td>
-				<td><input type="text" name="direccion"></td>				
-			</tr>
-			<tr>
-				
-								
-			</tr>
-			<tr>
-									
-			</tr>
-			<tr>
-				</tr><tr>	
+					
 									
 			</tr>
 			<tr>
