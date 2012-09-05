@@ -200,8 +200,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 			
 			String sql = "INSERT INTO T_VEHICULO(marca, modelo, placa, numPiso, numAsientos, obs,  estado) " +
-					"VALUES ("+vehiculo.getMarca()+", '"+vehiculo.getModelo()+"', '"+vehiculo.getPlaca()+"', '"+vehiculo.getNumPiso()+"', "+vehiculo.getNumAsientos()+", '"+vehiculo.getObs()+"', '"+Constantes.ESTADO_ACTIVO+"');";
-			
+					"VALUES ('"+vehiculo.getMarca()+"', '"+vehiculo.getModelo()+"', '"+vehiculo.getPlaca()+"', "+vehiculo.getNumPiso()+", "+vehiculo.getNumAsientos()+", '"+vehiculo.getObs()+"', '"+Constantes.ESTADO_ACTIVO+"');";
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {			
@@ -227,7 +226,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			while(rs.next()){	
 				vehiculo = new Vehiculo();
 				
-				vehiculo.setIdProveedor(rs.getLong("idProveedor"));
+				vehiculo.setIdVehiculo(rs.getLong("idVehiculo"));
 				vehiculo.setMarca(rs.getString("marca"));				
 				vehiculo.setModelo(rs.getString("modelo"));
 				vehiculo.setPlaca(rs.getString("placa"));
@@ -235,6 +234,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				vehiculo.setNumAsientos(rs.getInt("numAsientos"));
 				vehiculo.setObs(rs.getString("obs"));
 				vehiculo.setEstado(rs.getString("estado"));
+				vehiculo.setIdProveedor(1); //DEBE CAPTURAR EL ID DEL PROVEEDOR
 				
 				vehiculos.add(vehiculo);
 			}
