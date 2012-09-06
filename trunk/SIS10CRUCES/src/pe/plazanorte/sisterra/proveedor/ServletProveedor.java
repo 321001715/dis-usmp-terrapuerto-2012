@@ -388,20 +388,30 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_PROVEEDOR)){
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_VEHICULO)){
 			int destino = Integer.parseInt(request.getParameter("destino"));
-			String ruc = request.getParameter("ruc");
-			String razSocial = request.getParameter("razSocial");
-			Vector<Proveedor> proveedores = null;
+			long idVehiculo = Long.parseLong(request.getParameter("idVehiculo"));
+			String marca = request.getParameter("marca");
+			String modelo = request.getParameter("modelo");
+			String placa = request.getParameter("placa");
+			
+			Vehiculo vehiculo = new Vehiculo();
+			
+			vehiculo.setIdVehiculo(idVehiculo);
+			vehiculo.setMarca(marca);
+			vehiculo.setModelo(modelo);
+			vehiculo.setPlaca(placa);
+			
+			Vector<Vehiculo> vehiculos = null;
 			try {
-				proveedores = service.buscarProveedores(ruc, razSocial);				
-				request.setAttribute("proveedores", proveedores);						
+				vehiculos = service.buscarVehiculo(vehiculo);				
+				request.setAttribute("vehiculos", vehiculos);						
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-			if(destino == Constantes.MANTENER_PROVEEDOR){
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+			if(destino == Constantes.GESTIONAR_VEHICULO){
+				rd = getServletContext().getRequestDispatcher("/gestion_vehiculos.jsp");
 			}
 		}	
 		

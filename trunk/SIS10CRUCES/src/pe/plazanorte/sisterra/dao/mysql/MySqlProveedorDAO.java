@@ -296,11 +296,46 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		
 		return false;
 	}
-
-	@Override
-	public Vector<Proveedor> buscarVehiculos(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public Vector<Vehiculo> buscarVehiculos(Vehiculo param) {
+		Vector <Vehiculo> vehiculos = new Vector<Vehiculo>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_VEHICULO WHERE ";
+			boolean flag = false;
+			if(param.getIdVehiculo() != 0) {
+				query += "IDVEHICULO = "+param.getIdVehiculo();
+				flag = true;
+			} else if(param.getPlaca().length() != 0) {
+				if(flag) query += "AND ";
+				query += "PLACA LIKE '"+param.getPlaca()+"'";
+				flag = true;
+			} else if(param.getModelo().length() != 0) {
+				if(flag) query += "AND ";
+				query += "MODELO LIKE '"+param.getModelo()+"'";
+				flag = true;
+			} else if(param.getMarca().length() != 0) {
+				if(flag) query += "AND ";
+				query += "MARCA LIKE '"+param.getMarca()+"'";
+			}
+			query += " AND IDPROVEEDOR = "+1+";";
+							
+			Vehiculo vehiculo = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				vehiculo = new Vehiculo();
+				
+				vehiculo.setIdVehiculo(rs.getLong("idVehiculo"));				
+				
+				vehiculos.add(vehiculo);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		return vehiculos;
 	}
 	
 	//**************************FIN GESTIONAR VEHICULO******************************//
