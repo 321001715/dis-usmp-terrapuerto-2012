@@ -308,26 +308,32 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				query += "IDVEHICULO = "+param.getIdVehiculo();
 				flag = true;
 			} else if(param.getPlaca().length() != 0) {
-				if(flag) query += "AND ";
-				query += "PLACA LIKE '"+param.getPlaca()+"'";
+				if(flag) query += " AND ";
+				query += "PLACA LIKE '"+param.getPlaca()+"%'";
 				flag = true;
 			} else if(param.getModelo().length() != 0) {
-				if(flag) query += "AND ";
-				query += "MODELO LIKE '"+param.getModelo()+"'";
+				if(flag) query += " AND ";
+				query += "MODELO LIKE '"+param.getModelo()+"%'";
 				flag = true;
 			} else if(param.getMarca().length() != 0) {
-				if(flag) query += "AND ";
-				query += "MARCA LIKE '"+param.getMarca()+"'";
+				if(flag) query += " AND ";
+				query += "MARCA LIKE '"+param.getMarca()+"%'";
 			}
 			query += " AND IDPROVEEDOR = "+1+";";
-							
+			System.out.println(query);			
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
 			while(rs.next()){	
 				vehiculo = new Vehiculo();
 				
-				vehiculo.setIdVehiculo(rs.getLong("idVehiculo"));				
+				vehiculo.setIdVehiculo(rs.getLong("idVehiculo"));
+				vehiculo.setMarca(rs.getString("marca"));				
+				vehiculo.setModelo(rs.getString("modelo"));
+				vehiculo.setPlaca(rs.getString("placa"));
+				vehiculo.setNumPiso(rs.getInt("numPiso"));
+				vehiculo.setNumAsientos(rs.getInt("numAsientos"));				
+				vehiculo.setEstado(rs.getString("estado"));						
 				
 				vehiculos.add(vehiculo);
 			}
