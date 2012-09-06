@@ -309,15 +309,15 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				flag = true;
 			} else if(param.getPlaca().length() != 0) {
 				if(flag) query += " AND ";
-				query += "PLACA LIKE '"+param.getPlaca()+"%'";
+				query += "(PLACA LIKE UPPER('"+param.getPlaca()+"%') OR PLACA LIKE LOWER('"+param.getPlaca()+"%'))";
 				flag = true;
 			} else if(param.getModelo().length() != 0) {
 				if(flag) query += " AND ";
-				query += "MODELO LIKE '"+param.getModelo()+"%'";
+				query += "(MODELO LIKE UPPER('"+param.getModelo()+"%') OR MODELO LIKE LOWER('"+param.getModelo()+"%'))";
 				flag = true;
 			} else if(param.getMarca().length() != 0) {
 				if(flag) query += " AND ";
-				query += "MARCA LIKE '"+param.getMarca()+"%'";
+				query += "(MARCA LIKE UPPER('"+param.getMarca()+"%') OR MARCA LIKE LOWER('"+param.getMarca()+"%'))";
 			}
 			query += " AND IDPROVEEDOR = "+1+" AND ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";
 			System.out.println(query);			
