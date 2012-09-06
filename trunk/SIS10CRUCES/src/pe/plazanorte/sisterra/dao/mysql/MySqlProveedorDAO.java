@@ -154,12 +154,12 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			String query = "";
 			
 			if(ruc.length() == 0)
-				query = "SELECT * FROM T_PROVEEDOR WHERE RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"';";
+				query = "SELECT * FROM T_PROVEEDOR WHERE RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"'";
 			else if(razSocial.length() == 0)
 				query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%'";
 			else
-				query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%' AND (RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"');";
-			
+				query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%' AND (RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"')";
+			query += " AND ESTADO LIKE '"+Constantes.ESTADO_ACTIVO+"';";
 							
 			Proveedor proveedor = null;
 			ResultSet rs = stmt.executeQuery(query);	
@@ -322,7 +322,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				if(flag) query += " AND ";
 				query += "(MARCA LIKE UPPER('"+param.getMarca()+"%') OR MARCA LIKE LOWER('"+param.getMarca()+"%'))";
 			}
-			query += " AND IDPROVEEDOR = "+1+" AND ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";
+			query += " AND IDPROVEEDOR = "+1+";";
 			
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);	
