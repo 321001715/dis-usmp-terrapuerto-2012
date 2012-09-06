@@ -6,9 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function validar(){
+		
+		if(document.buscar.idVehiculo.value.length == 0 && document.buscar.marca.value.length == 0 && document.buscar.modelo.value.length == 0 && document.buscar.placa.value.length == 0){		
+			alert("Debe llenar alguna condición de búsqueda.");
+			document.buscar.idVehiculo.focus();				
+			return false;
+		}else if(isNaN(document.buscar.idVehiculo.value)){		
+			alert("Código de vehículo no válido.");
+			document.buscar.idVehiculo.focus();	
+			return false;
+		}	
+		return true;
+	}
+</script>
 </head>
 <body>	
-	<form action="ServletProveedor" method="post">
+	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_VEHICULO %>">
 		<input type="hidden" name="destino" value="<%=Constantes.GESTIONAR_VEHICULO%>">
 		<table>
