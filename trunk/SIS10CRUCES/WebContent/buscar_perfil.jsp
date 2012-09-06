@@ -23,7 +23,7 @@ function validar(){
 </script>
 </head>
 <body>
-<form name="buscar" action="ServletSeguridad" method="post" onsubmit="return validar()">
+<form name="buscarPerfil" action="ServletSeguridad" method="post" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="filtroPerfil">
 	<input type="hidden" name="destino" value="<%=Constantes.MANTENER_PERFIL%>">
 	Codigo <input type="text" name="codigo" maxlength="9">

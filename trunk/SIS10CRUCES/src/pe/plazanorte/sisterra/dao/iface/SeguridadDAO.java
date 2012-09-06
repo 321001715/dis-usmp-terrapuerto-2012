@@ -19,6 +19,7 @@ public interface SeguridadDAO {
 	public boolean modificarPerfil(Perfil perfil);
 	public boolean eliminarPerfil(Perfil perfil);
 	public Perfil consultarPerfil(Perfil perfil);
-	
+	public Vector<Perfil> buscarPerfil(Perfil vehiculo);
+	public Vector<Perfil> buscarPerfiles(String cod, String perfil);
 
 }

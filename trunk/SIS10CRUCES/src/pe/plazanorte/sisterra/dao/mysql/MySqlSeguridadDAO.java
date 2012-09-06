@@ -61,8 +61,8 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "INSERT INTO T_PERFIL(perfil,descripcion) " +
-					"VALUES ("+"'"+perfil.getNombre()+"', '"+perfil.getDescripcion()+"', '"+");";
+			String sql = "insert INTO t_perfil(perfil,descripcion) " +
+					"values ("+"'"+perfil.getNombre()+"', '"+perfil.getDescripcion()+"'"+");";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
@@ -91,7 +91,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "UPDATE T_PERFIL SET " +
+			String query = "UPDATE t_perfil SET " +
 					"perfil = '"+ perfil.getNombre() + 
 					"', descripcion = '"+perfil.getDescripcion()+
 					"' WHERE idTipoUsuario = "+perfil.getId()+";";
@@ -124,7 +124,8 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 					
 			if(rs.next()){		
 				nuevo = new Perfil();
-				nuevo.setNombre(rs.getString("idTipoUsuario"));
+				nuevo.setId(rs.getLong("idTipoUsuario"));
+				nuevo.setNombre(rs.getString("perfil"));
 				nuevo.setDescripcion(rs.getString("descripcion"));
 			}
 			con.close();
@@ -193,6 +194,49 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				perfil.setDescripcion(rs.getString("descripcion"));
 
 				perfiles.add(perfil);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return perfiles;
+	}
+
+	@Override
+	public Vector<Perfil> buscarPerfil(Perfil vehiculo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Vector<Perfil> buscarPerfiles(String cod, String perfil) {
+		Vector<Perfil> perfiles = new Vector<Perfil>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "";
+			
+			if(cod.length() == 0)
+				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario= '"+cod+"';";
+			else if(perfil.length() == 0)
+				query = "SELECT * FROM T_PERFIL WHERE perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"');";
+			else
+				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario = '"+cod+"%' AND (perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"');";
+			
+							
+			Perfil tipoperfil = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				tipoperfil = new Perfil();
+				
+				tipoperfil.setId(rs.getLong("idTipoUsuario"));
+				tipoperfil.setNombre(rs.getString("perfil"));
+				tipoperfil.setDescripcion(rs.getString("descripcion"));
+				
+				perfiles.add(tipoperfil);
 			}
 			con.close();
 		} catch (Exception e) {			

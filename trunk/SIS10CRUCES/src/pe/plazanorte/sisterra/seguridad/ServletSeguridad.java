@@ -73,20 +73,23 @@ public class ServletSeguridad extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		}   else if (tipo.equalsIgnoreCase("consultar")){
-			/*Proveedor proveedor = new Proveedor();			
 			
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_PERFIL)){
+			Perfil perfil = new Perfil();	
+			int destino = Integer.parseInt(request.getParameter("destino"));			
 			try {
-				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("idProveedor")));			
-				proveedor = service.consultarProveedor(proveedor);				
-				request.setAttribute("proveedor", proveedor);				
-				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");
-				
+				perfil.setId(Integer.parseInt(request.getParameter("idPerfil")));
+						
+				perfil = service.consultarPerfil(perfil);				
+				request.setAttribute("perfil", perfil);						
 			} catch (Exception e) {
 				e.printStackTrace();
-			}*/
+			}
+			
+			if(destino == Constantes.MODIFICAR_PERFIL){
+				rd = getServletContext().getRequestDispatcher("/modificar_perfil.jsp");
+			}
 		}
-		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}
@@ -242,7 +245,7 @@ public class ServletSeguridad extends HttpServlet {
 			
 		}else if(tipo.equalsIgnoreCase("modificarPerfil")) {
 			
-			long codigo = Long.parseLong(request.getParameter("codigo"));
+			int id=Integer.parseInt(request.getParameter("codigo"));
 			String nombre = request.getParameter("nombre");
 			String descripcion = request.getParameter("descripcion");
 				
@@ -250,16 +253,20 @@ public class ServletSeguridad extends HttpServlet {
 			try {
 				
 				Perfil perfil = new Perfil();
+				
+				perfil.setId(id);
 				perfil.setNombre(nombre);
 				perfil.setDescripcion(descripcion);				
 				
 				boolean retorno = service.modificarPerfil(perfil);				
 				
-				if(retorno) mensaje = "Proveedor modificado con éxito.";
-				else mensaje = "Error, no se pudo modificar el proveedor.";	
+				if(retorno) mensaje = "Perfil modificado con éxito.";
+				else mensaje = "Error, no se pudo modificar el perfil.";	
 				
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
 				perfiles = service.listarPerfiles();
+				
+				
 				request.setAttribute("perfiles", perfiles);	
 				
 				rd = getServletContext().getRequestDispatcher("/mantener_perfil.jsp");
@@ -310,24 +317,24 @@ public class ServletSeguridad extends HttpServlet {
 				e.printStackTrace();
 			}			
 		}else if(tipo.equalsIgnoreCase("filtroPerfil")){
-			//int destino = Integer.parseInt(request.getParameter("destino"));
-			//String ruc = request.getParameter("ruc");
-			//String razSocial = request.getParameter("razSocial");
-			//Vector<Proveedor> proveedores = null;
-			//try {
-			//	proveedores = service.buscarProveedores(ruc, razSocial);				
-			//	request.setAttribute("proveedores", proveedores);						
-			//} catch (Exception e) {
-			//	e.printStackTrace();
+			int destino = Integer.parseInt(request.getParameter("destino"));
+			String codigo = request.getParameter("codigo");
+			String nombre = request.getParameter("nombre");
+			Vector<Perfil> perfiles = null;
+			try {
+				perfiles = service.buscarPerfiles(codigo,nombre);				
+				request.setAttribute("perfiles", perfiles);						
+			} catch (Exception e) {
+				e.printStackTrace();
 			
 			
-			//if(destino == Constantes.MANTENER_PERFIL){
-				//rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-			//}
-			
+			if(destino == Constantes.MANTENER_PERFIL){
+				rd = getServletContext().getRequestDispatcher("/mantener_perfil.jsp");
+			}
+			}
 		}
 	
-		request.setAttribute("mensaje", mensaje);		
+		request.setAttribute("mensaje", mensaje);	
 		rd.forward(request, response);			
 	
 	}
