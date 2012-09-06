@@ -66,4 +66,7 @@ public class Constantes {
 	public static final String ACCION_REGISTRAR_CLASIFICACION  = "registrar_clasificacion";
 	public static final String ACCION_MODIFICAR_CLASIFICACION = "modificar_clasificacion";
 	public static final String ACCION_FILTRO_CLASIFICACION = "filtro_clasificacion";
+
+	public static final String ACCION_CONSULTAR_PERFIL = "consultar_perfil";
+
 }
