@@ -120,7 +120,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PROVEEDOR;";				
+			String query = "SELECT * FROM T_PROVEEDOR WHERE ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";				
 			Proveedor proveedor = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
