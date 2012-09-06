@@ -17,27 +17,31 @@
 <h2>Registro de veh&iacute;culo</h2>
 
 <form action="ServletProveedor" method="post">
-	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_VEHICULO %>">
+	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_VEHICULO %>">
 	<table cellpadding="5px" >
 		<tr>
+			<td>C&oacute;digo</td>
+			<td><input type="text" name="idVehiculo" value="<%=vehiculo.getIdVehiculo() %>" readonly="readonly"></td>
+		</tr>
+		<tr>
 			<td>Marca</td>
-			<td><input type="text" name="marca" value="<%=vehiculo.getMarca() %>"></td>
+			<td><input type="text" name="marca" value="<%=vehiculo.getMarca() %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td>Modelo</td>
-			<td><input type="text" name="modelo" value="<%=vehiculo.getModelo() %>"></td>
+			<td><input type="text" name="modelo" value="<%=vehiculo.getModelo() %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td>Placa</td>
-			<td><input type="text" name="placa" value="<%=vehiculo.getPlaca() %>"></td>
+			<td><input type="text" name="placa" value="<%=vehiculo.getPlaca() %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td>N&uacute;mero de pisos</td>
-			<td><input type="text" name="numPiso" value="<%=vehiculo.getNumPiso() %>"></td>
+			<td><input type="text" name="numPiso" value="<%=vehiculo.getNumPiso() %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td>N&uacute;mero de asientos</td>
-			<td><input type="text" name="numAsientos" value="<%=vehiculo.getNumAsientos() %>"></td>
+			<td><input type="text" name="numAsientos" value="<%=vehiculo.getNumAsientos() %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 				<td>Estado del veh&iacute;culo</td>
@@ -56,7 +60,7 @@
 			<td></td>			
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="Registrar vehículo"></td>					
+			<td colspan="2"><input type="submit" value="Modificar vehículo"></td>					
 		</tr>
 	</table>
 </form>
