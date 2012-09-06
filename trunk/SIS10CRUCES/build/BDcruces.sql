@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-09-2012 a las 11:38:05
+-- Tiempo de generación: 06-09-2012 a las 12:21:59
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -96,14 +96,14 @@ CREATE TABLE IF NOT EXISTS `t_ciudad` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_clasificasion` (
-  `idTipoServicio` int(11) NOT NULL AUTO_INCREMENT,
+  `idClasificasion` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) COLLATE armscii8_bin NOT NULL,
   `descripcion` varchar(30) COLLATE armscii8_bin NOT NULL,
   `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
   `usuarioUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `fechaUpdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`idTipoServicio`)
+  PRIMARY KEY (`idClasificasion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -317,7 +317,6 @@ CREATE TABLE IF NOT EXISTS `t_viaje` (
   `horLlegada` date NOT NULL,
   `precio` int(11) NOT NULL,
   `estado` text COLLATE armscii8_bin NOT NULL,
-  `idClasificasion` int(11) NOT NULL,
   `idRuta` int(11) NOT NULL,
   `servicio` varchar(45) COLLATE armscii8_bin NOT NULL,
   `idChofer` int(11) NOT NULL,
@@ -326,11 +325,12 @@ CREATE TABLE IF NOT EXISTS `t_viaje` (
   `FechaInsert` datetime DEFAULT NULL,
   `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `fechaUpdate` datetime DEFAULT NULL,
+  `idClasificasion` int(11) NOT NULL,
   PRIMARY KEY (`idViaje`),
   KEY `fk_t_viaje_t_ruta1_idx` (`idRuta`),
   KEY `fk_t_viaje_t_chofer1_idx` (`idChofer`),
   KEY `fk_t_viaje_t_vehiculo1_idx` (`idVehiculo`),
-  KEY `fk_t_viaje_t_tiposervicio1_idx` (`idClasificasion`)
+  KEY `fk_t_viaje_t_clasificasion1` (`idClasificasion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
 --
@@ -398,13 +398,14 @@ ALTER TABLE `t_vehiculo`
 -- Filtros para la tabla `t_viaje`
 --
 ALTER TABLE `t_viaje`
+  ADD CONSTRAINT `fk_t_viaje_t_clasificasion1` FOREIGN KEY (`idClasificasion`) REFERENCES `t_clasificasion` (`idClasificasion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_chofer1` FOREIGN KEY (`idChofer`) REFERENCES `t_chofer` (`idChofer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_ruta1` FOREIGN KEY (`idRuta`) REFERENCES `t_ruta` (`idRuta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_t_viaje_t_tiposervicio1` FOREIGN KEY (`idClasificasion`) REFERENCES `t_clasificasion` (`idTipoServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_vehiculo1` FOREIGN KEY (`idVehiculo`) REFERENCES `t_vehiculo` (`idVehiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
 
