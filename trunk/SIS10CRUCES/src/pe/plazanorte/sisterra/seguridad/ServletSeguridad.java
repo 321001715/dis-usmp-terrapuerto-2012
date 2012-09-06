@@ -36,7 +36,7 @@ public class ServletSeguridad extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurrió un error.";
+		String mensaje = "OcurriÃ³ un error.";
 		
 		ServiceSeguridad service = new ServiceSeguridad();
 		
@@ -57,7 +57,23 @@ public class ServletSeguridad extends HttpServlet {
 				request.setAttribute("usuarios", usuarios);	
 			} catch (Exception e) {
 				e.printStackTrace();
-			}			
+			} 
+    }else if(tipo.equalsIgnoreCase("listarPÃ«rfiles")){
+			try {
+				Vector<Perfil> perfiles = new Vector<Perfil>();				
+				usuarios = service.listarUsuarios();
+				request.setAttribute("proveedores", usuarios);	
+				String origen = request.getParameter("origen");
+				if(origen == null){
+					rd = getServletContext().getRequestDispatcher("/listar_usuarios.jsp");
+				}else if(Integer.parseInt(origen) == Constantes.MENU_PRINCIPAL){
+					rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
+				}
+				request.setAttribute("usuarios", usuarios);	
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}        
 		}else if(tipo.equalsIgnoreCase("consultar")){
 			/*Proveedor proveedor = new Proveedor();			
 			
@@ -82,7 +98,7 @@ public class ServletSeguridad extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 					
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurrió un error.";
+		String mensaje = "OcurriÃ³ un error.";
 		
 		ServiceSeguridad service = new ServiceSeguridad();
 		
@@ -112,7 +128,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.agregarUsuario(usuario);			
 				
-				if(retorno) mensaje = "Usuario agregado con éxito.";
+				if(retorno) mensaje = "Usuario agregado con Ã©xito.";
 				else mensaje = "Error, no se pudo registrar el usuario.";	
 				
 				rd = getServletContext().getRequestDispatcher("/login.jsp");
@@ -144,7 +160,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.modificarUsuario(usuario);				
 				
-				if(retorno) mensaje = "Usuario modificado con éxito.";
+				if(retorno) mensaje = "Usuario modificado con Ã©xito.";
 				else mensaje = "Error, no se pudo modificar el usuario.";	
 				
 				Vector<Usuario> usuarios = new Vector<Usuario>();				
@@ -216,7 +232,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.agregarProveedor(perfil);				
 				
-				if(retorno) mensaje = "Perfil agregado con éxito.";
+				if(retorno) mensaje = "Perfil agregado con Ã©xito.";
 				else mensaje = "Error, no se pudo registrar el perfil.";	
 				
 				rd = getServletContext().getRequestDispatcher("/index.jsp");
@@ -240,7 +256,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.modificarProveedor(perfil);				
 				
-				if(retorno) mensaje = "Proveedor modificado con éxito.";
+				if(retorno) mensaje = "Proveedor modificado con Ã©xito.";
 				else mensaje = "Error, no se pudo modificar el proveedor.";	
 				
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
