@@ -179,7 +179,9 @@ public class ServletProveedor extends HttpServlet {
 			String razonSocial = request.getParameter("razon_social");
 			String razonComercial = request.getParameter("razon_comercial");
 			int telefono = Integer.parseInt(request.getParameter("telefono"));
-			String direccion = request.getParameter("direccion");			
+			String direccion = request.getParameter("direccion");		
+			String usuario = request.getParameter("usuario");
+			String clave = request.getParameter("clave");
 			
 			try {
 				Proveedor proveedor = new Proveedor();
@@ -187,7 +189,9 @@ public class ServletProveedor extends HttpServlet {
 				proveedor.setRazonSocial(razonSocial);
 				proveedor.setRazCom(razonComercial);
 				proveedor.setTel(telefono);
-				proveedor.setDireccion(direccion);				
+				proveedor.setDireccion(direccion);
+				proveedor.setUsuario(usuario);
+				proveedor.setClave(clave);
 				
 				boolean retorno = service.agregarProveedor(proveedor);				
 				
