@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-09-2012 a las 19:32:58
--- Versión del servidor: 5.5.25a
--- Versión de PHP: 5.4.4
+-- Tiempo de generaciÃ³n: 06-09-2012 a las 11:38:05
+-- VersiÃ³n del servidor: 5.5.25a
+-- VersiÃ³n de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `t_agencia` (
   `ciudad` int(11) NOT NULL,
   `direccion` varchar(45) COLLATE armscii8_bin NOT NULL,
   `idProveedor` int(11) NOT NULL,
-  PRIMARY KEY (`idAgencia`,`idProveedor`),
+  PRIMARY KEY (`idAgencia`),
   KEY `fk_t_agencia_t_proveedor1_idx` (`idProveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
@@ -46,26 +46,16 @@ CREATE TABLE IF NOT EXISTS `t_boleto` (
   `idPasajero` int(11) NOT NULL,
   `idViaje` int(11) NOT NULL,
   `idReserva` int(11) NOT NULL,
-  `asiento` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `asiento` varchar(45) COLLATE armscii8_bin NOT NULL,
   `estado` varchar(1) COLLATE armscii8_bin NOT NULL,
-  PRIMARY KEY (`idBoleto`,`idPasajero`,`idViaje`,`idReserva`),
+  `userInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaInsert` datetime DEFAULT NULL,
+  `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaUpdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`idBoleto`),
   KEY `fk_t_boleto_t_pasajero1_idx` (`idPasajero`),
   KEY `fk_t_boleto_t_viaje1_idx` (`idViaje`),
   KEY `fk_t_boleto_t_reserva1_idx` (`idReserva`)
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `t_caracteristicas`
---
-
-CREATE TABLE IF NOT EXISTS `t_caracteristicas` (
-  `idCaracteristicas` int(11) NOT NULL AUTO_INCREMENT,
-  `Carateristicas` text COLLATE armscii8_bin NOT NULL,
-  `t_vehiculo_idVehiculo` int(11) NOT NULL,
-  PRIMARY KEY (`idCaracteristicas`,`t_vehiculo_idVehiculo`),
-  KEY `fk_t_caracteristicas_t_vehiculo1_idx` (`t_vehiculo_idVehiculo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -107,6 +97,7 @@ CREATE TABLE IF NOT EXISTS `t_ciudad` (
 
 CREATE TABLE IF NOT EXISTS `t_clasificasion` (
   `idTipoServicio` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) COLLATE armscii8_bin NOT NULL,
   `descripcion` varchar(30) COLLATE armscii8_bin NOT NULL,
   `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
@@ -233,8 +224,12 @@ CREATE TABLE IF NOT EXISTS `t_provincia` (
 CREATE TABLE IF NOT EXISTS `t_reserva` (
   `idReserva` int(11) NOT NULL AUTO_INCREMENT,
   `idUsuario1` int(11) NOT NULL,
-  `fecha` date DEFAULT NULL,
-  `estado` varchar(1) COLLATE armscii8_bin DEFAULT NULL,
+  `fecha` date NOT NULL,
+  `estado` varchar(1) COLLATE armscii8_bin NOT NULL,
+  `userInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaInsert` datetime DEFAULT NULL,
+  `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaUpdate` datetime DEFAULT NULL,
   PRIMARY KEY (`idReserva`),
   KEY `fk_t_reserva_t_usuario_idx` (`idUsuario1`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -264,19 +259,6 @@ CREATE TABLE IF NOT EXISTS `t_ruta` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `t_tipovehiculo`
---
-
-CREATE TABLE IF NOT EXISTS `t_tipovehiculo` (
-  `idTipoVehiculo` int(11) NOT NULL AUTO_INCREMENT,
-  `idCaracteristica` int(11) NOT NULL,
-  `idVehiculo` int(11) NOT NULL,
-  PRIMARY KEY (`idTipoVehiculo`)
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `t_usuario`
 --
 
@@ -285,7 +267,6 @@ CREATE TABLE IF NOT EXISTS `t_usuario` (
   `usuario` varchar(45) COLLATE armscii8_bin NOT NULL,
   `clave` varchar(45) COLLATE armscii8_bin NOT NULL,
   `estado` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `idTipUsuario` int(11) NOT NULL,
   `dni` int(11) NOT NULL,
   `nombres` varchar(45) COLLATE armscii8_bin NOT NULL,
   `apePat` varchar(45) COLLATE armscii8_bin NOT NULL,
@@ -308,18 +289,16 @@ CREATE TABLE IF NOT EXISTS `t_usuario` (
 CREATE TABLE IF NOT EXISTS `t_vehiculo` (
   `idVehiculo` int(11) NOT NULL AUTO_INCREMENT,
   `codVehiculo` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `marca` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `modelo` varchar(45) COLLATE armscii8_bin NOT NULL,
   `placa` varchar(45) COLLATE armscii8_bin NOT NULL,
   `numPiso` int(11) NOT NULL,
   `numAsientos` int(11) NOT NULL,
+  `marca` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `modelo` varchar(45) COLLATE armscii8_bin NOT NULL,
   `obs` varchar(100) COLLATE armscii8_bin NOT NULL,
   `estado` varchar(45) COLLATE armscii8_bin NOT NULL,
   `idProveedor` int(11) NOT NULL,
-  `idTipoVehiculo` int(11) NOT NULL,
   PRIMARY KEY (`idVehiculo`),
-  KEY `fk_t_vehiculo_t_proveedor1_idx` (`idProveedor`),
-  KEY `fk_t_vehiculo_t_tipovehiculo1_idx` (`idTipoVehiculo`)
+  KEY `fk_t_vehiculo_t_proveedor1_idx` (`idProveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -343,6 +322,10 @@ CREATE TABLE IF NOT EXISTS `t_viaje` (
   `servicio` varchar(45) COLLATE armscii8_bin NOT NULL,
   `idChofer` int(11) NOT NULL,
   `idVehiculo` int(11) NOT NULL,
+  `userInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `FechaInsert` datetime DEFAULT NULL,
+  `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `fechaUpdate` datetime DEFAULT NULL,
   PRIMARY KEY (`idViaje`),
   KEY `fk_t_viaje_t_ruta1_idx` (`idRuta`),
   KEY `fk_t_viaje_t_chofer1_idx` (`idChofer`),
@@ -367,12 +350,6 @@ ALTER TABLE `t_boleto`
   ADD CONSTRAINT `fk_t_boleto_t_pasajero1` FOREIGN KEY (`idPasajero`) REFERENCES `t_pasajero` (`idPasajero`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_boleto_t_reserva1` FOREIGN KEY (`idReserva`) REFERENCES `t_reserva` (`idReserva`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_boleto_t_viaje1` FOREIGN KEY (`idViaje`) REFERENCES `t_viaje` (`idViaje`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `t_caracteristicas`
---
-ALTER TABLE `t_caracteristicas`
-  ADD CONSTRAINT `fk_t_caracteristicas_t_vehiculo1` FOREIGN KEY (`t_vehiculo_idVehiculo`) REFERENCES `t_vehiculo` (`idVehiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `t_ciudad`
@@ -415,19 +392,19 @@ ALTER TABLE `t_usuario`
 -- Filtros para la tabla `t_vehiculo`
 --
 ALTER TABLE `t_vehiculo`
-  ADD CONSTRAINT `fk_t_vehiculo_t_proveedor1` FOREIGN KEY (`idProveedor`) REFERENCES `t_proveedor` (`idProveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_t_vehiculo_t_tipovehiculo1` FOREIGN KEY (`idTipoVehiculo`) REFERENCES `t_tipovehiculo` (`idTipoVehiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_t_vehiculo_t_proveedor1` FOREIGN KEY (`idProveedor`) REFERENCES `t_proveedor` (`idProveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `t_viaje`
 --
 ALTER TABLE `t_viaje`
-  ADD CONSTRAINT `fk_t_viaje_t_tiposervicio1` FOREIGN KEY (`idClasificasion`) REFERENCES `t_clasificasion` (`idTipoServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_chofer1` FOREIGN KEY (`idChofer`) REFERENCES `t_chofer` (`idChofer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_ruta1` FOREIGN KEY (`idRuta`) REFERENCES `t_ruta` (`idRuta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_t_viaje_t_tiposervicio1` FOREIGN KEY (`idClasificasion`) REFERENCES `t_clasificasion` (`idTipoServicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_vehiculo1` FOREIGN KEY (`idVehiculo`) REFERENCES `t_vehiculo` (`idVehiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
