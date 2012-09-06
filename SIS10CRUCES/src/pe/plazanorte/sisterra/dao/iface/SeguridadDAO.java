@@ -14,10 +14,11 @@ public interface SeguridadDAO {
 	public Usuario consultarUsuario(Usuario usuario);
 	public Usuario validarUsuario(Usuario usuario);
 	
+	public Vector<Perfil> listarPerfil () throws Exception;
 	public boolean registrarPerfil(Perfil perfil);
 	public boolean modificarPerfil(Perfil perfil);
 	public boolean eliminarPerfil(Perfil perfil);
-	public boolean consultarPerfil(Perfil perfil);
+	public Perfil consultarPerfil(Perfil perfil);
 	
 
 }
