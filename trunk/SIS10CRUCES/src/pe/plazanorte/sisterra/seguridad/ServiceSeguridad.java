@@ -6,6 +6,7 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 
+import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Usuario;
 
 public class ServiceSeguridad {
@@ -54,6 +55,53 @@ public class ServiceSeguridad {
 		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
 		
 		boolean resultado = seguridadDao.modificarUsuario(usuario);
+		if(resultado) return true;
+		else return false;
+	}
+	public boolean agregarPerfil(Perfil perfil) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		
+		return seguridadDao.registrarPerfil(perfil);
+	}
+
+	public boolean eliminarPerfil(Perfil perfil) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		
+		boolean resultado = seguridadDao.eliminarPerfil(perfil);
+		if(resultado) return true;
+		else return false;
+	}	
+	
+	public Perfil consultarPerfil(Perfil perfil) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		perfil = seguridadDao.consultarPerfil(perfil);
+		if(perfil != null) return perfil;
+		else return perfil;
+	}
+
+	public Vector<Perfil> listarPerfiles() {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		Vector<Perfil> perfiles = null;
+		try {
+			perfiles = seguridadDao.listarPerfil();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(perfiles != null) return perfiles;
+		else return null;
+	}
+	
+	public boolean modificarPerfil(Perfil perfil) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		
+		boolean resultado = seguridadDao.modificarPerfil(perfil);
 		if(resultado) return true;
 		else return false;
 	}

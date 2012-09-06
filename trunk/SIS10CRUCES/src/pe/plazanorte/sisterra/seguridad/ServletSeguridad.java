@@ -58,23 +58,22 @@ public class ServletSeguridad extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-    }else if(tipo.equalsIgnoreCase("listarPërfiles")){
+		}else if(tipo.equalsIgnoreCase("listarPerfiles")){
 			try {
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
-				usuarios = service.listarUsuarios();
-				request.setAttribute("proveedores", usuarios);	
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);	
 				String origen = request.getParameter("origen");
 				if(origen == null){
-					rd = getServletContext().getRequestDispatcher("/listar_usuarios.jsp");
+					rd = getServletContext().getRequestDispatcher("/listar_perfiles.jsp");
 				}else if(Integer.parseInt(origen) == Constantes.MENU_PRINCIPAL){
-					rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
+					rd = getServletContext().getRequestDispatcher("/mantener_perfil.jsp");
 				}
-				request.setAttribute("usuarios", usuarios);	
+				request.setAttribute("perfiles", perfiles);	
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		}        
-		}else if(tipo.equalsIgnoreCase("consultar")){
+		}   else if (tipo.equalsIgnoreCase("consultar")){
 			/*Proveedor proveedor = new Proveedor();			
 			
 			try {
@@ -230,7 +229,7 @@ public class ServletSeguridad extends HttpServlet {
 				perfil.setDescripcion(descripcion);
 							
 				
-				boolean retorno = service.agregarProveedor(perfil);				
+				boolean retorno = service.agregarPerfil(perfil);				
 				
 				if(retorno) mensaje = "Perfil agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el perfil.";	
@@ -254,14 +253,14 @@ public class ServletSeguridad extends HttpServlet {
 				perfil.setNombre(nombre);
 				perfil.setDescripcion(descripcion);				
 				
-				boolean retorno = service.modificarProveedor(perfil);				
+				boolean retorno = service.modificarPerfil(perfil);				
 				
 				if(retorno) mensaje = "Proveedor modificado con éxito.";
 				else mensaje = "Error, no se pudo modificar el proveedor.";	
 				
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
-				perfiles = service.listarProveedores();
-				request.setAttribute("proveedores", perfiles);	
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);	
 				
 				rd = getServletContext().getRequestDispatcher("/mantener_perfil.jsp");
 				
@@ -285,47 +284,49 @@ public class ServletSeguridad extends HttpServlet {
 			
 		}else if(tipo.equalsIgnoreCase("consultarPerfil")) {
 			
-			Proveedor proveedor = new Proveedor();			
+			Perfil perfil = new Perfil();			
 			
 			try {
 				//VALIDAR EL INGRESO DE STRING
-				int id = Integer.parseInt(request.getParameter("idProveedor"));
-				proveedor.setIdProveedor(id);			
-				proveedor = service.consultarProveedor(proveedor);
-				if(proveedor == null) mensaj+e = "No se encontraron resultados para su consulta. [Proveedor cod."+id+"]";
+				int id = Integer.parseInt(request.getParameter("idPerfil"));
+				perfil.setId(id);
+				perfil = service.consultarPerfil(perfil);
+				if(perfil == null) mensaje = "No se encontraron resultados para su consulta. [Proveedor cod."+id+"]";
 				else mensaje = "";
-				request.setAttribute("proveedor", proveedor);				
+				request.setAttribute("perfil", perfil);				
 				
-				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");				
+				rd = getServletContext().getRequestDispatcher("/modificar_perfil.jsp");				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(tipo.equalsIgnoreCase("listar")){
+		}else if(tipo.equalsIgnoreCase("listarPerfil")){
 			
 			try {								
-				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
-				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);
-				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");				
+				Vector<Perfil> perfiles = new Vector<Perfil>();				
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);
+				rd = getServletContext().getRequestDispatcher("/listar_perfiles.jsp");				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
 		}else if(tipo.equalsIgnoreCase("filtroPerfil")){
-			int destino = Integer.parseInt(request.getParameter("destino"));
-			String ruc = request.getParameter("ruc");
-			String razSocial = request.getParameter("razSocial");
-			Vector<Proveedor> proveedores = null;
-			try {
-				proveedores = service.buscarProveedores(ruc, razSocial);				
-				request.setAttribute("proveedores", proveedores);						
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			//int destino = Integer.parseInt(request.getParameter("destino"));
+			//String ruc = request.getParameter("ruc");
+			//String razSocial = request.getParameter("razSocial");
+			//Vector<Proveedor> proveedores = null;
+			//try {
+			//	proveedores = service.buscarProveedores(ruc, razSocial);				
+			//	request.setAttribute("proveedores", proveedores);						
+			//} catch (Exception e) {
+			//	e.printStackTrace();
 			
-			if(destino == Constantes.MANTENER_PROVEEDOR){
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-			}
+			
+			//if(destino == Constantes.MANTENER_PERFIL){
+				//rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+			//}
+			
 		}
+	
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);			
 	

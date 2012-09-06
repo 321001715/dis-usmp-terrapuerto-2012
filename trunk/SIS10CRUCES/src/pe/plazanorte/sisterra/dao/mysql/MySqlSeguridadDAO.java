@@ -9,6 +9,7 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 
 import pe.plazanorte.sisterra.entidades.Perfil;
+import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.util.Constantes;
@@ -54,9 +55,27 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public boolean registrarPerfil(Perfil perfil) {
-		// TODO Auto-generated method stub
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String sql = "INSERT INTO T_PERFIL(perfil,descripcion) " +
+					"VALUES ("+"'"+perfil.getNombre()+"', '"+perfil.getDescripcion()+"', '"+");";
+			
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		if(filas_afectadas == 1)
+			return true;
+		
 		return false;
 	}
+	
 
 	@Override
 	public Usuario validarUsuario(Usuario usuario) {
@@ -66,7 +85,24 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public boolean modificarPerfil(Perfil perfil) {
-		// TODO Auto-generated method stub
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String query = "UPDATE T_PERFIL SET " +
+					"perfil = '"+ perfil.getNombre() + 
+					"', descripcion = '"+perfil.getDescripcion()+
+					"' WHERE idTipoUsuario = "+perfil.getId()+";";
+			filas_afectadas = stmt.executeUpdate(query);				
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		if(filas_afectadas == 1)
+			return true;
+		
 		return false;
 	}
 
@@ -77,9 +113,27 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	@Override
-	public boolean consultarPerfil(Perfil perfil) {
-		// TODO Auto-generated method stub
-		return false;
+	public Perfil consultarPerfil(Perfil perfil) {
+		long id = perfil.getId();
+		Perfil nuevo = null;
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario = '"+id+"';";			
+			ResultSet rs =	stmt.executeQuery(query);	
+					
+			if(rs.next()){		
+				nuevo = new Perfil();
+				nuevo.setNombre(rs.getString("idTipoUsuario"));
+				nuevo.setDescripcion(rs.getString("descripcion"));
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return nuevo;
 	}
 
 	@Override
@@ -118,6 +172,35 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	public boolean eliminarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Vector<Perfil> listarPerfil() throws Exception {
+		
+		Vector<Perfil> perfiles = new Vector<Perfil>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_PERFIL;";				
+			Perfil perfil = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				perfil = new Perfil();
+				
+				perfil.setId(rs.getLong("idTipoUsuario"));
+				perfil.setNombre(rs.getString("perfil"));
+				perfil.setDescripcion(rs.getString("descripcion"));
+
+				perfiles.add(perfil);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return perfiles;
 	}
 
 }
