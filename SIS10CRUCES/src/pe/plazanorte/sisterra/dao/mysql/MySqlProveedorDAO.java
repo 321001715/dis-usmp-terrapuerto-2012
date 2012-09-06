@@ -319,7 +319,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				if(flag) query += " AND ";
 				query += "MARCA LIKE '"+param.getMarca()+"%'";
 			}
-			query += " AND IDPROVEEDOR = "+1+";";
+			query += " AND IDPROVEEDOR = "+1+" AND ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";
 			System.out.println(query);			
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);	
