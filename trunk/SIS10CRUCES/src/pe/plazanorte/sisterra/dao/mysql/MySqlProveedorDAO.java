@@ -219,7 +219,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_VEHICULO;";				
+			String query = "SELECT * FROM T_VEHICULO WHERE ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";				
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
@@ -284,8 +284,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "UPDATE T_VEHICULO SET " +
-					";";
+			String query = "UPDATE T_VEHICULO SET ESTADO = '"+vehiculo.getEstado()+"', OBS = '"+vehiculo.getObs()+"' WHERE IDVEHICULO = "+vehiculo.getIdVehiculo()+";";
+					
 			filas_afectadas = stmt.executeUpdate(query);				
 			con.close();
 		} catch (Exception e) {

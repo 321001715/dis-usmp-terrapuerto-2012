@@ -337,22 +337,15 @@ public class ServletProveedor extends HttpServlet {
 			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VEHICULO)) {
 			
-			String marca = request.getParameter("marca");
-			String modelo = request.getParameter("modelo");
-			String placa = request.getParameter("placa");
-			int numPiso = Integer.parseInt(request.getParameter("numPiso"));
-			int numAsientos = Integer.parseInt(request.getParameter("numAsientos"));
+			long idVehiculo = Long.parseLong(request.getParameter("idVehiculo"));			
+			String estado = request.getParameter("estado");
 			String obs = request.getParameter("obs");
 			
 			try {
 				Vehiculo vehiculo = new Vehiculo();
-				vehiculo.setMarca(marca);
-				vehiculo.setModelo(modelo);
-				vehiculo.setPlaca(placa);
-				vehiculo.setNumPiso(numPiso);
-				vehiculo.setNumAsientos(numAsientos);
+				vehiculo.setIdVehiculo(idVehiculo);				
 				vehiculo.setObs(obs);
-				vehiculo.setEstado(obs);
+				vehiculo.setEstado(estado);
 				
 				boolean retorno = service.modificarVehiculo(vehiculo);				
 				
@@ -363,7 +356,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculos = service.listarVehiculos();
 				request.setAttribute("vehiculos", vehiculos);	
 				
-				rd = getServletContext().getRequestDispatcher("/gestion_vehiculo.jsp");
+				rd = getServletContext().getRequestDispatcher("/gestion_vehiculos.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
