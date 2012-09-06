@@ -8,7 +8,7 @@ import pe.plazanorte.sisterra.entidades.Clasificacion;
 
 public class ServiceClasificacion {
 
-	public boolean agregarProveedor(Clasificacion clasificacion) {
+	public boolean agregarClasificacion(Clasificacion clasificacion) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ClasificacionDAO clasificacionDao = mysqlFactory.getClasificacionDAO();
 		return clasificacionDao.registrarClasificacion(clasificacion);

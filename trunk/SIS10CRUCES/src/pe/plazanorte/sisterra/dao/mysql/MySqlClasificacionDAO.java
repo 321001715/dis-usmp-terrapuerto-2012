@@ -21,10 +21,10 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "INSERT INTO T_CLASIFICACION(idTipoServicio,descripcion) "
+			String sql = "INSERT INTO T_CLASIFICASION(descripcion) "
 					+ "VALUES ("
-					+ clasificacion.getId()
-					+ ", '"
+					
+					+ " '"
 					+ clasificacion.getDescripcion() + "');";
 
 			filas_afectadas = stmt.executeUpdate(sql);
@@ -46,9 +46,9 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String query = "UPDATE T_CLASIFICACION SET " + "idTipoServicio = '"
-					+ clasificacion.getId() + "', descripcion = '"
-					+ clasificacion.getDescripcion() + ";";
+			String query = "UPDATE T_CLASIFICASION SET " + "DESCRIPCION = '"
+					+ clasificacion.getDescripcion()
+					+ "' WHERE IDTIPOSERVICIO= " + clasificacion.getId() + ";";
 			filas_afectadas = stmt.executeUpdate(query);
 			con.close();
 		} catch (Exception e) {
@@ -73,47 +73,49 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_CLASIFICAION WHERE IDPROVEEDOR = '"+id+"';";			
-			ResultSet rs =	stmt.executeQuery(query);	
-					
-			if(rs.next()){		
+			String query = "SELECT * FROM T_CLASIFICASION WHERE IDTIPOSERVICIO = '"
+					+ id + "';";
+			ResultSet rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
 				nuevo = new Clasificacion();
 				nuevo.setId(rs.getLong("idTipoServicio"));
-				nuevo.setDescripcion(rs.getString("descripcion"));				
-				
+				nuevo.setDescripcion(rs.getString("descripcion"));
+
 			}
 			con.close();
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
+
 		}
 		return nuevo;
 	}
 
 	@Override
 	public Vector<Clasificacion> listarClasificaion() {
-		Vector<Clasificacion> clasificaciones = new Vector<Clasificacion>();;
+		Vector<Clasificacion> clasificaciones = new Vector<Clasificacion>();
+		;
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_CLASIFICAION;";				
+			String query = "SELECT * FROM T_CLASIFICASION;";
 			Clasificacion clasificacion = null;
-			ResultSet rs = stmt.executeQuery(query);	
-		
-			while(rs.next()){	
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
 				clasificacion = new Clasificacion();
-				
+
 				clasificacion.setId(rs.getLong("idTipoServicio"));
-				clasificacion.setDescripcion(rs.getString("descripcion"));				
-				
+				clasificacion.setDescripcion(rs.getString("descripcion"));
+
 				clasificaciones.add(clasificacion);
 			}
 			con.close();
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
+
 		}
 		return clasificaciones;
 	}
@@ -125,28 +127,33 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String query = "";
-			
-			if(descripcion.length() != 0)
-				query = "SELECT * FROM T_CLASIFICACION WHERE DESCRIPCION LIKE '"+descripcion.toUpperCase()+"%' OR DESCRIPCION LIKE '"+descripcion.toLowerCase()+"';";
+
+			if (descripcion.length() != 0)
+				query = "SELECT * FROM T_CLASIFICASION WHERE DESCRIPCION LIKE '"
+						+ descripcion.toUpperCase()
+						+ "%' OR DESCRIPCION LIKE '"
+						+ descripcion.toLowerCase() + "%';";
+
 			else
-				query = "SELECT * FROM T_CLASIFICACION ;'";
-							
-			Clasificacion clasificacion= null;
-			ResultSet rs = stmt.executeQuery(query);	
-		
-			while(rs.next()){	
-				clasificacion= new Clasificacion();
-				
+				query = "SELECT * FROM T_CLASIFICASION ;";
+
+			System.out.println(query);
+			Clasificacion clasificacion = null;
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				clasificacion = new Clasificacion();
+
 				clasificacion.setId(rs.getLong("idTipoServicio"));
-				clasificacion.setDescripcion(rs.getString("descripcion"));				
-								
+				clasificacion.setDescripcion(rs.getString("descripcion"));
+
 				clasificaciones.add(clasificacion);
 			}
 			con.close();
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
+
 		}
 		return clasificaciones;
 	}

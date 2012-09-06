@@ -61,4 +61,9 @@ public class Constantes {
 	public static final String ACCION_LISTAR_VEHICULO = "listar_vehiculo";
 	public static final String ACCION_CONSULTAR_VEHICULO = "consultar_vehiculo";
 	
+	public static final String ACCION_CONSULTAR_CLASIFICACION = "consultar_clasificacion";
+	public static final String ACCION_LISTAR_CLASIFICACION = "listar_clasificacion";
+	public static final String ACCION_REGISTRAR_CLASIFICACION  = "registrar_clasificacion";
+	public static final String ACCION_MODIFICAR_CLASIFICACION = "modificar_clasificacion";
+	public static final String ACCION_FILTRO_CLASIFICACION = "filtro_clasificacion";
 }
