@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pe.plazanorte.sisterra.entidades.Clasificacion;
-import pe.plazanorte.sisterra.entidades.Proveedor;
+
+
 import pe.plazanorte.sisterra.util.Constantes;
 
 @WebServlet("/ServletClasificacion")
@@ -30,7 +31,7 @@ public class ServletClasificacion extends HttpServlet {
 		ServiceClasificacion service = new ServiceClasificacion();
 
 		RequestDispatcher rd = null;
-		if (tipo.equalsIgnoreCase("listar")) {
+		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_CLASIFICACION)) {
 			try {
 				Vector<Clasificacion> clasificacion = new Vector<Clasificacion>();
 				clasificacion = service.listarClasificaciones();
@@ -51,19 +52,19 @@ public class ServletClasificacion extends HttpServlet {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-		} else if (tipo.equalsIgnoreCase("consultar")) {
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_CLASIFICACION)) {
 			Clasificacion clasificacion = new Clasificacion();
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			try {
 				clasificacion.setId(Integer.parseInt(request
-						.getParameter("idClasificacion")));
+						.getParameter("id")));
 				clasificacion = service.consultarClasificacion(clasificacion);
 				request.setAttribute("clasificacion", clasificacion);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
-			if (destino == Constantes.MODIFICAR_PROVEEDOR) {
+			if (destino == Constantes.MODIFICAR_CLASIFICACION) {
 				rd = getServletContext().getRequestDispatcher(
 						"/modificar_clasificacion.jsp");
 			} else if (tipo.equalsIgnoreCase("eliminar")) {
@@ -81,7 +82,7 @@ public class ServletClasificacion extends HttpServlet {
 		ServiceClasificacion service = new ServiceClasificacion();
 		RequestDispatcher rd = null;
 
-		if (tipo.equalsIgnoreCase("registrar")) {
+		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_CLASIFICACION)) {
 			String idTipoServicio = request.getParameter("idTipoServicio");
 			String descripcion = request.getParameter("descripcion");
 
@@ -90,22 +91,26 @@ public class ServletClasificacion extends HttpServlet {
 				clasificacion.setId(Long.parseLong(idTipoServicio));
 				clasificacion.setDescripcion(descripcion);
 
-				boolean retorno = service.agregarProveedor(clasificacion);
+				boolean retorno = service.agregarClasificacion(clasificacion);
 
 				if (retorno)
 					mensaje = "Clasificacion agregado con éxito.";
 				else
 					mensaje = "Error, no se pudo registrar la clasificacion.";
-
-				rd = getServletContext().getRequestDispatcher("/index.jsp");
+				
+				Vector<Clasificacion> clasificaciones= new Vector<Clasificacion>();				
+				clasificaciones= service.listarClasificaciones();
+				request.setAttribute("clasificaciones", clasificaciones);	
+				
+				rd = getServletContext().getRequestDispatcher("/mantener_clasificacion.jsp");
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
-		} else if (tipo.equalsIgnoreCase("modificar")) {
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_CLASIFICACION)) {
 
-			long id = Long.parseLong(request.getParameter("idTipoServicio"));
+			long id = Long.parseLong(request.getParameter("id"));
 			String descripcion = request.getParameter("descripcion");
 
 			try {
@@ -132,7 +137,7 @@ public class ServletClasificacion extends HttpServlet {
 			}
 
 		} else if (tipo.equalsIgnoreCase("eliminar")) {
-		} else if (tipo.equalsIgnoreCase("consultar")) {
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_CLASIFICACION)) {
 
 			Clasificacion clasificacion= new Clasificacion();
 
@@ -153,7 +158,7 @@ public class ServletClasificacion extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(tipo.equalsIgnoreCase("listar")){
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_CLASIFICACION)){
 			
 			try {								
 				Vector<Clasificacion> clasificaciones = new Vector<Clasificacion>();				
@@ -163,7 +168,7 @@ public class ServletClasificacion extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(tipo.equalsIgnoreCase("filtro")){
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_CLASIFICACION)){
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			
 			String descripcion = request.getParameter("descripcion");
@@ -175,7 +180,7 @@ public class ServletClasificacion extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			if(destino == Constantes.MANTENER_PROVEEDOR){
+			if(destino == Constantes.MANTENER_CLASIFICACION){
 				rd = getServletContext().getRequestDispatcher("/mantener_clasificacion.jsp");
 			}
 		}				
