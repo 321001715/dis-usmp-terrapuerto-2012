@@ -34,7 +34,7 @@
 
 <h2>Modificar Perfil</h2>
 
-	<%@include file="buscar_perfil.jsp" %>
+	
 	<br><hr>
 	<form action="ServletSeguridad" method="post">
 		<input type="hidden" name="tipo" value="modificarPerfil">
@@ -45,11 +45,11 @@
 			</tr>
 			<tr>
 				<td>Codigo</td>
-				<td><input type="text" name="codigo" maxlength="11" value="<%=perfil.getId() %>" readonly="readonly"></td>				
+				<td><input type="text" name="codigo"  maxlength="11" value="<%=perfil.getId() %>" readonly ></td>				
 			</tr>
 			<tr>
 				<td>Nombre</td>
-				<td><input type="text" name="nombre" maxlength="11" value="<%=perfil.getNombre() %>" readonly="readonly"></td>				
+				<td><input type="text" name="nombre" maxlength="11" value="<%=perfil.getNombre() %>" ></td>				
 			</tr>		
 			<tr>
 				<td>Descripcion</td>

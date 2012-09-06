@@ -3,11 +3,14 @@ package pe.plazanorte.sisterra.seguridad;
 import java.util.Vector;
 
 
+import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 
 import pe.plazanorte.sisterra.entidades.Perfil;
+import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 
 public class ServiceSeguridad {
 
@@ -104,5 +107,11 @@ public class ServiceSeguridad {
 		boolean resultado = seguridadDao.modificarPerfil(perfil);
 		if(resultado) return true;
 		else return false;
+	}
+	public Vector<Perfil> buscarPerfiles(String cod, String perfil) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		
+		return seguridadDao.buscarPerfiles(cod,perfil);
 	}
 }

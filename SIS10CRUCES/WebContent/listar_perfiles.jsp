@@ -26,7 +26,7 @@
 		<td><%=perfiles.get(i).getNombre() %></td>
 		<td><%=perfiles.get(i).getDescripcion() %></td>
 		
-		<td><a href="ServletSeguridad?tipo=consultar&destino=<%=Constantes.MODIFICAR_PERFIL %>&idProveedor=<%=perfiles.get(i).getId()%>">Modificar</a></td>		
+		<td><a href="ServletSeguridad?tipo=<%=Constantes.ACCION_CONSULTAR_PERFIL %>&destino=<%=Constantes.MODIFICAR_PERFIL %>&idPerfil=<%=perfiles.get(i).getId()%>">Modificar</a></td>		
 	</tr>
 	<%} %>
 </table>

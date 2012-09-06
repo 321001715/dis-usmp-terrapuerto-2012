@@ -11,6 +11,7 @@
 <h2>Mantener Perfil</h2>
 <%
 	String mensaje = (String)request.getParameter("mensaje");
+	
 %>
 <%@include file="buscar_perfil.jsp" %>
 <br>
@@ -21,5 +22,5 @@
 	<a href="registrar_perfil.jsp">Registrar Perfil</a>
 	<br><hr><br>
 	<%@include file="listar_perfiles.jsp" %>
-
+<h2><a href="index.jsp">Volver al menu principal</a></h2>
 </html>
