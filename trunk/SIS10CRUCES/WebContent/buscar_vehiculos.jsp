@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>	
-	<form action="ServletProveedor">
+	<form action="ServletProveedor" method="post">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_VEHICULO %>">
 		<input type="hidden" name="destino" value="<%=Constantes.GESTIONAR_VEHICULO%>">
 		<table>

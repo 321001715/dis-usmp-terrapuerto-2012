@@ -390,7 +390,11 @@ public class ServletProveedor extends HttpServlet {
 			}			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_VEHICULO)){
 			int destino = Integer.parseInt(request.getParameter("destino"));
-			long idVehiculo = Long.parseLong(request.getParameter("idVehiculo"));
+			long idVehiculo;
+			if(request.getParameter("idVehiculo").length() != 0)
+				idVehiculo = Long.parseLong(request.getParameter("idVehiculo"));
+			else
+				idVehiculo = 0;
 			String marca = request.getParameter("marca");
 			String modelo = request.getParameter("modelo");
 			String placa = request.getParameter("placa");
