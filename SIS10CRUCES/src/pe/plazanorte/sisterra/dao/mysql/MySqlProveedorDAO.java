@@ -307,20 +307,23 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			if(param.getIdVehiculo() != 0) {
 				query += "IDVEHICULO = "+param.getIdVehiculo();
 				flag = true;
-			} else if(param.getPlaca().length() != 0) {
+			} 
+			if(param.getPlaca().length() != 0) {
 				if(flag) query += " AND ";
 				query += "(PLACA LIKE UPPER('"+param.getPlaca()+"%') OR PLACA LIKE LOWER('"+param.getPlaca()+"%'))";
 				flag = true;
-			} else if(param.getModelo().length() != 0) {
+			} 
+			if(param.getModelo().length() != 0) {
 				if(flag) query += " AND ";
 				query += "(MODELO LIKE UPPER('"+param.getModelo()+"%') OR MODELO LIKE LOWER('"+param.getModelo()+"%'))";
 				flag = true;
-			} else if(param.getMarca().length() != 0) {
+			} 
+			if(param.getMarca().length() != 0) {
 				if(flag) query += " AND ";
 				query += "(MARCA LIKE UPPER('"+param.getMarca()+"%') OR MARCA LIKE LOWER('"+param.getMarca()+"%'))";
 			}
 			query += " AND IDPROVEEDOR = "+1+" AND ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";
-			System.out.println(query);			
+			
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
