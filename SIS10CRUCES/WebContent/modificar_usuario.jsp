@@ -1,3 +1,6 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
+<%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,11 +14,14 @@
 <%
 	Usuario usuario = (Usuario)request.getAttribute("usuario");
 	String mensaje = (String)request.getAttribute("mensaje");
+	Vector<Perfil> perfiles=new Vector<Perfil>();
+	perfiles = (Vector<Perfil>)request.getAttribute("perfiles");
+	
 %> 
 
 <h2>Modificar Usuario</h2>
 
-	<%@include file="buscar_usuario.jsp" %>
+	
 	<br><hr><br>
 	<form action="ServletSeguridad" method="post">
 		<input type="hidden" name="tipo" value="modificar">
@@ -36,18 +42,22 @@
 			</tr>
 			<tr>
 				<td>Numero de Documento</td>
-				<td><input></td>
-				<td><input type="submit" style="width: 56px;" name="txt_dni" value="<%=usuario.getDni()%>"></td>
+				<td><input name="txt_dni" value="<%=usuario.getDni()%>"></td>
+				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Perfil</td>
-				<td><select></select></td>
+				<td><select name="idTipoUsuario">
+						<% for (int i=0;i<perfiles.size();i++){ %>
+				<option value="<%=perfiles.get(i).getId() %>" <%if(usuario.getIdTipUsuario()==perfiles.get(i).getId()){ %>selected="selected" <%} %>> <%=perfiles.get(i).getNombre() %> </option>
+				<%} %>
+				</select></td>
 				<td>Estado</td>
-				<td><select name="sel_estado" type="text">
-				<option> Habilitado </option>
-				<option> Inhabilitado </option>
-				</select>
+				<td><select name="estado">						
+						<option value="<%=Constantes.ESTADO_ACTIVO%>" <%if(usuario.getEstado().equals(Constantes.ESTADO_ACTIVO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_ACTIVO%></option>
+						<option value="<%=Constantes.ESTADO_INHABILITADO%>" <%if(usuario.getEstado().equals(Constantes.ESTADO_INHABILITADO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_INHABILITADO%></option>
+					</select>	
 				</td>
 			</tr>
 			<tr>
@@ -75,7 +85,6 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><input value=Agregar type="submit"></td>
 				<td><input value="Modificar" type="submit"></td>
 				<td></td>
 				<td></td>

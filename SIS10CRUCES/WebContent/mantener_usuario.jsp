@@ -12,15 +12,15 @@
 	String mensaje = (String)request.getParameter("mensaje");
 %>
 
+<%@include file="buscar_usuario.jsp" %>
+<br>
 <% if(mensaje != null){ %>	
 		<font color="red"><%= mensaje%></font>
-		<br><br>
-<%} %>
-<a href="agregar_usuario.jsp">Registrar Usuario</a><br>
-<a href="eliminar_usuario.jsp">Eliminar Usuarior</a><br>
-<a href="modificar_usuario.jsp">Consultar Usuario</a><br>
-<a href="ServletSeguridad?tipo=listar">Listar Usuario</a><br><br><br>
- 
-<%@include file="listar_usuarios.jsp" %>
+		<br>
+<%} %>	
+	<a href="ServletSeguridad?tipo=agregarUsuario">Agregar</a>
+	<br><hr><br>
+	<%@include file="listar_usuarios.jsp" %>
+<h2><a href="index.jsp">Volver al menu principal</a></h2>
 
 </html>

@@ -73,7 +73,9 @@ public class Constantes {
 	public static final String ACCION_FILTRO_CLASIFICACION = "filtro_clasificacion";
 
 	public static final String ACCION_CONSULTAR_PERFIL = "consultar_perfil";
-
+	
+	
+	public static final String ACCION_CONSULTAR_USUARIO = "consultar_usuario";
 	
 	
 	

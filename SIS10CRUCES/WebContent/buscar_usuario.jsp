@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,11 +18,29 @@ function validar(){
 </script>
 </head>
 <body>
-<form name="buscar" action="ServletSeguridad" method="post" onsubmit="return validar()">
-	<input type="hidden" name="tipo" value="consultar">
-	Buscar <input type="text" name="idUsuario" maxlength="9">
-	<input type="submit" value="Buscar">
-</form>
+<h2>Filtros de Busqueda</h2>
+<form action="ServletSeguridad" method="post" name="buscar" onsubmit="return validar()">
+		<input type="hidden" name="tipo" value="filtroUsuario">
+		<input type="hidden" name="destino" value="<%=Constantes.MANTENER_USUARIO%>">
+		<table>
+			<tr>
+				<td>Usuario</td>
+				<td><input type="text" name="usuario"></td>
+				
+				<td>Apellido</td>
+				<td><input type="text" name="apellido"></td>
+				
+				<td rowspan="2" valign="top"><input type="submit" value="Buscar"></td>
+			</tr>
+			<tr>
+				<td>Perfil</td>
+				<td><input type="text" name="perfil"></td>
+				
+				<td>DNI</td>
+				<td><input type="text" name="dni"></td>
+			</tr>			
+		</table>
+	</form>
 
 </body>
 </html>

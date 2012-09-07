@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.Vector"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
 
 
@@ -13,6 +15,9 @@
 <![endif]-->
 </head>
 <body>
+<%
+	Vector<Perfil> perfiles = (Vector<Perfil>)request.getAttribute("perfiles");
+%>
 <div id="container">
 	<div id="header">
 		<h2>Registrar Usuario</h2>
@@ -47,11 +52,15 @@
 			</tr>
 			<tr>
 				<td>Perfil</td>
-				<td><select></select></td>
+				<td><select name="sel_perfil">
+				<% for (int i=0;i<perfiles.size();i++){ %>
+				<option value="<%=perfiles.get(i).getId() %>"> <%=perfiles.get(i).getNombre() %> </option>
+				<%} %>
+				</select></td>
 				<td>Estado</td>
 				<td><select name="sel_estado" type="text">
-				<option> Habilitado </option>
-				<option> Inhabilitado </option>
+				<option> ACTIVO </option>
+				<option> INHABILITADO </option>
 				</select>
 				</td>
 			</tr>
@@ -81,9 +90,10 @@
 			</tr>
 			<tr>
 				<td><input value="Agregar" type="submit" /></td>
+				<td><input type="reset" value="Limpiar campos" type="submit"></td>
 				
-				<td></td>
-				<td></td>
+	
+		
 			</tr>
 		</table>
 	</form>

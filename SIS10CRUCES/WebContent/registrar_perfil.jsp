@@ -9,12 +9,12 @@
 	function validar(){
 		if(document.registrar.nombre.value.length == 0){
 			alert("Debe llenar el campo Nombre.");
-			document.registrar.ruc.focus();
+			document.registrar.nombre.focus();
 			return false;
 		}
 		if(document.registrar.descripcion.value.length == 0){
 			alert("Debe llenar el campo Descripcion.");
-			document.registrar.razon_social.focus();
+			document.registrar.descripcion.focus();
 			return false;
 		}
 		
@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<td>Nombre</td>
-				<td><input type="text" name="nombre" maxlength="11"></td>				
+				<td><input type="text" name="nombre" maxlength="20"></td>				
 			</tr>
 			<tr>
 				<td>Descripcion</td>
