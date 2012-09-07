@@ -189,8 +189,8 @@ CREATE TABLE IF NOT EXISTS `t_persona` (
 
 CREATE TABLE IF NOT EXISTS `t_proveedor` (
   `idProveedor` int(11) NOT NULL AUTO_INCREMENT,
-  `codEmpre` int(11) NOT NULL,
-  `ruc` int(11) NOT NULL,
+  `codEmpre` int(11),
+  `ruc` varchar(11) NOT NULL,
   `razSocial` varchar(45) COLLATE armscii8_bin NOT NULL,
   `razCom` varchar(45) COLLATE armscii8_bin NOT NULL,
   `direccion` varchar(45) COLLATE armscii8_bin NOT NULL,
