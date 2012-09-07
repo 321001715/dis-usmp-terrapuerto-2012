@@ -17,6 +17,7 @@ public class Constantes {
 	public static final int MODIFICAR_PROVEEDOR = 4;	
 	public static final int GESTIONAR_VEHICULO = 5;
 	
+	
 	public static final int MANTENER_CLASIFICACION = 6;
 	public static final int MODIFICAR_CLASIFICACION = 6;
 	public static final int ELIMINAR_CLASIFICACION = 7;	
@@ -31,6 +32,10 @@ public class Constantes {
 	public static final int MANTENER_USUARIO = 12;
 	public static final int MODIFICAR_USUARIO = 13;
 
+	public static final int GESTIONAR_RUTA = 100;
+	
+	
+	
 	/*
 	 * PERFILES
 	 */
@@ -69,9 +74,6 @@ public class Constantes {
 
 	public static final String ACCION_CONSULTAR_PERFIL = "consultar_perfil";
 
-	
-	
-	
 	
 	
 	
