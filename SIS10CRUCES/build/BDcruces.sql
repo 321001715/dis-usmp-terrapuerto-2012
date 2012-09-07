@@ -155,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `t_pasajero` (
 CREATE TABLE IF NOT EXISTS `t_perfil` (
   `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `perfil` text COLLATE armscii8_bin NOT NULL,
+  `descripcion` varchar(45) COLLATE armscii8_bin NOT NULL,
   `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
   `usuarioUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
@@ -288,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `t_usuario` (
 
 CREATE TABLE IF NOT EXISTS `t_vehiculo` (
   `idVehiculo` int(11) NOT NULL AUTO_INCREMENT,
-  `codVehiculo` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `codVehiculo` varchar(45) COLLATE armscii8_bin,
   `placa` varchar(45) COLLATE armscii8_bin NOT NULL,
   `numPiso` int(11) NOT NULL,
   `numAsientos` int(11) NOT NULL,
