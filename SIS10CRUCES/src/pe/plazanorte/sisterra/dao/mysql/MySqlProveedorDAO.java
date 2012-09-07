@@ -8,6 +8,7 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.util.Constantes;
 
@@ -345,8 +346,43 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			e.printStackTrace();
 		}
 		return vehiculos;
-	}
+	}	
 	
 	//**************************FIN GESTIONAR VEHICULO******************************//
+	
+	
+	//**************************INICIO GESTIONAR RUTA******************************//
+	
+	@Override
+	public boolean registrarRuta(Ruta ruta) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Vector<Ruta> listarRutas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ruta consultarRuta(Ruta ruta) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean modificarRuta(Ruta ruta) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Vector<Ruta> buscarRutas(Ruta ruta) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	//**************************FIN GESTIONAR RUTA******************************//
 
 }
