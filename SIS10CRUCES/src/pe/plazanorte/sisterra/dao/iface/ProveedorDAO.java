@@ -24,10 +24,10 @@ public interface ProveedorDAO {
 	
 	
 	public boolean registrarRuta(Ruta ruta);
-	public Vector<Ruta> listarRuta();
+	public Vector<Ruta> listarRutas();
 	public Ruta consultarRuta(Ruta ruta);
 	public boolean modificarRuta(Ruta ruta);
-	public Vector<Ruta> buscarRuta(Ruta ruta);
+	public Vector<Ruta> buscarRutas(Ruta ruta);
 	
 	
 	
