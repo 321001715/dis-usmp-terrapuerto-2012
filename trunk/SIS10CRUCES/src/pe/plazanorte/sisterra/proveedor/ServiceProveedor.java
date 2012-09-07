@@ -101,7 +101,7 @@ public class ServiceProveedor {
 
 
 	
-	public Proveedor consultarRuta(Ruta ruta) {
+	public Ruta consultarRuta(Ruta ruta) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();		
 		return proveedorDao.consultarRuta(ruta);
@@ -110,7 +110,7 @@ public class ServiceProveedor {
 	public Vector<Ruta> listarRuta() {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();	
-		Vector<Proveedor> proveedores = proveedorDao.listarProveedores();
+		Vector<Ruta> rutas = proveedorDao.listarRutas();
 		
 		return rutas;
 	}
