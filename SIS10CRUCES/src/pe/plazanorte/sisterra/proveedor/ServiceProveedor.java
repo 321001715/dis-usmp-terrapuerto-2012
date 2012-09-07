@@ -122,11 +122,11 @@ public class ServiceProveedor {
 		return proveedorDao.modificarRuta(ruta);		 
 	}
 	
-	public Vector<Ruta> buscarRuta(String ruc, String razSocial) {
+	public Vector<Ruta> buscarRuta(Ruta ruta) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		return proveedorDao.buscarRutas(ruc, razSocial);
+		return proveedorDao.buscarRutas(ruta);
 	}
 	
 	
