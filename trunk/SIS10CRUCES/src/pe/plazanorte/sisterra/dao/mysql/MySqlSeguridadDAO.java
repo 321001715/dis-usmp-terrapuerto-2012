@@ -217,14 +217,20 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String query = "";
-			
-			if(cod.length() == 0)
-				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario= '"+cod+"';";
-			else if(perfil.length() == 0)
-				query = "SELECT * FROM T_PERFIL WHERE perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"');";
+			int codigo;
+			if(cod.length() != 0)
+				codigo = Integer.parseInt(cod);
 			else
-				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario = '"+cod+"%' AND (perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"');";
+				codigo = 0;
 			
+			if(codigo != 0 && perfil.length() == 0)
+				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario= "+codigo+";";
+			else if(perfil.length() != 0 && codigo == 0)
+				query = "SELECT * FROM T_PERFIL WHERE perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"%';";
+			else
+				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario = "+codigo+" AND (perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"%');";
+			
+			System.out.println(query);
 							
 			Perfil tipoperfil = null;
 			ResultSet rs = stmt.executeQuery(query);	
@@ -239,6 +245,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				perfiles.add(tipoperfil);
 			}
 			con.close();
+			System.out.println("termino el MYSQL");
 		} catch (Exception e) {			
 			e.printStackTrace();
 		} finally {

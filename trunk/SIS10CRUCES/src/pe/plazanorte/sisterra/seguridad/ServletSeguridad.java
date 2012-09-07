@@ -100,7 +100,8 @@ public class ServletSeguridad extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 					
 		String tipo = request.getParameter("tipo");
-		String mensaje = "OcurriÃ³ un error.";
+		System.out.println(tipo);
+		String mensaje = "Ocurrió un error.";
 		
 		ServiceSeguridad service = new ServiceSeguridad();
 		
@@ -318,19 +319,20 @@ public class ServletSeguridad extends HttpServlet {
 			}			
 		}else if(tipo.equalsIgnoreCase("filtroPerfil")){
 			int destino = Integer.parseInt(request.getParameter("destino"));
-			String codigo = request.getParameter("codigo");
 			String nombre = request.getParameter("nombre");
+			String codigo = request.getParameter("codigo");
+					
 			Vector<Perfil> perfiles = null;
 			try {
 				perfiles = service.buscarPerfiles(codigo,nombre);				
 				request.setAttribute("perfiles", perfiles);						
 			} catch (Exception e) {
 				e.printStackTrace();
-			
+			}
 			
 			if(destino == Constantes.MANTENER_PERFIL){
 				rd = getServletContext().getRequestDispatcher("/mantener_perfil.jsp");
-			}
+			
 			}
 		}
 	
