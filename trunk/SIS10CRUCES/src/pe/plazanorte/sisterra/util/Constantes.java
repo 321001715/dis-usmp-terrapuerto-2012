@@ -69,4 +69,17 @@ public class Constantes {
 
 	public static final String ACCION_CONSULTAR_PERFIL = "consultar_perfil";
 
+	
+	
+	
+	
+	
+	
+	public static final String ACCION_CONSULTAR_RUTA = "consultar_ruta";
+	public static final String ACCION_LISTAR_RUTA = "listar_ruta";
+	public static final String ACCION_REGISTRAR_RUTA  = "registrar_ruta";
+	public static final String ACCION_MODIFICAR_RUTA = "modificar_ruta";
+	public static final String ACCION_FILTRO_RUTA = "filtro_ruta";
+	
+	
 }
