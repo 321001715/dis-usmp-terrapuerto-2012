@@ -6,7 +6,7 @@ import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
-
+import pe.plazanorte.sisterra.entidades.Ruta;
 public class ServiceProveedor {
 
 	public boolean agregarProveedor(Proveedor proveedor) {
@@ -86,4 +86,49 @@ public class ServiceProveedor {
 		
 		return proveedorDao.buscarVehiculos(vehiculo);
 	}
+	
+	
+	
+	//*************************INICIO GESTIONAR RUTA******************************//
+	
+	
+	public boolean agregarRuta(Ruta ruta) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.registrarRuta(ruta);		
+	}
+
+
+	
+	public Proveedor consultarRuta(Ruta ruta) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();		
+		return proveedorDao.consultarRuta(ruta);
+	}
+
+	public Vector<Ruta> listarRuta() {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();	
+		Vector<Proveedor> proveedores = proveedorDao.listarProveedores();
+		
+		return rutas;
+	}
+	
+	public boolean modificarRuta(Ruta proveedor) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.modificarProveedor(ruta);		 
+	}
+	
+	public Vector<ruta> buscarRuta(String ruc, String razSocial) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.buscarProveedores(ruc, razSocial);
+	}
+	
+	
+	
 }
