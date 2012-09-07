@@ -21,4 +21,14 @@ public interface ProveedorDAO {
 	public boolean modificarVehiculo(Vehiculo vehiculo);
 	public Vector<Vehiculo> buscarVehiculos(Vehiculo vehiculo);
 	
+	
+	
+	public boolean registrarRuta(Vehiculo vehiculo);
+	public Vector<Vehiculo> listarRuta();
+	public Vehiculo consultarRuta(Vehiculo vehiculo);
+	public boolean modificarRuta(Vehiculo vehiculo);
+	public Vector<Vehiculo> buscarRuta(Vehiculo vehiculo);
+	
+	
+	
 }
