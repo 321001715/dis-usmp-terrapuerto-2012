@@ -10,6 +10,7 @@ import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.util.Constantes;
@@ -24,8 +25,8 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "INSERT INTO T_USUARIO(usuario, clave, estado, dni, nombres, apePat, apeMat) " +
-					"VALUES ("+"'"+usuario.getUsuario()+"', '"+usuario.getClave()+"', '"+usuario.getEstado()+"', '"+usuario.getDni()+"', '"+usuario.getNombres()+"', '"+usuario.getApePat()+"', '"+usuario.getApeMat()+"'"+");";
+			String sql = "INSERT INTO T_USUARIO(usuario, clave, estado, dni, nombres, apePat, apeMat,idTipUsuario) " +
+					"VALUES ("+"'"+usuario.getUsuario()+"', '"+usuario.getClave()+"', '"+usuario.getEstado()+"', '"+usuario.getDni()+"', '"+usuario.getNombres()+"', '"+usuario.getApePat()+"', '"+usuario.getApeMat()+"', '"+usuario.getIdTipUsuario()+"');";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
@@ -41,7 +42,23 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public boolean modificarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String query = "UPDATE T_USUARIO SET usuario = '"+usuario.getUsuario()+"', clave = '"+usuario.getClave()+"', nombres = '"+usuario.getNombres()+ "', apePat = '"+
+							usuario.getApePat()+"', apeMat = '"+usuario.getApeMat()+"', estado = '"+usuario.getEstado()+"', dni= "+usuario.getDni()+", idTipUsuario = "+usuario.getIdTipUsuario()+"WHERE idUsuario = "+usuario.getId()+";";
+					
+			filas_afectadas = stmt.executeUpdate(query);				
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		if(filas_afectadas == 1)
+			return true;
+		
 		return false;
 	}
 
@@ -49,8 +66,34 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	
 	@Override
 	public Usuario consultarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return usuario;
+		long id = usuario.getId();
+		Usuario nuevo = null;
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_USUARIO WHERE idUsuario = '"+id+"';";			
+			ResultSet rs =	stmt.executeQuery(query);	
+					
+			if(rs.next()){		
+				nuevo = new Usuario();
+				nuevo.setId(rs.getLong("idUsuario"));
+				nuevo.setNombres(rs.getString("nombres"));
+				nuevo.setApePat(rs.getString("apePat"));
+				nuevo.setApeMat(rs.getString("apeMat"));
+				nuevo.setUsuario(rs.getString("apeMat"));
+				nuevo.setClave(rs.getString("clave"));
+				nuevo.setIdTipUsuario(rs.getLong("idTipUsuario"));
+				nuevo.setEstado(rs.getString("estado"));
+				nuevo.setDni(rs.getLong("dni"));
+				System.out.println(nuevo.getIdTipUsuario());
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return nuevo;
 	}
 
 	@Override
@@ -145,13 +188,14 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT idUsuario, nombres, apePat, apeMat, dni, tel, sexo, estado FROM t_usuario;";
+			String query = "SELECT idUsuario, usuario, nombres, apePat, apeMat, dni, tel, sexo, estado FROM t_usuario;";
 			
 			ResultSet rs =	stmt.executeQuery(query);	
 			Usuario usuario = null;
 			while(rs.next()){
 				usuario = new Usuario();				
 				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setUsuario(rs.getString("usuario"));
 				usuario.setNombres(rs.getString("nombres"));				
 				usuario.setApePat(rs.getString("apePat"));
 				usuario.setApeMat(rs.getString("apeMat"));
@@ -253,5 +297,71 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		}
 		return perfiles;
 	}
+
+	@Override
+	public Vector<Usuario> buscarUsuarios(String user, String perfil,
+			String ape, String dni) {
+		Vector<Usuario> usuarios = new Vector<Usuario>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_USUARIO WHERE ";
+			boolean flag = false;
+			
+			int idperfil;
+			if(perfil.length() != 0)
+				idperfil = Integer.parseInt(perfil);
+			else
+				idperfil = 0;
+			
+			int dniuser;
+			if(dni.length() != 0)
+				dniuser = Integer.parseInt(dni);
+			else
+				dniuser = 0;
+			
+			if(user.length() != 0) {
+				query += "(usuario LIKE UPPER('"+user+"%') OR usuario LIKE LOWER('"+user+"%'))";
+				flag = true;
+			} 
+			if(idperfil != 0) {
+				if(flag) query += " AND ";
+				query += "idTipUsuario = "+idperfil;
+				flag = true;
+			} 
+			if(ape.length() != 0) {
+				if(flag) query += " AND ";
+				query += "(apePat LIKE UPPER('"+ape+"%') OR apePat LIKE LOWER('"+ape+"%'))";
+				flag = true;
+			} 
+			if(dniuser != 0) {
+				if(flag) query += " AND ";
+				query += "(dni LIKE UPPER('"+dniuser+"%') OR dni LIKE LOWER('"+dniuser+"%'))";
+			}
+			
+			System.out.println(query);
+			Usuario usuario = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				usuario = new Usuario();
+				
+				usuario.setId(rs.getLong("idUsuario"));
+				usuario.setUsuario(rs.getString("usuario"));
+				usuario.setIdTipUsuario(rs.getLong("idTipUsuario"));
+				usuario.setDni(rs.getLong("dni"));
+				usuario.setApePat(rs.getString("apePat"));
+				usuario.setApeMat(rs.getString("apeMat"));
+				usuario.setNombres(rs.getString("nombres"));
+				usuario.setEstado(rs.getString("estado"));
+					
+				usuarios.add(usuario);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		return usuarios;
+		}
 
 }

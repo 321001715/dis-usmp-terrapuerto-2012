@@ -47,7 +47,7 @@ public class ServletSeguridad extends HttpServlet {
 			try {
 				Vector<Usuario> usuarios = new Vector<Usuario>();				
 				usuarios = service.listarUsuarios();
-				request.setAttribute("proveedores", usuarios);	
+				request.setAttribute("usuarios", usuarios);	
 				String origen = request.getParameter("origen");
 				if(origen == null){
 					rd = getServletContext().getRequestDispatcher("/listar_usuarios.jsp");
@@ -58,7 +58,34 @@ public class ServletSeguridad extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		}else if(tipo.equalsIgnoreCase("listarPerfiles")){
+		}else if(tipo.equalsIgnoreCase("agregarUsuario")){
+			try {
+				Vector<Perfil> perfiles = new Vector<Perfil>();				
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);	
+				
+				rd = getServletContext().getRequestDispatcher("/agregar_usuario.jsp");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
+				Usuario usuario = new Usuario();	
+				int destino = Integer.parseInt(request.getParameter("destino"));			
+				try {
+					usuario.setId(Integer.parseInt(request.getParameter("idUsuario")));
+							
+					usuario = service.consultarUsuario(usuario);				
+					request.setAttribute("usuario", usuario);						
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				if(destino == Constantes.MODIFICAR_USUARIO){
+					rd = getServletContext().getRequestDispatcher("/modificar_usuario.jsp");
+				}
+			}
+		else if(tipo.equalsIgnoreCase("listarPerfiles")){
 			try {
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
 				perfiles = service.listarPerfiles();
@@ -73,8 +100,30 @@ public class ServletSeguridad extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
+				Usuario usuario = new Usuario();	
+				Vector<Perfil> perfiles = new Vector<Perfil>();	
+				perfiles = service.listarPerfiles();
+				int destino = Integer.parseInt(request.getParameter("destino"));			
+				try {
+					usuario.setId(Integer.parseInt(request.getParameter("idUsuario")));
+							
+					usuario = service.consultarUsuario(usuario);
+					
+					
+					request.setAttribute("usuario", usuario);						
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				if(destino == Constantes.MODIFICAR_USUARIO){
+					request.setAttribute("perfiles", perfiles);	
+					rd = getServletContext().getRequestDispatcher("/modificar_usuario.jsp");
+				}
+				
+			}
 			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_PERFIL)){
+		else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_PERFIL)){
 			Perfil perfil = new Perfil();	
 			int destino = Integer.parseInt(request.getParameter("destino"));			
 			try {
@@ -114,6 +163,7 @@ public class ServletSeguridad extends HttpServlet {
 			String user = request.getParameter("txt_usuario");
 			String pass = request.getParameter("txt_pass");
 			int dni = Integer.parseInt(request.getParameter("txt_dni"));
+			int perfil = Integer.parseInt(request.getParameter("sel_perfil"));
 			String estado = request.getParameter("sel_estado");
 			String nom=	request.getParameter("txt_nombre");	
 			String apepat=request.getParameter("txt_apePat");
@@ -128,6 +178,7 @@ public class ServletSeguridad extends HttpServlet {
 				usuario.setNombres(nom);
 				usuario.setApePat(apepat);	
 				usuario.setApeMat(apemat);	
+				usuario.setIdTipUsuario(perfil);
 				
 				boolean retorno = service.agregarUsuario(usuario);			
 				
@@ -145,6 +196,8 @@ public class ServletSeguridad extends HttpServlet {
 			String user = request.getParameter("txt_usuario");
 			String pass = request.getParameter("txt_pass");
 			int dni = Integer.parseInt(request.getParameter("txt_dni"));
+			int idtipo = Integer.parseInt(request.getParameter("idTipoUsuario"));
+
 			String estado = request.getParameter("sel_estado");
 			String nom=	request.getParameter("txt_nombre");	
 			String apepat=request.getParameter("txt_apePat");
@@ -158,6 +211,7 @@ public class ServletSeguridad extends HttpServlet {
 				usuario.setDni(dni);
 				usuario.setEstado(estado);
 				usuario.setNombres(nom);
+				usuario.setIdTipUsuario(idtipo);
 				usuario.setApePat(apepat);	
 				usuario.setApeMat(apemat);				
 				
@@ -219,6 +273,26 @@ public class ServletSeguridad extends HttpServlet {
 			} catch (Exception e) {
 				
 			}			
+		}else if(tipo.equalsIgnoreCase("filtroUsuario")){
+			int destino = Integer.parseInt(request.getParameter("destino"));
+			String usuario = request.getParameter("usuario");
+			String apellido = request.getParameter("apellido");
+			String perfil = request.getParameter("perfil");
+			String dni = request.getParameter("dni");
+			
+			Vector<Usuario> usuarios = null;
+			try {
+				usuarios = service.buscarUsuarios(usuario, perfil, apellido, dni);				
+				request.setAttribute("usuarios", usuarios);						
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if(destino == Constantes.MANTENER_USUARIO){
+				rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
+			
+			}
+			
 		}
 		
 		//*****************************INICIO MANTENER PERFIL*****************************//
@@ -238,7 +312,12 @@ public class ServletSeguridad extends HttpServlet {
 				if(retorno) mensaje = "Perfil agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el perfil.";	
 				
-				rd = getServletContext().getRequestDispatcher("/index.jsp");
+				Vector<Perfil> perfiles = new Vector<Perfil>();				
+				perfiles = service.listarPerfiles();
+				
+				
+				request.setAttribute("perfiles", perfiles);
+				rd = getServletContext().getRequestDispatcher("/mantener_perfil.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();

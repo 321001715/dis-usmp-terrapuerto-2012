@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Proveedor"%>
 <%@page import="java.util.Vector"%>
@@ -11,37 +12,32 @@
 </head>
 <body>
 <%
-	Vector<Usuario> usuarios = (Vector<Usuario>)request.getAttribute("proveedores");
-%>
+	Vector<Usuario> usuarios = (Vector<Usuario>)request.getAttribute("usuarios");
+%> 
 
 <%
 	if(usuarios.size() != 0){
 %>
 <table border="1" cellspacing="0" cellpadding="0">
 					<tr>
-						<th>Nombres</th>
+						<th>Usuario</th>
 						<th>ApellidoPaterno</th>
 						<th>ApellidoMaterno</th>
 						<th>DNI</th>
-						<th>Telefono</th>
-						<th>Sexo</th>
 						<th>Estado</th>
 						<!-- CORREGIR ESTA WEBADA -->
 						<th colspan="2">Acciones</th>
 					</tr>
 					<%	for (int i = 0; i < usuarios.size(); i++) {	%>
 					<tr>
-						<td><%=usuarios.get(i).getNombres()%></td>
+						<td><%=usuarios.get(i).getUsuario()%></td>
 						<td><%=usuarios.get(i).getApePat()%></td>
 						<td><%=usuarios.get(i).getApeMat()%></td>
 						<td><%=usuarios.get(i).getDni()%></td>
-						<td><%=usuarios.get(i).getTel()%></td>
-						<td><%=usuarios.get(i).getSexo()%></td>
 						<td><%=usuarios.get(i).getEstado()%></td>
-						<td><a href="Usuarios?origen=modificar_usuario&id=<%=usuarios.get(i).getId()%>">[Modificar]</a>
+						<td><a href="ServletSeguridad?tipo=<%=Constantes.ACCION_CONSULTAR_USUARIO %>&destino=<%=Constantes.MODIFICAR_USUARIO %>&idUsuario=<%=usuarios.get(i).getId()%>">[Modificar]</a>
 						</td>
-						<td><a href="Eliminar?usu=<%=usuarios.get(i).getId()%>&origen=gestion_usuarios">[Eliminar]</a>
-						</td>
+						
 					</tr>
 					<%	}	%>
 

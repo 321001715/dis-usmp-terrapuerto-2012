@@ -61,6 +61,12 @@ public class ServiceSeguridad {
 		if(resultado) return true;
 		else return false;
 	}
+	public Vector<Usuario> buscarUsuarios(String user, String perfil,String ape,String dni) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		
+		return seguridadDao.buscarUsuarios(user, perfil, ape, dni);
+	}
 	public boolean agregarPerfil(Perfil perfil) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
