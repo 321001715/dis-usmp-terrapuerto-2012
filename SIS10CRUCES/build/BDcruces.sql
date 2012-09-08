@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `t_persona` (
   `direccion` varchar(45) NOT NULL,
   `sexo` varchar(1) NOT NULL,
   `tel` int(11) NOT NULL,
-  `estado` varchar(1) NOT NULL,
+  `estado` varchar(20) NOT NULL,
   PRIMARY KEY (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `t_proveedor` (
   `tel` int(11) NOT NULL,
   `usuario` varchar(45) COLLATE armscii8_bin NOT NULL,
   `clave` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `estado` varchar(1) COLLATE armscii8_bin NOT NULL,
+  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
   PRIMARY KEY (`idProveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `t_reserva` (
   `idReserva` int(11) NOT NULL AUTO_INCREMENT,
   `idUsuario1` int(11) NOT NULL,
   `fecha` date NOT NULL,
-  `estado` varchar(1) COLLATE armscii8_bin NOT NULL,
+  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
   `userInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
   `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
@@ -249,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `t_ruta` (
   `destino` text COLLATE armscii8_bin NOT NULL,
   `km` int(11) NOT NULL,
   `duracion` int(11) NOT NULL,
-  `estado` text COLLATE armscii8_bin NOT NULL,
+  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
   `idProveedor` int(11) NOT NULL,
   `idCiudad` int(11) NOT NULL,
   PRIMARY KEY (`idRuta`),
@@ -317,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `t_viaje` (
   `horSalida` date NOT NULL,
   `horLlegada` date NOT NULL,
   `precio` int(11) NOT NULL,
-  `estado` text COLLATE armscii8_bin NOT NULL,
+  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
   `idRuta` int(11) NOT NULL,
   `servicio` varchar(45) COLLATE armscii8_bin NOT NULL,
   `idChofer` int(11) NOT NULL,
