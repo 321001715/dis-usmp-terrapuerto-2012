@@ -34,7 +34,7 @@
 				<td colspan="2"><h3>Datos de clasificacion</h3></td>					
 			</tr>
 			<tr>
-				<td>Codigo de Clasificacion</td>
+				<td>Codigo de Clasificaci&oacute;n</td>
 				<td><input type="text" name="idTipoServicio" maxlength="11"></td>				
 			</tr>
 			<tr>

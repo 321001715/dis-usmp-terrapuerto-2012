@@ -29,7 +29,7 @@
 		<table>
 			<tr>
 				<td>Código de vehículo</td>
-				<td><input type="text" name="idVehiculo"></td>
+				<td><input type="text" name="idVehiculo" d></td>
 				
 				<td>Modelo</td>
 				<td><input type="text" name="modelo"></td>
