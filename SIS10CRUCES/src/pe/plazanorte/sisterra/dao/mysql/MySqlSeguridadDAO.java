@@ -326,7 +326,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			} 
 			if(idperfil != 0) {
 				if(flag) query += " AND ";
-				query += "idTipUsuario = "+idperfil;
+				query += "idPerfil = "+idperfil;
 				flag = true;
 			} 
 			if(ape.length() != 0) {
@@ -348,7 +348,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				
 				usuario.setId(rs.getLong("idUsuario"));
 				usuario.setUsuario(rs.getString("usuario"));
-				usuario.setIdTipUsuario(rs.getLong("idTipUsuario"));
+				usuario.setIdTipUsuario(rs.getLong("idPerfil"));
 				usuario.setDni(rs.getLong("dni"));
 				usuario.setApePat(rs.getString("apePat"));
 				usuario.setApeMat(rs.getString("apeMat"));
