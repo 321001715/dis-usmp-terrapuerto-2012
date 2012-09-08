@@ -12,7 +12,7 @@
 <h2>Registro de Ruta</h2>
 
 <form action="ServletProveedor" method="post">
-	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_VEHICULO %>">
+	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_RUTA %>">
 		<table cellpadding="5px">
 			<tr>
 				<td><b>Detalle Ruta</b></td>
@@ -22,34 +22,29 @@
 			</tr>
 			<tr>
 				<td>Codigo de Ruta</td>
-				<td><input type="text" name="marca"></td>
+				<td><input type="text" name="codRuta"></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Nombre Ruta</td>
-				<td><input type="text" name="modelo"></td>
+				<td><input type="text" name="nomRuta"></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Origen</td>
-				<td><input type="text" name="placa"></td>
+				<td><input type="text" name="origen"></td>
 				<td>Destino</td>
-				<td><input></td>
+				<td><input type="text" name="destino"></td>
 			</tr>
 			<tr>
 				<td>Km</td>
-				<td><input type="text" name="numPiso"></td>
+				<td><input type="text" name="km"></td>
 				<td>Duracion</td>
-				<td><input>Hrs</td>
+				<td><input  type="text" name="duracion">Hrs</td>
 			</tr>
-			<tr>
-				<td>N&uacute;mero de asientos</td>
-				<td><input type="text" name="numAsientos"></td>
-				<td></td>
-				<td></td>
-			</tr>
+			
 			<tr>
 				<td><b>Detalle de Cuenta</b></td>
 				<td></td>
@@ -64,7 +59,7 @@
 			</tr>
 		
 			<tr>
-				<td><input type="submit" value="Registrar vehículo"></td>
+				<td><input type="submit" value="Registrar ruta"></td>
 				<td></td>
 				<td></td>
 				<td></td>
