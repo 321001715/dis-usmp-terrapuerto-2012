@@ -16,6 +16,6 @@
 	<br><hr><br>
 	
 	<%@include file="listar_vehiculos.jsp" %>
-
+	<br><a href="index.jsp">Volver al men&uacute; principal</a>
 </body>
 </html>
