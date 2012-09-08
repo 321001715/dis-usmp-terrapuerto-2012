@@ -355,7 +355,25 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	
 	@Override
 	public boolean registrarRuta(Ruta ruta) {
-		// TODO Auto-generated method stub
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String sql = "INSERT INTO `bdcruces`.`t_ruta` ( `nomRuta`," +
+					" `origen`, `destino`, `km`, `duracion`, `estado`, `idProveedor`, `idCiudad`)" +
+					" VALUES ('"+ruta.getNomRuta()+"', '"+ruta.getOrigen()+"', "+ruta.getDestino()+"," +
+							" "+ruta.getKm()+", '"+ruta.getDuracion()+"', '"+Constantes.ESTADO_ACTIVO+"', "+1+", "+1+");";
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		if(filas_afectadas == 1)
+			return true;
+		
 		return false;
 	}
 
