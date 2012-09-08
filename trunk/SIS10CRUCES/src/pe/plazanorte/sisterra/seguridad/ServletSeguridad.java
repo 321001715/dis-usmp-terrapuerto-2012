@@ -185,7 +185,7 @@ public class ServletSeguridad extends HttpServlet {
 				if(retorno) mensaje = "Usuario agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el usuario.";	
 				
-				rd = getServletContext().getRequestDispatcher("/login.jsp");
+				rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
