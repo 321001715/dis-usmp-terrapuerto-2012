@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>PRUEBA</title>
+<title>Gestionar proveedor</title>
 </head>
 <body>
 <h2>Mantener proveedor</h2>
@@ -21,5 +21,6 @@
 	<a href="registrar_proveedor.jsp">Registrar Proveedor</a>
 	<br><hr><br>
 	<%@include file="listar_proveedores.jsp" %>
-
+<br>
+<a href="index.jsp">Volver al Men&uacute; principal</a>
 </html>
