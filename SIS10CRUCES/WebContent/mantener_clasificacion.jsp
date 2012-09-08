@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Clasificacion</title>
+<title>Gestionar Clasificación</title>
 </head>
 <body>
-<h2>Mantener clasificacion</h2>
+<h2>Mantener clasificaci&oacute;n</h2>
 <%
 	String mensaje = (String)request.getParameter("mensaje");
 %>

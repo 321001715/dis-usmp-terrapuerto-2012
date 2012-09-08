@@ -11,12 +11,12 @@
 
 	<h2>Men&uacute; principal</h2>
 		<ul>
-            <li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">Gestion de Usuarios</a></li>
-			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_PROVEEDOR %>&destino=<%=Constantes.MANTENER_PROVEEDOR%>">Gestion de Proveedores</a></li>
-			<li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listarPerfiles&origen=<%=Constantes.MENU_PRINCIPAL%>">Gestion de Perfiles</a></li>
-			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gestion de Veh&iacute;culos</a></li>
-			<li><a href="<%=application.getContextPath() %>/ServletClasificacion?tipo=<%=Constantes.ACCION_LISTAR_CLASIFICACION %>&destino=<%=Constantes.MANTENER_CLASIFICACION%>">Gestion de Clasificación</a></li>
-            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gestion de Ruta</a></li>
+            <li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">Gesti&oacute;n de Usuarios</a></li>
+			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_PROVEEDOR %>&destino=<%=Constantes.MANTENER_PROVEEDOR%>">Gesti&oacute;n de Proveedores</a></li>
+			<li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listarPerfiles&origen=<%=Constantes.MENU_PRINCIPAL%>">Gesti&oacute;n de Perfiles</a></li>
+			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gesti&oacute;n de Veh&iacute;culos</a></li>
+			<li><a href="<%=application.getContextPath() %>/ServletClasificacion?tipo=<%=Constantes.ACCION_LISTAR_CLASIFICACION %>&destino=<%=Constantes.MANTENER_CLASIFICACION%>">Gesti&oacute;n de Clasificación</a></li>
+            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gesti&oacute;n de Rutas</a></li>
         </ul>
 </body>
 </html>

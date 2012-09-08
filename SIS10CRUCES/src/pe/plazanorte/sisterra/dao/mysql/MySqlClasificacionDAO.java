@@ -132,7 +132,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			else
 				query = "SELECT * FROM T_CLASIFICASION ;";
 
-			System.out.println(query);
+			
 			Clasificacion clasificacion = null;
 			ResultSet rs = stmt.executeQuery(query);
 
