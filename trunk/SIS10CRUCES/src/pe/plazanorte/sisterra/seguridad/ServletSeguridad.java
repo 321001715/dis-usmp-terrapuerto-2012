@@ -69,22 +69,7 @@ public class ServletSeguridad extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
-				Usuario usuario = new Usuario();	
-				int destino = Integer.parseInt(request.getParameter("destino"));			
-				try {
-					usuario.setId(Integer.parseInt(request.getParameter("idUsuario")));
-							
-					usuario = service.consultarUsuario(usuario);				
-					request.setAttribute("usuario", usuario);						
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-				if(destino == Constantes.MODIFICAR_USUARIO){
-					rd = getServletContext().getRequestDispatcher("/modificar_usuario.jsp");
-				}
-			}
+		}
 		else if(tipo.equalsIgnoreCase("listarPerfiles")){
 			try {
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
@@ -103,21 +88,22 @@ public class ServletSeguridad extends HttpServlet {
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
 				Usuario usuario = new Usuario();	
 				Vector<Perfil> perfiles = new Vector<Perfil>();	
-				perfiles = service.listarPerfiles();
+				
 				int destino = Integer.parseInt(request.getParameter("destino"));			
 				try {
 					usuario.setId(Integer.parseInt(request.getParameter("idUsuario")));
 							
 					usuario = service.consultarUsuario(usuario);
+					perfiles = service.listarPerfiles();
 					
-					
+					request.setAttribute("perfiles", perfiles);	
 					request.setAttribute("usuario", usuario);						
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				
 				if(destino == Constantes.MODIFICAR_USUARIO){
-					request.setAttribute("perfiles", perfiles);	
+					
 					rd = getServletContext().getRequestDispatcher("/modificar_usuario.jsp");
 				}
 				
@@ -197,7 +183,7 @@ public class ServletSeguridad extends HttpServlet {
 			String pass = request.getParameter("txt_pass");
 			int dni = Integer.parseInt(request.getParameter("txt_dni"));
 			int idtipo = Integer.parseInt(request.getParameter("idTipoUsuario"));
-
+			int id=Integer.parseInt(request.getParameter("id"));
 			String estado = request.getParameter("sel_estado");
 			String nom=	request.getParameter("txt_nombre");	
 			String apepat=request.getParameter("txt_apePat");
@@ -205,7 +191,7 @@ public class ServletSeguridad extends HttpServlet {
 			
 			try {
 				Usuario usuario=new Usuario();
-				
+				usuario.setId(id);
 				usuario.setUsuario(user);
 				usuario.setClave(pass);
 				usuario.setDni(dni);

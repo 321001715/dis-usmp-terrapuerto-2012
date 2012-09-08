@@ -32,7 +32,8 @@
 				
 				<td></td>
 				<td></td>
-				<td></td>
+				<td><input type="hidden" name="id" value="<%=usuario.getId() %>">
+				</td>
 			</tr>
 			<tr>
 				<td>Usuario:</td>
