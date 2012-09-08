@@ -45,18 +45,6 @@
 				<td><input  type="text" name="duracion">Hrs</td>
 			</tr>
 			
-			<tr>
-				<td><b>Detalle de Cuenta</b></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Estado</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
 		
 			<tr>
 				<td><input type="submit" value="Registrar ruta"></td>
