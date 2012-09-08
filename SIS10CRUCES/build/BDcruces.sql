@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `t_ciudad` (
 
 CREATE TABLE IF NOT EXISTS `t_clasificasion` (
   `idClasificasion` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `nombre` varchar(45) COLLATE armscii8_bin,
   `descripcion` varchar(30) COLLATE armscii8_bin NOT NULL,
   `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
@@ -272,10 +272,10 @@ CREATE TABLE IF NOT EXISTS `t_usuario` (
   `nombres` varchar(45) COLLATE armscii8_bin NOT NULL,
   `apePat` varchar(45) COLLATE armscii8_bin NOT NULL,
   `apeMat` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `idCiudad` int(11) NOT NULL,
-  `direccion` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `sexo` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `tel` int(11) NOT NULL,
+  `idCiudad` int(11),
+  `direccion` varchar(45) COLLATE armscii8_bin,
+  `sexo` varchar(45) COLLATE armscii8_bin,
+  `tel` int(11),
   `idPerfil` int(11) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   KEY `fk_t_usuario_t_tipousuario1_idx` (`idPerfil`)
