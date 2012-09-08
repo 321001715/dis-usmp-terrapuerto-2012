@@ -8,8 +8,6 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.ClasificacionDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Clasificacion;
-import pe.plazanorte.sisterra.entidades.Proveedor;
-import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlClasificacionDAO implements ClasificacionDAO {
 
@@ -22,10 +20,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Statement stmt = con.createStatement();
 
 			String sql = "INSERT INTO T_CLASIFICASION(descripcion) "
-					+ "VALUES ("
-					
-					+ " '"
-					+ clasificacion.getDescripcion() + "');";
+					+ "VALUES ('"+clasificacion.getDescripcion()+"');";
 
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
@@ -48,7 +43,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 
 			String query = "UPDATE T_CLASIFICASION SET " + "DESCRIPCION = '"
 					+ clasificacion.getDescripcion()
-					+ "' WHERE IDTIPOSERVICIO= " + clasificacion.getId() + ";";
+					+ "' WHERE idClasificasion= " + clasificacion.getId() + ";";
 			filas_afectadas = stmt.executeUpdate(query);
 			con.close();
 		} catch (Exception e) {
@@ -73,13 +68,13 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_CLASIFICASION WHERE IDTIPOSERVICIO = '"
+			String query = "SELECT * FROM T_CLASIFICASION WHERE idClasificasion = '"
 					+ id + "';";
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
 				nuevo = new Clasificacion();
-				nuevo.setId(rs.getLong("idTipoServicio"));
+				nuevo.setId(rs.getLong("idClasificasion"));
 				nuevo.setDescripcion(rs.getString("descripcion"));
 
 			}
@@ -95,7 +90,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 	@Override
 	public Vector<Clasificacion> listarClasificaion() {
 		Vector<Clasificacion> clasificaciones = new Vector<Clasificacion>();
-		;
+
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
@@ -106,7 +101,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			while (rs.next()) {
 				clasificacion = new Clasificacion();
 
-				clasificacion.setId(rs.getLong("idTipoServicio"));
+				clasificacion.setId(rs.getLong("idClasificasion"));
 				clasificacion.setDescripcion(rs.getString("descripcion"));
 
 				clasificaciones.add(clasificacion);
@@ -144,7 +139,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			while (rs.next()) {
 				clasificacion = new Clasificacion();
 
-				clasificacion.setId(rs.getLong("idTipoServicio"));
+				clasificacion.setId(rs.getLong("idClasificasion"));
 				clasificacion.setDescripcion(rs.getString("descripcion"));
 
 				clasificaciones.add(clasificacion);
