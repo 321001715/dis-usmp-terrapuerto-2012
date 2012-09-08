@@ -171,6 +171,9 @@ public class ServletSeguridad extends HttpServlet {
 				if(retorno) mensaje = "Usuario agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el usuario.";	
 				
+				Vector<Usuario> usuarios = new Vector<Usuario>();				
+				usuarios = service.listarUsuarios();
+				request.setAttribute("usuarios", usuarios);	
 				rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
 				
 			} catch (Exception e) {
@@ -184,7 +187,7 @@ public class ServletSeguridad extends HttpServlet {
 			int dni = Integer.parseInt(request.getParameter("txt_dni"));
 			int idtipo = Integer.parseInt(request.getParameter("idTipoUsuario"));
 			int id=Integer.parseInt(request.getParameter("id"));
-			String estado = request.getParameter("sel_estado");
+			String estado = request.getParameter("estado");
 			String nom=	request.getParameter("txt_nombre");	
 			String apepat=request.getParameter("txt_apePat");
 			String apemat=request.getParameter("txt_apeMat");		
