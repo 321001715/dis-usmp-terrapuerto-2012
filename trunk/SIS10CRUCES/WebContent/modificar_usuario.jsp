@@ -56,8 +56,8 @@
 				</select></td>
 				<td>Estado</td>
 				<td><select name="estado">						
-						<option value="<%=Constantes.ESTADO_ACTIVO%>" <%if(usuario.getEstado().equals(Constantes.ESTADO_ACTIVO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_ACTIVO%></option>
-						<option value="<%=Constantes.ESTADO_INHABILITADO%>" <%if(usuario.getEstado().equals(Constantes.ESTADO_INHABILITADO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_INHABILITADO%></option>
+						<option value="ACTIVO" <%if(usuario.getEstado().equals("ACTIVO")){ %>selected="selected" <%} %>>ACTIVO</option>
+						<option value="INHABILITADO" <%if(usuario.getEstado().equals("INHABILITADO")){ %>selected="selected" <%} %>>INHABILITADO</option>
 					</select>	
 				</td>
 			</tr>
