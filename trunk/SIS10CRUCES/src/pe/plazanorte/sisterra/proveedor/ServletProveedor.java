@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.util.Constantes;
 
@@ -430,39 +431,38 @@ public class ServletProveedor extends HttpServlet {
 		//*****************************FIN GESTIONAR VEHICULO*****************************//
 
 		
-		//*****************************FIN GESTIONAR RUTA*****************************//
+		//*****************************INICIO GESTIONAR RUTA*****************************//
 		
 		
-           if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_RUTA)) {
+           if(tipo.equalsIgnoreCase("ruta")) {
 			
-			String ruc = request.getParameter("ruc");
-			String razonSocial = request.getParameter("razon_social");
-			String razonComercial = request.getParameter("razon_comercial");
-			int telefono = Integer.parseInt(request.getParameter("telefono"));
-			String direccion = request.getParameter("direccion");		
-			String usuario = request.getParameter("usuario");
-			String clave = request.getParameter("clave");
-			
+			int codRuta = Integer.parseInt(request.getParameter("codRuta"));
+			String nomRuta = request.getParameter("nomRuta");
+			String origen = request.getParameter("origen");
+			String destino = request.getParameter("destino");
+			int km = Integer.parseInt(request.getParameter("km"));		
+			int duracion = Integer.parseInt(request.getParameter("duracion"));
+				
 			try {
-				Proveedor proveedor = new Proveedor();
-				proveedor.setRuc(ruc);	
-				proveedor.setRazonSocial(razonSocial);
-				proveedor.setRazCom(razonComercial);
-				proveedor.setTel(telefono);
-				proveedor.setDireccion(direccion);
-				proveedor.setUsuario(usuario);
-				proveedor.setClave(clave);
+				Ruta ruta = new Ruta();
+				ruta.setCodRuta(codRuta);	
+				ruta.setNomRuta(nomRuta);
+				ruta.setOrigen(origen);
+				ruta.setDestino(destino);
+				ruta.setKm(km);
+				ruta.setDuracion(duracion);
 				
-				boolean retorno = service.agregarProveedor(proveedor);				
 				
-				if(retorno) mensaje = "Proveedor agregado con éxito.";
-				else mensaje = "Error, no se pudo registrar el proveedor.";
+				boolean retorno = service.registrarRuta(ruta);				
 				
-				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
-				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);	
+				if(retorno) mensaje = "Ruta registrada con exito";
+				else mensaje = "Error, no se pudo registrar la ruta.";
 				
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+				Vector<Ruta> ruta1 = new Vector<Ruta>();				
+				ruta1 = service.listarRuta();
+				request.setAttribute("ruta", ruta1);	
+				
+				rd = getServletContext().getRequestDispatcher("/registrarRuta.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
