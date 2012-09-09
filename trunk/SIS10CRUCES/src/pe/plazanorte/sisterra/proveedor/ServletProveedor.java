@@ -434,7 +434,7 @@ public class ServletProveedor extends HttpServlet {
 		//*****************************INICIO GESTIONAR RUTA*****************************//
 		
 		
-           if(tipo.equalsIgnoreCase("ruta")) {
+           if(tipo.equalsIgnoreCase("registrarRuta")) {
 			
 			int codRuta = Integer.parseInt(request.getParameter("codRuta"));
 			String nomRuta = request.getParameter("nomRuta");
@@ -468,44 +468,25 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_RUTA)) {
-			
-			long codigo = Long.parseLong(request.getParameter("codigo"));
-			String ruc = request.getParameter("ruc");
-			String razonSocial = request.getParameter("razon_social");
-			String razonComercial = request.getParameter("razon_comercial");
-			int telefono = Integer.parseInt(request.getParameter("telefono"));
-			String estado = request.getParameter("estado");
-			String direccion = request.getParameter("direccion");	
-			String usuario = request.getParameter("usuario");
-			String clave = request.getParameter("clave");
+		}else if(tipo.equalsIgnoreCase("listar_ruta")) {
 			
 			try {
-				Proveedor proveedor = new Proveedor();
-				proveedor.setIdProveedor(codigo);
-				proveedor.setRuc(ruc);	
-				proveedor.setRazonSocial(razonSocial);
-				proveedor.setRazCom(razonComercial);
-				proveedor.setEstado(estado);
-				proveedor.setTel(telefono);
-				proveedor.setDireccion(direccion);	
-				proveedor.setUsuario(usuario);
-				proveedor.setClave(clave);
+				Vector<Ruta> ruta = new Vector<Ruta>();				
+				ruta = service.listarRuta();
+				request.setAttribute("ruta", ruta);	
+				String destino = request.getParameter("destino");
+				if(destino == null){
+					rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");
+				}else if(Integer.parseInt(destino) == Constantes.GESTIONAR_RUTA){					
+					rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+				}else if(Integer.parseInt(destino) == Constantes.ELIMINAR_PROVEEDOR){
+					rd = getServletContext().getRequestDispatcher("/eliminar_proveedor.jsp");
+				}
 				
-				boolean retorno = service.modificarProveedor(proveedor);				
-				
-				if(retorno) mensaje = "Proveedor modificado con éxito.";
-				else mensaje = "Error, no se pudo modificar el proveedor.";	
-				
-				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
-				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);	
-				
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-				
+				request.setAttribute("ruta", ruta);	
 			} catch (Exception e) {
 				e.printStackTrace();
-			}			
+			}	
 			
 		}else if(tipo.equalsIgnoreCase("eliminar")) {
 			
