@@ -47,11 +47,11 @@ function validateNUM( field, field2 )
 <body bgcolor="#114E7A" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="setfocus()">
 <%
 	Vector<TipoUsuario> tUsuario= (Vector<TipoUsuario>)application.getAttribute("tipoUsuarios");
-System.out.println("Query:"+tUsuario);
+
 
 %>
 
-<form name="logeo" method = "POST" action = "<%=request.getContextPath()%>/servlet/pe.plazanorte.sisterra.seguridad.Login" onsubmit = "return validateNUM(this.usuario.value,this.password)">
+<form name="logeo" method = "POST" action = "loginPrueba" onsubmit = "return validateNUM(this.usuario.value,this.password)">
 <div align="center">
 <center>
  <img src="<%=request.getContextPath()%>/images/ImagenPresentacion.gif" width="369" height="347">
