@@ -53,12 +53,12 @@ function validateNUM( field, field2 )
 
 <form name="logeo" method = "POST" action = "loginPrueba" onsubmit = "return validateNUM(this.usuario.value,this.password)">
 <div align="center">
-<center>
 
- <img src="images/login.JPG" width="360" height="123" />
- <table width="610" height="428" cellpadding="0" cellspacing="0">
+
+
+ <table >
  <tr>
-  <td width="370" height="350" rowspan="7">&nbsp;</td>
+  <td width="370" height="350" rowspan="7">&nbsp;</td> <img src="images/login.JPG" width="360" height="123" />
   <td width="40" height="350" rowspan="7"></td>
   <td width="200" height="150" colspan="2"></td>
  </tr>
@@ -84,7 +84,6 @@ function validateNUM( field, field2 )
   <td align="center"><input type="password" name="password" maxlength="10" size="10" class="contenido"></td>
  </tr>
  <tr>
-  <!--td height="30"></td--> 
   <td  height="30" colspan="2" align="center">
    <select name="esc" class="contenido">
    
@@ -103,7 +102,7 @@ function validateNUM( field, field2 )
  </tr>	
  <tr>
   <td height="20" colspan="2" align="center">
-   <input border="0" src="<%=request.getContextPath()%>/images/entrar.gif" name="I1" width="80" height="20" type="image"></td>
+   <input  src="<%=request.getContextPath()%>/images/entrar.gif" name="I1" width="80" height="20" type="image"></td>
  </tr>
  <tr>
   <td height="30" colspan="2" class="presentacion">
@@ -113,10 +112,10 @@ function validateNUM( field, field2 )
   <td colspan="2" height="60"></td>
  </tr>
  <tr>
-  <td colspan="4" height="30"><img src="<%=request.getContextPath()%>/images/pie1.gif"></td>
+ <!--  <td colspan="4" height="30"><img src="<%=request.getContextPath()%>/images/pie1.gif"></td> -->
  </tr>
  </table>
- </center>
+ 
  </div>
 </form>
 </body>
