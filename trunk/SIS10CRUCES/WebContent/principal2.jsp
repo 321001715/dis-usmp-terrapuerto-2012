@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=windows-1252"%>
 <%@page import="pe.plazanorte.sisterra.entidades.*" %>
 
-<%-- inicio de apertura de mensje 2011/08/29 --%>
 <script language="JavaScript">
 
   </script>
@@ -27,11 +26,28 @@ if (history.forward(1))
 
 <% Usuario uu = (Usuario)session.getAttribute("BUsuario"); %>
 <%--body bgcolor="#630000" modificado por la sgte linea 2011/08/29--%>
-<body bgcolor="#114E7A" > 
-<form action="" method="post" name="menPrin"  onsubmit="return redirect();">
+<body bgcolor="#FFCC00"> 
+<form action="" method="post" name="menPrin" onsubmit="return redirect();">
 <div align="center">
-  <center>
-    <table border="0" width="600" height="320" bgcolor="#114E7A" cellpadding="0" cellspacing="0">
+  <table border="2" style="width: 100%">
+  	<tr>
+  		<td colspan = 3>
+  			Bienvenido al nuevo portal que les ofrece el Terminal Terrestre Plaza Norte
+  		</td>
+  	</tr>
+  	<tr align="center">
+  		<td>
+  			Módulo de Proveedor
+  		</td>
+  		<td>
+  			Módulo de Ventas
+  		</td>
+  		<td>
+  			Módulo de Seguridad
+  		</td>
+  	</tr>
+  </table>
+    <table border="2" width="600" height="320" bgcolor="#114E7A" cellpadding="0" cellspacing="0">
       <tr> 
         <td width="430" height="300" rowspan="12" bgcolor="#666666">
 		 <div align="center"> 
@@ -45,7 +61,7 @@ if (history.forward(1))
                 </tr>
                 <tr> 
                   <td width="60" height="230"></td>
-                  <td width="145" height="230" align="justify"><font size="1" face="Arial">Bienvenido al nuevo portal que les ofrece el terrapuerto de plaza norte
+                  <td width="145" height="230" align="justify"><font size="1" face="Arial">
 					</font></td>
                   <td width="155" height="230" align="center">&nbsp;</td>
                   <td width="60" height="230"></td>
