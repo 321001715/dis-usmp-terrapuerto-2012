@@ -73,7 +73,7 @@ if (history.forward(1))
 		<!--input  style="background-color:#630000 ; color:#FFFFFF; border:0px #630000 solid; cursor:hand" 
 		        type="submit" value="Gestión Académica" name="gestion" onclick="document.menPrin.opcion.value='G';"-->
 		<font size="2" face="Arial">
-		<a href="<%=request.getContextPath()%>/servlet/GestionAcademica.servlets.GesAcaS" target="_self" class = "menu2">Gestion Interna</a></font>
+		<a href="<%=request.getContextPath()%>/index.jsp" target="_self" class = "menu2">Gestion Interna</a></font>
 	  </td>
       </tr>
       <tr> 

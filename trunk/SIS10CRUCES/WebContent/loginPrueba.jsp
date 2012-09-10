@@ -54,7 +54,8 @@ function validateNUM( field, field2 )
 <form name="logeo" method = "POST" action = "loginPrueba" onsubmit = "return validateNUM(this.usuario.value,this.password)">
 <div align="center">
 <center>
- <img src="<%=request.getContextPath()%>/images/ImagenPresentacion.gif" width="369" height="347">
+
+ <img src="images/login.JGP" width="369" height="347"/>
  <table width="610" height="428" cellpadding="0" cellspacing="0">
  <tr>
   <td width="370" height="350" rowspan="7">&nbsp;</td>
