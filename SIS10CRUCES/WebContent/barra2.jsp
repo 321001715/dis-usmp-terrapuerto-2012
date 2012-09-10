@@ -33,11 +33,11 @@ function redirect()
 	return true;
     break;
   case "S": 
-    // document.menPrin.action='<%=request.getContextPath()%>/Intrader/SalidaJSP.jsp';window.open('/Intrader/SalidaJSP.jsp');
+    
     document.menPrin.action='<%= request.getContextPath()%>/servlet/DatosPersonales.servlets.VeriHost_ip';
     
 	return true;
-    break;//presinf
+    break;
   }
   return false;
  }	
