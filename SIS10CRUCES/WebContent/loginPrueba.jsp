@@ -55,7 +55,7 @@ function validateNUM( field, field2 )
 <div align="center">
 <center>
 
- <img src="images/login.JGP" width="369" height="347"/>
+ <img src="images/login.JPG" width="360" height="123" />
  <table width="610" height="428" cellpadding="0" cellspacing="0">
  <tr>
   <td width="370" height="350" rowspan="7">&nbsp;</td>
@@ -113,7 +113,7 @@ function validateNUM( field, field2 )
   <td colspan="2" height="60"></td>
  </tr>
  <tr>
-  <td colspan="4" height="30"><img src="<%=request.getContextPath()%>/images/pie.gif"></td>
+  <td colspan="4" height="30"><img src="<%=request.getContextPath()%>/images/pie1.gif"></td>
  </tr>
  </table>
  </center>
