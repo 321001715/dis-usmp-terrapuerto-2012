@@ -16,7 +16,7 @@ import javax.naming.*;
 import javax.sql.*;
 import javax.servlet.http.HttpServletRequest;
 /**
- * @author  desdfebres   @modificado csullon
+ * @author  desdfebres   @modificado amarquez
  * @version 1.1
  */
 public class ServletInicial extends HttpServlet {
