@@ -404,6 +404,120 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	
 	
 	
-	
+	 public boolean validarUser(Usuario u) {
+			
+	    try {
+	    	 Connection con = MySqlDAOFactory.abrirConexion();
+	 		 Statement stmt = con.createStatement();
+	 		 
+	 		String sql ="SELECT idusuario FROM `bd_cruces`.`t_usuario`" +
+	 		" WHERE UPPER(usuario)='"+u.getUsuario()+"' and clave='"+u.getClave()+"' and" +
+	 				" idperfil='"+u.getIdTipUsuario()+"'";
+	 		System.out.print("dato"+sql);
+				ResultSet rs = stmt.executeQuery(sql);
+				 
+				if (rs.next()) {
+					u.setId(rs.getInt("idusuario"));
+					
+				
+				//	llenarDatos(u);    
+					 rs.close();
+				        con.close();
+	        
+	        
+					return true;
+				} else {
+					 rs.close();
+				        con.close();
+					
+					return false;
+				}
+			} catch (Exception e) {
+				
+				return false;
+			}
+		}
 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	/* public void llenarDatos(Usuario u) {
+		    
+				try {
+					 Connection con = MySqlDAOFactory.abrirConexion();
+			 		 Statement stmt = con.createStatement();
+		      if (u.getTipUsu().equals("A")) {
+		      
+						sql = "SELECT CL.CODFAC, CL.CODESC, CL.CODCLI , CL.APEPAT||' '||APEMAT||' '||NOM DESUSU, C.USUARIO, C.PASSWORD "+
+		              "FROM CORREO C, CLIENTE CL "+
+		              "WHERE CL.CODFAC=C.CODFAC AND CL.CODESC=C.CODESC AND CL.CODCLI=C.CODCLI AND "+
+		              "      CL.CODFAC='06' AND CL.CODESC='"+u.getCodEsc()+"' AND CL.CODCLI='"+ u.getCodUsu()+ "'";
+						rs1 = conDer.executeQuery(sql);
+		        if (rs1.next()) {
+							u.setCodFac(rs1.getString("CODFAC"));
+							u.setCodEsc(rs1.getString("CODESC"));
+							u.setCodigo(rs1.getString("CODCLI"));
+						  u.setDesUsu(rs1.getString("DESUSU"));
+		          u.setUsuCorreo(rs1.getString("USUARIO"));
+		          u.setPassword(rs1.getString("PASSWORD"));
+						}
+		        rs1.close();
+						/*sql = "SELECT CODESP "+
+		              "FROM CLIENTE_ESP "+
+		              "WHERE CODFAC='06' AND CODESC='"+u.getCodEsc()+"' AND CODCLI='"+ u.getCodUsu()+ "'";
+		             */
+		         /* sql = "SELECT C.CODESP, E.DESESP ,E.CODFAC " +
+		                "FROM CLIENTE_ESP C, ESCUELA_ESP E " +
+		                "WHERE C.CODFAC=E.CODFAC AND C.CODESC=E.CODESC AND C.CODESP=E.CODESP AND C.CODFAC='06' AND C.CODESC='" +
+		                 u.getCodEsc() + "' AND C.CODCLI='" + u.getCodUsu() + "'";
+						rs2 = conDer.executeQuery(sql);
+			
+		        if (rs2.next()) {
+							u.setCliEsp(rs2.getString(1));
+		          u.setDesEsp(rs2.getString(2));
+						}
+		        
+					}
+		    
+					
+		      rs2.close();*/
+		    
+		    /// inicio: para agragar datos en constancia de matricula 002 ************************** 
+		    /*
+		      sql = " SELECT CORREO,TELFIJ, TELCEL "+
+		            "FROM MATINT.FICHA_MATRICULA"+
+		            " WHERE CODFAC='"+u.getCodFac()+"' AND CODESC='"+u.getCodEsc()+"' AND "+
+		            "CODCLI='"+u.getCodigo()+"'";
+		            ResultSet rs3 = conDer.executeQuery(sql);
+		            while (rs3.next()){
+		                    u.setCorreo(rs3.getString("CORREO"));
+		                    u.setTelFij(rs3.getString("TELFIJ"));
+		                    u.setTelCel(rs3.getString("TELCEL"));
+		            }
+		           rs3.close();
+		           */
+		    // fin: para agragar datos en constancia de matricula 002 **************************
+		    /*       
+		      conDer.cerrarConexion();
+				} catch (Exception e) {
+					System.out.println("Error en llenado de informacion del Bean Usuario " + e.getMessage());
+					//e.printStackTrace();
+				}
+			}
+	 */
+	 
 }
