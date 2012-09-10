@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>SIS10CRUCES</display-name>
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>loginPrueba.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>login</servlet-name>
@@ -12,6 +12,27 @@
     <servlet-name>login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>loginPrueba</servlet-name>
+    <servlet-class>pe.plazanorte.sisterra.seguridad.LoginPrueba</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginPrueba</servlet-name>
+    <url-pattern>/loginPrueba</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+        <servlet-name>
+            ServletIniciaL
+        </servlet-name>
+        <servlet-class>
+            pe.plazanorte.sisterra.seguridad.ServletInicial
+        </servlet-class>
+	  <load-on-startup>1</load-on-startup>
+  </servlet>
+ 
+ 
  
   <servlet>
     <servlet-name>servletProveedor</servlet-name>
