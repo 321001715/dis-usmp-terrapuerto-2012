@@ -46,7 +46,7 @@ public class ServletInicial extends HttpServlet {
         /**Beans*/
         Vector<TipoUsuario> tipoUsuario = new Vector<TipoUsuario>();		
         
-				//Calendario calend = new Calendario();
+				
 
         /**Set de conecccion*/
         
