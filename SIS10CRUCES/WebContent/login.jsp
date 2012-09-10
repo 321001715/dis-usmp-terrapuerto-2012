@@ -11,8 +11,24 @@ body {
 }
 </style>
 <HEAD>
-<TITLE>Sistema Terrapuerto</TITLE>
+<script type="text/javascript" src="jquery/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="jquery/js/jquery-ui-1.7.3.custom.min.js"></script>
+<link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
+<style type="text/css">
+	@import "css/estilo.css";
+body {
+	background-color: #FFCC00;
+	background-image: url(images/bgblack.jpg);
+}
+body,td,th {
+	font-weight: bold;
+}
+</style>
+<TITLE>:: Bienvenido al Sistema 10C+ ::</TITLE>
 <script type="text/javascript">
+function aUpperCase(field) {
+        field.value = field.value.toUpperCase();
+};
 function setfocus()
  {
   document.logeo.usuario.focus();
@@ -44,24 +60,22 @@ function validateNUM( field, field2 )
 .contenido{font-family:Arial;font-size:12px;color:#630000;background-color:white; border:1px solid #CFC5B8;width:75%}
 </style>
 </HEAD>
-<body bgcolor="#114E7A" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="setfocus()">
+<body bgcolor="FFCC00" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="setfocus()">
 <%
 	Vector<TipoUsuario> tUsuario= (Vector<TipoUsuario>)application.getAttribute("tipoUsuarios");
-
-
 %>
-
+<div class="uicenter">
 <form name="logeo" method = "POST" action = "loginPrueba" onsubmit = "return validateNUM(this.usuario.value,this.password)">
-<div align="center">
-
-
-
- <table >
- <tr>
-  <td width="370" height="350" rowspan="7">&nbsp;</td> <img src="images/login.JPG" width="360" height="123" />
-  <td width="40" height="350" rowspan="7"></td>
-  <td width="200" height="150" colspan="2"></td>
- </tr>
+	<div align="center" >
+ <table border="1">
+ 	<tr>
+  		<td width="370" height="350" rowspan="7">
+  			<div align="center"><img src="images/sesion.gif" width="165" height="133" align="middle"></div>
+		</td> 
+		<td width="40" height="350" rowspan="7"></td>
+		<td width="200" height="150" colspan="2"></td>
+ 	</tr>
+ 	
  <% String ip;
     String host;
     ip = request.getHeader("X-FORWARDED-FOR");
@@ -77,7 +91,7 @@ function validateNUM( field, field2 )
  <input type="hidden" name="host" value="<%=host%>">
  <tr>
   <th width="80" height="20" class="presentacion">Usuario:</th>
-  <td width="120" align="center"><input type="text" name="usuario" maxlength="10" size="10" class="contenido" onChange="javascript:this.value=this.value.toUpperCase();"></td>
+  <td width="120" align="center"><input type="text" name="usuario" maxlength="10" size="10" class="contenido" onchange="aUpperCase(this)"></td>
  </tr>	
  <tr>
   <th height="20" class="presentacion">Password:</th>
@@ -102,21 +116,21 @@ function validateNUM( field, field2 )
  </tr>	
  <tr>
   <td height="20" colspan="2" align="center">
-   <input  src="<%=request.getContextPath()%>/images/entrar.gif" name="I1" width="80" height="20" type="image"></td>
+   <input src="<%=request.getContextPath()%>/images/entrar.jpg" name="I1" width="80" height="20" type="image"></td>
  </tr>
  <tr>
   <td height="30" colspan="2" class="presentacion">
-   <a href="<%=request.getContextPath()%>/Olvido.jsp" target="top"><font color="#FAFAEB">Ayuda, Olvide mi Contrase&ntilde;a</font></a></td>
+   <a href="<%=request.getContextPath()%>/Olvido.jsp" target="top"><font color="#FAFAEB">Olvidé mi Contrase&ntilde;a</font></a></td>
  </tr>
  <tr>
   <td colspan="2" height="60"></td>
  </tr>
  <tr>
- <!--  <td colspan="4" height="30"><img src="<%=request.getContextPath()%>/images/pie1.gif"></td> -->
  </tr>
  </table>
  
  </div>
 </form>
+</div>
 </body>
 </html>
