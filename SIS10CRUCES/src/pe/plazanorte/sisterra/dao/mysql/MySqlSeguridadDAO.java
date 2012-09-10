@@ -11,6 +11,7 @@ import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
+import pe.plazanorte.sisterra.entidades.TipoUsuario;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.util.Constantes;
@@ -363,5 +364,46 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		}
 		return usuarios;
 		}
+	
+	
+	
+	
+	
+	
+
+	
+	
+	 public Vector<TipoUsuario> muestraTipoUsuario(){  
+
+		 Vector<TipoUsuario> tipoUsuarios = new Vector<TipoUsuario>();
+		 
+	      try{
+	    	  Connection con = MySqlDAOFactory.abrirConexion();
+	 		 Statement stmt = con.createStatement();
+	        String sql = "SELECT idTipoUsuario,perfil FROM t_perfil ORDER BY idTipoUsuario";
+	        
+	        ResultSet rs = stmt.executeQuery(sql);
+	       
+	        while(rs.next()){
+	          TipoUsuario e = new TipoUsuario();
+	          e.setId(rs.getInt("idTipoUsuario"));
+	          e.setPerfil(rs.getString("perfil"));
+	          tipoUsuarios.add(e);
+	        }
+	        rs.close();
+	        con.close();
+	        return tipoUsuarios;
+	      }catch(Exception e){
+	        System.out.println("Error muestraEscuela()...:"+e.getMessage());
+	        e.printStackTrace();
+	        return null;
+	      }
+	    }
+	
+	
+	
+	
+	
+	
 
 }
