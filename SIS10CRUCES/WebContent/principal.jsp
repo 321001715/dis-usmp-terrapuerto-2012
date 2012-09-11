@@ -36,14 +36,47 @@ if (history.forward(1))
   		</td>
   	</tr>
   	<tr align="center">
-  		<td>
-  			Módulo de Proveedor
+  		<td style="width: 30%">
+  			<font style="font-family: monospace; font-size: x-large;">
+  			<br> <b>Módulo de Proveedor</b> <br><br>
+  			</font>
+  			<a href="<%=request.getContextPath()%>/index.jsp" target="_self" class = "menu2">
+				<img alt="Entrar a Módulo de Proveedor" 
+				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
+			</a><br><br>
+			<font style="font-family: fantasy; font-size: x-small; text-align: justify;">
+			Ahora puedes tener en un solo sistema el control de toda la información relacionada con 
+			los viajes, rutas y servicios que brindas a tus clientes. También podrás consultar en 
+			cualquier momento el estado de tus ventas y la situación de tu empresa en el Terrapuerto.
+			</font>
   		</td>
-  		<td>
-  			Módulo de Ventas
+  		<td style="width: 30%">
+  			<font style="font-family: monospace; font-size: x-large;">
+  			<br> <b>Módulo de Ventas</b> <br><br>
+  			</font>
+  			<a href="<%=request.getContextPath()%>/login.jsp" target="_self" class = "menu2">
+				<img alt="Entrar a Módulo de Ventas" 
+				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
+			</a><br><br>
+			<font style="font-family: fantasy; font-size: x-small; text-align: justify;">
+			Este módulo te permitirá realizar tus reservas y compras de los boletos sin necesidad de 
+			salir de tu hogar. Te brindará información actualizada de los viajes que realizarán todas 
+			las empresas de transporte, sus servicios y precios de manera oportuna.
+			</font>
   		</td>
-  		<td>
-  			Módulo de Seguridad
+  		<td style="width: 30%">
+  			<font style="font-family: monospace; font-size: x-large;">
+  			<br> <b>Módulo de Seguridad</b> <br><br>
+  			</font>
+  			<a href="<%=request.getContextPath()%>/login.jsp" target="_self" class = "menu2">
+				<img alt="Entrar a Módulo de Seguridad" 
+				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
+			</a><br><br>
+			<font style="font-family: fantasy; font-size: x-small; text-align: justify;">
+			Este modulo permite administrar la seguridad del sistema, admninistrar perfiles, usuarios, 
+			programas, sesiones y auditoria. Solo para uso de usuarios autorizados para el mantenimiento 
+			de la aplicación.
+			</font>
   		</td>
   	</tr>
   </table>
@@ -85,10 +118,7 @@ if (history.forward(1))
       </tr>
       <tr> 
         <td width="141" height="30" bgcolor="#666666" align="center">
-		<!--input  style="background-color:#630000 ; color:#FFFFFF; border:0px #630000 solid; cursor:hand" 
-		        type="submit" value="Gestión Académica" name="gestion" onclick="document.menPrin.opcion.value='G';"-->
-		<font size="2" face="Arial">
-		<a href="<%=request.getContextPath()%>/index.jsp" target="_self" class = "menu2">Gestion Interna</a></font>
+		
 	  </td>
       </tr>
       <tr> 

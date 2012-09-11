@@ -1,90 +1,65 @@
 package pe.plazanorte.sisterra.seguridad;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
-
-import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Usuario;
+import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
+import java.net.InetAddress;
+import java.sql.*;
+import javax.naming.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.sql.*;
 
-
-
-/**
- * Servlet implementation class Login
- */
-@WebServlet("/Login")
 public class Login extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		
-		try {			
-			
-			if(request.getParameter("txt_usuario").equals("")&&request.getParameter("txt_clave").equals("")){
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/registro.jsp?error=2");
-				rd.forward(request, response);
-			}else{
-				
-				Usuario usu = new Usuario();
-				
-				usu.setUsuario(request.getParameter("txt_usuario"));
-				usu.setClave(request.getParameter("txt_clave"));
-				
-				DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-				
-				SeguridadDAO usudao = mysqlFactory.getSeguridadDAO();		
-				
-				Usuario usubean = usudao.validarUsuario(usu);
-				
-				if(usubean != null){
-					HttpSession session = request.getSession();
-					session.setAttribute("usuario", usubean);
-					
-					response.sendRedirect("index.jsp");
-				}else{
-					request.setAttribute("mensaje","usuario y/o clave incorrectos");
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-					rd.forward(request, response);
-				}
-			}			
-		} catch (Exception e) {
-			out.print(e.getMessage());
+	private String msgError;
+	InitialContext context = null;
+	DataSource pool = null;
+
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+	}
+
+	protected void processRequest(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException,
+			java.io.IOException {
+		HttpSession session = request.getSession(true);
+
+		try {
+			Usuario uu = new Usuario();
+			uu.setUsuario(request.getParameter("usuario").toUpperCase());
+			uu.setClave(request.getParameter("password"));
+			uu.setIdTipUsuario(Integer.parseInt(request.getParameter("esc")));
+
+			MySqlSeguridadDAO du = new MySqlSeguridadDAO();
+
+			if (du.validarUser(uu)) {
+				session.setAttribute("BUsuario", uu);
+				uu = (Usuario) session.getAttribute("BUsuario");
+				getServletContext().getRequestDispatcher("/presentacion.jsp")
+						.forward(request, response);
+			} else {
+				getServletContext().getRequestDispatcher("/login.jsp")
+						.forward(request, response);
+			}
+		} catch (Exception sq) {
+			System.out.println("No cerró la conexion " + sq.getCause());
 		}
+	}
+
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException,
+			java.io.IOException {
+		processRequest(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException,
+			java.io.IOException {
+		processRequest(request, response);
+	}
+
+	public String getServletInfo() {
+		return "Short description";
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		PrintWriter out = response.getWriter();
-		
-		try {
-			HttpSession session = request.getSession();
-			session.removeAttribute("usuario");
-			response.sendRedirect("index.jsp");
-		} catch (Exception e) {
-			out.print(e.getMessage());
-		}
-		
-	}
-
 }
