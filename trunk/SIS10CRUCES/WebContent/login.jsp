@@ -40,7 +40,7 @@ function winopen()
  msg.location="<%=request.getContextPath()%>/Olvido.html" 
 }
 //notificaciones de usuario y password 
-function validateNUM( field, field2 )
+function validate( field, field2 )
 {
  if(field2.value == "" )
  {
@@ -65,7 +65,7 @@ function validateNUM( field, field2 )
 	Vector<TipoUsuario> tUsuario= (Vector<TipoUsuario>)application.getAttribute("tipoUsuarios");
 %>
 <div class="uicenter">
-<form name="logeo" method = "POST" action = "loginPrueba" onsubmit = "return validateNUM(this.usuario.value,this.password)">
+<form method="POST" action="Login" onsubmit="validate(this.usuario.value,this.password)">
 	<div align="center" >
  <table border="1">
  	<tr>
