@@ -42,7 +42,7 @@ if (history.forward(1))
   			<font style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Proveedor</b> <br><br>
   			</font>
-  			<a href="<%=request.getContextPath()%>/index.jsp" target="_self" class = "menu2">
+  			<a href="<%=request.getContextPath()%>/index_proveedor.jsp" target="_self" class = "menu2">
 				<img alt="Entrar a Módulo de Proveedor" 
 				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
 			</a><br><br>
@@ -56,7 +56,7 @@ if (history.forward(1))
   			<font style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Ventas</b> <br><br>
   			</font>
-  			<a href="<%=request.getContextPath()%>/login.jsp" target="_self" class = "menu2">
+  			<a href="<%=request.getContextPath()%>/index_ventas.jsp" target="_self" class = "menu2">
 				<img alt="Entrar a Módulo de Ventas" 
 				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
 			</a><br><br>
@@ -70,7 +70,7 @@ if (history.forward(1))
   			<font style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Seguridad</b> <br><br>
   			</font>
-  			<a href="<%=request.getContextPath()%>/login.jsp" target="_self" class = "menu2">
+  			<a href="<%=request.getContextPath()%>/index_seguridad.jsp" target="_self" class = "menu2">
 				<img alt="Entrar a Módulo de Seguridad" 
 				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
 			</a><br><br>
