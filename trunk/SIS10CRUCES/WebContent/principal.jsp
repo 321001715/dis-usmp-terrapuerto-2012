@@ -24,7 +24,7 @@ if (history.forward(1))
 <body bgcolor="#FFCC00"> 
 <form action="" method="post" name="menPrin">
 <div align="center">
-<table style="width: 100%; ">
+<table style="width: 100%;" >
 <tr><td>
   <table border="1" style="width: 100%;">
   	<tr>
@@ -45,6 +45,7 @@ if (history.forward(1))
 			Ahora puedes tener en un solo sistema el control de toda la información relacionada con 
 			los viajes, rutas y servicios que brindas a tus clientes. También podrás consultar en 
 			cualquier momento el estado de tus ventas y la situación de tu empresa en el Terrapuerto.
+			<br>
 			</font>
   		</td>
   		<td style="width: 30%">
@@ -59,6 +60,7 @@ if (history.forward(1))
 			Este módulo te permitirá realizar tus reservas y compras de los boletos sin necesidad de 
 			salir de tu hogar. Te brindará información actualizada de los viajes que realizarán todas 
 			las empresas de transporte, sus servicios y precios de manera oportuna.
+			<br>
 			</font>
   		</td>
   		<td style="width: 30%">
@@ -73,6 +75,7 @@ if (history.forward(1))
 			Este modulo permite administrar la seguridad del sistema, admninistrar perfiles, usuarios, 
 			programas, sesiones y auditoria. Solo para uso de usuarios autorizados para el mantenimiento 
 			de la aplicación.
+			<br>
 			</font>
   		</td>
   	</tr>
