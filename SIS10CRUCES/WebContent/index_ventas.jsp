@@ -7,11 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Sistema 10 cruces </title>
 </head>
-<body>
-
-	<h2>Men&uacute; principal</h2>
-		<ul>
-<%--             <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gesti&oacute;n de Rutas</a></li> --%>
-        </ul>
+<body bgcolor="#FFCCCC">
+<table border="0" width="100%">
+	<tr>
+		<td width="20%"></td>
+		<td>
+			<font style="font-family: monospace; font-size: x-large;">
+  			<br> <b>Módulo de Ventas</b> <br><br>
+  			</font>
+				<ul>
+<%-- 					<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gestione sus Vehículos</a></li> --%>
+<!-- 					<br> -->
+<%-- 		            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gestione sus Rutas</a></li> --%>
+		        </ul>
+		</td>
+		<td></td>
+	</tr>	
+	<tr>
+		<td colspan="2"></td>
+		<td>
+			<img src="<%=request.getContextPath()%>/images/ventas.png">
+		</td>
+	</tr>     
+</table>        
 </body>
 </html>
