@@ -9,10 +9,10 @@
 </head>
 <body>
 
-	<h2>Men&uacute; principal</h2>
+	<h2>Módulo de Proveedor</h2>
 		<ul>
-			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gesti&oacute;n de Veh&iacute;culos</a></li>
-            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gesti&oacute;n de Rutas</a></li>
+			<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gestione sus Vehículos</a></li>
+            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gestione sus Rutas</a></li>
         </ul>
 </body>
 </html>

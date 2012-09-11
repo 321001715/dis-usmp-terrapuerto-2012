@@ -1,4 +1,6 @@
 <%@ page import="pe.plazanorte.sisterra.entidades.Usuario" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <SCRIPT>
@@ -50,10 +52,10 @@ function redirect()
 <base target = "principal">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
-<body bgcolor="#114E7A" topmargin="0" leftmargin="0" rightmargin="0" ">
-<form action="" method="post" name="menPrin"  onsubmit="redirect();" target="presinf">
+<body bgcolor="#114E7A" topmargin="0" leftmargin="0" rightmargin="0">
+<form action="Login" method="post" name="menPrin" target="presinf">
   <%Usuario uu = (Usuario)session.getAttribute("BUsuario");%>
- <table width = "100%" border = "0" align = "center" cellpadding = "0" cellspacing = "0">
+ <table width = "100%">
  <tr>
   <td height="50" width = "230" align="center">&nbsp;</td>
   <td>
@@ -64,10 +66,7 @@ function redirect()
   <table>
   <tr>
     <td align="left">
-		<a href="<%=request.getContextPath()%>/presentacion.jsp" target="_self">
-			<img alt="Volver al Menú Principal" 
-			src="<%=request.getContextPath()%>/images/house.jpg">
-		</a>
+    	<img src="<%=request.getContextPath()%>/images/house.jpg">
 	</td>
     <td align="right">
 		<font style="font-family: monospace; font-size: medium; color: white;">
@@ -82,16 +81,16 @@ function redirect()
 <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#003300">
 	<tr>
 		<td width="40%"><input type=hidden name=server value=localhost>
-			<input type=hidden name=port value=143> <input type=hidden
-				name=namespace> <input type=hidden name=maildomain
-				value=usmp.edu.pe> <input type=hidden name=protocol
-				value=imap/notls> <input type=hidden name=realm> <input
-				type=hidden name=folders value=INBOX> <input type=hidden
-				name=new_lang value=es_ES> <input type=hidden name=user
-				value="<%=uu.getUsuario()%>"> <input type=hidden name=pass
-				value="<%=uu.getClave()%>"> <input type=hidden name=pw
-				value="<%=uu.getClave()%>"> <input type=hidden name=opcion
-				value="">
+			<input type=hidden name=port value=143> 
+			<input type=hidden name=namespace> 
+			<input type=hidden name=maildomain value=usmp.edu.pe> 
+			<input type=hidden name=protocol value=imap/notls> 
+			<input type=hidden name=realm> 
+			<input type=hidden name=folders value=INBOX> 
+			<input type=hidden name=new_lang value=es_ES> 
+			<input type=hidden name=usuario value="<%=uu.getUsuario()%>"> 
+			<input type=hidden name=password value="<%=uu.getClave()%>"> 
+			<input type=hidden name=pw value="">
 		</td>
 	</tr>
 </table>
