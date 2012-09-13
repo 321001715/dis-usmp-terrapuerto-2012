@@ -36,6 +36,8 @@ public class Constantes {
 	
 	
 	
+	
+	
 	/*
 	 * PERFILES
 	 */
@@ -84,6 +86,10 @@ public class Constantes {
 	public static final String ACCION_REGISTRAR_RUTA  = "registrar_ruta";
 	public static final String ACCION_MODIFICAR_RUTA = "modificar_ruta";
 	public static final String ACCION_FILTRO_RUTA = "filtro_ruta";
+	
+	
+	
+	public static final String VENDER_BOLETO = "vender_boleto";
 	
 	
 }
