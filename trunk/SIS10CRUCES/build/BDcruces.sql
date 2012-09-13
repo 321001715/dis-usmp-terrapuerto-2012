@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-09-2012 a las 12:21:59
+-- Tiempo de generación: 13-09-2012 a las 04:47:52
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -27,10 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `t_agencia` (
-  `idAgencia` int(11) NOT NULL AUTO_INCREMENT,
+  `idAgencia` int(10) NOT NULL AUTO_INCREMENT,
   `ciudad` int(11) NOT NULL,
   `direccion` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `idProveedor` int(11) NOT NULL,
+  `idProveedor` int(4) NOT NULL,
   PRIMARY KEY (`idAgencia`),
   KEY `fk_t_agencia_t_proveedor1_idx` (`idProveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -42,15 +42,15 @@ CREATE TABLE IF NOT EXISTS `t_agencia` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_boleto` (
-  `idBoleto` int(11) NOT NULL AUTO_INCREMENT,
-  `idPasajero` int(11) NOT NULL,
-  `idViaje` int(11) NOT NULL,
-  `idReserva` int(11) NOT NULL,
+  `idBoleto` int(7) NOT NULL AUTO_INCREMENT,
+  `idPasajero` int(7) NOT NULL,
+  `idViaje` int(8) NOT NULL,
+  `idReserva` int(7) NOT NULL,
   `asiento` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `estado` varchar(1) COLLATE armscii8_bin NOT NULL,
-  `userInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
+  `userInsert` int(6) DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
-  `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `userUpdate` int(6) DEFAULT NULL,
   `fechaUpdate` datetime DEFAULT NULL,
   PRIMARY KEY (`idBoleto`),
   KEY `fk_t_boleto_t_pasajero1_idx` (`idPasajero`),
@@ -65,11 +65,12 @@ CREATE TABLE IF NOT EXISTS `t_boleto` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_chofer` (
-  `idChofer` int(11) NOT NULL AUTO_INCREMENT,
+  `idChofer` int(6) NOT NULL AUTO_INCREMENT,
   `nombres` varchar(45) COLLATE armscii8_bin NOT NULL,
   `apePat` varchar(45) COLLATE armscii8_bin NOT NULL,
   `apeMat` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `dni` int(11) NOT NULL,
+  `numDoc` varchar(15) COLLATE armscii8_bin NOT NULL,
+  `tipDoc` varchar(20) COLLATE armscii8_bin NOT NULL,
   `numLicencia` int(11) NOT NULL,
   `idProveedor` int(11) NOT NULL,
   PRIMARY KEY (`idChofer`)
@@ -82,9 +83,9 @@ CREATE TABLE IF NOT EXISTS `t_chofer` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_ciudad` (
-  `idCiudad` int(11) NOT NULL AUTO_INCREMENT,
+  `idCiudad` int(5) NOT NULL AUTO_INCREMENT,
   `nombre` text COLLATE armscii8_bin NOT NULL,
-  `idProvincia` int(11) NOT NULL,
+  `idProvincia` int(4) NOT NULL,
   PRIMARY KEY (`idCiudad`),
   KEY `fk_t_ciudad_t_provincia1_idx` (`idProvincia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -96,12 +97,12 @@ CREATE TABLE IF NOT EXISTS `t_ciudad` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_clasificasion` (
-  `idClasificasion` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) COLLATE armscii8_bin,
+  `idClasificasion` int(5) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) COLLATE armscii8_bin NOT NULL,
   `descripcion` varchar(30) COLLATE armscii8_bin NOT NULL,
-  `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `usuarioInsert` int(6) DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
-  `usuarioUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `usuarioUpdate` int(6) DEFAULT NULL,
   `fechaUpdate` datetime DEFAULT NULL,
   PRIMARY KEY (`idClasificasion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -113,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `t_clasificasion` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_departamento` (
-  `idDepartamento` int(11) NOT NULL AUTO_INCREMENT,
+  `idDepartamento` int(2) NOT NULL AUTO_INCREMENT,
   `nombre` text COLLATE armscii8_bin NOT NULL,
   PRIMARY KEY (`idDepartamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -125,9 +126,10 @@ CREATE TABLE IF NOT EXISTS `t_departamento` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_equipaje` (
-  `idEquipaje` int(11) NOT NULL AUTO_INCREMENT,
-  `idPasajero` int(11) NOT NULL,
-  PRIMARY KEY (`idEquipaje`,`idPasajero`),
+  `idEquipaje` int(7) NOT NULL AUTO_INCREMENT,
+  `idPasajero` int(7) NOT NULL,
+  `peso` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  PRIMARY KEY (`idEquipaje`),
   KEY `fk_t_equipaje_t_pasajero1_idx` (`idPasajero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
@@ -138,11 +140,13 @@ CREATE TABLE IF NOT EXISTS `t_equipaje` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_pasajero` (
-  `idPasajero` int(11) NOT NULL AUTO_INCREMENT,
-  `nombres` text COLLATE armscii8_bin NOT NULL,
-  `apePat` text COLLATE armscii8_bin NOT NULL,
-  `apeMat` text COLLATE armscii8_bin NOT NULL,
-  `dni` int(11) NOT NULL,
+  `idPasajero` int(7) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `apePat` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `apeMat` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `numDoc` varchar(15) COLLATE armscii8_bin NOT NULL,
+  `tipDoc` varchar(20) COLLATE armscii8_bin NOT NULL,
+  `estado` varchar(15) COLLATE armscii8_bin DEFAULT NULL,
   PRIMARY KEY (`idPasajero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
@@ -153,15 +157,30 @@ CREATE TABLE IF NOT EXISTS `t_pasajero` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_perfil` (
-  `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `idPerfil` int(6) NOT NULL AUTO_INCREMENT,
   `perfil` text COLLATE armscii8_bin NOT NULL,
-  `descripcion` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `usuarioInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `descripcion` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `usuarioInsert` int(6) DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
-  `usuarioUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `usuarioUpdate` int(6) DEFAULT NULL,
   `fechaUpdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`idTipoUsuario`)
+  PRIMARY KEY (`idPerfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_permiso`
+--
+
+CREATE TABLE IF NOT EXISTS `t_permiso` (
+  `idUsuario` int(6) NOT NULL,
+  `idPro` int(5) NOT NULL,
+  `conProPer` char(1) COLLATE armscii8_bin DEFAULT NULL,
+  PRIMARY KEY (`idUsuario`,`idPro`),
+  KEY `fk_t_usuario_has_t_programa_t_programa1` (`idPro`),
+  KEY `fk_t_usuario_has_t_programa_t_usuario1` (`idUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 
 -- --------------------------------------------------------
 
@@ -170,17 +189,44 @@ CREATE TABLE IF NOT EXISTS `t_perfil` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_persona` (
-  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
-  `dni` int(8) NOT NULL,
+  `id_persona` int(8) NOT NULL AUTO_INCREMENT,
   `nombres` varchar(45) NOT NULL,
   `apePat` varchar(45) NOT NULL,
   `apeMat` varchar(45) NOT NULL,
+  `numDoc` varchar(15) NOT NULL,
+  `tipDoc` varchar(20) DEFAULT NULL,
   `direccion` varchar(45) NOT NULL,
   `sexo` varchar(1) NOT NULL,
-  `tel` int(11) NOT NULL,
-  `estado` varchar(20) NOT NULL,
+  `tel` varchar(11) NOT NULL,
+  `estado` varchar(15) NOT NULL,
   PRIMARY KEY (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2147483647 ;
+
+--
+-- Volcado de datos para la tabla `t_persona`
+--
+
+INSERT INTO `t_persona` (`id_persona`, `nombres`, `apePat`, `apeMat`, `numDoc`, `tipDoc`, `direccion`, `sexo`, `tel`, `estado`) VALUES
+(185288, 'Giancarlo', 'Ames', 'Osorio', '', NULL, 'AV. EDGARDO REBAGLIATTI 424', 'M', '2147483647', 'A'),
+(185289, 'Giancarlo', 'Ames', 'Osorio', '', NULL, 'AV. EDGARDO REBAGLIATTI 424', 'M', '99272781252', 'A'),
+(2147483647, 'Giancarlo', 'Ames', 'Osorio', '', NULL, 'AV. EDGARDO REBAGLIATTI 424', 'M', '2147483647', 'A');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_programa`
+--
+
+CREATE TABLE IF NOT EXISTS `t_programa` (
+  `idPro` int(5) NOT NULL,
+  `desPro` varchar(70) COLLATE armscii8_bin NOT NULL,
+  `titPro` varchar(50) COLLATE armscii8_bin NOT NULL,
+  `codMod` char(3) COLLATE armscii8_bin NOT NULL,
+  `codProSup` char(5) COLLATE armscii8_bin DEFAULT NULL,
+  `urlPro` varchar(100) COLLATE armscii8_bin DEFAULT NULL,
+  `estPro` char(1) COLLATE armscii8_bin NOT NULL,
+  PRIMARY KEY (`idPro`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 
 -- --------------------------------------------------------
 
@@ -189,16 +235,16 @@ CREATE TABLE IF NOT EXISTS `t_persona` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_proveedor` (
-  `idProveedor` int(11) NOT NULL AUTO_INCREMENT,
-  `codEmpre` int(11),
-  `ruc` varchar(11) NOT NULL,
+  `idProveedor` int(4) NOT NULL AUTO_INCREMENT,
+  `codEmpre` int(11) NOT NULL,
+  `ruc` varchar(11) COLLATE armscii8_bin NOT NULL,
   `razSocial` varchar(45) COLLATE armscii8_bin NOT NULL,
   `razCom` varchar(45) COLLATE armscii8_bin NOT NULL,
   `direccion` varchar(45) COLLATE armscii8_bin NOT NULL,
   `tel` int(11) NOT NULL,
   `usuario` varchar(45) COLLATE armscii8_bin NOT NULL,
   `clave` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
+  `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
   PRIMARY KEY (`idProveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
 
@@ -209,9 +255,9 @@ CREATE TABLE IF NOT EXISTS `t_proveedor` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_provincia` (
-  `idProvincia` int(11) NOT NULL AUTO_INCREMENT,
+  `idProvincia` int(4) NOT NULL AUTO_INCREMENT,
   `nombre` text COLLATE armscii8_bin NOT NULL,
-  `idDepartamento` int(11) NOT NULL,
+  `idDepartamento` int(2) NOT NULL,
   PRIMARY KEY (`idProvincia`),
   KEY `fk_t_provincia_t_departamento1_idx` (`idDepartamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -223,13 +269,13 @@ CREATE TABLE IF NOT EXISTS `t_provincia` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_reserva` (
-  `idReserva` int(11) NOT NULL AUTO_INCREMENT,
-  `idUsuario1` int(11) NOT NULL,
+  `idReserva` int(7) NOT NULL AUTO_INCREMENT,
+  `idUsuario1` int(6) NOT NULL,
   `fecha` date NOT NULL,
-  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
-  `userInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
+  `userInsert` int(6) DEFAULT NULL,
   `fechaInsert` datetime DEFAULT NULL,
-  `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `userUpdate` int(6) DEFAULT NULL,
   `fechaUpdate` datetime DEFAULT NULL,
   PRIMARY KEY (`idReserva`),
   KEY `fk_t_reserva_t_usuario_idx` (`idUsuario1`)
@@ -242,16 +288,20 @@ CREATE TABLE IF NOT EXISTS `t_reserva` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_ruta` (
-  `idRuta` int(11) NOT NULL AUTO_INCREMENT,
-  `codRuta` text COLLATE armscii8_bin NOT NULL,
-  `nomRuta` text COLLATE armscii8_bin NOT NULL,
-  `origen` text COLLATE armscii8_bin NOT NULL,
-  `destino` text COLLATE armscii8_bin NOT NULL,
+  `idRuta` int(8) NOT NULL AUTO_INCREMENT,
+  `codRuta` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `nomRuta` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `origen` int(11) NOT NULL,
+  `destino` int(11) NOT NULL,
   `km` int(11) NOT NULL,
   `duracion` int(11) NOT NULL,
-  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
-  `idProveedor` int(11) NOT NULL,
-  `idCiudad` int(11) NOT NULL,
+  `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
+  `idProveedor` int(4) NOT NULL,
+  `idCiudad` int(5) NOT NULL,
+  `userInsert` int(6) DEFAULT NULL,
+  `fechaInsert` datetime DEFAULT NULL,
+  `userUpdate` int(6) DEFAULT NULL,
+  `fechaUpdate` datetime DEFAULT NULL,
   PRIMARY KEY (`idRuta`),
   KEY `fk_t_ruta_t_proveedor1_idx` (`idProveedor`),
   KEY `fk_t_ruta_t_ciudad1_idx` (`idCiudad`)
@@ -264,19 +314,20 @@ CREATE TABLE IF NOT EXISTS `t_ruta` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_usuario` (
-  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `clave` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `idUsuario` int(6) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(10) COLLATE armscii8_bin NOT NULL,
+  `clave` varchar(8) COLLATE armscii8_bin NOT NULL,
   `estado` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `dni` int(11) NOT NULL,
+  `tipDoc` varchar(20) COLLATE armscii8_bin NOT NULL,
+  `numDoc` varchar(15) COLLATE armscii8_bin NOT NULL,
   `nombres` varchar(45) COLLATE armscii8_bin NOT NULL,
   `apePat` varchar(45) COLLATE armscii8_bin NOT NULL,
   `apeMat` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `idCiudad` int(11),
-  `direccion` varchar(45) COLLATE armscii8_bin,
-  `sexo` varchar(45) COLLATE armscii8_bin,
-  `tel` int(11),
-  `idPerfil` int(11) NOT NULL,
+  `idCiudad` int(11) NOT NULL,
+  `direccion` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `sexo` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `tel` int(11) NOT NULL,
+  `idPerfil` int(6) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   KEY `fk_t_usuario_t_tipousuario1_idx` (`idPerfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -288,16 +339,16 @@ CREATE TABLE IF NOT EXISTS `t_usuario` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_vehiculo` (
-  `idVehiculo` int(11) NOT NULL AUTO_INCREMENT,
-  `codVehiculo` varchar(45) COLLATE armscii8_bin,
+  `idVehiculo` int(6) NOT NULL AUTO_INCREMENT,
+  `codVehiculo` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `placa` varchar(45) COLLATE armscii8_bin NOT NULL,
   `numPiso` int(11) NOT NULL,
   `numAsientos` int(11) NOT NULL,
   `marca` varchar(45) COLLATE armscii8_bin NOT NULL,
   `modelo` varchar(45) COLLATE armscii8_bin NOT NULL,
   `obs` varchar(100) COLLATE armscii8_bin NOT NULL,
-  `estado` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `idProveedor` int(11) NOT NULL,
+  `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
+  `idProveedor` int(4) NOT NULL,
   PRIMARY KEY (`idVehiculo`),
   KEY `fk_t_vehiculo_t_proveedor1_idx` (`idProveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin AUTO_INCREMENT=1 ;
@@ -309,24 +360,24 @@ CREATE TABLE IF NOT EXISTS `t_vehiculo` (
 --
 
 CREATE TABLE IF NOT EXISTS `t_viaje` (
-  `idViaje` int(11) NOT NULL AUTO_INCREMENT,
-  `codViaje` text COLLATE armscii8_bin NOT NULL,
-  `nomViaje` text COLLATE armscii8_bin NOT NULL,
+  `idViaje` int(8) NOT NULL AUTO_INCREMENT,
+  `codViaje` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `nomViaje` varchar(45) COLLATE armscii8_bin NOT NULL,
   `fecSalida` date NOT NULL,
   `fecLlegada` date NOT NULL,
   `horSalida` date NOT NULL,
   `horLlegada` date NOT NULL,
   `precio` int(11) NOT NULL,
-  `estado` varchar(20) COLLATE armscii8_bin NOT NULL,
-  `idRuta` int(11) NOT NULL,
+  `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
+  `idRuta` int(8) NOT NULL,
   `servicio` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `idChofer` int(11) NOT NULL,
-  `idVehiculo` int(11) NOT NULL,
-  `userInsert` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `idChofer` int(6) NOT NULL,
+  `idVehiculo` int(6) NOT NULL,
+  `idClasificasion` int(5) NOT NULL,
+  `userInsert` int(6) DEFAULT NULL,
   `FechaInsert` datetime DEFAULT NULL,
-  `userUpdate` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `userUpdate` int(6) DEFAULT NULL,
   `fechaUpdate` datetime DEFAULT NULL,
-  `idClasificasion` int(11) NOT NULL,
   PRIMARY KEY (`idViaje`),
   KEY `fk_t_viaje_t_ruta1_idx` (`idRuta`),
   KEY `fk_t_viaje_t_chofer1_idx` (`idChofer`),
@@ -365,6 +416,13 @@ ALTER TABLE `t_equipaje`
   ADD CONSTRAINT `fk_t_equipaje_t_pasajero1` FOREIGN KEY (`idPasajero`) REFERENCES `t_pasajero` (`idPasajero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `t_permiso`
+--
+ALTER TABLE `t_permiso`
+  ADD CONSTRAINT `fk_t_usuario_has_t_programa_t_usuario1` FOREIGN KEY (`idUsuario`) REFERENCES `t_usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_t_usuario_has_t_programa_t_programa1` FOREIGN KEY (`idPro`) REFERENCES `t_programa` (`idPro`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `t_provincia`
 --
 ALTER TABLE `t_provincia`
@@ -387,7 +445,7 @@ ALTER TABLE `t_ruta`
 -- Filtros para la tabla `t_usuario`
 --
 ALTER TABLE `t_usuario`
-  ADD CONSTRAINT `fk_t_usuario_t_tipousuario1` FOREIGN KEY (`idPerfil`) REFERENCES `t_perfil` (`idTipoUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_t_usuario_t_tipousuario1` FOREIGN KEY (`idPerfil`) REFERENCES `t_perfil` (`idPerfil`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `t_vehiculo`
@@ -399,14 +457,15 @@ ALTER TABLE `t_vehiculo`
 -- Filtros para la tabla `t_viaje`
 --
 ALTER TABLE `t_viaje`
-  ADD CONSTRAINT `fk_t_viaje_t_clasificasion1` FOREIGN KEY (`idClasificasion`) REFERENCES `t_clasificasion` (`idClasificasion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_chofer1` FOREIGN KEY (`idChofer`) REFERENCES `t_chofer` (`idChofer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_t_viaje_t_clasificasion1` FOREIGN KEY (`idClasificasion`) REFERENCES `t_clasificasion` (`idClasificasion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_ruta1` FOREIGN KEY (`idRuta`) REFERENCES `t_ruta` (`idRuta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_t_viaje_t_vehiculo1` FOREIGN KEY (`idVehiculo`) REFERENCES `t_vehiculo` (`idVehiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
 
 
