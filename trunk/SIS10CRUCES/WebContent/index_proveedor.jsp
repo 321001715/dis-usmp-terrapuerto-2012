@@ -18,7 +18,7 @@
 				<ul>
 					<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gestione sus Vehículos</a></li>
 					<br>
-		            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gestione sus Rutas</a></li>
+		            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_ruta&destino=gestionarRuta">Gestione sus Rutas</a></li>
 		        </ul>
 		</td>
 		<td></td>
