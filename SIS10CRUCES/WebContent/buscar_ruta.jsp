@@ -24,8 +24,8 @@
 </head>
 <body>	
 	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar()">
-		<input type="hidden" name="tipo" value="registrarRuta">
-		<input type="hidden" name="destino" value="<%=Constantes.GESTIONAR_RUTA%>">
+		<input type="hidden" name="tipo" value="listar_ruta">
+		<input type="hidden" name="destino" value="buscarRuta">
 		<table>
 			<tr>
 				<td>Código Ruta</td>
