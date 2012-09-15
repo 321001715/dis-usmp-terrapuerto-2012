@@ -31,10 +31,7 @@
 			<td align="center"><%=ruta.get(i).getCodRuta()%></td>
 			<td><%=ruta.get(i).getDestino()%></td>
 			<td> <a href="Usuarios?origen=modificar_usuario&id=<%=ruta.get(i).getId()%>">[Modificar]   </a>
-						
-					<a href="Eliminar?usu=<%=ruta.get(i).getId()%>&origen=gestion_usuarios">[Eliminar]</a>
-						</td>
-		</tr>
+
 		<%} %>
 	</table>
 	<%}else{%>
