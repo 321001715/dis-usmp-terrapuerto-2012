@@ -29,7 +29,7 @@
 		<table>
 			<tr>
 				<td>Código Ruta</td>
-				<td><input type="text" name="codRuta" d></td>
+				<td><input type="text" name="codRuta"></td>
 				
 				<td>Origen</td>
 				<td><input type="text" name="origen"></td>
@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td>Nombre de Ruta</td>
-				<td><input type="text" name="ruta"></td>
+				<td><input type="text" name="nomRuta"></td>
 				
 				<td>Destino</td>
 				<td><input type="text" name="destino"></td>
