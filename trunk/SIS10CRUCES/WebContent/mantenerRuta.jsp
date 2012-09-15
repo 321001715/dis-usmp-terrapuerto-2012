@@ -18,9 +18,9 @@
 		<font color="red"><%= mensaje%></font>
 		<br>
 <%} %>	
-	<a href="registrar_ruta.jsp">Registrar Ruta</a>
+	<a href="registrarRuta.jsp">Registrar Ruta</a>
 	<br><hr><br>
 	<%@include file="listar_ruta.jsp" %>
 <br>
-<a href="index.jsp">Volver al Men&uacute; principal</a>
+<a href="index_proveedor.jsp">Volver al Men&uacute; principal</a>
 </html>
