@@ -460,11 +460,13 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
 	public Vector<Ruta> buscarRutas(Ruta param) {
+		
+		System.out.print("teeeeeeee2");
 		Vector <Ruta>  vec = new Vector<Ruta>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_RUTA WHERE ";
+			String query = "SELECT * FROM bd_cruces.T_RUTA WHERE ";
 			boolean flag = false;
 			if(param.getId() != 0) {
 				query += "idRuta = "+param.getId();
@@ -472,20 +474,20 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			} 
 			if(param.getNomRuta().length() != 0) {
 				if(flag) query += " AND ";
-				query += "(nomRuta LIKE UPPER('"+param.getNomRuta()+"%') OR PLACA LIKE LOWER('"+param.getNomRuta()+"%'))";
+				query += "(nomRuta LIKE UPPER('"+param.getNomRuta()+"%') OR nomRuta LIKE LOWER('"+param.getNomRuta()+"%'))";
 				flag = true;
 			} 
 			if(param.getOrigen().length() != 0) {
 				if(flag) query += " AND ";
-				query += "(origen LIKE UPPER('"+param.getOrigen()+"%') OR MODELO LIKE LOWER('"+param.getOrigen()+"%'))";
+				query += "(origen LIKE UPPER('"+param.getOrigen()+"%') OR origen LIKE LOWER('"+param.getOrigen()+"%'))";
 				flag = true;
 			} 
 			if(param.getDestino().length() != 0) {
 				if(flag) query += " AND ";
-				query += "(destino LIKE UPPER('"+param.getDestino()+"%') OR MARCA LIKE LOWER('"+param.getDestino()+"%'))";
+				query += "(destino LIKE UPPER('"+param.getDestino()+"%') OR destino LIKE LOWER('"+param.getDestino()+"%'))";
 			}
 			query += " AND IDPROVEEDOR = "+1+";";
-			
+			System.out.print("datos: "+query);
 			Ruta ruta = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
