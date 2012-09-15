@@ -493,7 +493,7 @@ public class ServletProveedor extends HttpServlet {
 				
 				
 				boolean retorno = service.registrarRuta(ruta);	
-				System.out.print("tiiii:"+retorno);
+		
 				
 				if(retorno) mensaje = "Ruta registrada con exito";
 				else mensaje = "Error, no se pudo registrar la ruta.";
@@ -509,52 +509,49 @@ public class ServletProveedor extends HttpServlet {
 			}
 			
 		
-		}else if(tipo.equalsIgnoreCase("eliminar")) {
 			
 			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_RUTA)) {
+		}else if(tipo.equalsIgnoreCase("listar_rutas")) {
+
+
+			System.out.print("teeeeeeee21");
+			long idVehiculo;
+			if(request.getParameter("codRuta").length() != 0)
+				idVehiculo = Long.parseLong(request.getParameter("codRuta"));
+			else
+				idVehiculo = 0;
+			String origen = request.getParameter("origen");
+			String destino = request.getParameter("destino");
+			String nomRuta = request.getParameter("nomRuta");
 			
-			Proveedor proveedor = new Proveedor();			
+			Ruta ruta = new Ruta();
 			
+			ruta.setId(idVehiculo);
+			ruta.setDestino(destino);
+			ruta.setOrigen(origen);
+			ruta.setNomRuta(nomRuta);
+			
+			Vector<Ruta> vec = null;
 			try {
-				//VALIDAR EL INGRESO DE STRING
-				int id = Integer.parseInt(request.getParameter("idProveedor"));
-				proveedor.setIdProveedor(id);			
-				proveedor = service.consultarProveedor(proveedor);
-				if(proveedor == null) mensaje = "No se encontraron resultados para su consulta. [Proveedor cod."+id+"]";
-				else mensaje = "";
-				request.setAttribute("proveedor", proveedor);				
-				
-				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");				
+				vec = service.buscarRuta(ruta);				
+				request.setAttribute("ruta", vec);	
+				System.out.print("teeeeeeee111");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			if(tipo.equalsIgnoreCase("listar_rutas")) {
+				
+				rd = getServletContext().getRequestDispatcher("/mantenerRuta.jsp");
+			}
+			
+			
+			
+			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)){
-		
-			try {								
-				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
-				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);
-				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			
+			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_RUTA)){
 			
-			int destino = Integer.parseInt(request.getParameter("destino"));
-			String ruc = request.getParameter("ruc");
-			String razSocial = request.getParameter("razSocial");
-			Vector<Proveedor> proveedores = null;
-			try {
-				proveedores = service.buscarProveedores(ruc, razSocial);				
-				request.setAttribute("proveedores", proveedores);						
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			if(destino == Constantes.MANTENER_PROVEEDOR){
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-			}
 		}		
 		
 		
