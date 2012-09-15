@@ -12,7 +12,7 @@
 <h2>Registro de Ruta</h2>
 
 <form action="ServletProveedor" method="post">
-	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_RUTA %>">
+	<input type="hidden" name="tipo" value="registrarRuta">
 		<table cellpadding="5px">
 			<tr>
 				<td><b>Detalle Ruta</b></td>
