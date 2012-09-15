@@ -435,7 +435,7 @@ public class ServletProveedor extends HttpServlet {
 		
 		
            if(tipo.equalsIgnoreCase("registrarRuta")) {
-			
+           
 			int codRuta = Integer.parseInt(request.getParameter("codRuta"));
 			String nomRuta = request.getParameter("nomRuta");
 			String origen = request.getParameter("origen");
@@ -477,8 +477,8 @@ public class ServletProveedor extends HttpServlet {
 				String destino = request.getParameter("destino");
 				if(destino == null){
 					rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");
-				}else if(Integer.parseInt(destino) == Constantes.GESTIONAR_RUTA){					
-					rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+				}else if(destino == "gestionarRuta"){					
+					rd = getServletContext().getRequestDispatcher("/mantenerRuta.jsp");
 				}else if(Integer.parseInt(destino) == Constantes.ELIMINAR_PROVEEDOR){
 					rd = getServletContext().getRequestDispatcher("/eliminar_proveedor.jsp");
 				}
