@@ -157,7 +157,7 @@ public class ServletProveedor extends HttpServlet {
 				//****************************INICIO GESTIONAR RUTA*****************************//
 				
 	           if(tipo.equalsIgnoreCase("listar_ruta")) {
-		System.out.print("tiiiiiiiiiii");
+	
 		try {
 			
 			
@@ -168,7 +168,7 @@ public class ServletProveedor extends HttpServlet {
 			String destino = request.getParameter("destino");
 			if(destino == null){
 				rd = getServletContext().getRequestDispatcher("/mantenerRuta.jsp");
-			}else if(destino == "buscarRuta"){					
+			}else if(destino == "xxxx"){					
 				rd = getServletContext().getRequestDispatcher("/mantenerRuta.jsp");
 			}else if(Integer.parseInt(destino) == Constantes.ELIMINAR_PROVEEDOR){
 				rd = getServletContext().getRequestDispatcher("/eliminar_proveedor.jsp");
@@ -502,7 +502,7 @@ public class ServletProveedor extends HttpServlet {
 				ruta1 = service.listarRuta();
 				request.setAttribute("ruta", ruta1);	
 				
-				rd = getServletContext().getRequestDispatcher("/registrarRuta.jsp");
+				rd = getServletContext().getRequestDispatcher("/mantenerRuta.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -510,10 +510,10 @@ public class ServletProveedor extends HttpServlet {
 			
 		
 		}else if(tipo.equalsIgnoreCase("eliminar")) {
-			System.out.print("tiiiiiiiiiii");
+			
 			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_RUTA)) {
-			System.out.print("tiiiiiiiiiii");
+			
 			Proveedor proveedor = new Proveedor();			
 			
 			try {
@@ -530,7 +530,7 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)){
-			System.out.print("tiiiiiiiiiii");
+		
 			try {								
 				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
 				proveedores = service.listarProveedores();
@@ -540,7 +540,7 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_RUTA)){
-			System.out.print("tiiiiiiiiiii");
+			
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			String ruc = request.getParameter("ruc");
 			String razSocial = request.getParameter("razSocial");
