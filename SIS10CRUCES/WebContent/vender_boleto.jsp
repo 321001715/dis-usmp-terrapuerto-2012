@@ -142,6 +142,36 @@
 	
 	Importe a pagar: <input type="text" name="" value="">
 	
+	<table>
+		<tr>
+			<td><input type="radio" name="tipo" value="">Tarjeta de cr&eacute;dito</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Nro. tarjeta</td>
+			<td><input type="text" name="" value=""></td>
+		</tr>
+		<tr>
+			<td>Clave</td>
+			<td><input type="text" name="" value=""></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="tipo" value="">Tarjeta de cr&eacute;dito</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Efectivo</td>
+			<td><input type="text" name="" value=""></td>
+		</tr>
+		<tr>
+			<td>Pago</td>
+			<td><input type="text" name="" value=""></td>
+		</tr>
+	</table>
 </form>
 
 </body>
