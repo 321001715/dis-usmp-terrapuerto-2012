@@ -24,8 +24,8 @@
 </head>
 <body>	
 	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar()">
-		<input type="hidden" name="tipo" value="listar_ruta">
-		<input type="hidden" name="destino" value="buscarRuta">
+		<input type="hidden" name="tipo" value="listar_rutas">
+		<input type="hidden" name="des" value="buscarRutas">
 		<table>
 			<tr>
 				<td>Código Ruta</td>
