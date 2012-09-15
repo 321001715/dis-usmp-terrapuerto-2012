@@ -20,12 +20,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			<tr>
-				<td>Codigo de Ruta</td>
-				<td><input type="text" name="codRuta"></td>
-				<td></td>
-				<td></td>
-			</tr>
+		
 			<tr>
 				<td>Nombre Ruta</td>
 				<td><input type="text" name="nomRuta"></td>
