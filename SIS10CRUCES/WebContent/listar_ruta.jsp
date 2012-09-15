@@ -1,38 +1,43 @@
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
-<%@page import="pe.plazanorte.sisterra.entidades.Proveedor"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
 <%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <body>
 <%
-	Vector<Proveedor> proveedores = (Vector<Proveedor>)request.getAttribute("proveedores");
+	Vector<Ruta> ruta = (Vector<Ruta>)request.getAttribute("ruta");
 %>
  
 <%
-	if(proveedores.size() != 0){
+	if(ruta.size() != 0){
 %>
 
-<table border="1" cellspacing="1px" cellpadding="5px">
-	<tr>
-		<th>Codigo</th>
-		<th>Nombre de Ruta</th>
-		<th>Origen</th>
-		<th>Destino</th>
-		<th>Duracion</th>
-		<th>Estado</th>
-	</tr>
-	<%for(int i=0; i<proveedores.size(); i++){ %>
-	<tr>
-		<td align="right"><%=proveedores.get(i).getIdProveedor() %></td>
-		<td><%=proveedores.get(i).getRuc() %></td>
-		<td><%=proveedores.get(i).getRazonSocial() %></td>
-		<td><%=proveedores.get(i).getRazCom()%></td>
-		<td align="center"><%=proveedores.get(i).getEstado()%></td>
-		<td><a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_PROVEEDOR %>&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">Modificar</a></td>		
-	</tr>
-	<%} %>
-</table>
-<%}else{%>
+	<table border="1" cellspacing="1px" cellpadding="5px">
+		<tr>
+			<th>Codigo</th>
+			<th>Nombre de Ruta</th>
+			<th>Origen</th>
+			<th>Destino</th>
+			<th>Duracion</th>
+			<th>Estado</th>
+			<th>Accion</th>
+		</tr>
+		<%for(int i=0; i<ruta.size(); i++){ %>
+		<tr>
+			<td align="right"><%=ruta.get(i).getId() %></td>
+			<td><%=ruta.get(i).getNomRuta() %></td>
+			<td><%=ruta.get(i).getOrigen() %></td>
+			<td><%=ruta.get(i).getDestino()%></td>
+			<td align="center"><%=ruta.get(i).getCodRuta()%></td>
+			<td><%=ruta.get(i).getDestino()%></td>
+			<td> <a href="Usuarios?origen=modificar_usuario&id=<%=ruta.get(i).getId()%>">[Modificar]   </a>
+						
+					<a href="Eliminar?usu=<%=ruta.get(i).getId()%>&origen=gestion_usuarios">[Eliminar]</a>
+						</td>
+		</tr>
+		<%} %>
+	</table>
+	<%}else{%>
 <font color="red">No se encontraron resultados para la consulta.</font>
 <%} %>
 </body>
