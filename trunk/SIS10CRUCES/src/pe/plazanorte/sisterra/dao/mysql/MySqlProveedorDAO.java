@@ -379,26 +379,133 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
 	public Vector<Ruta> listarRutas() {
-		// TODO Auto-generated method stub
-		return null;
+		Vector<Ruta> vect = new Vector<Ruta>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_RUTA;";				
+			Ruta ruta = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				ruta = new Ruta();
+				
+				ruta.setId(rs.getLong("idRuta"));
+				ruta.setNomRuta(rs.getString("nomRuta"));				
+				ruta.setOrigen(rs.getString("destino"));
+				ruta.setDestino(rs.getString("destino"));
+				ruta.setKm(rs.getInt("km"));
+				ruta.setDuracion(rs.getInt("duracion"));
+				ruta.setEstado(rs.getString("estado"));
+			
+				vect.add(ruta);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		return vect;
 	}
 
 	@Override
 	public Ruta consultarRuta(Ruta ruta) {
-		// TODO Auto-generated method stub
-		return null;
+		long id = ruta.getId();
+		Ruta nuevo = null;
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_RUTA WHERE idruta = '"+id+"';";			
+			ResultSet rs =	stmt.executeQuery(query);	
+					
+			if(rs.next()){
+				nuevo = new Ruta();
+				ruta.setId(rs.getLong("idRuta"));
+				ruta.setNomRuta(rs.getString("nomRuta"));				
+				ruta.setOrigen(rs.getString("destino"));
+				ruta.setDestino(rs.getString("destino"));
+				ruta.setKm(rs.getInt("km"));
+				ruta.setDuracion(rs.getInt("duracion"));
+				ruta.setEstado(rs.getString("estado"));
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return nuevo;
 	}
 
 	@Override
 	public boolean modificarRuta(Ruta ruta) {
-		// TODO Auto-generated method stub
+			int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String query = "UPDATE_RUTA SET ESTADO = '"+ruta.getEstado()+"', nomRuta = '"+ruta.getNomRuta()+"' , origen = '"+ruta.getOrigen()+"' , destino = '"+ruta.getDestino()+"', km = '"+ruta.getKm()+"', duracion = '"+ruta.getDuracion()+"' WHERE idRuta = "+ruta.getId()+";";
+					
+			filas_afectadas = stmt.executeUpdate(query);				
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		if(filas_afectadas == 1)
+			return true;
+		
 		return false;
 	}
 
 	@Override
-	public Vector<Ruta> buscarRutas(Ruta ruta) {
-		// TODO Auto-generated method stub
-		return null;
+	public Vector<Ruta> buscarRutas(Ruta param) {
+		Vector <Ruta>  vec = new Vector<Ruta>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_RUTA WHERE ";
+			boolean flag = false;
+			if(param.getId() != 0) {
+				query += "idRuta = "+param.getId();
+				flag = true;
+			} 
+			if(param.getNomRuta().length() != 0) {
+				if(flag) query += " AND ";
+				query += "(nomRuta LIKE UPPER('"+param.getNomRuta()+"%') OR PLACA LIKE LOWER('"+param.getNomRuta()+"%'))";
+				flag = true;
+			} 
+			if(param.getOrigen().length() != 0) {
+				if(flag) query += " AND ";
+				query += "(origen LIKE UPPER('"+param.getOrigen()+"%') OR MODELO LIKE LOWER('"+param.getOrigen()+"%'))";
+				flag = true;
+			} 
+			if(param.getDestino().length() != 0) {
+				if(flag) query += " AND ";
+				query += "(destino LIKE UPPER('"+param.getDestino()+"%') OR MARCA LIKE LOWER('"+param.getDestino()+"%'))";
+			}
+			query += " AND IDPROVEEDOR = "+1+";";
+			
+			Ruta ruta = null;
+			ResultSet rs = stmt.executeQuery(query);	
+		
+			while(rs.next()){	
+				ruta = new Ruta();
+					
+				ruta.setId(rs.getLong("idRuta"));
+				ruta.setNomRuta(rs.getString("nomRuta"));				
+				ruta.setOrigen(rs.getString("origen"));
+				ruta.setDestino(rs.getString("destino"));
+				ruta.setKm(rs.getInt("km"));
+				ruta.setDuracion(rs.getInt("duracion"));
+				ruta.setEstado(rs.getString("estado"));				
+				
+				vec.add(ruta);
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		return vec;
 	}
 	
 	//**************************FIN GESTIONAR RUTA******************************//
