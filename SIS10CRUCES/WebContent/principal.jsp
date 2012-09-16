@@ -41,7 +41,7 @@ if (history.forward(1))
 				<img alt="Entrar a Módulo de Proveedor" 
 				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
 			</a><br><br>
-			<font style="font-family: fantasy; font-size: small; text-align: justify;">
+			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
 			Ahora puedes tener en un solo sistema el control de toda la información relacionada con 
 			los viajes, rutas y servicios que brindas a tus clientes. También podrás consultar en 
 			cualquier momento el estado de tus ventas y la situación de tu empresa en el Terrapuerto.
@@ -56,7 +56,7 @@ if (history.forward(1))
 				<img alt="Entrar a Módulo de Ventas" 
 				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
 			</a><br><br>
-			<font style="font-family: fantasy; font-size: small; text-align: justify;">
+			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
 			Este módulo te permitirá realizar tus reservas y compras de los boletos sin necesidad de 
 			salir de tu hogar. Te brindará información actualizada de los viajes que realizarán todas 
 			las empresas de transporte, sus servicios y precios de manera oportuna.
@@ -71,7 +71,7 @@ if (history.forward(1))
 				<img alt="Entrar a Módulo de Seguridad" 
 				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
 			</a><br><br>
-			<font style="font-family: fantasy; font-size: small; text-align: justify;">
+			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
 			Este modulo permite administrar la seguridad del sistema, admninistrar perfiles, usuarios, 
 			programas, sesiones y auditoria. Solo para uso de usuarios autorizados para el mantenimiento 
 			de la aplicación.

@@ -25,7 +25,7 @@
 							Gestione sus Vehículos
 						</font>
 					</td> 
-					<td width="10%"></td> 				
+					<td width="5%"></td> 				
 					<td align="center">
 		            	<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_ruta">
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/proveedor_ruta.png">
@@ -39,6 +39,7 @@
   			</table>
   			
 		</td>
+		<td></td>
 	</tr>	
 	<tr>
 		<td colspan="2"></td>
