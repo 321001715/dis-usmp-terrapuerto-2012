@@ -25,7 +25,7 @@
 							Venda sus Boletos
 						</font>
 					</td> 
-					<td width="10%"></td> 				
+					<td width="5%"></td> 				
 					<td align="center">
 		            	<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_ruta">
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/___.png">

@@ -5,26 +5,60 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Sistema 10 cruces </title>
 </head>
 <body bgcolor="#FFFFCC">
-<table border="0" width="100%">
+<table width="100%">
 	<tr>
 		<td width="20%"></td>
 		<td>
 			<font style="font-family: monospace; font-size: x-large;">
-  			<br> <b>Módulo de Seguridad</b> <br><br>
+  			<br> <b>Módulo de Seguridad</b> <br><br><br><br>
   			</font>
-				<ul>
-					<li><a href="<%=application.getContextPath() %>/ServletClasificacion?tipo=<%=Constantes.ACCION_LISTAR_CLASIFICACION %>&destino=<%=Constantes.MANTENER_CLASIFICACION%>">Gesti&oacute;n de Clasificación</a></li>
-					<br>
-					<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_PROVEEDOR %>&destino=<%=Constantes.MANTENER_PROVEEDOR%>">Gesti&oacute;n de Proveedores</a></li>
-		            <br>
-		            <li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">Gesti&oacute;n de Usuarios</a></li>
-					<br>
-					<li><a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listarPerfiles&origen=<%=Constantes.MENU_PRINCIPAL%>">Gesti&oacute;n de Perfiles</a></li>
-					<br>
-		        </ul>
+  			<table cellpadding="2">
+  				<tr>
+					<td align="center">
+						<a href="<%=application.getContextPath() %>/ServletClasificacion?tipo=<%=Constantes.ACCION_LISTAR_CLASIFICACION %>&destino=<%=Constantes.MANTENER_CLASIFICACION%>">
+							<img style="width: 70%" alt="" src="<%=request.getContextPath()%>/images/seguridad_clasificacion.png">
+						</a>
+						<br>
+			  			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Gestione sus Clasificaciones
+						</font>
+					</td> 
+					<td width="5%"></td> 				
+					<td align="center">
+		            	<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_PROVEEDOR %>&destino=<%=Constantes.MANTENER_PROVEEDOR%>">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/seguridad_proveedores.png">
+						</a>
+						<br>
+						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Gestione a sus Proveedores
+						</font>
+					</td>  	
+					<td width="5%"></td> 	
+					<td align="center">
+		            	<a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/seguridad_usuario.png">
+						</a>
+						<br>
+						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Gestione a sus Usuarios
+						</font>
+					</td>  				
+  				</tr>
+  				<tr>
+  					<td align="center">
+  						<a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/seguridad_perfil.png">
+						</a>
+						<br>
+						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Gestione sus Perfiles
+						</font>
+  					</td>
+  				</tr>
+  			</table>
+  			
 		</td>
 		<td></td>
 	</tr>	
@@ -34,6 +68,6 @@
 			<img src="<%=request.getContextPath()%>/images/seguridad.png">
 		</td>
 	</tr>     
-</table>        
+</table>   
 </body>
 </html>
