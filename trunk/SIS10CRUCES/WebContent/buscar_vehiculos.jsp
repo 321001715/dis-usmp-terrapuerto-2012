@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
 		
@@ -21,29 +20,46 @@
 		return true;
 	}
 </script>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
+<link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
+<link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>	
-	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar()">
+<div class="ui-widget">
+   <div class="ui-corner-bottom ui-widget-content">   
+   <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
+   </div>
+&nbsp;   
+	<form action="ServletProveedor" method="post" name="buscar" onsubmit="validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_VEHICULO %>">
 		<input type="hidden" name="destino" value="<%=Constantes.GESTIONAR_VEHICULO%>">
 		<table>
 			<tr>
-				<td>Código de vehículo</td>
-				<td><input type="text" name="idVehiculo" d></td>
+				<td width="20%"></td>
+				<td>Código de Vehículo: </td>
+				<td><input type="text" name="idVehiculo"></td>
 				
-				<td>Modelo</td>
+				<td>Modelo: </td>
 				<td><input type="text" name="modelo"></td>
-				
-				<td rowspan="2" valign="top"><input type="submit" value="Buscar"></td>
 			</tr>
 			<tr>
-				<td>Marca</td>
+				<td></td>
+				<td>Marca: </td>
 				<td><input type="text" name="marca"></td>
 				
-				<td>Placa</td>
+				<td>Placa: </td>
 				<td><input type="text" name="placa"></td>
+			</tr>
+			<tr>
+				<td colspan="6" align="right">
+					<input type="submit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
+				</td>
 			</tr>			
 		</table>
 	</form>
+</div>
 </body>
 </html>

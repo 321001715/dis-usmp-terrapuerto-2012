@@ -380,13 +380,13 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	      try{
 	    	  Connection con = MySqlDAOFactory.abrirConexion();
 	 		 Statement stmt = con.createStatement();
-	        String sql = "SELECT idTipoUsuario,perfil FROM t_perfil ORDER BY idTipoUsuario";
+	        String sql = "SELECT idPerfil,perfil FROM t_perfil ORDER BY idPerfil";
 	        
 	        ResultSet rs = stmt.executeQuery(sql);
 	       
 	        while(rs.next()){
 	          TipoUsuario e = new TipoUsuario();
-	          e.setId(rs.getInt("idTipoUsuario"));
+	          e.setId(rs.getInt("idPerfil"));
 	          e.setPerfil(rs.getString("perfil"));
 	          tipoUsuarios.add(e);
 	        }
@@ -394,7 +394,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	        con.close();
 	        return tipoUsuarios;
 	      }catch(Exception e){
-	        System.out.println("Error muestraEscuela()...:"+e.getMessage());
+	        System.out.println("Error ...:"+e.getMessage());
 	        e.printStackTrace();
 	        return null;
 	      }
