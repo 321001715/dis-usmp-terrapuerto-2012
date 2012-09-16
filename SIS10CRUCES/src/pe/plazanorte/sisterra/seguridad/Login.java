@@ -28,16 +28,12 @@ public class Login extends HttpServlet {
 			uu.setUsuario(request.getParameter("usuario").toUpperCase());
 			uu.setClave(request.getParameter("password"));
 			uu.setIdTipUsuario(Integer.parseInt(request.getParameter("esc")));
-System.out.println("usu " + uu.getUsuario()); 
-System.out.println("usu " + uu.getClave());
 			MySqlSeguridadDAO du = new MySqlSeguridadDAO();
 			if (du.validarUser(uu)) {
-	System.out.println("jaja2");
 				session.setAttribute("BUsuario", uu);
 				uu = (Usuario) session.getAttribute("BUsuario");
 				getServletContext().getRequestDispatcher("/presentacion.jsp")
 						.forward(request, response);
-	System.out.println("jaja3");
 			} else {
 				getServletContext().getRequestDispatcher("/login.jsp")
 						.forward(request, response);

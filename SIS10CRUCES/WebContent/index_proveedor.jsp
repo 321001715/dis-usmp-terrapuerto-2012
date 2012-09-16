@@ -5,23 +5,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Sistema 10 cruces </title>
 </head>
 <body bgcolor="#FFCC66">
-<table border="0" width="100%">
+<table width="100%">
 	<tr>
 		<td width="20%"></td>
 		<td>
 			<font style="font-family: monospace; font-size: x-large;">
-  			<br> <b>Módulo de Proveedor</b> <br><br>
+  			<br> <b>Módulo de Proveedor</b> <br><br><br><br>
   			</font>
-				<ul>
-					<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gestione sus Vehículos</a></li>
-					<br>
-		            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_ruta">Gestione sus Rutas</a></li>
-		        </ul>
+  			<table cellpadding="2">
+  				<tr>
+					<td align="center">
+						<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/proveedor_vehiculo.png">
+						</a>
+						<br>
+			  			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Gestione sus Vehículos
+						</font>
+					</td> 
+					<td width="10%"></td> 				
+					<td align="center">
+		            	<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_ruta">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/proveedor_ruta.png">
+						</a>
+						<br>
+						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Gestione sus Rutas
+						</font>
+					</td>  				
+  				</tr>
+  			</table>
+  			
 		</td>
-		<td></td>
 	</tr>	
 	<tr>
 		<td colspan="2"></td>

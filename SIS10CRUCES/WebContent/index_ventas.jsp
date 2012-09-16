@@ -5,22 +5,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Sistema 10 cruces </title>
 </head>
 <body bgcolor="#FFCCCC">
-<table border="0" width="100%">
+<table width="100%">
 	<tr>
 		<td width="20%"></td>
 		<td>
 			<font style="font-family: monospace; font-size: x-large;">
-  			<br> <b>Módulo de Ventas</b> <br><br>
+  			<br> <b>Módulo de Ventas</b> <br><br><br><br>
   			</font>
-				<ul>
-<%-- 					<li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VEHICULO %>&destino=<%=Constantes.GESTIONAR_VEHICULO%>">Gestione sus Vehículos</a></li> --%>
-<!-- 					<br> -->
-<%-- 		            <li><a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_RUTA %>&destino=<%=Constantes.GESTIONAR_RUTA%>">Gestione sus Rutas</a></li> --%>
-					<li><a href="<%=application.getContextPath() %>/ServletBoletaje?tipo=<%=Constantes.VENDER_BOLETO %>">Vender boleto de viaje</a></li>
-		        </ul>
+  			<table cellpadding="2">
+  				<tr>
+					<td align="center">
+						<a href="<%=application.getContextPath() %>/ServletBoletaje?tipo=<%=Constantes.VENDER_BOLETO %>">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_boleto.png">
+						</a>
+						<br>
+			  			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Venda sus Boletos
+						</font>
+					</td> 
+					<td width="10%"></td> 				
+					<td align="center">
+		            	<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_ruta">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/___.png">
+						</a>
+						<br>
+						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							...
+						</font>
+					</td>  				
+  				</tr>
+  			</table>
+  			
 		</td>
 		<td></td>
 	</tr>	
