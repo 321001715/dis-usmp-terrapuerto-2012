@@ -43,15 +43,15 @@
 				<td><input type="text" name="idVehiculo"></td>
 				
 				<td>Origen: </td>
-				<td><input type="text" name="modelo"></td>
+				<td><input type="text" name="origen"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>Nombre de Ruta: </td>
-				<td><input type="text" name="marca"></td>
+				<td><input type="text" name="nomRuta"></td>
 				
 				<td>Destino: </td>
-				<td><input type="text" name="placa"></td>
+				<td><input type="text" name="destino"></td>
 			</tr>
 			<tr>
 				<td colspan="6" align="right">

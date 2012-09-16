@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
 <script type="text/javascript">
 function validar(){
 	
@@ -21,15 +20,38 @@ function validar(){
 	return true;
 }
 </script>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
+<link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
+<link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
-<body>
-<form name="buscar" action="ServletProveedor" method="post" onsubmit="return validar()">
+<body>	
+<div class="ui-widget">
+   <div class="ui-corner-bottom ui-widget-content">   
+   <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
+   </div>
+&nbsp;   
+<form name="buscar" action="ServletProveedor" method="post" onsubmit="validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_PROVEEDOR%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MANTENER_PROVEEDOR%>">
-	RUC <input type="text" name="ruc" maxlength="9">
-	Raz&oacute;n social <input type="text" name="razSocial">
-	<input type="submit" value="Buscar">
-</form>
-
+	<table>
+			<tr>
+				<td width="20%"></td>
+				<td>RUC: </td>
+				<td><input type="text" name="ruc"></td>
+				
+				<td>Razón Social: </td>
+				<td><input type="text" name="razSocial"></td>
+			</tr>
+			<tr>
+				<td colspan="6" align="right">
+					<input type="submit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
+				</td>
+			</tr>			
+		</table>
+	</form>
+</div>
 </body>
 </html>
