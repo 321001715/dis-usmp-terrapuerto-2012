@@ -365,7 +365,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					" `origen`, `destino`, `km`, `duracion`, `estado`, `idProveedor`, `idCiudad`)" +
 					" VALUES ('"+ruta.getNomRuta()+"', '"+ruta.getOrigen()+"', "+ruta.getDestino()+"," +
 							" "+ruta.getKm()+", '"+ruta.getDuracion()+"', '"+Constantes.ESTADO_ACTIVO+"', "+1+", "+1+");";
-			System.out.print("dato: "+sql);
+		
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {			
@@ -487,7 +487,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				query += "(destino LIKE UPPER('"+param.getDestino()+"%') OR destino LIKE LOWER('"+param.getDestino()+"%'))";
 			}
 			query += " AND IDPROVEEDOR = "+1+";";
-			System.out.print("datos: "+query);
+		
 			Ruta ruta = null;
 			ResultSet rs = stmt.executeQuery(query);	
 		
