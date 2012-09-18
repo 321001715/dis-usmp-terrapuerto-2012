@@ -413,7 +413,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	 		String sql ="SELECT idusuario FROM `bd_cruces`.`t_usuario`" +
 	 		" WHERE UPPER(usuario)='"+u.getUsuario()+"' and clave='"+u.getClave()+"' and" +
 	 				" idperfil='"+u.getIdTipUsuario()+"'";
-	 		System.out.print("dato"+sql);
+	 		
 				ResultSet rs = stmt.executeQuery(sql);
 				 
 				if (rs.next()) {
