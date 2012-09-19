@@ -40,7 +40,7 @@
 			<tr>
 				<td width="20%"></td>
 				<td>Código de Ruta: </td>
-				<td><input type="text" name="idVehiculo"></td>
+				<td><input type="text" name="codRuta"></td>
 				
 				<td>Origen: </td>
 				<td><input type="text" name="origen"></td>

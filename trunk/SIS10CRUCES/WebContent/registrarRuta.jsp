@@ -6,12 +6,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function validar(){
+		if(document.regis.duracion.value.length == 0 || document.regis.km.value.length == 0 || document.regis.destino.value.length == 0 || document.regis.nomRuta.value.length == 0 || document.regis.origen.value.length == 0){		
+			alert("Debe llenar alguna condición para el registro.");
+			document.regis.nomRuta.focus();				
+			return false;
+		}
+		return true;
+	}
+</script>
+
 </head>
 <body>
 
 <h2>Registro de Ruta</h2>
 
-<form action="ServletProveedor" method="post">
+<form action="ServletProveedor" name="regis" method="post" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="registrarRuta">
 		<table cellpadding="5px">
 			<tr>
