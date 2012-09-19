@@ -361,9 +361,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "INSERT INTO `bd_cruces`.`t_ruta` ( `nomRuta`," +
+			String sql = "INSERT INTO `bd_cruces`.`t_ruta` ( `codRuta`,`nomRuta`," +
 					" `origen`, `destino`, `km`, `duracion`, `estado`, `idProveedor`, `idCiudad`)" +
-					" VALUES ('"+ruta.getNomRuta()+"', '"+ruta.getOrigen()+"', "+ruta.getDestino()+"," +
+					" VALUES ('"+ruta.getCodRuta()+"','"+ruta.getNomRuta()+"', '"+ruta.getOrigen()+"', "+ruta.getDestino()+"," +
 							" "+ruta.getKm()+", '"+ruta.getDuracion()+"', '"+Constantes.ESTADO_ACTIVO+"', "+1+", "+1+");";
 		
 			filas_afectadas = stmt.executeUpdate(sql);
@@ -490,10 +490,12 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		
 			Ruta ruta = null;
 			ResultSet rs = stmt.executeQuery(query);	
+			
+		System.out.print(""+query);
 		
 			while(rs.next()){	
 				ruta = new Ruta();
-					
+				
 				ruta.setId(rs.getLong("idRuta"));
 				ruta.setNomRuta(rs.getString("nomRuta"));				
 				ruta.setOrigen(rs.getString("origen"));
