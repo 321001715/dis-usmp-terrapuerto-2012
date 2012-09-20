@@ -14,9 +14,18 @@
 	<input type="hidden" name="tipo" value="">
 	<input type="hidden" name="destino" value="">
 	
-	Usuario: <input type="text" value="" readonly="readonly"><br>
-	Perfil: <input type="text" value="" readonly="readonly">
 	
+	<table>
+		<tr>
+			<td>Usuario</td>
+			<td><input type="text" value="" readonly="readonly"></td>
+		</tr>
+		<tr>
+			<td>Perfil</td>
+			<td><input type="text" value="" readonly="readonly"></td>
+		</tr>
+	</table>
+		
 	<h4>Detalle de reserva</h4>
 	<table>
 		<tr>
@@ -170,6 +179,10 @@
 		<tr>
 			<td>Pago</td>
 			<td><input type="text" name="" value=""></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="Confirmar"></td>
+			<td><input type="submit" value="Imprimir"></td>
 		</tr>
 	</table>
 </form>
