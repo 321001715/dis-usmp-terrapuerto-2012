@@ -4,6 +4,6 @@ import pe.plazanorte.sisterra.entidades.Viaje;
 
 public interface BoletajeDAO {
 
-	public boolean venderBoleto(Viaje viaje);
+	public boolean confirmarBoleto(Viaje viaje);
 	
 }
