@@ -32,9 +32,7 @@ public class Constantes {
 	public static final int MANTENER_USUARIO = 12;
 	public static final int MODIFICAR_USUARIO = 13;
 
-	public static final int GESTIONAR_RUTA = 100;
-	
-	
+	public static final int GESTIONAR_RUTA = 100;	
 	
 	
 	
