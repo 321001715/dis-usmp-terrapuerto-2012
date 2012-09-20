@@ -9,7 +9,7 @@ import pe.plazanorte.sisterra.entidades.Viaje;
 
 public class MySqlBoletajeDAO implements BoletajeDAO {
 
-	public boolean venderBoleto(Viaje viaje) {
+	public boolean confirmarBoleto(Viaje viaje) {
 		int filas_afectadas = 0;
 		
 		try {
