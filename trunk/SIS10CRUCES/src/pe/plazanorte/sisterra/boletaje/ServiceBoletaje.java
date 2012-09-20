@@ -9,7 +9,7 @@ public class ServiceBoletaje {
 	public boolean venderBoleto(Viaje viaje) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
-		return boletajeDao.venderBoleto(viaje);
+		return boletajeDao.confirmarBoleto(viaje);
 	}
 
 }
