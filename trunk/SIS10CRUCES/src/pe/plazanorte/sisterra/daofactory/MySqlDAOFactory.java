@@ -3,9 +3,11 @@ package pe.plazanorte.sisterra.daofactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.dao.iface.ClasificacionDAO;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
+import pe.plazanorte.sisterra.dao.mysql.MySqlBoletajeDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlClasificacionDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlProveedorDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
@@ -35,10 +37,12 @@ public class MySqlDAOFactory extends DAOFactory{
 		return new MySqlProveedorDAO();
 	}
 
-	@Override
-	public ClasificacionDAO getClasificacionDAO() {
-	
+	public ClasificacionDAO getClasificacionDAO() {	
 		return new MySqlClasificacionDAO();
+	}
+
+	public BoletajeDAO getBoletajeDAO() {		
+		return new MySqlBoletajeDAO();
 	}
 
 }
