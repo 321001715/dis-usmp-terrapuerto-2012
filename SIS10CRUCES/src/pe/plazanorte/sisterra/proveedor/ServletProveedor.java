@@ -180,22 +180,12 @@ public class ServletProveedor extends HttpServlet {
 			request.setAttribute("ruta", ruta);	
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	}
-		
+		}	}			
 				
 				
 				
 				
-				
-				
-		//****************************FIN GESTIONAR RUTA*****************************//
-				
-				
-				
-				
-				
-				
-				
+		//****************************FIN GESTIONAR RUTA*****************************//				
 				
 				
 		
@@ -218,139 +208,135 @@ public class ServletProveedor extends HttpServlet {
 		
 		//*****************************INICIO MANTENER PROVEEDOR*****************************//
 		
-		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_PROVEEDOR)) {
-			
-			String ruc = request.getParameter("ruc");
-			String razonSocial = request.getParameter("razon_social");
-			String razonComercial = request.getParameter("razon_comercial");
-			int telefono = Integer.parseInt(request.getParameter("telefono"));
-			String direccion = request.getParameter("direccion");		
-			String usuario = request.getParameter("usuario");
-			String clave = request.getParameter("clave");
-			
-			try {
-				Proveedor proveedor = new Proveedor();
-				proveedor.setRuc(ruc);	
-				proveedor.setRazonSocial(razonSocial);
-				proveedor.setRazCom(razonComercial);
-				proveedor.setTel(telefono);
-				proveedor.setDireccion(direccion);
-				proveedor.setUsuario(usuario);
-				proveedor.setClave(clave);
+				if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_PROVEEDOR)) {
+					
+					String ruc = request.getParameter("ruc");
+					String razonSocial = request.getParameter("razon_social");
+					String razonComercial = request.getParameter("razon_comercial");
+					int telefono = Integer.parseInt(request.getParameter("telefono"));
+					String direccion = request.getParameter("direccion");		
+					int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 				
-				boolean retorno = service.agregarProveedor(proveedor);				
+					try {
+						Proveedor proveedor = new Proveedor();
+						proveedor.setRuc(ruc);	
+						proveedor.setRazSocial(razonSocial);
+						proveedor.setRazCom(razonComercial);
+						proveedor.setTel(telefono);
+						proveedor.setDireccion(direccion);
+						proveedor.setIdUsuario(idUsuario);
+						
+						boolean retorno = service.agregarProveedor(proveedor);				
+						
+						if(retorno) mensaje = "Proveedor agregado con éxito.";
+						else mensaje = "Error, no se pudo registrar el proveedor.";
+						
+						Vector<Proveedor> proveedores = new Vector<Proveedor>();				
+						proveedores = service.listarProveedores();
+						request.setAttribute("proveedores", proveedores);	
+						
+						rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_PROVEEDOR)) {
+					
+					long codigo = Long.parseLong(request.getParameter("codigo"));
+					String ruc = request.getParameter("ruc");
+					String razonSocial = request.getParameter("razon_social");
+					String razonComercial = request.getParameter("razon_comercial");
+					int telefono = Integer.parseInt(request.getParameter("telefono"));
+					String estado = request.getParameter("estado");
+					String direccion = request.getParameter("direccion");	
+					//int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+					
+					try {
+						Proveedor proveedor = new Proveedor();
+						proveedor.setIdProveedor(codigo);
+						proveedor.setRuc(ruc);	
+						proveedor.setRazSocial(razonSocial);
+						proveedor.setRazCom(razonComercial);
+						proveedor.setEstado(estado);
+						proveedor.setTel(telefono);
+						proveedor.setDireccion(direccion);	
+						//proveedor.setIdUsuario(idUsuario);				
+						
+						boolean retorno = service.modificarProveedor(proveedor);				
+						
+						if(retorno) mensaje = "Proveedor modificado con éxito.";
+						else mensaje = "Error, no se pudo modificar el proveedor.";	
+						
+						Vector<Proveedor> proveedores = new Vector<Proveedor>();				
+						proveedores = service.listarProveedores();
+						request.setAttribute("proveedores", proveedores);	
+						
+						rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}			
+					
+				}else if(tipo.equalsIgnoreCase("eliminar")) {
+					
+					/*try {
+						Proveedor proveedor = new Proveedor();
+						proveedor.setIdProveedor(Integer.parseInt(request.getParameter("id")));
+					
+						service.eliminarProveedor(proveedor);
+						
+						rd = getServletContext().getRequestDispatcher("/index.jsp");
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}*/
+					
+				}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_PROVEEDOR)) {
+					
+					Proveedor proveedor = new Proveedor();			
+					
+					try {
+						//VALIDAR EL INGRESO DE STRING
+						int id = Integer.parseInt(request.getParameter("idProveedor"));
+						proveedor.setIdProveedor(id);			
+						proveedor = service.consultarProveedor(proveedor);
+						if(proveedor == null) mensaje = "No se encontraron resultados para su consulta. [Proveedor cod."+id+"]";
+						else mensaje = "";
+						request.setAttribute("proveedor", proveedor);				
+						
+						rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");				
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}else if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)){
+					
+					try {								
+						Vector<Proveedor> proveedores = new Vector<Proveedor>();				
+						proveedores = service.listarProveedores();
+						request.setAttribute("proveedores", proveedores);
+						rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");				
+					} catch (Exception e) {
+						e.printStackTrace();
+					}			
+				}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_PROVEEDOR)){
+					int destino = Integer.parseInt(request.getParameter("destino"));
+					String ruc = request.getParameter("ruc");
+					String razSocial = request.getParameter("razSocial");
+					Vector<Proveedor> proveedores = null;
+					try {
+						proveedores = service.buscarProveedores(ruc, razSocial);				
+						request.setAttribute("proveedores", proveedores);						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					if(destino == Constantes.MANTENER_PROVEEDOR){
+						rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+					}
+				}				
 				
-				if(retorno) mensaje = "Proveedor agregado con éxito.";
-				else mensaje = "Error, no se pudo registrar el proveedor.";
-				
-				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
-				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);	
-				
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_PROVEEDOR)) {
-			
-			long codigo = Long.parseLong(request.getParameter("codigo"));
-			String ruc = request.getParameter("ruc");
-			String razonSocial = request.getParameter("razon_social");
-			String razonComercial = request.getParameter("razon_comercial");
-			int telefono = Integer.parseInt(request.getParameter("telefono"));
-			String estado = request.getParameter("estado");
-			String direccion = request.getParameter("direccion");	
-			String usuario = request.getParameter("usuario");
-			String clave = request.getParameter("clave");
-			
-			try {
-				Proveedor proveedor = new Proveedor();
-				proveedor.setIdProveedor(codigo);
-				proveedor.setRuc(ruc);	
-				proveedor.setRazonSocial(razonSocial);
-				proveedor.setRazCom(razonComercial);
-				proveedor.setEstado(estado);
-				proveedor.setTel(telefono);
-				proveedor.setDireccion(direccion);	
-				proveedor.setUsuario(usuario);
-				proveedor.setClave(clave);
-				
-				boolean retorno = service.modificarProveedor(proveedor);				
-				
-				if(retorno) mensaje = "Proveedor modificado con éxito.";
-				else mensaje = "Error, no se pudo modificar el proveedor.";	
-				
-				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
-				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);	
-				
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			
-			
-		}else if(tipo.equalsIgnoreCase("eliminar")) {
-			
-			/*try {
-				Proveedor proveedor = new Proveedor();
-				proveedor.setIdProveedor(Integer.parseInt(request.getParameter("id")));
-			
-				service.eliminarProveedor(proveedor);
-				
-				rd = getServletContext().getRequestDispatcher("/index.jsp");
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}*/
-			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_PROVEEDOR)) {
-			
-			Proveedor proveedor = new Proveedor();			
-			
-			try {
-				//VALIDAR EL INGRESO DE STRING
-				int id = Integer.parseInt(request.getParameter("idProveedor"));
-				proveedor.setIdProveedor(id);			
-				proveedor = service.consultarProveedor(proveedor);
-				if(proveedor == null) mensaje = "No se encontraron resultados para su consulta. [Proveedor cod."+id+"]";
-				else mensaje = "";
-				request.setAttribute("proveedor", proveedor);				
-				
-				rd = getServletContext().getRequestDispatcher("/modificar_proveedor.jsp");				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)){
-			
-			try {								
-				Vector<Proveedor> proveedores = new Vector<Proveedor>();				
-				proveedores = service.listarProveedores();
-				request.setAttribute("proveedores", proveedores);
-				rd = getServletContext().getRequestDispatcher("/listar_proveedores.jsp");				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_PROVEEDOR)){
-			int destino = Integer.parseInt(request.getParameter("destino"));
-			String ruc = request.getParameter("ruc");
-			String razSocial = request.getParameter("razSocial");
-			Vector<Proveedor> proveedores = null;
-			try {
-				proveedores = service.buscarProveedores(ruc, razSocial);				
-				request.setAttribute("proveedores", proveedores);						
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			if(destino == Constantes.MANTENER_PROVEEDOR){
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
-			}
-		}				
-		
-		//*****************************FIN MANTENER PROVEEDOR*****************************//
+				//*****************************FIN MANTENER PROVEEDOR*****************************//
 		
 		
 		//*****************************INICIO GESTIONAR VEHICULO*****************************//
@@ -538,8 +524,7 @@ public class ServletProveedor extends HttpServlet {
 			Vector<Ruta> vec = null;
 			try {
 				vec = service.buscarRuta(ruta);				
-				request.setAttribute("ruta", vec);	
-				System.out.print("teeeeeeee111");
+				request.setAttribute("ruta", vec);					
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
