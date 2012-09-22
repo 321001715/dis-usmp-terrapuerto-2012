@@ -137,7 +137,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			String query = "UPDATE t_perfil SET " +
 					"perfil = '"+ perfil.getNombre() + 
 					"', descripcion = '"+perfil.getDescripcion()+
-					"' WHERE idTipoUsuario = "+perfil.getId()+";";
+					"' WHERE idPerfil = "+perfil.getId()+";";
 			filas_afectadas = stmt.executeUpdate(query);				
 			con.close();
 		} catch (Exception e) {
@@ -234,7 +234,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			while(rs.next()){	
 				perfil = new Perfil();
 				
-				perfil.setId(rs.getLong("idTipoUsuario"));
+				perfil.setId(rs.getLong("idPerfil"));
 				perfil.setNombre(rs.getString("perfil"));
 				perfil.setDescripcion(rs.getString("descripcion"));
 
@@ -269,11 +269,11 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				codigo = 0;
 			
 			if(codigo != 0 && perfil.length() == 0)
-				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario= "+codigo+";";
+				query = "SELECT * FROM T_PERFIL WHERE idPerfil= "+codigo+";";
 			else if(perfil.length() != 0 && codigo == 0)
 				query = "SELECT * FROM T_PERFIL WHERE perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"%';";
 			else
-				query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario = "+codigo+" AND (perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"%');";
+				query = "SELECT * FROM T_PERFIL WHERE idPerfil = "+codigo+" AND (perfil LIKE '"+perfil.toUpperCase()+"%' OR perfil LIKE '"+perfil.toLowerCase()+"%');";
 			
 			System.out.println(query);
 							
@@ -283,7 +283,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			while(rs.next()){	
 				tipoperfil = new Perfil();
 				
-				tipoperfil.setId(rs.getLong("idTipoUsuario"));
+				tipoperfil.setId(rs.getLong("idPerfil"));
 				tipoperfil.setNombre(rs.getString("perfil"));
 				tipoperfil.setDescripcion(rs.getString("descripcion"));
 				
@@ -337,7 +337,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			} 
 			if(dniuser != 0) {
 				if(flag) query += " AND ";
-				query += "(dni LIKE UPPER('"+dniuser+"%') OR dni LIKE LOWER('"+dniuser+"%'))";
+				query += "(numDoc LIKE UPPER('"+dniuser+"%') OR numDoc LIKE LOWER('"+dniuser+"%'))";
 			}
 			
 			System.out.println(query);
@@ -350,7 +350,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				usuario.setId(rs.getLong("idUsuario"));
 				usuario.setUsuario(rs.getString("usuario"));
 				usuario.setIdTipUsuario(rs.getLong("idPerfil"));
-				usuario.setDni(rs.getLong("dni"));
+				usuario.setDni(rs.getLong("numDoc"));
 				usuario.setApePat(rs.getString("apePat"));
 				usuario.setApeMat(rs.getString("apeMat"));
 				usuario.setNombres(rs.getString("nombres"));
