@@ -38,11 +38,6 @@
 			document.registrar.usuario.focus();
 			return false;
 		}
-		if(document.registrar.clave.value.length == 0){
-			alert("Debe escribir una clave.");
-			document.registrar.clave.focus();
-			return false;
-		}
 		if(document.registrar.clave.value.length < 5){
 			alert("Su clave debe tener más de 5 dígitos.");
 			document.registrar.clave.focus();
@@ -86,13 +81,9 @@
 				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
 			</tr>
 			<tr>
-				<td>Usuario</td>	
-				<td><input type="text" name="usuario"></td>					
-			</tr>
-			<tr>
-				<td>Clave</td>	
-				<td><input type="password" name="clave"></td>					
-			</tr>
+				<td>Id de Usuario</td>	
+				<td><input type="text" name="idUsuario"></td>					
+			</tr>			
 			<tr>
 				<td><input type="submit" value=Agregar type="submit"></td>
 				<td><input type="reset" value="Limpiar campos" type="submit"></td>
