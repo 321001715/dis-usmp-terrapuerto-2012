@@ -481,7 +481,7 @@ public class ServletProveedor extends HttpServlet {
 				ruta.setKm(km);
 				ruta.setDuracion(duracion);
 				
-				Usuario uu = (Usuario)session.getAttribute("BUsuario");
+				Proveedor uu = (Proveedor)session.getAttribute("BProveedor");
 				boolean retorno = service.registrarRuta(ruta,uu);	
 		
 				
