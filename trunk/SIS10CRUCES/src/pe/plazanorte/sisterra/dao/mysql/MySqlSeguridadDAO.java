@@ -378,12 +378,12 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	 public Vector<TipoUsuario> muestraTipoUsuario(){  
 
 		 Vector<TipoUsuario> tipoUsuarios = new Vector<TipoUsuario>();
-		 
+		 System.out.println("123");
 	      try{
 	    	  Connection con = MySqlDAOFactory.abrirConexion();
 	 		 Statement stmt = con.createStatement();
 	        String sql = "SELECT idPerfil,perfil FROM t_perfil ORDER BY idPerfil";
-	        
+	        System.out.println("ddd");
 	        ResultSet rs = stmt.executeQuery(sql);
 	       
 	        while(rs.next()){
@@ -452,37 +452,6 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			}
 		}
 
-	@Override
-	public Persona consultarPersona(int dni) {
-		String nombre="";
-		Persona nuevo = null;
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PERSONA WHERE numDoc = '"+dni+"';";			
-			ResultSet rs =	stmt.executeQuery(query);	
-			System.out.print(query);		
-			if(rs.next()){		
-				nuevo = new Persona();
-				nuevo.setId(rs.getLong("id_persona"));
-				nuevo.setNombre(rs.getString("nombres"));
-				nombre=nuevo.getNombre();
-				nuevo.setApePat(rs.getString("apePat"));
-				nuevo.setApeMat(rs.getString("apeMat"));
-				nuevo.setDni(rs.getLong("numDoc"));
-				
-			}
-			con.close();
-			System.out.print(nombre);
-		} catch (Exception e) {			
-			e.printStackTrace();
-		} finally {
-			
-		}
-		return nuevo;
-		
-	}
-
 	 
 	 public boolean proveedor(Proveedor u,Usuario uu) {
 			
@@ -526,40 +495,18 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			}
 		}
 
-	 @Override
-		public Usuario recuperarclave(String usu) {
-			Usuario usuario= new Usuario();
-		    try {
-		    	 Connection con = MySqlDAOFactory.abrirConexion();
-		 		 Statement stmt = con.createStatement();
-		 		 
-		 		String sql ="SELECT * FROM `bd_cruces`.`t_usuario`" +
-		 		" WHERE usuario='"+usu+"';";
-		 		
-					ResultSet rs = stmt.executeQuery(sql);
-					 
-					if (rs.next()) {
-						usuario.setId(rs.getInt("idusuario"));
-						usuario.setNombres(rs.getString("nombres"));
-						usuario.setEmail(rs.getString("email"));
-						usuario.setClave(rs.getString("clave"));
-					
-			  
-					 rs.close();
-				        con.close();
-	        
-	        
-					return usuario;
-				} else {
-					 rs.close();
-				        con.close();
-				        
-					return usuario;
-				}
-			} catch (Exception e) {
-				return usuario;
-			}
-		}
+	@Override
+	public Persona consultarPersona(int dni) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario recuperarclave(String usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	 
 	 

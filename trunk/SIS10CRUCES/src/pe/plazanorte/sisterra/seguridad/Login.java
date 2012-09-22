@@ -35,14 +35,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("BUsuario", uu);
 				uu = (Usuario) session.getAttribute("BUsuario");
 				
-			if (uu.getIdTipUsuario()==18) {
-				Proveedor proveedor = new Proveedor();
-				du.proveedor(proveedor,uu);
-				session.setAttribute("BProveedor", proveedor);
-				
-				getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
-			
-			}else getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
+			 getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
 			
 			
 			
