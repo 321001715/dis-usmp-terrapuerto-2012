@@ -19,9 +19,9 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "INSERT INTO T_CLASIFICASION(descripcion) "
-					+ "VALUES ('"+clasificacion.getDescripcion()+"');";
-
+			String sql = "INSERT INTO T_clasificacion(nombre,descripcion) "
+					+ "VALUES ('"+clasificacion.getNombre()+"','"+clasificacion.getDescripcion()+"');";
+			
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {
@@ -41,9 +41,9 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String query = "UPDATE T_CLASIFICASION SET " + "DESCRIPCION = '"
+			String query = "UPDATE T_clasificacion SET " + "DESCRIPCION = '"
 					+ clasificacion.getDescripcion()
-					+ "' WHERE idClasificasion= " + clasificacion.getId() + ";";
+					+ "' WHERE idclasificacion= " + clasificacion.getId() + ";";
 			filas_afectadas = stmt.executeUpdate(query);
 			con.close();
 		} catch (Exception e) {
@@ -68,13 +68,13 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_CLASIFICASION WHERE idClasificasion = '"
+			String query = "SELECT * FROM T_clasificacion WHERE idclasificacion = '"
 					+ id + "';";
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
 				nuevo = new Clasificacion();
-				nuevo.setId(rs.getLong("idClasificasion"));
+				nuevo.setId(rs.getLong("idclasificacion"));
 				nuevo.setDescripcion(rs.getString("descripcion"));
 
 			}
@@ -94,14 +94,15 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_CLASIFICASION;";
+			String query = "SELECT * FROM T_clasificacion;";
 			Clasificacion clasificacion = null;
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
 				clasificacion = new Clasificacion();
 
-				clasificacion.setId(rs.getLong("idClasificasion"));
+				clasificacion.setId(rs.getLong("idclasificacion"));
+				clasificacion.setNombre(rs.getString("nombre"));
 				clasificacion.setDescripcion(rs.getString("descripcion"));
 
 				clasificaciones.add(clasificacion);
@@ -124,13 +125,13 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			String query = "";
 
 			if (descripcion.length() != 0)
-				query = "SELECT * FROM T_CLASIFICASION WHERE DESCRIPCION LIKE '"
+				query = "SELECT * FROM T_clasificacion WHERE DESCRIPCION LIKE '"
 						+ descripcion.toUpperCase()
 						+ "%' OR DESCRIPCION LIKE '"
 						+ descripcion.toLowerCase() + "%';";
 
 			else
-				query = "SELECT * FROM T_CLASIFICASION ;";
+				query = "SELECT * FROM T_clasificacion ;";
 
 			
 			Clasificacion clasificacion = null;
@@ -139,7 +140,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			while (rs.next()) {
 				clasificacion = new Clasificacion();
 
-				clasificacion.setId(rs.getLong("idClasificasion"));
+				clasificacion.setId(rs.getLong("idclasificacion"));
 				clasificacion.setDescripcion(rs.getString("descripcion"));
 
 				clasificaciones.add(clasificacion);

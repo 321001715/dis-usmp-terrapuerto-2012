@@ -29,6 +29,7 @@ if(clasificaciones.size() != 0){
 		<thead>
 			<tr>
 				<th><h3 align="center">Código</h3></th>
+				<th><h3 align="center">Nombre</h3></th>
 				<th><h3 align="center">Descripción</h3></th>
 				<th><h3 align="center"></h3></th>
 			</tr>
@@ -41,7 +42,9 @@ if(clasificaciones.size() != 0){
 
 	<tr>
 		<td align="center"><%=clasificaciones.get(i).getId() %></td>
+		<td align="center"><%=clasificaciones.get(i).getNombre() %></td>
 		<td align="right"><%=clasificaciones.get(i).getDescripcion() %></td>
+		
 		<td align="left">
 			<div class="ui-state-default ui-corner-all cajaicono">
 				<a href="ServletClasificacion?tipo=<%=Constantes.ACCION_CONSULTAR_CLASIFICACION %>&destino=<%=Constantes.MODIFICAR_CLASIFICACION%>&id=<%=clasificaciones.get(i).getId()%>">
