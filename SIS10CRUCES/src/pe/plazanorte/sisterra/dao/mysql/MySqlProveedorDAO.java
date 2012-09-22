@@ -361,7 +361,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "INSERT INTO `bd_cruces`.`t_ruta` ( `codRuta`,`nomRuta`," +
+			String sql = "INSERT INTO `bd_cruces`.`t_ruta` ( `nomRuta`," +
 					" `origen`, `destino`, `km`, `duracion`, `estado`, `idProveedor`, `idCiudad`)" +
 					" VALUES ('"+ruta.getCodRuta()+"','"+ruta.getNomRuta()+"', '"+ruta.getOrigen()+"', "+ruta.getDestino()+"," +
 							" "+ruta.getKm()+", '"+ruta.getDuracion()+"', '"+Constantes.ESTADO_ACTIVO+"', "+1+", "+1+");";
