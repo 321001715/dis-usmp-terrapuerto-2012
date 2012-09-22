@@ -5,6 +5,7 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Ruta;
 public class ServiceProveedor {
@@ -92,11 +93,11 @@ public class ServiceProveedor {
 	//*************************INICIO GESTIONAR RUTA******************************//
 	
 	
-	public boolean registrarRuta(Ruta ruta) {
+	public boolean registrarRuta(Ruta ruta, Usuario uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		return proveedorDao.registrarRuta(ruta);		
+		return proveedorDao.registrarRuta(ruta,uu);		
 	}
 
 
