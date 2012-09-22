@@ -77,6 +77,10 @@
 				<td><input type="text" name="id" maxlength="11" value="<%=clasificacion.getId() %>" readonly="readonly"></td>				
 			</tr>
 			<tr>
+				<td>Nombre</td>
+				<td><input type="text" name="nombre" maxlength="11" value="<%=clasificacion.getNombre() %>" ></td>				
+			</tr>
+			<tr>
 				<td>Descripción</td>
 				<td><input type="text" name="descripcion" maxlength="11" value="<%=clasificacion.getDescripcion() %>" ></td>				
 			</tr>		

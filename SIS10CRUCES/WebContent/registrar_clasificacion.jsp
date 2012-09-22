@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<td>Codigo de Clasificaci&oacute;n</td>
-				<td><input type="text" name="idTipoServicio" maxlength="11"></td>				
+				<td><input type="text" name="idTipoServicio" maxlength="11" readonly="readonly"></td>				
 			</tr>
 			<tr>
 				<td>Nombre</td>
