@@ -9,6 +9,7 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 
 import pe.plazanorte.sisterra.entidades.Perfil;
+import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.TipoUsuario;
@@ -445,6 +446,36 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				return false;
 			}
 		}
+
+	@Override
+	public Persona consultarPersona(int dni) {
+		String nombre="";
+		Persona nuevo = null;
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_PERSONA WHERE numDoc = '"+dni+"';";			
+			ResultSet rs =	stmt.executeQuery(query);	
+			System.out.print(query);		
+			if(rs.next()){		
+				nuevo = new Persona();
+				nuevo.setId(rs.getLong("id_persona"));
+				nuevo.setNombre(rs.getString("nombres"));
+				nombre=nuevo.getNombre();
+				nuevo.setApePat(rs.getString("apePat"));
+				nuevo.setApeMat(rs.getString("apeMat"));
+				
+			}
+			con.close();
+			System.out.print(nombre);
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return nuevo;
+		
+	}
 
 	 
 	 

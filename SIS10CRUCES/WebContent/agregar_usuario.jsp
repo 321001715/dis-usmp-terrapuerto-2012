@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="pe.plazanorte.sisterra.entidades.Persona"%>
 <%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
@@ -17,6 +18,8 @@
 <body>
 <%
 	Vector<Perfil> perfiles = (Vector<Perfil>)request.getAttribute("perfiles");
+	String busqueda=(String)request.getAttribute("busqueda");
+	Persona unapersona=(Persona)request.getAttribute("unapersona");
 %>
 <div id="container">
 	<div id="header">
@@ -28,7 +31,7 @@
 	</div>
 	<div id="wrapper">
 		<div id="content" style="height: 210px;">
-            
+            <%@include file="buscar_usuario_dni.jsp" %>
             <form action="ServletSeguridad" name="registrar" method="post">
             <input type="hidden" name="tipo" value="registrar">	
 		<table>
@@ -44,12 +47,7 @@
 				<td>Pass:</td>
 				<td><input name="txt_pass"/></td>
 			</tr>
-			<tr>
-				<td>Numero de Documento</td>
-				<td><input name="txt_dni" /></td>
-				<td></td>
-				<td></td>
-			</tr>
+			
 			<tr>
 				<td>Perfil</td>
 				<td><select name="sel_perfil">
@@ -71,6 +69,33 @@
 				<td></td>
 			</tr>
 			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<%if(busqueda.equalsIgnoreCase("realizada")){ System.out.print("realizada"); %>
+			
+			<tr>
+				<td>Nombre</td>
+				<td><input name="txt_nombre" value="<%=unapersona.getNombre() %>"/></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Apellido Paterno</td>
+				<td><input name="txt_apePat" value="<%=unapersona.getApePat() %>"/></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Apellido Materno</td>
+				<td><input name="txt_apeMat" value="<%=unapersona.getApeMat() %>"/></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<%}else{ %>
+			<tr>
 				<td>Nombre</td>
 				<td><input name="txt_nombre"/></td>
 				<td></td>
@@ -88,6 +113,7 @@
 				<td></td>
 				<td></td>
 			</tr>
+			<%} %>
 			<tr>
 				<td><input value="Agregar" type="submit" /></td>
 				<td><input type="reset" value="Limpiar campos" type="submit"></td>

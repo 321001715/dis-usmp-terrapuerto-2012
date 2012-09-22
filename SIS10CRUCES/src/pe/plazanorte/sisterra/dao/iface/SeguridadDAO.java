@@ -13,6 +13,7 @@ public interface SeguridadDAO {
 	public boolean eliminarUsuario(Usuario usuario);
 	public Usuario consultarUsuario(Usuario usuario);
 	public Usuario validarUsuario(Usuario usuario);
+	public Persona consultarPersona(int dni);
 	public Vector<Usuario> buscarUsuarios(String user, String perfil,String ape,String dni);
 
 	

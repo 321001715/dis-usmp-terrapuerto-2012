@@ -4,8 +4,21 @@ public class Persona {
 	private long id;
 	private long dni;
 	private String nombre;
-	private String apellidos;
+	private String apePat;
+	private String apeMat;
 	private String direccion;
+	public String getApePat() {
+		return apePat;
+	}
+	public void setApePat(String apePat) {
+		this.apePat = apePat;
+	}
+	public String getApeMat() {
+		return apeMat;
+	}
+	public void setApeMat(String apeMat) {
+		this.apeMat = apeMat;
+	}
 	private char sexo;
 	private long telefono;
 	private char estado;
@@ -27,12 +40,7 @@ public class Persona {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellidos() {
-		return apellidos;
-	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
+	
 	public String getDireccion() {
 		return direccion;
 	}

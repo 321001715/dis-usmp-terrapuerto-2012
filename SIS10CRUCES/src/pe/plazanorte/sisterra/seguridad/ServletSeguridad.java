@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pe.plazanorte.sisterra.entidades.Perfil;
+import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.util.Constantes;
@@ -63,11 +64,15 @@ public class ServletSeguridad extends HttpServlet {
 				e.printStackTrace();
 			} 
 		}else if(tipo.equalsIgnoreCase("agregarUsuario")){
+			String busqueda="nobuscar";
+			Persona persona=new Persona();
 			try {
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
 				perfiles = service.listarPerfiles();
+				persona=null;
+				request.setAttribute("busqueda", busqueda);	
+				request.setAttribute("persona", persona);	
 				request.setAttribute("perfiles", perfiles);	
-				
 				rd = getServletContext().getRequestDispatcher("/agregar_usuario.jsp");
 				
 			} catch (Exception e) {
@@ -265,7 +270,28 @@ public class ServletSeguridad extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher("/listar_usuarios.jsp");				
 			} catch (Exception e) {
 				
+			}
+		}else if(tipo.equalsIgnoreCase("buscarDni")){
+			int dni=Integer.parseInt(request.getParameter("dni"));
+			Persona unapersona=new Persona();
+			String busqueda="nobuscar";
+			try {								
+				unapersona=service.consultarPersona(dni);
+				if(unapersona!=null){
+					busqueda="realizada";
+				}
+				Vector<Perfil> perfiles = new Vector<Perfil>();				
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);	
+				request.setAttribute("busqueda", busqueda);
+				request.setAttribute("unapersona", unapersona);
+				
+				
+				rd = getServletContext().getRequestDispatcher("/agregar_usuario.jsp");				
+			} catch (Exception e) {
+				e.printStackTrace();
 			}			
+		
 		}else if(tipo.equalsIgnoreCase("filtroUsuario")){
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			String usuario = request.getParameter("usuario");

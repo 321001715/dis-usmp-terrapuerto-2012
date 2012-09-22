@@ -68,6 +68,12 @@
 				<td></td>
 			</tr>
 			<tr>
+				<td><b><u>Detalle de Persona</u></b></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
 				<td>Nombre</td>
 				<td><input name="txt_nombre" value="<%=usuario.getNombres() %>"></td>
 				<td></td>
