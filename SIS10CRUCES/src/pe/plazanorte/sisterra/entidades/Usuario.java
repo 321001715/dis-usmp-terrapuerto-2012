@@ -15,6 +15,13 @@ public class Usuario {
 	private String direccion;
 	private String sexo;
 	private long tel;
+	private String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public long getId() {
 		return id;
 	}
