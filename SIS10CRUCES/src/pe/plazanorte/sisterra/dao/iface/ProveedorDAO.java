@@ -5,6 +5,7 @@ import java.util.Vector;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Ruta;
+import pe.plazanorte.sisterra.entidades.Usuario;
 public interface ProveedorDAO {
 
 	public boolean registrarProveedor(Proveedor proveedor);
@@ -23,7 +24,7 @@ public interface ProveedorDAO {
 	
 	
 	
-	public boolean registrarRuta(Ruta ruta);
+	public boolean registrarRuta(Ruta ruta,Usuario uu);
 	public Vector<Ruta> listarRutas();
 	public Ruta consultarRuta(Ruta ruta);
 	public boolean modificarRuta(Ruta ruta);
