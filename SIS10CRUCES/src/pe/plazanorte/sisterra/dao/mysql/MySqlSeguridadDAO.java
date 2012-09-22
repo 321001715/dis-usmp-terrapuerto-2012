@@ -415,7 +415,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		 				" idperfil='"+u.getIdTipUsuario()+"'";
 		 		
 					ResultSet rs = stmt.executeQuery(sql);
-					 
+				
 					if (rs.next()) {
 						u.setId(rs.getInt("idusuario"));
 						u.setApePat(rs.getString("apePat"));
