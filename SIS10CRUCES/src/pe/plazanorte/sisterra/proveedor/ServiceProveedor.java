@@ -93,7 +93,7 @@ public class ServiceProveedor {
 	//*************************INICIO GESTIONAR RUTA******************************//
 	
 	
-	public boolean registrarRuta(Ruta ruta, Usuario uu) {
+	public boolean registrarRuta(Ruta ruta, Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
