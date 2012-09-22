@@ -120,33 +120,42 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 	}
 
 	@Override
-	public Vector<Clasificacion> buscarClasificaion(String descripcion) {
+	public Vector<Clasificacion> buscarClasificaion(Clasificacion clasificacion) {
 		Vector<Clasificacion> clasificaciones = new Vector<Clasificacion>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String query = "";
 
-			if (descripcion.length() != 0)
+			if (clasificacion.getDescripcion().length() != 0)
 				query = "SELECT * FROM T_clasificacion WHERE DESCRIPCION LIKE '"
-						+ descripcion.toUpperCase()
+						+ clasificacion.getDescripcion().toUpperCase()
 						+ "%' OR DESCRIPCION LIKE '"
-						+ descripcion.toLowerCase() + "%';";
-
+						+ clasificacion.getDescripcion().toLowerCase() + "%';";
+			else if(clasificacion.getNombre().length()!=0) 
+				query = "SELECT * FROM T_clasificacion WHERE NOMBRE LIKE '"
+						+ clasificacion.getNombre().toUpperCase()
+						+ "%' OR NOMBRE LIKE '"
+						+ clasificacion.getNombre().toLowerCase() + "%';";
+			
+			else if(clasificacion.getId()!=0) 
+				query = "SELECT * FROM T_clasificacion WHERE IDCLASIFICACION LIKE "
+						+ clasificacion.getId()
+						+ ";";
 			else
 				query = "SELECT * FROM T_clasificacion ;";
 
-			Clasificacion clasificacion = null;
+			Clasificacion nuevo = null;
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				clasificacion = new Clasificacion();
+				nuevo = new Clasificacion();
 
-				clasificacion.setId(rs.getLong("idclasificacion"));
-				clasificacion.setNombre(rs.getString("nombre"));
-				clasificacion.setDescripcion(rs.getString("descripcion"));
+				nuevo.setId(rs.getLong("idclasificacion"));
+				nuevo.setNombre(rs.getString("nombre"));
+				nuevo.setDescripcion(rs.getString("descripcion"));
 
-				clasificaciones.add(clasificacion);
+				clasificaciones.add(nuevo);
 			}
 			con.close();
 		} catch (Exception e) {

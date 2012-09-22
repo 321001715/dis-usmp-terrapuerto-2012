@@ -36,11 +36,11 @@ public class ServiceClasificacion {
 		
 	}
 	
-	public Vector<Clasificacion> buscarClasificaciones(String descripcion) {
+	public Vector<Clasificacion> buscarClasificaciones(Clasificacion clasificacion) {
 		
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ClasificacionDAO clasificacionDao = mysqlFactory.getClasificacionDAO();
-		return clasificacionDao.buscarClasificaion(descripcion);
+		return clasificacionDao.buscarClasificaion(clasificacion);
 		
 	}
 }
