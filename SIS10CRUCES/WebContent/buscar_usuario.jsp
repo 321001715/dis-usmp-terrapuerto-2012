@@ -1,3 +1,5 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
+<%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -23,6 +25,12 @@ function validar(){
 <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>	
+<%
+	
+	Vector<Perfil> perfiles=new Vector<Perfil>();
+	perfiles = (Vector<Perfil>)request.getAttribute("perfiles");
+	
+%> 
 <div class="ui-widget">
    <div class="ui-corner-bottom ui-widget-content">   
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
@@ -42,7 +50,11 @@ function validar(){
 			</tr>
 			<tr>
 				<td>Perfil: </td>
-				<td><input type="text" name="perfil"></td>
+				<td><select name="perfil">
+						<% for (int i=0;i<perfiles.size();i++){ %>
+				<option value="<%=perfiles.get(i).getId() %>" > <%=perfiles.get(i).getNombre() %> </option>
+				<%} %>
+				</select></td>
 				
 				<td>DNI: </td>
 				<td><input type="text" name="dni"></td>
