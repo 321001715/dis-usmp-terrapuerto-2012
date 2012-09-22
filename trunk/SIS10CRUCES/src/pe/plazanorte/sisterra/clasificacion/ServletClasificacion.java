@@ -36,6 +36,7 @@ public class ServletClasificacion extends HttpServlet {
 				Vector<Clasificacion> clasificacion = new Vector<Clasificacion>();
 				clasificacion = service.listarClasificaciones();
 				request.setAttribute("clasificaciones", clasificacion);
+				
 				String destino = request.getParameter("destino");
 				if (destino == null) {
 					rd = getServletContext().getRequestDispatcher(
@@ -84,11 +85,13 @@ public class ServletClasificacion extends HttpServlet {
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_CLASIFICACION)) {
 			String idTipoServicio = request.getParameter("idTipoServicio");
+			String nombre=request.getParameter("nombre");
 			String descripcion = request.getParameter("descripcion");
 
 			try {
 				Clasificacion clasificacion = new Clasificacion();
 				clasificacion.setId(Long.parseLong(idTipoServicio));
+				clasificacion.setNombre(nombre);
 				clasificacion.setDescripcion(descripcion);
 
 				boolean retorno = service.agregarClasificacion(clasificacion);

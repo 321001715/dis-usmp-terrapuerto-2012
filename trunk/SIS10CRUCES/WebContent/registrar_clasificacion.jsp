@@ -38,9 +38,14 @@
 				<td><input type="text" name="idTipoServicio" maxlength="11"></td>				
 			</tr>
 			<tr>
+				<td>Nombre</td>
+				<td><input type="text" name="nombre"></td>			
+			</tr>
+			<tr>
 				<td>Descripcion</td>
 				<td><input type="text" name="descripcion"></td>			
 			</tr>
+			
 			<tr>
 				<td><input type="submit" value=Agregar type="submit"></td>
 				<td><input type="reset" value="Limpiar campos" type="submit"></td>
