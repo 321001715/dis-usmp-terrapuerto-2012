@@ -102,8 +102,8 @@ DROP TABLE IF EXISTS `t_ruta`;
 CREATE TABLE `t_ruta` (
   `idRuta` int(8) NOT NULL AUTO_INCREMENT,
   `nomRuta` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `origen` int(11) NOT NULL,
-  `destino` int(11) NOT NULL,
+  `origen` varchar(100) NOT NULL,
+  `destino` varchar(100) NOT NULL,
   `km` int(11) NOT NULL,
   `duracion` int(11) NOT NULL,
   `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
