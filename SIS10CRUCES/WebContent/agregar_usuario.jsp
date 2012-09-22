@@ -78,38 +78,38 @@
 			
 			<tr>
 				<td>Nombre</td>
-				<td><input name="txt_nombre" value="<%=unapersona.getNombre() %>" disabled="disabled"/></td>
-				<td></td>
-				<td></td>
+				<td><input name="nombre" value="<%=unapersona.getNombre() %>" disabled="disabled"/></td>
+				<td><input name="txt_dni" value="<%=unapersona.getDni() %>" type="hidden"/></td>
+				<td><input name="txt_nombre" value="<%=unapersona.getNombre() %>" type="hidden"/></td>
 			</tr>
 			<tr>
 				<td>Apellido Paterno</td>
-				<td><input name="txt_apePat" value="<%=unapersona.getApePat() %>" disabled="disabled"/></td>
-				<td></td>
+				<td><input name="apePat" value="<%=unapersona.getApePat() %>" disabled="disabled"/></td>
+				<td><input name="txt_apePat" value="<%=unapersona.getApePat() %>" type="hidden"/></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Apellido Materno</td>
-				<td><input name="txt_apeMat" value="<%=unapersona.getApeMat() %>"disabled="disabled"/></td>
-				<td></td>
+				<td><input name="apeMat" value="<%=unapersona.getApeMat() %>"disabled="disabled"/></td>
+				<td><input name="txt_apeMat" value="<%=unapersona.getApeMat() %>" type="hidden"/></td>
 				<td></td>
 			</tr>
 			<%}else{ %>
 			<tr>
 				<td>Nombre</td>
-				<td><input name="txt_nombre"/></td>
+				<td><input name="txt_nombre" disabled="disabled"/></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Apellido Paterno</td>
-				<td><input name="txt_apePat"/></td>
+				<td><input name="txt_apePat" disabled="disabled" /></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Apellido Materno</td>
-				<td><input name="txt_apeMat"/></td>
+				<td><input name="txt_apeMat" disabled="disabled"/></td>
 				<td></td>
 				<td></td>
 			</tr>
