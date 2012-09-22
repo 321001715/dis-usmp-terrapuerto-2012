@@ -11,6 +11,6 @@ public interface ClasificacionDAO {
 	public boolean eliminarClasificacion(Clasificacion clasificacion);
 	public Clasificacion consultarClasificacion(Clasificacion clasificacion);
 	public Vector<Clasificacion> listarClasificaion();
-	public Vector<Clasificacion> buscarClasificaion(String descripcion);
+	public Vector<Clasificacion> buscarClasificaion(Clasificacion clasificacion);
 	
 }

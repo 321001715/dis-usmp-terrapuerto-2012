@@ -39,7 +39,9 @@ function validar(){
 			<tr>
 				<td width="20%"></td>
 				<td>Código: </td>
-				<td><input type="text" name="idTipoServicio"></td>
+				<td><input type="text" name="idClasificacion"></td>
+				<td>Nombre: </td>
+				<td><input type="text" name="nombre"></td>
 				
 				<td>Descripción: </td>
 				<td><input type="text" name="descripcion"></td>
