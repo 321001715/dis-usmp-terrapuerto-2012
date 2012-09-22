@@ -44,13 +44,13 @@ if(proveedores.size() != 0){
 	<tr>
 		<td align="center"><%=proveedores.get(i).getIdProveedor() %></td>
 		<td align="center"><%=proveedores.get(i).getRuc() %></td>
-		<td align="right"><%=proveedores.get(i).getRazonSocial() %></td>
+		<td align="right"><%=proveedores.get(i).getRazSocial() %></td>
 		<td align="right"><%=proveedores.get(i).getRazCom()%></td>
 		<td align="center"><%=proveedores.get(i).getEstado()%></td>
 		<td align="left">
 			<div class="ui-state-default ui-corner-all cajaicono">
 				<a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_PROVEEDOR %>&destino=<%=Constantes.MODIFICAR_PROVEEDOR %>&idProveedor=<%=proveedores.get(i).getIdProveedor()%>">
-					<span class="ui-icon ui-icon-pencil"></span>
+					<span class="ui-icon ui-icon-pencil" style="text-align: center">Modificar</span>
 				</a>
 			</div>
 		</td>		
