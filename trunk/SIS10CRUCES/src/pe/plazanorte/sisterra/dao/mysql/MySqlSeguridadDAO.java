@@ -526,6 +526,41 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			}
 		}
 
+	 @Override
+		public Usuario recuperarclave(String usu) {
+			Usuario usuario= new Usuario();
+		    try {
+		    	 Connection con = MySqlDAOFactory.abrirConexion();
+		 		 Statement stmt = con.createStatement();
+		 		 
+		 		String sql ="SELECT * FROM `bd_cruces`.`t_usuario`" +
+		 		" WHERE usuario='"+usu+"';";
+		 		
+					ResultSet rs = stmt.executeQuery(sql);
+					 
+					if (rs.next()) {
+						usuario.setId(rs.getInt("idusuario"));
+						usuario.setNombres(rs.getString("nombres"));
+						usuario.setEmail(rs.getString("email"));
+						usuario.setClave(rs.getString("clave"));
+					
+			  
+					 rs.close();
+				        con.close();
+	        
+	        
+					return usuario;
+				} else {
+					 rs.close();
+				        con.close();
+				        
+					return usuario;
+				}
+			} catch (Exception e) {
+				return usuario;
+			}
+		}
+
 	 
 	 
 	 
