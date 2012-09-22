@@ -560,39 +560,39 @@ UBGCODPOS ) VALUES (
 '150901', '15', '09', '01', 'OYON', NULL); 
 
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('00000000062', 'PROTRANSPORTE', 'P', 'Calle John Mendoza 999', '999', 'P0001', 'REGISTRADO');
+values ('00000000062', 'PROTRANSPORTE', 'P', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20219080701', 'EMPRESA MUNICIPAL DE TRANSPORTES VICUS S', 'MUNI', 'Calle John Mendoza 999', '999', 'P0002', 'REGISTRADO');
+values ('20219080701', 'EMPRESA MUNICIPAL DE TRANSPORTES VICUS S', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20286529683', 'EMPRESA MUNICIPAL DE TRANSPORTES VILQUE', 'MUNI', 'Calle John Mendoza 999', '999', 'P0003', 'REGISTRADO');
+values ('20286529683', 'EMPRESA MUNICIPAL DE TRANSPORTES VILQUE', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20519792495', 'EMPRESA MUNICIPAL DE TRANSPORTES DE CAIRANI S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'P0004', 'REGISTRADO');
+values ('20519792495', 'EMPRESA MUNICIPAL DE TRANSPORTES DE CAIRANI S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20357983313', 'EMP MUNICIPAL DE TRANSPORTES CCATCCA S.A', 'MUNI', 'Calle John Mendoza 999', '999', 'P0005', 'REGISTRADO');
+values ('20357983313', 'EMP MUNICIPAL DE TRANSPORTES CCATCCA S.A', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20359673621', 'EMP DE TRANSPORTES MUNICIPAL AHUAC S.A.', 'MUNI', 'Calle John Mendoza 999', '999', 'P0006', 'REGISTRADO');
+values ('20359673621', 'EMP DE TRANSPORTES MUNICIPAL AHUAC S.A.', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20527501998', 'SERVICIO MUNICIPAL DE TRANSPORTE ANTA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'P0007', 'REGISTRADO');
+values ('20527501998', 'SERVICIO MUNICIPAL DE TRANSPORTE ANTA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20486288001', 'EMPRESA MUNICIPAL DE SERVICIOS MULTIPLES Y TRANSPORTES HUARISCA GRANDE SAC', 'MUNI', 'Calle John Mendoza 999', '999', 'P0008', 'REGISTRADO');
+values ('20486288001', 'EMPRESA MUNICIPAL DE SERVICIOS MULTIPLES Y TRANSPORTES HUARISCA GRANDE SAC', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20486507242', 'EMPRESA DE TRANSPORTES MUNICIPAL EL MANTARO S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'P0009', 'REGISTRADO');
+values ('20486507242', 'EMPRESA DE TRANSPORTES MUNICIPAL EL MANTARO S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20503690561', 'ASOCIACION NACIONAL DE PENSIONISTAS DEL MINISTERIO DE TRANSPORTES COMUNICACIONES VIVIENDA Y CONSTRUC', 'MINIS', 'Calle John Mendoza 999', '999', 'P0010', 'REGISTRADO');
+values ('20503690561', 'ASOCIACION NACIONAL DE PENSIONISTAS DEL MINISTERIO DE TRANSPORTES COMUNICACIONES VIVIENDA Y CONSTRUC', 'MINIS', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20380417465', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'P0011', 'REGISTRADO');
+values ('20380417465', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20131379944', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - OFICINA GENERAL ADM.', 'MINIS', 'Calle John Mendoza 999', '999', 'P0012', 'REGISTRADO');
+values ('20131379944', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - OFICINA GENERAL ADM.', 'MINIS', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20184974925', 'ASOCIACION DE TRABAJADORES DEL MINISTERIO DE TRANSPORTES Y COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'P0013', 'REGISTRADO');
+values ('20184974925', 'ASOCIACION DE TRABAJADORES DEL MINISTERIO DE TRANSPORTES Y COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20520011880', 'EMPRESA MUNICIPAL DE TRANSPORTES Y SERVICIOS DE PASAJEROS SAN FELIPE DE CARUMAS S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'P0014', 'REGISTRADO');
+values ('20520011880', 'EMPRESA MUNICIPAL DE TRANSPORTES Y SERVICIOS DE PASAJEROS SAN FELIPE DE CARUMAS S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20486444577', 'EMPRESA DE TRANSPORTES MUNICIPAL CHAMBARA SAC.', 'MUNI', 'Calle John Mendoza 999', '999', 'P0015', 'REGISTRADO');
+values ('20486444577', 'EMPRESA DE TRANSPORTES MUNICIPAL CHAMBARA SAC.', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('20486314100', 'EMPRESA MUNICIPAL DE TRANSPORTES MULTISERVICIOS HUACHOCOLPA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'P0016', 'REGISTRADO');
+values ('20486314100', 'EMPRESA MUNICIPAL DE TRANSPORTES MULTISERVICIOS HUACHOCOLPA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
-values ('00000000481', 'INSTITUTO METROPOLITANO PROTRANSPORTE DE LIMA', 'INSTITUTO', 'Calle John Mendoza 999', '999', 'P0017', 'REGISTRADO');
+values ('00000000481', 'INSTITUTO METROPOLITANO PROTRANSPORTE DE LIMA', 'INSTITUTO', 'Calle John Mendoza 999', '999', 'REGISTRADO');
 
 insert into T_PERFIL (perfil, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
 values ('ADMINISTRADOR', 'ADMINISTRADOR TOTAL DEL SISTEMA', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
