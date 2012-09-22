@@ -427,10 +427,14 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 						u.setSexo(rs.getString("sexo"));
 						u.setTel(rs.getInt("tel"));
 						u.setIdTipUsuario(rs.getInt("idperfil"));
-				
-					
-			  
+						
+						
+						
+						 
+						 
 					 rs.close();
+						
+						
 				        con.close();
 	        
 	        
@@ -478,6 +482,48 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	 
+	 public boolean proveedor(Proveedor u,Usuario uu) {
+			
+		    try {
+		    	 Connection con = MySqlDAOFactory.abrirConexion();
+		 		 Statement stmt = con.createStatement();
+		 		 
+		 		 
+		 		String sql ="SELECT * FROM T_PROVEEDOR WHERE idusuario='"+u.getIdUsuario()+"'";
+		 
+		 		
+					ResultSet rs = stmt.executeQuery(sql);
+				
+					if (rs.next()) {
+						u.setIdProveedor(rs.getInt("idproveedor"));
+						u.setIdUsuario(rs.getInt("idusuario"));
+						u.setRuc(rs.getString("ruc"));
+						u.setRazSocial(rs.getString("razSocial"));
+						
+						
+						
+						
+						 
+						 
+					 rs.close();
+						
+						
+				        con.close();
+	        
+	        
+					return true;
+				} else {
+					 rs.close();
+				        con.close();
+					
+					return false;
+				}
+			} catch (Exception e) {
+				
+				return false;
+			}
+		}
+
 	 
 	 
 	 
