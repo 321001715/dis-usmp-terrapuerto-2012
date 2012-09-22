@@ -184,11 +184,11 @@ public class ServletClasificacion extends HttpServlet {
 		} else if (tipo
 				.equalsIgnoreCase(Constantes.ACCION_FILTRO_CLASIFICACION)) {
 			int destino = Integer.parseInt(request.getParameter("destino"));
-			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
+			
 			String nombre = request.getParameter("nombre");
 			String descripcion = request.getParameter("descripcion");
 			Clasificacion clasificacion = new Clasificacion();
-			clasificacion.setId(idClasificacion);
+			
 			clasificacion.setNombre(nombre);
 			clasificacion.setDescripcion(descripcion);
 			Vector<Clasificacion> clasificaciones = null;

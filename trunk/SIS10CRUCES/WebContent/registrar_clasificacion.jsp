@@ -8,14 +8,14 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
-		if(document.registrar.idTipoServicio.value.length == 0){
-			alert("Debe llenar el campo RUC.");
-			document.registrar.ruc.focus();
+		if(document.registrar.nombre.value.length == 0){
+			alert("Debe llenar el campo nombre.");
+			document.registrar.nombre.focus();
 			return false;
 		}
 		if(document.registrar.descripcion.value.length == 0){
-			alert("Debe llenar el campo Razón social.");
-			document.registrar.razon_social.focus();
+			alert("Debe llenar el campo descripcion.");
+			document.registrar.descripcion.focus();
 			return false;
 		}
 		
@@ -27,7 +27,7 @@
 
 	<h2>Registrar Clasificacion</h2>
 
-	<form action="ServletClasificacion" method="post" name="registrar" >
+	<form action="ServletClasificacion" method="post" name="registrar" onsubmit="validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_CLASIFICACION%>">
 		<table cellspacing="10px">			
 			<tr>
