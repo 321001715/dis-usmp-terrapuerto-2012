@@ -32,7 +32,7 @@ if(perfiles.size() != 0){
 				<th><h3 align="center">Código</h3></th>
 				<th><h3 align="center">Nombre</h3></th>
 				<th><h3 align="center">Descripción</h3></th>
-				<th><h3 align="center"></h3></th>
+				<th><h3 align="center">Modificar</h3></th>
 			</tr>
 		</thead>
 		<tbody>
