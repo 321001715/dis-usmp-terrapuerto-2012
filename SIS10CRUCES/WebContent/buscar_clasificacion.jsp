@@ -42,9 +42,13 @@ function validar(){
 				<td><input type="text" name="idClasificacion"></td>
 				<td>Nombre: </td>
 				<td><input type="text" name="nombre"></td>
-				
+			</tr>
+			<tr>
+				<td width="20%"></td>
 				<td>Descripción: </td>
 				<td><input type="text" name="descripcion"></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td colspan="6" align="right">
