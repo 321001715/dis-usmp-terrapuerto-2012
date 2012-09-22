@@ -26,7 +26,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "INSERT INTO T_USUARIO(usuario, clave, estado, dni, nombres, apePat, apeMat,idPerfil) " +
+			String sql = "INSERT INTO T_USUARIO(usuario, clave, estado, numDoc, nombres, apePat, apeMat,idPerfil) " +
 					"VALUES ("+"'"+usuario.getUsuario()+"', '"+usuario.getClave()+"', '"+usuario.getEstado()+"', '"+usuario.getDni()+"', '"+usuario.getNombres()+"', '"+usuario.getApePat()+"', '"+usuario.getApeMat()+"', '"+usuario.getIdTipUsuario()+"');";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
@@ -49,7 +49,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "UPDATE T_USUARIO SET usuario = '"+usuario.getUsuario()+"', clave = '"+usuario.getClave()+"', nombres = '"+usuario.getNombres()+ "', apePat = '"+usuario.getApePat()+"', apeMat = '"+usuario.getApeMat()+"', estado = '"+usuario.getEstado()+"', dni= "+usuario.getDni()+", idPerfil = "+usuario.getIdTipUsuario()+" WHERE idUsuario = "+usuario.getId()+";";
+			String query = "UPDATE T_USUARIO SET usuario = '"+usuario.getUsuario()+"', clave = '"+usuario.getClave()+"', nombres = '"+usuario.getNombres()+ "', apePat = '"+usuario.getApePat()+"', apeMat = '"+usuario.getApeMat()+"', estado = '"+usuario.getEstado()+"', numDoc= "+usuario.getDni()+", idPerfil = "+usuario.getIdTipUsuario()+" WHERE idUsuario = "+usuario.getId()+";";
 					
 			filas_afectadas = stmt.executeUpdate(query);				
 			con.close();
@@ -84,7 +84,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				nuevo.setClave(rs.getString("clave"));
 				nuevo.setIdTipUsuario(rs.getLong("idPerfil"));
 				nuevo.setEstado(rs.getString("estado"));
-				nuevo.setDni(rs.getLong("dni"));
+				nuevo.setDni(rs.getLong("numDoc"));
 				
 			}
 			con.close();
@@ -188,7 +188,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT idUsuario, usuario, nombres, apePat, apeMat, dni, tel, sexo, estado,idPerfil FROM t_usuario;";
+			String query = "SELECT idUsuario, usuario, nombres, apePat, apeMat, numDOc, tel, sexo, estado,idPerfil FROM t_usuario;";
 			
 			ResultSet rs =	stmt.executeQuery(query);	
 			Usuario usuario = null;
@@ -199,7 +199,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				usuario.setNombres(rs.getString("nombres"));				
 				usuario.setApePat(rs.getString("apePat"));
 				usuario.setApeMat(rs.getString("apeMat"));
-				usuario.setDni(rs.getInt("dni"));
+				usuario.setDni(rs.getInt("numDoc"));
 				usuario.setTel(rs.getInt("tel"));		
 				usuario.setSexo(rs.getString("sexo"));
 				usuario.setEstado(rs.getString("estado"));
