@@ -3619,11 +3619,7 @@ insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacim
 values ('DNI', '70082414', 'GUTIERREZ', 'CHINO', 'MARCO', 'M', STR_TO_DATE('15-10-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '70082471', 'SUCASAYRE', 'HILASACA', 'CIPRIANO', 'M', STR_TO_DATE('16-09-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
-- 1500
-insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
-values ('DNI', '70082480', 'CARDOZO', 'GONZALES', 'CARLOS SAMUEL', 'M', STR_TO_DATE('22-07-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
-insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
-values ('DNI', '70015601', 'JAVE', 'MINCHAN', 'CARMEN ANALI', 'F', STR_TO_DATE('08-07-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
+
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '70015605', 'GAMBOA', 'CHAVEZ', 'RICHARD', 'M', STR_TO_DATE('13-09-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
@@ -4024,8 +4020,6 @@ insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacim
 values ('DNI', '70024228', 'CASTRO', 'ZEGARRA', 'JUAN FRANCISCO', 'M', STR_TO_DATE('04-12-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '70024232', 'VALENTIN', 'CASTILLO', 'ROSA SILVANA', 'F', STR_TO_DATE('06-12-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
-insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
-values ('DNI', '70024234','%d-%c-%Y'), 'Calle', 'BENDEZU', 'ROSALYN', 'F', STR_TO_DATE('27-09-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '70024241', 'HUAMAN', 'NUNEZ', 'TATIANA JAQUELIN', 'F', STR_TO_DATE('22-12-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
@@ -6572,8 +6566,6 @@ insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacim
 values ('DNI', '70031350', 'ZUNIGA', 'CANOVA', 'JELEN MILAGROS', 'F', STR_TO_DATE('07-10-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '70043381', 'CCOLQUE', 'QUISPE', 'MARIBEL', 'F', STR_TO_DATE('06-09-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
-insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
-values ('DNI', '70043475','%d-%c-%Y'), 'Calle', 'RUIZ', 'JOSE REYNALDO', 'M', STR_TO_DATE('07-07-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '70043476', 'ADRIANZEN', 'OZETA', 'JUANITA YESENIA', 'F', STR_TO_DATE('24-06-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
