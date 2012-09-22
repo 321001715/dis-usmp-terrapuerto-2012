@@ -36,7 +36,7 @@ if(usuarios.size() != 0){
 				<th><h3 align="center">Apellido Mat.</h3></th>
 				<th><h3 align="center">DNI</h3></th>
 				<th><h3 align="center">Estado</h3></th>
-				<th><h3 align="center"></h3></th>
+				<th><h3 align="center">Accion</h3></th>
 			</tr>
 		</thead>
 		<tbody>

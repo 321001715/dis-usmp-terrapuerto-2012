@@ -157,13 +157,13 @@ public class ServletSeguridad extends HttpServlet {
 			try {
 				Usuario usuario=new Usuario();
 				
-				usuario.setUsuario(user);
+				usuario.setUsuario(user.toUpperCase());
 				usuario.setClave(pass);
 				usuario.setDni(dni);
-				usuario.setEstado(estado);
-				usuario.setNombres(nom);
-				usuario.setApePat(apepat);	
-				usuario.setApeMat(apemat);	
+				usuario.setEstado(estado.toUpperCase());
+				usuario.setNombres(nom.toUpperCase());
+				usuario.setApePat(apepat.toUpperCase());	
+				usuario.setApeMat(apemat.toUpperCase());	
 				usuario.setIdTipUsuario(perfil);
 				
 				boolean retorno = service.agregarUsuario(usuario);			
@@ -195,14 +195,14 @@ public class ServletSeguridad extends HttpServlet {
 			try {
 				Usuario usuario=new Usuario();
 				usuario.setId(id);
-				usuario.setUsuario(user);
+				usuario.setUsuario(user.toUpperCase());
 				usuario.setClave(pass);
 				usuario.setDni(dni);
-				usuario.setEstado(estado);
-				usuario.setNombres(nom);
+				usuario.setEstado(estado.toUpperCase());
+				usuario.setNombres(nom.toUpperCase());
 				usuario.setIdTipUsuario(idtipo);
-				usuario.setApePat(apepat);	
-				usuario.setApeMat(apemat);				
+				usuario.setApePat(apepat.toUpperCase());	
+				usuario.setApeMat(apemat.toUpperCase());				
 				
 				boolean retorno = service.modificarUsuario(usuario);				
 				
@@ -292,8 +292,8 @@ public class ServletSeguridad extends HttpServlet {
 			
 			try {
 				Perfil perfil = new Perfil();
-				perfil.setNombre(nombre);
-				perfil.setDescripcion(descripcion);
+				perfil.setNombre(nombre.toUpperCase());
+				perfil.setDescripcion(descripcion.toUpperCase());
 							
 				
 				boolean retorno = service.agregarPerfil(perfil);				
@@ -324,8 +324,8 @@ public class ServletSeguridad extends HttpServlet {
 				Perfil perfil = new Perfil();
 				
 				perfil.setId(id);
-				perfil.setNombre(nombre);
-				perfil.setDescripcion(descripcion);				
+				perfil.setNombre(nombre.toUpperCase());
+				perfil.setDescripcion(descripcion.toUpperCase());				
 				
 				boolean retorno = service.modificarPerfil(perfil);				
 				
