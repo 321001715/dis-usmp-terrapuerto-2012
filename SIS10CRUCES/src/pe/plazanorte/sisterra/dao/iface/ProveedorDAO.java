@@ -24,7 +24,7 @@ public interface ProveedorDAO {
 	
 	
 	
-	public boolean registrarRuta(Ruta ruta,Usuario uu);
+	public boolean registrarRuta(Ruta ruta,Proveedor uu);
 	public Vector<Ruta> listarRutas();
 	public Ruta consultarRuta(Ruta ruta);
 	public boolean modificarRuta(Ruta ruta);
