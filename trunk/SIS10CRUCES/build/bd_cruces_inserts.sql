@@ -8124,4 +8124,4 @@ values ('SOPORTE01', '123', 'REGISTRADO', 'DNI', '70062380', 'MARIA', 'PALACIOS'
 insert into T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
 values ('CLIENTE01', '123', 'REGISTRADO', 'DNI', '70062371', 'HENRY', 'PENA', 'MORETO', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'CLIENTE'));
 insert into T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
-values ('COUNTER01', '123', 'REGISTRADO', 'DNI', '70021561', 'VICTORIANO MOISES', 'GALINDO', 'CCALLOCUNTO', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'CLIENTE'));
+values ('COUNTER01', '123', 'REGISTRADO', 'DNI', '70021561', 'VICTORIANO MOISES', 'GALINDO', 'CCALLOCUNTO', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'COUNTER'));

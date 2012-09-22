@@ -49,6 +49,7 @@ function validar(){
 				<td><input type="text" name="apellido"></td>
 			</tr>
 			<tr>
+				<td width="20%"></td>
 				<td>Perfil: </td>
 				<td><select name="perfil">
 						<% for (int i=0;i<perfiles.size();i++){ %>
