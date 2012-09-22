@@ -8,6 +8,7 @@ import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 
 import pe.plazanorte.sisterra.entidades.Perfil;
+import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
@@ -89,6 +90,14 @@ public class ServiceSeguridad {
 		perfil = seguridadDao.consultarPerfil(perfil);
 		if(perfil != null) return perfil;
 		else return perfil;
+	}
+	public Persona consultarPersona(int dni) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		Persona unapersona=new Persona();
+		unapersona = seguridadDao.consultarPersona(dni);
+		if(unapersona != null) return unapersona;
+		else return unapersona;
 	}
 
 	public Vector<Perfil> listarPerfiles() {
