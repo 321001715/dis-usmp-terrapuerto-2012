@@ -336,7 +336,7 @@ public class ServletProveedor extends HttpServlet {
 					}
 				}				
 				
-				//*****************************FIN MANTENER PROVEEDOR*****************************//
+		//*****************************FIN MANTENER PROVEEDOR*****************************//
 		
 		
 		//*****************************INICIO GESTIONAR VEHICULO*****************************//
