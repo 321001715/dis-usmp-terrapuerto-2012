@@ -30,6 +30,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			String sql = "INSERT INTO T_USUARIO(usuario, clave, estado, numDoc, nombres, apePat, apeMat,idPerfil) " +
 					"VALUES ("+"'"+usuario.getUsuario()+"', '"+usuario.getClave()+"', '"+usuario.getEstado()+"', '"+usuario.getDni()+"', '"+usuario.getNombres()+"', '"+usuario.getApePat()+"', '"+usuario.getApeMat()+"', '"+usuario.getIdTipUsuario()+"');";
 			
+			System.out.print(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {			
@@ -468,6 +469,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				nombre=nuevo.getNombre();
 				nuevo.setApePat(rs.getString("apePat"));
 				nuevo.setApeMat(rs.getString("apeMat"));
+				nuevo.setDni(rs.getLong("numDoc"));
 				
 			}
 			con.close();
