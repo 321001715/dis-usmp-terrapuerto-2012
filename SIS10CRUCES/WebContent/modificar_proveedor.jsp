@@ -36,19 +36,9 @@
 		}
 		if(document.registrar.usuario.value.length == 0){
 			alert("Debe llenar el campo usuario.");
-			document.registrar.usuario.focus();
+			document.registrar.idUsuario.focus();
 			return false;
-		}
-		if(document.registrar.clave.value.length == 0){
-			alert("Debe escribir una clave.");
-			document.registrar.clave.focus();
-			return false;
-		}
-		if(document.registrar.clave.value.length < 5){
-			alert("Su clave debe tener más de 5 dígitos.");
-			document.registrar.clave.focus();
-			return false;
-		}
+		}				
 		return true;
 	}	
 </script>
@@ -82,7 +72,7 @@
 			</tr>		
 			<tr>
 				<td>Razon Social</td>
-				<td><input type="text" name="razon_social" value="<%=proveedor.getRazonSocial()%>"></td>			
+				<td><input type="text" name="razon_social" value="<%=proveedor.getRazSocial()%>"></td>			
 			</tr>
 			<tr>
 				<td>Razon Comercial</td>
