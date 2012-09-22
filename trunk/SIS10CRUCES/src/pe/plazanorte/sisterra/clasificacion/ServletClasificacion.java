@@ -90,7 +90,7 @@ public class ServletClasificacion extends HttpServlet {
 
 			try {
 				Clasificacion clasificacion = new Clasificacion();
-				clasificacion.setId(Long.parseLong(idTipoServicio));
+				//clasificacion.setId(Long.parseLong(idTipoServicio));
 				clasificacion.setNombre(nombre);
 				clasificacion.setDescripcion(descripcion);
 
@@ -114,11 +114,13 @@ public class ServletClasificacion extends HttpServlet {
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_CLASIFICACION)) {
 
 			long id = Long.parseLong(request.getParameter("id"));
+			String nombre= request.getParameter("nombre");
 			String descripcion = request.getParameter("descripcion");
 
 			try {
 				Clasificacion clasificacion = new Clasificacion();
 				clasificacion.setId(id);
+				clasificacion.setNombre(nombre);
 				clasificacion.setDescripcion(descripcion);
 
 				boolean retorno = service.modificarClasificacion(clasificacion);
@@ -148,6 +150,7 @@ public class ServletClasificacion extends HttpServlet {
 				// VALIDAR EL INGRESO DE STRING
 				int id = Integer.parseInt(request.getParameter("idTipoServicio"));
 				clasificacion.setId(id);
+				
 				clasificacion= service.consultarClasificacion(clasificacion);
 				if (clasificacion== null)
 					mensaje = "No se encontraron resultados para su consulta. [Clasificacion cod."+ id + "]";
