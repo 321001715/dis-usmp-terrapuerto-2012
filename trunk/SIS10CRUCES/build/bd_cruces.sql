@@ -101,7 +101,6 @@ DROP TABLE IF EXISTS `t_ruta`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_ruta` (
   `idRuta` int(8) NOT NULL AUTO_INCREMENT,
-  `codRuta` varchar(45) COLLATE armscii8_bin NOT NULL,
   `nomRuta` varchar(45) COLLATE armscii8_bin NOT NULL,
   `origen` int(11) NOT NULL,
   `destino` int(11) NOT NULL,
@@ -312,7 +311,6 @@ DROP TABLE IF EXISTS `t_proveedor`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_proveedor` (
   `idProveedor` int(4) NOT NULL AUTO_INCREMENT,
-  `codEmpre` int(11) NOT NULL,
   `ruc` int(11) NOT NULL,
   `razSocial` varchar(45) COLLATE armscii8_bin NOT NULL,
   `razCom` varchar(45) COLLATE armscii8_bin NOT NULL,
