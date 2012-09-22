@@ -406,26 +406,26 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	
 	 public boolean validarUser(Usuario u) {
 			
-	    try {
-	    	 Connection con = MySqlDAOFactory.abrirConexion();
-	 		 Statement stmt = con.createStatement();
-	 		 
-	 		String sql ="SELECT * FROM `bd_cruces`.`t_usuario`" +
-	 		" WHERE UPPER(usuario)='"+u.getUsuario()+"' and clave='"+u.getClave()+"' and" +
-	 				" idperfil='"+u.getIdTipUsuario()+"'";
-	 		
-				ResultSet rs = stmt.executeQuery(sql);
-				 
-				if (rs.next()) {
-					u.setId(rs.getInt("idusuario"));
-					u.setApePat(rs.getString("apePat"));
-					u.setApeMat(rs.getString("apeMat"));
-					u.setDni(rs.getInt("numdoc"));
-					u.setNombres(rs.getString("nombres"));
-					u.setDireccion(rs.getString("direccion"));
-					u.setSexo(rs.getString("sexo"));
-					u.setTel(rs.getInt("tel"));
-					
+		    try {
+		    	 Connection con = MySqlDAOFactory.abrirConexion();
+		 		 Statement stmt = con.createStatement();
+		 		 
+		 		String sql ="SELECT * FROM `bd_cruces`.`t_usuario`" +
+		 		" WHERE UPPER(usuario)='"+u.getUsuario()+"' and clave='"+u.getClave()+"' and" +
+		 				" idperfil='"+u.getIdTipUsuario()+"'";
+		 		
+					ResultSet rs = stmt.executeQuery(sql);
+					 
+					if (rs.next()) {
+						u.setId(rs.getInt("idusuario"));
+						u.setApePat(rs.getString("apePat"));
+						u.setApeMat(rs.getString("apeMat"));
+						u.setDni(rs.getInt("numdoc"));
+						u.setNombres(rs.getString("nombres"));
+						u.setDireccion(rs.getString("direccion"));
+						u.setSexo(rs.getString("sexo"));
+						u.setTel(rs.getInt("tel"));
+						u.setIdTipUsuario(rs.getInt("idperfil"));
 				
 					
 			  
