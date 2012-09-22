@@ -1,13 +1,13 @@
 insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
-values ('SUPER VIP', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
+values ('SUPER VIP', 'SERVICIO SUPER VIP', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
 insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
-values ('VIP', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
+values ('VIP', 'SERVICIO VIP', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
 insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
-values ('EXPRESSO', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
+values ('EXPRESSO', 'SERVICIO EXPRESSO', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
 insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
-values ('ECONOMICO', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
+values ('ECONOMICO', 'SERVICIO ECONOMICO', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
 insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
-values ('TOUR', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
+values ('TOUR', 'SERVICIO TOUR', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
 
 INSERT INTO `bd_cruces`.`t_ubigeo` ( UBGCODUBI, UBGDEDPTO, UBGDEPROV, UBGDEDSTO, UBGDESUBI,
 UBGCODPOS ) VALUES ( 
