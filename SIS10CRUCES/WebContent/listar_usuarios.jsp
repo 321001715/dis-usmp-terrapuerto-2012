@@ -31,12 +31,12 @@ if(usuarios.size() != 0){
 <table align="center" id="table" class="sortable">
 		<thead>
 			<tr>
+				<th><h3 align="center">DNI</h3></th>
 				<th><h3 align="center">Usuario</h3></th>
 				<th><h3 align="center">Apellido Pat.</h3></th>
 				<th><h3 align="center">Apellido Mat.</h3></th>
-				<th><h3 align="center">DNI</h3></th>
 				<th><h3 align="center">Estado</h3></th>
-				<th><h3 align="center">Accion</h3></th>
+				<th><h3 align="center"></h3></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -44,10 +44,10 @@ if(usuarios.size() != 0){
 	for (int i = 0; i < usuarios.size(); i++) {	
 %>
 	<tr>
+		<td align="center"><%=usuarios.get(i).getDni()%></td>
 		<td align="right"><%=usuarios.get(i).getUsuario()%></td>
 		<td align="right"><%=usuarios.get(i).getApePat()%></td>
 		<td align="right"><%=usuarios.get(i).getApeMat()%></td>
-		<td align="center"><%=usuarios.get(i).getDni()%></td>
 		<td align="center"><%=usuarios.get(i).getEstado()%></td>
 		<td align="left">
 			<div class="ui-state-default ui-corner-all cajaicono">
