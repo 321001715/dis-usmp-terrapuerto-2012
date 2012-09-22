@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.util.Constantes;
@@ -485,14 +486,15 @@ public class ServletProveedor extends HttpServlet {
 				
 			try {
 				Ruta ruta = new Ruta();
+			
 				ruta.setNomRuta(nomRuta);
 				ruta.setOrigen(origen);
 				ruta.setDestino(destino);
 				ruta.setKm(km);
 				ruta.setDuracion(duracion);
 				
-				
-				boolean retorno = service.registrarRuta(ruta);	
+				Usuario uu (Usuario)session.getAttribute();
+				boolean retorno = service.registrarRuta(ruta,uu);	
 		
 				
 				if(retorno) mensaje = "Ruta registrada con exito";
