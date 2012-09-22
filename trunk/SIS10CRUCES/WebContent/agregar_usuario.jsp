@@ -78,19 +78,19 @@
 			
 			<tr>
 				<td>Nombre</td>
-				<td><input name="txt_nombre" value="<%=unapersona.getNombre() %>"/></td>
+				<td><input name="txt_nombre" value="<%=unapersona.getNombre() %>" disabled="disabled"/></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Apellido Paterno</td>
-				<td><input name="txt_apePat" value="<%=unapersona.getApePat() %>"/></td>
+				<td><input name="txt_apePat" value="<%=unapersona.getApePat() %>" disabled="disabled"/></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>Apellido Materno</td>
-				<td><input name="txt_apeMat" value="<%=unapersona.getApeMat() %>"/></td>
+				<td><input name="txt_apeMat" value="<%=unapersona.getApeMat() %>"disabled="disabled"/></td>
 				<td></td>
 				<td></td>
 			</tr>
