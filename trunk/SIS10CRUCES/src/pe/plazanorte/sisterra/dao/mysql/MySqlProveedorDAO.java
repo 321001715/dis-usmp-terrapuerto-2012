@@ -17,178 +17,178 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 	//**************************INICIO MANTENER PROVEEDOR******************************//
 	
-	@Override
-	public boolean registrarProveedor(Proveedor proveedor) {
-		int filas_afectadas = 0;
-		
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
+		@Override
+		public boolean registrarProveedor(Proveedor proveedor) {
+			int filas_afectadas = 0;
 			
-			String sql = "INSERT INTO T_PROVEEDOR(ruc, razSocial, razCom, direccion, tel, usuario, clave,  estado) " +
-					"VALUES ("+proveedor.getRuc()+", '"+proveedor.getRazonSocial()+"', '"+proveedor.getRazCom()+"', '"+proveedor.getDireccion()+"', "+proveedor.getTel()+", '"+proveedor.getUsuario()+"', '"+proveedor.getClave()+"', '"+Constantes.ESTADO_ACTIVO+"');";
+			try {
+				Connection con = MySqlDAOFactory.abrirConexion();
+				Statement stmt = con.createStatement();
+				
+				String sql = "INSERT INTO T_PROVEEDOR(idUsuario, ruc, razSocial, razCom, direccion, tel, estado) " +
+						"VALUES ("+proveedor.getIdUsuario()+", '"+proveedor.getRuc()+"', '"+proveedor.getRazSocial()+"', '"+proveedor.getRazCom()+"', '"+proveedor.getDireccion()+"', "+proveedor.getTel()+", '"+Constantes.ESTADO_ACTIVO+"');";							
+				
+				filas_afectadas = stmt.executeUpdate(sql);
+				con.close();
+			} catch (Exception e) {			
+				e.printStackTrace();
+			}
 			
-			filas_afectadas = stmt.executeUpdate(sql);
-			con.close();
-		} catch (Exception e) {			
-			e.printStackTrace();
+			if(filas_afectadas == 1)
+				return true;
+			
+			return false;
 		}
-		
-		if(filas_afectadas == 1)
-			return true;
-		
-		return false;
-	}
 
-	@Override
-	public boolean modificarProveedor(Proveedor proveedor) {
-		int filas_afectadas = 0;
-		
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
+		@Override
+		public boolean modificarProveedor(Proveedor proveedor) {
+			int filas_afectadas = 0;
 			
-			String query = "UPDATE T_PROVEEDOR SET " +
-					"razSocial = '"+ proveedor.getRazonSocial() + 
-					"', razCom = '"+proveedor.getRazCom()+
-					"', direccion = '"+proveedor.getDireccion()+
-					"', tel = "+proveedor.getTel()+
-					", estado = '"+proveedor.getEstado()+
-					"' WHERE IDPROVEEDOR = "+proveedor.getIdProveedor()+";";
-			filas_afectadas = stmt.executeUpdate(query);				
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		if(filas_afectadas == 1)
-			return true;
-		
-		return false;
-	}
+			try {
+				Connection con = MySqlDAOFactory.abrirConexion();
+				Statement stmt = con.createStatement();
+				
+				String query = "UPDATE T_PROVEEDOR SET " +
+						"razSocial = '"+ proveedor.getRazSocial() + 
+						"', razCom = '"+proveedor.getRazCom()+
+						"', direccion = '"+proveedor.getDireccion()+
+						"', tel = "+proveedor.getTel()+
+						", estado = '"+proveedor.getEstado()+
+						"' WHERE IDPROVEEDOR = "+proveedor.getIdProveedor()+";";
+				filas_afectadas = stmt.executeUpdate(query);				
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
+			if(filas_afectadas == 1)
+				return true;
+			
+			return false;
+		}
 
-	@Override
-	public Proveedor consultarProveedor(Proveedor proveedor) {		
-		long id = proveedor.getIdProveedor();
-		Proveedor nuevo = null;
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PROVEEDOR WHERE IDPROVEEDOR = '"+id+"';";			
-			ResultSet rs =	stmt.executeQuery(query);	
+		@Override
+		public Proveedor consultarProveedor(Proveedor proveedor) {		
+			long id = proveedor.getIdProveedor();
+			Proveedor nuevo = null;
+			try {
+				Connection con = MySqlDAOFactory.abrirConexion();
+				Statement stmt = con.createStatement();
+				String query = "SELECT * FROM T_PROVEEDOR WHERE IDPROVEEDOR = '"+id+"';";			
+				ResultSet rs =	stmt.executeQuery(query);	
+						
+				if(rs.next()){		
+					nuevo = new Proveedor();
+					nuevo.setIdProveedor(rs.getLong("idProveedor"));
+					nuevo.setRuc(rs.getString("ruc"));				
+					nuevo.setRazSocial(rs.getString("razSocial"));
+					nuevo.setRazCom(rs.getString("razCom"));
+					nuevo.setDireccion(rs.getString("direccion"));
+					nuevo.setEstado(rs.getString("estado"));
+					nuevo.setTel(rs.getInt("tel"));
+				}
+				con.close();
+			} catch (Exception e) {			
+				e.printStackTrace();
+			} finally {
+				
+			}
+			return nuevo;
+		}
+	/*
+		@Override
+		public boolean deshabilitarProveedor(Proveedor proveedor) {
+			
+			long id = proveedor.getIdProveedor();
+			int filas_afectadas = 0;
+			try {
+				Connection con = MySqlDAOFactory.abrirConexion();
+				Statement stmt = con.createStatement();
+				String query = "UPDATE T_PROVEEDOR SET ESTADO = '"+Constantes.ESTADO_INHABILITADO+"' WHERE IDPROVEEDOR LIKE "+id+";";
+				
+				filas_afectadas = stmt.executeUpdate(query);		
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
+			if(filas_afectadas == 1)
+				return true;
+			
+			return false;
+		}
+	*/
+		@Override
+		public Vector<Proveedor> listarProveedores() {	
+			Vector<Proveedor> proveedores = new Vector<Proveedor>();
+			try {
+				Connection con = MySqlDAOFactory.abrirConexion();
+				Statement stmt = con.createStatement();
+				String query = "SELECT * FROM T_PROVEEDOR WHERE ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";				
+				Proveedor proveedor = null;
+				ResultSet rs = stmt.executeQuery(query);	
+			
+				while(rs.next()){	
+					proveedor = new Proveedor();
 					
-			if(rs.next()){		
-				nuevo = new Proveedor();
-				nuevo.setIdProveedor(rs.getLong("idProveedor"));
-				nuevo.setRuc(rs.getString("ruc"));				
-				nuevo.setRazonSocial(rs.getString("razSocial"));
-				nuevo.setRazCom(rs.getString("razCom"));
-				nuevo.setDireccion(rs.getString("direccion"));
-				nuevo.setEstado(rs.getString("estado"));
-				nuevo.setTel(rs.getInt("tel"));
+					proveedor.setIdProveedor(rs.getLong("idProveedor"));
+					proveedor.setRuc(rs.getString("ruc"));				
+					proveedor.setRazSocial(rs.getString("razSocial"));
+					proveedor.setRazCom(rs.getString("razCom"));
+					proveedor.setDireccion(rs.getString("direccion"));
+					proveedor.setEstado(rs.getString("estado"));
+					proveedor.setTel(rs.getInt("tel"));
+					
+					proveedores.add(proveedor);
+				}
+				con.close();
+			} catch (Exception e) {			
+				e.printStackTrace();
+			} finally {
+				
 			}
-			con.close();
-		} catch (Exception e) {			
-			e.printStackTrace();
-		} finally {
-			
+			return proveedores;
 		}
-		return nuevo;
-	}
-/*
-	@Override
-	public boolean deshabilitarProveedor(Proveedor proveedor) {
 		
-		long id = proveedor.getIdProveedor();
-		int filas_afectadas = 0;
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
-			String query = "UPDATE T_PROVEEDOR SET ESTADO = '"+Constantes.ESTADO_INHABILITADO+"' WHERE IDPROVEEDOR LIKE "+id+";";
+		public Vector<Proveedor> buscarProveedores(String ruc, String razSocial) {
+			Vector<Proveedor> proveedores = new Vector<Proveedor>();
+			try {
+				Connection con = MySqlDAOFactory.abrirConexion();
+				Statement stmt = con.createStatement();
+				String query = "";
+				
+				if(ruc.length() == 0)
+					query = "SELECT * FROM T_PROVEEDOR WHERE RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"'";
+				else if(razSocial.length() == 0)
+					query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%'";
+				else
+					query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%' AND (RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"')";
+				query += " AND ESTADO LIKE '"+Constantes.ESTADO_ACTIVO+"';";
+								
+				Proveedor proveedor = null;
+				ResultSet rs = stmt.executeQuery(query);	
 			
-			filas_afectadas = stmt.executeUpdate(query);		
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		if(filas_afectadas == 1)
-			return true;
-		
-		return false;
-	}
-*/
-	@Override
-	public Vector<Proveedor> listarProveedores() {	
-		Vector<Proveedor> proveedores = new Vector<Proveedor>();
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PROVEEDOR WHERE ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";				
-			Proveedor proveedor = null;
-			ResultSet rs = stmt.executeQuery(query);	
-		
-			while(rs.next()){	
-				proveedor = new Proveedor();
+				while(rs.next()){	
+					proveedor = new Proveedor();
+					
+					proveedor.setIdProveedor(rs.getLong("idProveedor"));
+					proveedor.setRuc(rs.getString("ruc"));				
+					proveedor.setRazSocial(rs.getString("razSocial"));
+					proveedor.setRazCom(rs.getString("razCom"));
+					proveedor.setDireccion(rs.getString("direccion"));
+					proveedor.setEstado(rs.getString("estado"));
+					proveedor.setTel(rs.getInt("tel"));
+					
+					proveedores.add(proveedor);
+				}
+				con.close();
+			} catch (Exception e) {			
+				e.printStackTrace();
+			} finally {
 				
-				proveedor.setIdProveedor(rs.getLong("idProveedor"));
-				proveedor.setRuc(rs.getString("ruc"));				
-				proveedor.setRazonSocial(rs.getString("razSocial"));
-				proveedor.setRazCom(rs.getString("razCom"));
-				proveedor.setDireccion(rs.getString("direccion"));
-				proveedor.setEstado(rs.getString("estado"));
-				proveedor.setTel(rs.getInt("tel"));
-				
-				proveedores.add(proveedor);
 			}
-			con.close();
-		} catch (Exception e) {			
-			e.printStackTrace();
-		} finally {
-			
+			return proveedores;
 		}
-		return proveedores;
-	}
-	
-	public Vector<Proveedor> buscarProveedores(String ruc, String razSocial) {
-		Vector<Proveedor> proveedores = new Vector<Proveedor>();
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
-			String query = "";
-			
-			if(ruc.length() == 0)
-				query = "SELECT * FROM T_PROVEEDOR WHERE RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"'";
-			else if(razSocial.length() == 0)
-				query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%'";
-			else
-				query = "SELECT * FROM T_PROVEEDOR WHERE RUC LIKE '"+ruc+"%' AND (RAZSOCIAL LIKE '"+razSocial.toUpperCase()+"%' OR RAZSOCIAL LIKE '"+razSocial.toLowerCase()+"')";
-			query += " AND ESTADO LIKE '"+Constantes.ESTADO_ACTIVO+"';";
-							
-			Proveedor proveedor = null;
-			ResultSet rs = stmt.executeQuery(query);	
-		
-			while(rs.next()){	
-				proveedor = new Proveedor();
-				
-				proveedor.setIdProveedor(rs.getLong("idProveedor"));
-				proveedor.setRuc(rs.getString("ruc"));				
-				proveedor.setRazonSocial(rs.getString("razSocial"));
-				proveedor.setRazCom(rs.getString("razCom"));
-				proveedor.setDireccion(rs.getString("direccion"));
-				proveedor.setEstado(rs.getString("estado"));
-				proveedor.setTel(rs.getInt("tel"));
-				
-				proveedores.add(proveedor);
-			}
-			con.close();
-		} catch (Exception e) {			
-			e.printStackTrace();
-		} finally {
-			
-		}
-		return proveedores;
-	}
 
-	//**************************FIN MANTENER PROVEEDOR******************************//
+		//**************************FIN MANTENER PROVEEDOR******************************//
 	
 	
 	//**************************INICIO GESTIONAR VEHICULO******************************//
