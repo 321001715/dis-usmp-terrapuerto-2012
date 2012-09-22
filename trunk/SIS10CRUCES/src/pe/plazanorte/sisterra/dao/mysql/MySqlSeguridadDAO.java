@@ -162,12 +162,12 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PERFIL WHERE idTipoUsuario = '"+id+"';";			
+			String query = "SELECT * FROM T_PERFIL WHERE idPerfil = '"+id+"';";			
 			ResultSet rs =	stmt.executeQuery(query);	
 					
 			if(rs.next()){		
 				nuevo = new Perfil();
-				nuevo.setId(rs.getLong("idTipoUsuario"));
+				nuevo.setId(rs.getLong("idPerfil"));
 				nuevo.setNombre(rs.getString("perfil"));
 				nuevo.setDescripcion(rs.getString("descripcion"));
 			}
