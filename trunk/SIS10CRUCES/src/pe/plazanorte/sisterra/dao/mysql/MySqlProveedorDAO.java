@@ -355,7 +355,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	//**************************INICIO GESTIONAR RUTA******************************//
 	
 	@Override
-	public boolean registrarRuta(Ruta ruta,Usuario uu) {
+	public boolean registrarRuta(Ruta ruta,Proveedor uu) {
 		int filas_afectadas = 0;
 		
 		try {
@@ -367,7 +367,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			String sql = "INSERT INTO `bd_cruces`.`t_ruta` ( `nomRuta`," +
 					" `origen`, `destino`, `km`, `duracion`, `estado`, `idProveedor`, `idUbigeo`)" +
 					" VALUES ('"+ruta.getNomRuta()+"', "+ruta.getOrigen()+", "+ruta.getDestino()+"," +
-							" "+ruta.getKm()+", "+ruta.getDuracion()+", '"+Constantes.ESTADO_ACTIVO+"', "+ruta.getIdProveedor()+", "+1+");";
+							" "+ruta.getKm()+", "+ruta.getDuracion()+", '"+Constantes.ESTADO_ACTIVO+"', "+uu.getIdProveedor()+", "+1+");";
 		System.out.println("dato: "+sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
