@@ -30,7 +30,6 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			String sql = "INSERT INTO T_USUARIO(usuario, clave, estado, numDoc, nombres, apePat, apeMat,idPerfil) " +
 					"VALUES ("+"'"+usuario.getUsuario()+"', '"+usuario.getClave()+"', '"+usuario.getEstado()+"', '"+usuario.getDni()+"', '"+usuario.getNombres()+"', '"+usuario.getApePat()+"', '"+usuario.getApeMat()+"', '"+usuario.getIdTipUsuario()+"');";
 			
-			System.out.print(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {			
@@ -428,14 +427,10 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 						u.setSexo(rs.getString("sexo"));
 						u.setTel(rs.getInt("tel"));
 						u.setIdTipUsuario(rs.getInt("idperfil"));
-						
-						
-						
-						 
-						 
+				
+					
+			  
 					 rs.close();
-						
-						
 				        con.close();
 	        
 	        
@@ -469,7 +464,6 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				nombre=nuevo.getNombre();
 				nuevo.setApePat(rs.getString("apePat"));
 				nuevo.setApeMat(rs.getString("apeMat"));
-				nuevo.setDni(rs.getLong("numDoc"));
 				
 			}
 			con.close();
@@ -484,83 +478,6 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	 
-	 public boolean proveedor(Proveedor u,Usuario uu) {
-			
-		    try {
-		    	 Connection con = MySqlDAOFactory.abrirConexion();
-		 		 Statement stmt = con.createStatement();
-		 		 
-		 		 
-		 		String sql ="SELECT * FROM T_PROVEEDOR WHERE idusuario='"+u.getIdUsuario()+"'";
-		 
-		 		
-					ResultSet rs = stmt.executeQuery(sql);
-				
-					if (rs.next()) {
-						u.setIdProveedor(rs.getInt("idproveedor"));
-						u.setIdUsuario(rs.getInt("idusuario"));
-						u.setRuc(rs.getString("ruc"));
-						u.setRazSocial(rs.getString("razSocial"));
-						
-						
-						
-						
-						 
-						 
-					 rs.close();
-						
-						
-				        con.close();
-	        
-	        
-					return true;
-				} else {
-					 rs.close();
-				        con.close();
-					
-					return false;
-				}
-			} catch (Exception e) {
-				
-				return false;
-			}
-		}
-
-	 @Override
-		public Usuario recuperarclave(String usu) {
-			Usuario usuario= new Usuario();
-		    try {
-		    	 Connection con = MySqlDAOFactory.abrirConexion();
-		 		 Statement stmt = con.createStatement();
-		 		 
-		 		String sql ="SELECT * FROM `bd_cruces`.`t_usuario`" +
-		 		" WHERE usuario='"+usu+"';";
-		 		
-					ResultSet rs = stmt.executeQuery(sql);
-					 
-					if (rs.next()) {
-						usuario.setId(rs.getInt("idusuario"));
-						usuario.setNombres(rs.getString("nombres"));
-						usuario.setEmail(rs.getString("email"));
-						usuario.setClave(rs.getString("clave"));
-					
-			  
-					 rs.close();
-				        con.close();
-	        
-	        
-					return usuario;
-				} else {
-					 rs.close();
-				        con.close();
-				        
-					return usuario;
-				}
-			} catch (Exception e) {
-				return usuario;
-			}
-		}
-
 	 
 	 
 	 

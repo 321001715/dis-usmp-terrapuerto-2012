@@ -162,7 +162,7 @@ CREATE TABLE `t_usuario` (
   `direccion` varchar(200) COLLATE armscii8_bin DEFAULT NULL,
   `sexo` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `tel` varchar(11) COLLATE armscii8_bin DEFAULT NULL,
-  `email` varchar(100) character set utf8 default NULL,
+  `email` VARCHAR(100) NOT NULL,  
   `estado` varchar(45) COLLATE armscii8_bin NOT NULL,
   `idPerfil` int(6) NOT NULL,
   PRIMARY KEY (`idUsuario`),

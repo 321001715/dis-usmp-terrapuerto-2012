@@ -1,7 +1,6 @@
 package pe.plazanorte.sisterra.seguridad;
 
 import pe.plazanorte.sisterra.entidades.Usuario;
-import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
 import java.net.InetAddress;
 import java.sql.*;
@@ -31,21 +30,10 @@ public class Login extends HttpServlet {
 			uu.setIdTipUsuario(Integer.parseInt(request.getParameter("esc")));
 			MySqlSeguridadDAO du = new MySqlSeguridadDAO();
 			if (du.validarUser(uu)) {
-
 				session.setAttribute("BUsuario", uu);
 				uu = (Usuario) session.getAttribute("BUsuario");
-				
-			if (uu.getIdTipUsuario()==18) {
-				Proveedor proveedor = new Proveedor();
-				du.proveedor(proveedor,uu);
-				session.setAttribute("BProveedor", proveedor);
-				
-				getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
-			
-			}else getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
-			
-			
-			
+				getServletContext().getRequestDispatcher("/presentacion.jsp")
+						.forward(request, response);
 			} else {
 				getServletContext().getRequestDispatcher("/login.jsp")
 						.forward(request, response);

@@ -120,7 +120,7 @@ function validate( field, field2 )
  </tr>
  <tr>
   <td height="30" colspan="2" class="presentacion">
-   <a href="<%=request.getContextPath()%>/olvido.jsp" target="top"><font color="#FAFAEB">Olvidé mi Contrase&ntilde;a</font></a></td>
+   <a href="<%=request.getContextPath()%>/Olvido.jsp" target="top"><font color="#FAFAEB">Olvidé mi Contrase&ntilde;a</font></a></td>
  </tr>
  <tr>
   <td colspan="2" height="60"></td>

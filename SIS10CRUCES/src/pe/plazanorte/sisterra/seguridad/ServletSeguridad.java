@@ -1,16 +1,7 @@
 package pe.plazanorte.sisterra.seguridad;
 
 import java.io.IOException;
-import java.util.Properties;
 import java.util.Vector;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -447,63 +438,10 @@ public class ServletSeguridad extends HttpServlet {
 			}
 		}
 	
-			if(tipo.equalsIgnoreCase(Constantes.ACCION_RECUPERAR_CONTRASEÑA)){
-				String usuario = request.getParameter("usuario");
-				int destino = Integer.parseInt(request.getParameter("destino"));
-				System.out.println("usuario: "+usuario);
-				
-				Usuario usuVal=service.recuperarclave(usuario);
-				
-				
-				final String username = "dis.46h.usmp.2012@gmail.com";
-				final String password = "alamierdalosjudas";
-
-				Properties props = new Properties();
-				props.put("mail.smtp.auth", "true");
-				props.put("mail.smtp.starttls.enable", "true");
-				props.put("mail.smtp.host", "smtp.gmail.com");
-				props.put("mail.smtp.port", "587");
-				Session session = Session.getInstance(props,
-						new javax.mail.Authenticator() {
-							protected PasswordAuthentication getPasswordAuthentication() {
-								
-								return new PasswordAuthentication(username,
-										password);
-								
-							}
-						});
-				try {
-					System.out.println("mail: "+usuVal.getEmail());
-					
-					Message message = new MimeMessage(session);
-					message.setFrom(new InternetAddress("sisetepl@gmail.com"));
-					message.setRecipients(Message.RecipientType.TO,
-							InternetAddress.parse(usuVal.getEmail()));
-					message.setSubject("Olvido su contraseña");
-					message.setText("Estimado: " + usuVal.getNombres()
-							+ "\n\n Su contraseña es: " + usuVal.getClave());
-
-					Transport.send(message);
-
-					System.out.println("Done");
-					
-				} catch (MessagingException e) {
-					throw new RuntimeException(e);
-				}
-				if(destino == Constantes.MENU_PRINCIPAL){
-					rd = getServletContext().getRequestDispatcher("/login.jsp");
-				
-				}
-			}
-			
 		request.setAttribute("mensaje", mensaje);	
 		rd.forward(request, response);			
 	
 	}
-	
-
-	
-	
 	
 
 }
