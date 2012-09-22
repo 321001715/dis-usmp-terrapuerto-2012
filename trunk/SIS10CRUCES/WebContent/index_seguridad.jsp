@@ -48,7 +48,7 @@
   				</tr>
   				<tr>
   					<td align="center">
-  						<a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listar&origen=<%=Constantes.MENU_PRINCIPAL%>">
+  						<a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listarPerfiles&origen=<%=Constantes.MENU_PRINCIPAL%>">
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/seguridad_perfil.png">
 						</a>
 						<br>
