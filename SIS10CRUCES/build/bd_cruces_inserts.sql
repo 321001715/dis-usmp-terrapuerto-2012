@@ -1,4 +1,4 @@
---** TABLAS MAESTRAS **
+-- TABLAS MAESTRAS
 -- OK T_CLASIFICACION
 -- OK T_PERFIL
 -- OK T_PERSONA
@@ -6,7 +6,6 @@
 -- OK T_USUARIO
 -- OK T_UBIGEO
 
----///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--
 -- AUTOR: PAREDES RODRÍGUEZ, RUY
 -- EMPEZANDO LA CARGA DE CLASIFICACIONES EN T_CLASIFICACION . TOTAL DE 6 REGISTROS 
 insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
@@ -19,7 +18,7 @@ insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, us
 values ('ECONOMICO', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
 insert into T_CLASIFICACION (nombre, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
 values ('TOUR', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
----///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--
+
 -- AUTOR: MARQUEZ SOTO, ANTHONY
 -- EMPEZANDO LA CARGA DE UBIGEOS EN T_UBIGEO . TOTAL DE 183 REGISTROS 
 INSERT INTO `bd_cruces`.`t_ubigeo` ( UBGCODUBI, UBGDEDPTO, UBGDEPROV, UBGDEDSTO, UBGDESUBI,
@@ -571,7 +570,7 @@ UBGCODPOS ) VALUES (
 INSERT INTO `bd_cruces`.`t_ubigeo` ( UBGCODUBI, UBGDEDPTO, UBGDEPROV, UBGDEDSTO, UBGDESUBI,
 UBGCODPOS ) VALUES ( 
 '150901', '15', '09', '01', 'OYON', NULL); 
----///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--
+
 -- AUTOR: PAREDES RODRÍGUEZ, RUY
 -- EMPEZANDO LA CARGA DE PERFILES EN T_PROVEEDOR . TOTAL DE 17 REGISTROS 
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
@@ -608,7 +607,7 @@ insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estad
 values ('20486314100', 'EMPRESA MUNICIPAL DE TRANSPORTES MULTISERVICIOS HUACHOCOLPA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'P0016', 'REGISTRADO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, codEmpre, estado)
 values ('00000000481', 'INSTITUTO METROPOLITANO PROTRANSPORTE DE LIMA', 'INSTITUTO', 'Calle John Mendoza 999', '999', 'P0017', 'REGISTRADO');
----///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--
+
 -- AUTOR: PAREDES RODRÍGUEZ, RUY
 -- EMPEZANDO LA CARGA DE PERFILES EN T_PERFIL . TOTAL DE 5 REGISTROS 
 insert into T_PERFIL (perfil, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
@@ -621,7 +620,7 @@ insert into T_PERFIL (perfil, descripcion, usuarioInsert, fechaInsert, usuarioUp
 values ('CLIENTE', 'CLIENTE DEL S10C', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
 insert into T_PERFIL (perfil, descripcion, usuarioInsert, fechaInsert, usuarioUpdate, fechaUpdate, estado)
 values ('SOPORTE', 'SOPORTE DEL SISTEMA', 'ADMIN', STR_TO_DATE('01-01-1990','%d-%c-%Y'), NULL, NULL, 'REGISTRADO');
----///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--
+
 -- AUTOR: PAREDES RODRÍGUEZ, RUY
 -- EMPEZANDO LA CARGA DE PERSONAS EN T_PERSONA . TOTAL DE 3942 REGISTROS
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
@@ -8143,7 +8142,7 @@ values ('DNI', '70062424', 'GARCIA', 'SERQUEN', 'KENY ANDERSON', 'M', STR_TO_DAT
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '45373187', 'CASTRO', 'CHAVARRI', 'MANUEL ALEJANDRO', 'M', STR_TO_DATE('19-07-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'REGISTRADO');
 -- 3742
----///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--
+
 -- AUTOR: PAREDES RODRÍGUEZ, RUY
 -- EMPEZANDO LA CARGA DE USUARIOS EN T_USUARIOS . TOTAL DE 5 REGISTROS 
 insert into T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
