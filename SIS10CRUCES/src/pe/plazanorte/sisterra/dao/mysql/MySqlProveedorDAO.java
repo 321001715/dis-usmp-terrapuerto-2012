@@ -10,6 +10,7 @@ import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
+import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlProveedorDAO implements ProveedorDAO {
@@ -354,7 +355,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	//**************************INICIO GESTIONAR RUTA******************************//
 	
 	@Override
-	public boolean registrarRuta(Ruta ruta) {
+	public boolean registrarRuta(Ruta ruta,Usuario uu) {
 		int filas_afectadas = 0;
 		
 		try {
@@ -362,13 +363,11 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 			
 			
-			
-		
-			
+
 			String sql = "INSERT INTO `bd_cruces`.`t_ruta` ( `nomRuta`," +
 					" `origen`, `destino`, `km`, `duracion`, `estado`, `idProveedor`, `idUbigeo`)" +
 					" VALUES ('"+ruta.getNomRuta()+"', "+ruta.getOrigen()+", "+ruta.getDestino()+"," +
-							" "+ruta.getKm()+", '"+ruta.getDuracion()+"', '"+Constantes.ESTADO_ACTIVO+"', "+1+", "+1+");";
+							" "+ruta.getKm()+", "+ruta.getDuracion()+", '"+Constantes.ESTADO_ACTIVO+"', "+uu.getIdTipUsuario()+", "+1+");";
 		System.out.println("dato: "+sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
