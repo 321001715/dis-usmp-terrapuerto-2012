@@ -40,10 +40,9 @@ public class Login extends HttpServlet {
 				du.proveedor(proveedor,uu);
 				session.setAttribute("BProveedor", proveedor);
 				
-				getServletContext().getRequestDispatcher("/presentacion.jsp")
-						.forward(request, response);
+				getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
 			
-			}else getServletContext().getRequestDispatcher("/presentacion.jsp");
+			}else getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
 			
 			
 			
