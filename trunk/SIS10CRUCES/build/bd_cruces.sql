@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `bd_cruces` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `bd_cruces` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `bd_cruces`;
--- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
 --
 -- Host: localhost    Database: bd_cruces
 -- ------------------------------------------------------
--- Server version	5.5.24
+-- Server version	5.1.50-community
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -89,7 +89,7 @@ CREATE TABLE `t_perfil` (
   `fechaUpdate` date DEFAULT NULL,
   `estado` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   PRIMARY KEY (`idPerfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,7 +191,7 @@ CREATE TABLE `t_persona` (
   `estado` varchar(15) NOT NULL,
   PRIMARY KEY (`id_persona`),
   UNIQUE KEY `id_persona_UNIQUE` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=98917039 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=98917641 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,14 +312,15 @@ DROP TABLE IF EXISTS `t_proveedor`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_proveedor` (
   `idProveedor` int(4) NOT NULL AUTO_INCREMENT,
-  `ruc` varchar(20) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `ruc` varchar(20) COLLATE armscii8_bin NOT NULL,
   `razSocial` varchar(200) COLLATE armscii8_bin NOT NULL,
-  `razCom` varchar(200) COLLATE armscii8_bin NOT NULL,
-  `direccion` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `tel` int(11) NOT NULL,
+  `razCom` varchar(200) COLLATE armscii8_bin DEFAULT NULL,
+  `direccion` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `tel` int(11) DEFAULT NULL,
   `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
   PRIMARY KEY (`idProveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -339,7 +340,7 @@ CREATE TABLE `t_clasificacion` (
   `fechaUpdate` date DEFAULT NULL,
   `estado` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   PRIMARY KEY (`idClasificacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,14 +359,3 @@ CREATE TABLE `t_equipaje` (
   CONSTRAINT `fk_t_equipaje_t_pasajero1` FOREIGN KEY (`idPasajero`) REFERENCES `t_pasajero` (`idPasajero`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2012-09-21 17:11:09
