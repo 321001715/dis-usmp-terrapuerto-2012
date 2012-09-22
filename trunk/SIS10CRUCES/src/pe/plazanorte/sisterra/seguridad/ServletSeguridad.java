@@ -46,12 +46,16 @@ public class ServletSeguridad extends HttpServlet {
 		
 			try {
 				Vector<Usuario> usuarios = new Vector<Usuario>();				
+				Vector<Perfil> perfiles = new Vector<Perfil>();	
 				usuarios = service.listarUsuarios();
 				request.setAttribute("usuarios", usuarios);	
 				String origen = request.getParameter("origen");
 				if(origen == null){
 					rd = getServletContext().getRequestDispatcher("/listar_usuarios.jsp");
 				}else if(Integer.parseInt(origen) == Constantes.MENU_PRINCIPAL){
+					perfiles = service.listarPerfiles();
+					
+					request.setAttribute("perfiles", perfiles);	
 					rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
 				}
 				request.setAttribute("usuarios", usuarios);	
@@ -270,6 +274,8 @@ public class ServletSeguridad extends HttpServlet {
 			String dni = request.getParameter("dni");
 			
 			Vector<Usuario> usuarios = null;
+			Vector<Perfil> perfiles = new Vector<Perfil>();	
+			
 			try {
 				usuarios = service.buscarUsuarios(usuario, perfil, apellido, dni);				
 				request.setAttribute("usuarios", usuarios);						
@@ -278,6 +284,8 @@ public class ServletSeguridad extends HttpServlet {
 			}
 			
 			if(destino == Constantes.MANTENER_USUARIO){
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);	
 				rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
 			
 			}

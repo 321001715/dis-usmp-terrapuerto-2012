@@ -339,7 +339,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				if(flag) query += " AND ";
 				query += "(numDoc LIKE UPPER('"+dniuser+"%') OR numDoc LIKE LOWER('"+dniuser+"%'))";
 			}
-			
+			query+=";";
 			System.out.println(query);
 			Usuario usuario = null;
 			ResultSet rs = stmt.executeQuery(query);	
