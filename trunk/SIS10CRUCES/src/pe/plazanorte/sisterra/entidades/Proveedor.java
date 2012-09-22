@@ -3,13 +3,12 @@ package pe.plazanorte.sisterra.entidades;
 public class Proveedor {
 	
 	private long idProveedor;
+	private int idUsuario;
 	private String ruc;
-	private String razonSocial;
+	private String razSocial;
 	private String razCom;
 	private String direccion;
 	private int tel;
-	private String usuario;
-	private String clave;
 	private String estado;
 	
 	public long getIdProveedor() {
@@ -20,6 +19,14 @@ public class Proveedor {
 		this.idProveedor = idProveedor;
 	}
 	
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+	
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	
 	public String getRuc() {
 		return ruc;
 	}
@@ -28,12 +35,12 @@ public class Proveedor {
 		this.ruc = ruc;
 	}
 	
-	public String getRazonSocial() {
-		return razonSocial;
+	public String getRazSocial() {
+		return razSocial;
 	}
 	
-	public void setRazonSocial(String razonSocial) {
-		this.razonSocial = razonSocial;
+	public void setRazSocial(String razSocial) {
+		this.razSocial = razSocial;
 	}
 	
 	public String getRazCom() {
@@ -60,28 +67,11 @@ public class Proveedor {
 		this.tel = tel;
 	}
 	
-	public String getUsuario() {
-		return usuario;
-	}
-	
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-	
-	public String getClave() {
-		return clave;
-	}
-	
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
-	
 	public String getEstado() {
 		return estado;
 	}
 	
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-	
+	}		
 }
