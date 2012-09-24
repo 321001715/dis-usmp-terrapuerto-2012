@@ -55,11 +55,14 @@ function redirect()
 <body bgcolor="#114E7A" topmargin="0" leftmargin="0" rightmargin="0">
 <form action="Login" method="post" name="menPrin" target="presinf">
   <%Usuario uu = (Usuario)session.getAttribute("BUsuario");%>
- <table width = "100%">
+ <table style="width:100%; height: 35">
  <tr>
-  <td height="50" width = "230" align="center">&nbsp;</td>
-  <td>
-   <div align = "center"></div></td>
+  	<td height="50" width = "50%" align="left">
+		<img style="background-color: #F8F8F8; width: 8%" alt="" src="<%=request.getContextPath()%>/images/logo_terra.png">
+	</td>
+	<td height="50" width = "50%" align="right" valign="top">
+		<img style="background-color: #F8F8F8; width: 8%" alt="" src="<%=request.getContextPath()%>/images/logo.png">
+	</td>
  </tr>
  <tr>
   <td height="25" colspan="2" bgcolor="#999999">
