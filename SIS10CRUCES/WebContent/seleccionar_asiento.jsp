@@ -113,35 +113,35 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td width="150px">Código de Viaje: </td>
-					<td><input type="text" name="codViaje"></td>
+					<td><input type="text" name="codViaje" disabled="disabled"></td>
 					<td></td>
 					<td></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Origen: </td>
-					<td><input type="text" name="origen"></td>
+					<td><input type="text" name="origen" disabled="disabled"></td>
 					<td width="150px">Destino: </td>
-					<td><input type="text" name="destino"></td>
+					<td><input type="text" name="destino" disabled="disabled"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Fecha de Salida: </td>
-					<td><input type="text" name="fecSalida"></td>
+					<td><input type="text" name="fecSalida" disabled="disabled"></td>
 					<td>Fecha de Llegada: </td>
-					<td><input type="text" name="fecLlegada"></td>
+					<td><input type="text" name="fecLlegada" disabled="disabled"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Costo S/.: </td>
-					<td><input type="text" name="costo"></td>
+					<td><input type="text" name="costo" disabled="disabled"></td>
 					<td>Duración Hrs.: </td>
-					<td><input type="text" name="duracion"></td>
+					<td><input type="text" name="duracion" disabled="disabled"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Servicio: </td>
-					<td colspan="3"><input type="text" name="servicio" size="73"></td>
+					<td colspan="3"><input type="text" name="servicio" size="73" disabled="disabled"></td>
 				</tr>
 				</table>
 			</td>
@@ -174,9 +174,9 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Piso: </td>
-					<td><input type="text" name="piso"></td>
+					<td><input type="text" name="piso" disabled="disabled"></td>
 					<td width="150px">Placa: </td>
-					<td><input type="text" name="placa"></td>
+					<td><input type="text" name="placa" disabled="disabled"></td>
 				</tr>
 				</table>
 			</td>
