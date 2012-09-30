@@ -91,5 +91,8 @@ public class Constantes {
 	
 	public static final String VENDER_BOLETO = "vender_boleto";
 	
+	public static final String ACCION_BUSQUEDA_REALIZADA= "realizado";
+	public static final String ACCION_BUSQUEDA_NO_REALIZADA= "norealizado";
+	
 	
 }

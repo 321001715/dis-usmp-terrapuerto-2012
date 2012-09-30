@@ -281,13 +281,13 @@ public class ServletSeguridad extends HttpServlet {
 				
 			}
 		}else if(tipo.equalsIgnoreCase("buscarDni")){
-			int dni=Integer.parseInt(request.getParameter("dni"));
+			int dnipers=Integer.parseInt(request.getParameter("dni"));
 			Persona unapersona=new Persona();
-			String busqueda="nobuscar";
+			String busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
 			try {								
-				unapersona=service.consultarPersona(dni);
+				unapersona=service.consultarPersona(dnipers);
 				if(unapersona!=null){
-					busqueda="realizada";
+					busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
 				}
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
 				perfiles = service.listarPerfiles();
