@@ -27,8 +27,7 @@ function validar(){
 <body>	
 <%
 	
-	Vector<Perfil> perfiles=new Vector<Perfil>();
-	perfiles = (Vector<Perfil>)request.getAttribute("perfiles");
+
 	
 %> 
 <div class="ui-widget">

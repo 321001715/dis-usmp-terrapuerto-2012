@@ -89,6 +89,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				nuevo.setDni(rs.getLong("numDoc"));
 				
 			}
+			
 			con.close();
 		} catch (Exception e) {			
 			e.printStackTrace();
@@ -512,6 +513,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				nuevo.setApePat(rs.getString("apePat"));
 				nuevo.setApeMat(rs.getString("apeMat"));
 				nuevo.setEstado(rs.getString("estado"));
+				nuevo.setDni(rs.getLong("numDoc"));
 			}
 			con.close();
 		} catch (Exception e) {			

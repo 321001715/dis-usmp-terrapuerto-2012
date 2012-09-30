@@ -189,9 +189,15 @@ public class ServletSeguridad extends HttpServlet {
 				if(retorno) mensaje = "Usuario agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el usuario.";	
 				
-				Vector<Usuario> usuarios = new Vector<Usuario>();				
+				Vector<Usuario> usuarios = new Vector<Usuario>();	
+				
 				usuarios = service.listarUsuarios();
-				request.setAttribute("usuarios", usuarios);	
+				request.setAttribute("usuarios", usuarios);
+				
+				Vector<Perfil> perfiles = new Vector<Perfil>();				
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);	
+				
 				rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
 				
 			} catch (Exception e) {
@@ -225,11 +231,17 @@ public class ServletSeguridad extends HttpServlet {
 				boolean retorno = service.modificarUsuario(usuario);				
 				
 				if(retorno) mensaje = "Usuario modificado con éxito.";
-				else mensaje = "Error, no se pudo modificar el usuario.";	
+				else mensaje = "Error, no se pudo modificar el usuario.";
+				
+				
 				
 				Vector<Usuario> usuarios = new Vector<Usuario>();				
 				usuarios = service.listarUsuarios();
 				request.setAttribute("usuarios", usuarios);	
+				
+				Vector<Perfil> perfiles = new Vector<Perfil>();				
+				perfiles = service.listarPerfiles();
+				request.setAttribute("perfiles", perfiles);	
 				
 				rd = getServletContext().getRequestDispatcher("/mantener_usuario.jsp");
 				
