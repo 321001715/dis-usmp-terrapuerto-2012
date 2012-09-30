@@ -21,7 +21,7 @@ public class Persona {
 	}
 	private char sexo;
 	private long telefono;
-	private char estado;
+	private String estado;
 	public long getId() {
 		return id;
 	}
@@ -59,10 +59,10 @@ public class Persona {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-	public char getEstado() {
+	public String getEstado() {
 		return estado;
 	}
-	public void setEstado(char estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 	

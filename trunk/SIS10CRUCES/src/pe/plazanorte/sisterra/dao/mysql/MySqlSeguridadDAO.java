@@ -52,7 +52,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Statement stmt = con.createStatement();
 			
 			String query = "UPDATE T_USUARIO SET usuario = '"+usuario.getUsuario()+"', clave = '"+usuario.getClave()+"', nombres = '"+usuario.getNombres()+ "', apePat = '"+usuario.getApePat()+"', apeMat = '"+usuario.getApeMat()+"', estado = '"+usuario.getEstado()+"', numDoc= "+usuario.getDni()+", idPerfil = "+usuario.getIdTipUsuario()+" WHERE idUsuario = "+usuario.getId()+";";
-					
+			System.out.print(query);		
 			filas_afectadas = stmt.executeUpdate(query);				
 			con.close();
 		} catch (Exception e) {
@@ -497,8 +497,29 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public Persona consultarPersona(int dni) {
-		// TODO Auto-generated method stub
-		return null;
+		Persona nuevo=null;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_PERSONA WHERE numDoc = '"+dni+"';";			
+			ResultSet rs =	stmt.executeQuery(query);	
+					
+			if(rs.next()){		
+				nuevo = new Persona();
+				nuevo.setId(rs.getLong("id_persona"));
+				nuevo.setNombre(rs.getString("nombres"));
+				nuevo.setApePat(rs.getString("apePat"));
+				nuevo.setApeMat(rs.getString("apeMat"));
+				nuevo.setEstado(rs.getString("estado"));
+			}
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return nuevo;
 	}
 
 	@Override

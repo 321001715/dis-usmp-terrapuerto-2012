@@ -74,7 +74,7 @@
 				<td></td>
 				<td></td>
 			</tr>
-			<%if(busqueda.equalsIgnoreCase("realizada")){ System.out.print("realizada"); %>
+			<%if(busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)){ System.out.print("realizada"); %>
 			
 			<tr>
 				<td>Nombre</td>
