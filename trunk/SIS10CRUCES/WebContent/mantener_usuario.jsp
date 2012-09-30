@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,10 +19,41 @@
 	
 <%
 	String mensaje = (String)request.getParameter("mensaje");
+	Vector<Perfil> perfiles=new Vector<Perfil>();
+	perfiles = (Vector<Perfil>)request.getAttribute("perfiles");
 %>
-
-	<%@include file="buscar_usuario.jsp" %>
 	
+	<form action="ServletSeguridad" method="post" name="buscar" onsubmit="validar()">
+		<input type="hidden" name="tipo" value="filtroUsuario">
+		<input type="hidden" name="destino" value="<%=Constantes.MANTENER_USUARIO%>">
+		<table>
+			<tr>
+				<td width="20%"></td>
+				<td>Usuario: </td>
+				<td><input type="text" name="usuario"></td>
+				
+				<td>Apellido: </td>
+				<td><input type="text" name="apellido"></td>
+			</tr>
+			<tr>
+				<td width="20%"></td>
+				<td>Perfil: </td>
+				<td><select name="perfil">
+						<% for (int i=0;i<perfiles.size();i++){ %>
+				<option value="<%=perfiles.get(i).getId() %>" > <%=perfiles.get(i).getNombre() %> </option>
+				<%} %>
+				</select></td>
+				
+				<td>DNI: </td>
+				<td><input type="text" name="dni"></td>
+			</tr>
+			<tr>
+				<td colspan="6" align="right">
+					<input type="submit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
+				</td>
+			</tr>			
+		</table>
+	</form>
 	<br><a href="ServletSeguridad?tipo=agregarUsuario"">
 			<img alt="" src="<%=request.getContextPath()%>/images/adicionar.png">
 		</a>
