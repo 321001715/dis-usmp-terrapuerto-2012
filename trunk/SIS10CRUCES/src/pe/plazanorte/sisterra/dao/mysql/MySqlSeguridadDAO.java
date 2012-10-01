@@ -525,9 +525,39 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	@Override
-	public Usuario recuperarclave(String usuario) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario buscarUsuario(String nombre) {
+		
+		Usuario usuario = new Usuario();
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM t_usuario WHERE usuario='"+nombre+"';";
+			
+			ResultSet rs =	stmt.executeQuery(query);	
+			
+			while(rs.next()){
+					
+				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setUsuario(rs.getString("usuario"));
+				usuario.setNombres(rs.getString("nombres"));				
+				usuario.setApePat(rs.getString("apePat"));
+				usuario.setApeMat(rs.getString("apeMat"));
+				usuario.setDni(rs.getInt("numDoc"));
+				usuario.setTel(rs.getInt("tel"));		
+				usuario.setSexo(rs.getString("sexo"));
+				usuario.setEstado(rs.getString("estado"));
+				usuario.setIdTipUsuario(rs.getInt("idPerfil"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setClave(rs.getString("clave"));
+				
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.print(e.getMessage());	
+		}		
+		return usuario;
 	}
 
 

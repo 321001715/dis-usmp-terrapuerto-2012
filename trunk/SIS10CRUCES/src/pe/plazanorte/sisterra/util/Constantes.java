@@ -3,7 +3,7 @@ package pe.plazanorte.sisterra.util;
 public class Constantes {
 	
 	/**
-	 * Esta clase almacena todas las constantes que se pudieran usar en la programación para
+	 * Esta clase almacena todas las constantes que se pudieran usar en la programaciï¿½n para
 	 * no confundirnos colocando diferentes cosas cada uno que pudieran ser las mismas, si 
 	 * tiene alguna constante que agregar agregenla como las que estan abajo, con mayuscula y public static final
 	 */
@@ -85,7 +85,7 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_RUTA = "modificar_ruta";
 	public static final String ACCION_FILTRO_RUTA = "filtro_ruta";
 	
-	public static final String ACCION_RECUPERAR_CONTRASEÑA="recuperar_contraseña";
+	public static final String ACCION_RECUPERAR_CONTRASEÃ‘A="recuperar_contraseÃ±a";
 	
 	
 	

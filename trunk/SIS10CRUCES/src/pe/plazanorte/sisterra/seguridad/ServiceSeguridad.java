@@ -133,7 +133,7 @@ public class ServiceSeguridad {
 	public Usuario recuperarclave(String usuario){
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO();
-		return seguridadDao.recuperarclave(usuario);
+		return seguridadDao.buscarUsuario(usuario);
 	}
 	
 }
