@@ -154,7 +154,7 @@ public class ServletSeguridad extends HttpServlet {
 					
 		String tipo = request.getParameter("tipo");
 		System.out.println(tipo);
-		String mensaje = "Ocurrió un error.";
+		String mensaje = "Ocurriï¿½ un error.";
 		
 		ServiceSeguridad service = new ServiceSeguridad();
 		
@@ -459,7 +459,7 @@ public class ServletSeguridad extends HttpServlet {
 			}
 		}
 	
-			if(tipo.equalsIgnoreCase(Constantes.ACCION_RECUPERAR_CONTRASEÑA)){
+			if(tipo.equalsIgnoreCase(Constantes.ACCION_RECUPERAR_CONTRASEÃ‘A)){
 				String usuario = request.getParameter("usuario");
 				int destino = Integer.parseInt(request.getParameter("destino"));
 				System.out.println("usuario: "+usuario);
@@ -491,9 +491,9 @@ public class ServletSeguridad extends HttpServlet {
 					message.setFrom(new InternetAddress("sisetepl@gmail.com"));
 					message.setRecipients(Message.RecipientType.TO,
 							InternetAddress.parse(usuVal.getEmail()));
-					message.setSubject("Olvido su contraseña");
+					message.setSubject("Olvido su contraseï¿½a");
 					message.setText("Estimado: " + usuVal.getNombres()
-							+ "\n\n Su contraseña es: " + usuVal.getClave());
+							+ "\n\n Su contraseï¿½a es: " + usuVal.getClave());
 
 					Transport.send(message);
 

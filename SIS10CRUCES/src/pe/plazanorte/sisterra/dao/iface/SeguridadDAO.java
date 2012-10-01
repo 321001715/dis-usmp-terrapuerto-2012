@@ -25,6 +25,6 @@ public interface SeguridadDAO {
 	public Vector<Perfil> buscarPerfil(Perfil vehiculo);
 	public Vector<Perfil> buscarPerfiles(String cod, String perfil);
 	
-	public Usuario recuperarclave(String usuario);
+	public Usuario buscarUsuario(String usuario);
 
 }
