@@ -22,7 +22,7 @@
 						</a>
 						<br>
 			  			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
-			  			Venda sus Boletos
+			  			Compre sus Boletos
 						</font>
 					</td> 
 					<td width="5%"></td> 				

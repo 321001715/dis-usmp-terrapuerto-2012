@@ -21,6 +21,9 @@ if (history.forward(1))
 </head>
 
 <% Usuario uu = (Usuario)session.getAttribute("BUsuario"); %>
+<% Perfil perfil = (Perfil)session.getAttribute("BPerfil"); %>
+
+
 <body background="<%=request.getContextPath()%>/images/fondo_principal.png" style="background-position: center top;  background-size: 100% auto;">
 <form action="" method="post" name="menPrin">
 <div align="center">
@@ -33,6 +36,9 @@ if (history.forward(1))
   		</td>
   	</tr>
   	<tr align="center" valign="top">
+ <%
+ 	if(perfil.getDescripcion().equals("PROVEEDOR DEL S10C")){
+ %>
   		<td style="width: 45%">
   			<font color="white" style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Proveedor</b> <br><br>
@@ -48,6 +54,9 @@ if (history.forward(1))
 			<br>
 			</font>
   		</td>
+ <%
+ 	}
+ %>
   		<td style="width: 45%">
   			<font color="white" style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Ventas</b> <br><br>
