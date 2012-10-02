@@ -46,7 +46,7 @@ public class ServletSeguridad extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurriï¿½ un error.";
+		String mensaje = "Ocurrió un error.";
 		
 		ServiceSeguridad service = new ServiceSeguridad();
 		
@@ -154,7 +154,7 @@ public class ServletSeguridad extends HttpServlet {
 					
 		String tipo = request.getParameter("tipo");
 		System.out.println(tipo);
-		String mensaje = "Ocurriï¿½ un error.";
+		String mensaje = "Ocurrió un error.";
 		
 		ServiceSeguridad service = new ServiceSeguridad();
 		
@@ -186,7 +186,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.agregarUsuario(usuario);			
 				
-				if(retorno) mensaje = "Usuario agregado con ï¿½xito.";
+				if(retorno) mensaje = "Usuario agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el usuario.";	
 				
 				Vector<Usuario> usuarios = new Vector<Usuario>();	
@@ -230,7 +230,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.modificarUsuario(usuario);				
 				
-				if(retorno) mensaje = "Usuario modificado con ï¿½xito.";
+				if(retorno) mensaje = "Usuario modificado con éxito.";
 				else mensaje = "Error, no se pudo modificar el usuario.";
 				
 				
@@ -353,7 +353,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.agregarPerfil(perfil);				
 				
-				if(retorno) mensaje = "Perfil agregado con ï¿½xito.";
+				if(retorno) mensaje = "Perfil agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el perfil.";	
 				
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
@@ -384,7 +384,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.modificarPerfil(perfil);				
 				
-				if(retorno) mensaje = "Perfil modificado con ï¿½xito.";
+				if(retorno) mensaje = "Perfil modificado con éxito.";
 				else mensaje = "Error, no se pudo modificar el perfil.";	
 				
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
@@ -491,9 +491,9 @@ public class ServletSeguridad extends HttpServlet {
 					message.setFrom(new InternetAddress("sisetepl@gmail.com"));
 					message.setRecipients(Message.RecipientType.TO,
 							InternetAddress.parse(usuVal.getEmail()));
-					message.setSubject("Olvido su contraseï¿½a");
+					message.setSubject("Olvido su contraseña");
 					message.setText("Estimado: " + usuVal.getNombres()
-							+ "\n\n Su contraseï¿½a es: " + usuVal.getClave());
+							+ "\n\n Su contraseña es: " + usuVal.getClave());
 
 					Transport.send(message);
 
