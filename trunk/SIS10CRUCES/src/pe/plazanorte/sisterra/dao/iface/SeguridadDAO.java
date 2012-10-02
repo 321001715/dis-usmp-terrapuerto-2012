@@ -23,6 +23,7 @@ public interface SeguridadDAO {
 	public boolean eliminarPerfil(Perfil perfil);
 	public Perfil consultarPerfil(Perfil perfil);
 	public Vector<Perfil> buscarPerfil(Perfil vehiculo);
+	public Perfil busPerfil(String idPerfil);
 	public Vector<Perfil> buscarPerfiles(String cod, String perfil);
 	
 	public Usuario buscarUsuario(String usuario);
