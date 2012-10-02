@@ -70,15 +70,28 @@ function redirect()
 	</td>
  </tr>
  <tr>
-  <td height="25" colspan="2" bgcolor="#999999">
-  <table>
+  <td height="25" colspan="3" bgcolor="#999999">
+  <table style="width: 100%">
   <tr>
     <td align="left">
     	<a href="presentacion.jsp"><img src="<%=request.getContextPath()%>/images/house.jpg"></a>
 	</td>
-    <td align="right">
+    <td align="left">
 		<font style="font-family: monospace; font-size: medium; color: white;">
-			<b>Bienvenido, Sr (a). <%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%>, Perfil <%=perfil.getId()%> desc <%=perfil.getDescripcion() %></b>
+			<b>Bienvenido, Sr. <br>
+			<%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%></b>
+		</font>
+	</td>
+	<td align="right" style="width: 55%">
+		<font style="font-family: monospace; font-size: medium; color: white;">
+			<b>Perfil: <%=perfil.getDescripcion()%></b><br>
+<%
+	if(perfil.getDescripcion().equals("PROVEEDOR DEL S10C")){
+%>
+		<b>Razón Social: </b>
+<%	
+	}
+%>
 		</font>
 	</td>
   </tr>

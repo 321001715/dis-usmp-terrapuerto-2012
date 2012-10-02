@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
 						.forward(request, response);
 			}
 		} catch (Exception sq) {
-			System.out.println("No cerrï¿½ la conexion " + sq.getCause());
+			System.out.println("No cerró la conexion " + sq.getCause());
 		}
 	}
 
