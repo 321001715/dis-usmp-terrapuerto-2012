@@ -77,11 +77,11 @@ function validate( field, field2 )
 	</tr>
 	<tr> 
 	 	<th width="80" height="20" class="presentacion" bgcolor="black">Usuario:</th>
-  		<td width="120" align="center"><input type="text" name="usuario" maxlength="10" size="10" class="contenido" onchange="aUpperCase(this)"></td>
+  		<td width="120" align="center"><input type="text" name="usuario" maxlength="50" size="10" class="contenido" onchange="aUpperCase(this)"></td>
 	</tr>
 	<tr>
  		<th height="20" class="presentacion" bgcolor="black">Password:</th>
-  		<td align="center"><input type="password" name="password" maxlength="10" size="10" class="contenido"></td>
+  		<td align="center"><input type="password" name="password" maxlength="50" size="10" class="contenido"></td>
  	</tr>
  	<tr>
   		<td  height="30" colspan="2" align="center" bgcolor="black">
