@@ -1,5 +1,6 @@
 package pe.plazanorte.sisterra.seguridad;
 
+import pe.plazanorte.sisterra.entidades.Cliente;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Proveedor;
@@ -27,6 +28,8 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		Perfil perfil=new Perfil();
 		try {
+			Proveedor provedor= new Proveedor();
+			Cliente cliente =new Cliente();
 			Usuario uu = new Usuario();
 			uu.setUsuario(request.getParameter("usuario").toUpperCase());
 			uu.setClave(request.getParameter("password"));
@@ -41,7 +44,20 @@ public class Login extends HttpServlet {
 				uu = (Usuario) session.getAttribute("BUsuario");
 				session.setAttribute("BPerfil", perfil);
 				
-			 getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
+				if(idPerfil.equals("20")){
+					session.setAttribute("BCliente", cliente);	
+					
+					//debera ir interfaz cliente
+					
+				}else
+				{
+					Usuario usuario=du.buscarUsuario(uu.getUsuario());
+					provedor= du.buscarProvedor(usuario.getId());
+					session.setAttribute("BProvedor", provedor);	
+					//deberia ir a interfaz de no cliente
+				}
+				
+				getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
 			
 			
 			
@@ -50,7 +66,7 @@ public class Login extends HttpServlet {
 						.forward(request, response);
 			}
 		} catch (Exception sq) {
-			System.out.println("No cerró la conexion " + sq.getCause());
+			System.out.println("No cerrï¿½ la conexion " + sq.getCause());
 		}
 	}
 

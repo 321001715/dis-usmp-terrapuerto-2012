@@ -7,6 +7,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 
+import pe.plazanorte.sisterra.entidades.Cliente;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Proveedor;
@@ -594,6 +595,37 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			e.printStackTrace();
 		}
 		return perfil;
+	}
+
+	@Override
+	public Cliente buscarCliente(String dni) {
+		
+		return null;
+	}
+
+	@Override
+	public Proveedor buscarProvedor(long idUsuario) {
+		Proveedor proveedor= new Proveedor();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmnt = con.createStatement();
+			String query = "SELECT * FROM t_proveedor WHERE idUsuario= " + idUsuario;
+			ResultSet rs=stmnt.executeQuery(query);
+			
+			while (rs.next()) {
+				
+				proveedor.setDireccion(rs.getString("direccion"));
+				proveedor.setEstado(rs.getString("estado"));
+				proveedor.setIdProveedor(rs.getLong("idProveedor"));
+				proveedor.setIdUsuario(rs.getInt("idUsuario"));
+				proveedor.setRazCom(rs.getString("razCom"));
+				proveedor.setRazSocial(rs.getString("razSocial"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return proveedor;
 	}
 
 }

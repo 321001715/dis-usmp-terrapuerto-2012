@@ -27,5 +27,8 @@ public interface SeguridadDAO {
 	public Vector<Perfil> buscarPerfiles(String cod, String perfil);
 	
 	public Usuario buscarUsuario(String usuario);
+	
+	public Cliente buscarCliente(String dni);
+	public Proveedor buscarProvedor(long idUsuario);
 
 }
