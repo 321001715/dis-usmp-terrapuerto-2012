@@ -35,6 +35,8 @@ function validar(){
 <form name="buscar" action="ServletClasificacion" method="post" >
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_CLASIFICACION%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MANTENER_CLASIFICACION%>">
+	
+	
 	<table>
 			<tr>
 				<td width="20%"></td>

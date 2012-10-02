@@ -1,4 +1,5 @@
 <%@ page import="pe.plazanorte.sisterra.entidades.Usuario" %>
+<%@ page import="pe.plazanorte.sisterra.entidades.Perfil" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <html>
@@ -55,6 +56,7 @@ function redirect()
 <body bgcolor="#114E7A" topmargin="0" leftmargin="0" rightmargin="0">
 <form action="Login" method="post" name="menPrin" target="presinf">
   <%Usuario uu = (Usuario)session.getAttribute("BUsuario");%>
+  <%Perfil perfil = (Perfil)session.getAttribute("BPerfil");%>
  <table style="width:100%; height: 35">
  <tr>
   	<td height="50" width = "50%" align="left">
@@ -73,7 +75,7 @@ function redirect()
 	</td>
     <td align="right">
 		<font style="font-family: monospace; font-size: medium; color: white;">
-			<b>Bienvenido, Sr (a). <%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%></b>
+			<b>Bienvenido, Sr (a). <%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%>, Perfil <%=perfil.getId()%> desc <%=perfil.getDescripcion() %></b>
 		</font>
 	</td>
   </tr>

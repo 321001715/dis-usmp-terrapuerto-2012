@@ -19,7 +19,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "INSERT INTO T_clasificacion(nombre,descripcion) "
+			String sql = "INSERT INTO t_clasificacion(nombre,descripcion) "
 					+ "VALUES ('" + clasificacion.getNombre() + "','"
 					+ clasificacion.getDescripcion() + "');";
 
@@ -42,7 +42,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String query = "UPDATE T_clasificacion SET " + "DESCRIPCION = '"
+			String query = "UPDATE t_clasificacion SET " + "DESCRIPCION = '"
 					+ clasificacion.getDescripcion()+"' ,NOMBRE= '"+clasificacion.getNombre()
 					+ "' WHERE idclasificacion= " + clasificacion.getId() + ";";
 			
@@ -70,7 +70,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_clasificacion WHERE idclasificacion = '"
+			String query = "SELECT * FROM t_clasificacion WHERE idclasificacion = '"
 					+ id + "';";
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -97,7 +97,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_clasificacion;";
+			String query = "SELECT * FROM t_clasificacion;";
 			Clasificacion clasificacion = null;
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -128,22 +128,22 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 			String query = "";
 
 			if (clasificacion.getDescripcion().length() != 0)
-				query = "SELECT * FROM T_clasificacion WHERE DESCRIPCION LIKE '"
+				query = "SELECT * FROM t_clasificacion WHERE DESCRIPCION LIKE '"
 						+ clasificacion.getDescripcion().toUpperCase()
 						+ "%' OR DESCRIPCION LIKE '"
 						+ clasificacion.getDescripcion().toLowerCase() + "%';";
 			else if(clasificacion.getNombre().length()!=0) 
-				query = "SELECT * FROM T_clasificacion WHERE NOMBRE LIKE '"
+				query = "SELECT * FROM t_clasificacion WHERE NOMBRE LIKE '"
 						+ clasificacion.getNombre().toUpperCase()
 						+ "%' OR NOMBRE LIKE '"
 						+ clasificacion.getNombre().toLowerCase() + "%';";
 			
 			else if(clasificacion.getId()!=0) 
-				query = "SELECT * FROM T_clasificacion WHERE IDCLASIFICACION LIKE "
+				query = "SELECT * FROM t_clasificacion WHERE IDCLASIFICACION LIKE "
 						+ clasificacion.getId()
 						+ ";";
 			else
-				query = "SELECT * FROM T_clasificacion ;";
+				query = "SELECT * FROM t_clasificacion ;";
 
 			Clasificacion nuevo = null;
 			ResultSet rs = stmt.executeQuery(query);

@@ -1,5 +1,6 @@
 package pe.plazanorte.sisterra.seguridad;
 
+import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
@@ -24,16 +25,21 @@ public class Login extends HttpServlet {
 			HttpServletResponse response) throws ServletException,
 			java.io.IOException {
 		HttpSession session = request.getSession(true);
+		Perfil perfil=new Perfil();
 		try {
 			Usuario uu = new Usuario();
 			uu.setUsuario(request.getParameter("usuario").toUpperCase());
 			uu.setClave(request.getParameter("password"));
 			uu.setIdTipUsuario(Integer.parseInt(request.getParameter("esc")));
 			MySqlSeguridadDAO du = new MySqlSeguridadDAO();
+			String idPerfil= request.getParameter("esc").toString();
+			perfil=du.busPerfil(idPerfil);
+			
 			if (du.validarUser(uu)) {
 
 				session.setAttribute("BUsuario", uu);
 				uu = (Usuario) session.getAttribute("BUsuario");
+				session.setAttribute("BPerfil", perfil);
 				
 			 getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);
 			
@@ -44,7 +50,7 @@ public class Login extends HttpServlet {
 						.forward(request, response);
 			}
 		} catch (Exception sq) {
-			System.out.println("No cerró la conexion " + sq.getCause());
+			System.out.println("No cerrï¿½ la conexion " + sq.getCause());
 		}
 	}
 
