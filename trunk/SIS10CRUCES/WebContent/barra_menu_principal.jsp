@@ -78,11 +78,7 @@ function redirect()
 	</td>
     <td align="right">
 		<font style="font-family: monospace; font-size: medium; color: white;">
-<<<<<<< .mine
-			<b>Bienvenido, Sr (a). <%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%> - IdPerfil <%=uu.getIdTipUsuario() %></b>
-=======
 			<b>Bienvenido, Sr (a). <%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%>, Perfil <%=perfil.getId()%> desc <%=perfil.getDescripcion() %></b>
->>>>>>> .r398
 		</font>
 	</td>
   </tr>
