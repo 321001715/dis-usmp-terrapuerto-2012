@@ -1,5 +1,4 @@
-<%@ page import="pe.plazanorte.sisterra.entidades.Usuario" %>
-<%@ page import="pe.plazanorte.sisterra.entidades.Perfil" %>
+<%@ page import="pe.plazanorte.sisterra.entidades.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -58,6 +57,7 @@ function redirect()
 <form action="Login" method="post" name="menPrin" target="presinf">
   	<%Usuario uu = (Usuario)session.getAttribute("BUsuario");%>
   	<%Perfil perfil = (Perfil)session.getAttribute("BPerfil");%>
+  	<%Proveedor proveedor = (Proveedor)session.getAttribute("Bprovedor");%>
  <table style="width:100%; height: 35">
  <tr>
   	<td height="50" width = "50%" align="left">
@@ -84,9 +84,9 @@ function redirect()
 		<font style="font-family: monospace; font-size: medium; color: white;">
 			<b>Perfil: <%=perfil.getDescripcion()%></b><br>
 <%
-	if(perfil.getDescripcion().equals("PROVEEDOR DEL S10C")){
+	if(perfil.getNombre().equals("PROVEEDOR")){
 %>
-		<b>Razón Social: </b>
+		<b>Razón Social: <%=proveedor.getRazSocial()%></b>
 <%	
 	}
 %>
