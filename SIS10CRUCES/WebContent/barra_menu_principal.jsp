@@ -1,4 +1,5 @@
 <%@ page import="pe.plazanorte.sisterra.entidades.*" %>
+<%@ page import="pe.plazanorte.sisterra.entidades.Proveedor" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -57,7 +58,7 @@ function redirect()
 <form action="Login" method="post" name="menPrin" target="presinf">
   	<%Usuario uu = (Usuario)session.getAttribute("BUsuario");%>
   	<%Perfil perfil = (Perfil)session.getAttribute("BPerfil");%>
-  	<%Proveedor proveedor = (Proveedor)session.getAttribute("Bprovedor");%>
+	<%Proveedor proveedor = (Proveedor)session.getAttribute("BProvedor");%>
  <table style="width:100%; height: 35">
  <tr>
   	<td height="50" width = "50%" align="left">
