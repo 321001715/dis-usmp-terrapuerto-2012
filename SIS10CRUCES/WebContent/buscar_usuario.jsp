@@ -25,11 +25,6 @@ function validar(){
 <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>	
-<%
-	
-
-	
-%> 
 <div class="ui-widget">
    <div class="ui-corner-bottom ui-widget-content">   
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
@@ -48,12 +43,17 @@ function validar(){
 				<td><input type="text" name="apellido"></td>
 			</tr>
 			<tr>
+<%
+Vector<Perfil> perfiles = (Vector<Perfil>)request.getAttribute("perfiles");
+if(perfiles.size() != 0){
+%> 
 				<td width="20%"></td>
 				<td>Perfil: </td>
 				<td><select name="perfil">
 						<% for (int i=0;i<perfiles.size();i++){ %>
 				<option value="<%=perfiles.get(i).getId() %>" > <%=perfiles.get(i).getNombre() %> </option>
-				<%} %>
+						<%} %>
+<%} %>
 				</select></td>
 				
 				<td>DNI: </td>
