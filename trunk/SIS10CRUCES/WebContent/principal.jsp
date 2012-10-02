@@ -37,7 +37,7 @@ if (history.forward(1))
   	</tr>
   	<tr align="center" valign="top">
  <%
- 	if(perfil.getDescripcion().equals("PROVEEDOR DEL S10C")){
+ 	if(perfil.getNombre().equals("PROVEEDOR") || perfil.getNombre().equals("ADMINISTRADOR")){
  %>
   		<td style="width: 45%">
   			<font color="white" style="font-family: monospace; font-size: x-large;">
@@ -57,6 +57,10 @@ if (history.forward(1))
  <%
  	}
  %>
+ <%
+ 	if(perfil.getNombre().equals("CLIENTE") || perfil.getNombre().equals("ADMINISTRADOR")){
+ %>
+ 
   		<td style="width: 45%">
   			<font color="white" style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Ventas</b> <br><br>
@@ -73,6 +77,12 @@ if (history.forward(1))
 			</font>
   		</td>
   	</tr>
+<%
+ 	}
+%>
+<%
+ 	if(perfil.getNombre().equals("SOPORTE") || perfil.getNombre().equals("ADMINISTRADOR")){
+%>
   	<tr>
   		<td colspan="1"></td>
   		<td align="center" style="width: 45%">
@@ -93,6 +103,9 @@ if (history.forward(1))
 		<td>
 		</td>
   	</tr>
+<%
+ 	}
+%>
   </table>
 </td></tr>
 </table>
