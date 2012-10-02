@@ -54,7 +54,7 @@ function redirect()
 <base target = "principal">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
-<body background="<%=request.getContextPath()%>/images/banner.png" topmargin="0" leftmargin="0" rightmargin="0">
+<body bgcolor="black" topmargin="0" leftmargin="0" rightmargin="0">
 <form action="Login" method="post" name="menPrin" target="presinf">
   	<%Usuario uu = (Usuario)session.getAttribute("BUsuario");%>
   	<%Perfil perfil = (Perfil)session.getAttribute("BPerfil");%>
