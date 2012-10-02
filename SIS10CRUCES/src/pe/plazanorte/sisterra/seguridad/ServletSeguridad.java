@@ -46,7 +46,7 @@ public class ServletSeguridad extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tipo = request.getParameter("tipo");
-		String mensaje = "OcurriÃ³ un error.";
+		String mensaje = "Ocurrió un error.";
 		
 		ServiceSeguridad service = new ServiceSeguridad();
 		
@@ -186,7 +186,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.agregarUsuario(usuario);			
 				
-				if(retorno) mensaje = "Usuario agregado con Ã©xito.";
+				if(retorno) mensaje = "Usuario agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el usuario.";	
 				
 				Vector<Usuario> usuarios = new Vector<Usuario>();	
@@ -230,7 +230,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.modificarUsuario(usuario);				
 				
-				if(retorno) mensaje = "Usuario modificado con Ã©xito.";
+				if(retorno) mensaje = "Usuario modificado con éxito.";
 				else mensaje = "Error, no se pudo modificar el usuario.";
 				
 				
@@ -353,7 +353,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.agregarPerfil(perfil);				
 				
-				if(retorno) mensaje = "Perfil agregado con Ã©xito.";
+				if(retorno) mensaje = "Perfil agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el perfil.";	
 				
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
@@ -384,7 +384,7 @@ public class ServletSeguridad extends HttpServlet {
 				
 				boolean retorno = service.modificarPerfil(perfil);				
 				
-				if(retorno) mensaje = "Perfil modificado con Ã©xito.";
+				if(retorno) mensaje = "Perfil modificado con éxito.";
 				else mensaje = "Error, no se pudo modificar el perfil.";	
 				
 				Vector<Perfil> perfiles = new Vector<Perfil>();				
@@ -459,7 +459,7 @@ public class ServletSeguridad extends HttpServlet {
 			}
 		}
 	
-			if(tipo.equalsIgnoreCase(Constantes.ACCION_RECUPERAR_CONTRASEÃ‘A)){
+			if(tipo.equalsIgnoreCase(Constantes.ACCION_RECUPERAR_CONTRASEÑA)){
 				String usuario = request.getParameter("usuario");
 				int destino = Integer.parseInt(request.getParameter("destino"));
 				System.out.println("usuario: "+usuario);
