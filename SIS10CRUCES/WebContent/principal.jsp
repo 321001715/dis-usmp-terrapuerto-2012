@@ -21,63 +21,68 @@ if (history.forward(1))
 </head>
 
 <% Usuario uu = (Usuario)session.getAttribute("BUsuario"); %>
-<body bgcolor="#FFCC00"> 
+<body background="<%=request.getContextPath()%>/images/fondo_principal.png" style="background-position: center top;  background-size: 100% auto;">
 <form action="" method="post" name="menPrin">
 <div align="center">
 <table style="width: 100%;" >
 <tr><td>
-  <table border="1" style="width: 100%;">
+  <table style="width: 100%;">
   	<tr>
-  		<td colspan="3" style="font-family: sans-serif; font-size: x-large;">
-  			Bienvenido al nuevo portal que les ofrece el Terminal Terrestre Plaza Norte.
+  		<td rowspan="2" style="font-family: sans-serif; font-size: x-large;">
+  			<img src="<%=request.getContextPath()%>/images/bienvenido_presentacion.png">
   		</td>
   	</tr>
   	<tr align="center" valign="top">
-  		<td style="width: 30%">
-  			<font style="font-family: monospace; font-size: x-large;">
+  		<td style="width: 45%">
+  			<font color="white" style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Proveedor</b> <br><br>
   			</font>
   			<a href="<%=request.getContextPath()%>/index_proveedor.jsp" target="_self" class = "menu2">
-				<img alt="Entrar a Módulo de Proveedor" 
-				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
+				<img title="Entrar a Módulo de Proveedor" 
+				src="<%=request.getContextPath()%>/images/boton_menu.png">
 			</a><br><br>
-			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+			<font color="white" style="font-family: 'Trebuchet MS'; font-size: small;">
 			Ahora puedes tener en un solo sistema el control de toda la información relacionada con 
 			los viajes, rutas y servicios que brindas a tus clientes. También podrás consultar en 
 			cualquier momento el estado de tus ventas y la situación de tu empresa en el Terrapuerto.
 			<br>
 			</font>
   		</td>
-  		<td style="width: 30%">
-  			<font style="font-family: monospace; font-size: x-large;">
+  		<td style="width: 45%">
+  			<font color="white" style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Ventas</b> <br><br>
   			</font>
   			<a href="<%=request.getContextPath()%>/index_ventas.jsp" target="_self" class = "menu2">
-				<img alt="Entrar a Módulo de Ventas" 
-				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
+				<img title="Entrar a Módulo de Ventas" 
+				src="<%=request.getContextPath()%>/images/boton_menu.png">
 			</a><br><br>
-			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+			<font color="white" style="font-family: 'Trebuchet MS'; font-size: small;">
 			Este módulo te permitirá realizar tus reservas y compras de los boletos sin necesidad de 
 			salir de tu hogar. Te brindará información actualizada de los viajes que realizarán todas 
 			las empresas de transporte, sus servicios y precios de manera oportuna.
 			<br>
 			</font>
   		</td>
-  		<td style="width: 30%">
-  			<font style="font-family: monospace; font-size: x-large;">
+  	</tr>
+  	<tr>
+  		<td colspan="1"></td>
+  		<td align="center" style="width: 45%">
+  			<font color="white" style="font-family: monospace; font-size: x-large;">
   			<br> <b>Módulo de Seguridad</b> <br><br>
   			</font>
   			<a href="<%=request.getContextPath()%>/index_seguridad.jsp" target="_self" class = "menu2">
-				<img alt="Entrar a Módulo de Seguridad" 
-				src="<%=request.getContextPath()%>/images/boton_menu.jpg">
+				<img title="Entrar a Módulo de Seguridad"
+				src="<%=request.getContextPath()%>/images/boton_menu.png">
 			</a><br><br>
-			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
-			Este modulo permite administrar la seguridad del sistema, admninistrar perfiles, usuarios, 
+			<font color="white" style="font-family: 'Trebuchet MS'; font-size: small;">
+			Este módulo permite administrar la seguridad del sistema, admninistrar perfiles, usuarios, 
 			programas, sesiones y auditoria. Solo para uso de usuarios autorizados para el mantenimiento 
 			de la aplicación.
 			<br>
 			</font>
   		</td>
+		<td>
+		</td>
   	</tr>
   </table>
 </td></tr>

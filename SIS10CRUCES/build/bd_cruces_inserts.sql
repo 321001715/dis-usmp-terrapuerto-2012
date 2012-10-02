@@ -559,8 +559,8 @@ INSERT INTO `bd_cruces`.`t_ubigeo` ( UBGCODUBI, UBGDEDPTO, UBGDEPROV, UBGDEDSTO,
 UBGCODPOS ) VALUES ( 
 '150901', '15', '09', '01', 'OYON', NULL); 
 
-insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('00000000062', 'PROTRANSPORTE', 'P', 'Calle John Mendoza 999', '999', 'ACTIVO');
+insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('00000000062', 'PROTRANSPORTE', 'P', 'Calle John Mendoza 999', '999', 'ACTIVO', (SELECT idUsuario FROM T_USUARIO WHERE IDPERFIL = (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'PROVEEDOR')));
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
 values ('20219080701', 'EMPRESA MUNICIPAL DE TRANSPORTES VICUS S', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
 insert into T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
