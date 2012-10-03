@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `bd_cruces` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE  IF NOT EXISTS `bd_cruces` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
 USE `bd_cruces`;
 -- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
 --
@@ -210,7 +210,7 @@ CREATE TABLE `t_vehiculo` (
   `codVehiculo` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `placa` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `numPiso` int(11) NOT NULL,
-  `numAsientos` int(11) NOT NULL,
+  `numAsientos` int(11) DEFAULT 0,
   `asientosNoDisponibles` varchar(500) COLLATE armscii8_bin DEFAULT NULL,
   `asientosXPiso` varchar(45) COLLATE armscii8_bin NOT NULL,
   `marca` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
@@ -318,7 +318,7 @@ DROP TABLE IF EXISTS `t_proveedor`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_proveedor` (
   `idProveedor` int(4) NOT NULL AUTO_INCREMENT,
-  `idUsuario` int(11) NOT NULL,
+  `idUsuario` int(11),
   `ruc` varchar(20) COLLATE armscii8_bin NOT NULL,
   `razSocial` varchar(200) COLLATE armscii8_bin NOT NULL,
   `razCom` varchar(200) COLLATE armscii8_bin DEFAULT NULL,
