@@ -54,6 +54,21 @@ public class ServiceSeguridad {
 		else return null;
 	}
 	
+	public Vector<Usuario> listarUsuariosProveedores() {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		Vector<Usuario> usuarios = null;
+		try {
+			usuarios = seguridadDao.listarUsuariosProveedores();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(usuarios != null) return usuarios;
+		else return null;
+	}
+	
 	public boolean modificarUsuario(Usuario usuario) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 

@@ -243,6 +243,46 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	@Override
+	public Vector<Usuario> listarUsuariosProveedores() throws Exception {
+
+		Vector<Usuario> vecusuario = new Vector<Usuario>();
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT DISTINCT u1.idUsuario, u1.usuario, u1.nombres, u1.apePat, u1.apeMat, u1.numDOc, u1.tel, u1.sexo, u1.estado, u1.idPerfil " +
+					"FROM T_USUARIO u1 " +
+					"LEFT JOIN t_proveedor p1 " +
+					"ON p1.idUsuario = u1.idUsuario " +
+					"WHERE p1.idUsuario is null " +
+					"and u1.idPerfil = (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'PROVEEDOR') " +
+					"GROUP BY u1.idUsuario, u1.usuario;";
+
+			ResultSet rs = stmt.executeQuery(query);
+			Usuario usuario = null;
+			while (rs.next()) {
+				usuario = new Usuario();
+				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setUsuario(rs.getString("usuario"));
+				usuario.setNombres(rs.getString("nombres"));
+				usuario.setApePat(rs.getString("apePat"));
+				usuario.setApeMat(rs.getString("apeMat"));
+				usuario.setDni(rs.getInt("numDoc"));
+				usuario.setTel(rs.getInt("tel"));
+				usuario.setSexo(rs.getString("sexo"));
+				usuario.setEstado(rs.getString("estado"));
+				usuario.setIdTipUsuario(rs.getInt("idPerfil"));
+
+				vecusuario.add(usuario);
+			}
+
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		return vecusuario;
+	}
+	
+	@Override
 	public boolean eliminarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
 		return false;
