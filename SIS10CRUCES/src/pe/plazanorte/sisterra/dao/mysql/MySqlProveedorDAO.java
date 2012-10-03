@@ -338,7 +338,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+ vehiculo.getEstado() + "', OBS = '" + vehiculo.getObs()
 					+ "', asientosNoDisponibles = '"
 					+ vehiculo.getAsientosNoDisponibles()
-					
+
 					+ "' WHERE IDVEHICULO = " + vehiculo.getIdVehiculo() + ";";
 
 			filas_afectadas = stmt.executeUpdate(query);
@@ -483,17 +483,18 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM T_RUTA WHERE idruta = '" + id + "';";
+
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
 				nuevo = new Ruta();
-				ruta.setId(rs.getLong("idRuta"));
-				ruta.setNomRuta(rs.getString("nomRuta"));
-				ruta.setOrigen(rs.getString("destino"));
-				ruta.setDestino(rs.getString("destino"));
-				ruta.setKm(rs.getInt("km"));
-				ruta.setDuracion(rs.getInt("duracion"));
-				ruta.setEstado(rs.getString("estado"));
+				nuevo.setId(id);
+				nuevo.setNomRuta(rs.getString("nomRuta"));
+				nuevo.setOrigen(rs.getString("destino"));
+				nuevo.setDestino(rs.getString("destino"));
+				nuevo.setKm(rs.getInt("km"));
+				nuevo.setDuracion(rs.getInt("duracion"));
+				nuevo.setEstado(rs.getString("estado"));
 			}
 			con.close();
 		} catch (Exception e) {
@@ -512,13 +513,13 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String query = "UPDATE_RUTA SET ESTADO = '" + ruta.getEstado()
+			String query = "UPDATE t_RUTA SET ESTADO = '" + ruta.getEstado()
 					+ "', nomRuta = '" + ruta.getNomRuta() + "' , origen = '"
 					+ ruta.getOrigen() + "' , destino = '" + ruta.getDestino()
 					+ "', km = '" + ruta.getKm() + "', duracion = '"
 					+ ruta.getDuracion() + "' WHERE idRuta = " + ruta.getId()
 					+ ";";
-
+ 
 			filas_afectadas = stmt.executeUpdate(query);
 			con.close();
 		} catch (Exception e) {

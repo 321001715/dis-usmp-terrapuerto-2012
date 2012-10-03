@@ -54,7 +54,7 @@ if(ruta.size() != 0){
 			<td align="center"><%=ruta.get(i).getEstado()%></td>
 			<td align="left">
 						<div class="ui-state-default ui-corner-all cajaicono">
-							<a href="ServletSeguridad?tipo=<%=Constantes.ACCION_CONSULTAR_RUTA %>&destino=<%=Constantes.ACCION_MODIFICAR_RUTA %>&id=<%=ruta.get(i).getId()%>">
+							<a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_RUTA %>&destino=<%=Constantes.ACCION_MODIFICAR_RUTA %>&id=<%=ruta.get(i).getId()%>">
 								<span class="ui-icon ui-icon-pencil"></span>
 							</a>
 						</div>

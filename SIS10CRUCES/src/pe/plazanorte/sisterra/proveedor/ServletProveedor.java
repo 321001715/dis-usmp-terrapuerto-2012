@@ -41,13 +41,14 @@ public class ServletProveedor extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		ServiceProveedor service = new ServiceProveedor();
-	
+
 		String tipo = request.getParameter("tipo");
 		String mensaje = "Ocurrio un error.";
 
 		RequestDispatcher rd = null;
 
-		// *****************************INICIO MANTENER PROVEEDOR*****************************//
+		// *****************************INICIO MANTENER
+		// PROVEEDOR*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)) {
 
@@ -67,9 +68,6 @@ public class ServletProveedor extends HttpServlet {
 							"/eliminar_proveedor.jsp");
 				}
 
-				
-				
-				
 				request.setAttribute("proveedores", proveedores);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -185,6 +183,24 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (tipo.equalsIgnoreCase("consultar_ruta")) {
+			Ruta ruta = new Ruta();
+			String destino = request.getParameter("destino");
+			try {
+				ruta.setId(Integer.parseInt(request.getParameter("id")));
+				System.out.println((request.getParameter("id")));
+				ruta = service.consultarRuta(ruta);
+
+				request.setAttribute("ruta", ruta);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if (destino.equalsIgnoreCase("modificar_ruta")) {
+				rd = getServletContext().getRequestDispatcher(
+						"/modificar_ruta.jsp");
+
+			}
 		}
 
 		// ****************************FIN GESTIONAR
@@ -244,7 +260,7 @@ public class ServletProveedor extends HttpServlet {
 				Vector<Usuario> usuarios = new Vector<Usuario>();
 				usuarios = servicSeguridad.listarUsuarios();
 				request.setAttribute("usuarios", usuarios);
-				
+
 				Vector<Usuario> usuariosProveedores = new Vector<Usuario>();
 				usuarios = servicSeguridad.listarUsuariosProveedores();
 				request.setAttribute("usuariosProveedores", usuariosProveedores);
@@ -377,13 +393,12 @@ public class ServletProveedor extends HttpServlet {
 			int numAsientos = Integer.parseInt(request
 					.getParameter("numAsientos"));
 			String obs = request.getParameter("obs");
-			Proveedor proveedor = (Proveedor) session.getAttribute("BProvedor");
+			Proveedor proveedor = (Proveedor) session
+					.getAttribute("BProveedor");
 			long idProveedor = proveedor.getIdProveedor();
 			String asientosPorPiso = request.getParameter("asientosPorPiso");
-			
-			String estado = request.getParameter("estado");
 
-			
+			String estado = request.getParameter("estado");
 
 			try {
 				Vehiculo vehiculo = new Vehiculo();
@@ -395,7 +410,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setNumAsientos(numAsientos);
 				vehiculo.setIdProveedor(idProveedor);
 				vehiculo.setAsientosPorPiso(asientosPorPiso);
-				
+
 				vehiculo.setEstado(estado);
 				vehiculo.setObs(obs);
 
@@ -419,8 +434,8 @@ public class ServletProveedor extends HttpServlet {
 
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VEHICULO)) {
 
-			long idVehiculo = Long
-					.parseLong(request.getParameter("codVehiculo"));
+			long idVehiculo = Long.parseLong(request
+					.getParameter("codVehiculo"));
 			String estado = request.getParameter("estado");
 			String obs = request.getParameter("obs");
 			String asientoNoDisponible = formatoAsientosNoDisponibles(request
@@ -557,9 +572,43 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_RUTA)) {
+
+			String nomRuta = request.getParameter("nomRuta");
+			String origen = request.getParameter("origen");
+			String destino = request.getParameter("destino");
+			int km = Integer.parseInt(request.getParameter("km"));
+			int duracion = Integer.parseInt(request.getParameter("duracion"));
+			String estado=request.getParameter("estado");
+			long idruta=Long.parseLong(request.getParameter("codRuta"));
+			try {
+				Ruta ruta = new Ruta();
+				ruta.setNomRuta(nomRuta);
+				ruta.setOrigen(origen);
+				ruta.setDestino(destino);
+				ruta.setKm(km);
+				ruta.setDuracion(duracion);
+				ruta.setEstado(estado);
+				ruta.setId(idruta);
+				boolean retorno = service.modificarRuta(ruta);
+				
+				if (retorno)
+					mensaje = "Clasificacion modificado con �xito.";
+				else
+					mensaje = "Error, no se pudo modificar la clasificacion.";
+				
+				Vector<Ruta> rutas = new Vector<Ruta>();
+				rutas=service.listarRuta();
+				request.setAttribute("ruta", rutas);
+				rd = getServletContext().getRequestDispatcher(
+						"/mantener_ruta.jsp");
+
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		} else if (tipo.equalsIgnoreCase("listar_rutas")) {
 
-	
 			long idVehiculo;
 			if (request.getParameter("codRuta").length() != 0)
 				idVehiculo = Long.parseLong(request.getParameter("codRuta"));
@@ -587,7 +636,7 @@ public class ServletProveedor extends HttpServlet {
 			if (tipo.equalsIgnoreCase("listar_rutas")) {
 
 				rd = getServletContext().getRequestDispatcher(
-						"/mantenerRuta.jsp");
+						"/mantener_ruta.jsp");
 			}
 
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)) {
@@ -611,7 +660,5 @@ public class ServletProveedor extends HttpServlet {
 
 		return AsientosNoDisponiblesConFormato;
 	}
-
-	
 
 }
