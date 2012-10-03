@@ -387,6 +387,9 @@ public class ServletProveedor extends HttpServlet {
 			String asientoNoDisponible=formatoAsientosNoDisponibles(request.getParameterValues("asientosNoDisponibles"));
 			String estado=request.getParameter("estado")	;
 			
+			for (int i = 0; i < 3; i++) {
+				System.out.println(decodificarFormato(asientoNoDisponible)[i]);
+			}
 			
 			try {
 				Vehiculo vehiculo = new Vehiculo();
@@ -609,6 +612,13 @@ public class ServletProveedor extends HttpServlet {
 		}
 		
 		return AsientosNoDisponiblesConFormato;
+	}
+	
+	public String[] decodificarFormato(String asientosNoDisponibles){
+		String[] asientos;
+		String delimitador="&";
+		asientos=asientosNoDisponibles.split(delimitador);
+		return asientos;
 	}
 	
 }
