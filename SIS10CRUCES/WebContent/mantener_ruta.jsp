@@ -21,7 +21,7 @@
 	%>
 	<%@include file="buscar_ruta.jsp" %>
 	
-	<br><a href="registrarRuta.jsp">
+	<br><a href="registrar_ruta.jsp">
 			<img alt="" src="<%=request.getContextPath()%>/images/adicionar.png">
 		</a>
 	<br><hr><br>
