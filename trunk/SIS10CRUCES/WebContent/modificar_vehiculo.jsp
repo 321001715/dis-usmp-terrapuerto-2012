@@ -1,3 +1,5 @@
+<%@page import="pe.plazanorte.sisterra.proveedor.ServiceProveedor"%>
+<%@page import="pe.plazanorte.sisterra.seguridad.ServiceSeguridad"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Vehiculo"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="java.util.Vector"%>
@@ -34,7 +36,7 @@
 			<tr>
 				<td width="20%"></td>
 				<td>Código Vehículo: </td>
-				<td><input type="text" name="codVehiculo" value="<%=vehiculo.getCodVehiculo()%>" ></td>
+				<td><input type="text" name="codVehiculo" value="<%=vehiculo.getIdVehiculo()%>" ></td>
 				
 				<td>Asientos No Disponibles:</td>
 <%
@@ -45,20 +47,25 @@ if(vehiculo.getNumAsientos() == 0){
 				</td>
 <%
 }else{
-// AQUI IRIA TU MIERDA
+
 %>
 				<td rowspan="6">
 					<select name=asientosNoDisponibles multiple="multiple" size="15">
-<% 
+<%
+	ServiceProveedor serviceProveedor=new ServiceProveedor();
+	
+	String[] asientosNoDisponibles=serviceProveedor.decodificarFormato(vehiculo.getAsientosNoDisponibles());
+	System.out.print(asientosNoDisponibles.length);
 	for(int i=1; i<=vehiculo.getNumAsientos(); i++){
 %>
 						<option value="<%=i%>" 
 						<%
-							if(vehiculo.getAsientosNoDisponibles().equals(i)){
+						for(int j=0; j<=asientosNoDisponibles.length-1; j++){
+							if(i==Integer.parseInt(asientosNoDisponibles[j])){
 						%>
 							selected="selected"
 						<%
-							}
+							}}
 						%>	
 							><%=i%></option>
 <%

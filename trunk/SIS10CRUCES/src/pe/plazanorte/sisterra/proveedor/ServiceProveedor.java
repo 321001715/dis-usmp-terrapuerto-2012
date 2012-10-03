@@ -130,6 +130,11 @@ public class ServiceProveedor {
 		return proveedorDao.buscarRutas(ruta);
 	}
 	
-	
+	public String[] decodificarFormato(String asientosNoDisponibles) {
+		String[] asientos;
+		String delimitador = "&";
+		asientos = asientosNoDisponibles.split(delimitador);
+		return asientos;
+	}
 	
 }

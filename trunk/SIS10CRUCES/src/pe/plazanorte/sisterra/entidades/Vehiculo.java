@@ -28,8 +28,8 @@ public class Vehiculo {
 		return asientosPorPiso;
 	}
 
-	public void setAsientosPorPiso(String asitnosPorPiso) {
-		this.asientosPorPiso = asitnosPorPiso;
+	public void setAsientosPorPiso(String asientosPorPiso) {
+		this.asientosPorPiso = asientosPorPiso;
 	}
 
 	public long getIdVehiculo() {
