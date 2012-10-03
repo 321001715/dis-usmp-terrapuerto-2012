@@ -1,8 +1,7 @@
 package pe.plazanorte.sisterra.proveedor;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,11 +40,10 @@ public class ServletProveedor extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		ServiceProveedor service = new ServiceProveedor();
+	
 		String tipo = request.getParameter("tipo");
 		String mensaje = "Ocurrio un error.";
-
-		ServiceProveedor service = new ServiceProveedor();
 
 		RequestDispatcher rd = null;
 
@@ -69,6 +67,9 @@ public class ServletProveedor extends HttpServlet {
 							"/eliminar_proveedor.jsp");
 				}
 
+				
+				
+				
 				request.setAttribute("proveedores", proveedores);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -152,21 +153,7 @@ public class ServletProveedor extends HttpServlet {
 						"/modificar_vehiculo.jsp");
 			}
 		} else if (tipo.equalsIgnoreCase("eliminar")) {
-			/*
-			 * Proveedor proveedor = new Proveedor(); int destino =
-			 * Integer.parseInt(request.getParameter("destino")); try {
-			 * proveedor
-			 * .setIdProveedor(Integer.parseInt(request.getParameter("idProveedor"
-			 * ))); boolean respuesta = service.eliminarProveedor(proveedor);
-			 * if(respuesta){ request.setAttribute("proveedor", proveedor);
-			 * mensaje = "Proveedor deshabilitado."; }else {mensaje =
-			 * "Ocurri� un error."; } } catch (Exception e) {
-			 * e.printStackTrace(); }
-			 * 
-			 * if(destino == Constantes.MODIFICAR_PROVEEDOR){ rd =
-			 * getServletContext
-			 * ().getRequestDispatcher("/modificar_proveedor.jsp"); }
-			 */
+
 		}
 
 		// *****************************FIN GESTIONAR
@@ -232,7 +219,7 @@ public class ServletProveedor extends HttpServlet {
 			int telefono = Integer.parseInt(request.getParameter("telefono"));
 			String direccion = request.getParameter("direccion");
 			int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-			ServiceSeguridad servicSeguridad=new ServiceSeguridad();
+			ServiceSeguridad servicSeguridad = new ServiceSeguridad();
 
 			try {
 				Proveedor proveedor = new Proveedor();
@@ -253,11 +240,10 @@ public class ServletProveedor extends HttpServlet {
 				Vector<Proveedor> proveedores = new Vector<Proveedor>();
 				proveedores = service.listarProveedores();
 				request.setAttribute("proveedores", proveedores);
-				
-				Vector<Usuario> usuarios=new Vector<Usuario>();
-				usuarios=servicSeguridad.listarUsuarios();
-				request.setAttribute("usuarios", usuarios);
 
+				Vector<Usuario> usuarios = new Vector<Usuario>();
+				usuarios = servicSeguridad.listarUsuarios();
+				request.setAttribute("usuarios", usuarios);
 
 				rd = getServletContext().getRequestDispatcher(
 						"/mantener_proveedor.jsp");
@@ -390,13 +376,14 @@ public class ServletProveedor extends HttpServlet {
 			Proveedor proveedor = (Proveedor) session.getAttribute("BProvedor");
 			long idProveedor = proveedor.getIdProveedor();
 			String asientosPorPiso = request.getParameter("asientosPorPiso");
-			String asientoNoDisponible=formatoAsientosNoDisponibles(request.getParameterValues("asientosNoDisponibles"));
-			String estado=request.getParameter("estado")	;
-			
+			String asientoNoDisponible = formatoAsientosNoDisponibles(request
+					.getParameterValues("asientosNoDisponibles"));
+			String estado = request.getParameter("estado");
+
 			for (int i = 0; i < 3; i++) {
 				System.out.println(decodificarFormato(asientoNoDisponible)[i]);
 			}
-			
+
 			try {
 				Vehiculo vehiculo = new Vehiculo();
 				vehiculo.setCodVehiculo(codigoVehiculo);
@@ -611,20 +598,20 @@ public class ServletProveedor extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	public String formatoAsientosNoDisponibles(String[] asientosNoDisponibles){
-		String AsientosNoDisponiblesConFormato="";
+	public String formatoAsientosNoDisponibles(String[] asientosNoDisponibles) {
+		String AsientosNoDisponiblesConFormato = "";
 		for (int i = 0; i < asientosNoDisponibles.length; i++) {
-			AsientosNoDisponiblesConFormato+=asientosNoDisponibles[i]+"&";
+			AsientosNoDisponiblesConFormato += asientosNoDisponibles[i] + "&";
 		}
-		
+
 		return AsientosNoDisponiblesConFormato;
 	}
-	
-	public String[] decodificarFormato(String asientosNoDisponibles){
+
+	public String[] decodificarFormato(String asientosNoDisponibles) {
 		String[] asientos;
-		String delimitador="&";
-		asientos=asientosNoDisponibles.split(delimitador);
+		String delimitador = "&";
+		asientos = asientosNoDisponibles.split(delimitador);
 		return asientos;
 	}
-	
+
 }
