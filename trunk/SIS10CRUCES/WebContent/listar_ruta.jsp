@@ -33,6 +33,7 @@ if(ruta.size() != 0){
 				<th><h3 align="center">Origen</h3></th>
 				<th><h3 align="center">Destino</h3></th>
 				<th><h3 align="center">Duración</h3></th>
+				<th><h3 align="center">Km.</h3></th>
 				<th><h3 align="center">Estado</h3></th>
 				<th><h3 align="center"></h3></th>
 			</tr>
@@ -48,8 +49,9 @@ if(ruta.size() != 0){
 			<td align="right"><%=ruta.get(i).getNomRuta() %></td>
 			<td align="right"><%=ruta.get(i).getOrigen() %></td>
 			<td align="right"><%=ruta.get(i).getDestino()%></td>
-			<td align="center"><%=ruta.get(i).getCodRuta()%></td>
-			<td align="right"><%=ruta.get(i).getDestino()%></td>
+			<td align="center"><%=ruta.get(i).getDuracion()%></td>
+			<td align="center"><%=ruta.get(i).getKm()%></td>
+			<td align="center"><%=ruta.get(i).getEstado()%></td>
 			<td align="left">
 						<div class="ui-state-default ui-corner-all cajaicono">
 							<a href="ServletSeguridad?tipo=<%=Constantes.ACCION_CONSULTAR_RUTA %>&destino=<%=Constantes.ACCION_MODIFICAR_RUTA %>&id=<%=ruta.get(i).getId()%>">
