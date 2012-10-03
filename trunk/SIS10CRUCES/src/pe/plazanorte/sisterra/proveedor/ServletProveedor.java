@@ -233,7 +233,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarProveedor(proveedor);
 
 				if (retorno)
-					mensaje = "Proveedor agregado con éxito.";
+					mensaje = "Proveedor agregado con ï¿½xito.";
 				else
 					mensaje = "Error, no se pudo registrar el proveedor.";
 
@@ -282,7 +282,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarProveedor(proveedor);
 
 				if (retorno)
-					mensaje = "Proveedor modificado con éxito.";
+					mensaje = "Proveedor modificado con ï¿½xito.";
 				else
 					mensaje = "Error, no se pudo modificar el proveedor.";
 
@@ -402,9 +402,9 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "vehículo agregado con éxito.";
+					mensaje = "vehï¿½culo agregado con ï¿½xito.";
 				else
-					mensaje = "Error, no se pudo registrar el vehículo.";
+					mensaje = "Error, no se pudo registrar el vehï¿½culo.";
 
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos();
@@ -436,9 +436,9 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "vehículo modificado con éxito.";
+					mensaje = "vehï¿½culo modificado con ï¿½xito.";
 				else
-					mensaje = "Error, no se pudo modificar el vehículo.";
+					mensaje = "Error, no se pudo modificar el vehï¿½culo.";
 
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos();
@@ -538,6 +538,7 @@ public class ServletProveedor extends HttpServlet {
 				ruta.setDuracion(duracion);
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+				System.out.println(uu.getRazSocial());
 				boolean retorno = service.registrarRuta(ruta, uu);
 
 				if (retorno)
@@ -550,7 +551,7 @@ public class ServletProveedor extends HttpServlet {
 				request.setAttribute("ruta", ruta1);
 
 				rd = getServletContext().getRequestDispatcher(
-						"/mantenerRuta.jsp");
+						"/mantener_ruta.jsp");
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -558,7 +559,7 @@ public class ServletProveedor extends HttpServlet {
 
 		} else if (tipo.equalsIgnoreCase("listar_rutas")) {
 
-			System.out.print("teeeeeeee21");
+	
 			long idVehiculo;
 			if (request.getParameter("codRuta").length() != 0)
 				idVehiculo = Long.parseLong(request.getParameter("codRuta"));

@@ -52,8 +52,11 @@ public class Login extends HttpServlet {
 				}else
 				{
 					Usuario usuario=du.buscarUsuario(uu.getUsuario());
+					
 					proveedor= du.buscarProvedor(usuario.getId());
-					session.setAttribute("BProvedor", proveedor);	
+					
+					session.setAttribute("BProveedor", proveedor);	
+
 					
 					//deberia ir a interfaz de no cliente
 				}
