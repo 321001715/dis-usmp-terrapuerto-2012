@@ -247,7 +247,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarProveedor(proveedor);
 
 				if (retorno)
-					mensaje = "Proveedor agregado con ï¿½xito.";
+					mensaje = "Proveedor agregado con éxito.";
 				else
 					mensaje = "Error, no se pudo registrar el proveedor.";
 
