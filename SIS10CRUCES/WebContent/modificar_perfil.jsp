@@ -42,39 +42,37 @@
    </h3>
   	
    <div class="ui-corner-bottom ui-widget-content">   
-   		<font style="font-family: monospace; font-size: x-large;">Registrar Perfil</font>
+   		<font style="font-family: monospace; font-size: x-large;">Modificar Perfil</font>
    </div>
 	<form action="ServletSeguridad" method="post">
 	<table>	
 			<tr><td><input type="hidden" name="tipo" value="modificarPerfil"><br></td></tr>
-		
-		<%if(perfil != null){ %>
-		<table cellspacing="10px">
 			<tr>
-				<td colspan="2"><h3>Datos del Perfil</h3></td>					
+				<td width="20%"></td>
+				<td>Código:</td>
+				<td><input type="text" name="codigo" value="<%=perfil.getId() %>" readonly></td>				
 			</tr>
 			<tr>
-				<td>Codigo</td>
-				<td><input type="text" name="codigo"  maxlength="11" value="<%=perfil.getId() %>" readonly ></td>				
+				<td></td>
+				<td>Nombre:</td>
+				<td><input type="text" name="nombre" maxlength="11" value="<%=perfil.getNombre() %>" ></td>			
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td><input type="text" name="nombre" maxlength="11" value="<%=perfil.getNombre() %>" ></td>				
-			</tr>		
-			<tr>
-				<td>Descripcion</td>
+				<td></td>
+				<td>Descripción:</td>
 				<td><input type="text" name="descripcion" value="<%=perfil.getDescripcion() %>"></td>			
 			</tr>
-					
-			<tr>				
-				<td colspan="2"><input value=Modificar type="submit"></td>
-				<td></td>
-				<td></td>
+			<tr>
+				<td colspan="3" align="right">
+					<input type="submit" value="Modificar Perfil" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
+				</td>
 			</tr>
-		</table>		
+		</table>
 	</form>
-	<%}else if(mensaje != null){ %>
-			<font color="red"><%=mensaje %></font>
-		<%} %>
+</div>
+<br><br><a href="index_seguridad.jsp">
+			<img alt="" src="<%=request.getContextPath()%>/images/atras.jpg"> 
+		</a> Atrás...
+	&nbsp;
 </body>
 </html>
