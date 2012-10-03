@@ -16,6 +16,7 @@ import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
+import pe.plazanorte.sisterra.seguridad.ServiceSeguridad;
 import pe.plazanorte.sisterra.util.Constantes;
 
 /**
@@ -232,6 +233,7 @@ public class ServletProveedor extends HttpServlet {
 			int telefono = Integer.parseInt(request.getParameter("telefono"));
 			String direccion = request.getParameter("direccion");
 			int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+			ServiceSeguridad servicSeguridad=new ServiceSeguridad();
 
 			try {
 				Proveedor proveedor = new Proveedor();
@@ -252,6 +254,11 @@ public class ServletProveedor extends HttpServlet {
 				Vector<Proveedor> proveedores = new Vector<Proveedor>();
 				proveedores = service.listarProveedores();
 				request.setAttribute("proveedores", proveedores);
+				
+				Vector<Usuario> usuarios=new Vector<Usuario>();
+				usuarios=servicSeguridad.listarUsuarios();
+				request.setAttribute("usuarios", usuarios);
+
 
 				rd = getServletContext().getRequestDispatcher(
 						"/mantener_proveedor.jsp");

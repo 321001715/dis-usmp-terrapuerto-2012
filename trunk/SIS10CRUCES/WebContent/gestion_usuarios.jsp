@@ -28,7 +28,7 @@
 	</div>
 	<div id="wrapper">
 		<div id="content" style="height: 210px;">
-				<a href="<%=application.getContextPath() %>/agregar_usuario.jsp">Agregar Usuario</a>
+				<a href="<%=application.getContextPath() %>/registrar_usuario.jsp">Agregar Usuario</a>
 				<table>
 					<tr>
 						<th>Nombres</th>

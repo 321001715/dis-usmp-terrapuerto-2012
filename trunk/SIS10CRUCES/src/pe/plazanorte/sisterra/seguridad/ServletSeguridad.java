@@ -82,7 +82,7 @@ public class ServletSeguridad extends HttpServlet {
 				request.setAttribute("busqueda", busqueda);	
 				request.setAttribute("persona", persona);	
 				request.setAttribute("perfiles", perfiles);	
-				rd = getServletContext().getRequestDispatcher("/agregar_usuario.jsp");
+				rd = getServletContext().getRequestDispatcher("/registrar_usuario.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -308,7 +308,7 @@ public class ServletSeguridad extends HttpServlet {
 				request.setAttribute("unapersona", unapersona);
 				
 				
-				rd = getServletContext().getRequestDispatcher("/agregar_usuario.jsp");				
+				rd = getServletContext().getRequestDispatcher("/registrar_usuario.jsp");				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			

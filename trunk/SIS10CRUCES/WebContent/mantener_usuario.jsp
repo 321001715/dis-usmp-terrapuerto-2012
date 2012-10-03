@@ -54,7 +54,7 @@
 			</tr>			
 		</table>
 	</form>
-	<br><a href="ServletSeguridad?tipo=agregarUsuario"">
+	<br><a href="ServletSeguridad?tipo=agregarUsuario">
 			<img alt="" src="<%=request.getContextPath()%>/images/adicionar.png">
 		</a>
 	<br><hr><br>
