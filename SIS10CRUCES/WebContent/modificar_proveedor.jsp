@@ -1,4 +1,5 @@
 <%@page import="pe.plazanorte.sisterra.entidades.Proveedor"%>
+<%@page import="pe.plazanorte.sisterra.seguridad.ServiceSeguridad"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
 <%@page import="java.util.Vector"%>
@@ -104,20 +105,22 @@
 				<td>Teléfono:</td>
 				<td><input type="text" name="telefono" value="<%=proveedor.getTel()%>" maxlength="9"></td>				
 			</tr>
-<tr>
+			<tr>
 				<td></td>
 				<td>ID Usuario:</td>
 				<td>
 <%
-	Vector<Usuario> usuarios = (Vector<Usuario>)request.getAttribute("usuarios");
+ServiceSeguridad servicioSeguridad=new ServiceSeguridad();
+
+Vector<Usuario> usuarios = servicioSeguridad.listarUsuariosProveedores();
 
 if(usuarios != null){
 %>
 					<select name="idUsuario">
 <%
-	for(int i=0; i<=usuarios.size();i++){
+	for(int i=0; i<=usuarios.size()-1;i++){
 %>
-						<option value=<%usuarios.get(i).getId();%>><%usuarios.get(i).getUsuario();%></option>
+						<option value="<%=usuarios.get(i).getId()%>"><%=usuarios.get(i).getUsuario()%></option>
 <%
 	}
 %>

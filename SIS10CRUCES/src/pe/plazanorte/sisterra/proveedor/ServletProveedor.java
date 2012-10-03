@@ -244,6 +244,10 @@ public class ServletProveedor extends HttpServlet {
 				Vector<Usuario> usuarios = new Vector<Usuario>();
 				usuarios = servicSeguridad.listarUsuarios();
 				request.setAttribute("usuarios", usuarios);
+				
+				Vector<Usuario> usuariosProveedores = new Vector<Usuario>();
+				usuarios = servicSeguridad.listarUsuariosProveedores();
+				request.setAttribute("usuariosProveedores", usuariosProveedores);
 
 				rd = getServletContext().getRequestDispatcher(
 						"/mantener_proveedor.jsp");

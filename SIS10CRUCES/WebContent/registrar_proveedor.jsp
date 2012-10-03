@@ -101,10 +101,11 @@
 				<td>ID Usuario:</td>
 				<td>
 <%
-	ServiceSeguridad servicioSeguridad=new ServiceSeguridad();
+
+ServiceSeguridad servicioSeguridad=new ServiceSeguridad();
 	
-	Vector<Usuario> usuarios = servicioSeguridad.listarUsuarios();
-		System.out.print(usuarios.get(0).getApeMat());
+Vector<Usuario> usuarios = servicioSeguridad.listarUsuariosProveedores();
+
 if(usuarios != null){
 %>
 					<select name="idUsuario">

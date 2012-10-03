@@ -30,5 +30,6 @@ public interface SeguridadDAO {
 	
 	public Cliente buscarCliente(String dni);
 	public Proveedor buscarProvedor(long idUsuario);
+	public Vector<Usuario> listarUsuariosProveedores() throws Exception;
 
 }
