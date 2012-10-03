@@ -46,6 +46,7 @@
 						</font>
 					</td>  				
   				</tr>
+  				<tr><td height="5%"><br></td></tr> 	
   				<tr>
   					<td align="center">
   						<a href="<%=application.getContextPath() %>/ServletSeguridad?tipo=listarPerfiles&origen=<%=Constantes.MENU_PRINCIPAL%>">

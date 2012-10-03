@@ -202,15 +202,20 @@ CREATE TABLE `t_persona` (
 DROP TABLE IF EXISTS `t_vehiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+DROP TABLE IF EXISTS `t_vehiculo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_vehiculo` (
   `idVehiculo` int(6) NOT NULL AUTO_INCREMENT,
   `codVehiculo` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
-  `placa` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `placa` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
   `numPiso` int(11) NOT NULL,
   `numAsientos` int(11) NOT NULL,
-  `marca` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `modelo` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `obs` varchar(100) COLLATE armscii8_bin NOT NULL,
+  `asientosNoDisponibles` varchar(500) COLLATE armscii8_bin DEFAULT NULL,
+  `asientosXPiso` varchar(45) COLLATE armscii8_bin NOT NULL,
+  `marca` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `modelo` varchar(45) COLLATE armscii8_bin DEFAULT NULL,
+  `obs` varchar(100) COLLATE armscii8_bin DEFAULT NULL,
   `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
   `idProveedor` int(4) NOT NULL,
   PRIMARY KEY (`idVehiculo`),
