@@ -305,6 +305,7 @@ public class ServletProveedor extends HttpServlet {
 		String mensaje = "Ocurrió un error.";
 
 		ServiceProveedor service = new ServiceProveedor();
+		ServiceSeguridad serviceUsuario = new ServiceSeguridad();
 
 		RequestDispatcher rd = null;
 
@@ -320,7 +321,8 @@ public class ServletProveedor extends HttpServlet {
 			String direccion = request.getParameter("direccion");
 			int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 			ServiceSeguridad servicSeguridad = new ServiceSeguridad();
-
+			boolean retorno = false;
+			
 			try {
 				Proveedor proveedor = new Proveedor();
 				proveedor.setRuc(ruc);
@@ -329,8 +331,15 @@ public class ServletProveedor extends HttpServlet {
 				proveedor.setTel(telefono);
 				proveedor.setDireccion(direccion);
 				proveedor.setIdUsuario(idUsuario);
-
-				boolean retorno = service.agregarProveedor(proveedor);
+				
+				Usuario usuario = new Usuario();
+				usuario.setId(idUsuario);
+				
+				if(serviceUsuario.consultarUsuario(usuario) != null){
+					retorno = service.agregarProveedor(proveedor);
+					//usuario.setRelacion(Constantes.RELACION_PROVEEDOR_USUARIO);
+					serviceUsuario.modificarUsuario(usuario);
+				}			
 
 				if (retorno)
 					mensaje = "Proveedor agregado con éxito.";
