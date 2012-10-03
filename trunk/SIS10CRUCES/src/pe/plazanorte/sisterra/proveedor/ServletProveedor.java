@@ -293,7 +293,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarProveedor(proveedor);
 
 				if (retorno)
-					mensaje = "Proveedor modificado con ï¿½xito.";
+					mensaje = "Proveedor modificado con éxito.";
 				else
 					mensaje = "Error, no se pudo modificar el proveedor.";
 
@@ -415,7 +415,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "Vehï¿½culo agregado con ï¿½xito.";
+					mensaje = "Vehï¿½culo agregado con éxito.";
 				else
 					mensaje = "Error, no se pudo registrar el vehï¿½culo.";
 
@@ -446,7 +446,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "Vehï¿½culo modificado con ï¿½xito.";
+					mensaje = "Vehï¿½culo modificado con éxito.";
 				else
 					mensaje = "Error, no se pudo modificar el vehï¿½culo.";
 
