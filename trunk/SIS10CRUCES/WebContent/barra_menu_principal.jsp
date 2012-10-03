@@ -72,8 +72,8 @@ function redirect()
   <td height="25" colspan="3" bgcolor="#999999">
   <table style="width: 100%">
   <tr>
-    <td align="left">
-    	<a href="presentacion.jsp"><img src="<%=request.getContextPath()%>/images/house.jpg"></a>
+    <td align="center" valign="top">
+    	<a href="presentacion.jsp"><img style="width: 61%;" src="<%=request.getContextPath()%>/images/house.jpg"></a>
 	</td>
     <td align="left">
 		<font style="font-family: monospace; font-size: medium; color: white;">

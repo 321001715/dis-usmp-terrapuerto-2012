@@ -134,7 +134,7 @@
 		<%} %>
 	</form>
 </div>
-<br><br><a href="index_ventas.jsp">
+<br><br><a href="index_proveedor.jsp">
 			<img alt="" src="<%=request.getContextPath()%>/images/atras.jpg"> 
 		</a> Atrás...
 	&nbsp;

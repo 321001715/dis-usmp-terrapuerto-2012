@@ -16,7 +16,7 @@
 Vector<Viaje> viaje = (Vector<Viaje>)request.getAttribute("viaje");
 
 if(viaje.size() != 0){
-%>
+%> 
 
 <div class="ui-widget">
 	<div class="ui-corner-bottom ui-widget-content">
@@ -24,10 +24,10 @@ if(viaje.size() != 0){
 	</div>
 &nbsp;
 &nbsp;
-
 <table align="center" id="table" class="sortable">
 		<thead>
 			<tr>
+				<th><h3 align="center"></h3></th>
 				<th><h3 align="center">Viaje</h3></th>
 				<th><h3 align="center">Salida</h3></th>
 				<th><h3 align="center">Salida</h3></th>
@@ -36,31 +36,35 @@ if(viaje.size() != 0){
 				<th><h3 align="center">S/.</h3></th>
 				<th><h3 align="center">Hrs.</h3></th>
 				<th><h3 align="center">Servicio</h3></th>
-				<th><h3 align="center"></h3></th>
 			</tr>
 		</thead>
 		<tbody>
 		
 <%
 	for(int i=0; i<viaje.size(); i++){ 
-%>
+%> 
 
 		<tr>
-			<td align="center"><%=viaje.get(i).getCodViaje() %></td>
-			<td align="right"><%=viaje.get(i).getFecSalida() %></td>
-			<td align="right"><%=viaje.get(i).getHorSalida() %></td>
-			<td align="right"><%=viaje.get(i).getFecLlegada()%></td>
-			<td align="center"><%=viaje.get(i).getHorLlegada()%></td>
-			<td align="center"><%=viaje.get(i).getPrecio()%></td>
-			<td align="center">CALCULANDO...</td>
-			<td align="center"><%=viaje.get(i).getServicio()%></td>
-			<td align="left">
-						<div class="ui-state-default ui-corner-all cajaicono">
-							<a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>&destino=<%=Constantes.ACCION_MODIFICAR_VIAJE %>&id=<%=viaje.get(i).getId()%>">
-								<span class="ui-icon ui-icon-pencil"></span>
+			<td align="center">
+						<%-- <div class="ui-state-default ui-corner-all ui-state-hover">
+							<a href="Usuarios?origen=&id=<%=viaje.get(i) %>">
+								<span class="ui-icon ui-icon-check"></span>
+							</a>
+						</div> --%>
+						<div class="ui-state-default ui-corner-all ui-state-hover">
+							<a href="seleccionar_asiento.jsp">
+								<span class="ui-icon ui-icon-check"></span>
 							</a>
 						</div>
 			</td>	
+			<td align="center"></td>
+			<td align="center"></td>
+			<td align="center"></td>
+			<td align="center"></td>
+			<td align="center"></td>
+			<td align="center"></td>
+			<td align="center"></td>
+			<td align="right"></td>
 			
 <%} %>
 		</tbody>
@@ -86,11 +90,11 @@ if(viaje.size() != 0){
 &nbsp;   		
 <%
 }else{
-%>
+%> 
 	<font color="red">No se encontraron resultados para la consulta.</font>
 <%
 }
-%>
+%> 
 <script type="text/javascript">
   		var sorter = new TINY.table.sorter("sorter");
 		sorter.head = "head";

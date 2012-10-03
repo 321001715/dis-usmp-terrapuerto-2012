@@ -1,5 +1,6 @@
 package pe.plazanorte.sisterra.entidades;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 public class Viaje {
@@ -8,12 +9,17 @@ public class Viaje {
 	private long idRuta;
 	private long codViaje;
 	private String numViaje;
+	private String nomViaje;
 	private Date fecSalida;
 	private Date fecLlegada;
-	private Date horSalida;
-	private Date horLlegada;
+	private String horSalida;
+	private String horLlegada;
 	private int precio;
+	private long idClasificacion;
+	private int dniChofer;
+	private String servicio;
 	private String estado;
+	
 	public long getId() {
 		return id;
 	}
@@ -32,11 +38,47 @@ public class Viaje {
 	public void setCodViaje(long codViaje) {
 		this.codViaje = codViaje;
 	}
+	public String getNomViaje() {
+		return nomViaje;
+	}
+	public void setNomViaje(String nomViaje) {
+		this.nomViaje = nomViaje;
+	}
 	public String getNumViaje() {
 		return numViaje;
 	}
 	public void setNumViaje(String numViaje) {
 		this.numViaje = numViaje;
+	}
+	public String getHorSalida() {
+		return horSalida;
+	}
+	public void setHorSalida(String horSalida) {
+		this.horSalida = horSalida;
+	}
+	public String getHorLlegada() {
+		return horLlegada;
+	}
+	public void setHorLlegada(String horLlegada) {
+		this.horLlegada = horLlegada;
+	}
+	public int getPrecio() {
+		return precio;
+	}
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+	public String getServicio() {
+		return servicio;
+	}
+	public void setServicio(String servicio) {
+		this.servicio = servicio;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public Date getFecSalida() {
 		return fecSalida;
@@ -50,28 +92,16 @@ public class Viaje {
 	public void setFecLlegada(Date fecLlegada) {
 		this.fecLlegada = fecLlegada;
 	}
-	public Date getHorSalida() {
-		return horSalida;
+	public long getIdClasificacion() {
+		return idClasificacion;
 	}
-	public void setHorSalida(Date horSalida) {
-		this.horSalida = horSalida;
+	public void setIdClasificacion(long idClasificacion) {
+		this.idClasificacion = idClasificacion;
 	}
-	public Date getHorLlegada() {
-		return horLlegada;
+	public int getDniChofer() {
+		return dniChofer;
 	}
-	public void setHorLlegada(Date horLlegada) {
-		this.horLlegada = horLlegada;
-	}
-	public int getPrecio() {
-		return precio;
-	}
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setDniChofer(int dniChofer) {
+		this.dniChofer = dniChofer;
 	}
 }

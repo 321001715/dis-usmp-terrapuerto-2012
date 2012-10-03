@@ -11,6 +11,7 @@ import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Usuario;
+import pe.plazanorte.sisterra.entidades.Viaje;
 import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlProveedorDAO implements ProveedorDAO {
@@ -334,7 +335,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-
+			
 			String query = "UPDATE t_vehiculo" + " SET ESTADO = '"
 					+ vehiculo.getEstado() + "', OBS = '" + vehiculo.getObs()
 					+ "', asientosNoDisponibles = '"
@@ -461,7 +462,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 				ruta.setId(rs.getLong("idRuta"));
 				ruta.setNomRuta(rs.getString("nomRuta"));
-				ruta.setOrigen(rs.getString("destino"));
+				ruta.setOrigen(rs.getString("origen"));
 				ruta.setDestino(rs.getString("destino"));
 				ruta.setKm(rs.getInt("km"));
 				ruta.setDuracion(rs.getInt("duracion"));
@@ -536,7 +537,6 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	@Override
 	public Vector<Ruta> buscarRutas(Ruta param, Proveedor uu) {
 
-		System.out.println("QUERY:");
 		Vector<Ruta> vec = new Vector<Ruta>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
@@ -575,7 +575,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Ruta ruta = null;
 			ResultSet rs = stmt.executeQuery(query);
 
-			System.out.print("" + query);
+			System.out.println("QUERY:" + query);
 
 			while (rs.next()) {
 				ruta = new Ruta();
@@ -599,5 +599,80 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 	// **************************FIN GESTIONAR
 	// RUTA******************************//
+	
+	// **************************INICIO GESTIONAR
+	// VIAJE******************************//
 
+
+	@Override
+	public Vector<Viaje> buscarViajes(Viaje param, Proveedor uu) {
+		Vector<Viaje> vec = new Vector<Viaje>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM bd_cruces.T_VIAJE WHERE ";
+			boolean flag = false;
+			if (param.getId() != 0) {
+				query += "idViaje = " + param.getId();
+				flag = true;
+			}
+			if (param.getIdRuta() != 0) {
+				if (flag)
+					query += " AND ";
+				query += "(idRuta = '" + param.getIdRuta();
+				flag = true;
+			}
+			if (param.getCodViaje() != 0) {
+				if (flag)
+					query += " AND ";
+				query += "(codViaje = '" + param.getCodViaje();
+				flag = true;
+			}
+			if (param.getIdClasificacion() != 0) {
+				if (flag)
+					query += " AND ";
+				query += "(idClasificacion = '" + param.getIdClasificacion();
+				flag = true;
+			}
+			if (param.getDniChofer() != 0) {
+				if (flag)
+					query += " AND ";
+				query += "(idChofer = '" + param.getDniChofer();
+				flag = true;
+			}
+			query += " AND idRuta = (SELECT idRuta FROM T_RUTA " +
+										"WHERE IDPROVEEDOR = " + uu.getIdProveedor() + ");";
+
+			Viaje viaje = null;
+			ResultSet rs = stmt.executeQuery(query);
+
+			System.out.println("QUERY:" + query);
+
+			while (rs.next()) {
+				viaje = new Viaje();
+
+				viaje.setId(rs.getLong("idViaje"));
+				
+				viaje.setId(rs.getInt("id"));
+				viaje.setNumViaje(rs.getString("numViaje"));
+				viaje.setNomViaje(rs.getString("nomViaje"));
+				viaje.setIdRuta(rs.getLong("idRuta"));
+				viaje.setPrecio(rs.getInt("precio"));
+				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
+				viaje.setDniChofer(rs.getInt("dniChofer"));
+				viaje.setServicio(rs.getString("servicio"));
+				viaje.setFecSalida(rs.getDate("fecSalida"));
+				viaje.setFecLlegada(rs.getDate("fecLlegada"));
+				viaje.setHorSalida(rs.getString("horSalida"));
+				viaje.setHorLlegada(rs.getString("horLlegada"));
+				
+				vec.add(viaje);
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vec;
+	}
+	
 }
