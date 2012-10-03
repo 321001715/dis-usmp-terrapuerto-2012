@@ -385,6 +385,7 @@ public class ServletProveedor extends HttpServlet {
 			long idProveedor = proveedor.getIdProveedor();
 			String asientosPorPiso = request.getParameter("asientosPorPiso");
 			String asientoNoDisponible=formatoAsientosNoDisponibles(request.getParameterValues("asientosNoDisponibles"));
+			String estado=request.getParameter("estado")	;
 			
 			
 			try {
@@ -398,6 +399,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setIdProveedor(idProveedor);
 				vehiculo.setAsientosPorPiso(asientosPorPiso);
 				vehiculo.setAsientosNoDisponibles(asientoNoDisponible);
+				vehiculo.setEstado(estado);
 				vehiculo.setObs(obs);
 
 				boolean retorno = service.agregarVehiculo(vehiculo);

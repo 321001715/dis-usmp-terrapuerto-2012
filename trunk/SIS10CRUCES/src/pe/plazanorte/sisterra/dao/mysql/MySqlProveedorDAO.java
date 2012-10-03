@@ -236,8 +236,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+vehiculo.getAsientosPorPiso()
 					+ "', '"
 					+vehiculo.getAsientosNoDisponibles()
-					+ "', '" + Constantes.ESTADO_ACTIVO + "', " + vehiculo.getIdProveedor() + ");";
-			System.out.println(sql);
+					+ "', '" +vehiculo.getEstado()  + "', " + vehiculo.getIdProveedor() + ");";
+			System.out.println(vehiculo.getEstado() );
 					filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {
@@ -265,6 +265,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				vehiculo = new Vehiculo();
 
 				vehiculo.setIdVehiculo(rs.getLong("idVehiculo"));
+				vehiculo.setCodVehiculo(rs.getString("codVehiculo"));
+				vehiculo.setAsientosNoDisponibles(rs.getString("asientosNoDisponibles"));
+				vehiculo.setAsientosPorPiso(rs.getString("asientosXPiso"));
 				vehiculo.setMarca(rs.getString("marca"));
 				vehiculo.setModelo(rs.getString("modelo"));
 				vehiculo.setPlaca(rs.getString("placa"));
