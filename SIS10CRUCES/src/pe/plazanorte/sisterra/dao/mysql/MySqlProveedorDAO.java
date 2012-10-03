@@ -221,7 +221,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+ "VALUES ('"
 					+ vehiculo.getMarca()
 					+ "', '"
-					+vehiculo.getCodVehiculo()
+					+ vehiculo.getCodVehiculo()
 					+ "', '"
 					+ vehiculo.getModelo()
 					+ "', '"
@@ -233,12 +233,16 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+ ", '"
 					+ vehiculo.getObs()
 					+ "', '"
-					+vehiculo.getAsientosPorPiso()
+					+ vehiculo.getAsientosPorPiso()
 					+ "', '"
-					+vehiculo.getAsientosNoDisponibles()
-					+ "', '" +vehiculo.getEstado()  + "', " + vehiculo.getIdProveedor() + ");";
-			System.out.println(vehiculo.getEstado() );
-					filas_afectadas = stmt.executeUpdate(sql);
+					+ 0
+					+ "', '"
+					+ vehiculo.getEstado()
+					+ "', "
+					+ vehiculo.getIdProveedor()
+					+ ");";
+			System.out.println(vehiculo.getEstado());
+			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -266,7 +270,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 				vehiculo.setIdVehiculo(rs.getLong("idVehiculo"));
 				vehiculo.setCodVehiculo(rs.getString("codVehiculo"));
-				vehiculo.setAsientosNoDisponibles(rs.getString("asientosNoDisponibles"));
+				vehiculo.setAsientosNoDisponibles(rs
+						.getString("asientosNoDisponibles"));
 				vehiculo.setAsientosPorPiso(rs.getString("asientosXPiso"));
 				vehiculo.setMarca(rs.getString("marca"));
 				vehiculo.setModelo(rs.getString("modelo"));
@@ -299,7 +304,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 			if (rs.next()) {
 				nuevo = new Vehiculo();
-				nuevo.setIdVehiculo(rs.getLong("idVehiculo"));
+				nuevo.setIdVehiculo(rs.getInt("idVehiculo"));
 				nuevo.setMarca(rs.getString("marca"));
 				nuevo.setModelo(rs.getString("modelo"));
 				nuevo.setPlaca(rs.getString("placa"));
@@ -307,6 +312,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				nuevo.setNumAsientos(rs.getInt("numAsientos"));
 				nuevo.setObs(rs.getString("obs"));
 				nuevo.setEstado(rs.getString("estado"));
+				nuevo.setAsientosPorPiso(rs.getString("asientosXPiso"));
+				nuevo.setAsientosNoDisponibles(rs
+						.getString("asientosNoDisponibles"));
 				nuevo.setIdProveedor(rs.getLong("idProveedor"));
 			}
 			con.close();
@@ -326,8 +334,11 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String query = "UPDATE t_vehiculo SET ESTADO = '"
+			String query = "UPDATE t_vehiculo" + " SET ESTADO = '"
 					+ vehiculo.getEstado() + "', OBS = '" + vehiculo.getObs()
+					+ "', asientosNoDisponibles = '"
+					+ vehiculo.getAsientosNoDisponibles()
+					
 					+ "' WHERE IDVEHICULO = " + vehiculo.getIdVehiculo() + ";";
 
 			filas_afectadas = stmt.executeUpdate(query);

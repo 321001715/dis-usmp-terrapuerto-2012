@@ -376,13 +376,10 @@ public class ServletProveedor extends HttpServlet {
 			Proveedor proveedor = (Proveedor) session.getAttribute("BProvedor");
 			long idProveedor = proveedor.getIdProveedor();
 			String asientosPorPiso = request.getParameter("asientosPorPiso");
-			String asientoNoDisponible = formatoAsientosNoDisponibles(request
-					.getParameterValues("asientosNoDisponibles"));
+			
 			String estado = request.getParameter("estado");
 
-			for (int i = 0; i < 3; i++) {
-				System.out.println(decodificarFormato(asientoNoDisponible)[i]);
-			}
+			
 
 			try {
 				Vehiculo vehiculo = new Vehiculo();
@@ -394,7 +391,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setNumAsientos(numAsientos);
 				vehiculo.setIdProveedor(idProveedor);
 				vehiculo.setAsientosPorPiso(asientosPorPiso);
-				vehiculo.setAsientosNoDisponibles(asientoNoDisponible);
+				
 				vehiculo.setEstado(estado);
 				vehiculo.setObs(obs);
 
@@ -419,15 +416,18 @@ public class ServletProveedor extends HttpServlet {
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VEHICULO)) {
 
 			long idVehiculo = Long
-					.parseLong(request.getParameter("idVehiculo"));
+					.parseLong(request.getParameter("codVehiculo"));
 			String estado = request.getParameter("estado");
 			String obs = request.getParameter("obs");
+			String asientoNoDisponible = formatoAsientosNoDisponibles(request
+					.getParameterValues("asientosNoDisponibles"));
 
 			try {
 				Vehiculo vehiculo = new Vehiculo();
 				vehiculo.setIdVehiculo(idVehiculo);
 				vehiculo.setObs(obs);
 				vehiculo.setEstado(estado);
+				vehiculo.setAsientosNoDisponibles(asientoNoDisponible);
 
 				boolean retorno = service.modificarVehiculo(vehiculo);
 
@@ -607,11 +607,6 @@ public class ServletProveedor extends HttpServlet {
 		return AsientosNoDisponiblesConFormato;
 	}
 
-	public String[] decodificarFormato(String asientosNoDisponibles) {
-		String[] asientos;
-		String delimitador = "&";
-		asientos = asientosNoDisponibles.split(delimitador);
-		return asientos;
-	}
+	
 
 }
