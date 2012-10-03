@@ -69,8 +69,13 @@
 			</tr>
 			<tr>	
 				<td></td>	
+				<td>Numer de Asientos: </td>
+				<td><input type="text" name="numAsientos"></td>
+			</tr>
+			<tr>	
+				<td></td>	
 				<td>Asientos por Piso: </td>
-				<td><input type="text" name="asientoXPiso"></td>
+				<td><input type="text" name="asientosPorPiso"></td>
 			</tr>
 			<tr>
 				<td></td>
