@@ -24,6 +24,7 @@ if(ruta.size() != 0){
 	</div>
 &nbsp;
 &nbsp;
+
 <table align="center" id="table" class="sortable">
 		<thead>
 			<tr>
@@ -51,8 +52,7 @@ if(ruta.size() != 0){
 			<td align="right"><%=ruta.get(i).getDestino()%></td>
 			<td align="left">
 						<div class="ui-state-default ui-corner-all cajaicono">
-						<!-- CORREGIR ESE LINK ... - RUY -->
-							<a href="Usuarios?origen=modificar_usuario&id=<%=ruta.get(i).getId()%>">
+							<a href="ServletSeguridad?tipo=<%=Constantes.ACCION_CONSULTAR_RUTA %>&destino=<%=Constantes.ACCION_MODIFICAR_RUTA %>&id=<%=ruta.get(i).getId()%>">
 								<span class="ui-icon ui-icon-pencil"></span>
 							</a>
 						</div>
