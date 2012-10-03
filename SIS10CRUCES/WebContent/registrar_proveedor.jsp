@@ -119,6 +119,16 @@ if(usuarios != null){
 				</td>			
 			</tr>
 			<tr>
+				<td></td>
+				<td>Estado:</td>
+				<td>
+					<select name="estado">						
+						<option value="<%=Constantes.ESTADO_ACTIVO%>" ><%=Constantes.ESTADO_ACTIVO%></option>
+						<option value="<%=Constantes.ESTADO_INHABILITADO%>" ><%=Constantes.ESTADO_INHABILITADO%></option>
+					</select>				
+				</td>				
+			</tr>	
+			<tr>
 				<td colspan="3" align="right">
 					<input type="submit" value="Registrar Proveedor" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
 				</td>
