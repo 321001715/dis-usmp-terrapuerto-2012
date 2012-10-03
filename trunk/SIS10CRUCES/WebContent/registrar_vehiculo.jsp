@@ -69,7 +69,7 @@
 			</tr>
 			<tr>	
 				<td></td>	
-				<td>Numer de Asientos: </td>
+				<td>Número de Asientos: </td>
 				<td><input type="text" name="numAsientos"></td>
 			</tr>
 			<tr>	
@@ -82,6 +82,15 @@
 				<td>Observaciones: </td>
 				<td colspan="3"><textarea rows="3" cols="50" name="obs"></textarea></td>
 			</tr>
+			<tr>
+				<td>Estado:</td>
+				<td>
+					<select name="estado">						
+						<option value="<%=Constantes.ESTADO_ACTIVO%>"><%=Constantes.ESTADO_ACTIVO%></option>
+						<option value="<%=Constantes.ESTADO_INHABILITADO%>"><%=Constantes.ESTADO_INHABILITADO%></option>
+					</select>
+				</td>
+			</tr>	
 			<tr>
 				<td colspan="6" align="right">
 					<input type="submit" value="Registrar Vehículo" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
