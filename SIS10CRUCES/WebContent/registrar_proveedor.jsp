@@ -1,4 +1,7 @@
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
+<%@page import="java.util.Vector"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,49 +49,84 @@
 		return true;
 	}	
 </script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
+<link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
+<link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-
-	<h2>Registrar Proveedor</h2>
-
-	<form action="ServletProveedor" method="post" name="registrar" onsubmit="return validar()">
+<div class="ui-widget">
+   <h3 class="ui-corner-top ui-widget-header"> 
+   	<font style="font-family: monospace; font-size: x-large;">Mantener Proveedor</font>
+   </h3>
+  	
+   <div class="ui-corner-bottom ui-widget-content">   
+   		<font style="font-family: monospace; font-size: x-large;">Registrar Proveedor</font>
+   </div>
+	<form action="ServletProveedor" method="post" name="registrar" onsubmit="validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_PROVEEDOR%>">
-		<table cellspacing="10px">			
+		<table>	
+			<tr><td><br></td></tr>
 			<tr>
-				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
-			</tr>
-			<tr>
-				<td>RUC</td>
+				<td width="20%"></td>
+				<td>RUC:</td>
 				<td><input type="text" name="ruc" maxlength="11"></td>				
 			</tr>
 			<tr>
-				<td>Razon Social</td>
+				<td></td>
+				<td>Razón Social:</td>
 				<td><input type="text" name="razon_social"></td>			
 			</tr>
 			<tr>
-				<td>Razon Comercial</td>
+				<td></td>
+				<td>Razón Comercial:</td>
 				<td><input type="text" name="razon_comercial"></td>			
 			</tr>
 			<tr>
-				<td>Direccion</td>
-				<td><input type="text" name="direccion"></td>				
+				<td></td>
+				<td>Dirección:</td>
+				<td><input type="text" name="direccion"></td>			
 			</tr>
 			<tr>
-				<td>Telefono</td>
-				<td><input type="text" name="telefono" maxlength="9"></td>				
+				<td></td>
+				<td>Teléfono:</td>
+				<td><input type="text" name="telefono" maxlength="9"></td>			
 			</tr>
 			<tr>
-				<td colspan="2"><h3>Datos del Proveedor</h3></td>					
+				<td></td>
+				<td>ID Usuario:</td>
+				<td>
+<%
+	Vector<Usuario> usuarios = (Vector<Usuario>)request.getAttribute("usuarios");
+
+if(usuarios.size() != 0){
+%>
+					<select name="idUsuario">
+<%
+	for(int i=0; i<=usuarios.size();i++){
+%>
+						<option value=<% %>><% %></option>
+<%
+	}
+%>
+					</select>
+<%} %>	
+				</td>			
 			</tr>
 			<tr>
-				<td>Id de Usuario</td>	
-				<td><input type="text" name="idUsuario"></td>					
-			</tr>			
-			<tr>
-				<td><input type="submit" value=Agregar type="submit"></td>
-				<td><input type="reset" value="Limpiar campos" type="submit"></td>
+				<td colspan="3" align="right">
+					<input type="submit" value="Registrar Proveedor" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
+				</td>
 			</tr>
 		</table>
 	</form>
+</div>
+<br><br><a href="index_seguridad.jsp">
+			<img alt="" src="<%=request.getContextPath()%>/images/atras.jpg"> 
+		</a> Atrás...
+	&nbsp;
 </body>
 </html>
