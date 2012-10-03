@@ -43,14 +43,13 @@ public class ServletProveedor extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurri� un error.";
+		String mensaje = "Ocurrio un error.";
 
 		ServiceProveedor service = new ServiceProveedor();
 
 		RequestDispatcher rd = null;
 
-		// *****************************INICIO MANTENER
-		// PROVEEDOR*****************************//
+		// *****************************INICIO MANTENER PROVEEDOR*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)) {
 
