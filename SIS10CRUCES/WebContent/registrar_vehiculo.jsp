@@ -31,16 +31,8 @@
 				<td><input type="text" name="codVehiculo"></td>
 				
 				<td>Asientos No Disponibles:</td>
-				<td rowspan="6">
-					<select name=asientosNoDisponibles multiple="multiple" size="15">
-<% 
-	for(int i=1; i<=140; i++){
-%>
-						<option value="<%=i%>"><%=i%></option>
-<%
-	}
-%>
-					</select>
+				<td rowspan="6" valign="top">
+					<b>Agregar vehículo para Listar</b>
 				</td>
 			<tr>
 				<td></td>
@@ -83,6 +75,7 @@
 				<td colspan="3"><textarea rows="3" cols="50" name="obs"></textarea></td>
 			</tr>
 			<tr>
+				<td></td>	
 				<td>Estado:</td>
 				<td>
 					<select name="estado">						
