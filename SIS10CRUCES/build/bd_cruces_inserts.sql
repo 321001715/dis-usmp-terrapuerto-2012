@@ -8112,6 +8112,8 @@ insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacim
 values ('DNI', '70062424', 'GARCIA', 'SERQUEN', 'KENY ANDERSON', 'M', STR_TO_DATE('19-07-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'ACTIVO');
 insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
 values ('DNI', '45373187', 'CASTRO', 'CHAVARRI', 'MANUEL ALEJANDRO', 'M', STR_TO_DATE('19-07-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'ACTIVO');
+insert into T_PERSONA (tipDoc, numDoc, apePat, apeMat, nombres, sexo, fechaNacimiento, direccion, tel, estado)
+values ('DNI', '70477244', 'MORALES', 'CORDOVA', 'OSCAR ANGEL', 'F	', STR_TO_DATE('21-25-1990','%d-%c-%Y'), 'Calle San Erick', '666', 'ACTIVO');
  
 insert into T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
 values ('ADMIN', '123', 'ACTIVO', 'DNI', '70024471', 'RUY EDUARDO', 'PAREDES', 'RODRIGUEZ', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'ADMINISTRADOR'));

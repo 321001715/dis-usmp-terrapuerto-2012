@@ -102,17 +102,19 @@
 <%
 	Vector<Usuario> usuarios = (Vector<Usuario>)request.getAttribute("usuarios");
 
-if(usuarios.size() != 0){
+if(usuarios != null){
 %>
 					<select name="idUsuario">
 <%
 	for(int i=0; i<=usuarios.size();i++){
 %>
-						<option value=<% %>><% %></option>
+						<option value=<%usuarios.get(i).getId();%>><%usuarios.get(i).getUsuario();%></option>
 <%
 	}
 %>
 					</select>
+<%}else{ %>
+				<b>No existen usuarios...</b>
 <%} %>	
 				</td>			
 			</tr>

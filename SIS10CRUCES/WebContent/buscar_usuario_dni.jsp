@@ -33,7 +33,7 @@ function validar(){
 	<input type="hidden" name="tipo" value="buscarDni">
 	<table>
 			<tr>
-				<td>N° de Documento </td>
+				<td>N° de Documento:</td>
 				<td><input type="text" name="dni"></td>
 				<td><input type="submit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			</tr>
