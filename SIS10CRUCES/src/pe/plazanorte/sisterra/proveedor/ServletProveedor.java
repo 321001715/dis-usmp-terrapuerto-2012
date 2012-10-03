@@ -43,7 +43,7 @@ public class ServletProveedor extends HttpServlet {
 		ServiceProveedor service = new ServiceProveedor();
 
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurrio un error.";
+		String mensaje = "Ocurrió un error.";
 
 		RequestDispatcher rd = null;
 
@@ -97,7 +97,7 @@ public class ServletProveedor extends HttpServlet {
 			 * ))); boolean respuesta = service.eliminarProveedor(proveedor);
 			 * if(respuesta){ request.setAttribute("proveedor", proveedor);
 			 * mensaje = "Proveedor deshabilitado."; }else {mensaje =
-			 * "Ocurriï¿½ un error."; } } catch (Exception e) {
+			 * "Ocurrió un error."; } } catch (Exception e) {
 			 * e.printStackTrace(); }
 			 * 
 			 * if(destino == Constantes.MODIFICAR_PROVEEDOR){ rd =
@@ -115,8 +115,10 @@ public class ServletProveedor extends HttpServlet {
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VEHICULO)) {
 
 			try {
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
-				vehiculos = service.listarVehiculos();
+				vehiculos = service.listarVehiculos(uu);
 				request.setAttribute("vehiculos", vehiculos);
 				String destino = request.getParameter("destino");
 				if (destino == null) {
@@ -138,9 +140,10 @@ public class ServletProveedor extends HttpServlet {
 			Vehiculo vehiculo = new Vehiculo();
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			try {
-				vehiculo.setIdProveedor(Integer.parseInt(request
-						.getParameter("idVehiculo")));
-				vehiculo = service.consultarVehiculo(vehiculo);
+				vehiculo.setIdProveedor(Integer.parseInt(request.getParameter("idVehiculo")));
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+				vehiculo = service.consultarVehiculo(vehiculo,uu);
 				request.setAttribute("vehiculo", vehiculo);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -165,7 +168,9 @@ public class ServletProveedor extends HttpServlet {
 			try {
 
 				Vector<Ruta> ruta = new Vector<Ruta>();
-				ruta = service.listarRuta();
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+				ruta = service.listarRuta(uu);
 				request.setAttribute("ruta", ruta);
 				String destino = request.getParameter("destino");
 				if (destino == null) {
@@ -189,7 +194,9 @@ public class ServletProveedor extends HttpServlet {
 			try {
 				ruta.setId(Integer.parseInt(request.getParameter("id")));
 				System.out.println((request.getParameter("id")));
-				ruta = service.consultarRuta(ruta);
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+				ruta = service.consultarRuta(ruta,uu);
 
 				request.setAttribute("ruta", ruta);
 
@@ -218,7 +225,7 @@ public class ServletProveedor extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurriï¿½ un error.";
+		String mensaje = "Ocurrió un error.";
 
 		ServiceProveedor service = new ServiceProveedor();
 
@@ -249,7 +256,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarProveedor(proveedor);
 
 				if (retorno)
-					mensaje = "Proveedor agregado con ï¿½xito.";
+					mensaje = "Proveedor agregado con éxito.";
 				else
 					mensaje = "Error, no se pudo registrar el proveedor.";
 
@@ -298,7 +305,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarProveedor(proveedor);
 
 				if (retorno)
-					mensaje = "Proveedor modificado con ï¿½xito.";
+					mensaje = "Proveedor modificado con éxito.";
 				else
 					mensaje = "Error, no se pudo modificar el proveedor.";
 
@@ -417,12 +424,13 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "vehï¿½culo agregado con ï¿½xito.";
+					mensaje = "Vehículo agregado con éxito.";
 				else
-					mensaje = "Error, no se pudo registrar el vehï¿½culo.";
-
+					mensaje = "Error, no se pudo registrar el vehículo.";
+				
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
-				vehiculos = service.listarVehiculos();
+				vehiculos = service.listarVehiculos(uu);
 				request.setAttribute("vehiculos", vehiculos);
 
 				rd = getServletContext().getRequestDispatcher(
@@ -451,12 +459,14 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "vehï¿½culo modificado con ï¿½xito.";
+					mensaje = "Vehículo modificado con éxito.";
 				else
-					mensaje = "Error, no se pudo modificar el vehï¿½culo.";
+					mensaje = "Error, no se pudo modificar el vehículo.";
 
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
-				vehiculos = service.listarVehiculos();
+				vehiculos = service.listarVehiculos(uu);
 				request.setAttribute("vehiculos", vehiculos);
 
 				rd = getServletContext().getRequestDispatcher(
@@ -473,7 +483,9 @@ public class ServletProveedor extends HttpServlet {
 			try {
 				int id = Integer.parseInt(request.getParameter("idVehiculo"));
 				vehiculo.setIdVehiculo(id);
-				vehiculo = service.consultarVehiculo(vehiculo);
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+				vehiculo = service.consultarVehiculo(vehiculo,uu);
 				if (vehiculo == null)
 					mensaje = "No se encontraron resultados para su consulta. [Vehiculo cod."
 							+ id + "]";
@@ -489,8 +501,10 @@ public class ServletProveedor extends HttpServlet {
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VEHICULO)) {
 
 			try {
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
-				vehiculos = service.listarVehiculos();
+				vehiculos = service.listarVehiculos(uu);
 				request.setAttribute("vehiculos", vehiculos);
 				rd = getServletContext().getRequestDispatcher(
 						"/listar_vehiculos.jsp");
@@ -517,7 +531,9 @@ public class ServletProveedor extends HttpServlet {
 
 			Vector<Vehiculo> vehiculos = null;
 			try {
-				vehiculos = service.buscarVehiculo(vehiculo);
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+				vehiculos = service.buscarVehiculo(vehiculo,uu);
 				request.setAttribute("vehiculos", vehiculos);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -562,7 +578,7 @@ public class ServletProveedor extends HttpServlet {
 					mensaje = "Error, no se pudo registrar la ruta.";
 
 				Vector<Ruta> ruta1 = new Vector<Ruta>();
-				ruta1 = service.listarRuta();
+				ruta1 = service.listarRuta(uu);
 				request.setAttribute("ruta", ruta1);
 
 				rd = getServletContext().getRequestDispatcher(
@@ -593,12 +609,14 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarRuta(ruta);
 				
 				if (retorno)
-					mensaje = "Clasificacion modificado con ï¿½xito.";
+					mensaje = "Clasificacion modificado con éxito.";
 				else
 					mensaje = "Error, no se pudo modificar la clasificacion.";
 				
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Ruta> rutas = new Vector<Ruta>();
-				rutas=service.listarRuta();
+				rutas=service.listarRuta(uu);
 				request.setAttribute("ruta", rutas);
 				rd = getServletContext().getRequestDispatcher(
 						"/mantener_ruta.jsp");
@@ -627,7 +645,9 @@ public class ServletProveedor extends HttpServlet {
 
 			Vector<Ruta> vec = null;
 			try {
-				vec = service.buscarRuta(ruta);
+				HttpSession session = request.getSession(true);
+				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+				vec = service.buscarRuta(ruta,uu);
 				request.setAttribute("ruta", vec);
 			} catch (Exception e) {
 				e.printStackTrace();

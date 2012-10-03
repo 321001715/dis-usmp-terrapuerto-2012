@@ -62,16 +62,16 @@ public class ServiceProveedor {
 		return proveedorDao.registrarVehiculo(vehiculo);		
 	}
 
-	public Vector<Vehiculo> listarVehiculos() {
+	public Vector<Vehiculo> listarVehiculos(Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();	
-		return proveedorDao.listarVehiculos();
+		return proveedorDao.listarVehiculos(uu);
 	}
 
-	public Vehiculo consultarVehiculo(Vehiculo vehiculo) {
+	public Vehiculo consultarVehiculo(Vehiculo vehiculo, Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();		
-		return proveedorDao.consultarVehiculo(vehiculo);
+		return proveedorDao.consultarVehiculo(vehiculo,uu);
 	}
 	
 	public boolean modificarVehiculo(Vehiculo vehiculo) {
@@ -81,11 +81,11 @@ public class ServiceProveedor {
 		return proveedorDao.modificarVehiculo(vehiculo);		 
 	}
 	
-	public Vector<Vehiculo> buscarVehiculo(Vehiculo vehiculo) {
+	public Vector<Vehiculo> buscarVehiculo(Vehiculo vehiculo,Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		return proveedorDao.buscarVehiculos(vehiculo);
+		return proveedorDao.buscarVehiculos(vehiculo,uu);
 	}
 	
 	
@@ -102,16 +102,16 @@ public class ServiceProveedor {
 
 
 	
-	public Ruta consultarRuta(Ruta ruta) {
+	public Ruta consultarRuta(Ruta ruta, Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();		
-		return proveedorDao.consultarRuta(ruta);
+		return proveedorDao.consultarRuta(ruta,uu);
 	}
 
-	public Vector<Ruta> listarRuta() {
+	public Vector<Ruta> listarRuta(Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();	
-		Vector<Ruta> rutas = proveedorDao.listarRutas();
+		Vector<Ruta> rutas = proveedorDao.listarRutas(uu);
 		
 		return rutas;
 	}
@@ -123,11 +123,11 @@ public class ServiceProveedor {
 		return proveedorDao.modificarRuta(ruta);		 
 	}
 	
-	public Vector<Ruta> buscarRuta(Ruta ruta) {
+	public Vector<Ruta> buscarRuta(Ruta ruta, Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		
-		return proveedorDao.buscarRutas(ruta);
+		return proveedorDao.buscarRutas(ruta,uu);
 	}
 	
 	public String[] decodificarFormato(String asientosNoDisponibles) {

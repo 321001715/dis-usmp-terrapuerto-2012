@@ -255,13 +255,14 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public Vector<Vehiculo> listarVehiculos() {
+	public Vector<Vehiculo> listarVehiculos(Proveedor uu) {
 		Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM t_vehiculo WHERE ESTADO = '"
-					+ Constantes.ESTADO_ACTIVO + "';";
+					+ Constantes.ESTADO_ACTIVO + "' and IDPROVEEDOR = '"
+					+ uu.getIdProveedor() +"';";
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -292,14 +293,14 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public Vehiculo consultarVehiculo(Vehiculo vehiculo) {
+	public Vehiculo consultarVehiculo(Vehiculo vehiculo, Proveedor uu) {
 		long id = vehiculo.getIdProveedor();
 		Vehiculo nuevo = null;
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM t_vehiculo WHERE IDVEHICULO = '" + id
-					+ "';";
+					+ "' and IDPROVEEDOR ='"+ uu.getIdProveedor() + "';";
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
@@ -352,7 +353,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return false;
 	}
 
-	public Vector<Vehiculo> buscarVehiculos(Vehiculo param) {
+	public Vector<Vehiculo> buscarVehiculos(Vehiculo param, Proveedor uu) {
 		Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
@@ -386,7 +387,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 						+ "%') OR MARCA LIKE LOWER('" + param.getMarca()
 						+ "%'))";
 			}
-			query += " AND IDPROVEEDOR = " + 1 + ";";
+			query += " AND IDPROVEEDOR = " + uu.getIdProveedor() + ";";
 
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);
@@ -446,12 +447,12 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public Vector<Ruta> listarRutas() {
+	public Vector<Ruta> listarRutas(Proveedor uu) {
 		Vector<Ruta> vect = new Vector<Ruta>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_RUTA;";
+			String query = "SELECT * FROM T_RUTA WHERE IDPROVEEDOR ="+ uu.getIdProveedor() + ";";
 			Ruta ruta = null;
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -476,13 +477,14 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public Ruta consultarRuta(Ruta ruta) {
+	public Ruta consultarRuta(Ruta ruta, Proveedor uu) {
 		long id = ruta.getId();
 		Ruta nuevo = null;
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_RUTA WHERE idruta = '" + id + "';";
+			String query = "SELECT * FROM T_RUTA WHERE idproveedor = '" + uu.getIdProveedor() + "' and " +
+					" idruta = '" + id + "';";
 
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -532,9 +534,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public Vector<Ruta> buscarRutas(Ruta param) {
+	public Vector<Ruta> buscarRutas(Ruta param, Proveedor uu) {
 
-		System.out.print("teeeeeeee2");
+		System.out.println("QUERY:");
 		Vector<Ruta> vec = new Vector<Ruta>();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
@@ -568,7 +570,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 						+ "%') OR destino LIKE LOWER('" + param.getDestino()
 						+ "%'))";
 			}
-			query += " AND IDPROVEEDOR = " + 1 + ";";
+			query += " AND IDPROVEEDOR = " + uu.getIdProveedor() + ";";
 
 			Ruta ruta = null;
 			ResultSet rs = stmt.executeQuery(query);

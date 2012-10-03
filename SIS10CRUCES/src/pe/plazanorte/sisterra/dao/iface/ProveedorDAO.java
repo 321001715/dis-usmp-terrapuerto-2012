@@ -17,19 +17,17 @@ public interface ProveedorDAO {
 	
 	
 	public boolean registrarVehiculo(Vehiculo vehiculo);
-	public Vector<Vehiculo> listarVehiculos();
-	public Vehiculo consultarVehiculo(Vehiculo vehiculo);
+	public Vector<Vehiculo> listarVehiculos(Proveedor uu);
+	Vehiculo consultarVehiculo(Vehiculo vehiculo, Proveedor uu);
 	public boolean modificarVehiculo(Vehiculo vehiculo);
-	public Vector<Vehiculo> buscarVehiculos(Vehiculo vehiculo);
+	public Vector<Vehiculo> buscarVehiculos(Vehiculo vehiculo, Proveedor uu);
 	
 	
 	
 	public boolean registrarRuta(Ruta ruta,Proveedor uu);
-	public Vector<Ruta> listarRutas();
-	public Ruta consultarRuta(Ruta ruta);
+	public Vector<Ruta> listarRutas(Proveedor uu);
+	public Ruta consultarRuta(Ruta ruta, Proveedor uu);
 	public boolean modificarRuta(Ruta ruta);
-	public Vector<Ruta> buscarRutas(Ruta ruta);
-	
-	
+	public Vector<Ruta> buscarRutas(Ruta ruta, Proveedor uu);
 	
 }
