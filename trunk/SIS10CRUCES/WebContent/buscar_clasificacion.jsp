@@ -41,7 +41,7 @@ function validar(){
 			<tr>
 				<td width="20%"></td>
 				<td>Código: </td>
-				<td><input type="text" name="idClasificacion" readonly="readonly"></td>
+				<td><input type="text" name="idClasificacion"></td>
 				<td>Nombre: </td>
 				<td><input type="text" name="nombre"></td>
 			</tr>
