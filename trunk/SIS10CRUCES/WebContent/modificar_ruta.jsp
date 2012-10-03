@@ -75,21 +75,23 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Modificar Ruta</font>
    </div>
-	<form action="ServletClasificacion" method="post">
-		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_CLASIFICACION%>">
+	<form action="ServletProveedor" method="post">
+		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_RUTA%>">
 		<%if(ruta != null){ %>
 		<table>	
 			<tr><td><br></td></tr>
 			<tr>
 				<td width="20%"></td>
 				<td>Código Ruta:</td>
-				<td><input type="text" name="codRuta" value="<%=ruta.getCodRuta()%>" readonly="readonly"></td>				
+				<td><input type="text" name="codRuta" value="<%=ruta.getId()%>" readonly="readonly"></td>				
 			</tr>
 			<tr>
 				<td width="20%"></td>
 				<td>Nombre de Ruta:</td>
 				<td><input type="text" name="nomRuta" value="<%=ruta.getNomRuta()%>"></td>				
 			</tr>
+			
+			
 			<tr>
 				<td></td>
 				<td>Origen:</td>
