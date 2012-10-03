@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		Perfil perfil=new Perfil();
 		try {
-			Proveedor provedor= new Proveedor();
+			Proveedor proveedor= new Proveedor();
 			Cliente cliente =new Cliente();
 			Usuario uu = new Usuario();
 			uu.setUsuario(request.getParameter("usuario").toUpperCase());
@@ -52,8 +52,9 @@ public class Login extends HttpServlet {
 				}else
 				{
 					Usuario usuario=du.buscarUsuario(uu.getUsuario());
-					provedor= du.buscarProvedor(usuario.getId());
-					session.setAttribute("BProvedor", provedor);	
+					proveedor= du.buscarProvedor(usuario.getId());
+					session.setAttribute("BProvedor", proveedor);	
+					
 					//deberia ir a interfaz de no cliente
 				}
 				
@@ -66,7 +67,7 @@ public class Login extends HttpServlet {
 						.forward(request, response);
 			}
 		} catch (Exception sq) {
-			System.out.println("No cerró la conexion " + sq.getCause());
+			System.out.println("No cerrï¿½ la conexion " + sq.getCause());
 		}
 	}
 
