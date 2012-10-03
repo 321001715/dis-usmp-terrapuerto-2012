@@ -29,7 +29,7 @@
 					<td align="center">
 						<a href="consultar_viaje.jsp">
 <%-- 		            <a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_ruta"> --%>
-							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/reserva_boleto.png">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_reserva.png">
 						</a>
 						<br>
 						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">

@@ -14,22 +14,25 @@
 <body>
 <div class="ui-widget">
    <h3 class="ui-corner-top ui-widget-header"> 
-   	<font style="font-family: monospace; font-size: x-large;">Consulte su Viaje</font>
+   	<font style="font-family: monospace; font-size: x-large;">Gestión de Viajes</font>
    </h3>
 	<%
 	String mensaje = (String)request.getParameter("mensaje");
 	%>
-	<%@include file="buscar_viaje_cliente.jsp" %>
+	<%@include file="buscar_viaje.jsp" %>
 	
+	<br><a href="registrar_viaje.jsp">
+			<img alt="" src="<%=request.getContextPath()%>/images/adicionar.png">
+		</a>
 	<br><hr><br>
 	<% if(mensaje != null){ %>	
 		<font color="red"><%= mensaje%></font>
 		<br>
 	<%} %>	
-	<%@include file="listar_viaje_cliente.jsp" %>
-	<br><br><a href="index_ventas.jsp">
+	<%@include file="listar_viaje.jsp" %>
+	<br><br><a href="index_proveedor.jsp">
 			<img alt="" src="<%=request.getContextPath()%>/images/atras.jpg"> 
-		</a> Atrás X...
+		</a> Atrás...
 	&nbsp;
 </div>
 </html>

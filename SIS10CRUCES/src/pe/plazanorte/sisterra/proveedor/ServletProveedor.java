@@ -2,6 +2,10 @@ package pe.plazanorte.sisterra.proveedor;
 
 import java.io.IOException;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +19,7 @@ import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
+import pe.plazanorte.sisterra.entidades.Viaje;
 import pe.plazanorte.sisterra.seguridad.ServiceSeguridad;
 import pe.plazanorte.sisterra.util.Constantes;
 
@@ -208,11 +213,83 @@ public class ServletProveedor extends HttpServlet {
 						"/modificar_ruta.jsp");
 
 			}
+			
+			// ****************************FIN GESTIONAR
+			// RUTA*****************************//
+			
+			// *****************************INICIO GESTIONAR
+			// VIAJE *****************************//
+			
+		}else if (tipo.equalsIgnoreCase("listar_viaje")) {
+
+		long idViaje;
+		if (request.getParameter("codViaje").length() != 0)
+			idViaje = Long.parseLong(request.getParameter("codViaje"));
+		else
+			idViaje = 0;
+			String numViaje = request.getParameter("numViaje");
+			String nomViaje = request.getParameter("nomViaje");
+			Long idRuta = Long.parseLong(request.getParameter("idRuta"));
+			
+			int precio = Integer.parseInt(request.getParameter("precio"));
+			Long idClasificacion = Long.parseLong(request.getParameter("idClasificacion"));
+			int dniChofer = Integer.parseInt(request.getParameter("dniChofer"));
+			String servicio = request.getParameter("servicio");
+			
+			String fecSalida_string = request.getParameter("fecSalida");
+			String fecLlegada_string = request.getParameter("fecLlegada");
+			String horSalida = request.getParameter("horSalida");
+			String horLlegada = request.getParameter("horLlegada");
+			
+			Date fecSalida;
+			Date fecLlegada;
+			
+			DateFormat formatoFecha_salida = new SimpleDateFormat ("dd/MM/yyyy HH:mm");
+			String fecSalida_string_x = formatoFecha_salida.format(fecSalida_string);
+			try {
+				fecSalida = formatoFecha_salida.parse(fecSalida_string_x);
+			} catch (Exception e) {
+				throw new RuntimeException("No se pudo actualizar.");
+			}
+			
+			DateFormat formatoFecha_llegada = new SimpleDateFormat ("dd/MM/yyyy HH:mm");
+			String fecLlegada_string_x = formatoFecha_llegada.format(fecLlegada_string);
+			try {
+				fecLlegada = formatoFecha_llegada.parse(fecLlegada_string_x);
+			} catch (Exception e) {
+				throw new RuntimeException("No se pudo actualizar.");
+			}
+			
+			Viaje viaje = new Viaje();
+			viaje.setId(idViaje);
+			viaje.setNumViaje(numViaje);
+			viaje.setNomViaje(nomViaje);
+			viaje.setIdRuta(idRuta);
+			viaje.setPrecio(precio);
+			viaje.setIdClasificacion(idClasificacion);
+			viaje.setDniChofer(dniChofer);
+			viaje.setServicio(servicio);
+			viaje.setFecSalida(fecSalida);
+			viaje.setFecLlegada(fecLlegada);
+			viaje.setHorSalida(horSalida);
+			viaje.setHorLlegada(horLlegada);
+
+			Vector<Viaje> vec = null;
+		try {
+			HttpSession session = request.getSession(true);
+			Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
+			vec = service.buscarViaje(viaje,uu);
+			request.setAttribute("viaje", vec);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		// ****************************FIN GESTIONAR
-		// RUTA*****************************//
-
+		if (tipo.equalsIgnoreCase("listar_viajes")) {
+			rd = getServletContext().getRequestDispatcher(
+				"/mantener_viaje.jsp");
+		}
+		
+	}
+	
 		request.setAttribute("mensaje", mensaje);
 		rd.forward(request, response);
 	}
@@ -664,14 +741,13 @@ public class ServletProveedor extends HttpServlet {
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_RUTA)) {
 
 		}
-
-		// *****************************FIN GESTIONAR
-		// RUTA*****************************//
-
+		
 		request.setAttribute("mensaje", mensaje);
 		rd.forward(request, response);
 	}
-
+		// *****************************FIN GESTIONAR
+		// RUTA*****************************//
+		
 	public String formatoAsientosNoDisponibles(String[] asientosNoDisponibles) {
 		String AsientosNoDisponiblesConFormato = "";
 		for (int i = 0; i < asientosNoDisponibles.length; i++) {
@@ -681,4 +757,5 @@ public class ServletProveedor extends HttpServlet {
 		return AsientosNoDisponiblesConFormato;
 	}
 
+	
 }

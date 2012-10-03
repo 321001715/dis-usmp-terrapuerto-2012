@@ -35,6 +35,16 @@
 							Gestione sus Rutas
 						</font>
 					</td>  				
+					<td width="5%"></td> 				
+					<td align="center">
+		            	<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=listar_viaje">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/proveedor_viaje.png">
+						</a>
+						<br>
+						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+							Gestione sus Viajes
+						</font>
+					</td>  				
   				</tr>
   			</table>
   			

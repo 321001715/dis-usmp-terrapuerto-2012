@@ -88,6 +88,13 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_RUTA = "modificar_ruta";
 	public static final String ACCION_FILTRO_RUTA = "filtro_ruta";
 	
+
+	public static final String ACCION_CONSULTAR_VIAJE = "consultar_viaje";
+	public static final String ACCION_LISTAR_VIAJE = "listar_viaje";
+	public static final String ACCION_REGISTRAR_VIAJE  = "registrar_viaje";
+	public static final String ACCION_MODIFICAR_VIAJE = "modificar_viaje";
+	public static final String ACCION_FILTRO_VIAJE = "filtro_viaje";
+	
 	public static final String ACCION_RECUPERAR_CONTRASENA="recuperar_contrasena";
 	
 	

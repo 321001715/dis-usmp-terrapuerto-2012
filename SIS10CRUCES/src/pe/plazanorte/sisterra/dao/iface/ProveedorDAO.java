@@ -6,6 +6,7 @@ import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Usuario;
+import pe.plazanorte.sisterra.entidades.Viaje;
 public interface ProveedorDAO {
 
 	public boolean registrarProveedor(Proveedor proveedor);
@@ -29,5 +30,7 @@ public interface ProveedorDAO {
 	public Ruta consultarRuta(Ruta ruta, Proveedor uu);
 	public boolean modificarRuta(Ruta ruta);
 	public Vector<Ruta> buscarRutas(Ruta ruta, Proveedor uu);
+	
+	public Vector<Viaje> buscarViajes(Viaje viaje, Proveedor uu);
 	
 }

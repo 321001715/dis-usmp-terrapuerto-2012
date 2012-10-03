@@ -8,6 +8,7 @@ import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Ruta;
+import pe.plazanorte.sisterra.entidades.Viaje;
 public class ServiceProveedor {
 
 	public boolean agregarProveedor(Proveedor proveedor) {
@@ -130,11 +131,23 @@ public class ServiceProveedor {
 		return proveedorDao.buscarRutas(ruta,uu);
 	}
 	
+	public Vector<Viaje> buscarViaje(Viaje viaje, Proveedor uu) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.buscarViajes(viaje,uu);
+	}
+	
 	public String[] decodificarFormato(String asientosNoDisponibles) {
 		String[] asientos;
 		String delimitador = "&";
 		asientos = asientosNoDisponibles.split(delimitador);
+		System.out.println("DECODIFICANDO...");
+		for(int i=0; i<asientos.length;i++){
+			System.out.println(asientos[i]);
+		}
+		System.out.println("FIN - DECODIFICADO");
 		return asientos;
 	}
-	
+
 }

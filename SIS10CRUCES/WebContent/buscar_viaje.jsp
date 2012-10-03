@@ -6,51 +6,56 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function validar(){
+		if(document.buscar.idVehiculo.value.length == 0 && document.buscar.marca.value.length == 0 && document.buscar.modelo.value.length == 0 && document.buscar.placa.value.length == 0){		
+			alert("Debe llenar alguna condición de búsqueda.");
+			document.buscar.idVehiculo.focus();				
+			return false;
+		}else if(isNaN(document.buscar.idVehiculo.value)){		
+			alert("Código de viaje no válido.");
+			document.buscar.idVehiculo.focus();	
+			return false;
+		}	
+		return true;
+	}
+</script>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
+<link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
 <link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
-<script type="text/javascript" src="jquery/js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="jquery/js/jquery-ui-1.7.3.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>	
-<script>
-$(document).ready(function(){
-	   $("#a").datepicker({
-	      showOn: 'both',
-	      buttonImage: 'jquery/css/dark-hive/images/calendar.png',
-	      buttonImageOnly: true,
-	      changeYear: true,
-	      numberOfMonths: 1	,
-	   });
-	   $('#a').datepicker('option', {dateFormat: 'dd/mm/yy'});
-});
-</script>
 <div class="ui-widget">
    <div class="ui-corner-bottom ui-widget-content">   
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
    </div>
 &nbsp;   
-	<form action="" method="post" name="buscar" onsubmit="validar()">
+	<form action="ServletProveedor" method="post" name="buscar" onsubmit="validar()">
 		<input type="hidden" name="tipo" value="listar_viajes">
 		<input type="hidden" name="des" value="buscarViajes">
 		<table>
 			<tr>
 				<td width="20%"></td>
-				<td>Empresa: </td>
-				<td><input type="text" name=""></td>
+				<td>Código de Ruta: </td>
+				<td><input type="text" name="idRuta"></td>
 				
-				<td>Fecha de Salida: </td>
-				<td><input name="" id="a"></td>
+				<td>Código de Viaje: </td>
+				<td><input type="text" name="codViaje"></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td>Origen: </td>
-				<td><input type="text" name=""></td>
+				<td>Clasificación: </td>
+				<td><input type="text" name="idClasificacion"></td>
 				
-				<td>Destino: </td>
-				<td><input type="text" name=""></td>
+				<td>Código Vehículo: </td>
+				<td><input type="text" name="idVehiculo"></td>
 			</tr>
 			<tr>
-				<td colspan="5" align="right">
-					<input type="submit" value="CONSULTAR VIAJE" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
+				<td colspan="6" align="right">
+					<input type="submit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
 				</td>
 			</tr>			
 		</table>
