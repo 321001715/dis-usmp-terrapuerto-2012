@@ -60,8 +60,7 @@ public class ServletBoletaje extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			
+			}			
 		}
 		
 		//********************************FIN RESERVAR BOLETO DE VIAJE**********************************//
