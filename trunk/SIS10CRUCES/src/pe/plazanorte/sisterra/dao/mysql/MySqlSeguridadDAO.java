@@ -408,12 +408,10 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	public Vector<TipoUsuario> muestraTipoUsuario() {
 
 		Vector<TipoUsuario> tipoUsuarios = new Vector<TipoUsuario>();
-		System.out.println("123");
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String sql = "SELECT idPerfil,perfil FROM t_perfil ORDER BY idPerfil";
-			System.out.println("ddd");
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {

@@ -45,7 +45,6 @@ public class ServletInicial extends HttpServlet {
 
         /**Beans*/
         Vector<TipoUsuario> tipoUsuario = new Vector<TipoUsuario>();		
-        System.out.println("ddd");
 				
 
         /**Set de conecccion*/
