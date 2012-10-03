@@ -243,7 +243,7 @@ CREATE TABLE `t_viaje` (
   `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
   `idRuta` int(8) NOT NULL,
   `servicio` varchar(45) COLLATE armscii8_bin NOT NULL,
-  `idChofer` int(6) NOT NULL,
+  `dniChofer` int(8) DEFAULT NULL,
   `idVehiculo` int(6) NOT NULL,
   `idClasificacion` int(5) NOT NULL,
   `userInsert` int(6) DEFAULT NULL,
@@ -252,15 +252,14 @@ CREATE TABLE `t_viaje` (
   `fechaUpdate` date DEFAULT NULL,
   PRIMARY KEY (`idViaje`),
   KEY `fk_t_viaje_t_ruta1_idx` (`idRuta`),
-  KEY `fk_t_viaje_t_chofer1_idx` (`idChofer`),
   KEY `fk_t_viaje_t_vehiculo1_idx` (`idVehiculo`),
   KEY `fk_t_viaje_t_clasificacion1` (`idClasificacion`),
-  CONSTRAINT `fk_t_viaje_t_chofer1` FOREIGN KEY (`idChofer`) REFERENCES `t_chofer` (`idChofer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_t_viaje_t_clasificacion1` FOREIGN KEY (`idClasificacion`) REFERENCES `t_clasificacion` (`idClasificacion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_t_viaje_t_ruta1` FOREIGN KEY (`idRuta`) REFERENCES `t_ruta` (`idRuta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_t_viaje_t_vehiculo1` FOREIGN KEY (`idVehiculo`) REFERENCES `t_vehiculo` (`idVehiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 --
 -- Table structure for table `t_boleto`
