@@ -415,9 +415,9 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "Vehï¿½culo agregado con éxito.";
+					mensaje = "vehículo agregado con éxito.";
 				else
-					mensaje = "Error, no se pudo registrar el vehï¿½culo.";
+					mensaje = "Error, no se pudo registrar el vehículo.";
 
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos();
@@ -446,9 +446,9 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "Vehï¿½culo modificado con éxito.";
+					mensaje = "vehículo modificado con éxito.";
 				else
-					mensaje = "Error, no se pudo modificar el vehï¿½culo.";
+					mensaje = "Error, no se pudo modificar el vehículo.";
 
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos();
