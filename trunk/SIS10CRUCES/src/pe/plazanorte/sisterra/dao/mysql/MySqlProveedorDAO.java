@@ -217,9 +217,11 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "INSERT INTO t_vehiculo(marca, modelo, placa, numPiso, numAsientos, obs, asientosXPiso, asientosNoDisponibles, estado, idProveedor) "
+			String sql = "INSERT INTO t_vehiculo(marca,codVehiculo , modelo, placa, numPiso, numAsientos, obs, asientosXPiso, asientosNoDisponibles, estado, idProveedor) "
 					+ "VALUES ('"
 					+ vehiculo.getMarca()
+					+ "', '"
+					+vehiculo.getCodVehiculo()
 					+ "', '"
 					+ vehiculo.getModelo()
 					+ "', '"

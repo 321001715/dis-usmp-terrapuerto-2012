@@ -374,6 +374,7 @@ public class ServletProveedor extends HttpServlet {
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VEHICULO)) {
 			HttpSession session = request.getSession(true);
 			String marca = request.getParameter("marca");
+			String codigoVehiculo = request.getParameter("codVehiculo");
 			String modelo = request.getParameter("modelo");
 			String placa = request.getParameter("placa");
 			int numPiso = Integer.parseInt(request.getParameter("numPiso"));
@@ -388,6 +389,7 @@ public class ServletProveedor extends HttpServlet {
 			
 			try {
 				Vehiculo vehiculo = new Vehiculo();
+				vehiculo.setCodVehiculo(codigoVehiculo);
 				vehiculo.setMarca(marca);
 				vehiculo.setModelo(modelo);
 				vehiculo.setPlaca(placa);
