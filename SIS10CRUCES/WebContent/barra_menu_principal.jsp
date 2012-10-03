@@ -58,7 +58,7 @@ function redirect()
 <form action="Login" method="post" name="menPrin" target="presinf">
   	<%Usuario uu = (Usuario)session.getAttribute("BUsuario");%>
   	<%Perfil perfil = (Perfil)session.getAttribute("BPerfil");%>
-	<%Proveedor proveedor = (Proveedor)session.getAttribute("BProvedor");%>
+	<%Proveedor proveedor = (Proveedor)session.getAttribute("BProveedor");%>
  <table style="width:100%; height: 35">
  <tr>
   	<td height="50" width = "50%" align="left">

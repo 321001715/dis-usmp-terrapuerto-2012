@@ -648,6 +648,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmnt = con.createStatement();
 			String query = "SELECT * FROM t_proveedor WHERE idUsuario= " + idUsuario;
+			
 			ResultSet rs=stmnt.executeQuery(query);
 			
 			while (rs.next()) {
