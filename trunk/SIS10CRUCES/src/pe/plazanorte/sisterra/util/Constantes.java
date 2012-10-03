@@ -78,6 +78,9 @@ public class Constantes {
 	public static final String ACCION_CONSULTAR_USUARIO = "consultar_usuario";
 	
 	
+	public static final String ACCION_RESERVAR_BOLETO = "reservar_boleto";
+	public static final String ACCION_VENDER_BOLETO = "vender_boleto";
+	
 	
 	public static final String ACCION_CONSULTAR_RUTA = "consultar_ruta";
 	public static final String ACCION_LISTAR_RUTA = "listar_ruta";

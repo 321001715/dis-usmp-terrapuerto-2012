@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pe.plazanorte.sisterra.util.Constantes;
+
 /**
  * Servlet implementation class ServletBoletaje
  */
@@ -33,7 +35,18 @@ public class ServletBoletaje extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		String tipo = request.getParameter("tipo");
+		long codViaje = Long.parseLong(request.getParameter("codViaje"));
+		
+		//********************************INICIO RESERVAR BOLETO DE VIAJE**********************************//		
+		
+		if(tipo.equals(Constantes.ACCION_RESERVAR_BOLETO)){
+			
+			
+		}
+		
+		//********************************FIN RESERVAR BOLETO DE VIAJE**********************************//
 
 		//********************************INICIO VENDER BOLETO DE VIAJE**********************************//
 		
