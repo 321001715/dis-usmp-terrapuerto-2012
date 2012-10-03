@@ -172,10 +172,10 @@ public class ServletProveedor extends HttpServlet {
 				String destino = request.getParameter("destino");
 				if (destino == null) {
 					rd = getServletContext().getRequestDispatcher(
-							"/mantenerRuta.jsp");
+							"/mantener_ruta.jsp");
 				} else if (destino == "xxxx") {
 					rd = getServletContext().getRequestDispatcher(
-							"/mantenerRuta.jsp");
+							"/mantener_ruta.jsp");
 				} else if (Integer.parseInt(destino) == Constantes.ELIMINAR_PROVEEDOR) {
 					rd = getServletContext().getRequestDispatcher(
 							"/eliminar_proveedor.jsp");
