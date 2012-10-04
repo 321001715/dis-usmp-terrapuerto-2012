@@ -100,7 +100,26 @@
 				<td></td>
 				<td>ID Usuario:</td>
 				<td>
-					<input type="text" name="idUsuario">
+					<%
+
+ServiceSeguridad servicioSeguridad=new ServiceSeguridad();
+	
+Vector<Usuario> usuarios = servicioSeguridad.listarUsuariosProveedores();
+
+if(usuarios != null){
+%>
+					<select name="idUsuario">
+<%
+	for(int i=0; i<=usuarios.size()-1;i++){
+%>
+						<option value="<%=usuarios.get(i).getId()%>"><%=usuarios.get(i).getUsuario()%></option>
+<%
+	}
+%>
+					</select>
+<%}else{ %>
+				<b>No existen usuarios...</b>
+<%} %>	
 				</td>			
 			</tr>
 			<tr>
