@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.Request;
+
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Ruta;
@@ -48,7 +50,7 @@ public class ServletProveedor extends HttpServlet {
 		ServiceProveedor service = new ServiceProveedor();
 
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurrió un error.";
+		String mensaje = "Ocurriï¿½ un error.";
 
 		RequestDispatcher rd = null;
 
@@ -102,7 +104,7 @@ public class ServletProveedor extends HttpServlet {
 			 * ))); boolean respuesta = service.eliminarProveedor(proveedor);
 			 * if(respuesta){ request.setAttribute("proveedor", proveedor);
 			 * mensaje = "Proveedor deshabilitado."; }else {mensaje =
-			 * "Ocurrió un error."; } } catch (Exception e) {
+			 * "Ocurriï¿½ un error."; } } catch (Exception e) {
 			 * e.printStackTrace(); }
 			 * 
 			 * if(destino == Constantes.MODIFICAR_PROVEEDOR){ rd =
@@ -222,7 +224,7 @@ public class ServletProveedor extends HttpServlet {
 			
 		}else if (tipo.equalsIgnoreCase("listar_viaje")) {
 
-		long idViaje;
+	/*	long idViaje;
 		if (request.getParameter("codViaje").length() != 0)
 			idViaje = Long.parseLong(request.getParameter("codViaje"));
 		else
@@ -274,12 +276,15 @@ public class ServletProveedor extends HttpServlet {
 			viaje.setHorSalida(horSalida);
 			viaje.setHorLlegada(horLlegada);
 
-			Vector<Viaje> vec = null;
+			Vector<Viaje> vec = null;*/
 		try {
+			Vector<Viaje> viaje = new Vector<Viaje>();
 			HttpSession session = request.getSession(true);
-			Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
-			vec = service.buscarViaje(viaje,uu);
-			request.setAttribute("viaje", vec);
+			Proveedor proveedor = (Proveedor) session.getAttribute("BProveedor");
+			viaje = service.listarViaje(proveedor);
+			request.setAttribute("viaje", viaje);
+			rd = getServletContext().getRequestDispatcher(
+					"/mantener_viaje.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -302,7 +307,7 @@ public class ServletProveedor extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurrió un error.";
+		String mensaje = "Ocurriï¿½ un error.";
 
 		ServiceProveedor service = new ServiceProveedor();
 		ServiceSeguridad serviceUsuario = new ServiceSeguridad();
@@ -342,7 +347,7 @@ public class ServletProveedor extends HttpServlet {
 				}			
 
 				if (retorno)
-					mensaje = "Proveedor agregado con éxito.";
+					mensaje = "Proveedor agregado con ï¿½xito.";
 				else
 					mensaje = "Error, no se pudo registrar el proveedor.";
 
@@ -391,7 +396,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarProveedor(proveedor);
 
 				if (retorno)
-					mensaje = "Proveedor modificado con éxito.";
+					mensaje = "Proveedor modificado con ï¿½xito.";
 				else
 					mensaje = "Error, no se pudo modificar el proveedor.";
 
@@ -510,9 +515,9 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.agregarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "Vehículo agregado con éxito.";
+					mensaje = "Vehï¿½culo agregado con ï¿½xito.";
 				else
-					mensaje = "Error, no se pudo registrar el vehículo.";
+					mensaje = "Error, no se pudo registrar el vehï¿½culo.";
 				
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
@@ -545,9 +550,9 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarVehiculo(vehiculo);
 
 				if (retorno)
-					mensaje = "Vehículo modificado con éxito.";
+					mensaje = "Vehï¿½culo modificado con ï¿½xito.";
 				else
-					mensaje = "Error, no se pudo modificar el vehículo.";
+					mensaje = "Error, no se pudo modificar el vehï¿½culo.";
 
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
@@ -695,7 +700,7 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.modificarRuta(ruta);
 				
 				if (retorno)
-					mensaje = "Clasificacion modificado con éxito.";
+					mensaje = "Clasificacion modificado con ï¿½xito.";
 				else
 					mensaje = "Error, no se pudo modificar la clasificacion.";
 				

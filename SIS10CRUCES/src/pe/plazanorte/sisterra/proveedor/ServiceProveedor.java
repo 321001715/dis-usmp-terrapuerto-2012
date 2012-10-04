@@ -137,6 +137,11 @@ public class ServiceProveedor {
 		
 		return proveedorDao.buscarViajes(viaje,uu);
 	}
+	public Vector<Viaje> listarViaje(Proveedor uu){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		return proveedorDao.listarViajes(uu);
+	}
 	
 	public String[] decodificarFormato(String asientosNoDisponibles) {
 		String[] asientos;
