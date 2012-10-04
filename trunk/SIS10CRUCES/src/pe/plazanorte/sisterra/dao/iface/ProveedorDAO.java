@@ -32,5 +32,6 @@ public interface ProveedorDAO {
 	public Vector<Ruta> buscarRutas(Ruta ruta, Proveedor uu);
 	
 	public Vector<Viaje> buscarViajes(Viaje viaje, Proveedor uu);
+	public Vector<Viaje> listarViajes(Proveedor uu);
 	
 }

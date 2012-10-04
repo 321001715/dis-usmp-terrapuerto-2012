@@ -3,6 +3,10 @@ package pe.plazanorte.sisterra.dao.mysql;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
@@ -647,7 +651,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			ResultSet rs = stmt.executeQuery(query);
 
 			System.out.println("QUERY:" + query);
-
+			
 			while (rs.next()) {
 				viaje = new Viaje();
 
@@ -663,8 +667,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setServicio(rs.getString("servicio"));
 				viaje.setFecSalida(rs.getDate("fecSalida"));
 				viaje.setFecLlegada(rs.getDate("fecLlegada"));
-				viaje.setHorSalida(rs.getString("horSalida"));
-				viaje.setHorLlegada(rs.getString("horLlegada"));
+				
+				
+			
 				
 				vec.add(viaje);
 			}
@@ -673,6 +678,54 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			e.printStackTrace();
 		}
 		return vec;
+	}
+
+	@Override
+	public Vector<Viaje> listarViajes(Proveedor uu) {
+		Vector<Viaje> viajes = new Vector<Viaje>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			//String query = "SELECT * FROM t_viaje WHERE IDPROVEEDOR ="+ uu.getIdProveedor() + ";";
+			String query = "SELECT * FROM t_viaje ";
+			Viaje viaje = new Viaje();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				viaje = new Viaje();
+
+				viaje.setId(rs.getLong("idViaje"));
+				viaje.setCodViaje(rs.getLong("codViaje"));
+				viaje.setNomViaje(rs.getString("nomViaje"));
+				viaje.setFecLlegada(rs.getDate("fecLlegada"));
+				viaje.setFecSalida(rs.getDate("fecSalida"));
+				
+				viaje.setServicio(rs.getString("servicio"));
+				viaje.setPrecio(rs.getInt("precio"));
+				viaje.setEstado(rs.getString("estado"));
+				viaje.setIdRuta(rs.getInt("idRuta"));
+				viaje.setIdChofer(rs.getInt("idChofer"));
+				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
+				viaje.setIdClasificacion(rs.getInt("idClasificacion"));
+				
+				Date horaLlegadaDate = new Date(rs.getTime("horLlegada").getTime());;
+				Date horaSalidaDate = new Date(rs.getTime("horSalida").getTime());;
+				
+				DateFormat formatoHora = new SimpleDateFormat ("HH:mm");
+				String horaSalida = formatoHora.format(horaSalidaDate);
+				String horaLlegada = formatoHora.format(horaLlegadaDate);
+				
+						
+				viaje.setHorLlegada(horaSalida);
+				viaje.setHorSalida(horaLlegada);
+				
+				viajes.add(viaje);
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return viajes;
 	}
 	
 }
