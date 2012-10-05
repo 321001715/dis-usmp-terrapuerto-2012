@@ -21,6 +21,7 @@ public class Viaje {
 	private String estado;
 	private int idVehiculo;
 	private int idChofer;
+
 	
 
 	public int getIdVehiculo() {
@@ -91,8 +92,8 @@ public class Viaje {
 		return horLlegada;
 	}
 
-	public void setHorLlegada(String horLlegada) {
-		this.horLlegada = horLlegada;
+	public void setHorLlegada(String horaSalida) {
+		this.horLlegada = horaSalida;
 	}
 
 	public int getPrecio() {

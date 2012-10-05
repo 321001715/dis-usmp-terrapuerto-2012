@@ -18,6 +18,7 @@
    </h3>
 	<%
 	String mensaje = (String)request.getParameter("mensaje");
+	Vector<Viaje> viajes= (Vector<Viaje>)request.getAttribute("viajes");
 	%>
 	<%@include file="buscar_viaje_cliente.jsp" %>
 	
@@ -26,7 +27,10 @@
 		<font color="red"><%= mensaje%></font>
 		<br>
 	<%} %>	
+	<% if(viajes != null){ %>	
+	
 	<%@include file="listar_viaje_cliente.jsp" %>
+	<%} %>
 	<br><br><a href="index_ventas.jsp">
 			<img alt="" src="<%=request.getContextPath()%>/images/atras.jpg"> 
 		</a> Atrás X...

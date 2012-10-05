@@ -1,12 +1,17 @@
 package pe.plazanorte.sisterra.dao.mysql;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
+import java.util.Vector;
 
 import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Reserva;
+import pe.plazanorte.sisterra.entidades.Usuario;
+import pe.plazanorte.sisterra.entidades.Viaje;
 
 public class MySqlBoletajeDAO implements BoletajeDAO {
 
@@ -35,6 +40,120 @@ public class MySqlBoletajeDAO implements BoletajeDAO {
 	public boolean reservarBoleto(Boleto boleto) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Vector<Viaje> listarViajes() {
+
+return null;
+
+		
+	}
+
+	@Override
+	public Vector<Viaje> consultarViaje(String empresa,
+			String origen, String destino) {
+		Vector<Viaje> viajes = new Vector<Viaje>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_VIAJE ,T_RUTA WHERE ";
+			boolean flag = false;
+
+			int idproveedor;
+			if (empresa.length() != 0)
+				idproveedor = Integer.parseInt(empresa);
+			else
+				idproveedor = 0;
+
+			if (idproveedor != 0) {
+				query += "T_RUTA.idProveedor = " + idproveedor;
+						
+				flag = true;
+			}
+			
+			if (origen.length() != 0) {
+				if (flag)
+					query += " AND ";
+				query += "T_RUTA.origen='"+origen+"'";
+				flag = true;
+			}
+			if (destino.length() != 0) {
+				if (flag)
+					query += " AND ";
+				query += "T_RUTA.destino='"+destino+"'";
+			}
+			query += " AND T_VIAJE.idRuta=T_RUTA.idRuta ;";
+			System.out.println(query);
+			Viaje viaje = null;
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				viaje = new Viaje();
+				
+				viaje.setId(rs.getLong("idViaje"));
+				viaje.setCodViaje(rs.getLong("codViaje"));
+				viaje.setNomViaje(rs.getString("nomViaje"));
+				//viaje.setFecLlegada(rs.getDate("fecLlegada"));
+				//viaje.setFecSalida(rs.getDate("fecSalida"));
+				//viaje.setHorLlegada(rs.getDate("horLlegada").toString());
+				//viaje.setHorSalida(rs.getDate("horSalida").toString());
+				viaje.setPrecio(rs.getInt("precio"));
+				viaje.setEstado(rs.getString("estado"));
+				viaje.setIdRuta(rs.getLong("idRuta"));
+				viaje.setServicio(rs.getString("estado"));
+				viaje.setIdChofer(rs.getInt("idChofer"));
+				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
+			
+
+				viajes.add(viaje);
+			}
+			
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return viajes;
+	}
+
+	@Override
+	public Viaje consultarViajeCliente(int id) {
+		
+		Viaje viaje=null;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_VIAJE WHERE idViaje="+id+";";
+			
+			System.out.println(query);
+			
+			ResultSet rs = stmt.executeQuery(query);
+			
+			
+				viaje = new Viaje();
+				
+				viaje.setId(rs.getLong("idViaje"));
+				viaje.setCodViaje(rs.getLong("codViaje"));
+				viaje.setNomViaje(rs.getString("nomViaje"));
+				//viaje.setFecLlegada(rs.getDate("fecLlegada"));
+				//viaje.setFecSalida(rs.getDate("fecSalida"));
+				//viaje.setHorLlegada(rs.getDate("horLlegada").toString());
+				//viaje.setHorSalida(rs.getDate("horSalida").toString());
+				viaje.setPrecio(rs.getInt("precio"));
+				viaje.setEstado(rs.getString("estado"));
+				viaje.setIdRuta(rs.getLong("idRuta"));
+				viaje.setServicio(rs.getString("estado"));
+				viaje.setIdChofer(rs.getInt("idChofer"));
+				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
+			
+				System.out.println(viaje.getCodViaje());
+				
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return viaje;
 	}
 
 }

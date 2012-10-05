@@ -1,3 +1,5 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,6 +13,10 @@
 <script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 </head>
+<%
+	Viaje viaje=(Viaje)request.getAttribute("unviaje");
+	
+%>
 <body>
 <div class="ui-widget">
 <table style="width: 100%; height: 100%; position: relative;">
@@ -113,7 +119,7 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td width="150px">Código de Viaje: </td>
-					<td><input type="text" name="codViaje" disabled="disabled"></td>
+					<td><input type="text" name="codViaje" disabled="disabled" value="<%=viaje.getCodViaje() %>"></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -134,14 +140,14 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Costo S/.: </td>
-					<td><input type="text" name="costo" disabled="disabled"></td>
+					<td><input type="text" name="costo" disabled="disabled" value="<%=viaje.getPrecio() %>"></td>
 					<td>Duración Hrs.: </td>
 					<td><input type="text" name="duracion" disabled="disabled"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Servicio: </td>
-					<td colspan="3"><input type="text" name="servicio" size="73" disabled="disabled"></td>
+					<td colspan="3"><input type="text" name="servicio" size="73" disabled="disabled" value="<%=viaje.getServicio() %>"></td>
 				</tr>
 				</table>
 			</td>

@@ -13,7 +13,7 @@
 </head>
 <body>
 <%
-Vector<Viaje> viaje = (Vector<Viaje>)request.getAttribute("viaje");
+Vector<Viaje> viaje = (Vector<Viaje>)request.getAttribute("viajes");
 
 if(viaje.size() != 0){
 %> 
@@ -52,19 +52,20 @@ if(viaje.size() != 0){
 							</a>
 						</div> --%>
 						<div class="ui-state-default ui-corner-all ui-state-hover">
-							<a href="seleccionar_asiento.jsp">
+							<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_SELECCIONAR_ASIENTO %>&idViaje=<%=viaje.get(i).getId() %>">
 								<span class="ui-icon ui-icon-check"></span>
 							</a>
 						</div>
 			</td>	
 			<td align="center"></td>
+			<td align="center"><%=viaje.get(i).getNomViaje() %></td>
 			<td align="center"></td>
 			<td align="center"></td>
 			<td align="center"></td>
 			<td align="center"></td>
+			<td align="center"><%=viaje.get(i).getPrecio() %></td>
 			<td align="center"></td>
-			<td align="center"></td>
-			<td align="right"></td>
+			<td align="right"><%=viaje.get(i).getServicio() %></td>
 			
 <%} %>
 		</tbody>

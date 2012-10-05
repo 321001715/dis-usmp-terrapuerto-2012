@@ -36,4 +36,13 @@
     <servlet-name>servletSeguridad</servlet-name>
     <url-pattern>/ServletSeguridad</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>servletBoletaje</servlet-name>
+    <servlet-class>pe.plazanorte.sisterra.seguridad.ServletBoletaje</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletBoletaje</servlet-name>
+    <url-pattern>/ServletBoletaje</url-pattern>
+  </servlet-mapping>
 </web-app>
