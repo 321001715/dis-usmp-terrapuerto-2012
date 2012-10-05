@@ -28,25 +28,25 @@ $(document).ready(function(){
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
    </div>
 &nbsp;   
-	<form action="" method="post" name="buscar" onsubmit="validar()">
-		<input type="hidden" name="tipo" value="listar_viajes">
-		<input type="hidden" name="des" value="buscarViajes">
+	<form action="ServletBoletaje" method="post" name="buscar" onsubmit="validar()">
+		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_CONSULTAR_VIAJE %>">
+		
 		<table>
 			<tr>
 				<td width="20%"></td>
 				<td>Empresa: </td>
-				<td><input type="text" name=""></td>
+				<td><input type="text" name="empresa"></td>
 				
 				<td>Fecha de Salida: </td>
-				<td><input name="" id="a"></td>
+				<td><input name="fechasalida" id="a"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>Origen: </td>
-				<td><input type="text" name=""></td>
+				<td><input type="text" name="origen"></td>
 				
 				<td>Destino: </td>
-				<td><input type="text" name=""></td>
+				<td><input type="text" name="destino"></td>
 			</tr>
 			<tr>
 				<td colspan="5" align="right">

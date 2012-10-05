@@ -222,7 +222,7 @@ public class ServletProveedor extends HttpServlet {
 			// *****************************INICIO GESTIONAR
 			// VIAJE *****************************//
 			
-		}else if (tipo.equalsIgnoreCase("listar_viaje")) {
+		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
 
 	/*	long idViaje;
 		if (request.getParameter("codViaje").length() != 0)

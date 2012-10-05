@@ -57,16 +57,6 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td>Contraseña:</td>
-				<td><input type="text" name="txt_pass"></td>			
-			</tr>
-			<tr>
-				<td></td>
-				<td>Contraseña:</td>
-				<td><input type="text" name="txt_pass"></td>			
-			</tr>
-			<tr>
-				<td></td>
 				<td>Estado:</td>
 				<td>
 					<select name="estado">						
