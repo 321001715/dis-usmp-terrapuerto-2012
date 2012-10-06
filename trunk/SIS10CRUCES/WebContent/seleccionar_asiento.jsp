@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Asiento"%>
 <%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
@@ -21,6 +22,7 @@
 	Ruta ruta=(Ruta)request.getAttribute("unaruta");
 	
 	Vector<Asiento> asientos=(Vector<Asiento>)request.getAttribute("asientos");
+	String estado="";
 %>
 <body>
 <div class="ui-widget">
@@ -38,36 +40,51 @@
 							<table border="2" cellpadding="5" cellspacing="5" style="width: 300px; height: 300px;">
 							<!-- AQUI ESTARÍA EL FOR PARA CREAR LOS TD PARA PISO 1-->
 							<tr>
-								<% //for(int i=0;i<asientos.size();i++){ %>
-								<td align="center" <%if(asientos.get(0).getEstado().equals("DISPONIBLE")) %> bgcolor="blue">1</td>
-								<td align="center">2</td>
-								<td align="center">3</td>
-								<td align="center">4</td>
+								<% for(int i=0;i<4;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
+								
 							</tr>
 							
 							<tr>	
-								<td align="center">5</td>
-								<td align="center">6</td>
-								<td align="center">7</td>
-								<td align="center">8</td>
+								<% for(int i=4;i<8;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<tr>	
-								<td align="center">9</td>
-								<td align="center">10</td>
-								<td align="center">11</td>
-								<td align="center">12</td>
+								<% for(int i=8;i<12;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<tr>	
-								<td align="center">13</td>
-								<td align="center">14</td>
-								<td align="center">15</td>
-								<td align="center">16</td>
+								<% for(int i=12;i<16;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<tr>	
-								<td align="center">17</td>
-								<td align="center">18</td>
-								<td align="center">19</td>
-								<td align="center">20</td>
+								<% for(int i=16;i<20;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<!-- FIN DE FOR PARA PISO 1 -->
 							</table>
@@ -79,34 +96,49 @@
 							<table border="2" cellpadding="5" cellspacing="5" style="width: 300px; height: 300px;">
 							<!-- AQUI ESTARÍA EL FOR PARA CREAR LOS TD PARA PISO 2-->
 							<tr>	
-								<td align="center">21</td>
-								<td align="center">22</td>
-								<td align="center">23</td>
-								<td align="center">24</td>
+								<% for(int i=20;i<24;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<tr>	
-								<td align="center">25</td>
-								<td align="center">26</td>
-								<td align="center">27</td>
-								<td align="center">28</td>
+								<% for(int i=24;i<28;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<tr>	
-								<td align="center">29</td>
-								<td align="center">30</td>
-								<td align="center">31</td>
-								<td align="center">32</td>
+								<% for(int i=28;i<32;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<tr>	
-								<td align="center">33</td>
-								<td align="center">34</td>
-								<td align="center">35</td>
-								<td align="center">36</td>
+								<% for(int i=32;i<36;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<tr>	
-								<td align="center">37</td>
-								<td align="center">38</td>
-								<td align="center">39</td>
-								<td align="center">40</td>
+								<% for(int i=36;i<40;i++){ %>
+								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
+								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
+								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
+								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
+								<%} %>
 							</tr>
 							<!-- FIN DE FOR PARA PISO 2 -->
 							</table>
@@ -175,10 +207,10 @@
 					<td width="150px">Nº de Asiento: </td>
 					<td>
 						<select name="asientos">
-							<option>21</option>
-							<option>22</option>
-							<option>23</option>
-							<option>24</option>
+							<option></option>
+							<%for(int i=0;i<40;i++){ %>
+							<option><%=(i+1) %></option>
+							<%} %>
 						</select>
 					</td>
 					<td></td>
