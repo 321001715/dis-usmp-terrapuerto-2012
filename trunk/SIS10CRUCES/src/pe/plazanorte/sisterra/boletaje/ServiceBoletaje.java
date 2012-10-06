@@ -8,6 +8,7 @@ import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Reserva;
+import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Viaje;
 
 public class ServiceBoletaje {
@@ -34,9 +35,18 @@ public class ServiceBoletaje {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
 
-		Viaje unaviaje=new Viaje();
-		unaviaje = boletajeDao.consultarViajeCliente(id);
-		if(unaviaje != null) return unaviaje;
-		else return unaviaje;
+		Viaje unviaje=new Viaje();
+		unviaje = boletajeDao.consultarViajeCliente(id);
+		return unviaje;
 	}
+	public Ruta consultarRuta(long id){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		
+		Ruta unaruta=new Ruta();
+		
+		unaruta = boletajeDao.consultarRuta(id);
+		return unaruta;
 	}
+	
+}
