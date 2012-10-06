@@ -103,6 +103,14 @@ public class Constantes {
 	
 	public static final String VENDER_BOLETO = "vender_boleto";
 	
+	
+	public static final String ASIENTO_DISPONIBLE = "blue";
+	public static final String ASIENTO_VENDIDO = "red";
+	public static final String ASIENTO_NODISPONIBLE = "black";
+	public static final String ASIENTO_RESERVADO = "orange";
+	
+	
+	
 	public static final String ACCION_BUSQUEDA_REALIZADA= "realizado";
 	public static final String ACCION_BUSQUEDA_NO_REALIZADA= "norealizado";
 	

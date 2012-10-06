@@ -7,7 +7,14 @@ public class Asiento {
 	private int numasiento;
 	private int pisoasiento;
 	private String vigencia;
+	private String estado;
 	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public long getId() {
 		return id;
 	}

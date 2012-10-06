@@ -3,6 +3,7 @@ package pe.plazanorte.sisterra.dao.iface;
 import java.util.Date;
 import java.util.Vector;
 
+import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
@@ -16,4 +17,5 @@ public interface BoletajeDAO {
 	public Vector<Viaje> consultarViaje(String empresa, String origen, String destino);
 	public Viaje consultarViajeCliente(int id);
 	public Ruta consultarRuta(long id);
+	public Vector<Asiento> consultarAsientos(int id);
 }
