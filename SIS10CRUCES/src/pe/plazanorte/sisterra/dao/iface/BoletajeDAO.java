@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Reserva;
+import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Viaje;
 
 public interface BoletajeDAO {
@@ -14,4 +15,5 @@ public interface BoletajeDAO {
 	public Vector<Viaje> listarViajes();
 	public Vector<Viaje> consultarViaje(String empresa, String origen, String destino);
 	public Viaje consultarViajeCliente(int id);
+	public Ruta consultarRuta(long id);
 }

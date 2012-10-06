@@ -16,6 +16,7 @@
 <%
 	Viaje viaje=(Viaje)request.getAttribute("unviaje");
 	
+	Ruta ruta=(Ruta)request.getAttribute("unaruta");
 %>
 <body>
 <div class="ui-widget">
@@ -126,9 +127,9 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Origen: </td>
-					<td><input type="text" name="origen" disabled="disabled"></td>
+					<td><input type="text" name="origen" disabled="disabled" value="<%=ruta.getOrigen() %>"></td>
 					<td width="150px">Destino: </td>
-					<td><input type="text" name="destino" disabled="disabled"></td>
+					<td><input type="text" name="destino" disabled="disabled" value="<%=ruta.getDestino() %>"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
@@ -142,7 +143,7 @@
 					<td>Costo S/.: </td>
 					<td><input type="text" name="costo" disabled="disabled" value="<%=viaje.getPrecio() %>"></td>
 					<td>Duración Hrs.: </td>
-					<td><input type="text" name="duracion" disabled="disabled"></td>
+					<td><input type="text" name="duracion" disabled="disabled" value="<%=ruta.getDuracion() %>"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>

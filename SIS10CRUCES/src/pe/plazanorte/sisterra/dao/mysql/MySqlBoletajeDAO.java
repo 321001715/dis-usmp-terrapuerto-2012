@@ -10,6 +10,7 @@ import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Reserva;
+import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Viaje;
 
@@ -120,17 +121,17 @@ return null;
 	public Viaje consultarViajeCliente(int id) {
 		
 		Viaje viaje=null;
-		
+	
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_VIAJE WHERE idViaje="+id+";";
+			String query = "SELECT * FROM T_VIAJE WHERE idViaje='"+ id +"' ;";
 			
 			System.out.println(query);
 			
 			ResultSet rs = stmt.executeQuery(query);
 			
-			
+			if (rs.next()) {
 				viaje = new Viaje();
 				
 				viaje.setId(rs.getLong("idViaje"));
@@ -146,14 +147,48 @@ return null;
 				viaje.setServicio(rs.getString("estado"));
 				viaje.setIdChofer(rs.getInt("idChofer"));
 				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
-			
+			}
 				System.out.println(viaje.getCodViaje());
 				
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+
 		}
 		return viaje;
+	}
+
+	@Override
+	public Ruta consultarRuta(long id) {
+		
+		Ruta ruta=null;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_RUTA WHERE idRuta='"+ id +"' ;";
+			
+			System.out.println(query);
+			
+			ResultSet rs = stmt.executeQuery(query);
+			
+			if (rs.next()) {
+				ruta = new Ruta();
+
+				ruta.setOrigen(rs.getString("origen"));
+				ruta.setDestino(rs.getString("destino"));
+				ruta.setDuracion(rs.getInt("duracion"));
+				
+				
+			}		
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+
+		}
+		return ruta;
 	}
 
 }
