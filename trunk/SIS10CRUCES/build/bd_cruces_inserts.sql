@@ -8087,6 +8087,8 @@ values ('ANFITRION01', '123', 'ACTIVO', 'DNI', '70062424', 'KENY ANDERSON', 'GAR
 insert into `bd_cruces`.T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
 values ('PROVEEDOR01', '123', 'ACTIVO', 'DNI', '70062412', 'DAYBIT MIGUEL', 'MONTALBAN', 'IPANAQUE', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'PROVEEDOR'));
 insert into `bd_cruces`.T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
+values ('PROVEEDOR02', '123', 'ACTIVO', 'DNI', '70477244', 'OSCAR ANGEL', 'MORALES', 'CORDOVA', '151021', NULL, 'F', NULL, (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'PROVEEDOR'));
+insert into `bd_cruces`.T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
 values ('SOPORTE01', '123', 'ACTIVO', 'DNI', '70062380', 'MARIA', 'PALACIOS', 'GARCIA', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'SOPORTE'));
 insert into `bd_cruces`.T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombres, apePat, apeMat, idUbigeo, direccion, sexo, tel, idPerfil)
 values ('CLIENTE01', '123', 'ACTIVO', 'DNI', '70062371', 'HENRY', 'PENA', 'MORETO', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'CLIENTE'));
@@ -8095,35 +8097,35 @@ values ('COUNTER01', '123', 'ACTIVO', 'DNI', '70021561', 'VICTORIANO MOISES', 'G
 
 insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
 values ('00000000062', 'PROTRANSPORTE', 'P', 'Calle John Mendoza 999', '999', 'ACTIVO', (SELECT idUsuario FROM `bd_cruces`.T_USUARIO WHERE IDPERFIL = (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'PROVEEDOR')));
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20219080701', 'EMPRESA MUNICIPAL DE TRANSPORTES VICUS S', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20286529683', 'EMPRESA MUNICIPAL DE TRANSPORTES VILQUE', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20519792495', 'EMPRESA MUNICIPAL DE TRANSPORTES DE CAIRANI S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20357983313', 'EMP MUNICIPAL DE TRANSPORTES CCATCCA S.A', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20359673621', 'EMP DE TRANSPORTES MUNICIPAL AHUAC S.A.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20527501998', 'SERVICIO MUNICIPAL DE TRANSPORTE ANTA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20486288001', 'EMPRESA MUNICIPAL DE SERVICIOS MULTIPLES Y TRANSPORTES HUARISCA GRANDE SAC', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20486507242', 'EMPRESA DE TRANSPORTES MUNICIPAL EL MANTARO S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20503690561', 'ASOCIACION NACIONAL DE PENSIONISTAS DEL MINISTERIO DE TRANSPORTES COMUNICACIONES VIVIENDA Y CONSTRUC', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20380417465', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20131379944', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - OFICINA GENERAL ADM.', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20184974925', 'ASOCIACION DE TRABAJADORES DEL MINISTERIO DE TRANSPORTES Y COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20520011880', 'EMPRESA MUNICIPAL DE TRANSPORTES Y SERVICIOS DE PASAJEROS SAN FELIPE DE CARUMAS S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20486444577', 'EMPRESA DE TRANSPORTES MUNICIPAL CHAMBARA SAC.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('20486314100', 'EMPRESA MUNICIPAL DE TRANSPORTES MULTISERVICIOS HUACHOCOLPA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO');
-insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado)
-values ('00000000481', 'INSTITUTO METROPOLITANO PROTRANSPORTE DE LIMA', 'INSTITUTO', 'Calle John Mendoza 999', '999', 'ACTIVO');
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20219080701', 'EMPRESA MUNICIPAL DE TRANSPORTES VICUS S', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20286529683', 'EMPRESA MUNICIPAL DE TRANSPORTES VILQUE', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20519792495', 'EMPRESA MUNICIPAL DE TRANSPORTES DE CAIRANI S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20357983313', 'EMP MUNICIPAL DE TRANSPORTES CCATCCA S.A', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20359673621', 'EMP DE TRANSPORTES MUNICIPAL AHUAC S.A.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20527501998', 'SERVICIO MUNICIPAL DE TRANSPORTE ANTA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20486288001', 'EMPRESA MUNICIPAL DE SERVICIOS MULTIPLES Y TRANSPORTES HUARISCA GRANDE SAC', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20486507242', 'EMPRESA DE TRANSPORTES MUNICIPAL EL MANTARO S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20503690561', 'ASOCIACION NACIONAL DE PENSIONISTAS DEL MINISTERIO DE TRANSPORTES COMUNICACIONES VIVIENDA Y CONSTRUC', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20380417465', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20131379944', 'MINISTERIO DE TRANSPORTES Y COMUNICACIONES - OFICINA GENERAL ADM.', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20184974925', 'ASOCIACION DE TRABAJADORES DEL MINISTERIO DE TRANSPORTES Y COMUNICACIONES', 'MINIS', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20520011880', 'EMPRESA MUNICIPAL DE TRANSPORTES Y SERVICIOS DE PASAJEROS SAN FELIPE DE CARUMAS S.R.L.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20486444577', 'EMPRESA DE TRANSPORTES MUNICIPAL CHAMBARA SAC.', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('20486314100', 'EMPRESA MUNICIPAL DE TRANSPORTES MULTISERVICIOS HUACHOCOLPA SOCIEDAD ANONIMA CERRADA', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
+insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
+values ('00000000481', 'INSTITUTO METROPOLITANO PROTRANSPORTE DE LIMA', 'INSTITUTO', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
