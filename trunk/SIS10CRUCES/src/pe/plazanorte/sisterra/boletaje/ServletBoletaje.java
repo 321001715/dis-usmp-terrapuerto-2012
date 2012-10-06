@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Proveedor;
@@ -53,12 +54,15 @@ public class ServletBoletaje extends HttpServlet {
 			int id= Integer.parseInt(request.getParameter("idViaje"));
 			Viaje unviaje=new Viaje();
 			Ruta unaruta= new Ruta();
+			Vector<Asiento> asientos=new Vector<Asiento>();
 			System.out.print("hasta aqui");
 			try {
 				
 				unviaje=service.consultarViajeCliente(id);
 				
 				unaruta=service.consultarRuta(unviaje.getIdRuta());
+				
+				asientos=service.consultarAsientos(unviaje.getIdVehiculo());
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -67,6 +71,7 @@ public class ServletBoletaje extends HttpServlet {
 
 			request.setAttribute("unviaje", unviaje);
 			request.setAttribute("unaruta", unaruta);
+			request.setAttribute("asientos", asientos);
 			rd = getServletContext().getRequestDispatcher("/seleccionar_asiento.jsp");
 
 		}

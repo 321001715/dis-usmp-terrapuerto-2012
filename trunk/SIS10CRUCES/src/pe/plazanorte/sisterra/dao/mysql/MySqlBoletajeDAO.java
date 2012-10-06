@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
+import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
@@ -147,6 +148,7 @@ return null;
 				viaje.setServicio(rs.getString("estado"));
 				viaje.setIdChofer(rs.getInt("idChofer"));
 				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
+				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
 			}
 				System.out.println(viaje.getCodViaje());
 				
@@ -189,6 +191,37 @@ return null;
 
 		}
 		return ruta;
+	}
+
+	@Override
+	public Vector<Asiento> consultarAsientos(int id) {
+		Vector<Asiento> vecasiento = new Vector<Asiento>();
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_ASIENTO WHERE idVehiculo="+ id +";";
+			System.out.println(query);
+			ResultSet rs = stmt.executeQuery(query);
+			Asiento asiento = null;
+			while (rs.next()) {
+				asiento = new Asiento();
+				
+				asiento.setId(rs.getInt("idAsiento"));
+				asiento.setNumasiento(rs.getInt("numero"));
+				asiento.setEstado(rs.getString("estado"));
+				asiento.setIdveh(rs.getInt("idVehiculo"));
+				
+
+				vecasiento.add(asiento);
+			}
+
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}	finally {
+
+		}
+		return vecasiento;
 	}
 
 }

@@ -1,3 +1,5 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Asiento"%>
+<%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -17,6 +19,8 @@
 	Viaje viaje=(Viaje)request.getAttribute("unviaje");
 	
 	Ruta ruta=(Ruta)request.getAttribute("unaruta");
+	
+	Vector<Asiento> asientos=(Vector<Asiento>)request.getAttribute("asientos");
 %>
 <body>
 <div class="ui-widget">
@@ -33,12 +37,14 @@
 								<font style="font-family: 'Trebuchet MS'; font-size: medium;"><b>PISO 1</b></font>
 							<table border="2" cellpadding="5" cellspacing="5" style="width: 300px; height: 300px;">
 							<!-- AQUI ESTARÍA EL FOR PARA CREAR LOS TD PARA PISO 1-->
-							<tr>	
-								<td align="center">1</td>
+							<tr>
+								<% //for(int i=0;i<asientos.size();i++){ %>
+								<td align="center" <%if(asientos.get(0).getEstado().equals("DISPONIBLE")) %> bgcolor="blue">1</td>
 								<td align="center">2</td>
 								<td align="center">3</td>
 								<td align="center">4</td>
 							</tr>
+							
 							<tr>	
 								<td align="center">5</td>
 								<td align="center">6</td>

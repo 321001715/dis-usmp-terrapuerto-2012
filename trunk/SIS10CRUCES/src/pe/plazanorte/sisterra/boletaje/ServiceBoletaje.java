@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
+import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Reserva;
@@ -47,6 +48,17 @@ public class ServiceBoletaje {
 		
 		unaruta = boletajeDao.consultarRuta(id);
 		return unaruta;
+	}
+	public Vector<Asiento> consultarAsientos(int idVehiculo){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		Vector<Asiento> asientos=null;
+		try {
+			asientos=boletajeDao.consultarAsientos(idVehiculo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return asientos;
 	}
 	
 }
