@@ -9,7 +9,7 @@
 </head>
 <body>
 <form action="ServletSeguridad" name="recuperar" method="post" onsubmit="return validar()">
-	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_RECUPERAR_CONTRASEÑA%>">
+	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_RECUPERAR_CONTRASENA%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL%>">
 <table style="width: 100%; height: 100%; background-color: #F8F8F8">
 <tr>
