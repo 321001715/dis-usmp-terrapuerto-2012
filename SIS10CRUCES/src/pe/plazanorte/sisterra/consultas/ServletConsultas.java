@@ -33,7 +33,15 @@ public class ServletConsultas extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		String destino = request.getParameter("destino");
+		String tipo = request.getParameter("tipo");
+		
+		//***********************************INICIO CONSULTAR VIAJE***********************************//
+		
+		
+		
+		//***********************************FIN CONSULTAR VIAJE***********************************//
 	}
 
 }
