@@ -300,7 +300,7 @@ public class ServletProveedor extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurri� un error.";
+		String mensaje = "Ocurrio un error.";
 
 		ServiceProveedor service = new ServiceProveedor();
 		ServiceSeguridad serviceUsuario = new ServiceSeguridad();
@@ -339,7 +339,7 @@ public class ServletProveedor extends HttpServlet {
 				}			
 
 				if (retorno)
-					mensaje = "Proveedor agregado con �xito.";
+					mensaje = "Proveedor agregado con exito.";
 				else
 					mensaje = "Error, no se pudo registrar el proveedor.";
 
@@ -744,11 +744,38 @@ public class ServletProveedor extends HttpServlet {
 
 		}
 		
-		request.setAttribute("mensaje", mensaje);
-		rd.forward(request, response);
-	}
 		// *****************************FIN GESTIONAR RUTA*****************************//
 		
+		//******************************INICIO GESTIONAR VIAJE******************************//
+		
+		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VIAJE)){			
+			
+			
+			
+			try {
+				
+				Viaje viaje = new Viaje();
+				boolean retorno = service.registrarViaje(viaje);
+				
+				if (retorno)
+					mensaje = "Proveedor agregado con exito.";
+				else
+					mensaje = "Error, no se pudo registrar el proveedor.";			
+
+				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		//******************************FIN GESTIONAR VIAJE******************************//
+		
+		request.setAttribute("mensaje", mensaje);
+		rd.forward(request, response);
+	}	
+	
 	public String formatoAsientosNoDisponibles(String[] asientosNoDisponibles) {
 		String AsientosNoDisponiblesConFormato = "";
 		for (int i = 0; i < asientosNoDisponibles.length; i++) {
