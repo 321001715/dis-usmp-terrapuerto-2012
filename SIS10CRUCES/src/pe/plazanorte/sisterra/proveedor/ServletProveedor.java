@@ -54,8 +54,7 @@ public class ServletProveedor extends HttpServlet {
 
 		RequestDispatcher rd = null;
 
-		// *****************************INICIO MANTENER
-		// PROVEEDOR*****************************//
+		// *****************************INICIO MANTENER PROVEEDOR*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)) {
 
@@ -113,11 +112,9 @@ public class ServletProveedor extends HttpServlet {
 			 */
 		}
 
-		// *****************************FIN MANTENER
-		// PROVEEDOR*****************************//
+		// *****************************FIN MANTENER PROVEEDOR*****************************//
 
-		// *****************************INICIO GESTIONAR
-		// VEHICULO*****************************//
+		// *****************************INICIO GESTIONAR VEHICULO*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VEHICULO)) {
 
@@ -164,11 +161,9 @@ public class ServletProveedor extends HttpServlet {
 
 		}
 
-		// *****************************FIN GESTIONAR
-		// VEHICULO*****************************//
+		// *****************************FIN GESTIONAR VEHICULO*****************************//
 
-		// ****************************INICIO GESTIONAR
-		// RUTA*****************************//
+		// ****************************INICIO GESTIONAR RUTA*****************************//
 
 		if (tipo.equalsIgnoreCase("listar_ruta")) {
 
@@ -216,11 +211,9 @@ public class ServletProveedor extends HttpServlet {
 
 			}
 			
-			// ****************************FIN GESTIONAR
-			// RUTA*****************************//
+			// ****************************FIN GESTIONAR RUTA*****************************//
 			
-			// *****************************INICIO GESTIONAR
-			// VIAJE *****************************//
+			// *****************************INICIO GESTIONAR VIAJE *****************************//
 			
 		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
 
@@ -314,8 +307,7 @@ public class ServletProveedor extends HttpServlet {
 
 		RequestDispatcher rd = null;
 
-		// *****************************INICIO MANTENER
-		// PROVEEDOR*****************************//
+		// *****************************INICIO MANTENER PROVEEDOR*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_PROVEEDOR)) {
 
@@ -475,11 +467,9 @@ public class ServletProveedor extends HttpServlet {
 			}
 		}
 
-		// *****************************FIN MANTENER
-		// PROVEEDOR*****************************//
+		// *****************************FIN MANTENER PROVEEDOR*****************************//
 
-		// *****************************INICIO GESTIONAR
-		// VEHICULO*****************************//
+		// *****************************INICIO GESTIONAR VEHICULO*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VEHICULO)) {
 			HttpSession session = request.getSession(true);
@@ -636,11 +626,9 @@ public class ServletProveedor extends HttpServlet {
 			}
 		}
 
-		// *****************************FIN GESTIONAR
-		// VEHICULO*****************************//
+		// *****************************FIN GESTIONAR VEHICULO*****************************//
 
-		// *****************************INICIO GESTIONAR
-		// RUTA*****************************//
+		// *****************************INICIO GESTIONAR RUTA*****************************//
 
 		if (tipo.equalsIgnoreCase("registrarRuta")) {
 
@@ -759,8 +747,7 @@ public class ServletProveedor extends HttpServlet {
 		request.setAttribute("mensaje", mensaje);
 		rd.forward(request, response);
 	}
-		// *****************************FIN GESTIONAR
-		// RUTA*****************************//
+		// *****************************FIN GESTIONAR RUTA*****************************//
 		
 	public String formatoAsientosNoDisponibles(String[] asientosNoDisponibles) {
 		String AsientosNoDisponiblesConFormato = "";
