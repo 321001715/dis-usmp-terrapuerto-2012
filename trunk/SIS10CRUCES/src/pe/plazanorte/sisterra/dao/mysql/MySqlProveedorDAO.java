@@ -20,8 +20,7 @@ import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlProveedorDAO implements ProveedorDAO {
 
-	// **************************INICIO MANTENER
-	// PROVEEDOR******************************//
+	// **************************INICIO MANTENER PROVEEDOR******************************//
 
 	@Override
 	public boolean registrarProveedor(Proveedor proveedor) {
@@ -417,11 +416,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return vehiculos;
 	}
 
-	// **************************FIN GESTIONAR
-	// VEHICULO******************************//
+	// **************************FIN GESTIONAR VEHICULO******************************//
 
-	// **************************INICIO GESTIONAR
-	// RUTA******************************//
+	// **************************INICIO GESTIONAR RUTA******************************//
 
 	@Override
 	public boolean registrarRuta(Ruta ruta, Proveedor uu) {
@@ -601,11 +598,14 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return vec;
 	}
 
-	// **************************FIN GESTIONAR
-	// RUTA******************************//
+	// **************************FIN GESTIONAR RUTA******************************//
 	
-	// **************************INICIO GESTIONAR
-	// VIAJE******************************//
+	// **************************INICIO GESTIONAR VIAJE******************************//
+	
+	@Override
+	public boolean registrarViaje(Viaje viaje){
+		return false;
+	}
 
 
 	@Override
@@ -668,9 +668,6 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setFecSalida(rs.getDate("fecSalida"));
 				viaje.setFecLlegada(rs.getDate("fecLlegada"));
 				
-				
-			
-				
 				vec.add(viaje);
 			}
 			con.close();
@@ -727,5 +724,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		}
 		return viajes;
 	}
+	
+	// **************************FIN GESTIONAR VIAJE******************************//
 	
 }

@@ -154,5 +154,18 @@ public class ServiceProveedor {
 		System.out.println("FIN - DECODIFICADO");
 		return asientos;
 	}
+	
+	//*************************FIN GESTIONAR RUTA******************************//
+	
+	//*************************INICIO GESTIONAR VIAJE******************************//
+
+	public boolean registrarViaje(Viaje viaje) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.registrarViaje(viaje);		
+	}
+	
+	//*************************FIN GESTIONAR VIAJE******************************//
 
 }
