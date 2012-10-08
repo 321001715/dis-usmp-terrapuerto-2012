@@ -39,11 +39,23 @@
 		</tr>	
 		<tr>
 			<td>Ruta asociada</td>
-			<td><input type="text" name="ruta"></td>
+			<td><input type="text" name="idRuta"></td>
 		</tr>	
 		<tr>
 			<td>Nombre de servicio</td>
 			<td><input type="text" name="servicio"></td>
+		</tr>
+		<tr>
+			<td>Veh&iacute;culo</td>
+			<td><input type="text" name="idVehiculo"></td>
+		</tr>		
+		<tr>
+			<td>Chofer</td>
+			<td><input type="text" name="idChofer"></td>
+		</tr>
+		<tr>
+			<td>Clasificaci&oacute;n</td>
+			<td><input type="text" name="idClasificacion"></td>
 		</tr>
 		<tr>
 			<td>Estado</td>

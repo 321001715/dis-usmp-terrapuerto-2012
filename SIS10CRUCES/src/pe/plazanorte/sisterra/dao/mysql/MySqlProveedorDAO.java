@@ -683,8 +683,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
 				viaje.setDniChofer(rs.getInt("dniChofer"));
 				viaje.setServicio(rs.getString("servicio"));
-				viaje.setFecSalida(rs.getDate("fecSalida"));
-				viaje.setFecLlegada(rs.getDate("fecLlegada"));
+				viaje.setFecSalida(rs.getString("fecSalida"));
+				viaje.setFecLlegada(rs.getString("fecLlegada"));
 				
 				vec.add(viaje);
 			}
@@ -712,8 +712,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setId(rs.getLong("idViaje"));
 				viaje.setCodViaje(rs.getLong("codViaje"));
 				viaje.setNomViaje(rs.getString("nomViaje"));
-				viaje.setFecLlegada(rs.getDate("fecLlegada"));
-				viaje.setFecSalida(rs.getDate("fecSalida"));
+				viaje.setFecLlegada(rs.getString("fecLlegada"));
+				viaje.setFecSalida(rs.getString("fecSalida"));
 				
 				viaje.setServicio(rs.getString("servicio"));
 				viaje.setPrecio(rs.getInt("precio"));
