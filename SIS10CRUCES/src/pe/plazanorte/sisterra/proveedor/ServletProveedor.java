@@ -53,7 +53,7 @@ public class ServletProveedor extends HttpServlet {
 
 		String tipo = request.getParameter("tipo");
 		String mensaje = "Ocurriï¿½ un error.";
-
+		
 		RequestDispatcher rd = null;
 
 		// *****************************INICIO MANTENER PROVEEDOR*****************************//
@@ -291,7 +291,7 @@ public class ServletProveedor extends HttpServlet {
 	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_REGISTRO)){
 		ServiceProveedor serviceProveedor = new ServiceProveedor();
 		ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
-		
+		String destino = request.getParameter("destino");
 		Proveedor proveedor = new Proveedor();
 		proveedor.setIdProveedor(24); //INGRESANDO ID DE PROVEEDOR QUE DEBERÍA SER DE LA SESIÓN
 		try {
@@ -304,7 +304,8 @@ public class ServletProveedor extends HttpServlet {
 			request.setAttribute("listaVehiculo", listaVehiculo);
 			request.setAttribute("listaClasificaciones", listaClasificaciones);
 			
-			rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
+			if(destino.equalsIgnoreCase(Constantes.REGISTRAR_VIAJE));
+				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

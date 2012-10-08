@@ -116,5 +116,6 @@ public class Constantes {
 	
 	public static final String ACCION_PREPARAR_REGISTRO = "preparar_registro";
 	
+	public static final String REGISTRAR_VIAJE = "registrar_viaje";
 	
 }
