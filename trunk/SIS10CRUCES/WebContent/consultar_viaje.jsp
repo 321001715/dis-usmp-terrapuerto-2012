@@ -21,7 +21,9 @@
 	Vector<Viaje> viajes= (Vector<Viaje>)request.getAttribute("viajes");
 	%>
 	<%@include file="buscar_viaje_cliente.jsp" %>
-	
+	<br><a href="ServletProveedor?tipo=<%=Constantes.ACCION_REGISTRAR_PROVEEDOR%>&destino=<%=Constantes.REGISTRAR_VIAJE %>">
+			<img alt="" src="<%=request.getContextPath()%>/images/adicionar.png">
+		</a>	
 	<br><hr><br>
 	<% if(mensaje != null){ %>	
 		<font color="red"><%= mensaje%></font>
