@@ -16,6 +16,7 @@ import pe.plazanorte.sisterra.entidades.Clasificacion;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
+import pe.plazanorte.sisterra.entidades.Viaje;
 import pe.plazanorte.sisterra.proveedor.ServiceProveedor;
 import pe.plazanorte.sisterra.util.Constantes;
 
@@ -51,10 +52,24 @@ public class ServletConsultas extends HttpServlet {
 		
 		String destino = request.getParameter("destino");
 		String tipo = request.getParameter("tipo");
-		
+		RequestDispatcher rd = null;
+		ServiceConsultas service = new ServiceConsultas();
 		//***********************************INICIO CONSULTAR VIAJE***********************************//
 		
 		if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VIAJE)) {
+			Viaje viaje = new Viaje();
+			
+			try {
+				int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+				viaje = service.consultarViaje(idViaje);
+				request.setAttribute("viaje", viaje);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			if (destino == Constantes.MODIFICAR_VIAJE) {
+				rd = getServletContext().getRequestDispatcher("/modificar_viaje.jsp");
+			}	
 			
 		}
 		

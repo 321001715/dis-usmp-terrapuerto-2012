@@ -46,7 +46,7 @@ if(viaje.size() != 0){
 %>
 
 		<tr>
-			<td align="center"><%=viaje.get(i).getCodViaje() %></td>
+			<td align="center"><%=viaje.get(i).getId() %></td>
 			<td align="right"><%=viaje.get(i).getFecSalida() %></td>
 			<td align="right"><%=viaje.get(i).getHorSalida() %></td>
 			<td align="right"><%=viaje.get(i).getFecLlegada()%></td>
