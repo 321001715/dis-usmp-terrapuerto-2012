@@ -604,6 +604,24 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	
 	@Override
 	public boolean registrarViaje(Viaje viaje){
+		int filas_afectadas = 0;
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+
+			String sql = "INSERT INTO T_VIAJE(nomViaje, fecSalida, fecLlegada, horSalida, horLlegada, precio, idRuta, servicio, idChofer, idVehiculo, idClasificacion, estado) "
+						+"VALUES ("+viaje.getNomViaje()+", "+viaje.getFecSalida()+", "+viaje.getFecLlegada()+", "+viaje.getHorSalida()+", "+viaje.getHorLlegada()+", "+viaje.getPrecio()+", "+viaje.getIdRuta()+", "+viaje.getServicio()+", "+viaje.getIdChofer()+", "+viaje.getIdVehiculo()+", "+viaje.getIdClasificacion()+", "+Constantes.ESTADO_ACTIVO+")";
+
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (filas_afectadas == 1)
+			return true;
+
 		return false;
 	}
 

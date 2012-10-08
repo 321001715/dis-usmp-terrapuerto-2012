@@ -11,42 +11,46 @@
 
 <h2>Registrar viaje</h2>
 
-<form>
+<form method="post" action="ServletProveedor">
 	<table>
 		<tr>
-			<td>Nombre de la Ruta nueva</td>
+			<td>Nombre del Viaje nuevo</td>
 			<td><input type="text" name="nombre"></td>
 		</tr>	
 		<tr>
-			<td>Origen</td>
-			<td><input type="text" name="origen"></td>
+			<td>Fecha de salida</td>
+			<td><input type="text" name="fecSalida"></td>
 		</tr>	
 		<tr>
-			<td>Destino</td>
-			<td><input type="text" name="destino"></td>
+			<td>Fecha de llegada</td>
+			<td><input type="text" name="fecLlegada"></td>
 		</tr>	
 		<tr>
-			<td>Distancia (km)</td>
-			<td><input type="text" name="distancia"></td>
+			<td>Hora de salida</td>
+			<td><input type="text" name="horSalida"></td>
 		</tr>	
 		<tr>
-			<td>Duración aproximada</td>
-			<td><input type="text" name="duracion"></td>
+			<td>Hora de llegada</td>
+			<td><input type="text" name="horLegada"></td>
 		</tr>	
 		<tr>
-			<td>Proveedor</td>
-			<td><input type="text" name="idProveedor"></td>
+			<td>Precio</td>
+			<td><input type="text" name="precio"></td>
 		</tr>	
 		<tr>
-			<td>Ubigeo</td>
-			<td><input type="text" name="idUbigeo"></td>
+			<td>Ruta asociada</td>
+			<td><input type="text" name="ruta"></td>
 		</tr>	
+		<tr>
+			<td>Nombre de servicio</td>
+			<td><input type="text" name="servicio"></td>
+		</tr>
 		<tr>
 			<td>Estado</td>
 			<td><input type="text" name="estado" value="<%=Constantes.ESTADO_ACTIVO %>" readonly="readonly"></td>
 		</tr>	
 		<tr>
-			<td><input type="submit" value="Registrar Ruta"></td>
+			<td><input type="submit" value="Registrar Viaje"></td>
 			<td><input type="reset" value="Limpiar campos"></td>			
 		</tr>
 	</table>
