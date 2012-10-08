@@ -17,6 +17,7 @@
    	<font style="font-family: monospace; font-size: x-large;">Gestión de Viajes</font>
    </h3>
 	<%
+	System.out.print("tata");
 	String mensaje = (String)request.getParameter("mensaje");
 	%>
 	<%@include file="buscar_viaje.jsp" %>
