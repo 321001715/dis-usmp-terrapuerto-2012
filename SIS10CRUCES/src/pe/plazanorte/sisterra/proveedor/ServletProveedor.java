@@ -310,7 +310,12 @@ public class ServletProveedor extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
-	}		
+	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VIAJE)) {
+		String destino = request.getParameter("destino");
+		
+		if(destino.equalsIgnoreCase(Constantes.MODIFICAR_VIAJE))
+			rd = getServletContext().getRequestDispatcher("/registrar_viaje.jsp");
+	}
 	
 		request.setAttribute("mensaje", mensaje);
 		rd.forward(request, response);
@@ -817,6 +822,8 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VIAJE)) {
 			
 		}
 		
