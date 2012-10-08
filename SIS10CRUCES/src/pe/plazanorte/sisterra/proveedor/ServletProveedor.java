@@ -288,7 +288,7 @@ public class ServletProveedor extends HttpServlet {
 				"/mantener_viaje.jsp");
 		}
 		
-	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_REGISTRO)){
+	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_REGISTRO_VIAJE)){
 		ServiceProveedor serviceProveedor = new ServiceProveedor();
 		ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
 		String destino = request.getParameter("destino");

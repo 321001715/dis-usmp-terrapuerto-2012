@@ -114,7 +114,7 @@ public class Constantes {
 	public static final String ACCION_BUSQUEDA_REALIZADA= "realizado";
 	public static final String ACCION_BUSQUEDA_NO_REALIZADA= "norealizado";
 	
-	public static final String ACCION_PREPARAR_REGISTRO = "preparar_registro";
+	public static final String ACCION_PREPARAR_REGISTRO_VIAJE = "preparar_registro";
 	
 	public static final String REGISTRAR_VIAJE = "registrar_viaje";
 	
