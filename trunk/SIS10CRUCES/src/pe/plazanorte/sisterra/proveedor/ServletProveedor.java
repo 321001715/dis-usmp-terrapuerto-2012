@@ -750,12 +750,21 @@ public class ServletProveedor extends HttpServlet {
 		
 		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VIAJE)){			
 			
-			
+			String nombre = request.getParameter("nombre");
+			String fecSalida = request.getParameter("fecSalida");
+			String fecLlegada = request.getParameter("fecLlegada");
+			String horSalida = request.getParameter("horSalida");
+			String horLegada = request.getParameter("horLegada");
+			String precio = request.getParameter("precio");
+			String ruta = request.getParameter("ruta");
+			String servicio = request.getParameter("servicio");
 			
 			try {
 				
 				Viaje viaje = new Viaje();
-				boolean retorno = service.registrarViaje(viaje);
+				viaje.setNomViaje(nombre);			
+				
+				boolean retorno = service.registrarViaje(viaje);				
 				
 				if (retorno)
 					mensaje = "Proveedor agregado con exito.";
