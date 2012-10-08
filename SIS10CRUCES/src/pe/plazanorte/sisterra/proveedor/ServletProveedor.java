@@ -772,7 +772,7 @@ public class ServletProveedor extends HttpServlet {
 		
 		//******************************INICIO GESTIONAR VIAJE******************************//
 		
-		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VIAJE)){			
+		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VIAJE)) {			
 			
 			String nombre = request.getParameter("nombre");
 			String fecSalida = request.getParameter("fecSalida");
@@ -807,8 +807,12 @@ public class ServletProveedor extends HttpServlet {
 					mensaje = "Viaje agregado con exito.";
 				else
 					mensaje = "Error, no se pudo registrar el viaje.";			
-
-				rd = getServletContext().getRequestDispatcher("/ServletProveedor?tipo=listar_viaje");
+				
+				Proveedor proveedor = new Proveedor();
+				proveedor.setIdProveedor(24);
+				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+				request.setAttribute("viaje", listaViajes);
+				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
