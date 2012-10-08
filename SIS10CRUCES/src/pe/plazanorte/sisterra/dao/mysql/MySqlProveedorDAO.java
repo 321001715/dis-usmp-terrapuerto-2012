@@ -611,7 +611,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 
 			String sql = "INSERT INTO T_VIAJE(nomViaje, fecSalida, fecLlegada, horSalida, horLlegada, precio, idRuta, servicio, idChofer, idVehiculo, idClasificacion, estado) "
-						+"VALUES ("+viaje.getNomViaje()+", "+viaje.getFecSalida()+", "+viaje.getFecLlegada()+", "+viaje.getHorSalida()+", "+viaje.getHorLlegada()+", "+viaje.getPrecio()+", "+viaje.getIdRuta()+", "+viaje.getServicio()+", "+viaje.getIdChofer()+", "+viaje.getIdVehiculo()+", "+viaje.getIdClasificacion()+", "+Constantes.ESTADO_ACTIVO+")";
+						+"VALUES ('"+viaje.getNomViaje()+"', '"+viaje.getFecSalida()+"', '"+viaje.getFecLlegada()+"', '"+viaje.getHorSalida()+"', '"+viaje.getHorLlegada()+"', "+viaje.getPrecio()+", "+viaje.getIdRuta()+", '"+viaje.getServicio()+"', "+viaje.getIdChofer()+", "+viaje.getIdVehiculo()+", "+viaje.getIdClasificacion()+", '"+Constantes.ESTADO_ACTIVO+"')";
 
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
