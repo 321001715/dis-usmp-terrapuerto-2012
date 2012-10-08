@@ -610,7 +610,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "INSERT INTO T_VIAJE(nomViaje, fecSalida, fecLlegada, horSalida, horLlegada, precio, idRuta, servicio, idChofer, idVehiculo, idClasificacion, estado) "
+			String sql = "INSERT INTO T_VIAJE(nomViaje, fecSalida, fecLlegada, horSalida, horLlegada, precio, idRuta, servicio, dniChofer, idVehiculo, idClasificacion, estado) "
 						+"VALUES ('"+viaje.getNomViaje()+"', '"+viaje.getFecSalida()+"', '"+viaje.getFecLlegada()+"', '"+viaje.getHorSalida()+"', '"+viaje.getHorLlegada()+"', "+viaje.getPrecio()+", "+viaje.getIdRuta()+", '"+viaje.getServicio()+"', "+viaje.getIdChofer()+", "+viaje.getIdVehiculo()+", "+viaje.getIdClasificacion()+", '"+Constantes.ESTADO_ACTIVO+"')";
 
 			filas_afectadas = stmt.executeUpdate(sql);
@@ -719,7 +719,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setPrecio(rs.getInt("precio"));
 				viaje.setEstado(rs.getString("estado"));
 				viaje.setIdRuta(rs.getInt("idRuta"));
-				viaje.setIdChofer(rs.getInt("idChofer"));
+				viaje.setIdChofer(rs.getInt("dniChofer"));
 				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
 				viaje.setIdClasificacion(rs.getInt("idClasificacion"));
 				
