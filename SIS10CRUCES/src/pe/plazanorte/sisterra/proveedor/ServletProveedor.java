@@ -783,7 +783,7 @@ public class ServletProveedor extends HttpServlet {
 				else
 					mensaje = "Error, no se pudo registrar el proveedor.";			
 
-				rd = getServletContext().getRequestDispatcher("/mantener_proveedor.jsp");
+				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
