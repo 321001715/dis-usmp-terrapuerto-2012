@@ -1,11 +1,23 @@
 package pe.plazanorte.sisterra.consultas;
 
 import java.io.IOException;
+import java.util.Vector;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import pe.plazanorte.sisterra.clasificacion.ServiceClasificacion;
+import pe.plazanorte.sisterra.entidades.Chofer;
+import pe.plazanorte.sisterra.entidades.Clasificacion;
+import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Ruta;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
+import pe.plazanorte.sisterra.proveedor.ServiceProveedor;
+import pe.plazanorte.sisterra.util.Constantes;
 
 /**
  * Servlet implementation class ServletConsultas
@@ -26,7 +38,10 @@ public class ServletConsultas extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+		
+		
+		
 	}
 
 	/**

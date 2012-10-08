@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Request;
 
+import pe.plazanorte.sisterra.clasificacion.ServiceClasificacion;
+import pe.plazanorte.sisterra.entidades.Clasificacion;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Ruta;
@@ -286,7 +288,28 @@ public class ServletProveedor extends HttpServlet {
 				"/mantener_viaje.jsp");
 		}
 		
-	}
+	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_REGISTRO)){
+		ServiceProveedor serviceProveedor = new ServiceProveedor();
+		ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+		
+		Proveedor proveedor = new Proveedor();
+		proveedor.setIdProveedor(24); //INGRESANDO ID DE PROVEEDOR QUE DEBERÍA SER DE LA SESIÓN
+		try {
+			Vector<Ruta> listaRutas = serviceProveedor.listarRuta(proveedor);
+			Vector<Vehiculo> listaVehiculo = serviceProveedor.listarVehiculos(proveedor);
+			Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
+			//Vector<Chofer> listaChoferes = serviceClasificacion.listarClasificaciones();
+			
+			request.setAttribute("listaRutas", listaRutas);
+			request.setAttribute("listaVehiculo", listaVehiculo);
+			request.setAttribute("listaClasificaciones", listaClasificaciones);
+			
+			rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+	}		
 	
 		request.setAttribute("mensaje", mensaje);
 		rd.forward(request, response);
