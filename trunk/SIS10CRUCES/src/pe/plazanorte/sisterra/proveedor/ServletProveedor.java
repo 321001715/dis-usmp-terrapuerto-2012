@@ -296,12 +296,12 @@ public class ServletProveedor extends HttpServlet {
 		proveedor.setIdProveedor(24); //INGRESANDO ID DE PROVEEDOR QUE DEBERÍA SER DE LA SESIÓN
 		try {
 			Vector<Ruta> listaRutas = serviceProveedor.listarRuta(proveedor);
-			Vector<Vehiculo> listaVehiculo = serviceProveedor.listarVehiculos(proveedor);
+			Vector<Vehiculo> listaVehiculos = serviceProveedor.listarVehiculos(proveedor);
 			Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
 			//Vector<Chofer> listaChoferes = serviceClasificacion.listarClasificaciones();
 			
 			request.setAttribute("listaRutas", listaRutas);
-			request.setAttribute("listaVehiculo", listaVehiculo);
+			request.setAttribute("listaVehiculos", listaVehiculos);
 			request.setAttribute("listaClasificaciones", listaClasificaciones);
 			
 			if(destino.equalsIgnoreCase(Constantes.REGISTRAR_VIAJE));
