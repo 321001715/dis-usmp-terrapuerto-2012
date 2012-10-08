@@ -75,7 +75,7 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 					<%
 						for(Vehiculo vehiculo : listaVehiculos){
 					%>
-						<option value=<%=vehiculo.getIdVehiculo() %>><%=vehiculo.getPlaca() %></option>
+						<option value=<%=vehiculo.getIdVehiculo() %>><%=vehiculo.getPlaca()%></option>
 					<%
 						}
 					%>
