@@ -1,3 +1,8 @@
+<%@page import="java.util.Vector"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Chofer"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Clasificacion"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Vehiculo"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -8,7 +13,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
 
+Vector<Ruta> listaRutas = (Vector<Ruta>)request.getAttribute("listaRutas");
+Vector<Vehiculo> listaVehiculos = (Vector<Vehiculo>)request.getAttribute("listaVehiculos");
+Vector<Clasificacion> listaClasificaciones = (Vector<Clasificacion>)request.getAttribute("listaClasificaciones");
+Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChoferes");
+
+%>
 <h2>Registrar viaje</h2>
 
 <form method="post" action="ServletProveedor">
@@ -40,7 +52,17 @@
 		</tr>	
 		<tr>
 			<td>Ruta asociada</td>
-			<td><input type="text" name="idRuta"></td>
+			<td>
+				<select name="idRuta">
+					<%
+						for(Ruta ruta : listaRutas){
+					%>
+						<option value=<%=ruta.getId() %>><%=ruta.getNomRuta() %></option>
+					<%
+						}
+					%>
+				</select>
+			</td>
 		</tr>	
 		<tr>
 			<td>Nombre de servicio</td>
@@ -48,15 +70,45 @@
 		</tr>
 		<tr>
 			<td>Veh&iacute;culo</td>
-			<td><input type="text" name="idVehiculo"></td>
+			<td>
+				<select name="idVehiculo">
+					<%
+						for(Vehiculo vehiculo : listaVehiculos){
+					%>
+						<option value=<%=vehiculo.getIdVehiculo() %>><%=vehiculo.getPlaca() %></option>
+					<%
+						}
+					%>
+				</select>
+			</td>
 		</tr>		
 		<tr>
 			<td>Chofer</td>
-			<td><input type="text" name="idChofer"></td>
+			<td>
+				<select name="idChofer">
+					<%
+						for(Chofer chofer : listaChoferes){
+					%>
+						<option value=<%=chofer.getId() %>><%=chofer.getNombres() %></option>
+					<%
+						}
+					%>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>Clasificaci&oacute;n</td>
-			<td><input type="text" name="idClasificacion"></td>
+			<td>
+			<select name="idClasificacion">
+				<%
+					for(Clasificacion clasificacion : listaClasificaciones){
+				%>
+					<option value=<%=clasificacion.getId() %>><%=clasificacion.getNombre() %></option>
+				<%
+					}
+				%>
+			</select>
+			</td>
 		</tr>
 		<tr>
 			<td>Estado</td>
