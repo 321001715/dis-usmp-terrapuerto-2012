@@ -59,7 +59,9 @@ Viaje viaje = (Viaje)request.getAttribute("viaje");
 					<%
 						for(Ruta ruta : listaRutas){
 					%>
-						<option value=<%=ruta.getId() %>><%=ruta.getNomRuta() %></option>
+						<option value=<%=ruta.getId() %> <%if(ruta.getId() == viaje.getIdRuta()) {%> selected="selected" <%} %>>
+							<%=ruta.getNomRuta() %>
+						</option>
 					<%
 						}
 					%>
@@ -77,7 +79,9 @@ Viaje viaje = (Viaje)request.getAttribute("viaje");
 					<%
 						for(Vehiculo vehiculo : listaVehiculos){							
 					%>
-						<option value=<%=vehiculo.getIdVehiculo() %>><%=vehiculo.getPlaca()%></option>
+						<option value=<%=vehiculo.getIdVehiculo() %> <%if(vehiculo.getIdVehiculo() == viaje.getIdVehiculo()) {%> selected="selected" <%} %>>
+							<%=vehiculo.getPlaca()%>
+						</option>
 					<%							
 						}
 					%>
