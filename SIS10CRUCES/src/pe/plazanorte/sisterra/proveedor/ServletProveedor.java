@@ -305,7 +305,7 @@ public class ServletProveedor extends HttpServlet {
 			request.setAttribute("listaClasificaciones", listaClasificaciones);
 			
 			if(destino.equalsIgnoreCase(Constantes.REGISTRAR_VIAJE));
-				rd = getServletContext().getRequestDispatcher("/ServletProveedor?tipo=listar_viaje");
+				rd = getServletContext().getRequestDispatcher("/registrar_viaje.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -808,7 +808,7 @@ public class ServletProveedor extends HttpServlet {
 				else
 					mensaje = "Error, no se pudo registrar el proveedor.";			
 
-				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
+				rd = getServletContext().getRequestDispatcher("/ServletProveedor?tipo=listar_viaje");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
