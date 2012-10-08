@@ -10,11 +10,11 @@ public class Viaje {
 	private long codViaje;
 	private String numViaje;
 	private String nomViaje;
-	private Date fecSalida;
-	private Date fecLlegada;
+	private String fecSalida;
+	private String fecLlegada;
 	private String horSalida;
 	private String horLlegada;
-	private int precio;
+	private double precio;
 	private long idClasificacion;
 	private int dniChofer;
 	private String servicio;
@@ -96,11 +96,11 @@ public class Viaje {
 		this.horLlegada = horaSalida;
 	}
 
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(int precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
@@ -120,19 +120,19 @@ public class Viaje {
 		this.estado = estado;
 	}
 
-	public Date getFecSalida() {
+	public String getFecSalida() {
 		return fecSalida;
 	}
 
-	public void setFecSalida(Date fecSalida) {
+	public void setFecSalida(String fecSalida) {
 		this.fecSalida = fecSalida;
 	}
 
-	public Date getFecLlegada() {
+	public String getFecLlegada() {
 		return fecLlegada;
 	}
 
-	public void setFecLlegada(Date fecLlegada) {
+	public void setFecLlegada(String fecLlegada) {
 		this.fecLlegada = fecLlegada;
 	}
 
