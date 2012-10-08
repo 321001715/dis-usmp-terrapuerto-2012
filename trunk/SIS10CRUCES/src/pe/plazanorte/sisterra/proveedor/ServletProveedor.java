@@ -804,9 +804,9 @@ public class ServletProveedor extends HttpServlet {
 				boolean retorno = service.registrarViaje(viaje);				
 				
 				if (retorno)
-					mensaje = "Proveedor agregado con exito.";
+					mensaje = "Viaje agregado con exito.";
 				else
-					mensaje = "Error, no se pudo registrar el proveedor.";			
+					mensaje = "Error, no se pudo registrar el viaje.";			
 
 				rd = getServletContext().getRequestDispatcher("/ServletProveedor?tipo=listar_viaje");
 				
