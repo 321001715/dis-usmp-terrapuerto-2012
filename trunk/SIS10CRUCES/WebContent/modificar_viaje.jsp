@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
 <%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Chofer"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Clasificacion"%>
@@ -19,36 +20,37 @@ Vector<Ruta> listaRutas = (Vector<Ruta>)request.getAttribute("listaRutas");
 Vector<Vehiculo> listaVehiculos = (Vector<Vehiculo>)request.getAttribute("listaVehiculos");
 Vector<Clasificacion> listaClasificaciones = (Vector<Clasificacion>)request.getAttribute("listaClasificaciones");
 Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChoferes");
+Viaje viaje = (Viaje)request.getAttribute("viaje");
 
 %>
 <h2>Registrar viaje</h2>
 
 <form method="post" action="ServletProveedor">
-	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_VIAJE %>">
+	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_VIAJE %>">
 	<table>
 		<tr>
 			<td>Nombre del Viaje nuevo</td>
-			<td><input type="text" name="nombre"></td>
+			<td><input type="text" name="nombre" value=<%=viaje.getNomViaje() %>></td>
 		</tr>	
 		<tr>
 			<td>Fecha de salida</td>
-			<td><input type="text" name="fecSalida"></td>
+			<td><input type="text" name="fecSalida" value=<%=viaje.getFecSalida() %>></td>
 		</tr>	
 		<tr>
 			<td>Fecha de llegada</td>
-			<td><input type="text" name="fecLlegada"></td>
+			<td><input type="text" name="fecLlegada" value=<%=viaje.getFecLlegada() %>></td>
 		</tr>	
 		<tr>
 			<td>Hora de salida</td>
-			<td><input type="text" name="horSalida"></td>
+			<td><input type="text" name="horSalida" value=<%=viaje.getHorSalida() %>></td>
 		</tr>	
 		<tr>
 			<td>Hora de llegada</td>
-			<td><input type="text" name="horLegada"></td>
+			<td><input type="text" name="horLegada" value=<%=viaje.getHorLlegada() %>></td>
 		</tr>	
 		<tr>
 			<td>Precio</td>
-			<td><input type="text" name="precio"></td>
+			<td><input type="text" name="precio" value=<%=viaje.getPrecio() %>></td>
 		</tr>	
 		<tr>
 			<td>Ruta asociada</td>
@@ -66,7 +68,7 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 		</tr>	
 		<tr>
 			<td>Nombre de servicio</td>
-			<td><input type="text" name="servicio"></td>
+			<td><input type="text" name="servicio" value=<%=viaje.getServicio() %>></td>
 		</tr>
 		<tr>
 			<td>Veh&iacute;culo</td>
@@ -94,7 +96,7 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 						}
 					%>					
 				</select> --%>
-				<input type="text" name="idChofer">
+				<input type="text" name="idChofer" value=<%=viaje.getIdChofer() %>>
 			</td>
 		</tr>
 		<tr>
@@ -104,7 +106,10 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 				<%
 					for(Clasificacion clasificacion : listaClasificaciones){						
 				%>
-					<option value=<%=clasificacion.getId() %>><%=clasificacion.getNombre() %></option>
+					<option value=<%=clasificacion.getId() %> 
+					<% if(viaje.getIdClasificacion() == clasificacion.getId()){ %>selected="selected"<%} %>>
+						<%=clasificacion.getNombre() %>
+					</option>
 				<%				
 					}
 				%>
