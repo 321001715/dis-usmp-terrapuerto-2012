@@ -73,10 +73,10 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 			<td>
 				<select name="idVehiculo">
 					<%
-						for(Vehiculo vehiculo : listaVehiculos){
+						for(Vehiculo vehiculo : listaVehiculos){							
 					%>
 						<option value=<%=vehiculo.getIdVehiculo() %>><%=vehiculo.getPlaca()%></option>
-					<%
+					<%							
 						}
 					%>
 				</select>
@@ -85,15 +85,16 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 		<tr>
 			<td>Chofer</td>
 			<td>
-				<select name="idChofer">
+				<%-- <select name="idChofer">
 					<%
 						for(Chofer chofer : listaChoferes){
 					%>
 						<option value=<%=chofer.getId() %>><%=chofer.getNombres() %></option>
 					<%
 						}
-					%>
-				</select>
+					%>					
+				</select> --%>
+				<input type="text" name="idChofer">
 			</td>
 		</tr>
 		<tr>
@@ -101,10 +102,10 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 			<td>
 			<select name="idClasificacion">
 				<%
-					for(Clasificacion clasificacion : listaClasificaciones){
+					for(Clasificacion clasificacion : listaClasificaciones){						
 				%>
 					<option value=<%=clasificacion.getId() %>><%=clasificacion.getNombre() %></option>
-				<%
+				<%				
 					}
 				%>
 			</select>
