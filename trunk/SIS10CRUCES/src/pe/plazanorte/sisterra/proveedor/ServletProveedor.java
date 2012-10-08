@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.connector.Request;
 
 import pe.plazanorte.sisterra.clasificacion.ServiceClasificacion;
+import pe.plazanorte.sisterra.consultas.ServiceConsultas;
 import pe.plazanorte.sisterra.entidades.Clasificacion;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
@@ -312,6 +313,10 @@ public class ServletProveedor extends HttpServlet {
 		}			
 	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VIAJE)) {
 		String destino = request.getParameter("destino");
+		ServiceConsultas serviceConsultas = new ServiceConsultas();
+		int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+		
+		serviceConsultas.consultarViaje(idViaje);
 		
 		if(destino.equalsIgnoreCase(Constantes.MODIFICAR_VIAJE))
 			rd = getServletContext().getRequestDispatcher("/registrar_viaje.jsp");

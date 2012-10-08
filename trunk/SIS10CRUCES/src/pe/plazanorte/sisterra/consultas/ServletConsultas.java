@@ -54,7 +54,9 @@ public class ServletConsultas extends HttpServlet {
 		
 		//***********************************INICIO CONSULTAR VIAJE***********************************//
 		
-		
+		if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VIAJE)) {
+			
+		}
 		
 		//***********************************FIN CONSULTAR VIAJE***********************************//
 	}
