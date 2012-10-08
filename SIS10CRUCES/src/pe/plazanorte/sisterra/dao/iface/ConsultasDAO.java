@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface ConsultasDAO {
 	
-	public List<Viaje> consultarViaje();
-	public List<Viaje> obtenerListaViajes();
+	public Viaje consultarViaje(int idViaje);	
 
 }

@@ -52,11 +52,11 @@ if(viaje.size() != 0){
 			<td align="right"><%=viaje.get(i).getFecLlegada()%></td>
 			<td align="center"><%=viaje.get(i).getHorLlegada()%></td>
 			<td align="center"><%=viaje.get(i).getPrecio()%></td>
-			<td align="center">CALCULANDO...</td>
+			<td align="center">CALCULANDO...(si seguro calculando)</td>
 			<td align="center"><%=viaje.get(i).getServicio()%></td>
 			<td align="left">
 						<div class="ui-state-default ui-corner-all cajaicono">
-							<a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>&destino=<%=Constantes.ACCION_MODIFICAR_VIAJE %>&id=<%=viaje.get(i).getId()%>">
+							<a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>&destino=<%=Constantes.MODIFICAR_VIAJE %>&idViaje=<%=viaje.get(i).getId()%>">
 								<span class="ui-icon ui-icon-pencil"></span>
 							</a>
 						</div>

@@ -1,5 +1,6 @@
 package pe.plazanorte.sisterra.daofactory;
 
+import pe.plazanorte.sisterra.dao.iface.ConsultasDAO;
 import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.dao.iface.ClasificacionDAO;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
@@ -15,6 +16,7 @@ public abstract class DAOFactory {
 	public abstract ProveedorDAO getProveedorDAO();
 	public abstract ClasificacionDAO getClasificacionDAO();
 	public abstract BoletajeDAO getBoletajeDAO();
+	public abstract ConsultasDAO getConsultasDAO();
 	
 	public static DAOFactory getDAOFactory(int factory){
 		switch(factory){
@@ -28,5 +30,4 @@ public abstract class DAOFactory {
 				return null;
 		}		
 	}
-
 }
