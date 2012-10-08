@@ -774,7 +774,8 @@ public class ServletProveedor extends HttpServlet {
 				viaje.setIdRuta(idRuta);
 				viaje.setServicio(servicio);
 				viaje.setIdVehiculo(idVehiculo);
-				
+				viaje.setIdClasificacion(idClasificacion);
+				viaje.setIdChofer(idChofer);
 				
 				boolean retorno = service.registrarViaje(viaje);				
 				
