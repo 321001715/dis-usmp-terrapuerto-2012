@@ -305,7 +305,7 @@ public class ServletProveedor extends HttpServlet {
 			request.setAttribute("listaClasificaciones", listaClasificaciones);
 			
 			if(destino.equalsIgnoreCase(Constantes.REGISTRAR_VIAJE));
-				rd = getServletContext().getRequestDispatcher("/registrar_viaje.jsp");
+				rd = getServletContext().getRequestDispatcher("/ServletProveedor?tipo=listar_viaje");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
