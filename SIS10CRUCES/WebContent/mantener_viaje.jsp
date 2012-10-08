@@ -21,7 +21,7 @@
 	%>
 	<%@include file="buscar_viaje.jsp" %>
 	
-	<br><a href="registrar_viaje.jsp">
+	<br><a href="ServletProveedor?tipo=<%=Constantes.ACCION_REGISTRAR_PROVEEDOR%>&destino=<%=Constantes.REGISTRAR_VIAJE %>">
 			<img alt="" src="<%=request.getContextPath()%>/images/adicionar.png">
 		</a>
 	<br><hr><br>
