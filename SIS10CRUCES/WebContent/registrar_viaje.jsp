@@ -12,6 +12,7 @@
 <h2>Registrar viaje</h2>
 
 <form method="post" action="ServletProveedor">
+	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_VIAJE %>">
 	<table>
 		<tr>
 			<td>Nombre del Viaje nuevo</td>
