@@ -27,6 +27,7 @@ Viaje viaje = (Viaje)request.getAttribute("viaje");
 
 <form method="post" action="ServletProveedor">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_VIAJE %>">
+	<input type="hidden" name="idViaje" value=<%=viaje.getId() %>>
 	<table>
 		<tr>
 			<td>Nombre del Viaje nuevo</td>
@@ -125,8 +126,7 @@ Viaje viaje = (Viaje)request.getAttribute("viaje");
 			<td><input type="text" name="estado" value="<%=Constantes.ESTADO_ACTIVO %>" readonly="readonly"></td>
 		</tr>	
 		<tr>
-			<td><input type="submit" value="Registrar Viaje"></td>
-			<td><input type="reset" value="Limpiar campos"></td>			
+			<td colspan="2"><input type="submit" value="Modificar Viaje"></td>		
 		</tr>
 	</table>
 </form>

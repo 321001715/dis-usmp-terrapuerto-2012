@@ -165,6 +165,13 @@ public class ServiceProveedor {
 		
 		return proveedorDao.registrarViaje(viaje);		
 	}
+
+	public boolean modificarViaje(Viaje viaje) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.modificarViaje(viaje);	
+	}
 	
 	//*************************FIN GESTIONAR VIAJE******************************//
 
