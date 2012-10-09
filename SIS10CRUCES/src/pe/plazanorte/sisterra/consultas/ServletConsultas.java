@@ -18,6 +18,7 @@ import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Viaje;
 import pe.plazanorte.sisterra.proveedor.ServiceProveedor;
+import pe.plazanorte.sisterra.proveedor.ServletProveedor;
 import pe.plazanorte.sisterra.util.Constantes;
 
 /**
@@ -53,23 +54,35 @@ public class ServletConsultas extends HttpServlet {
 		String destino = request.getParameter("destino");
 		String tipo = request.getParameter("tipo");
 		RequestDispatcher rd = null;
+		String mensaje = " ";
 		ServiceConsultas service = new ServiceConsultas();
 		//***********************************INICIO CONSULTAR VIAJE***********************************//
 		
 		if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VIAJE)) {
 			Viaje viaje = new Viaje();
-			
+			ServiceProveedor serviceProveedor = new ServiceProveedor();
+			ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+			Proveedor proveedor = new Proveedor();
+			proveedor.setIdProveedor(24);
 			try {
 				int idViaje = Integer.parseInt(request.getParameter("idViaje"));
-				viaje = service.consultarViaje(idViaje);
+				viaje = service.consultarViaje(idViaje);				
+				Vector<Ruta> listaRutas = serviceProveedor.listarRuta(proveedor);
+				Vector<Vehiculo> listaVehiculos = serviceProveedor.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
 				request.setAttribute("viaje", viaje);
+				request.setAttribute("listaRutas", listaRutas);
+				request.setAttribute("listaVehiculos", listaVehiculos);
+				request.setAttribute("listaClasificaciones", listaClasificaciones);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 			if (destino == Constantes.MODIFICAR_VIAJE) {
 				rd = getServletContext().getRequestDispatcher("/modificar_viaje.jsp");
-			}	
+			}
+			request.setAttribute("mensaje", mensaje);
+			rd.forward(request, response);
 			
 		}
 		
