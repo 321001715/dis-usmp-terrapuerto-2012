@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Vehiculo"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Asiento"%>
 <%@page import="java.util.Vector"%>
@@ -20,6 +21,9 @@
 	Viaje viaje=(Viaje)request.getAttribute("unviaje");
 	
 	Ruta ruta=(Ruta)request.getAttribute("unaruta");
+	
+	Vehiculo carro=(Vehiculo)request.getAttribute("carro");
+	
 	
 	Vector<Asiento> asientos=(Vector<Asiento>)request.getAttribute("asientos");
 	String estado="";
@@ -219,9 +223,9 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Piso: </td>
-					<td><input type="text" name="piso" disabled="disabled"></td>
+					<td><input type="text" name="piso" disabled="disabled" value="<%=carro.getNumPiso() %>"></td>
 					<td width="150px">Placa: </td>
-					<td><input type="text" name="placa" disabled="disabled"></td>
+					<td><input type="text" name="placa" disabled="disabled"  value="<%=carro.getPlaca() %>"></td>
 				</tr>
 				</table>
 			</td>
