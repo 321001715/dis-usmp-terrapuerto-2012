@@ -56,7 +56,7 @@ if(viaje.size() != 0){
 			<td align="center"><%=viaje.get(i).getServicio()%></td>
 			<td align="left">
 						<div class="ui-state-default ui-corner-all cajaicono">
-							<a href="ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>&destino=<%=Constantes.MODIFICAR_VIAJE %>&idViaje=<%=viaje.get(i).getId()%>">
+							<a href="ServletConsultas?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>&destino=<%=Constantes.MODIFICAR_VIAJE %>&idViaje=<%=viaje.get(i).getId()%>">
 								<span class="ui-icon ui-icon-pencil"></span>
 							</a>
 						</div>
