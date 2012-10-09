@@ -702,7 +702,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			//String query = "SELECT * FROM t_viaje WHERE IDPROVEEDOR ="+ uu.getIdProveedor() + ";";
-			String query = "SELECT * FROM t_viaje ";
+			String query = "SELECT * FROM t_viaje WHERE ESTADO LIKE '"+Constantes.ESTADO_ACTIVO+"';";
 			Viaje viaje = new Viaje();
 			ResultSet rs = stmt.executeQuery(query);
 			
@@ -741,6 +741,41 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			e.printStackTrace();
 		}
 		return viajes;
+	}
+
+	@Override
+	public boolean modificarViaje(Viaje viaje) {
+		int filas_afectadas = 0;
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+
+			String sql = "UPDATE T_VIAJE "
+						+"SET nomViaje = '"+viaje.getNomViaje()+"', '" +
+						"fecSalida = "+viaje.getFecSalida()+"', '" +
+						"fecLlegada = "+viaje.getFecLlegada()+"', '" +
+						"horSalida = "+viaje.getHorSalida()+"', '" +
+						"horLlegada = "+viaje.getHorLlegada()+"', " +
+						"precio = "+viaje.getPrecio()+", " +
+						"idRuta = "+viaje.getIdRuta()+", '" +
+						"servicio = "+viaje.getServicio()+"', " +
+						"dniChofer = "+viaje.getDniChofer()+", "+
+						"idVehiculo = "+viaje.getIdVehiculo()+", "+
+						"idClasificacion = "+viaje.getIdClasificacion()+", '"+
+						"estado = "+viaje.getEstado()+"' "+
+						"WHERE idViaje = "+viaje.getId();
+
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (filas_afectadas == 1)
+			return true;
+
+		return false;
 	}
 	
 	// **************************FIN GESTIONAR VIAJE******************************//

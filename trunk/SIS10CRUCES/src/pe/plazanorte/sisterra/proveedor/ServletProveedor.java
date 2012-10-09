@@ -829,7 +829,51 @@ public class ServletProveedor extends HttpServlet {
 			}
 			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VIAJE)) {
+			long idViaje = Long.parseLong(request.getParameter("idViaje"));
+			String nombre = request.getParameter("nombre");
+			String fecSalida = request.getParameter("fecSalida");
+			String fecLlegada = request.getParameter("fecLlegada");
+			String horSalida = request.getParameter("horSalida");
+			String horLlegada = request.getParameter("horLegada");
+			double precio = Double.parseDouble(request.getParameter("precio"));
+			int idRuta = Integer.parseInt(request.getParameter("idRuta"));
+			String servicio = request.getParameter("servicio");
+			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+			int idChofer = Integer.parseInt(request.getParameter("idChofer"));
+			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
 			
+			try {
+				
+				Viaje viaje = new Viaje();
+				viaje.setId(idViaje);
+				viaje.setNomViaje(nombre);
+				viaje.setFecSalida(fecSalida);
+				viaje.setFecLlegada(fecLlegada);
+				viaje.setHorSalida(horSalida);
+				viaje.setHorLlegada(horLlegada);
+				viaje.setPrecio(precio);
+				viaje.setIdRuta(idRuta);
+				viaje.setServicio(servicio);
+				viaje.setIdVehiculo(idVehiculo);
+				viaje.setIdClasificacion(idClasificacion);
+				viaje.setIdChofer(idChofer);
+				
+				boolean retorno = service.modificarViaje(viaje);				
+				
+				if (retorno)
+					mensaje = "Viaje agregado con exito.";
+				else
+					mensaje = "Error, no se pudo registrar el viaje.";			
+				
+				Proveedor proveedor = new Proveedor();
+				proveedor.setIdProveedor(24);
+				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+				request.setAttribute("viaje", listaViajes);
+				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//******************************FIN GESTIONAR VIAJE******************************//
