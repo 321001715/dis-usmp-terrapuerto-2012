@@ -19,7 +19,7 @@
 Vector<Ruta> listaRutas = (Vector<Ruta>)request.getAttribute("listaRutas");
 Vector<Vehiculo> listaVehiculos = (Vector<Vehiculo>)request.getAttribute("listaVehiculos");
 Vector<Clasificacion> listaClasificaciones = (Vector<Clasificacion>)request.getAttribute("listaClasificaciones");
-Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChoferes");
+//Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChoferes");
 Viaje viaje = (Viaje)request.getAttribute("viaje");
 
 %>
