@@ -752,18 +752,18 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 
 			String sql = "UPDATE T_VIAJE "
-						+"SET nomViaje = '"+viaje.getNomViaje()+"', '" +
-						"fecSalida = "+viaje.getFecSalida()+"', '" +
-						"fecLlegada = "+viaje.getFecLlegada()+"', '" +
-						"horSalida = "+viaje.getHorSalida()+"', '" +
-						"horLlegada = "+viaje.getHorLlegada()+"', " +
+						+"SET nomViaje = '"+viaje.getNomViaje()+"', " +
+						"fecSalida = '"+viaje.getFecSalida()+"', " +
+						"fecLlegada = '"+viaje.getFecLlegada()+"', " +
+						"horSalida = '"+viaje.getHorSalida()+"', " +
+						"horLlegada = '"+viaje.getHorLlegada()+"', " +
 						"precio = "+viaje.getPrecio()+", " +
-						"idRuta = "+viaje.getIdRuta()+", '" +
-						"servicio = "+viaje.getServicio()+"', " +
+						"idRuta = "+viaje.getIdRuta()+", " +
+						"servicio = '"+viaje.getServicio()+"', " +
 						"dniChofer = "+viaje.getDniChofer()+", "+
 						"idVehiculo = "+viaje.getIdVehiculo()+", "+
-						"idClasificacion = "+viaje.getIdClasificacion()+", '"+
-						"estado = "+viaje.getEstado()+"' "+
+						"idClasificacion = "+viaje.getIdClasificacion()+", "+
+						"estado = '"+viaje.getEstado()+"' "+
 						"WHERE idViaje = "+viaje.getId();
 
 			filas_afectadas = stmt.executeUpdate(sql);
