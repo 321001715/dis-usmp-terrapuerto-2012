@@ -841,6 +841,7 @@ public class ServletProveedor extends HttpServlet {
 			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
 			int idChofer = Integer.parseInt(request.getParameter("idChofer"));
 			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
+			String estado = request.getParameter("estado");
 			
 			try {
 				
@@ -857,6 +858,7 @@ public class ServletProveedor extends HttpServlet {
 				viaje.setIdVehiculo(idVehiculo);
 				viaje.setIdClasificacion(idClasificacion);
 				viaje.setIdChofer(idChofer);
+				viaje.setEstado(estado);
 				
 				boolean retorno = service.modificarViaje(viaje);				
 				

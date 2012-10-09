@@ -122,8 +122,13 @@ Viaje viaje = (Viaje)request.getAttribute("viaje");
 			</td>
 		</tr>
 		<tr>
-			<td>Estado</td>
-			<td><input type="text" name="estado" value="<%=Constantes.ESTADO_ACTIVO %>" readonly="readonly"></td>
+			<td>Estado:</td>
+				<td>
+					<select name="estado">						
+						<option value="<%=Constantes.ESTADO_ACTIVO%>" <%if(viaje.getEstado().equals(Constantes.ESTADO_ACTIVO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_ACTIVO%></option>
+						<option value="<%=Constantes.ESTADO_INHABILITADO%>" <%if(viaje.getEstado().equals(Constantes.ESTADO_INHABILITADO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_INHABILITADO%></option>
+					</select>				
+				</td>
 		</tr>	
 		<tr>
 			<td colspan="2"><input type="submit" value="Modificar Viaje"></td>		
