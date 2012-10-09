@@ -23,7 +23,7 @@ public class MySqlConsultasDAO implements ConsultasDAO {
 			if (rs.next()) {
 				viaje = new Viaje();
 				viaje.setId(rs.getInt("idViaje"));				
-				viaje.setNumViaje(rs.getString("nomViaje"));
+				viaje.setNomViaje(rs.getString("nomViaje"));
 				viaje.setFecSalida(rs.getString("fecSalida"));
 				viaje.setFecLlegada(rs.getString("fecLlegada"));
 				viaje.setHorSalida(rs.getString("horSalida"));

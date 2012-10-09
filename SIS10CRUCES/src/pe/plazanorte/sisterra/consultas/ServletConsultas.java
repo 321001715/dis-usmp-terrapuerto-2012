@@ -68,18 +68,14 @@ public class ServletConsultas extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			if (destino == Constantes.MODIFICAR_VIAJE) {
+			if (destino.equalsIgnoreCase(Constantes.MODIFICAR_VIAJE)) {
 				rd = getServletContext().getRequestDispatcher("/modificar_viaje.jsp");
 			}
-			request.setAttribute("mensaje", mensaje);
-			rd.forward(request, response);
-			
-		}
-		
+				
+		}		
 		//***********************************FIN CONSULTAR VIAJE***********************************//
-		
-		
-		
+		request.setAttribute("mensaje", mensaje);
+		rd.forward(request, response);
 	}
 
 	/**
