@@ -7,6 +7,7 @@ import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Viaje;
 
 public interface BoletajeDAO {
@@ -18,4 +19,5 @@ public interface BoletajeDAO {
 	public Viaje consultarViajeCliente(int id);
 	public Ruta consultarRuta(long id);
 	public Vector<Asiento> consultarAsientos(int id);
+	public Vehiculo consultarVehiculo(int id);
 }

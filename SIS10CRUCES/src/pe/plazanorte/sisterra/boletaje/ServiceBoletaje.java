@@ -10,6 +10,7 @@ import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Viaje;
 
 public class ServiceBoletaje {
@@ -59,6 +60,17 @@ public class ServiceBoletaje {
 			e.printStackTrace();
 		}
 		return asientos;
+	}	
+	public Vehiculo consultarVehiculo(int idVehiculo){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		Vehiculo carro=null;
+		try {
+			carro=boletajeDao.consultarVehiculo(idVehiculo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return carro;
 	}
 	
 }

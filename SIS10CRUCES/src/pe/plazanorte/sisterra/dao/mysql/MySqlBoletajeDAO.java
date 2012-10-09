@@ -13,6 +13,7 @@ import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Usuario;
+import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Viaje;
 
 public class MySqlBoletajeDAO implements BoletajeDAO {
@@ -145,7 +146,7 @@ return null;
 				viaje.setPrecio(rs.getInt("precio"));
 				viaje.setEstado(rs.getString("estado"));
 				viaje.setIdRuta(rs.getLong("idRuta"));
-				viaje.setServicio(rs.getString("estado"));
+				viaje.setServicio(rs.getString("servicio"));
 				viaje.setIdChofer(rs.getInt("idChofer"));
 				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
 				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
@@ -222,6 +223,37 @@ return null;
 
 		}
 		return vecasiento;
+	}
+
+	@Override
+	public Vehiculo consultarVehiculo(int id) {
+		Vehiculo carro = new Vehiculo();
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_VEHICULO WHERE idVehiculo="+ id +";";
+			System.out.println(query);
+			ResultSet rs = stmt.executeQuery(query);
+	
+			while (rs.next()) {
+				carro = new Vehiculo();
+				
+				carro.setIdVehiculo(rs.getInt("idVehiculo"));
+				carro.setCodVehiculo(rs.getString("codVehiculo"));
+				carro.setPlaca(rs.getString("placa"));
+				carro.setNumAsientos(rs.getInt("numAsientos"));
+				carro.setIdProveedor(rs.getInt("idProveedor"));
+				carro.setNumPiso(rs.getInt("numPiso"));
+	
+			}
+
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}	finally {
+
+		}
+		return carro;
 	}
 
 }
