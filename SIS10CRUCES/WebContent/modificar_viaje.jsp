@@ -12,6 +12,51 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function validar(){
+		if(document.modificar.nombre.value.length == 0){
+			alert("Debe llenar el campo Nombre.");
+			document.modificar.nombre.focus();
+			return false;
+		}
+		if(document.modificar.fecSalida.value.length == 0){
+			alert("Debe llenar el campo Fecha de Salida.");
+			document.modificar.fecSalida.focus();
+			return false;
+		}
+		if(document.modificar.fecLlegada.value.length == 0){
+			alert("Debe llenar el campo Fecha de Llegada.");
+			document.modificar.fecLlegada.focus();
+			return false;
+		}
+		if(document.modificar.horSalida.value.length == 0){
+			alert("Debe llenar el campo Hora de salida.");
+			document.modificar.horSalida.focus();
+			return false;
+		}
+		if(document.modificar.horLlegada.value.length == 0){
+			alert("Debe llenar el campo Hora de llegada.");
+			document.modificar.horLlegada.focus();
+			return false;
+		}
+		if(document.modificar.precio.value.length == 0){
+			alert("Debe llenar el campo Precio.");
+			document.modificar.precio.focus();
+			return false;
+		}
+		if(document.modificar.servicio.value.length == 0){
+			alert("Debe llenar el campo Servicio.");
+			document.modificar.servicio.focus();
+			return false;
+		}
+		if(document.modificar.idChofer.value.length == 0){
+			alert("Debe llenar el campo Chofer.");
+			document.modificar.idChofer.focus();
+			return false;
+		}		
+		return true;
+	}	
+</script>
 </head>
 <body>
 <%
@@ -25,7 +70,7 @@ Viaje viaje = (Viaje)request.getAttribute("viaje");
 %>
 <h2>Registrar viaje</h2>
 
-<form method="post" action="ServletProveedor">
+<form method="post" action="ServletProveedor" name="modificar" onsubmit="validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_VIAJE %>">
 	<input type="hidden" name="idViaje" value=<%=viaje.getId() %>>
 	<table>
@@ -101,7 +146,7 @@ Viaje viaje = (Viaje)request.getAttribute("viaje");
 						}
 					%>					
 				</select> --%>
-				<input type="text" name="idChofer" value=<%=viaje.getIdChofer() %>>
+				<input type="text" name="idChofer" value=<%=viaje.getIdChofer() %> maxlength="8">
 			</td>
 		</tr>
 		<tr>
