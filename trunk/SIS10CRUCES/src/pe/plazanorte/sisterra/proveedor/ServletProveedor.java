@@ -19,6 +19,7 @@ import org.apache.catalina.connector.Request;
 
 import pe.plazanorte.sisterra.clasificacion.ServiceClasificacion;
 import pe.plazanorte.sisterra.consultas.ServiceConsultas;
+import pe.plazanorte.sisterra.entidades.Chofer;
 import pe.plazanorte.sisterra.entidades.Clasificacion;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
@@ -220,59 +221,6 @@ public class ServletProveedor extends HttpServlet {
 			
 		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
 
-	/*	long idViaje;
-		if (request.getParameter("codViaje").length() != 0)
-			idViaje = Long.parseLong(request.getParameter("codViaje"));
-		else
-			idViaje = 0;
-			String numViaje = request.getParameter("numViaje");
-			String nomViaje = request.getParameter("nomViaje");
-			Long idRuta = Long.parseLong(request.getParameter("idRuta"));
-			
-			int precio = Integer.parseInt(request.getParameter("precio"));
-			Long idClasificacion = Long.parseLong(request.getParameter("idClasificacion"));
-			int dniChofer = Integer.parseInt(request.getParameter("dniChofer"));
-			String servicio = request.getParameter("servicio");
-			
-			String fecSalida_string = request.getParameter("fecSalida");
-			String fecLlegada_string = request.getParameter("fecLlegada");
-			String horSalida = request.getParameter("horSalida");
-			String horLlegada = request.getParameter("horLlegada");
-			
-			Date fecSalida;
-			Date fecLlegada;
-			
-			DateFormat formatoFecha_salida = new SimpleDateFormat ("dd/MM/yyyy HH:mm");
-			String fecSalida_string_x = formatoFecha_salida.format(fecSalida_string);
-			try {
-				fecSalida = formatoFecha_salida.parse(fecSalida_string_x);
-			} catch (Exception e) {
-				throw new RuntimeException("No se pudo actualizar.");
-			}
-			
-			DateFormat formatoFecha_llegada = new SimpleDateFormat ("dd/MM/yyyy HH:mm");
-			String fecLlegada_string_x = formatoFecha_llegada.format(fecLlegada_string);
-			try {
-				fecLlegada = formatoFecha_llegada.parse(fecLlegada_string_x);
-			} catch (Exception e) {
-				throw new RuntimeException("No se pudo actualizar.");
-			}
-			
-			Viaje viaje = new Viaje();
-			viaje.setId(idViaje);
-			viaje.setNumViaje(numViaje);
-			viaje.setNomViaje(nomViaje);
-			viaje.setIdRuta(idRuta);
-			viaje.setPrecio(precio);
-			viaje.setIdClasificacion(idClasificacion);
-			viaje.setDniChofer(dniChofer);
-			viaje.setServicio(servicio);
-			viaje.setFecSalida(fecSalida);
-			viaje.setFecLlegada(fecLlegada);
-			viaje.setHorSalida(horSalida);
-			viaje.setHorLlegada(horLlegada);
-
-			Vector<Viaje> vec = null;*/
 		try {
 			Vector<Viaje> viaje = new Vector<Viaje>();
 			HttpSession session = request.getSession(true);
@@ -293,17 +241,20 @@ public class ServletProveedor extends HttpServlet {
 		ServiceProveedor serviceProveedor = new ServiceProveedor();
 		ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
 		String destino = request.getParameter("destino");
-		Proveedor proveedor = new Proveedor();
-		proveedor.setIdProveedor(24); //INGRESANDO ID DE PROVEEDOR QUE DEBERÍA SER DE LA SESIÓN
+		
+		HttpSession session = request.getSession(true);
+		Proveedor proveedor = (Proveedor) session.getAttribute("BProveedor");
+		proveedor.setIdProveedor(proveedor.getIdProveedor()); 
 		try {
 			Vector<Ruta> listaRutas = serviceProveedor.listarRuta(proveedor);
 			Vector<Vehiculo> listaVehiculos = serviceProveedor.listarVehiculos(proveedor);
 			Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
-			//Vector<Chofer> listaChoferes = serviceClasificacion.listarClasificaciones();
+			Vector<Chofer> listaChoferes = serviceProveedor.listarChoferes(proveedor);
 			
 			request.setAttribute("listaRutas", listaRutas);
 			request.setAttribute("listaVehiculos", listaVehiculos);
 			request.setAttribute("listaClasificaciones", listaClasificaciones);
+			request.setAttribute("listaChoferes", listaChoferes);
 			
 			if(destino.equalsIgnoreCase(Constantes.REGISTRAR_VIAJE));
 				rd = getServletContext().getRequestDispatcher("/registrar_viaje.jsp");

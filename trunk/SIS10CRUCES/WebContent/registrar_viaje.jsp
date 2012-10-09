@@ -85,7 +85,7 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 		<tr>
 			<td>Chofer</td>
 			<td>
-				<%-- <select name="idChofer">
+				<select name="idChofer">
 					<%
 						for(Chofer chofer : listaChoferes){
 					%>
@@ -93,7 +93,7 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 					<%
 						}
 					%>					
-				</select> --%>
+				</select> 
 				<input type="text" name="idChofer">
 			</td>
 		</tr>

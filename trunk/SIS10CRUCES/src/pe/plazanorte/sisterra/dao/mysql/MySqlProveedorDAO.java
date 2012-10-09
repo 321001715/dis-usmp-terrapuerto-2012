@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
+import pe.plazanorte.sisterra.entidades.Chofer;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
@@ -710,7 +711,6 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje = new Viaje();
 
 				viaje.setId(rs.getLong("idViaje"));
-				viaje.setCodViaje(rs.getLong("codViaje"));
 				viaje.setNomViaje(rs.getString("nomViaje"));
 				viaje.setFecLlegada(rs.getString("fecLlegada"));
 				viaje.setFecSalida(rs.getString("fecSalida"));
@@ -777,6 +777,35 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 		return false;
 	}
+
+	@Override
+	public Vector<Chofer> listarChoferes(Proveedor proveedor) {
+		Vector<Chofer> choferes = new Vector<Chofer>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM t_chofer WHERE idProveedor LIKE '"+proveedor.getIdProveedor()+"';";
+			Chofer chofer = new Chofer();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				
+				chofer.setApeMat(rs.getString("apeMat"));
+				chofer.setApePat(rs.getString("apePat"));
+				chofer.setId(rs.getInt("idChofer"));
+				chofer.setNombres(rs.getString("nombres"));
+				
+				
+				choferes.add(chofer);
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return choferes;
+	}
+
+	
 	
 	// **************************FIN GESTIONAR VIAJE******************************//
 	

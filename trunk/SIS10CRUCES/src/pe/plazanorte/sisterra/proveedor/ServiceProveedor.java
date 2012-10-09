@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
+import pe.plazanorte.sisterra.entidades.Chofer;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
@@ -143,6 +144,12 @@ public class ServiceProveedor {
 		return proveedorDao.listarViajes(uu);
 	}
 	
+	
+	public Vector<Chofer> listarChoferes(Proveedor proveedor){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		return proveedorDao.listarChoferes(proveedor);
+	}
 	public String[] decodificarFormato(String asientosNoDisponibles) {
 		String[] asientos;
 		String delimitador = "&";

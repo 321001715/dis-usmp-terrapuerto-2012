@@ -2,6 +2,7 @@ package pe.plazanorte.sisterra.dao.iface;
 
 import java.util.Vector;
 
+import pe.plazanorte.sisterra.entidades.Chofer;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Ruta;
@@ -33,6 +34,7 @@ public interface ProveedorDAO {
 	
 	public Vector<Viaje> buscarViajes(Viaje viaje, Proveedor uu);
 	public Vector<Viaje> listarViajes(Proveedor uu);
+	public Vector<Chofer> listarChoferes(Proveedor proveedor);
 	public boolean registrarViaje(Viaje viaje);
 	public boolean modificarViaje(Viaje viaje);
 	
