@@ -41,16 +41,6 @@ public class ServletConsultas extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String destino = request.getParameter("destino");
 		String tipo = request.getParameter("tipo");
 		RequestDispatcher rd = null;
@@ -87,6 +77,17 @@ public class ServletConsultas extends HttpServlet {
 		}
 		
 		//***********************************FIN CONSULTAR VIAJE***********************************//
+		
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 	}
 
 }
