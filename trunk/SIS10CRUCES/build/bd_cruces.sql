@@ -364,3 +364,16 @@ CREATE TABLE `t_equipaje` (
   CONSTRAINT `fk_t_equipaje_t_pasajero1` FOREIGN KEY (`idPasajero`) REFERENCES `t_pasajero` (`idPasajero`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `t_asiento`;
+
+CREATE TABLE `t_asiento` (
+  `idAsiento` int(10) unsigned NOT NULL auto_increment,
+  `numero` int(10) unsigned NOT NULL,
+  `estado` varchar(45) NOT NULL,
+  `idVehiculo` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`idAsiento`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
