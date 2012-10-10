@@ -828,25 +828,36 @@ public class ServletProveedor extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_VIAJE)) {
-			int idRuta = Integer.parseInt(request.getParameter("idRuta"));
-			int idViaje = Integer.parseInt(request.getParameter("idViaje"));
-			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
-			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+			
+			String idRuta = request.getParameter("idRuta");
+			String idViaje = request.getParameter("idViaje");
+			String idClasificacion = request.getParameter("idClasificacion");
+			String idVehiculo = request.getParameter("idVehiculo");			
+			
 			int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
 			String destino = request.getParameter("destino");
 			
-			Viaje viaje = new Viaje();
-			Proveedor proveedor = new Proveedor();
-			viaje.setIdRuta(idRuta);
-			viaje.setId(idViaje);
-			viaje.setIdClasificacion(idClasificacion);
-			viaje.setIdVehiculo(idVehiculo);
-			proveedor.setIdProveedor(idProveedor);
-			Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
-			
-			request.setAttribute("viaje", listaViajes);
-			if(destino.equalsIgnoreCase(Constantes.GESTIONAR_VIAJE))
-				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
+			try {
+				Viaje viaje = new Viaje();
+				Proveedor proveedor = new Proveedor();
+				proveedor.setIdProveedor(idProveedor);
+				if(idRuta != null)
+					viaje.setIdRuta(Integer.parseInt(idRuta));
+				if(idViaje != null)
+					viaje.setId(Integer.parseInt(idViaje));
+				if(idClasificacion != null)
+					viaje.setIdClasificacion(Integer.parseInt(idClasificacion));
+				if(idVehiculo != null)
+					viaje.setIdVehiculo(Integer.parseInt(idVehiculo));
+				
+				Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+				
+				request.setAttribute("viaje", listaViajes);
+				if(destino.equalsIgnoreCase(Constantes.GESTIONAR_VIAJE))
+					rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}	
 		
 		//******************************FIN GESTIONAR VIAJE******************************//
