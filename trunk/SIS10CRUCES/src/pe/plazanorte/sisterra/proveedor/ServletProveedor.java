@@ -833,6 +833,7 @@ public class ServletProveedor extends HttpServlet {
 			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
 			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
 			int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
+			String destino = request.getParameter("destino");
 			
 			Viaje viaje = new Viaje();
 			Proveedor proveedor = new Proveedor();
@@ -844,8 +845,9 @@ public class ServletProveedor extends HttpServlet {
 			Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
 			
 			request.setAttribute("viaje", listaViajes);
-			rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
-		}
+			if(destino.equalsIgnoreCase(Constantes.GESTIONAR_VIAJE))
+				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
+		}	
 		
 		//******************************FIN GESTIONAR VIAJE******************************//
 		
