@@ -728,8 +728,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				flag = true;
 			}
 			
-			sql += " WHERE IDPROVEEDOR = " + proveedor.getIdProveedor() + ";";
-			
+			sql += " AND IDPROVEEDOR = " + proveedor.getIdProveedor() + ";";
+			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
