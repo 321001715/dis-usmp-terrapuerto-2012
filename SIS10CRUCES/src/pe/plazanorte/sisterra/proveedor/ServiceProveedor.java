@@ -132,17 +132,7 @@ public class ServiceProveedor {
 		return proveedorDao.buscarRutas(ruta,uu);
 	}
 	
-	public Vector<Viaje> buscarViaje(Viaje viaje, Proveedor uu) {
-		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
-		
-		return proveedorDao.buscarViajes(viaje,uu);
-	}
-	public Vector<Viaje> listarViaje(Proveedor uu){
-		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
-		return proveedorDao.listarViajes(uu);
-	}
+	
 	
 	
 	public Vector<Chofer> listarChoferes(Proveedor proveedor){
@@ -180,6 +170,17 @@ public class ServiceProveedor {
 		return proveedorDao.modificarViaje(viaje);	
 	}
 	
+	public Vector<Viaje> buscarViaje(Viaje viaje, Proveedor uu) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.buscarViajes(viaje,uu);
+	}
+	public Vector<Viaje> listarViaje(Proveedor uu){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		return proveedorDao.listarViajes(uu);
+	}
 	//*************************FIN GESTIONAR VIAJE******************************//
 
 }
