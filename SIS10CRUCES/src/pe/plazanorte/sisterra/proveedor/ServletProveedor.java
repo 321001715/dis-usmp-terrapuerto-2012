@@ -834,20 +834,21 @@ public class ServletProveedor extends HttpServlet {
 			String idClasificacion = request.getParameter("idClasificacion");
 			String idVehiculo = request.getParameter("idVehiculo");			
 			
-			int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
+			//int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
 			String destino = request.getParameter("destino");
 			
 			try {
 				Viaje viaje = new Viaje();
 				Proveedor proveedor = new Proveedor();
-				proveedor.setIdProveedor(idProveedor);
-				if(idRuta != null)
+				proveedor.setIdProveedor(24); //MODIFICAR CON LAS SESIONES
+				
+				if(idRuta.length() != 0)
 					viaje.setIdRuta(Integer.parseInt(idRuta));
-				if(idViaje != null)
+				if(idViaje.length() != 0)
 					viaje.setId(Integer.parseInt(idViaje));
-				if(idClasificacion != null)
+				if(idClasificacion.length() != 0)
 					viaje.setIdClasificacion(Integer.parseInt(idClasificacion));
-				if(idVehiculo != null)
+				if(idVehiculo.length() != 0)
 					viaje.setIdVehiculo(Integer.parseInt(idVehiculo));
 				
 				Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);

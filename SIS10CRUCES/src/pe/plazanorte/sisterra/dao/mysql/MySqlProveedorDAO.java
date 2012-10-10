@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
+import com.mysql.jdbc.EscapeTokenizer;
+
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Chofer;
@@ -627,7 +629,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 
-	@Override
+	/*@Override
 	public Vector<Viaje> buscarViajes(Viaje param, Proveedor uu) {
 		Vector<Viaje> vec = new Vector<Viaje>();
 		try {
@@ -676,7 +678,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 				viaje.setId(rs.getLong("idViaje"));
 				
-				viaje.setId(rs.getInt("id"));
+				viaje.setId(rs.getInt("idViaje"));
 				viaje.setNumViaje(rs.getString("numViaje"));
 				viaje.setNomViaje(rs.getString("nomViaje"));
 				viaje.setIdRuta(rs.getLong("idRuta"));
@@ -694,6 +696,24 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			e.printStackTrace();
 		}
 		return vec;
+	}*/
+	
+	public Vector<Viaje> buscarViajes(Viaje viaje, Proveedor proveedor) {		
+		
+		Vector<Viaje> listaViajes = null;
+		
+		try {
+			
+			String sql = "SELECT * FROM T_VIAJE WHERE ";
+	
+			/*if(viaje.getIdRuta() != null) {
+				sql += "";
+			}*/
+			
+		} catch (Exception e) {
+			e.printStackTrace();			
+		}
+		return listaViajes;
 	}
 
 	@Override
