@@ -704,6 +704,10 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		
 		try {
 			
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			Vector<Viaje> viajes = new Vector<Viaje>();
+			
 			String sql = "SELECT * FROM T_VIAJE WHERE ";
 			boolean flag = false;
 			
@@ -726,6 +730,38 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			
 			sql += " WHERE IDPROVEEDOR = " + proveedor.getIdProveedor() + ";";
 			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				viaje = new Viaje();
+
+				viaje.setId(rs.getLong("idViaje"));
+				viaje.setNomViaje(rs.getString("nomViaje"));
+				viaje.setFecLlegada(rs.getString("fecLlegada"));
+				viaje.setFecSalida(rs.getString("fecSalida"));
+				
+				viaje.setServicio(rs.getString("servicio"));
+				viaje.setPrecio(rs.getInt("precio"));
+				viaje.setEstado(rs.getString("estado"));
+				viaje.setIdRuta(rs.getInt("idRuta"));
+				viaje.setIdChofer(rs.getInt("dniChofer"));
+				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
+				viaje.setIdClasificacion(rs.getInt("idClasificacion"));
+				
+				Date horaLlegadaDate = new Date(rs.getTime("horLlegada").getTime());;
+				Date horaSalidaDate = new Date(rs.getTime("horSalida").getTime());;
+				
+				DateFormat formatoHora = new SimpleDateFormat ("HH:mm");
+				String horaSalida = formatoHora.format(horaSalidaDate);
+				String horaLlegada = formatoHora.format(horaLlegadaDate);
+				
+						
+				viaje.setHorLlegada(horaSalida);
+				viaje.setHorSalida(horaLlegada);
+				
+				viajes.add(viaje);
+			}
+			con.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();			
