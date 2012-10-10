@@ -34,8 +34,8 @@
    </div>
 &nbsp;   
 	<form action="ServletProveedor" method="post" name="buscar" onsubmit="validar()">
-		<input type="hidden" name="tipo" value="listar_viajes">
-		<input type="hidden" name="des" value="buscarViajes">
+		<input type="hidden" name="tipo" value=<%=Constantes.ACCION_FILTRO_VIAJE %>>
+		<input type="hidden" name="destino" value=<%=Constantes.GESTIONAR_VIAJE %>>
 		<table>
 			<tr>
 				<td width="20%"></td>
