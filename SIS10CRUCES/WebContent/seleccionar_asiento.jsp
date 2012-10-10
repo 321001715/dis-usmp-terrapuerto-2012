@@ -30,6 +30,8 @@
 %>
 <body>
 <div class="ui-widget">
+<form action="ServletBoletaje" method="post" name="reservar" >
+<input type="hidden" name="tipo" value="<%=Constantes.ACCION_RESERVAR_BOLETO %>">
 <table style="width: 100%; height: 100%; position: relative;">
 <tr>
 <td>
@@ -162,35 +164,35 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td width="150px">Código de Viaje: </td>
-					<td><input type="text" name="codViaje" disabled="disabled" value="<%=viaje.getCodViaje() %>"></td>
-					<td></td>
+					<td><input type="text" name="codViaje1" disabled="disabled" value="<%=viaje.getCodViaje() %>"></td>
+					<td><input type="hidden" name="codViaje"  value="<%=viaje.getCodViaje() %>"></td>
 					<td></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Origen: </td>
-					<td><input type="text" name="origen" disabled="disabled" value="<%=ruta.getOrigen() %>"></td>
+					<td><input type="hidden" name="origen"  value="<%=ruta.getOrigen() %>"><input type="text" name="origen1" disabled="disabled" value="<%=ruta.getOrigen() %>"></td>
 					<td width="150px">Destino: </td>
-					<td><input type="text" name="destino" disabled="disabled" value="<%=ruta.getDestino() %>"></td>
+					<td><input type="hidden" name="destino"  value="<%=ruta.getDestino() %>"><input type="text" name="destino1" disabled="disabled" value="<%=ruta.getDestino() %>"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Fecha de Salida: </td>
-					<td><input type="text" name="fecSalida" disabled="disabled" value="<%=viaje.getFecSalida() %>"></td>
+					<td><input type="hidden" name="fecSalida"  value="<%=viaje.getFecSalida() %>"><input type="text" name="fecSalida1" disabled="disabled" value="<%=viaje.getFecSalida() %>"></td>
 					<td>Fecha de Llegada: </td>
-					<td><input type="text" name="fecLlegada" disabled="disabled" value="<%=viaje.getFecLlegada() %>"></td>
+					<td><input type="hidden" name="fecLlegada"  value="<%=viaje.getFecLlegada() %>"><input type="text" name="fecLlegada1" disabled="disabled" value="<%=viaje.getFecLlegada() %>"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Costo S/.: </td>
-					<td><input type="text" name="costo" disabled="disabled" value="<%=viaje.getPrecio() %>"></td>
+					<td><input type="hidden" name="costo"  value="<%=viaje.getPrecio() %>"><input type="text" name="costo1" disabled="disabled" value="<%=viaje.getPrecio() %>"></td>
 					<td>Duración Hrs.: </td>
-					<td><input type="text" name="duracion" disabled="disabled" value="<%=ruta.getDuracion() %>"></td>
+					<td><input type="hidden" name="duracion"  value="<%=ruta.getDuracion() %>"><input type="text" name="duracion1" disabled="disabled" value="<%=ruta.getDuracion() %>"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Servicio: </td>
-					<td colspan="3"><input type="text" name="servicio" size="73" disabled="disabled" value="<%=viaje.getServicio() %>"></td>
+					<td colspan="3"><input type="hidden" name="servicio"  value="<%=viaje.getServicio() %>"><input type="text" name="servicio1" size="73" disabled="disabled" value="<%=viaje.getServicio() %>"></td>
 				</tr>
 				</table>
 			</td>
@@ -223,9 +225,9 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Piso: </td>
-					<td><input type="text" name="piso" disabled="disabled" value="<%=carro.getNumPiso() %>"></td>
+					<td><input type="hidden" name="piso"  value="<%=carro.getNumPiso() %>"><input type="text" name="piso1" disabled="disabled" value="<%=carro.getNumPiso() %>"></td>
 					<td width="150px">Placa: </td>
-					<td><input type="text" name="placa" disabled="disabled"  value="<%=carro.getPlaca() %>"></td>
+					<td><input type="hidden" name="placa" value="<%=carro.getPlaca() %>"><input type="text" name="placa1" disabled="disabled"  value="<%=carro.getPlaca() %>"></td>
 				</tr>
 				</table>
 			</td>
@@ -264,6 +266,7 @@
 </td>
 </tr>
 </table>
+</form>
 </div>
 </body>
 </html>
