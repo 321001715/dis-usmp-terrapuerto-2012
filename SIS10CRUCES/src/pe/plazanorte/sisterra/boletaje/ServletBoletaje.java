@@ -51,7 +51,7 @@ public class ServletBoletaje extends HttpServlet {
 		String mensaje = "Ocurrio un error";
 		RequestDispatcher rd = null;
 		
-		//********************************INICIO CONSULTAR VIAJE**********************************//	
+		//********************************INICIO SELECCIONAR ASIENTO**********************************//	
 		if(tipo.equals(Constantes.ACCION_SELECCIONAR_ASIENTO)){
 			int id= Integer.parseInt(request.getParameter("idViaje"));
 			Viaje unviaje=new Viaje();
@@ -111,17 +111,32 @@ public class ServletBoletaje extends HttpServlet {
 				String feclle = request.getParameter("fecLlegada");
 				double costo = Double.parseDouble(request.getParameter("costo"));
 				int duracion = Integer.parseInt(request.getParameter("duracion"));
+				int asiento=Integer.parseInt(request.getParameter("asientos"));
+				int idViaje=Integer.parseInt(request.getParameter("viaje"));
 				//boleto.setIdViaje(codViaje);
 				//boleto.setAsiento(nroAsiento);
-				boolean retorno = service.reservarBoleto(boleto);
+				int idUsuario=Integer.parseInt(request.getParameter("usuario"));
 				
-				if(retorno) {
+				Usuario usuario=null;
+				System.out.print(usuario.getNombres());
+				HttpSession session = request.getSession();
+				//Usuario usuario=(Usuario)session.s
+			
+				//long id=usuario.getId();
+				
+				//stem.out.print(usuario.getNombres());
+				//int idReserva=service.generarReserva(idUsuario);
+				//boolean retorno = service.reservarBoleto(idReserva,idViaje,idUsuario,asiento);
+				
+				//if(retorno) {
 					mensaje = "Boleto reservado exitosamente.";
-				}
+				//}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}			
+			}
+		
+			rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
 		
 		}
 		
@@ -142,8 +157,9 @@ public class ServletBoletaje extends HttpServlet {
 				String fecSalida_string = request.getParameter("fecSalida");
 				String origen = request.getParameter("origen");
 				String destino = request.getParameter("destino");
-				
-				
+				//int id=Integer.parseInt(request.getParameter("usuario"));
+				//System.out.print(id);
+			
 				//Date fecSalida;
 				
 				

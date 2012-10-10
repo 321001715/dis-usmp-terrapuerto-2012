@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Vehiculo"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Asiento"%>
@@ -27,6 +28,9 @@
 	
 	Vector<Asiento> asientos=(Vector<Asiento>)request.getAttribute("asientos");
 	String estado="";
+	
+	
+	
 %>
 <body>
 <div class="ui-widget">
@@ -166,7 +170,7 @@
 					<td width="150px">Código de Viaje: </td>
 					<td><input type="text" name="codViaje1" disabled="disabled" value="<%=viaje.getCodViaje() %>"></td>
 					<td><input type="hidden" name="codViaje"  value="<%=viaje.getCodViaje() %>"></td>
-					<td></td>
+					<td><input type="hidden" name="viaje"  value="<%=viaje.getId() %>"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
