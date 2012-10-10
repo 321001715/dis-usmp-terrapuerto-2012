@@ -43,7 +43,7 @@
 				<td><input type="text" name="idRuta"></td>
 				
 				<td>Código de Viaje: </td>
-				<td><input type="text" name="codViaje"></td>
+				<td><input type="text" name="idViaje"></td>
 			</tr>
 			<tr>
 				<td></td>
