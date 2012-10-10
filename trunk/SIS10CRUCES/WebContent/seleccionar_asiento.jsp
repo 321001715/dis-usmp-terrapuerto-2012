@@ -176,9 +176,9 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Fecha de Salida: </td>
-					<td><input type="text" name="fecSalida" disabled="disabled"></td>
+					<td><input type="text" name="fecSalida" disabled="disabled" value="<%=viaje.getFecSalida() %>"></td>
 					<td>Fecha de Llegada: </td>
-					<td><input type="text" name="fecLlegada" disabled="disabled"></td>
+					<td><input type="text" name="fecLlegada" disabled="disabled" value="<%=viaje.getFecLlegada() %>"></td>
 				</tr>
 	   			<tr>
 	   				<td width="10%"></td>
