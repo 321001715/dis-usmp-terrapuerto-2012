@@ -705,10 +705,27 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			
 			String sql = "SELECT * FROM T_VIAJE WHERE ";
-	
-			/*if(viaje.getIdRuta() != null) {
-				sql += "";
-			}*/
+			boolean flag = false;
+			
+			if(viaje.getIdRuta() != 0) {
+				sql += "IDRUTA = " + viaje.getIdRuta();
+				flag = true;
+			}else if(viaje.getId() != 0) {
+				sql += "ID = " + viaje.getId();
+				if(flag) sql += " AND ";
+				flag = true;
+			}else if(viaje.getIdClasificacion() != 0) {
+				if(flag) sql += " AND ";
+				sql += "IDCLASIFICACION = " + viaje.getIdClasificacion();
+				flag = true;
+			}else if(viaje.getIdVehiculo() != 0) {
+				if(flag) sql += " AND ";
+				sql += "IDVEHICULO =" + viaje.getIdVehiculo();
+				flag = true;
+			}
+			
+			sql += " WHERE IDPROVEEDOR = " + proveedor.getIdProveedor() + ";";
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();			
