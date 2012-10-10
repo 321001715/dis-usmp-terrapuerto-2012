@@ -78,7 +78,7 @@ function redirect()
     <td align="left">
 		<font style="font-family: monospace; font-size: medium; color: white;">
 			<b>Bienvenido, Sr. <br>
-			<%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%></b>
+			<%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%><input type="hidden" name="usuario"  value="<%=uu.getId() %>"></b>
 		</font>
 	</td>
 	<td align="right" style="width: 55%">
