@@ -91,6 +91,10 @@ return null;
 			Viaje viaje = null;
 			ResultSet rs = stmt.executeQuery(query);
 
+			/*SELECT * FROM T_VIAJE WHERE IDRUTA = 1 AND IDRUTA =
+					(SELECT IDRUTA FROM T_RUTA WHERE IDPROVEEDOR = 18 AND IDRUTA = 1);*/
+			
+			
 			while (rs.next()) {
 				viaje = new Viaje();
 				
