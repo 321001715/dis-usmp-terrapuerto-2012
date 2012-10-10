@@ -708,27 +708,28 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 			Vector<Viaje> viajes = new Vector<Viaje>();
 			
-			String sql = "SELECT * FROM T_VIAJE WHERE ";
+			String sql = "SELECT * FROM T_VIAJE, T_RUTA WHERE ";
 			boolean flag = false;
 			
 			if(viaje.getIdRuta() != 0) {
-				sql += "IDRUTA = " + viaje.getIdRuta();
+				sql += "T_VIAJE.IDRUTA = " + viaje.getIdRuta();
 				flag = true;
 			}else if(viaje.getId() != 0) {
-				sql += "ID = " + viaje.getId();
+				sql += "T_VIAJE.ID = " + viaje.getId();
 				if(flag) sql += " AND ";
 				flag = true;
 			}else if(viaje.getIdClasificacion() != 0) {
 				if(flag) sql += " AND ";
-				sql += "IDCLASIFICACION = " + viaje.getIdClasificacion();
+				sql += "T_VIAJE.IDCLASIFICACION = " + viaje.getIdClasificacion();
 				flag = true;
 			}else if(viaje.getIdVehiculo() != 0) {
 				if(flag) sql += " AND ";
-				sql += "IDVEHICULO =" + viaje.getIdVehiculo();
+				sql += "T_VIAJE.IDVEHICULO =" + viaje.getIdVehiculo();
 				flag = true;
 			}
 			
-			sql += " AND IDPROVEEDOR = " + proveedor.getIdProveedor() + ";";
+			sql += " AND T_RUTA.IDPROVEEDOR = " + proveedor.getIdProveedor() +
+					" AND T_RUTA.IDRUTA = T_VIAJE.IDRUTA;";
 			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			
