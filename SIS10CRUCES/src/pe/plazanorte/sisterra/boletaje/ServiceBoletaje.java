@@ -72,5 +72,28 @@ public class ServiceBoletaje {
 		}
 		return carro;
 	}
+	public Reserva generarReserva(int idUsuario){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		Reserva reserva=null;
+		try {
+			reserva=boletajeDao.generarReserva(idUsuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reserva;
+	}
+	public boolean reservarBoleto(int idReserva,int idUsuario,int idViaje,int asiento){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		boolean retorno=false;
+		try {
+			retorno=boletajeDao.reservarBoleto(idReserva,idUsuario,idViaje,asiento);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return retorno;
+	}
+	
 	
 }

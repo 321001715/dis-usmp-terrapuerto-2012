@@ -3,6 +3,13 @@ package pe.plazanorte.sisterra.entidades;
 public class Reserva {
 	private long id;
 	private long idusuario;
+	private String estado;
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public long getId() {
 		return id;
 	}

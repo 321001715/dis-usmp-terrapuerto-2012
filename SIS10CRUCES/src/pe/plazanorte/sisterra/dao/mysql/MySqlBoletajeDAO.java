@@ -260,4 +260,70 @@ return null;
 		return carro;
 	}
 
+	@Override
+	public Reserva generarReserva(int idUsuario) {
+		Reserva reserva = null;
+		int filas_afectadas = 0;
+		String estado="PENDIENTE";
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+
+			String sql = "insert INTO t_reserva(idUsuario1,estado) "
+					+ "values (" + "'" + idUsuario + "', '"
+					+ estado + "'" + ");";
+
+			filas_afectadas = stmt.executeUpdate(sql);
+			
+			String query = "SELECT idReserva FROM T_reserva WHERE idUsuario1="+ idUsuario +";";
+			System.out.println(query);
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				
+				reserva=new Reserva();
+				reserva.setId(rs.getInt("idReserva"));
+				reserva.setIdusuario(rs.getInt("idUsuario1"));
+				reserva.setEstado(rs.getString("estado"));
+				
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (filas_afectadas == 1)
+			return reserva;
+
+		return null;
+	}
+
+	@Override
+	public boolean reservarBoleto(int idReserva, int idUsuario, int idViaje,
+			int asiento) {
+		int filas_afectadas = 0;
+		String estado="RESERVADO";
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+
+			String sql = "insert INTO t_Boleto(idPasajero,idViaje,idReserva,asiento,estado) "
+					+ "values (" + "'" + idUsuario + "', '"
+					+ idViaje + "','" + idReserva + "','"
+					+ asiento + "','"+ estado+ "');";
+
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (filas_afectadas == 1)
+			return true;
+
+		return false;
+	}
+
 }
