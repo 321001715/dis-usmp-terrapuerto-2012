@@ -18,6 +18,7 @@ import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Proveedor;
+import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
@@ -99,9 +100,17 @@ public class ServletBoletaje extends HttpServlet {
 		//********************************INICIO RESERVAR BOLETO DE VIAJE**********************************//		
 		
 		if(tipo.equals(Constantes.ACCION_RESERVAR_BOLETO)){
+			Reserva reserva=new Reserva();
+			Boleto boleto = new Boleto();
 			
 			try {
-				Boleto boleto = new Boleto();
+				String codViaje = request.getParameter("codViaje");
+				String origen = request.getParameter("origen");
+				String destino = request.getParameter("destino");
+				String fecsal = request.getParameter("fecSalida");
+				String feclle = request.getParameter("fecLlegada");
+				double costo = Double.parseDouble(request.getParameter("costo"));
+				int duracion = Integer.parseInt(request.getParameter("duracion"));
 				//boleto.setIdViaje(codViaje);
 				//boleto.setAsiento(nroAsiento);
 				boolean retorno = service.reservarBoleto(boleto);
@@ -113,6 +122,7 @@ public class ServletBoletaje extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
+		
 		}
 		
 		//********************************FIN RESERVAR BOLETO DE VIAJE**********************************//
