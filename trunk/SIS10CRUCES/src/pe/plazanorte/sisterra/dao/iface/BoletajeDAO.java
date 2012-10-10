@@ -20,4 +20,7 @@ public interface BoletajeDAO {
 	public Ruta consultarRuta(long id);
 	public Vector<Asiento> consultarAsientos(int id);
 	public Vehiculo consultarVehiculo(int id);
+	public Reserva generarReserva(int idUsuario);
+	public boolean reservarBoleto(int idReserva, int idUsuario, int idViaje,
+			int asiento);
 }

@@ -124,7 +124,7 @@ public class ServletBoletaje extends HttpServlet {
 			
 				//long id=usuario.getId();
 				
-				//stem.out.print(usuario.getNombres());
+				//system.out.print(usuario.getNombres());
 				//int idReserva=service.generarReserva(idUsuario);
 				//boolean retorno = service.reservarBoleto(idReserva,idViaje,idUsuario,asiento);
 				
