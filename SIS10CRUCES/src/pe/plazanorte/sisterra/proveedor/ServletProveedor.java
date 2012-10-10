@@ -827,6 +827,24 @@ public class ServletProveedor extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_VIAJE)) {
+			int idRuta = Integer.parseInt(request.getParameter("idRuta"));
+			int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
+			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+			int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
+			
+			Viaje viaje = new Viaje();
+			Proveedor proveedor = new Proveedor();
+			viaje.setIdRuta(idRuta);
+			viaje.setId(idViaje);
+			viaje.setIdClasificacion(idClasificacion);
+			viaje.setIdVehiculo(idVehiculo);
+			proveedor.setIdProveedor(idProveedor);
+			Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+			
+			request.setAttribute("viaje", listaViajes);
+			rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
 		}
 		
 		//******************************FIN GESTIONAR VIAJE******************************//
