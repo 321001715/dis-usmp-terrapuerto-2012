@@ -273,7 +273,7 @@ return null;
 			String sql = "insert INTO t_reserva(idUsuario1,estado) "
 					+ "values (" + "'" + idUsuario + "', '"
 					+ estado + "'" + ");";
-
+			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			
 			String query = "SELECT idReserva FROM T_reserva WHERE idUsuario1="+ idUsuario +";";
@@ -313,7 +313,7 @@ return null;
 					+ "values (" + "'" + idUsuario + "', '"
 					+ idViaje + "','" + idReserva + "','"
 					+ asiento + "','"+ estado+ "');";
-
+			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {
