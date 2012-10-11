@@ -325,4 +325,39 @@ return null;
 		return false;
 	}
 
+	@Override
+	public boolean cambiarEstado(int idViaje, int asiento) {
+		int filas_afectadas = 0;
+		String estado="RESERVADO";
+		Vehiculo vehiculo=null;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String query = "SELECT idVehiculo FROM T_viaje WHERE idViaje="+ idViaje +";";
+			
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				
+				vehiculo=new Vehiculo();
+				vehiculo.setIdVehiculo(rs.getInt("idVehiculo"));		
+			}
+			
+			String query1 = "UPDATE T_ASIENTO SET estado = '"			
+					+ estado + "' "
+					+ " WHERE numero = " + asiento + " AND idVehiculo="+vehiculo.getIdVehiculo()+";";
+			System.out.print(query1);
+			filas_afectadas = stmt.executeUpdate(query1);
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (filas_afectadas == 1)
+			return true;
+
+		return false;
+	}
+
 }

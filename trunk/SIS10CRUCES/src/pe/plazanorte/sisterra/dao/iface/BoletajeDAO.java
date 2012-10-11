@@ -23,4 +23,5 @@ public interface BoletajeDAO {
 	public Reserva generarReserva(int idUsuario);
 	public boolean reservarBoleto(int idReserva, int idViaje, int idUsuario,
 			int asiento);
+	public boolean cambiarEstado(int idViaje, int asiento);
 }

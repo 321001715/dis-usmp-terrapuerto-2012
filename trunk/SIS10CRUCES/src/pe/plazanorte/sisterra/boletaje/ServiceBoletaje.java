@@ -94,6 +94,17 @@ public class ServiceBoletaje {
 		}
 		return retorno;
 	}
+	public boolean cambiarEstado(int idViaje,int asiento){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		boolean retorno=false;
+		try {
+			retorno=boletajeDao.cambiarEstado(idViaje,asiento);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return retorno;
+	}
 	
 	
 }
