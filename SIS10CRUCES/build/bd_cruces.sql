@@ -233,7 +233,6 @@ DROP TABLE IF EXISTS `t_viaje`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_viaje` (
   `idViaje` int(8) NOT NULL AUTO_INCREMENT,
-  `codViaje` varchar(45) COLLATE armscii8_bin NOT NULL,
   `nomViaje` varchar(45) COLLATE armscii8_bin NOT NULL,
   `fecSalida` datetime NOT NULL,
   `fecLlegada` datetime NOT NULL,
