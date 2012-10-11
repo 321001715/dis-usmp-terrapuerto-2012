@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pe.plazanorte.sisterra.clasificacion.ServiceClasificacion;
 import pe.plazanorte.sisterra.entidades.Chofer;
@@ -53,7 +54,9 @@ public class ServletConsultas extends HttpServlet {
 			ServiceProveedor serviceProveedor = new ServiceProveedor();
 			ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
 			Proveedor proveedor = new Proveedor();
-			proveedor.setIdProveedor(24);
+			HttpSession session = request.getSession(true);
+			proveedor = (Proveedor)session.getAttribute("BProveedor");
+			
 			try {
 				int idViaje = Integer.parseInt(request.getParameter("idViaje"));
 				viaje = service.consultarViaje(idViaje);				
