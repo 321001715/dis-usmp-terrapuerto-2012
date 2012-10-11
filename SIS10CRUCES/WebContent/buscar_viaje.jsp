@@ -1,3 +1,8 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Clasificacion"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Vehiculo"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
+<%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -8,13 +13,9 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
-		if(document.buscar.idVehiculo.value.length == 0 && document.buscar.idRuta.value.length == 0 && document.buscar.idClasificacion.value.length == 0 && document.buscar.idViaje.value.length == 0){		
+		if(document.buscar.idVehiculo.value == 0 && document.buscar.idRuta.value == 0 && document.buscar.idClasificacion.value == 0 && document.buscar.idViaje.value == 0){		
 			alert("Debe llenar alguna condición de búsqueda.");
 			document.buscar.idVehiculo.focus();				
-			return false;
-		}else if(isNaN(document.buscar.idVehiculo.value)){		
-			alert("Código de viaje no válido.");
-			document.buscar.idVehiculo.focus();	
 			return false;
 		}	
 		return true;
@@ -27,7 +28,13 @@
 <script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 </head>
-<body>	
+<body>
+<%
+	Vector<Ruta> listaRutas = (Vector<Ruta>)request.getAttribute("listaRutas");
+	Vector<Vehiculo> listaVehiculos = (Vector<Vehiculo>)request.getAttribute("listaVehiculos");
+	Vector<Clasificacion> listaClasificaciones = (Vector<Clasificacion>)request.getAttribute("listaClasificaciones");
+	Vector<Viaje> listaViajes = (Vector<Viaje>)request.getAttribute("listaViajes");
+%>	
 <div class="ui-widget">
    <div class="ui-corner-bottom ui-widget-content">   
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
@@ -40,18 +47,62 @@
 			<tr>
 				<td width="20%"></td>
 				<td>Código de Ruta: </td>
-				<td><input type="text" name="idRuta"></td>
+				<td>
+				<select name="idRuta">
+						<option value="0">Seleccione</option>
+						<%
+							for(Ruta ruta : listaRutas){
+						%>
+							<option value=<%=ruta.getId() %>><%=ruta.getNomRuta() %></option>
+						<%
+							}
+						%>
+					</select>
+				</td>
 				
 				<td>Código de Viaje: </td>
-				<td><input type="text" name="idViaje"></td>
+				<td>
+				<select name="idRuta">
+						<option value="0">Seleccione</option>
+						<%
+							for(Viaje viaje : listaViajes){
+						%>
+							<option value=<%=viaje.getId() %>><%=viaje.getNomViaje()%></option>
+						<%
+							}
+						%>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>Clasificación: </td>
-				<td><input type="text" name="idClasificacion"></td>
+				<td>
+				<select name="idClasificacion">
+						<option value="0">Seleccione</option>
+						<%
+							for(Clasificacion clasificacion : listaClasificaciones){						
+						%>
+							<option value=<%=clasificacion.getId() %>><%=clasificacion.getNombre() %></option>
+						<%				
+							}
+						%>
+					</select>
+				</td>
 				
 				<td>Código Vehículo: </td>
-				<td><input type="text" name="idVehiculo"></td>
+				<td>
+				<select name="idVehiculo">
+						<option value="0">Seleccione</option>
+						<%
+							for(Vehiculo vehiculo : listaVehiculos){							
+						%>
+							<option value=<%=vehiculo.getIdVehiculo() %>><%=vehiculo.getPlaca()%></option>
+						<%							
+							}
+						%>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="6" align="right">
