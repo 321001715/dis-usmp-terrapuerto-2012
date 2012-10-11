@@ -46,11 +46,6 @@ if(viaje.size() != 0){
 
 		<tr>
 			<td align="center">
-						<%-- <div class="ui-state-default ui-corner-all ui-state-hover">
-							<a href="Usuarios?origen=&id=<%=viaje.get(i) %>">
-								<span class="ui-icon ui-icon-check"></span>
-							</a>
-						</div> --%>
 						<div class="ui-state-default ui-corner-all ui-state-hover">
 							<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_SELECCIONAR_ASIENTO %>&idViaje=<%=viaje.get(i).getId() %>">
 								<span class="ui-icon ui-icon-check"></span>
