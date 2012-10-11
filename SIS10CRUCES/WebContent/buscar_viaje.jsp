@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
-		if(document.buscar.idVehiculo.value.length == 0 && document.buscar.marca.value.length == 0 && document.buscar.modelo.value.length == 0 && document.buscar.placa.value.length == 0){		
+		if(document.buscar.idVehiculo.value.length == 0 && document.buscar.idRuta.value.length == 0 && document.buscar.idClasificacion.value.length == 0 && document.buscar.idViaje.value.length == 0){		
 			alert("Debe llenar alguna condición de búsqueda.");
 			document.buscar.idVehiculo.focus();				
 			return false;
@@ -33,7 +33,7 @@
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
    </div>
 &nbsp;   
-	<form action="ServletProveedor" method="post" name="buscar" onsubmit="validar()">
+	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value=<%=Constantes.ACCION_FILTRO_VIAJE %>>
 		<input type="hidden" name="destino" value=<%=Constantes.GESTIONAR_VIAJE %>>
 		<table>
