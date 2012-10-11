@@ -13,9 +13,8 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
-		if(document.buscar.idVehiculo.value == 0 && document.buscar.idRuta.value == 0 && document.buscar.idClasificacion.value == 0 && document.buscar.idViaje.value == 0){		
-			alert("Debe llenar alguna condición de búsqueda.");
-			document.buscar.idVehiculo.focus();				
+		if(document.buscar.idVehiculo.selectedIndex==0 && document.buscar.selectedIndex==0 && document.buscar.idClasificacion.selectedIndex==0 && document.buscar.idViaje.selectedIndex==0){		
+			alert("Debe llenar alguna condición de búsqueda.");						
 			return false;
 		}	
 		return true;
@@ -40,7 +39,7 @@
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
    </div>
 &nbsp;   
-	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar()">
+	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar();">
 		<input type="hidden" name="tipo" value=<%=Constantes.ACCION_FILTRO_VIAJE %>>
 		<input type="hidden" name="destino" value=<%=Constantes.GESTIONAR_VIAJE %>>
 		<table>
@@ -49,7 +48,7 @@
 				<td>Código de Ruta: </td>
 				<td>
 				<select name="idRuta">
-						<option value="0">Seleccione</option>
+						<option value="SELECCIONE" >Seleccione</option>
 						<%
 							for(Ruta ruta : listaRutas){
 						%>
@@ -63,7 +62,7 @@
 				<td>Código de Viaje: </td>
 				<td>
 				<select name="idRuta">
-						<option value="0">Seleccione</option>
+						<option value="SELECCIONE">Seleccione</option>
 						<%
 							for(Viaje viaje : listaViajes){
 						%>
@@ -79,7 +78,7 @@
 				<td>Clasificación: </td>
 				<td>
 				<select name="idClasificacion">
-						<option value="0">Seleccione</option>
+						<option value="SELECCIONE">Seleccione</option>
 						<%
 							for(Clasificacion clasificacion : listaClasificaciones){						
 						%>
@@ -93,7 +92,7 @@
 				<td>Código Vehículo: </td>
 				<td>
 				<select name="idVehiculo">
-						<option value="0">Seleccione</option>
+						<option value="SELECCIONE">Seleccione</option>
 						<%
 							for(Vehiculo vehiculo : listaVehiculos){							
 						%>
