@@ -7,6 +7,7 @@ import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 
+import pe.plazanorte.sisterra.entidades.Cliente;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Proveedor;
@@ -20,6 +21,18 @@ public class ServiceSeguridad {
 		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
 		
 		return seguridadDao.registrarUsuario(usuario);
+	}
+	
+	public Usuario buscarUsuario(String usuario){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO(); 
+		return seguridadDao.buscarUsuario(usuario);
+	}
+	
+	public boolean agregarCliente(Cliente cliente){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO();
+		return seguridadDao.registrarCliente(cliente);
 	}
 
 	public boolean eliminarUsuario(Usuario usuario) {

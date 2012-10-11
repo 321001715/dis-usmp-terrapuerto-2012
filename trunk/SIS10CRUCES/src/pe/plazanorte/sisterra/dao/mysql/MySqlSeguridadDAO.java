@@ -61,6 +61,52 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	@Override
+	public boolean registrarCliente(Cliente cliente) {
+		int filas_afectadas = 0;
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String sql = "INSERT INTO t_cliente(idUsuario,codClienteFrecuente, nombres, apePat, apeMat,  numDoc, tipoDoc, idUbigeo, direccion, sexo, tel, email) "
+				+ "VALUES ("
+				+ "'"
+				+ cliente.getIdUsuario()
+				+ "', '"
+				+ cliente.getCodClienteFrecuente()
+				+ "', '"
+				+ cliente.getNombres()
+				+ "', '"
+				+ cliente.getApePat()
+				+ "', '"
+				+ cliente.getApeMat()
+				+ "', '"
+				+ cliente.getNumDoc()
+				+ "', '"
+				+ cliente.getTipoDoc()
+				+ "', '"
+				+ cliente.getIdUbigeo()
+				+ "', '"
+				+cliente.getDireccion()
+				+ "', '"
+				+cliente.getSexo()
+				+ "', '"
+				+cliente.getTel()
+				+ "', '"
+				+cliente.getEmail()
+				+ "');";
+			
+			System.out.println(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (filas_afectadas == 1)
+			return true;
+		
+		return true;
+	}
+
+	@Override
 	public boolean modificarUsuario(Usuario usuario) {
 		int filas_afectadas = 0;
 
@@ -250,13 +296,13 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT DISTINCT u1.idUsuario, u1.usuario, u1.nombres, u1.apePat, u1.apeMat, u1.numDOc, u1.tel, u1.sexo, u1.estado, u1.idPerfil " +
-					"FROM T_USUARIO u1 " +
-					"LEFT JOIN t_proveedor p1 " +
-					"ON p1.idUsuario = u1.idUsuario " +
-					"WHERE p1.idUsuario is null " +
-					"and u1.idPerfil = (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'PROVEEDOR') " +
-					"GROUP BY u1.idUsuario, u1.usuario;";
+			String query = "SELECT DISTINCT u1.idUsuario, u1.usuario, u1.nombres, u1.apePat, u1.apeMat, u1.numDOc, u1.tel, u1.sexo, u1.estado, u1.idPerfil "
+					+ "FROM T_USUARIO u1 "
+					+ "LEFT JOIN t_proveedor p1 "
+					+ "ON p1.idUsuario = u1.idUsuario "
+					+ "WHERE p1.idUsuario is null "
+					+ "and u1.idPerfil = (SELECT idPerfil FROM T_PERFIL WHERE perfil like 'PROVEEDOR') "
+					+ "GROUP BY u1.idUsuario, u1.usuario;";
 
 			ResultSet rs = stmt.executeQuery(query);
 			Usuario usuario = null;
@@ -281,7 +327,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		}
 		return vecusuario;
 	}
-	
+
 	@Override
 	public boolean eliminarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
@@ -322,7 +368,6 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 	@Override
 	public Vector<Perfil> buscarPerfiles(String cod, String perfil) {
@@ -601,6 +646,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				usuario.setIdTipUsuario(rs.getInt("idPerfil"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setClave(rs.getString("clave"));
+				usuario.setIdCiudad(rs.getLong("idUbigeo"));
 
 			}
 
@@ -612,24 +658,23 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public Perfil busPerfil(String idPerfil) {
-		Perfil perfil=new Perfil();;
+		Perfil perfil = new Perfil();
+		;
 		try {
-		Connection con = MySqlDAOFactory.abrirConexion();
-		Statement stmt = con.createStatement();
-		String query = "SELECT * FROM t_perfil WHERE idPerfil= " + idPerfil;
-		
-		ResultSet rs = stmt.executeQuery(query);
-		
-		while (rs.next()) {
-			
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM t_perfil WHERE idPerfil= " + idPerfil;
 
-			perfil.setId(rs.getLong("idPerfil"));
-			perfil.setNombre(rs.getString("perfil"));
-			perfil.setDescripcion(rs.getString("descripcion"));
+			ResultSet rs = stmt.executeQuery(query);
 
-		
-		}
-		}catch(Exception e){
+			while (rs.next()) {
+
+				perfil.setId(rs.getLong("idPerfil"));
+				perfil.setNombre(rs.getString("perfil"));
+				perfil.setDescripcion(rs.getString("descripcion"));
+
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return perfil;
@@ -637,22 +682,23 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public Cliente buscarCliente(String dni) {
-		
+
 		return null;
 	}
 
 	@Override
 	public Proveedor buscarProvedor(long idUsuario) {
-		Proveedor proveedor= new Proveedor();
+		Proveedor proveedor = new Proveedor();
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmnt = con.createStatement();
-			String query = "SELECT * FROM t_proveedor WHERE idUsuario= " + idUsuario;
-			
-			ResultSet rs=stmnt.executeQuery(query);
-			
+			String query = "SELECT * FROM t_proveedor WHERE idUsuario= "
+					+ idUsuario;
+
+			ResultSet rs = stmnt.executeQuery(query);
+
 			while (rs.next()) {
-				
+
 				proveedor.setDireccion(rs.getString("direccion"));
 				proveedor.setEstado(rs.getString("estado"));
 				proveedor.setIdProveedor(rs.getLong("idProveedor"));
@@ -660,11 +706,46 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				proveedor.setRazCom(rs.getString("razCom"));
 				proveedor.setRazSocial(rs.getString("razSocial"));
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return proveedor;
+	}
+
+	@Override
+	public Cliente buscarCliente(long idUsuario) {
+		Cliente cliente = new Cliente();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmnt = con.createStatement();
+			String query = "SELECT * FROM t_cliente WHERE idUsuario= "
+					+ idUsuario;
+			System.out.println(query);
+			ResultSet rs = stmnt.executeQuery(query);
+
+			while (rs.next()) {
+
+				cliente.setApeMat(rs.getString("apeMat"));
+				cliente.setApePat(rs.getString("apePat"));
+				cliente.setCodClienteFrecuente(rs
+						.getString("codClienteFrecuente"));
+				cliente.setDireccion(rs.getString("direccion"));
+				cliente.setEmail(rs.getString("email"));
+				cliente.setIdCliente(rs.getInt("idCliente"));
+				cliente.setIdUbigeo(rs.getInt("idUbigeo"));
+				cliente.setIdUsuario(rs.getInt("idUsuario"));
+				cliente.setNombres(rs.getString("nombres"));
+				cliente.setNumDoc(rs.getString("numDoc"));
+				cliente.setSexo(rs.getString("sexo"));
+				cliente.setTel(rs.getString("tel"));
+				cliente.setTipoDoc(rs.getString("tipoDoc"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cliente;
 	}
 
 }

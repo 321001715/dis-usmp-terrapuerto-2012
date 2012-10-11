@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
 		Perfil perfil=new Perfil();
 		try {
 			Proveedor proveedor= new Proveedor();
-			Cliente cliente =new Cliente();
+			
 			Usuario uu = new Usuario();
 			uu.setUsuario(request.getParameter("usuario").toUpperCase());
 			uu.setClave(request.getParameter("password"));
@@ -45,9 +45,12 @@ public class Login extends HttpServlet {
 				session.setAttribute("BPerfil", perfil);
 				
 				if(idPerfil.equals("20")){
+					Cliente cliente =new Cliente();
+				cliente = du.buscarCliente(uu.getId());
+					
 					session.setAttribute("BCliente", cliente);	
 					
-					//debera ir interfaz cliente
+					
 					
 				}else
 				{
@@ -58,7 +61,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("BProveedor", proveedor);	
 
 					
-					//deberia ir a interfaz de no cliente
+					 
 				}
 				
 				getServletContext().getRequestDispatcher("/presentacion.jsp").forward(request, response);

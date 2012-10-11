@@ -1,55 +1,96 @@
 package pe.plazanorte.sisterra.entidades;
 
 public class Cliente {
-	
-	private long id;
-	private String tipo_cliente;
-	private long ruc;
-	private String razons;
-	private String ciudad;
-	private String pregsecret;
-	private String rptasecret;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getTipo_cliente() {
-		return tipo_cliente;
-	}
-	public void setTipo_cliente(String tipo_cliente) {
-		this.tipo_cliente = tipo_cliente;
-	}
-	public long getRuc() {
-		return ruc;
-	}
-	public void setRuc(long ruc) {
-		this.ruc = ruc;
-	}
-	public String getRazons() {
-		return razons;
-	}
-	public void setRazons(String razons) {
-		this.razons = razons;
-	}
-	public String getCiudad() {
-		return ciudad;
-	}
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
-	public String getPregsecret() {
-		return pregsecret;
-	}
-	public void setPregsecret(String pregsecret) {
-		this.pregsecret = pregsecret;
-	}
-	public String getRptasecret() {
-		return rptasecret;
-	}
-	public void setRptasecret(String rptasecret) {
-		this.rptasecret = rptasecret;
-	}
 
+	private long idCliente;
+	private long idUsuario;
+	private String codClienteFrecuente;
+	public long getIdCliente() {
+		return idCliente;
+	}
+	public void setIdCliente(long idCliente) {
+		this.idCliente = idCliente;
+	}
+	public long getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	public String getCodClienteFrecuente() {
+		return codClienteFrecuente;
+	}
+	public void setCodClienteFrecuente(String codClienteFrecuente) {
+		this.codClienteFrecuente = codClienteFrecuente;
+	}
+	public String getNombres() {
+		return nombres;
+	}
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+	public String getApePat() {
+		return apePat;
+	}
+	public void setApePat(String apePat) {
+		this.apePat = apePat;
+	}
+	public String getApeMat() {
+		return apeMat;
+	}
+	public void setApeMat(String apeMat) {
+		this.apeMat = apeMat;
+	}
+	public String getNumDoc() {
+		return numDoc;
+	}
+	public void setNumDoc(String numDoc) {
+		this.numDoc = numDoc;
+	}
+	public String getTipoDoc() {
+		return tipoDoc;
+	}
+	public void setTipoDoc(String tipoDoc) {
+		this.tipoDoc = tipoDoc;
+	}
+	public int getIdUbigeo() {
+		return idUbigeo;
+	}
+	public void setIdUbigeo(int idUbigeo) {
+		this.idUbigeo = idUbigeo;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	private String nombres;
+	private String apePat;
+	private String apeMat;
+	private String numDoc;
+	private String tipoDoc;
+	private int idUbigeo;
+	private String direccion;
+	private String sexo;
+	private String tel;
+	private String email;
 }
