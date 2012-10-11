@@ -129,7 +129,7 @@ DROP TABLE IF EXISTS `t_reserva`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_reserva` (
   `idReserva` int(7) NOT NULL AUTO_INCREMENT,
-  `idUsuario1` int(6) NOT NULL,
+  `idUsuario` int(6) NOT NULL,
   `fecha` date NOT NULL,
   `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
   `userInsert` int(6) DEFAULT NULL,

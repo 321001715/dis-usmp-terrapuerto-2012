@@ -24,7 +24,7 @@
 	</div>
 &nbsp;
 &nbsp;
-
+<form action="">
 <table align="center" id="table" class="sortable">
 		<thead>
 			<tr>
@@ -54,17 +54,19 @@
 			<td align="left"><%--<%=ruta.get(i).getKm()%>--%></td>
 			<td align="left"><%--<%=ruta.get(i).getEstado()--%></td>
 			<td align="center"><%--<%=ruta.get(i).getEstado()--%></td>
-			<td align="left">
-						<div class="ui-state-default ui-corner-all cajaicono">
-							<%--<a href= ServletProveedor?tipo=<%=Constantes.ACCION_CONSULTAR_RUTA %>&destino=<%=Constantes.ACCION_MODIFICAR_RUTA %>&id=<%=ruta.get(i).getId()%>">--%>
-								<span class="ui-icon ui-icon-pencil"></span>
-							</a>
-						</div>
-			</td>	
-			
+			<td align="left"><input type="checkbox" name=""></td>	
+		</tr>
 <%-- <%} %> --%>
+		<tr><td colspan="9"></td></tr>
+		<tr>
+			<td align="center" colspan="9">
+				<input type="submit" name="confirmar" value="CONFIRMAR">
+				<input type="submit" name="anular" value="ANULAR">
+			</td>
+		</tr>
 		</tbody>
 	</table>
+</form>	
 </div>
 	<div id="controls">
 		<div id="perpage">
@@ -91,6 +93,7 @@
 <%-- <% 
 // // }
 %> --%>
+
 <script type="text/javascript">
   		var sorter = new TINY.table.sorter("sorter");
 		sorter.head = "head";
