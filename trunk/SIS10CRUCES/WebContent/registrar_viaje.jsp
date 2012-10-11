@@ -131,7 +131,7 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td></td>
-				<td>DNI de Chofer:</td>
+				<td>Nombre de Chofer:</td>
 				<td>
 				<select name="idChofer">
 					<%
