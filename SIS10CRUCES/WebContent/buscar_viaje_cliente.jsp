@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
 <link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
 <script type="text/javascript" src="jquery/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="jquery/js/jquery-ui-1.7.3.custom.min.js"></script>
@@ -13,14 +12,14 @@
 <body>	
 <script>
 $(document).ready(function(){
-	   $("#a").datepicker({
+	   $("#fecha").datepicker({
 	      showOn: 'both',
 	      buttonImage: 'jquery/css/dark-hive/images/calendar.png',
 	      buttonImageOnly: true,
 	      changeYear: true,
 	      numberOfMonths: 1	,
 	   });
-	   $('#a').datepicker('option', {dateFormat: 'dd/mm/yy'});
+	   $('#fecha').datepicker('option', {dateFormat: 'dd/mm/yy'});
 });
 </script>
 <div class="ui-widget">
@@ -38,7 +37,7 @@ $(document).ready(function(){
 				<td><input type="text" name="empresa"></td>
 				
 				<td>Fecha de Salida: </td>
-				<td><input name="fechasalida" id="a"></td>
+				<td><input name="fechasalida" id="fecha" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td></td>

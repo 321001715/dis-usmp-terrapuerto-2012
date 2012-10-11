@@ -13,18 +13,44 @@
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
 <link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
 <link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
+<link rel="stylesheet" media="screen" href="css/jquery.timepicker.css" type="text/css"/>
 <link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
-<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="jquery/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="jquery/js/jquery-ui-1.7.3.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	   $("#fechaLlegada").datepicker({
+	      showOn: 'both',
+	      buttonImage: 'jquery/css/dark-hive/images/calendar.png',
+	      buttonImageOnly: true,
+	      changeYear: true,
+	      numberOfMonths: 1	,
+	   });
+	   $('#fechaLlegada').datepicker('option', {dateFormat: 'dd/mm/yy'});
+	   
+	   $("#fechaSalida").datepicker({
+		      showOn: 'both',
+		      buttonImage: 'jquery/css/dark-hive/images/calendar.png',
+		      buttonImageOnly: true,
+		      changeYear: true,
+		      numberOfMonths: 1	,
+		   });
+	   $('#fechaSalida').datepicker('option', {dateFormat: 'dd/mm/yy'});
+	
+	   var options = {stepHour: 1, stepMinute: 5};
+	   $('#horaSalida').timepicker(options);
+       $('#horaLlegada').timepicker(options);
+       
+});
+</script>
 </head>
 <body>
 <%
-
-Vector<Ruta> listaRutas = (Vector<Ruta>)request.getAttribute("listaRutas");
-Vector<Vehiculo> listaVehiculos = (Vector<Vehiculo>)request.getAttribute("listaVehiculos");
-Vector<Clasificacion> listaClasificaciones = (Vector<Clasificacion>)request.getAttribute("listaClasificaciones");
-Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChoferes");
-
+	Vector<Ruta> listaRutas = (Vector<Ruta>)request.getAttribute("listaRutas");
+	Vector<Vehiculo> listaVehiculos = (Vector<Vehiculo>)request.getAttribute("listaVehiculos");
+	Vector<Clasificacion> listaClasificaciones = (Vector<Clasificacion>)request.getAttribute("listaClasificaciones");
+	Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChoferes");
 %>
 <div class="ui-widget">
    <h3 class="ui-corner-top ui-widget-header"> 
@@ -46,27 +72,22 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 			<tr>
 				<td></td>
 				<td>Fecha Salida:</td>
-				<td><input type="text" name="fecSalida"></td>
+				<td><input type="text" name="fecSalida" id="fechaSalida" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td></td>	
 				<td>Fecha Llegada:</td>
-				<td><input type="text" name="fecLlegada"></td>
+				<td><input type="text" name="fecLlegada" id="fechaLlegada" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>Hora Salida:</td>
-				<td><input type="text" name="horSalida"></td>
+				<td><input type="text" name="horSalida" id="horaSalida" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>Hora Llegada:</td>
-			<td><input type="text" name="horLegada"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Hora Salida:</td>
-				<td><input type="text" name="horSalida"></td>
+			<td><input type="text" name="horLegada" id="horaLlegada" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -121,7 +142,6 @@ Vector<Chofer> listaChoferes = (Vector<Chofer>)request.getAttribute("listaChofer
 						}
 					%>					
 				</select> 
-				<input type="text" name="idChofer">
 			</td>
 			</tr>
 			<tr>
