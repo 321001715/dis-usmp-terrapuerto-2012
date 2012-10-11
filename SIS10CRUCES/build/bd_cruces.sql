@@ -375,4 +375,31 @@ CREATE TABLE `t_asiento` (
   PRIMARY KEY  (`idAsiento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Table structure for table `t_cliente`
+--
+
+DROP TABLE IF EXISTS `t_cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_cliente` (
+  `idCliente` int(6) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(6) NOT NULL,
+  `codClienteFrecuente` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `nombres` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `apePat` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `apeMat` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `numDoc` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tipoDoc` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `idUbigeo` int(11) DEFAULT NULL,
+  `direccion` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `sexo` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tel` varchar(11) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`idCliente`),
+  KEY `fk_idusuario` (`idUsuario`),
+  CONSTRAINT `fk_idusuario` FOREIGN KEY (`idUsuario`) REFERENCES `t_usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
