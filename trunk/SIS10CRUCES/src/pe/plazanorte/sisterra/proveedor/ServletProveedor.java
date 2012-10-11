@@ -227,6 +227,17 @@ public class ServletProveedor extends HttpServlet {
 			Proveedor proveedor = (Proveedor) session.getAttribute("BProveedor");
 			viaje = service.listarViaje(proveedor);
 			request.setAttribute("viaje", viaje);
+			
+			ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+			Vector<Ruta> listaRutas = service.listarRuta(proveedor);
+			Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
+			Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
+			Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+			request.setAttribute("listaRutas", listaRutas);
+			request.setAttribute("listaVehiculos", listaVehiculos);
+			request.setAttribute("listaClasificaciones", listaClasificaciones);
+			request.setAttribute("listaViajes", listaViajes);
+			
 			rd = getServletContext().getRequestDispatcher(
 					"/mantener_viaje.jsp");
 		} catch (Exception e) {
@@ -854,6 +865,15 @@ public class ServletProveedor extends HttpServlet {
 					viaje.setIdVehiculo(Integer.parseInt(idVehiculo));
 				
 				Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
+				Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
+				
+				request.setAttribute("listaRutas", listaRutas);
+				request.setAttribute("listaVehiculos", listaVehiculos);
+				request.setAttribute("listaClasificaciones", listaClasificaciones);
+				request.setAttribute("listaViajes", listaViajes);
 				
 				request.setAttribute("viaje", listaViajes);
 				if(destino.equalsIgnoreCase(Constantes.GESTIONAR_VIAJE))
