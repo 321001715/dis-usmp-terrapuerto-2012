@@ -770,7 +770,8 @@ public class ServletProveedor extends HttpServlet {
 					mensaje = "Error, no se pudo registrar el viaje.";			
 				
 				Proveedor proveedor = new Proveedor();
-				proveedor.setIdProveedor(24);
+				HttpSession session = request.getSession(true);
+				proveedor = (Proveedor)session.getAttribute("BProveedor");
 				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
 				request.setAttribute("viaje", listaViajes);
 				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
@@ -840,7 +841,8 @@ public class ServletProveedor extends HttpServlet {
 			try {
 				Viaje viaje = new Viaje();
 				Proveedor proveedor = new Proveedor();
-				proveedor.setIdProveedor(24); //MODIFICAR CON LAS SESIONES
+				HttpSession session = request.getSession(true);
+				proveedor = (Proveedor)session.getAttribute("BProveedor");
 				
 				if(idRuta.length() != 0)
 					viaje.setIdRuta(Integer.parseInt(idRuta));

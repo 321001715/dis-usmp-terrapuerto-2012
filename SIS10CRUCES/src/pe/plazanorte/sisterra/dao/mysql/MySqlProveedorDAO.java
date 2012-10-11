@@ -700,13 +700,11 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	
 	public Vector<Viaje> buscarViajes(Viaje viaje, Proveedor proveedor) {		
 		
-		Vector<Viaje> listaViajes = null;
+		Vector<Viaje> listaViajes = new Vector<Viaje>();
 		
 		try {
-			
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			Vector<Viaje> viajes = new Vector<Viaje>();
 			
 			String sql = "SELECT * FROM T_VIAJE, T_RUTA WHERE ";
 			boolean flag = false;
@@ -734,8 +732,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
+				
 				viaje = new Viaje();
-
+				
 				viaje.setId(rs.getLong("idViaje"));
 				viaje.setNomViaje(rs.getString("nomViaje"));
 				viaje.setFecLlegada(rs.getString("fecLlegada"));
@@ -760,7 +759,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setHorLlegada(horaSalida);
 				viaje.setHorSalida(horaLlegada);
 				
-				viajes.add(viaje);
+				listaViajes.add(viaje);
 			}
 			con.close();
 			
