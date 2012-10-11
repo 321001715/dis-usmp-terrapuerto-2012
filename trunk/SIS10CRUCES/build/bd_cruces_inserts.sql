@@ -8130,6 +8130,8 @@ values ('20486314100', 'EMPRESA MUNICIPAL DE TRANSPORTES MULTISERVICIOS HUACHOCO
 insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
 values ('00000000481', 'INSTITUTO METROPOLITANO PROTRANSPORTE DE LIMA', 'INSTITUTO', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
 
+insert into `bd_cruces`.T_CLIENTE (idusuario, codClienteFrecuente, nombres, apePat, apeMat, numDoc, tipoDoc, idUbigeo, direccion, sexo, tel)
+values ((SELECT idusuario FROM T_USUARIO WHERE usuario LIKE 'CLIENTE01'), '70062371', '0666999', 'PENA', 'MORETO', 'HENRY', 'DNI', '151021', NULL, 'M', NULL);
 
 INSERT INTO `t_ruta` 
 VALUES (1,'Viajes del Inca','Lima','Cuzco',14,24,'ACTIVO',18,150902,NULL,NULL,NULL,NULL);
