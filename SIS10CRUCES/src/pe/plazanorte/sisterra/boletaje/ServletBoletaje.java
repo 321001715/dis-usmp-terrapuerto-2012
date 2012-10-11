@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Cliente;
+import pe.plazanorte.sisterra.entidades.Pasajero;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Reserva;
@@ -79,8 +80,49 @@ public class ServletBoletaje extends HttpServlet {
 			request.setAttribute("asientos", asientos);
 			rd = getServletContext().getRequestDispatcher("/seleccionar_asiento.jsp");
 
+		}else if (tipo.equals(Constantes.ACCION_LISTAR_RESERVA)) {
+			System.out.println("entro");
+			HttpSession session = request.getSession(true);
+			Usuario usuario = (Usuario) session.getAttribute("BUsuario");
+			Vector<Reserva> reservas= new Vector<Reserva>();
+			
+			reservas= service.listarReservas(usuario.getId());
+			
+		System.out.println("tamaño: "+reservas.size());
+			request.setAttribute("reservas", reservas);
+			rd = getServletContext().getRequestDispatcher(
+			"/listar_reservas.jsp");
+			
+		}else if (tipo.equals(Constantes.ACCION_PREPARAR_LISTAR_BOLETO)) {
+			HttpSession session = request.getSession(true);
+			Usuario usuario = (Usuario) session.getAttribute("BUsuario");
+			
+			String destino = request.getParameter("destino");
+			if (destino.equals(Constantes.CONFIRMAR_RESERVA)) {
+				Vector<Boleto> boletos = new Vector<Boleto>();
+				boletos = service.listarBoletos(usuario.getId());
+				Vector<Pasajero> pasajeros = new Vector<Pasajero>();
+				Pasajero pasajero = new Pasajero();
+				Vector<Viaje> viajes=new Vector<Viaje>();
+				
+				Viaje viaje= new Viaje();
+				
+				for (int i = 0; i < boletos.size(); i++) {
+					pasajero = service.buscarPasajero(boletos.get(i)
+							.getIdPasajero());
+					viaje = service.buscarViaje(boletos.get(i).getIdViaje());
+					
+					viajes.add(viaje);
+					pasajeros.add(pasajero);
+				}
+
+				request.setAttribute("boletos", boletos);
+				request.setAttribute("pasajeros", pasajeros);
+				request.setAttribute("viajes", viajes);
+				rd = getServletContext().getRequestDispatcher(
+						"/confirmar_reserva.jsp");
+			}
 		}
-		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}

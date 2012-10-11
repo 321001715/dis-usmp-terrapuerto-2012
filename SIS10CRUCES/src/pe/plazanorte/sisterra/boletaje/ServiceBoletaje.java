@@ -7,6 +7,7 @@ import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.daofactory.DAOFactory;
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
+import pe.plazanorte.sisterra.entidades.Pasajero;
 import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
@@ -20,6 +21,25 @@ public class ServiceBoletaje {
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
 		return boletajeDao.confirmarBoleto(reserva);
 	}
+	public Pasajero buscarPasajero(int idPasajero){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
+		return boletajeDao.buscarPasajero(idPasajero);
+	}
+	
+	public Viaje buscarViaje(int idViaje){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		return boletajeDao.buscarViaje(idViaje);
+	}
+	
+	public Vector<Reserva> listarReservas(long idUsuario){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
+		
+		return boletajeDao.listarReservas(idUsuario);
+	}
+	 
 	
 	public boolean reservarBoleto(Boleto boleto) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
@@ -61,6 +81,14 @@ public class ServiceBoletaje {
 		}
 		return asientos;
 	}	
+	
+	public Vector<Boleto> listarBoletos(long idUsuario){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		Vector<Boleto> boletos=boletajeDao.listarBoletos(idUsuario);
+	
+		return boletos;
+	}
 	public Vehiculo consultarVehiculo(int idVehiculo){
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();

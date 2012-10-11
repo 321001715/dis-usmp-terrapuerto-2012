@@ -27,6 +27,7 @@
 		<br>
 	<%} %>	
 	<%@include file="listar_reserva.jsp" %>
+	
 	<br><br><a href="index_ventas.jsp">
 			<img alt="" src="<%=request.getContextPath()%>/images/atras.jpg"> 
 		</a> Atrás...

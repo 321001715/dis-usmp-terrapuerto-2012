@@ -3,6 +3,8 @@ package pe.plazanorte.sisterra.dao.mysql;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
@@ -10,11 +12,13 @@ import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
+import pe.plazanorte.sisterra.entidades.Pasajero;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Viaje;
+import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlBoletajeDAO implements BoletajeDAO {
 
@@ -359,5 +363,133 @@ return null;
 
 		return false;
 	}
+	@Override
+	public Vector<Reserva> listarReservas(long idUsuario) {
+		Vector<Reserva> reservas= new Vector<Reserva>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query ="SELECT * FROM t_reserva where idUsuario= "+idUsuario+" and estado= 'RESERVADAS';";
+			System.out.println(query);
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				Reserva reserva=new Reserva();
+				reserva.setEstado(rs.getString("estado"));
+				reserva.setFecha(rs.getDate("fecha"));
+				reserva.setId(rs.getInt("idReserva"));
+				reserva.setIdusuario(rs.getInt("idUsuario"));
+				reservas.add(reserva);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reservas;
+	}
+	@Override
+	public Vector<Boleto> listarBoletos(long idUsuario) {
+		Vector<Boleto> boletos = new Vector<Boleto>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			// SELECT * FROM t_boleto where idReserva=(select idReserva from
+			// t_reserva where idUsuario=17);
+			String query = "SELECT * FROM t_boleto where idReserva=(select idReserva from t_reserva where idUsuario= "
+					+ idUsuario
+					+ ") and estado ='"
+					+ Constantes.SIN_CONFIRMAR
+					+ "';";
+
+			
+			ResultSet rs = stmt.executeQuery(query);
+			Boleto boleto = null;
+			while (rs.next()) {
+				boleto = new Boleto();
+				boleto.setAsiento(rs.getString("asiento"));
+				boleto.setId(rs.getInt("idBoleto"));
+				boleto.setIdPasajero(rs.getInt("idPasajero"));
+				boleto.setIdReserva(rs.getInt("idReserva"));
+				boleto.setIdViaje(rs.getInt("idViaje"));
+				boleto.setEstado(rs.getString("estado"));
+
+				boletos.add(boleto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return boletos;
+	}
+
+	@Override
+	public Pasajero buscarPasajero(int idPasajero) {
+		Pasajero pasajero = new Pasajero();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM t_pasajero where idPasajero= "
+					+ idPasajero + ";";
+
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				pasajero.setApellidoMat(rs.getString("apeMat"));
+				pasajero.setApellidoPat(rs.getString("apePat"));
+				pasajero.setDni(rs.getInt("numDoc"));
+				pasajero.setId(rs.getInt("idPasajero"));
+				pasajero.setNombres(rs.getString("nombres"));
+
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return pasajero;
+	}
+
+	@Override
+	public Viaje buscarViaje(int idViaje) {
+		Viaje viaje = new Viaje();
+		String query = "SELECT * FROM t_viaje where idviaje= " + idViaje + ";";
+		System.out.println(query);
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+
+				viaje.setId(rs.getLong("idViaje"));
+				viaje.setNomViaje(rs.getString("nomViaje"));
+				viaje.setFecLlegada(rs.getString("fecLlegada"));
+				viaje.setFecSalida(rs.getString("fecSalida"));
+
+				viaje.setServicio(rs.getString("servicio"));
+				viaje.setPrecio(rs.getInt("precio"));
+				viaje.setEstado(rs.getString("estado"));
+				viaje.setIdRuta(rs.getInt("idRuta"));
+				viaje.setIdChofer(rs.getInt("dniChofer"));
+				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
+				viaje.setIdClasificacion(rs.getInt("idClasificacion"));
+
+				Date horaLlegadaDate = new Date(rs.getTime("horLlegada")
+						.getTime());
+				;
+				Date horaSalidaDate = new Date(rs.getTime("horSalida")
+						.getTime());
+				;
+
+				DateFormat formatoHora = new SimpleDateFormat("HH:mm");
+				String horaSalida = formatoHora.format(horaSalidaDate);
+				String horaLlegada = formatoHora.format(horaLlegadaDate);
+
+				viaje.setHorLlegada(horaSalida);
+				viaje.setHorSalida(horaLlegada);
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return viaje;
+	}
+
+	
 
 }

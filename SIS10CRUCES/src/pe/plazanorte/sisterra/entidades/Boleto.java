@@ -3,9 +3,10 @@ package pe.plazanorte.sisterra.entidades;
 public class Boleto {
 	private int id;
 	private int idPasajero;
-	private int asiento;
+	private String asiento;
 	private int idReserva;
 	private int idViaje;
+	private String estado;
 	
 	
 	public int getIdPasajero() {
@@ -35,10 +36,16 @@ public class Boleto {
 		this.idViaje = idViaje;
 	}
 
-	public int getAsiento() {
+	public String getAsiento() {
 		return asiento;
 	}
-	public void setAsiento(int asiento) {
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public void setAsiento(String asiento) {
 		this.asiento = asiento;
 	}
 }
