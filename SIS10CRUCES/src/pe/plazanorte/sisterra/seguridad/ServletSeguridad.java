@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pe.plazanorte.sisterra.entidades.Cliente;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Proveedor;
@@ -168,7 +169,7 @@ public class ServletSeguridad extends HttpServlet {
 			String pass = request.getParameter("txt_pass");
 			int dni = Integer.parseInt(request.getParameter("txt_dni"));
 			int perfil = Integer.parseInt(request.getParameter("sel_perfil"));
-			String estado = request.getParameter("sel_estado");
+			String estado = request.getParameter("estado");
 			String nom=	request.getParameter("txt_nombre");	
 			String apepat=request.getParameter("txt_apePat");
 			String apemat=request.getParameter("txt_apeMat");
@@ -184,7 +185,32 @@ public class ServletSeguridad extends HttpServlet {
 				usuario.setApeMat(apemat.toUpperCase());	
 				usuario.setIdTipUsuario(perfil);
 				
-				boolean retorno = service.agregarUsuario(usuario);			
+				
+				
+				boolean retorno = service.agregarUsuario(usuario);	
+				if (retorno) {
+					
+					Usuario usu=service.buscarUsuario(user.toUpperCase());
+					
+					if(perfil==20){
+						Cliente cliente=new Cliente();
+						cliente.setApeMat(usu.getApeMat());
+						cliente.setApePat(usu.getApePat());
+						cliente.setCodClienteFrecuente("");
+						cliente.setDireccion(usu.getDireccion());
+						cliente.setEmail(usu.getDireccion());
+						cliente.setIdUsuario(usu.getId());
+						cliente.setIdUbigeo((int)usu.getIdCiudad());
+						cliente.setNombres(usu.getNombres());
+						cliente.setNumDoc(usu.getDni()+"");
+						cliente.setSexo(usu.getSexo());
+						cliente.setTel(usu.getTel()+"");
+						cliente.setTipoDoc("");/*TODO*/
+						
+						
+						boolean ret=service.agregarCliente(cliente);
+					}
+				}
 				
 				if(retorno) mensaje = "Usuario agregado con éxito.";
 				else mensaje = "Error, no se pudo registrar el usuario.";	
@@ -227,6 +253,9 @@ public class ServletSeguridad extends HttpServlet {
 				usuario.setIdTipUsuario(idtipo);
 				usuario.setApePat(apepat.toUpperCase());	
 				usuario.setApeMat(apemat.toUpperCase());				
+				
+				
+			
 				
 				boolean retorno = service.modificarUsuario(usuario);				
 				

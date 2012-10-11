@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
+import pe.plazanorte.sisterra.entidades.Cliente;
 import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Reserva;
@@ -97,6 +98,9 @@ public class ServletBoletaje extends HttpServlet {
 	
 		RequestDispatcher rd = null;
 		
+		
+		
+		
 		//********************************INICIO RESERVAR BOLETO DE VIAJE**********************************//		
 		
 		if(tipo.equals(Constantes.ACCION_RESERVAR_BOLETO)){
@@ -150,6 +154,14 @@ public class ServletBoletaje extends HttpServlet {
 		
 		//********************************FIN VENDER BOLETO DE VIAJE**********************************//
 		if(tipo.equals(Constantes.ACCION_CONSULTAR_VIAJE)){
+			//session de usuario y cliente
+			
+			HttpSession session= request.getSession(true);
+			Usuario usuario=(Usuario)session.getAttribute("BUsuario");
+			Cliente cliente=(Cliente)session.getAttribute("BCliente");
+			System.out.println("BUsuario: "+usuario.getNombres());
+			System.out.println("BCliente: "+cliente.getApePat());
+			//fin session de usuario y cliente
 			
 			
 				String empresa = request.getParameter("empresa");
@@ -174,7 +186,8 @@ public class ServletBoletaje extends HttpServlet {
 				
 				
 				try {
-					viajes = service.consultarViaje(empresa, origen, destino);				
+					viajes = service.consultarViaje(empresa, origen, destino);
+					
 					System.out.print("Recibe Viajes");
 				
 				
