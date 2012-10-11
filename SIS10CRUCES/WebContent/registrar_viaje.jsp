@@ -162,7 +162,12 @@ $(document).ready(function(){
 			<tr>
 				<td></td>
 				<td>Estado: </td>
-				<td><input type="text" name="estado" value="<%=Constantes.ESTADO_ACTIVO %>" readonly="readonly"></td>
+				<td>
+					<select name="estado">						
+						<option value="<%=Constantes.ESTADO_ACTIVO%>"><%=Constantes.ESTADO_ACTIVO%></option>
+						<option value="<%=Constantes.ESTADO_INHABILITADO%>"><%=Constantes.ESTADO_INHABILITADO%></option>
+					</select>	
+				</td>
 			</tr>
 			<tr>
 				<td colspan="6" align="right">

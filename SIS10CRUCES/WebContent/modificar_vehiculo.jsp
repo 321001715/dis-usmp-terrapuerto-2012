@@ -27,7 +27,7 @@
    </h3>
   	
    <div class="ui-corner-bottom ui-widget-content">   
-   		<font style="font-family: monospace; font-size: x-large;">Registrar Vehículo</font>
+   		<font style="font-family: monospace; font-size: x-large;">Modificar Vehículo</font>
    </div>
 <form action="ServletProveedor" method="post">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_VEHICULO %>">
