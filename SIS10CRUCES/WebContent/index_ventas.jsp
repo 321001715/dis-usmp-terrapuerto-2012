@@ -64,4 +64,8 @@
 	</tr>     
 </table>        
 </body>
+<% if(mensaje != null){ %>	
+		<h1><font color="red"><%= mensaje%></font></h1>
+		<br>
+	<%} %>	
 </html>

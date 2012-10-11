@@ -117,9 +117,10 @@ public class ServletBoletaje extends HttpServlet {
 				int duracion = Integer.parseInt(request.getParameter("duracion"));
 				int asiento=Integer.parseInt(request.getParameter("asientos"));
 				int idViaje=Integer.parseInt(request.getParameter("viaje"));
+				System.out.print("VIAJE NUMERO"+idViaje);
 				//boleto.setIdViaje(codViaje);
 				//boleto.setAsiento(nroAsiento);
-				int idUsuario=20;
+				int idUsuario=12;
 				
 				//Usuario usuario=new Usuario();
 				//HttpSession session = request.getSession();
@@ -129,7 +130,7 @@ public class ServletBoletaje extends HttpServlet {
 				
 				//system.out.print(usuario.getNombres());
 				reserva=service.generarReserva(idUsuario);
-				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,idUsuario,asiento);
+				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,1,asiento);
 				
 				if(retorno) {
 					mensaje = "Boleto reservado exitosamente.";
@@ -156,11 +157,8 @@ public class ServletBoletaje extends HttpServlet {
 		if(tipo.equals(Constantes.ACCION_CONSULTAR_VIAJE)){
 			//session de usuario y cliente
 			
-			HttpSession session= request.getSession(true);
-			Usuario usuario=(Usuario)session.getAttribute("BUsuario");
-			Cliente cliente=(Cliente)session.getAttribute("BCliente");
-			System.out.println("BUsuario: "+usuario.getNombres());
-			System.out.println("BCliente: "+cliente.getApePat());
+			
+			//System.out.println("BCliente: "+cliente.getApePat());
 			//fin session de usuario y cliente
 			
 			
@@ -187,7 +185,10 @@ public class ServletBoletaje extends HttpServlet {
 				
 				try {
 					viajes = service.consultarViaje(empresa, origen, destino);
-					
+					HttpSession session= request.getSession(true);
+					Usuario usuario=(Usuario)session.getAttribute("BUsuario");
+					//Cliente cliente=(Cliente)session.getAttribute("BCliente");
+					System.out.println("BUsuario: "+usuario.getNombres());
 					System.out.print("Recibe Viajes");
 				
 				
