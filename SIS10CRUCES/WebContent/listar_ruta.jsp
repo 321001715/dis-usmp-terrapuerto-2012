@@ -13,9 +13,9 @@
 </head>
 <body>
 <%
-Vector<Ruta> ruta = (Vector<Ruta>)request.getAttribute("ruta");
+ Vector<Ruta> ruta = (Vector<Ruta>)request.getAttribute("ruta");
 
-if(ruta.size() != 0){
+ if(ruta.size() != 0){
 %>
 
 <div class="ui-widget">
@@ -28,20 +28,21 @@ if(ruta.size() != 0){
 <table align="center" id="table" class="sortable">
 		<thead>
 			<tr>
-				<th><h3 align="center">Código</h3></th>
-				<th><h3 align="center">Nombre</h3></th>
-				<th><h3 align="center">Origen</h3></th>
-				<th><h3 align="center">Destino</h3></th>
-				<th><h3 align="center">Duración</h3></th>
-				<th><h3 align="center">Km.</h3></th>
-				<th><h3 align="center">Estado</h3></th>
+				<th><h3 align="center">Nº de Reserva</h3></th>
+				<th><h3 align="center">Cód. Viaje</h3></th>
+				<th><h3 align="center">Nº de Boleto</h3></th>
+				<th><h3 align="center">Nº de Doc.</h3></th>
+				<th><h3 align="center">Ape. Pat.</h3></th>
+				<th><h3 align="center">Ape. Mat.</h3></th>
+				<th><h3 align="center">Nombres</h3></th>
+				<th><h3 align="center">S/.</h3></th>
 				<th><h3 align="center"></h3></th>
 			</tr>
 		</thead>
 		<tbody>
 		
 <%
-	for(int i=0; i<ruta.size(); i++){ 
+ 	for(int i=0; i<ruta.size(); i++){ 
 %>
 
 		<tr>

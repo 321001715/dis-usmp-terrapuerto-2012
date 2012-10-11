@@ -8096,7 +8096,7 @@ insert into `bd_cruces`.T_USUARIO (usuario, clave, estado, tipDoc, numDoc, nombr
 values ('COUNTER01', '123', 'ACTIVO', 'DNI', '70021561', 'VICTORIANO MOISES', 'GALINDO', 'CCALLOCUNTO', '151021', NULL, 'M', NULL, (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'COUNTER'));
 
 insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
-values ('00000000062', 'PROTRANSPORTE', 'P', 'Calle John Mendoza 999', '999', 'ACTIVO', (SELECT idUsuario FROM `bd_cruces`.T_USUARIO WHERE IDPERFIL = (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'PROVEEDOR')));
+values ('00000000062', 'PROTRANSPORTE', 'P', 'Calle John Mendoza 999', '999', 'ACTIVO', (SELECT MIN(idUsuario) FROM `bd_cruces`.T_USUARIO WHERE IDPERFIL = (SELECT idPerfil FROM `bd_cruces`.T_PERFIL WHERE perfil like 'PROVEEDOR')));
 insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
 values ('20219080701', 'EMPRESA MUNICIPAL DE TRANSPORTES VICUS S', 'MUNI', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
 insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, estado, idusuario)
