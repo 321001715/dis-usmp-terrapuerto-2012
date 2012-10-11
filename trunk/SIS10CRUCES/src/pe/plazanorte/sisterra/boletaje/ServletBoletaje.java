@@ -115,22 +115,21 @@ public class ServletBoletaje extends HttpServlet {
 				int idViaje=Integer.parseInt(request.getParameter("viaje"));
 				//boleto.setIdViaje(codViaje);
 				//boleto.setAsiento(nroAsiento);
-				int idUsuario=Integer.parseInt(request.getParameter("usuario"));
+				int idUsuario=20;
 				
-				Usuario usuario=null;
-				System.out.print(usuario.getNombres());
-				HttpSession session = request.getSession();
-				//Usuario usuario=(Usuario)session.s
-			
-				//long id=usuario.getId();
+				//Usuario usuario=new Usuario();
+				//HttpSession session = request.getSession();
+				//usuario=(Usuario)session.getAttribute("BUsuario");
+				//System.out.print(usuario.getNombres());
+				
 				
 				//system.out.print(usuario.getNombres());
-				//int idReserva=service.generarReserva(idUsuario);
-				//boolean retorno = service.reservarBoleto(idReserva,idViaje,idUsuario,asiento);
+				reserva=service.generarReserva(idUsuario);
+				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,idUsuario,asiento);
 				
-				//if(retorno) {
+				if(retorno) {
 					mensaje = "Boleto reservado exitosamente.";
-				//}
+				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -173,9 +172,11 @@ public class ServletBoletaje extends HttpServlet {
 				
 				Vector<Viaje> viajes=null;
 				
+				
 				try {
 					viajes = service.consultarViaje(empresa, origen, destino);				
 					System.out.print("Recibe Viajes");
+				
 				
 				} catch (Exception e) {
 					e.printStackTrace();

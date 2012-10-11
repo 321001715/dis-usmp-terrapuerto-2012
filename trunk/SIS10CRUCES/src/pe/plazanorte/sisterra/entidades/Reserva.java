@@ -1,8 +1,8 @@
 package pe.plazanorte.sisterra.entidades;
 
 public class Reserva {
-	private long id;
-	private long idusuario;
+	private int id;
+	private int idusuario;
 	private String estado;
 	public String getEstado() {
 		return estado;
@@ -10,17 +10,20 @@ public class Reserva {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public long getId() {
+	
+	
+	
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public long getIdusuario() {
+	public int getIdusuario() {
 		return idusuario;
 	}
-	public void setIdusuario(long idusuario) {
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
-
+	
 }

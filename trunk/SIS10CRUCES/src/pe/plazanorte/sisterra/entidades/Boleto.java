@@ -1,18 +1,13 @@
 package pe.plazanorte.sisterra.entidades;
 
 public class Boleto {
-	private long id;
+	private int id;
 	private int idPasajero;
 	private int asiento;
 	private int idReserva;
-	private long idViaje;
+	private int idViaje;
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
+	
 	public int getIdPasajero() {
 		return idPasajero;
 	}
@@ -25,12 +20,21 @@ public class Boleto {
 	public void setIdReserva(int idReserva) {
 		this.idReserva = idReserva;
 	}
-	public long getIdViaje() {
+	
+	public int getId() {
+		return id;
+	}
+	public int getIdViaje() {
 		return idViaje;
 	}
-	public void setIdViaje(long idViaje) {
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setIdViaje(int idViaje) {
 		this.idViaje = idViaje;
 	}
+
 	public int getAsiento() {
 		return asiento;
 	}
