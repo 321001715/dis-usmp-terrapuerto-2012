@@ -238,7 +238,7 @@ CREATE TABLE `t_viaje` (
   `fecLlegada` datetime NOT NULL,
   `horSalida` varchar(5) COLLATE armscii8_bin NOT NULL,
   `horLlegada` varchar(5) COLLATE armscii8_bin NOT NULL,
-  `precio` int(11) NOT NULL,
+  `precio` double(11) NOT NULL,
   `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
   `idRuta` int(8) NOT NULL,
   `servicio` varchar(45) COLLATE armscii8_bin NOT NULL,
