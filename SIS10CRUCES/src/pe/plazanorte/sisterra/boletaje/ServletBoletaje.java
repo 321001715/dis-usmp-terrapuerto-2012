@@ -132,8 +132,11 @@ public class ServletBoletaje extends HttpServlet {
 				reserva=service.generarReserva(idUsuario);
 				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,1,asiento);
 				
-				if(retorno) {
+				boolean estasiento=service.cambiarEstado(idViaje,asiento);
+				
+				if(retorno&estasiento) {
 					mensaje = "Boleto reservado exitosamente.";
+					
 				}
 				
 			} catch (Exception e) {
