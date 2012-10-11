@@ -60,10 +60,12 @@ public class ServletConsultas extends HttpServlet {
 				Vector<Ruta> listaRutas = serviceProveedor.listarRuta(proveedor);
 				Vector<Vehiculo> listaVehiculos = serviceProveedor.listarVehiculos(proveedor);
 				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
+				Vector<Chofer> listaChoferes = serviceProveedor.listarChoferes(proveedor);
 				request.setAttribute("viaje", viaje);
 				request.setAttribute("listaRutas", listaRutas);
 				request.setAttribute("listaVehiculos", listaVehiculos);
 				request.setAttribute("listaClasificaciones", listaClasificaciones);
+				request.setAttribute("listaChoferes", listaChoferes);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
