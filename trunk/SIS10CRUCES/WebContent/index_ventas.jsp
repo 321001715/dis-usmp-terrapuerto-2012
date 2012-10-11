@@ -40,6 +40,7 @@
 						Reserve sus Boletos
 						</font>
 					</td>  	
+					<td width="5%"></td> 		
   					<td align="center">
   						<a href="<%-- <%=application.getContextPath() %>/ServletSeguridad?tipo=listarPerfiles&origen=<%=Constantes.MENU_PRINCIPAL%>--%><%=application.getContextPath() %>/confirmar_reserva.jsp">
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_confirmar.png">
