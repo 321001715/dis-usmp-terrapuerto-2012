@@ -113,9 +113,16 @@ public class Constantes {
 	public static final String ACCION_BUSQUEDA_NO_REALIZADA= "norealizado";
 	
 	public static final String ACCION_PREPARAR_REGISTRO_VIAJE = "preparar_registro";
+	public static final String ACCION_PREPARAR_LISTAR_BOLETO = "preparar_boleto";
 	
 	public static final String REGISTRAR_VIAJE = "registrar_viaje";
 	public static final String MODIFICAR_VIAJE = "modificar_viaje";
 	public static final String GESTIONAR_VIAJE = "gestionar_viaje";
+	public static final String  CONFIRMAR_RESERVA = "confirmar_reserva";
+	
+	
+	
+	public static final String SIN_CONFIRMAR="SinConfirmar";
+	public static final String ACCION_LISTAR_RESERVA="listar_reserva";
 	
 }
