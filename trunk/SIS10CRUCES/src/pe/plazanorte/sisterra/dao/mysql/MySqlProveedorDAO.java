@@ -712,22 +712,25 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			if(viaje.getIdRuta() != 0) {
 				sql += "T_VIAJE.IDRUTA = " + viaje.getIdRuta();
 				flag = true;
-			}else if(viaje.getId() != 0) {
-				sql += "T_VIAJE.ID = " + viaje.getId();
+			}
+			if(viaje.getId() != 0) {
+				sql += "T_VIAJE.IDVIAJE = " + viaje.getId();
 				if(flag) sql += " AND ";
 				flag = true;
-			}else if(viaje.getIdClasificacion() != 0) {
+			}
+			if(viaje.getIdClasificacion() != 0) {
 				if(flag) sql += " AND ";
 				sql += "T_VIAJE.IDCLASIFICACION = " + viaje.getIdClasificacion();
 				flag = true;
-			}else if(viaje.getIdVehiculo() != 0) {
+			}
+			if(viaje.getIdVehiculo() != 0) {
 				if(flag) sql += " AND ";
 				sql += "T_VIAJE.IDVEHICULO =" + viaje.getIdVehiculo();
 				flag = true;
 			}
 			
 			sql += " AND T_RUTA.IDPROVEEDOR = " + proveedor.getIdProveedor() +
-					" AND T_RUTA.IDRUTA = T_VIAJE.IDRUTA;";
+					" AND T_RUTA.IDRUTA = T_VIAJE.IDRUTA AND T_VIAJE.ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";
 			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			
