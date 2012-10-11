@@ -10,7 +10,7 @@ public interface ClasificacionDAO {
 	public boolean modificarClasificacion(Clasificacion clasificacion);
 	public boolean eliminarClasificacion(Clasificacion clasificacion);
 	public Clasificacion consultarClasificacion(Clasificacion clasificacion);
-	public Vector<Clasificacion> listarClasificaion();
+	public Vector<Clasificacion> listarClasificacion();
 	public Vector<Clasificacion> buscarClasificaion(Clasificacion clasificacion);
 	
 }

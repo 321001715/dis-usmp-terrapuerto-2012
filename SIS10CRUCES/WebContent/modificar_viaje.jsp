@@ -200,12 +200,7 @@
 						<option value="<%=Constantes.ESTADO_INHABILITADO%>" <%if(viaje.getEstado().equals(Constantes.ESTADO_INHABILITADO)){ %>selected="selected" <%} %>><%=Constantes.ESTADO_INHABILITADO%></option>
 					</select>	
 				</td>
-			</tr>
-			<tr>
-				<td colspan="6" align="right">
-					<input type="submit" value="Registrar Viaje" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
-				</td>
-			</tr>			
+			</tr>				
 			<tr>
 				<td colspan="6" align="right">
 					<input type="submit" value="Modificar Viaje" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
