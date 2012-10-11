@@ -47,11 +47,12 @@
 
 		<tr>
 			<td align="center"><%--<%=ruta.get(i).getId() %>--%></td>
-			<td align="right"><%--<%=ruta.get(i).getNomRuta() %>--%></td>
-			<td align="right"><%--<%=ruta.get(i).getOrigen() %>--%></td>
-			<td align="right"><%--<%=ruta.get(i).getDestino()%>--%></td>
-			<td align="center"><%--<%=ruta.get(i).getDuracion()%>--%></td>
-			<td align="center"><%--<%=ruta.get(i).getKm()%>--%></td>
+			<td align="center"><%--<%=ruta.get(i).getNomRuta() %>--%></td>
+			<td align="center"><%--<%=ruta.get(i).getOrigen() %>--%></td>
+			<td align="center"><%--<%=ruta.get(i).getDestino()%>--%></td>
+			<td align="left"><%--<%=ruta.get(i).getDuracion()%>--%></td>
+			<td align="left"><%--<%=ruta.get(i).getKm()%>--%></td>
+			<td align="left"><%--<%=ruta.get(i).getEstado()--%></td>
 			<td align="center"><%--<%=ruta.get(i).getEstado()--%></td>
 			<td align="left">
 						<div class="ui-state-default ui-corner-all cajaicono">
