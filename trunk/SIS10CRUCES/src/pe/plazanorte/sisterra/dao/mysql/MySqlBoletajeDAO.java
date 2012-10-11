@@ -99,7 +99,6 @@ return null;
 				viaje = new Viaje();
 				
 				viaje.setId(rs.getLong("idViaje"));
-				viaje.setCodViaje(rs.getLong("codViaje"));
 				viaje.setNomViaje(rs.getString("nomViaje"));
 				//viaje.setFecLlegada(rs.getDate("fecLlegada"));
 				//viaje.setFecSalida(rs.getDate("fecSalida"));
@@ -109,7 +108,7 @@ return null;
 				viaje.setEstado(rs.getString("estado"));
 				viaje.setIdRuta(rs.getLong("idRuta"));
 				viaje.setServicio(rs.getString("estado"));
-				viaje.setIdChofer(rs.getInt("idChofer"));
+				viaje.setIdChofer(rs.getInt("dniChofer"));
 				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
 			
 
@@ -141,17 +140,17 @@ return null;
 				viaje = new Viaje();
 				
 				viaje.setId(rs.getLong("idViaje"));
-				viaje.setCodViaje(rs.getLong("codViaje"));
+				//viaje.setCodViaje(rs.getLong("codViaje"));
 				viaje.setNomViaje(rs.getString("nomViaje"));
 				viaje.setFecLlegada(rs.getDate("fecLlegada").toString());
 				viaje.setFecSalida(rs.getDate("fecSalida").toString());
-				viaje.setHorLlegada(rs.getDate("horLlegada").toString());
-				viaje.setHorSalida(rs.getDate("horSalida").toString());
+				//viaje.setHorLlegada(rs.getDate("horLlegada").toString());
+				//viaje.setHorSalida(rs.getDate("horSalida").toString());
 				viaje.setPrecio(rs.getInt("precio"));
 				viaje.setEstado(rs.getString("estado"));
 				viaje.setIdRuta(rs.getLong("idRuta"));
 				viaje.setServicio(rs.getString("servicio"));
-				viaje.setIdChofer(rs.getInt("idChofer"));
+				//viaje.setIdChofer(rs.getInt("idChofer"));
 				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
 				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
 			}
@@ -270,13 +269,13 @@ return null;
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "insert INTO t_reserva(idUsuario1,estado) "
+			String sql = "insert INTO t_reserva(idUsuario,estado) "
 					+ "values (" + "'" + idUsuario + "', '"
 					+ estado + "'" + ");";
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			
-			String query = "SELECT idReserva FROM T_reserva WHERE idUsuario1="+ idUsuario +";";
+			String query = "SELECT * FROM T_reserva WHERE idUsuario="+ idUsuario +";";
 			System.out.println(query);
 			ResultSet rs = stmt.executeQuery(query);
 			
@@ -284,7 +283,7 @@ return null;
 				
 				reserva=new Reserva();
 				reserva.setId(rs.getInt("idReserva"));
-				reserva.setIdusuario(rs.getInt("idUsuario1"));
+				reserva.setIdusuario(rs.getInt("idUsuario"));
 				reserva.setEstado(rs.getString("estado"));
 				
 			}
@@ -300,7 +299,7 @@ return null;
 	}
 
 	@Override
-	public boolean reservarBoleto(int idReserva, int idUsuario, int idViaje,
+	public boolean reservarBoleto(int idReserva, int idViaje, int idUsuario,
 			int asiento) {
 		int filas_afectadas = 0;
 		String estado="RESERVADO";
