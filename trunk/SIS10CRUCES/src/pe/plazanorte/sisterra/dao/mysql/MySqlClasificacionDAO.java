@@ -91,7 +91,7 @@ public class MySqlClasificacionDAO implements ClasificacionDAO {
 	}
 
 	@Override
-	public Vector<Clasificacion> listarClasificaion() {
+	public Vector<Clasificacion> listarClasificacion() {
 		Vector<Clasificacion> clasificaciones = new Vector<Clasificacion>();
 
 		try {

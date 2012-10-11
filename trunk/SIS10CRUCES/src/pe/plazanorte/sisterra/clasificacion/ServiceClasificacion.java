@@ -24,7 +24,7 @@ public class ServiceClasificacion {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ClasificacionDAO clasificacionDao = mysqlFactory.getClasificacionDAO();
 		Vector<Clasificacion> clasificaciones = clasificacionDao
-				.listarClasificaion();
+				.listarClasificacion();
 		return clasificaciones;
 	}
 	
