@@ -137,8 +137,8 @@ CREATE TABLE `t_reserva` (
   `userUpdate` int(6) DEFAULT NULL,
   `fechaUpdate` date DEFAULT NULL,
   PRIMARY KEY (`idReserva`),
-  KEY `fk_t_reserva_t_usuario_idx` (`idUsuario1`),
-  CONSTRAINT `fk_t_reserva_t_usuario` FOREIGN KEY (`idUsuario1`) REFERENCES `t_usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_t_reserva_t_usuario_idx` (`idUsuario`),
+  CONSTRAINT `fk_t_reserva_t_usuario` FOREIGN KEY (`idUsuario`) REFERENCES `t_usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
