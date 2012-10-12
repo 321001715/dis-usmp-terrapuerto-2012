@@ -4,7 +4,7 @@ USE `bd_cruces`;
 --
 -- Host: localhost    Database: bd_cruces
 -- ------------------------------------------------------
--- Server version	5.1.50-community
+-- Server version       5.1.50-community
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -238,7 +238,7 @@ CREATE TABLE `t_viaje` (
   `fecLlegada` datetime NOT NULL,
   `horSalida` varchar(5) COLLATE armscii8_bin NOT NULL,
   `horLlegada` varchar(5) COLLATE armscii8_bin NOT NULL,
-  `precio` double(11) NOT NULL,
+  `precio` int(11) NOT NULL,
   `estado` varchar(15) COLLATE armscii8_bin NOT NULL,
   `idRuta` int(8) NOT NULL,
   `servicio` varchar(45) COLLATE armscii8_bin NOT NULL,
@@ -401,5 +401,4 @@ CREATE TABLE `t_cliente` (
   CONSTRAINT `fk_idusuario` FOREIGN KEY (`idUsuario`) REFERENCES `t_usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 
