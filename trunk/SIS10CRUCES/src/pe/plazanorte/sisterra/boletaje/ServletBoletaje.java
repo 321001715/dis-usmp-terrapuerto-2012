@@ -198,8 +198,18 @@ public class ServletBoletaje extends HttpServlet {
 		//********************************INICIO VENDER BOLETO DE VIAJE**********************************//
 		
 		if(tipo.equals(Constantes.ACCION_VENDER_BOLETO)){
+			String destino = request.getParameter("destino");
+			String documento = request.getParameter("documento");
+			String apePat = request.getParameter("apePat");
+			String apeMat = request.getParameter("apeMat");
+			String nombre = request.getParameter("nombre");
+			String fecNac = request.getParameter("fecNac");
 			
-			
+			try {
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 		
 		//********************************FIN VENDER BOLETO DE VIAJE**********************************//
