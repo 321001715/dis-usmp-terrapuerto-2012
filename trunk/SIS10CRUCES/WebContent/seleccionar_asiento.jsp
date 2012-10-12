@@ -27,6 +27,8 @@
 	
 	
 	Vector<Asiento> asientos=(Vector<Asiento>)request.getAttribute("asientos");
+	
+	
 	String estado="";
 	
 	
@@ -218,9 +220,12 @@
 					<td>
 						<select name="asientos">
 							<option></option>
-							<%for(int i=0;i<40;i++){ %>
-							<option><%=(i+1) %></option>
-							<%} %>
+							<%for(int i=0;i<40;i++){ 
+							if(asientos.get(i).getEstado().equals("DISPONIBLE")){
+							%>
+							
+							<option><%=asientos.get(i).getNumasiento() %></option>
+							<%}} %>
 						</select>
 					</td>
 					<td></td>
