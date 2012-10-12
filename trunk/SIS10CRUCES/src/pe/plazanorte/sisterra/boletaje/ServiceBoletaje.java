@@ -16,10 +16,10 @@ import pe.plazanorte.sisterra.entidades.Viaje;
 
 public class ServiceBoletaje {
 	
-	public boolean venderBoleto(Reserva reserva) {
+	public boolean venderBoleto(int idReserva) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
-		return boletajeDao.confirmarBoleto(reserva);
+		return boletajeDao.confirmarBoleto(idReserva);
 	}
 	public Pasajero buscarPasajero(int idPasajero){
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
