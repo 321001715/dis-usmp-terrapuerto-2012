@@ -303,7 +303,7 @@ return null;
 	}
 
 	@Override
-	public boolean reservarBoleto(int idReserva, int idViaje, int idUsuario,
+	public boolean reservarBoleto(int idReserva, int idViaje,
 			int asiento) {
 		int filas_afectadas = 0;
 		String estado="RESERVADO";
@@ -312,9 +312,8 @@ return null;
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "insert INTO t_Boleto(idPasajero,idViaje,idReserva,asiento,estado) "
-					+ "values (" + "'" + idUsuario + "', '"
-					+ idViaje + "','" + idReserva + "','"
+			String sql = "insert INTO t_Boleto(idViaje,idReserva,asiento,estado) "
+					+ "values ('" + idViaje + "','" + idReserva + "','"
 					+ asiento + "','"+ estado+ "');";
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);

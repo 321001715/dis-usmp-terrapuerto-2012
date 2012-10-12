@@ -162,7 +162,7 @@ public class ServletBoletaje extends HttpServlet {
 				System.out.print("VIAJE NUMERO"+idViaje);
 				//boleto.setIdViaje(codViaje);
 				//boleto.setAsiento(nroAsiento);
-				int idUsuario=12;
+				
 				
 				HttpSession session= request.getSession(true);
 				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
@@ -176,7 +176,7 @@ public class ServletBoletaje extends HttpServlet {
 				reserva=service.generarReserva(usuario.getId());
 				
 				
-				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,1,asiento);
+				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento);
 				
 				boolean estasiento=service.cambiarEstado(idViaje,asiento);
 				
