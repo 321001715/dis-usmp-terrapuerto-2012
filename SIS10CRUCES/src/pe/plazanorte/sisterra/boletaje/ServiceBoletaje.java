@@ -133,6 +133,12 @@ public class ServiceBoletaje {
 		}
 		return retorno;
 	}
+	public Vector<Ruta> listarRutas(){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+
+		return boletajeDao.listarRutas();
+	}
 	
 	
 }

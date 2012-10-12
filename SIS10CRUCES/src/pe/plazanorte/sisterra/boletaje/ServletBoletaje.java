@@ -122,6 +122,20 @@ public class ServletBoletaje extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher(
 						"/confirmar_reserva.jsp");
 			}
+		}else if (tipo.equals(Constantes.ACCION_CONSULTAR_VIAJE)) {
+			Vector<Ruta> rutas=null;
+						
+			try {
+					
+				rutas = service.listarRutas();				
+				request.setAttribute("rutas", rutas);						
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
+		
+			
 		}
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
@@ -241,21 +255,18 @@ public class ServletBoletaje extends HttpServlet {
 				
 				Vector<Viaje> viajes=null;
 				
+				Vector<Ruta> rutas=null;
 				
 				try {
 					viajes = service.consultarViaje(empresa, origen, destino);
-					HttpSession session= request.getSession(true);
-					Usuario usuario=(Usuario)session.getAttribute("BUsuario");
-					//Cliente cliente=(Cliente)session.getAttribute("BCliente");
-					System.out.println("BUsuario: "+usuario.getNombres());
-					System.out.print("Recibe Viajes");
-				
+					rutas=service.listarRutas();
 				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				
 				request.setAttribute("viajes", viajes);	
+				request.setAttribute("rutas", rutas);	
 				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
 		}
 		//********************************FIN CONSULTAR VIAJE**********************************//

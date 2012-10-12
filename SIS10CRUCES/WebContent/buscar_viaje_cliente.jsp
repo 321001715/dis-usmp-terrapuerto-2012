@@ -1,3 +1,6 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
+<%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -9,6 +12,11 @@
 <script type="text/javascript" src="jquery/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="jquery/js/jquery-ui-1.7.3.custom.min.js"></script>
 </head>
+<%
+
+Vector<Ruta> rutas= (Vector<Ruta>)request.getAttribute("rutas");
+
+%>
 <body>	
 <script>
 $(document).ready(function(){
@@ -42,10 +50,22 @@ $(document).ready(function(){
 			<tr>
 				<td></td>
 				<td>Origen: </td>
-				<td><input type="text" name="origen"></td>
+				<td><select name="origen">
+				<option></option>
+				<% for(int i=0;i<rutas.size();i++){ %>
+				<option><%=rutas.get(i).getOrigen() %></option>
+				<%} %>
+				</select>
+				</td>
 				
 				<td>Destino: </td>
-				<td><input type="text" name="destino"></td>
+				<td><select name="destino">
+				<option></option>
+				<% for(int i=0;i<rutas.size();i++){ %>
+				<option><%=rutas.get(i).getDestino() %></option>
+				<%} %>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="5" align="right">

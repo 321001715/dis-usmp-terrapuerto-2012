@@ -32,7 +32,7 @@
 					<td width="5%"></td> 				
 					<td align="center">
 						
-		            <a href="<%=application.getContextPath() %>/consultar_viaje.jsp" > 
+		            <a href="ServletBoletaje?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>" > 
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_reserva.png">
 						</a>
 						<br>
