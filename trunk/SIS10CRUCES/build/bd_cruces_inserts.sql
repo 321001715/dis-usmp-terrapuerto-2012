@@ -8131,21 +8131,21 @@ insert into `bd_cruces`.T_PROVEEDOR (ruc, razSocial, razCom, direccion, tel, est
 values ('00000000481', 'INSTITUTO METROPOLITANO PROTRANSPORTE DE LIMA', 'INSTITUTO', 'Calle John Mendoza 999', '999', 'ACTIVO',0);
 
 insert into `bd_cruces`.T_CLIENTE (idusuario, codClienteFrecuente, nombres, apePat, apeMat, numDoc, tipoDoc, idUbigeo, direccion, sexo, tel)
-values ((SELECT idusuario FROM T_USUARIO WHERE usuario LIKE 'CLIENTE01'), '70062371', '0666999', 'PENA', 'MORETO', 'HENRY', 'DNI', '151021', NULL, 'M', NULL);
+values ((SELECT idusuario FROM `bd_cruces`.T_USUARIO WHERE usuario LIKE 'CLIENTE01'), '70062371', '0666999', 'PENA', 'MORETO', 'HENRY', 'DNI', '151021', NULL, 'M', NULL);
 
-INSERT INTO `T_CHOFER` 
+INSERT INTO `bd_cruces`.T_CHOFER 
 VALUES (1,'OSCAR ANGEL','MORALES','CORDOVA',70477244,'DNI',99438578,18);
 
-INSERT INTO `t_ruta` 
+INSERT INTO `bd_cruces`.t_ruta 
 VALUES (1,'Viajes del Inca','Lima','Cuzco',14,24,'ACTIVO',18,150902,NULL,NULL,NULL,NULL);
 
-INSERT INTO `t_vehiculo` 
+INSERT INTO `bd_cruces`.t_vehiculo 
 VALUES (1,'10','GH-12D2',2,40,'25','20','TOYOTA','CALDIN','FUNCIONAMIENTO PERFECTO','ACTIVO',18);
 
-INSERT INTO `t_viaje` 
+INSERT INTO `bd_cruces`.t_viaje 
 VALUES (1,'ABC','2012-07-03','2012-07-05','10:00','12:00',25,'ACTIVO',1,'TOUR',1,1,6,NULL,NULL,NULL,NULL);
 
-INSERT INTO `t_asiento` 
+INSERT INTO `bd_cruces`.t_asiento 
 VALUES 
 	(1,1,'NODISPONIBLE',1),
 	(2,2,'DISPONIBLE',1),(
