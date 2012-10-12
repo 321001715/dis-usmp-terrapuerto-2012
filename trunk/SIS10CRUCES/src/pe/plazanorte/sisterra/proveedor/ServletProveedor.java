@@ -845,7 +845,7 @@ public class ServletProveedor extends HttpServlet {
 			String idViaje = request.getParameter("idViaje");
 			String idClasificacion = request.getParameter("idClasificacion");
 			String idVehiculo = request.getParameter("idVehiculo");			
-			
+			System.out.println(idRuta +", " + idVehiculo +", " + idClasificacion +", " + idViaje);
 			//int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
 			String destino = request.getParameter("destino");
 			
