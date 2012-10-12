@@ -273,9 +273,9 @@ return null;
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "insert INTO t_reserva(idUsuario,estado) "
+			String sql = "insert INTO t_reserva(idUsuario,estado,fecha) "
 					+ "values (" + "'" + idUsuario + "', '"
-					+ estado + "'" + ");";
+					+ estado + "'" +", curdate()"+ ");";
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			
