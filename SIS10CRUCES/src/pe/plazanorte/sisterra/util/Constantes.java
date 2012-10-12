@@ -125,4 +125,13 @@ public class Constantes {
 	public static final String SIN_CONFIRMAR="SinConfirmar";
 	public static final String ACCION_LISTAR_RESERVA="listar_reserva";
 	
+	//ESTADOS DE BOLETO
+	public static final String ESTADO_RESERVADO = "RESERVADO";
+	public static final String ESTADO_VENDIDO = "VENDIDO";
+	
+	//ESTADO DE RESERVA
+	public static final String ESTADO_PENDIENTE = "PENDIENTE";
+	public static final String ESTADO_CONFIRMADO = "CONFIRMADO";
+	public static final String ESTADO_CANCELADO = "CANCELADO";
+	
 }

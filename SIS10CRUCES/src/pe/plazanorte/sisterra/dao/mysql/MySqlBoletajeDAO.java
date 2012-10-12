@@ -22,14 +22,17 @@ import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlBoletajeDAO implements BoletajeDAO {
 
-	public boolean confirmarBoleto(Reserva reserva) {
+	public boolean confirmarBoleto(int idReserva) {
 		int filas_afectadas = 0;
 		
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "UPDATE T_BOLETO SET ESTADO = '"+"Constantes.ESTADO"+"' WHERE ID RESERVA = "+reserva.getId()+";";
+			String sql = "UPDATE T_BOLETO AS B, T_RESERVA AS R  " +
+					"SET B.ESTADO = '"+Constantes.ESTADO_VENDIDO + "' " +
+					", R.ESTADO = " + Constantes.ESTADO_CONFIRMADO +
+					"WHERE ID RESERVA = " + idReserva +";";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
