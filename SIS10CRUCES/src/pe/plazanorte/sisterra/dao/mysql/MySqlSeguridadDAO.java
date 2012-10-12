@@ -472,7 +472,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			while (rs.next()) {
 				usuario = new Usuario();
 
-				usuario.setId(rs.getLong("idUsuario"));
+				usuario.setId(rs.getInt("idUsuario"));
 				usuario.setUsuario(rs.getString("usuario"));
 				usuario.setIdTipUsuario(rs.getLong("idPerfil"));
 				usuario.setDni(rs.getLong("numDoc"));
