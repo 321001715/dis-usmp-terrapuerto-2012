@@ -111,12 +111,12 @@ public class ServiceBoletaje {
 		}
 		return reserva;
 	}
-	public boolean reservarBoleto(int idReserva,int idUsuario,int idViaje,int asiento){
+	public boolean reservarBoleto(int idReserva,int idViaje,int asiento){
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
 		boolean retorno=false;
 		try {
-			retorno=boletajeDao.reservarBoleto(idReserva,idUsuario,idViaje,asiento);
+			retorno=boletajeDao.reservarBoleto(idReserva,idViaje,asiento);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
