@@ -13,6 +13,7 @@ import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Pasajero;
+import pe.plazanorte.sisterra.entidades.Perfil;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Usuario;
@@ -490,6 +491,39 @@ return null;
 			// TODO: handle exception
 		}
 		return viaje;
+	}
+
+	@Override
+	public Vector<Ruta> listarRutas() {
+		Vector<Ruta> rutas = new Vector<Ruta>();
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM t_ruta WHERE estado='ACTIVO';";
+			Ruta ruta = null;
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				ruta = new Ruta();
+
+				ruta.setId(rs.getInt("idRuta"));
+				ruta.setOrigen(rs.getString("origen"));
+				ruta.setDestino(rs.getString("destino"));
+				ruta.setNomRuta(rs.getString("nomRuta"));
+				ruta.setDuracion(rs.getInt("duracion"));
+				ruta.setKm(rs.getInt("km"));
+				ruta.setIdProveedor(rs.getInt("idProveedor"));
+				
+
+				rutas.add(ruta);
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+		return rutas;
 	}
 
 	
