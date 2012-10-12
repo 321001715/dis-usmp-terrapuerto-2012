@@ -164,6 +164,8 @@ public class ServletBoletaje extends HttpServlet {
 				//boleto.setAsiento(nroAsiento);
 				int idUsuario=12;
 				
+				HttpSession session= request.getSession(true);
+				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
 				//Usuario usuario=new Usuario();
 				//HttpSession session = request.getSession();
 				//usuario=(Usuario)session.getAttribute("BUsuario");
@@ -171,21 +173,23 @@ public class ServletBoletaje extends HttpServlet {
 				
 				
 				//system.out.print(usuario.getNombres());
-				reserva=service.generarReserva(idUsuario);
+				reserva=service.generarReserva(usuario.getId());
+				
+				
 				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,1,asiento);
 				
 				boolean estasiento=service.cambiarEstado(idViaje,asiento);
 				
 				if(retorno&estasiento) {
 					mensaje = "Boleto reservado exitosamente.";
-					
+					rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		
-			rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
+		
 		
 		}
 		

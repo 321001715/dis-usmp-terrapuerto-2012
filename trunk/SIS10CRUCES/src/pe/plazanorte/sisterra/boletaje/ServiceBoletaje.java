@@ -100,12 +100,12 @@ public class ServiceBoletaje {
 		}
 		return carro;
 	}
-	public Reserva generarReserva(int idUsuario){
+	public Reserva generarReserva(long l){
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
 		Reserva reserva=null;
 		try {
-			reserva=boletajeDao.generarReserva(idUsuario);
+			reserva=boletajeDao.generarReserva(l);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

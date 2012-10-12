@@ -264,7 +264,7 @@ return null;
 	}
 
 	@Override
-	public Reserva generarReserva(int idUsuario) {
+	public Reserva generarReserva(long idUsuario) {
 		Reserva reserva = null;
 		int filas_afectadas = 0;
 		String estado="PENDIENTE";
