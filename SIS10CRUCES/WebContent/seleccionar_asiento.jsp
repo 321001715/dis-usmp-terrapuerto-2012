@@ -265,8 +265,8 @@
 			</td>
 			<td align="center"  width="40%">
 				<!-- BOTONES -->
-				<input type="submit" name="reservar" value="<%=Constantes.ACCION_RESERVAR %>"> 
-				<input type="submit" name="comprar" value="<%=Constantes.ACCION_COMPRAR_BOLETO %>"> 
+				<input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_RESERVAR %>"> 
+				<input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_COMPRAR_BOLETO %>"> 
 				<br>
 				<br>
 			</td>
