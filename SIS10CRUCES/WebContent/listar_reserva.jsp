@@ -27,8 +27,9 @@ if(reservas.size() != 0){
 	</div>
 &nbsp;
 &nbsp;
-<form action="">
+<form action="ServletBoletaje">
 <table align="center" id="table" class="sortable">
+	<input type="hidden" name="tipo" value="<%=Constantes.CONFIRMAR_RESERVA%>">
 		<thead>
 			<tr>
 				<th><h3 align="center">Nº de Reserva</h3></th>
@@ -49,7 +50,7 @@ if(reservas.size() != 0){
 			<td align="center"> <%=reservas.get(i).getIdusuario() %></td>
 			<td align="center"> <%=reservas.get(i).getFecha() %></td>
 			<td align="center"> <%=reservas.get(i).getEstado()%></td>
-			<td align="left"><input type="checkbox" name=""></td>	
+			<td align="left"><input type="checkbox" name="idReserva" value="<%=reservas.get(i).getId() %>"></td>	
 		</tr>
 <%} %>
 		

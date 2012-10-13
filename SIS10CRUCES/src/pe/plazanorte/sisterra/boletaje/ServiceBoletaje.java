@@ -21,6 +21,12 @@ public class ServiceBoletaje {
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
 		return boletajeDao.confirmarBoleto(idReserva, pasajero);
 	}
+	public boolean confirmarReserva(int idReserva) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
+		return boletajeDao.confirmarReserva(idReserva);
+	}
+	
 	public Pasajero buscarPasajero(int idPasajero){
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();		
