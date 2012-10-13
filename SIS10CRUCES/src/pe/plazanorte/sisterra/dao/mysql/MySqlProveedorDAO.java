@@ -306,7 +306,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM t_vehiculo WHERE IDVEHICULO = '" + id
+			String query = "SELECT * FROM t_vehiculo WHERE CODVEHICULO = '" + id
 					+ "' and IDPROVEEDOR ='"+ uu.getIdProveedor() + "';";
 			ResultSet rs = stmt.executeQuery(query);
 
