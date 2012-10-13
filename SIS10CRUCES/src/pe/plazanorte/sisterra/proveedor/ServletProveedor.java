@@ -773,7 +773,8 @@ public class ServletProveedor extends HttpServlet {
 				viaje.setIdClasificacion(idClasificacion);
 				viaje.setIdChofer(idChofer);
 				
-				boolean retorno = service.registrarViaje(viaje);				
+				boolean retorno = service.registrarViaje(viaje);
+				
 				
 				if (retorno)
 					mensaje = "Viaje agregado con exito.";
@@ -783,8 +784,23 @@ public class ServletProveedor extends HttpServlet {
 				Proveedor proveedor = new Proveedor();
 				HttpSession session = request.getSession(true);
 				proveedor = (Proveedor)session.getAttribute("BProveedor");
-				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+				//Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+				
+				Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
+				Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
+				
+				request.setAttribute("listaRutas", listaRutas);
+				request.setAttribute("listaVehiculos", listaVehiculos);
+				request.setAttribute("listaClasificaciones", listaClasificaciones);
+				request.setAttribute("listaViajes", listaViajes);
 				request.setAttribute("viaje", listaViajes);
+				
+				
+				
+				
 				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
 				
 			} catch (Exception e) {
