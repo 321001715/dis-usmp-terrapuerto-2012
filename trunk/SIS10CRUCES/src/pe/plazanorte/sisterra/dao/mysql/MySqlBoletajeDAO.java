@@ -525,6 +525,30 @@ return null;
 		return rutas;
 	}
 
+	@Override
+	public boolean confirmarReserva(int idReserva) {
+		int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String sql = "UPDATE T_RESERVA " +
+					"SET ESTADO = '" + Constantes.ESTADO_CONFIRMADO+  
+					"' WHERE idReserva = " + idReserva + " ;";		
+			System.out.println(sql);
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		if(filas_afectadas == 1)
+			return true;
+		
+		return false;
+	}
+
 	
 
 }

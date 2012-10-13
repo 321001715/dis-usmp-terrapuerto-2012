@@ -122,6 +122,7 @@ public class Constantes {
 	
 	
 	
+	
 	public static final String SIN_CONFIRMAR="SinConfirmar";
 	public static final String ACCION_LISTAR_RESERVA="listar_reserva";
 	
