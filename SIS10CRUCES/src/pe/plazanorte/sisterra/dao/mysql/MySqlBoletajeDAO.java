@@ -23,7 +23,7 @@ import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlBoletajeDAO implements BoletajeDAO {
 
-	public boolean confirmarBoleto(int idReserva) {
+	public boolean confirmarBoleto(int idReserva, Pasajero pasajero) {
 		int filas_afectadas = 0;
 		
 		try {
