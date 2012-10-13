@@ -27,7 +27,7 @@ $(document).ready(function(){
 	      changeYear: true,
 	      numberOfMonths: 1	,
 	   });
-	   $('#fechaLlegada').datepicker('option', {dateFormat: 'dd/mm/yy'});
+	   $('#fechaLlegada').datepicker('option', {dateFormat: 'yy/mm/dd'});
 	   
 	   $("#fechaSalida").datepicker({
 		      showOn: 'both',
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		      changeYear: true,
 		      numberOfMonths: 1	,
 		   });
-	   $('#fechaSalida').datepicker('option', {dateFormat: 'dd/mm/yy'});
+	   $('#fechaSalida').datepicker('option', {dateFormat: 'yy/mm/dd'});
 	
 	   var options = {stepHour: 1, stepMinute: 5};
 	   $('#horaSalida').timepicker(options);
