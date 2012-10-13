@@ -30,10 +30,9 @@ public class MySqlBoletajeDAO implements BoletajeDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String sql = "UPDATE T_BOLETO AS B, T_RESERVA AS R  " +
-					"SET B.ESTADO = '"+Constantes.ESTADO_VENDIDO + "' " +
-					", R.ESTADO = " + Constantes.ESTADO_CONFIRMADO +
-					"WHERE ID RESERVA = " + idReserva +";";
+			String sql = "UPDATE T_BOLETO AS B, T_RESERVA AS R " +
+					"SET B.ESTADO = '" + Constantes.ESTADO_VENDIDO + "', R.ESTADO = '" + Constantes.ESTADO_CONFIRMADO + "' " + 
+					"WHERE B.IDBOLETO = " + idReserva + " AND R.IDRESERVA = B.IDBOLETO;";		
 			
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
