@@ -1,0 +1,76 @@
+@CHARSET "ISO-8859-1";
+
+#barra_cabecera {
+	background-color: #244661;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 970px;
+	height: 40px;
+	margin: 0 auto 0 auto;
+	color: white;
+	font-family: verdana;
+	font-size: 0.9em;
+}
+
+#barra_cabecera_contenido {
+	vertical-align: middle;
+	margin: 0;
+	margin-top: 10px;
+	width: 200px;
+	float: left;
+	height: 30px;
+	line-height: 2em;	
+}
+
+body {
+	background-color: #E2E2E2;
+	margin: 0px;
+}
+
+#barra_cabecera_contenido img {
+	border: none;
+	margin-right: 4px;
+}
+
+#cabecera {
+	width: 1000px;
+	margin: 0 auto 0 auto;
+	background-color: #244661;
+	height: 208px;
+}
+
+#contenido {
+	width: 970px;
+	height: auto;
+	margin: 0 auto 0 auto;
+	padding: 15px 15px 15px 15px;
+}
+
+#pie {
+	width: 1000px;
+	margin: 0 auto 0 auto;
+	background-color: #244661;
+	height: 101px;
+}
+
+#barra_pie {
+	background-color: #244661;
+	width: 970px;
+	height: 60px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 0 auto 0 auto;
+	color: white;
+	font-family: verdana;
+	font-size: 0.9em;
+}
+
+#barra_pie_derecha {
+	margin-top: 10px;
+	float: right;
+}
+
+#barra_pie_izquierda {
+	margin-top: 10px;
+	float: left;
+}
