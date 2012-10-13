@@ -18,7 +18,7 @@ public interface ProveedorDAO {
 	public Vector<Proveedor> buscarProveedores(String ruc, String razSocial);
 	
 	
-	public boolean registrarVehiculo(Vehiculo vehiculo);
+	public long registrarVehiculo(Vehiculo vehiculo);
 	public boolean actualizarEstado(int asientos,long vehi);
 	public Vector<Vehiculo> listarVehiculos(Proveedor uu);
 	Vehiculo consultarVehiculo(Vehiculo vehiculo, Proveedor uu);

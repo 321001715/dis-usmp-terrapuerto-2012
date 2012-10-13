@@ -57,7 +57,7 @@ public class ServiceProveedor {
 	
 	//*************************INICIO GESTIONAR VEHICULO******************************//
 	
-	public boolean agregarVehiculo(Vehiculo vehiculo) {
+	public long agregarVehiculo(Vehiculo vehiculo) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
 		

@@ -217,7 +217,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	// VEHICULO******************************//
 
 	@Override
-	public boolean registrarVehiculo(Vehiculo vehiculo) {
+	public long registrarVehiculo(Vehiculo vehiculo) {
 		int filas_afectadas = 0;
 
 		try {
@@ -250,15 +250,22 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+ ");";
 			System.out.println(vehiculo.getEstado());
 			filas_afectadas = stmt.executeUpdate(sql);
+			
+			String query="SELECT idVehiculo FROM T_VEHICULO WHERE codVehiculo='"+vehiculo.getCodVehiculo()+"';";
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				vehiculo.setIdVehiculo(rs.getInt("idVehiculo"));
+			}
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		if (filas_afectadas == 1)
-			return true;
+			return vehiculo.getIdVehiculo();
 
-		return false;
+		return 0;
 	}
 
 	@Override

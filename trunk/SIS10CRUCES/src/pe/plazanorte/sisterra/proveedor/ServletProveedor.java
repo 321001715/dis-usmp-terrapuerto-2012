@@ -499,10 +499,10 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setEstado(estado);
 				vehiculo.setObs(obs);
 
-				boolean retorno = service.agregarVehiculo(vehiculo);
+				long retorno = service.agregarVehiculo(vehiculo);
 				boolean retorno1=service.actualizarEstado(vehiculo.getNumAsientos(),vehiculo.getIdVehiculo());
 				
-				if (retorno&retorno1)
+				if (retorno1&retorno!=0)
 					mensaje = "Veh�culo agregado con �xito.";
 				else
 					mensaje = "Error, no se pudo registrar el veh�culo.";
