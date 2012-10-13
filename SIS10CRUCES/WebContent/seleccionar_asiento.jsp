@@ -265,7 +265,8 @@
 			</td>
 			<td align="center"  width="40%">
 				<!-- BOTONES -->
-				<input type="submit" value="RESERVAR"> 
+				<input type="submit" name="reservar" value="RESERVAR"> 
+				<input type="submit" name="comprar" value="COMPRAR BOLETO"> 
 				<br>
 				<br>
 			</td>
