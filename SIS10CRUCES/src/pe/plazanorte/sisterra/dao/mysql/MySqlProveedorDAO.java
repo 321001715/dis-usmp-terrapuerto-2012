@@ -301,13 +301,13 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 	@Override
 	public Vehiculo consultarVehiculo(Vehiculo vehiculo, Proveedor uu) {
-		long id = vehiculo.getIdProveedor();
+		long id = vehiculo.getIdVehiculo();
 		Vehiculo nuevo = null;
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM t_vehiculo WHERE CODVEHICULO = '" + id
-					+ "' and IDPROVEEDOR ='"+ uu.getIdProveedor() + "';";
+			String query = "SELECT * FROM t_vehiculo WHERE IDVEHICULO = " + id
+					+ " and IDPROVEEDOR ='"+ uu.getIdProveedor() + "';";
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
