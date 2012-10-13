@@ -217,6 +217,7 @@ public class ServletBoletaje extends HttpServlet {
 				
 				boolean estasiento=service.cambiarEstado(idViaje,asiento);
 				
+				//PREVIO A CENTER VIAJE
 				
 				//Obtener el tipo de SUBMIT del que proviene
 				
@@ -227,7 +228,7 @@ public class ServletBoletaje extends HttpServlet {
 						Viaje viaje = service.consultarViajeCliente(idViaje);
 						double precio = viaje.getPrecio();
 						request.setAttribute("precio", precio);
-						//request.setAttribute("idReserva", idReserva);
+						request.setAttribute("idReserva", reserva.getId());
 						rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");			
 					}
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
@@ -289,6 +290,8 @@ public class ServletBoletaje extends HttpServlet {
 				
 				if(retorno) mensaje = "VENTA DE BOLETO EXITOSA";
 				else mensaje = "OCURRIO UN ERROR DURANTE LA VENTA DE BOLETO";
+				
+				rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");	
 					
 			} catch (Exception e) {
 				e.printStackTrace();
