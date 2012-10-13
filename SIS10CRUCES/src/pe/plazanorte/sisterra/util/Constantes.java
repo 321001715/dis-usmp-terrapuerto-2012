@@ -125,6 +125,8 @@ public class Constantes {
 	public static final String SIN_CONFIRMAR="SinConfirmar";
 	public static final String ACCION_LISTAR_RESERVA="listar_reserva";
 	
+	public static final String ACCION_PREPARAR_VENDER_BOLETO = "preparar_vender_boleto";
+	
 	//ESTADOS DE BOLETO
 	public static final String ESTADO_RESERVADO = "RESERVADO";
 	public static final String ESTADO_VENDIDO = "VENDIDO";
@@ -134,4 +136,7 @@ public class Constantes {
 	public static final String ESTADO_CONFIRMADO = "CONFIRMADO";
 	public static final String ESTADO_CANCELADO = "CANCELADO";
 	
+	//TIPO DE PAGO
+	public static final String TIPO_PAGO_TARJETA = "TARJETA";
+	public static final String TIPO_PAGO_EFECTIVO = "EFECTIVO";
 }

@@ -10,13 +10,15 @@
 </head>
 <body>
 <%
-	Viaje viaje = (Viaje)request.getAttribute("viaje");
+	double precio = (Double)request.getAttribute("precio");
+	int idReserva = (Integer)request.getAttribute("idReserva");
 %>
 <h2>Vender boleto de viaje</h2>
 
 <form action="ServletBoletaje" method="post" name="comprar" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO %>">
 	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL %>">
+	<input type="hidden" name="idReserva" value="<%=idReserva %>">
 	
 	<h4>Datos del viajero</h4>
 	
@@ -40,43 +42,43 @@
 			<td><input type="text" name="apeMat"></td>
 		</tr>
 		<tr>
-			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac"></td>
+			<td>Edad</td>
+			<td><input type="text" name="edad"></td>
 			
 		</tr>
 	</table>
 	
 	<h4>Detalle de pago</h4>
 	
-	Importe a pagar: <input type="text" name="importe" value="<%=viaje.getPrecio() %>">
+	Importe a pagar: <input type="text" name="importe" value="<%=precio %>">
 	
 	<table>
 		<tr>
-			<td><input type="radio" name="tipoPago" value="">Tarjeta de cr&eacute;dito</td>
+			<td><input type="radio" name="tipoPago" value="<%=Constantes.TIPO_PAGO_TARJETA%>">Tarjeta de cr&eacute;dito</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Nro. tarjeta</td>
-			<td><input type="text" name="" value=""></td>
+			<td><input type="text" name="nroTarjeta"></td>
 		</tr>
 		<tr>
 			<td>Clave</td>
-			<td><input type="password" name="" value=""></td>
+			<td><input type="password" name="clave"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td><input type="radio" name="tipoPago" value="">Efectivo</td>
+			<td><input type="radio" name="tipoPago" value="<%=Constantes.TIPO_PAGO_EFECTIVO%>">Efectivo</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Pago</td>
-			<td><input type="text" name="" value=""></td>
+			<td><input type="text" name="pagoEfectivo"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Confirmar"></td>
+			<td><input type="submit" value="Confirmar compra"></td>
 			<td><input type="submit" value="Imprimir"></td>
 		</tr>
 	</table>
