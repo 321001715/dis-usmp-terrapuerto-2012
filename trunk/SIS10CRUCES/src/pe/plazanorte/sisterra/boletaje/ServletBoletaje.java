@@ -82,16 +82,21 @@ public class ServletBoletaje extends HttpServlet {
 
 		}else if (tipo.equals(Constantes.ACCION_LISTAR_RESERVA)) {
 			System.out.println("entro");
+			String destino = request.getParameter("destino");
+			if(destino.equals(Constantes.CONFIRMAR_RESERVA) ){
+				
 			HttpSession session = request.getSession(true);
 			Usuario usuario = (Usuario) session.getAttribute("BUsuario");
 			Vector<Reserva> reservas= new Vector<Reserva>();
 			
 			reservas= service.listarReservas(usuario.getId());
 			
-		System.out.println("tamaño: "+reservas.size());
+			System.out.println("tamaño: "+reservas.size());
 			request.setAttribute("reservas", reservas);
 			rd = getServletContext().getRequestDispatcher(
-			"/listar_reserva.jsp");
+			"/confirmar_reserva.jsp");
+			
+			}
 			
 		}else if (tipo.equals(Constantes.ACCION_PREPARAR_LISTAR_BOLETO)) {
 			HttpSession session = request.getSession(true);
