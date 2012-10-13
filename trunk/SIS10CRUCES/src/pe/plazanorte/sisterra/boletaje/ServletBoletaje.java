@@ -199,10 +199,27 @@ public class ServletBoletaje extends HttpServlet {
 				
 				boolean estasiento=service.cambiarEstado(idViaje,asiento);
 				
-				if(retorno&estasiento) {
-					mensaje = "Boleto reservado exitosamente.";
-					rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
+				
+				//Obtener el tipo de SUBMIT del que proviene
+				
+				String tipoSubmit = request.getParameter("tipoSubmit");
+				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){
+					if(retorno & estasiento) {
+						mensaje = "Boleto reservado exitosamente ahora a comprar boleto.";
+						Viaje viaje = service.consultarViajeCliente(idViaje);
+						double precio = viaje.getPrecio();
+						request.setAttribute("precio", precio);
+						//request.setAttribute("idReserva", idReserva);
+						rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");			
+					}
+				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
+					if(retorno&estasiento) {
+						mensaje = "Boleto reservado exitosamente.";
+						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
+					}
 				}
+				
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
