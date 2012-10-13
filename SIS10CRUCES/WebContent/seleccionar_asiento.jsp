@@ -268,7 +268,6 @@
 				<input type="submit" value="RESERVAR"> 
 				<br>
 				<br>
-				<input type="submit" value="COMPRAR BOLETO"> 
 			</td>
 		</tr>
 	</table>
