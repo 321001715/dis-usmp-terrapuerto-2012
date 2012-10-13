@@ -372,7 +372,7 @@ return null;
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query ="SELECT * FROM t_reserva where idUsuario= "+idUsuario+" and estado= 'RESERVADAS';";
+			String query ="SELECT * FROM t_reserva where idUsuario= "+idUsuario+" and estado= '"+Constantes.ESTADO_RESERVADO+"';";
 			System.out.println(query);
 			ResultSet rs = stmt.executeQuery(query);
 			
