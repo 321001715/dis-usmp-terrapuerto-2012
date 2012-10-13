@@ -33,15 +33,18 @@ public class MySqlBoletajeDAO implements BoletajeDAO {
 			String sql = "UPDATE T_BOLETO AS B, T_RESERVA AS R " +
 					"SET B.ESTADO = '" + Constantes.ESTADO_VENDIDO + "', R.ESTADO = '" + Constantes.ESTADO_CONFIRMADO + "' " + 
 					"WHERE B.IDRESERVA = " + idReserva + " AND R.IDRESERVA = B.IDRESERVA;";		
-
+			
+			String insertPasajero = "INSERT INTO T_PASAJERO(NOMBRES, APEPAT, APEMAT, NUMDOC, TIPDOC, ESTADO) VALUES ('"+pasajero.getNombres()+"', '"+pasajero.getApellidoPat()+"', '"+pasajero.getApellidoMat()+"', '"+pasajero.getDni()+"', 'DNI','"+Constantes.ESTADO_ACTIVO+"');";
+			
 			filas_afectadas = stmt.executeUpdate(sql);
+			filas_afectadas += stmt.executeUpdate(insertPasajero);
 			con.close();
 		} catch (Exception e) {			
 			e.printStackTrace();
 		}
 		
-		//En el UPDATE de este metodo se modifican 2 filas, en la tabla Reserva y en Boleto
-		if(filas_afectadas == 2)
+		//En el UPDATE de este metodo se modifican 2 filas, en la tabla Reserva y en Boleto y se añade 1 en Pasajero
+		if(filas_afectadas == 3)
 			return true;
 		
 		return false;
