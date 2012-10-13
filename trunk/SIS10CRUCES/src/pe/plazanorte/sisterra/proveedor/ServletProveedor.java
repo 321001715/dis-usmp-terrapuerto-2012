@@ -526,13 +526,27 @@ public class ServletProveedor extends HttpServlet {
 			long idVehiculo = Long.parseLong(request
 					.getParameter("codVehiculo"));
 			String estado = request.getParameter("estado");
+			String marca = request.getParameter("marca");
+			String modelo= request.getParameter("modelo");
+			String placa= request.getParameter("placa");
+			int numPiso= Integer.parseInt(request.getParameter("numPiso"));
+			int numAsientos= Integer.parseInt(request.getParameter("numAsientos"));
+			String asientosPorPiso= request.getParameter("asientosPorPiso");
+			
 			String obs = request.getParameter("obs");
+			
 			String asientoNoDisponible = formatoAsientosNoDisponibles(request
 					.getParameterValues("asientosNoDisponibles"));
 
 			try {
 				Vehiculo vehiculo = new Vehiculo();
 				vehiculo.setIdVehiculo(idVehiculo);
+				vehiculo.setMarca(marca);
+				vehiculo.setModelo(modelo);
+				vehiculo.setPlaca(placa);
+				vehiculo.setNumPiso(numPiso);
+				vehiculo.setNumAsientos(numAsientos);
+				vehiculo.setAsientosPorPiso(asientosPorPiso);
 				vehiculo.setObs(obs);
 				vehiculo.setEstado(estado);
 				vehiculo.setAsientosNoDisponibles(asientoNoDisponible);
@@ -824,6 +838,7 @@ public class ServletProveedor extends HttpServlet {
 			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
 			int idChofer = Integer.parseInt(request.getParameter("idChofer"));
 			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
+			
 			String estado = request.getParameter("estado");
 			
 			try {
@@ -924,11 +939,15 @@ public class ServletProveedor extends HttpServlet {
 	
 	public String formatoAsientosNoDisponibles(String[] asientosNoDisponibles) {
 		String AsientosNoDisponiblesConFormato = "";
-		for (int i = 0; i < asientosNoDisponibles.length; i++) {
-			AsientosNoDisponiblesConFormato += asientosNoDisponibles[i] + "&";
-		}
+		if (asientosNoDisponibles!=null) {
+			for (int i = 0; i < asientosNoDisponibles.length; i++) {
+				AsientosNoDisponiblesConFormato += asientosNoDisponibles[i] + "&";
+			}
 
-		return AsientosNoDisponiblesConFormato;
+			return AsientosNoDisponiblesConFormato;	
+		}
+		
+		return "0";
 	}
 
 	
