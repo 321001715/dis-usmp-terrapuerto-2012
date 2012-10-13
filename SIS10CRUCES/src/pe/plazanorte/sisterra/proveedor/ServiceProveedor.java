@@ -63,6 +63,12 @@ public class ServiceProveedor {
 		
 		return proveedorDao.registrarVehiculo(vehiculo);		
 	}
+	public boolean actualizarEstado(int numAsientos,long vehi) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		
+		return proveedorDao.actualizarEstado(numAsientos,vehi);		
+	}
 
 	public Vector<Vehiculo> listarVehiculos(Proveedor uu) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);

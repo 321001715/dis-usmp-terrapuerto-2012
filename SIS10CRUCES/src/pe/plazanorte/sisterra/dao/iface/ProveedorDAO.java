@@ -19,6 +19,7 @@ public interface ProveedorDAO {
 	
 	
 	public boolean registrarVehiculo(Vehiculo vehiculo);
+	public boolean actualizarEstado(int asientos,long vehi);
 	public Vector<Vehiculo> listarVehiculos(Proveedor uu);
 	Vehiculo consultarVehiculo(Vehiculo vehiculo, Proveedor uu);
 	public boolean modificarVehiculo(Vehiculo vehiculo);

@@ -483,7 +483,7 @@ public class ServletProveedor extends HttpServlet {
 			String asientosPorPiso = request.getParameter("asientosPorPiso");
 
 			String estado = request.getParameter("estado");
-
+		
 			try {
 				Vehiculo vehiculo = new Vehiculo();
 				vehiculo.setCodVehiculo(codigoVehiculo);
@@ -491,6 +491,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setModelo(modelo);
 				vehiculo.setPlaca(placa);
 				vehiculo.setNumPiso(numPiso);
+			
 				vehiculo.setNumAsientos(numAsientos);
 				vehiculo.setIdProveedor(idProveedor);
 				vehiculo.setAsientosPorPiso(asientosPorPiso);
@@ -499,8 +500,9 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setObs(obs);
 
 				boolean retorno = service.agregarVehiculo(vehiculo);
-
-				if (retorno)
+				boolean retorno1=service.actualizarEstado(vehiculo.getNumAsientos(),vehiculo.getIdVehiculo());
+				
+				if (retorno&retorno1)
 					mensaje = "Veh�culo agregado con �xito.";
 				else
 					mensaje = "Error, no se pudo registrar el veh�culo.";
@@ -508,6 +510,8 @@ public class ServletProveedor extends HttpServlet {
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos(uu);
+				
+				
 				request.setAttribute("vehiculos", vehiculos);
 
 				rd = getServletContext().getRequestDispatcher(
