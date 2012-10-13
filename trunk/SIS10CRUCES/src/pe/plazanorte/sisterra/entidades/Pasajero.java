@@ -6,6 +6,8 @@ public class Pasajero {
 	private String apellidoPat;
 	private String apellidoMat;
 	private long dni;
+	
+	
 	public long getId() {
 		return id;
 	}
