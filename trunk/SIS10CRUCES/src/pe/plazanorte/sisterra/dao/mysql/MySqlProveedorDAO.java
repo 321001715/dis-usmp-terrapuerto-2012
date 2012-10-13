@@ -881,6 +881,33 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return choferes;
 	}
 
+	@Override
+	public boolean actualizarEstado(int asientos,long vehi) {
+		int filas_afectadas = 0;
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+
+			for(int i=0;i<asientos;i++){
+				
+			String sql = "INSERT INTO t_asiento(numero,estado,idVehiculo) "
+					+ "VALUES ('"+(i+1)+"','DISPONIBLE','"+vehi+"');";
+					
+		
+			filas_afectadas += stmt.executeUpdate(sql);
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (filas_afectadas == asientos)
+			return true;
+
+		return false;
+	}
+
 	
 	
 	// **************************FIN GESTIONAR VIAJE******************************//
