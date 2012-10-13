@@ -91,7 +91,7 @@ public class ServletBoletaje extends HttpServlet {
 		System.out.println("tamaño: "+reservas.size());
 			request.setAttribute("reservas", reservas);
 			rd = getServletContext().getRequestDispatcher(
-			"/listar_reservas.jsp");
+			"/listar_reserva.jsp");
 			
 		}else if (tipo.equals(Constantes.ACCION_PREPARAR_LISTAR_BOLETO)) {
 			HttpSession session = request.getSession(true);

@@ -42,7 +42,7 @@
 					</td>  	
 					<td width="5%"></td> 		
   					<td align="center">
-  						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_PREPARAR_LISTAR_BOLETO%>&destino=<%=Constantes.CONFIRMAR_RESERVA%>">
+  						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_LISTAR_RESERVA%>">
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_confirmar.png">
 						</a>
 						<br>
@@ -50,15 +50,7 @@
 							Confirme sus Reservas
 						</font>
   					</td>
-  					<td align="center">
-  						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_LISTAR_RESERVA%>">
-							<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
-							Listar Reservas
-						</font>
-						</a>
-						<br>
-						
-  					</td>
+  					
   				</tr>
   			</table>
   			
