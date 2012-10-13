@@ -269,7 +269,7 @@ DROP TABLE IF EXISTS `t_boleto`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_boleto` (
   `idBoleto` int(7) NOT NULL AUTO_INCREMENT,
-  `idPasajero` int(7) NOT NULL,
+  `idPasajero` int(7) DEFAULT NULL,
   `idViaje` int(8) NOT NULL,
   `idReserva` int(7) NOT NULL,
   `asiento` varchar(45) COLLATE armscii8_bin NOT NULL,
@@ -285,7 +285,7 @@ CREATE TABLE `t_boleto` (
   CONSTRAINT `fk_t_boleto_t_pasajero1` FOREIGN KEY (`idPasajero`) REFERENCES `t_pasajero` (`idPasajero`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_t_boleto_t_reserva1` FOREIGN KEY (`idReserva`) REFERENCES `t_reserva` (`idReserva`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_t_boleto_t_viaje1` FOREIGN KEY (`idViaje`) REFERENCES `t_viaje` (`idViaje`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
