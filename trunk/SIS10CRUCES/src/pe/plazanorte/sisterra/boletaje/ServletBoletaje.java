@@ -217,18 +217,65 @@ public class ServletBoletaje extends HttpServlet {
 		//********************************INICIO VENDER BOLETO DE VIAJE**********************************//
 		
 		if(tipo.equals(Constantes.ACCION_VENDER_BOLETO)){
+			
 			String destino = request.getParameter("destino");
-			String documento = request.getParameter("documento");
+			int idReserva = Integer.parseInt(request.getParameter("idReserva"));
+			
+			//Obteniendo los datos del Pasajero
+			int documento = Integer.parseInt(request.getParameter("documento"));
 			String apePat = request.getParameter("apePat");
 			String apeMat = request.getParameter("apeMat");
 			String nombre = request.getParameter("nombre");
-			String fecNac = request.getParameter("fecNac");
+			String edad = request.getParameter("edad");
+			
+			//Almacenando los datos del pasajero en la entidad Pasajero
+			Pasajero pasajero = new Pasajero();
+			pasajero.setNombres(nombre);
+			pasajero.setApellidoMat(apeMat);
+			pasajero.setApellidoPat(apePat);
+			pasajero.setDni(documento);
+			//pasajero.setEdad(edad);
+			
+			String clave = "";
+			String pagoEfectivo = "";
+			String tipoPago = request.getParameter("tipoPago");
+			
+			if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_EFECTIVO)){
+				pagoEfectivo = request.getParameter("pagoEfectivo");
+			}else if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_TARJETA)){
+				clave = request.getParameter("clave");
+				clave = request.getParameter("nroTarjeta");				
+			}else{
+				mensaje = "ERROR AL SELECCIONAR EL TIPO DE PAGO: SERVLET BOLETAJE";
+			}
 			
 			try {
+				boolean retorno = service.venderBoleto(idReserva, pasajero);
 				
+				if(retorno) mensaje = "VENTA DE BOLETO EXITOSA";
+				else mensaje = "OCURRIO UN ERROR DURANTE LA VENTA DE BOLETO";
+					
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
+		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_VENDER_BOLETO)){
+			int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+			int idReserva = Integer.parseInt(request.getParameter("idReserva"));
+			double precio = 0;		
+			
+			try {
+				Viaje viaje = service.consultarViajeCliente(idViaje);
+				
+				precio = viaje.getPrecio();
+				
+				request.setAttribute("precio", precio);
+				request.setAttribute("idReserva", idReserva);
+				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		//********************************FIN VENDER BOLETO DE VIAJE**********************************//
