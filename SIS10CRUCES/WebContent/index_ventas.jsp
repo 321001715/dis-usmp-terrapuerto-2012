@@ -42,7 +42,7 @@
 					</td>  	
 					<td width="5%"></td> 		
   					<td align="center">
-  						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_LISTAR_RESERVA%>">
+  						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_LISTAR_RESERVA%>&destino=<%=Constantes.CONFIRMAR_RESERVA%>">
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_confirmar.png">
 						</a>
 						<br>
