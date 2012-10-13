@@ -13,7 +13,7 @@ import pe.plazanorte.sisterra.entidades.Viaje;
 
 public interface BoletajeDAO {
 
-	public boolean confirmarBoleto(int idReserva);
+	public boolean confirmarBoleto(int idReserva, Pasajero pasajero);
 	public boolean reservarBoleto(Boleto boleto);
 	public Vector<Viaje> listarViajes();
 	public Vector<Viaje> consultarViaje(String empresa, String origen, String destino);
