@@ -53,6 +53,13 @@ if(reservas.size() != 0){
 		</tr>
 <%} %>
 		
+		<tr><td colspan="9"></td></tr>
+		<tr>
+			<td align="center" colspan="9">
+				<input type="submit" name="confirmar" value="CONFIRMAR">
+				<input type="submit" name="anular" value="ANULAR">
+			</td>
+		</tr>
 		</tbody>
 	</table>
 </form>	
