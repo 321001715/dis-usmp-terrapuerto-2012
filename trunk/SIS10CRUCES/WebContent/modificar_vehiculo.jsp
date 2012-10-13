@@ -36,7 +36,7 @@
 			<tr>
 				<td width="20%"></td>
 				<td>Código Vehículo: </td>
-				<td><input type="text" name="codVehiculo" value="<%=vehiculo.getCodVehiculo()%>" ></td>
+				<td><input type="text" name="codVehiculo" value="<%=vehiculo.getIdVehiculo()%>" ></td>
 				
 				<td>Asientos No Disponibles:</td>
 <%

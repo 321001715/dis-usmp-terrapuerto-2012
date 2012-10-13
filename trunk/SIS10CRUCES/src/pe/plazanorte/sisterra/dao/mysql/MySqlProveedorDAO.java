@@ -315,11 +315,12 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM t_vehiculo WHERE IDVEHICULO = " + id
 					+ " and IDPROVEEDOR ='"+ uu.getIdProveedor() + "';";
+			System.out.println(query);
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
 				nuevo = new Vehiculo();
-				nuevo.setIdVehiculo(rs.getInt("idVehiculo"));
+				nuevo.setIdVehiculo(id);
 				nuevo.setMarca(rs.getString("marca"));
 				nuevo.setModelo(rs.getString("modelo"));
 				nuevo.setPlaca(rs.getString("placa"));

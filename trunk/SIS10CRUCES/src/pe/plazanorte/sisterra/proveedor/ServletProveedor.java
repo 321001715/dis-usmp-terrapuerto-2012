@@ -148,7 +148,7 @@ public class ServletProveedor extends HttpServlet {
 			Vehiculo vehiculo = new Vehiculo();
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			try {
-				vehiculo.setIdProveedor(Integer.parseInt(request.getParameter("idVehiculo")));
+				vehiculo.setIdVehiculo(Integer.parseInt(request.getParameter("idVehiculo")));
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				vehiculo = service.consultarVehiculo(vehiculo,uu);
