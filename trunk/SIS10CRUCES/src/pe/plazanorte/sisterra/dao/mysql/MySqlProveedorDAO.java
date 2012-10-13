@@ -848,7 +848,6 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 						"idClasificacion = "+viaje.getIdClasificacion()+", "+
 						"estado = '"+viaje.getEstado()+"' "+
 						"WHERE idViaje = "+viaje.getId();
-
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {

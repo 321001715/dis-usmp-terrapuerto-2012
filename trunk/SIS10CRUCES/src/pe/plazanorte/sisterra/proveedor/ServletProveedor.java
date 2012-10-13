@@ -853,6 +853,19 @@ public class ServletProveedor extends HttpServlet {
 				Proveedor proveedor = new Proveedor();
 				proveedor.setIdProveedor(24);
 				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+				
+			//	Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
+				Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
+				
+				request.setAttribute("listaRutas", listaRutas);
+				request.setAttribute("listaVehiculos", listaVehiculos);
+				request.setAttribute("listaClasificaciones", listaClasificaciones);
+				request.setAttribute("listaViajes", listaViajes);
+				request.setAttribute("viaje", listaViajes);
+				
 				request.setAttribute("viaje", listaViajes);
 				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
 				
