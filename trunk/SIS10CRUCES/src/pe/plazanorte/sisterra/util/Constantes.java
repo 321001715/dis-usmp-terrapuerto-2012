@@ -139,4 +139,9 @@ public class Constantes {
 	//TIPO DE PAGO
 	public static final String TIPO_PAGO_TARJETA = "TARJETA";
 	public static final String TIPO_PAGO_EFECTIVO = "EFECTIVO";
+	
+	
+	//BOTONES DE DECISION EN SELECCIONAR ASIENTO
+	public static final String ACCION_RESERVAR = "RESERVAR";
+	public static final String ACCION_COMPRAR_BOLETO = "COMPRAR BOLETO";
 }
