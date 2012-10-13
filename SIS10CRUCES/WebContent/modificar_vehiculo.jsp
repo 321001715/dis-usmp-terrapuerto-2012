@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
 <script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
+
 </head>
 <body>
 
@@ -50,7 +52,8 @@ if(vehiculo.getNumAsientos() == 0){
 
 %>
 				<td rowspan="6">
-					<select name=asientosNoDisponibles multiple="multiple" size="15">
+					<select name=asientosNoDisponibles id='asientosNoDisponibles' multiple="multiple" size="15">
+					
 <%
 	ServiceProveedor serviceProveedor=new ServiceProveedor();
 	
@@ -58,7 +61,7 @@ if(vehiculo.getNumAsientos() == 0){
 	System.out.print(asientosNoDisponibles.length);
 	for(int i=1; i<=vehiculo.getNumAsientos(); i++){
 %>
-						<option value="<%=i%>" 
+						<option  value="<%=i%>" 
 						<%
 						for(int j=0; j<=asientosNoDisponibles.length-1; j++){
 							if(i==Integer.parseInt(asientosNoDisponibles[j])){
@@ -126,7 +129,7 @@ if(vehiculo.getNumAsientos() == 0){
 			</tr>		
 			<tr>
 				<td colspan="6" align="right">
-					<input type="submit" value="Modificar Vehículo" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
+					<input type="submit" value="Modificar Vehículo"   class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover">
 				</td>
 			</tr>
 		</table>

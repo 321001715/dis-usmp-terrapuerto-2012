@@ -354,7 +354,18 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+ vehiculo.getEstado() + "', OBS = '" + vehiculo.getObs()
 					+ "', asientosNoDisponibles = '"
 					+ vehiculo.getAsientosNoDisponibles()
-
+					+"', placa = '"
+					+vehiculo.getPlaca()
+					+"', numPiso = '"
+					+vehiculo.getNumPiso()
+					+"', numAsientos = '"
+					+vehiculo.getNumAsientos()
+					+"', asientosXPiso = '"
+					+vehiculo.getAsientosPorPiso()
+					+"', marca = '"
+					+vehiculo.getMarca()
+					+"', modelo = '"
+					+vehiculo.getModelo()
 					+ "' WHERE IDVEHICULO = " + vehiculo.getIdVehiculo() + ";";
 
 			filas_afectadas = stmt.executeUpdate(query);
