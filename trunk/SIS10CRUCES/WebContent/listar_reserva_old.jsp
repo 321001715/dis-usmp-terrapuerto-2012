@@ -1,6 +1,7 @@
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
-<%@page import="pe.plazanorte.sisterra.entidades.Reserva"%>
-
+<%@page import="pe.plazanorte.sisterra.entidades.Boleto"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Pasajero"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
 <%@page import="java.util.Vector"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -15,10 +16,11 @@
 </head>
 <body>
 <%
-Vector<Reserva> reservas=(Vector<Reserva>)request.getAttribute("reservas");
+Vector<Boleto> boletos=(Vector<Boleto>)request.getAttribute("boletos");
+Vector<Pasajero> pasajeros=(Vector<Pasajero>)request.getAttribute("pasajeros");
+Vector<Viaje> viajes=(Vector<Viaje>)request.getAttribute("viajes");
 
-
-if(reservas.size() != 0){
+if(boletos.size() != 0){
 %>
 
 <div class="ui-widget">
@@ -32,27 +34,41 @@ if(reservas.size() != 0){
 		<thead>
 			<tr>
 				<th><h3 align="center">Nº de Reserva</h3></th>
-				<th><h3 align="center">Cód. Usuario</h3></th>
-				<th><h3 align="center">Fecha</h3></th>
-				<th><h3 align="center">Estado</h3></th>
+				<th><h3 align="center">Cód. Viaje</h3></th>
+				<th><h3 align="center">Nº de Boleto</h3></th>
+				<th><h3 align="center">Nº de Doc.</h3></th>
+				<th><h3 align="center">Ape. Pat.</h3></th>
+				<th><h3 align="center">Ape. Mat.</h3></th>
+				<th><h3 align="center">Nombres</h3></th>
+				<th><h3 align="center">S/.</h3></th>
 				<th><h3 align="center"></h3></th>
 			</tr>
 		</thead>
 		<tbody>
 		
 <% 
-	for(int i=0; i<reservas.size(); i++){ 
+	for(int i=0; i<boletos.size(); i++){ 
 %> 
 
 		<tr>
-			<td align="center"> <%=reservas.get(i).getId() %></td>
-			<td align="center"> <%=reservas.get(i).getIdusuario() %></td>
-			<td align="center"> <%=reservas.get(i).getFecha() %></td>
-			<td align="center"> <%=reservas.get(i).getEstado()%></td>
+			<td align="center"> <%=boletos.get(i).getIdReserva() %></td>
+			<td align="center"> <%=boletos.get(i).getIdViaje() %></td>
+			<td align="center"> <%=boletos.get(i).getId() %></td>
+			<td align="center"> <%=pasajeros.get(i).getDni()%></td>
+			<td align="left">  <%=pasajeros.get(i).getApellidoPat()%></td>
+			<td align="left">  <%=pasajeros.get(i).getApellidoMat()%></td>
+			<td align="left">  <%=pasajeros.get(i).getNombres()%></td>
+			<td align="center"> <%=viajes.get(i).getPrecio()%></td>
 			<td align="left"><input type="checkbox" name=""></td>	
 		</tr>
 <%} %>
-		
+		<tr><td colspan="9"></td></tr>
+		<tr>
+			<td align="center" colspan="9">
+				<input type="submit" name="confirmar" value="CONFIRMAR">
+				<input type="submit" name="anular" value="ANULAR">
+			</td>
+		</tr>
 		</tbody>
 	</table>
 </form>	
