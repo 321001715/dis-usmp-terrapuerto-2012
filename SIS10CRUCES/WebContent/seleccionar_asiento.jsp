@@ -31,7 +31,7 @@
 	
 	String estado="";
 	
-	
+	int contador=4;
 	
 %>
 <body>
@@ -51,109 +51,46 @@
 								<font style="font-family: 'Trebuchet MS'; font-size: medium;"><b>PISO 1</b></font>
 							<table border="2" cellpadding="5" cellspacing="5" style="width: 300px; height: 300px;">
 							<!-- AQUI ESTARÍA EL FOR PARA CREAR LOS TD PARA PISO 1-->
+							
+							<% for(int j=0;j<(Integer.parseInt(carro.getAsientosPorPiso())/4);j++){ %>
 							<tr>
-								<% for(int i=0;i<4;i++){ %>
+								<% if(Integer.parseInt(carro.getAsientosPorPiso())>=contador){ %>
+								<% for(int i=(contador-4);i<contador;i++){ %>
 								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
 								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
 								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
 								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
 								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
+								<%}contador+=4;} %>
 								
 							</tr>
-							
-							<tr>	
-								<% for(int i=4;i<8;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
-							<tr>	
-								<% for(int i=8;i<12;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
-							<tr>	
-								<% for(int i=12;i<16;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
-							<tr>	
-								<% for(int i=16;i<20;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
+							<%} %>
 							<!-- FIN DE FOR PARA PISO 1 -->
 							</table>
 							</td>
 						</tr>
 						<tr>
+							<% if(carro.getNumPiso()==2){%>
 							<td colspan="4">
 								<font style="font-family: 'Trebuchet MS'; font-size: medium;"><b>PISO 2</b></font>
+							
 							<table border="2" cellpadding="5" cellspacing="5" style="width: 300px; height: 300px;">
 							<!-- AQUI ESTARÍA EL FOR PARA CREAR LOS TD PARA PISO 2-->
-							<tr>	
-								<% for(int i=20;i<24;i++){ %>
+							<% for(int j=0;j<(Integer.parseInt(carro.getAsientosPorPiso())/4);j++){ %>
+							<tr>
+								<% if(carro.getNumAsientos()>=contador){ %>		
+								<% for(int i=(contador-4);i<contador;i++){ %>
 								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
 								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
 								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
 								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
 								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
+								<%}contador+=4;} %>
 							</tr>
-							<tr>	
-								<% for(int i=24;i<28;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
-							<tr>	
-								<% for(int i=28;i<32;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
-							<tr>	
-								<% for(int i=32;i<36;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
-							<tr>	
-								<% for(int i=36;i<40;i++){ %>
-								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("NODISPONIBLE"))estado=Constantes.ASIENTO_NODISPONIBLE;
-								else if (asientos.get(i).getEstado().equals("RESERVADO"))estado=Constantes.ASIENTO_RESERVADO;
-								else if (asientos.get(i).getEstado().equals("VENDIDO"))estado=Constantes.ASIENTO_VENDIDO;
-								%> bgcolor="<%=estado %>"><%=(i+1) %></td>							
-								<%} %>
-							</tr>
+							<%} %>					
 							<!-- FIN DE FOR PARA PISO 2 -->
 							</table>
+							<%} %>
 						</tr>
 					</table>
 			</td>
