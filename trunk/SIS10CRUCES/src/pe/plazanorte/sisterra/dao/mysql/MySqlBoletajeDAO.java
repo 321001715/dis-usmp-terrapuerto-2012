@@ -258,6 +258,8 @@ return null;
 				carro.setPlaca(rs.getString("placa"));
 				carro.setNumAsientos(rs.getInt("numAsientos"));
 				carro.setIdProveedor(rs.getInt("idProveedor"));
+				carro.setAsientosPorPiso(rs.getString("asientosXPiso"));
+		
 				carro.setNumPiso(rs.getInt("numPiso"));
 	
 			}
