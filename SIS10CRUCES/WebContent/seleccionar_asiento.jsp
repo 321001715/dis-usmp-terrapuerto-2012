@@ -49,7 +49,12 @@
 						<tr>
 							<td colspan="4">
 								<font style="font-family: 'Trebuchet MS'; font-size: medium;"><b>PISO 1</b></font>
+							<% if(carro.getNumPiso()==1){%>	
+							<table border="2" cellpadding="5" cellspacing="5" style="width: 450px; height: 450px;">
+							<%} %>
+							<% if(carro.getNumPiso()==2){%>	
 							<table border="2" cellpadding="5" cellspacing="5" style="width: 300px; height: 300px;">
+							<%} %>
 							<!-- AQUI ESTARÍA EL FOR PARA CREAR LOS TD PARA PISO 1-->
 							
 							<% for(int j=0;j<(Integer.parseInt(carro.getAsientosPorPiso())/4);j++){ %>
@@ -69,11 +74,12 @@
 							</table>
 							</td>
 						</tr>
+						
 						<tr>
-							<% if(carro.getNumPiso()==2){%>
+							
 							<td colspan="4">
 								<font style="font-family: 'Trebuchet MS'; font-size: medium;"><b>PISO 2</b></font>
-							
+							<% if(carro.getNumPiso()==2){%>
 							<table border="2" cellpadding="5" cellspacing="5" style="width: 300px; height: 300px;">
 							<!-- AQUI ESTARÍA EL FOR PARA CREAR LOS TD PARA PISO 2-->
 							<% for(int j=0;j<(Integer.parseInt(carro.getAsientosPorPiso())/4);j++){ %>
@@ -92,6 +98,7 @@
 							</table>
 							<%} %>
 						</tr>
+						
 					</table>
 			</td>
 			<td colspan="2">
