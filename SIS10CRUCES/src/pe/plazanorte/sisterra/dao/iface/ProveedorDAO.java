@@ -24,7 +24,7 @@ public interface ProveedorDAO {
 	Vehiculo consultarVehiculo(Vehiculo vehiculo, Proveedor uu);
 	public boolean modificarVehiculo(Vehiculo vehiculo);
 	public Vector<Vehiculo> buscarVehiculos(Vehiculo vehiculo, Proveedor uu);
-	
+	public int	actulizarAsientos (String asientosNoDisponibles,long idVehiculo);
 	
 	
 	public boolean registrarRuta(Ruta ruta,Proveedor uu);

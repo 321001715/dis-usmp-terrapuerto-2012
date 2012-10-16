@@ -18,6 +18,12 @@ public class ServiceProveedor {
 		
 		return proveedorDao.registrarProveedor(proveedor);		
 	}
+	public int actulizarAsientos(String asientosNoDisponibles,long idVehiculo){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ProveedorDAO proveedorDao = mysqlFactory.getProveedorDAO();
+		return proveedorDao.actulizarAsientos(asientosNoDisponibles,idVehiculo);
+		
+	}
 
 	/*public boolean deshabilitarProveedor(Proveedor proveedor) {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
@@ -150,11 +156,11 @@ public class ServiceProveedor {
 		String[] asientos;
 		String delimitador = "&";
 		asientos = asientosNoDisponibles.split(delimitador);
-		System.out.println("DECODIFICANDO...");
+		
 		for(int i=0; i<asientos.length;i++){
 			System.out.println(asientos[i]);
 		}
-		System.out.println("FIN - DECODIFICADO");
+		
 		return asientos;
 	}
 	

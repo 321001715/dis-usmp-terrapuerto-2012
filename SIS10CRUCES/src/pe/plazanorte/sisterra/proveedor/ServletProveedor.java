@@ -552,7 +552,15 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setAsientosNoDisponibles(asientoNoDisponible);
 
 				boolean retorno = service.modificarVehiculo(vehiculo);
-
+				
+					if (retorno) {
+						String[] s=request.getParameterValues("asientosNoDisponibles");
+						for (int i = 0; i < s.length; i++) {
+							service.actulizarAsientos(s[i],idVehiculo);
+						}
+					}
+				
+				
 				if (retorno)
 					mensaje = "Veh�culo modificado con �xito.";
 				else
@@ -562,6 +570,7 @@ public class ServletProveedor extends HttpServlet {
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos(uu);
+				
 				request.setAttribute("vehiculos", vehiculos);
 
 				rd = getServletContext().getRequestDispatcher(
@@ -869,7 +878,7 @@ public class ServletProveedor extends HttpServlet {
 				proveedor.setIdProveedor(24);
 				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
 				
-			//	Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+		
 				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
 				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
 				Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
