@@ -23,7 +23,8 @@ import pe.plazanorte.sisterra.util.Constantes;
 
 public class MySqlProveedorDAO implements ProveedorDAO {
 
-	// **************************INICIO MANTENER PROVEEDOR******************************//
+	// **************************INICIO MANTENER
+	// PROVEEDOR******************************//
 
 	@Override
 	public boolean registrarProveedor(Proveedor proveedor) {
@@ -250,10 +251,11 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+ ");";
 			System.out.println(vehiculo.getEstado());
 			filas_afectadas = stmt.executeUpdate(sql);
-			
-			String query="SELECT idVehiculo FROM T_VEHICULO WHERE codVehiculo='"+vehiculo.getCodVehiculo()+"';";
+
+			String query = "SELECT idVehiculo FROM T_VEHICULO WHERE codVehiculo='"
+					+ vehiculo.getCodVehiculo() + "';";
 			ResultSet rs = stmt.executeQuery(query);
-			
+
 			while (rs.next()) {
 				vehiculo.setIdVehiculo(rs.getInt("idVehiculo"));
 			}
@@ -276,7 +278,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM t_vehiculo WHERE ESTADO = '"
 					+ Constantes.ESTADO_ACTIVO + "' and IDPROVEEDOR = '"
-					+ uu.getIdProveedor() +"';";
+					+ uu.getIdProveedor() + "';";
 			Vehiculo vehiculo = null;
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -314,7 +316,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM t_vehiculo WHERE IDVEHICULO = " + id
-					+ " and IDPROVEEDOR ='"+ uu.getIdProveedor() + "';";
+					+ " and IDPROVEEDOR ='" + uu.getIdProveedor() + "';";
 			System.out.println(query);
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -349,24 +351,18 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			
+
 			String query = "UPDATE t_vehiculo" + " SET ESTADO = '"
 					+ vehiculo.getEstado() + "', OBS = '" + vehiculo.getObs()
 					+ "', asientosNoDisponibles = '"
-					+ vehiculo.getAsientosNoDisponibles()
-					+"', placa = '"
-					+vehiculo.getPlaca()
-					+"', numPiso = '"
-					+vehiculo.getNumPiso()
-					+"', numAsientos = '"
-					+vehiculo.getNumAsientos()
-					+"', asientosXPiso = '"
-					+vehiculo.getAsientosPorPiso()
-					+"', marca = '"
-					+vehiculo.getMarca()
-					+"', modelo = '"
-					+vehiculo.getModelo()
-					+ "' WHERE IDVEHICULO = " + vehiculo.getIdVehiculo() + ";";
+					+ vehiculo.getAsientosNoDisponibles() + "', placa = '"
+					+ vehiculo.getPlaca() + "', numPiso = '"
+					+ vehiculo.getNumPiso() + "', numAsientos = '"
+					+ vehiculo.getNumAsientos() + "', asientosXPiso = '"
+					+ vehiculo.getAsientosPorPiso() + "', marca = '"
+					+ vehiculo.getMarca() + "', modelo = '"
+					+ vehiculo.getModelo() + "' WHERE IDVEHICULO = "
+					+ vehiculo.getIdVehiculo() + ";";
 
 			filas_afectadas = stmt.executeUpdate(query);
 			con.close();
@@ -438,9 +434,11 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return vehiculos;
 	}
 
-	// **************************FIN GESTIONAR VEHICULO******************************//
+	// **************************FIN GESTIONAR
+	// VEHICULO******************************//
 
-	// **************************INICIO GESTIONAR RUTA******************************//
+	// **************************INICIO GESTIONAR
+	// RUTA******************************//
 
 	@Override
 	public boolean registrarRuta(Ruta ruta, Proveedor uu) {
@@ -452,8 +450,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 
 			String sql = "INSERT INTO bd_cruces.t_ruta ( nomRuta,"
 					+ " origen, destino, km, duracion, estado, idProveedor, idUbigeo)"
-					+ " VALUES ('" + ruta.getNomRuta() + "', "
-					+ "'"+ruta.getOrigen()+"'," + "'"+ruta.getDestino()+"'," 
+					+ " VALUES ('" + ruta.getNomRuta() + "', " + "'"
+					+ ruta.getOrigen() + "'," + "'" + ruta.getDestino() + "',"
 					+ ruta.getKm() + ", " + ruta.getDuracion() + ", '"
 					+ Constantes.ESTADO_ACTIVO + "', " + uu.getIdProveedor()
 					+ ", " + 1 + ");";
@@ -476,7 +474,8 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_RUTA WHERE IDPROVEEDOR ="+ uu.getIdProveedor() + ";";
+			String query = "SELECT * FROM T_RUTA WHERE IDPROVEEDOR ="
+					+ uu.getIdProveedor() + ";";
 			Ruta ruta = null;
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -507,8 +506,9 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_RUTA WHERE idproveedor = '" + uu.getIdProveedor() + "' and " +
-					" idruta = '" + id + "';";
+			String query = "SELECT * FROM T_RUTA WHERE idproveedor = '"
+					+ uu.getIdProveedor() + "' and " + " idruta = '" + id
+					+ "';";
 
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -545,7 +545,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 					+ "', km = '" + ruta.getKm() + "', duracion = '"
 					+ ruta.getDuracion() + "' WHERE idRuta = " + ruta.getId()
 					+ ";";
- 
+
 			filas_afectadas = stmt.executeUpdate(query);
 			con.close();
 		} catch (Exception e) {
@@ -620,12 +620,14 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return vec;
 	}
 
-	// **************************FIN GESTIONAR RUTA******************************//
-	
-	// **************************INICIO GESTIONAR VIAJE******************************//
-	
+	// **************************FIN GESTIONAR
+	// RUTA******************************//
+
+	// **************************INICIO GESTIONAR
+	// VIAJE******************************//
+
 	@Override
-	public boolean registrarViaje(Viaje viaje){
+	public boolean registrarViaje(Viaje viaje) {
 		int filas_afectadas = 0;
 
 		try {
@@ -633,7 +635,30 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Statement stmt = con.createStatement();
 
 			String sql = "INSERT INTO T_VIAJE(nomViaje, fecSalida, fecLlegada, horSalida, horLlegada, precio, idRuta, servicio, dniChofer, idVehiculo, idClasificacion, estado) "
-						+"VALUES ('"+viaje.getNomViaje()+"', '"+viaje.getFecSalida()+"', '"+viaje.getFecLlegada()+"', '"+viaje.getHorSalida()+"', '"+viaje.getHorLlegada()+"', "+viaje.getPrecio()+", "+viaje.getIdRuta()+", '"+viaje.getServicio()+"', "+viaje.getIdChofer()+", "+viaje.getIdVehiculo()+", "+viaje.getIdClasificacion()+", '"+Constantes.ESTADO_ACTIVO+"')";
+					+ "VALUES ('"
+					+ viaje.getNomViaje()
+					+ "', '"
+					+ viaje.getFecSalida()
+					+ "', '"
+					+ viaje.getFecLlegada()
+					+ "', '"
+					+ viaje.getHorSalida()
+					+ "', '"
+					+ viaje.getHorLlegada()
+					+ "', "
+					+ viaje.getPrecio()
+					+ ", "
+					+ viaje.getIdRuta()
+					+ ", '"
+					+ viaje.getServicio()
+					+ "', "
+					+ viaje.getIdChofer()
+					+ ", "
+					+ viaje.getIdVehiculo()
+					+ ", "
+					+ viaje.getIdClasificacion()
+					+ ", '"
+					+ Constantes.ESTADO_ACTIVO + "')";
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
@@ -647,121 +672,97 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return false;
 	}
 
+	/*
+	 * @Override public Vector<Viaje> buscarViajes(Viaje param, Proveedor uu) {
+	 * Vector<Viaje> vec = new Vector<Viaje>(); try { Connection con =
+	 * MySqlDAOFactory.abrirConexion(); Statement stmt = con.createStatement();
+	 * String query = "SELECT * FROM bd_cruces.T_VIAJE WHERE "; boolean flag =
+	 * false; if (param.getId() != 0) { query += "idViaje = " + param.getId();
+	 * flag = true; } if (param.getIdRuta() != 0) { if (flag) query += " AND ";
+	 * query += "(idRuta = '" + param.getIdRuta(); flag = true; } if
+	 * (param.getCodViaje() != 0) { if (flag) query += " AND "; query +=
+	 * "(codViaje = '" + param.getCodViaje(); flag = true; } if
+	 * (param.getIdClasificacion() != 0) { if (flag) query += " AND "; query +=
+	 * "(idClasificacion = '" + param.getIdClasificacion(); flag = true; } if
+	 * (param.getDniChofer() != 0) { if (flag) query += " AND "; query +=
+	 * "(idChofer = '" + param.getDniChofer(); flag = true; } query +=
+	 * " AND idRuta = (SELECT idRuta FROM T_RUTA " + "WHERE IDPROVEEDOR = " +
+	 * uu.getIdProveedor() + ");";
+	 * 
+	 * Viaje viaje = null; ResultSet rs = stmt.executeQuery(query);
+	 * 
+	 * System.out.println("QUERY:" + query);
+	 * 
+	 * while (rs.next()) { viaje = new Viaje();
+	 * 
+	 * viaje.setId(rs.getLong("idViaje"));
+	 * 
+	 * viaje.setId(rs.getInt("idViaje"));
+	 * viaje.setNumViaje(rs.getString("numViaje"));
+	 * viaje.setNomViaje(rs.getString("nomViaje"));
+	 * viaje.setIdRuta(rs.getLong("idRuta"));
+	 * viaje.setPrecio(rs.getInt("precio"));
+	 * viaje.setIdClasificacion(rs.getLong("idClasificacion"));
+	 * viaje.setDniChofer(rs.getInt("dniChofer"));
+	 * viaje.setServicio(rs.getString("servicio"));
+	 * viaje.setFecSalida(rs.getString("fecSalida"));
+	 * viaje.setFecLlegada(rs.getString("fecLlegada"));
+	 * 
+	 * vec.add(viaje); } con.close(); } catch (Exception e) {
+	 * e.printStackTrace(); } return vec; }
+	 */
 
-	/*@Override
-	public Vector<Viaje> buscarViajes(Viaje param, Proveedor uu) {
-		Vector<Viaje> vec = new Vector<Viaje>();
-		try {
-			Connection con = MySqlDAOFactory.abrirConexion();
-			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM bd_cruces.T_VIAJE WHERE ";
-			boolean flag = false;
-			if (param.getId() != 0) {
-				query += "idViaje = " + param.getId();
-				flag = true;
-			}
-			if (param.getIdRuta() != 0) {
-				if (flag)
-					query += " AND ";
-				query += "(idRuta = '" + param.getIdRuta();
-				flag = true;
-			}
-			if (param.getCodViaje() != 0) {
-				if (flag)
-					query += " AND ";
-				query += "(codViaje = '" + param.getCodViaje();
-				flag = true;
-			}
-			if (param.getIdClasificacion() != 0) {
-				if (flag)
-					query += " AND ";
-				query += "(idClasificacion = '" + param.getIdClasificacion();
-				flag = true;
-			}
-			if (param.getDniChofer() != 0) {
-				if (flag)
-					query += " AND ";
-				query += "(idChofer = '" + param.getDniChofer();
-				flag = true;
-			}
-			query += " AND idRuta = (SELECT idRuta FROM T_RUTA " +
-										"WHERE IDPROVEEDOR = " + uu.getIdProveedor() + ");";
+	public Vector<Viaje> buscarViajes(Viaje viaje, Proveedor proveedor) {
 
-			Viaje viaje = null;
-			ResultSet rs = stmt.executeQuery(query);
-
-			System.out.println("QUERY:" + query);
-			
-			while (rs.next()) {
-				viaje = new Viaje();
-
-				viaje.setId(rs.getLong("idViaje"));
-				
-				viaje.setId(rs.getInt("idViaje"));
-				viaje.setNumViaje(rs.getString("numViaje"));
-				viaje.setNomViaje(rs.getString("nomViaje"));
-				viaje.setIdRuta(rs.getLong("idRuta"));
-				viaje.setPrecio(rs.getInt("precio"));
-				viaje.setIdClasificacion(rs.getLong("idClasificacion"));
-				viaje.setDniChofer(rs.getInt("dniChofer"));
-				viaje.setServicio(rs.getString("servicio"));
-				viaje.setFecSalida(rs.getString("fecSalida"));
-				viaje.setFecLlegada(rs.getString("fecLlegada"));
-				
-				vec.add(viaje);
-			}
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return vec;
-	}*/
-	
-	public Vector<Viaje> buscarViajes(Viaje viaje, Proveedor proveedor) {		
-		
 		Vector<Viaje> listaViajes = new Vector<Viaje>();
-		
+
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			
+
 			String sql = "SELECT * FROM T_VIAJE, T_RUTA WHERE ";
 			boolean flag = false;
-			
-			if(viaje.getIdRuta() != 0) {
+
+			if (viaje.getIdRuta() != 0) {
 				sql += "T_VIAJE.IDRUTA = " + viaje.getIdRuta();
 				flag = true;
 			}
-			if(viaje.getId() != 0) {
+			if (viaje.getId() != 0) {
 				sql += "T_VIAJE.IDVIAJE = " + viaje.getId();
-				if(flag) sql += " AND ";
+				if (flag)
+					sql += " AND ";
 				flag = true;
 			}
-			if(viaje.getIdClasificacion() != 0) {
-				if(flag) sql += " AND ";
-				sql += "T_VIAJE.IDCLASIFICACION = " + viaje.getIdClasificacion();
+			if (viaje.getIdClasificacion() != 0) {
+				if (flag)
+					sql += " AND ";
+				sql += "T_VIAJE.IDCLASIFICACION = "
+						+ viaje.getIdClasificacion();
 				flag = true;
 			}
-			if(viaje.getIdVehiculo() != 0) {
-				if(flag) sql += " AND ";
+			if (viaje.getIdVehiculo() != 0) {
+				if (flag)
+					sql += " AND ";
 				sql += "T_VIAJE.IDVEHICULO =" + viaje.getIdVehiculo();
 				flag = true;
 			}
-			
-			sql += " AND T_RUTA.IDPROVEEDOR = " + proveedor.getIdProveedor() +
-					" AND T_RUTA.IDRUTA = T_VIAJE.IDRUTA AND T_VIAJE.ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";
+
+			sql += " AND T_RUTA.IDPROVEEDOR = "
+					+ proveedor.getIdProveedor()
+					+ " AND T_RUTA.IDRUTA = T_VIAJE.IDRUTA AND T_VIAJE.ESTADO = '"
+					+ Constantes.ESTADO_ACTIVO + "';";
 			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
-			
+
 			while (rs.next()) {
-				
+
 				viaje = new Viaje();
-				
+
 				viaje.setId(rs.getLong("idViaje"));
 				viaje.setNomViaje(rs.getString("nomViaje"));
 				viaje.setFecLlegada(rs.getString("fecLlegada"));
 				viaje.setFecSalida(rs.getString("fecSalida"));
-				
+
 				viaje.setServicio(rs.getString("servicio"));
 				viaje.setPrecio(rs.getInt("precio"));
 				viaje.setEstado(rs.getString("estado"));
@@ -769,24 +770,27 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setIdChofer(rs.getInt("dniChofer"));
 				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
 				viaje.setIdClasificacion(rs.getInt("idClasificacion"));
-				
-				Date horaLlegadaDate = new Date(rs.getTime("horLlegada").getTime());;
-				Date horaSalidaDate = new Date(rs.getTime("horSalida").getTime());;
-				
-				DateFormat formatoHora = new SimpleDateFormat ("HH:mm");
+
+				Date horaLlegadaDate = new Date(rs.getTime("horLlegada")
+						.getTime());
+				;
+				Date horaSalidaDate = new Date(rs.getTime("horSalida")
+						.getTime());
+				;
+
+				DateFormat formatoHora = new SimpleDateFormat("HH:mm");
 				String horaSalida = formatoHora.format(horaSalidaDate);
 				String horaLlegada = formatoHora.format(horaLlegadaDate);
-				
-						
+
 				viaje.setHorLlegada(horaSalida);
 				viaje.setHorSalida(horaLlegada);
-				
+
 				listaViajes.add(viaje);
 			}
 			con.close();
-			
+
 		} catch (Exception e) {
-			e.printStackTrace();			
+			e.printStackTrace();
 		}
 		return listaViajes;
 	}
@@ -797,11 +801,13 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			//String query = "SELECT * FROM t_viaje WHERE IDPROVEEDOR ="+ uu.getIdProveedor() + ";";
-			String query = "SELECT * FROM t_viaje WHERE ESTADO LIKE '"+Constantes.ESTADO_ACTIVO+"';";
+			// String query = "SELECT * FROM t_viaje WHERE IDPROVEEDOR ="+
+			// uu.getIdProveedor() + ";";
+			String query = "SELECT * FROM t_viaje WHERE ESTADO LIKE '"
+					+ Constantes.ESTADO_ACTIVO + "';";
 			Viaje viaje = new Viaje();
 			ResultSet rs = stmt.executeQuery(query);
-			
+
 			while (rs.next()) {
 				viaje = new Viaje();
 
@@ -809,7 +815,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setNomViaje(rs.getString("nomViaje"));
 				viaje.setFecLlegada(rs.getString("fecLlegada"));
 				viaje.setFecSalida(rs.getString("fecSalida"));
-				
+
 				viaje.setServicio(rs.getString("servicio"));
 				viaje.setPrecio(rs.getInt("precio"));
 				viaje.setEstado(rs.getString("estado"));
@@ -817,18 +823,21 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				viaje.setIdChofer(rs.getInt("dniChofer"));
 				viaje.setIdVehiculo(rs.getInt("idVehiculo"));
 				viaje.setIdClasificacion(rs.getInt("idClasificacion"));
-				
-				Date horaLlegadaDate = new Date(rs.getTime("horLlegada").getTime());;
-				Date horaSalidaDate = new Date(rs.getTime("horSalida").getTime());;
-				
-				DateFormat formatoHora = new SimpleDateFormat ("HH:mm");
+
+				Date horaLlegadaDate = new Date(rs.getTime("horLlegada")
+						.getTime());
+				;
+				Date horaSalidaDate = new Date(rs.getTime("horSalida")
+						.getTime());
+				;
+
+				DateFormat formatoHora = new SimpleDateFormat("HH:mm");
 				String horaSalida = formatoHora.format(horaSalidaDate);
 				String horaLlegada = formatoHora.format(horaLlegadaDate);
-				
-						
+
 				viaje.setHorLlegada(horaSalida);
 				viaje.setHorSalida(horaLlegada);
-				
+
 				viajes.add(viaje);
 			}
 			con.close();
@@ -846,20 +855,20 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "UPDATE T_VIAJE "
-						+"SET nomViaje = '"+viaje.getNomViaje()+"', " +
-						"fecSalida = '"+viaje.getFecSalida()+"', " +
-						"fecLlegada = '"+viaje.getFecLlegada()+"', " +
-						"horSalida = '"+viaje.getHorSalida()+"', " +
-						"horLlegada = '"+viaje.getHorLlegada()+"', " +
-						"precio = "+viaje.getPrecio()+", " +
-						"idRuta = "+viaje.getIdRuta()+", " +
-						"servicio = '"+viaje.getServicio()+"', " +
-						"dniChofer = "+viaje.getDniChofer()+", "+
-						"idVehiculo = "+viaje.getIdVehiculo()+", "+
-						"idClasificacion = "+viaje.getIdClasificacion()+", "+
-						"estado = '"+viaje.getEstado()+"' "+
-						"WHERE idViaje = "+viaje.getId();
+			String sql = "UPDATE T_VIAJE " + "SET nomViaje = '"
+					+ viaje.getNomViaje() + "', " + "fecSalida = '"
+					+ viaje.getFecSalida() + "', " + "fecLlegada = '"
+					+ viaje.getFecLlegada() + "', " + "horSalida = '"
+					+ viaje.getHorSalida() + "', " + "horLlegada = '"
+					+ viaje.getHorLlegada() + "', " + "precio = "
+					+ viaje.getPrecio() + ", " + "idRuta = "
+					+ viaje.getIdRuta() + ", " + "servicio = '"
+					+ viaje.getServicio() + "', " + "dniChofer = "
+					+ viaje.getDniChofer() + ", " + "idVehiculo = "
+					+ viaje.getIdVehiculo() + ", " + "idClasificacion = "
+					+ viaje.getIdClasificacion() + ", " + "estado = '"
+					+ viaje.getEstado() + "' " + "WHERE idViaje = "
+					+ viaje.getId();
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {
@@ -878,18 +887,18 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM t_chofer WHERE idProveedor LIKE '"+proveedor.getIdProveedor()+"';";
+			String query = "SELECT * FROM t_chofer WHERE idProveedor LIKE '"
+					+ proveedor.getIdProveedor() + "';";
 			Chofer chofer = new Chofer();
 			ResultSet rs = stmt.executeQuery(query);
-			
+
 			while (rs.next()) {
-				
+
 				chofer.setApeMat(rs.getString("apeMat"));
 				chofer.setApePat(rs.getString("apePat"));
 				chofer.setId(rs.getInt("idChofer"));
 				chofer.setNombres(rs.getString("nombres"));
-				
-				
+
 				choferes.add(chofer);
 			}
 			con.close();
@@ -900,20 +909,20 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 	}
 
 	@Override
-	public boolean actualizarEstado(int asientos,long vehi) {
+	public boolean actualizarEstado(int asientos, long vehi) {
 		int filas_afectadas = 0;
 
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			for(int i=0;i<asientos;i++){
-				
-			String sql = "INSERT INTO t_asiento(numero,estado,idVehiculo) "
-					+ "VALUES ('"+(i+1)+"','DISPONIBLE','"+vehi+"');";
-					
-		
-			filas_afectadas += stmt.executeUpdate(sql);
+			for (int i = 0; i < asientos; i++) {
+
+				String sql = "INSERT INTO t_asiento(numero,estado,idVehiculo) "
+						+ "VALUES ('" + (i + 1) + "','DISPONIBLE','" + vehi
+						+ "');";
+
+				filas_afectadas += stmt.executeUpdate(sql);
 			}
 			con.close();
 		} catch (Exception e) {
@@ -926,8 +935,35 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 		return false;
 	}
 
-	
-	
-	// **************************FIN GESTIONAR VIAJE******************************//
-	
+	@Override
+	public int actulizarAsientos(String asientosNoDisponible, long idVehiculo) {
+		int filas_afectadas = 0;
+
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			/*
+			 * UPDATE `bd_cruces`.`t_asiento` SET `idAsiento` = {idAsiento: },
+			 * `numero` = {numero: }, `estado` = {estado: }, `idVehiculo` =
+			 * {idVehiculo: } WHERE <{where_condition}>;
+			 */
+
+			String sql = "UPDATE t_asiento set estado='"
+					+ Constantes.ASIENTO_NO_DISPONIBLE + "' WHERE idVehiculo="
+					+ idVehiculo + " and numero=" + asientosNoDisponible;
+			System.out.println(sql);
+
+			filas_afectadas += stmt.executeUpdate(sql);
+
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return filas_afectadas;
+	}
+
+	// **************************FIN GESTIONAR
+	// VIAJE******************************//
+
 }
