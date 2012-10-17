@@ -5,6 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
+<link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
+<link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Vender boleto de viaje</title>
 </head>
@@ -13,14 +19,18 @@
 	double precio = (Double)request.getAttribute("precio");
 	int idReserva = (Integer)request.getAttribute("idReserva");
 %>
-<h2>Vender boleto de viaje</h2>
-
+<div class="ui-widget">
+		<h3 class="ui-corner-top ui-widget-header">
+			<font style="font-family: monospace; font-size: x-large;">Vender Boleto de Viaje</font>
+		</h3>
 <form action="ServletBoletaje" method="post" name="comprar" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO %>">
 	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL %>">
 	<input type="hidden" name="idReserva" value="<%=idReserva %>">
 	
-	<h4>Datos del viajero</h4>
+	<div class="ui-corner-bottom ui-widget-content">
+				<font style="font-family: monospace; font-size: x-large;">Datos del Viajero</font>
+			</div>
 	
 	<table>
 		<tr>
@@ -48,7 +58,9 @@
 		</tr>
 	</table>
 	
-	<h4>Detalle de pago</h4>
+	<div class="ui-corner-bottom ui-widget-content">
+				<font style="font-family: monospace; font-size: x-large;">Detalle de Pago</font>
+			</div>
 	
 	Importe a pagar: <input type="text" name="importe" value="<%=precio %>">
 	
@@ -78,8 +90,8 @@
 			<td><input type="text" name="pagoEfectivo"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Confirmar compra"></td>
-			<td><input type="submit" value="Imprimir"></td>
+			<td><input type="submit" value="Confirmar compra" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" value="Imprimir" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 		</tr>
 	</table>
 </form>
