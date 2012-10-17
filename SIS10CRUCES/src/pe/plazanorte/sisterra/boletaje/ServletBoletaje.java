@@ -234,7 +234,7 @@ public class ServletBoletaje extends HttpServlet {
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
 					if(retorno&estasiento) {
 						mensaje = "Boleto reservado exitosamente.";
-						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
+						rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
 					}
 				}
 				

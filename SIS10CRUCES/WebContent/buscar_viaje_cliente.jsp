@@ -51,18 +51,18 @@ $(document).ready(function(){
 				<td></td>
 				<td>Origen: </td>
 				<td><select name="origen">
-				<option></option>
+				<option value="">Origen</option>
 				<% for(int i=0;i<rutas.size();i++){ %>
-				<option><%=rutas.get(i).getOrigen() %></option>
+				<option value="<%=rutas.get(i).getOrigen() %>"><%=rutas.get(i).getOrigen() %></option>
 				<%} %>
 				</select>
 				</td>
 				
 				<td>Destino: </td>
 				<td><select name="destino">
-				<option></option>
+				<option value="">Destino</option>
 				<% for(int i=0;i<rutas.size();i++){ %>
-				<option><%=rutas.get(i).getDestino() %></option>
+				<option value="<%=rutas.get(i).getDestino() %>"><%=rutas.get(i).getDestino() %></option>
 				<%} %>
 				</select>
 				</td>
