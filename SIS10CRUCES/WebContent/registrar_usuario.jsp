@@ -14,7 +14,9 @@
 <script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Registrar Usuario</title>
 </head>
+
 <body>
 <div class="ui-widget">
    <h3 class="ui-corner-top ui-widget-header"> 

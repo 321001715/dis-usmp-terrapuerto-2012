@@ -15,6 +15,7 @@
 <script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>RESERVAR BOLETO</title>
 </head>
 <body>
 
@@ -86,7 +87,7 @@
 				%>
 				<table>
 				<tr>
-					<td width="20%"></td>
+					<td></td>
 					<td>Nombre:</td>
 					<td><input name="txt_nombre" disabled="disabled" /></td>
 				</tr>
@@ -105,10 +106,70 @@
 				%>
 
 			</table>
+			<br>
 			<div class="ui-corner-bottom ui-widget-content">
 				<font style="font-family: monospace; font-size: x-large;">Detalle
 					de Reserva</font>
 			</div>
+			<br>
+			<table>
+			<tr>
+			<td>Nombre de Viaje</td>
+			<td><input name="txt_nom"/></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>Origen</td>
+			<td><input name="txt_origen"/></td>
+			
+			<td width="20%">Destino</td>
+			<td><input name="txt_destino"/></td>
+			</tr>
+			<tr>
+			<td>Fecha de Salida</td>
+			<td><input name="txt_salida"/></td>
+			
+			<td width="20%">Fecha de Llegada</td>
+			<td><input name="txt_llegada"/></td>
+			</tr>
+			<tr>
+			<td>Hora de Salida</td>
+			<td><input name="txt_origen"/></td>
+			
+			<td width="20%">Hora de Llegada</td>
+			<td><input name="txt_destino"/></td>
+			</tr>
+			<tr>
+			<td>Costo S/.</td>
+			<td><input name="txt_costo"/></td>
+			
+			<td width="20%">Duracion Hrs.</td>
+			<td><input name="txt_duracion"/></td>
+			</tr>
+			<tr>
+			<td>Servicio</td>
+			<td colspan="3"><input name="txt_servicio"/></td>
+			</tr>
+			<tr>
+			<td>Nro Asiento</td>
+			<td><input name="txt_asiento"/></td>
+			
+			<td width="20%">Piso</td>
+			<td><input name="txt_piso"/></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			<td></td>
+			<td><input type="submit" value="CONFIRMAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td>       </td>
+			<td><input type="submit" value="CANCELAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td></td>
+			</tr>
+			
+			
+			</table>
 		</form>
 	</div>
 	<br>
