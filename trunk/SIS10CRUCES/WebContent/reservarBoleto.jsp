@@ -78,7 +78,7 @@
 			<tr>
 				<td>N° de Documento:</td>
 				<td><input type="text" name="dni"></td>
-				<td><input type="submit" name="tipoSubmit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+				<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_CONSULTAR_USUARIO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			</tr>
 					
 			</table>
@@ -198,9 +198,9 @@
 			</tr>
 			<tr>
 			<td></td>
-			<td><input type="submit" name="tipoSubmit" value="CONFIRMAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_RESERVAR_BOLETO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td >      </td>
-			<td><input type="submit" name="tipoSubmit" value="CANCELAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_CANCELAR %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td></td>
 			</tr>
 			

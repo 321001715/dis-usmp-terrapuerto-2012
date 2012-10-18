@@ -147,4 +147,5 @@ public class Constantes {
 	public static final String ACCION_RESERVAR = "RESERVAR";
 	public static final String ACCION_COMPRAR_BOLETO = "COMPRAR BOLETO";
 	public static final String ASIENTO_NO_DISPONIBLE="NODISPONIBLE";
+	public static final String ACCION_CANCELAR = "CANCELAR";
 }
