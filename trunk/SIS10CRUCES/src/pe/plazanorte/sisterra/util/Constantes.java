@@ -143,6 +143,7 @@ public class Constantes {
 	
 	
 	//BOTONES DE DECISION EN SELECCIONAR ASIENTO
+
 	public static final String ACCION_RESERVAR = "RESERVAR";
 	public static final String ACCION_COMPRAR_BOLETO = "COMPRAR BOLETO";
 	public static final String ASIENTO_NO_DISPONIBLE="NODISPONIBLE";

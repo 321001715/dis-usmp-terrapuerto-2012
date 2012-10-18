@@ -154,7 +154,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 				nuevo.setApeMat(rs.getString("apeMat"));
 				nuevo.setUsuario(rs.getString("usuario"));
 				nuevo.setClave(rs.getString("clave"));
-				nuevo.setIdTipUsuario(rs.getLong("idPerfil"));
+				nuevo.setIdTipUsuario(rs.getInt("idPerfil"));
 				nuevo.setEstado(rs.getString("estado"));
 				nuevo.setDni(rs.getLong("numDoc"));
 
@@ -474,7 +474,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 				usuario.setId(rs.getInt("idUsuario"));
 				usuario.setUsuario(rs.getString("usuario"));
-				usuario.setIdTipUsuario(rs.getLong("idPerfil"));
+				usuario.setIdTipUsuario(rs.getInt("idPerfil"));
 				usuario.setDni(rs.getLong("numDoc"));
 				usuario.setApePat(rs.getString("apePat"));
 				usuario.setApeMat(rs.getString("apeMat"));
@@ -657,7 +657,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	}
 
 	@Override
-	public Perfil busPerfil(String idPerfil) {
+	public Perfil busPerfil(int idPerfil) {
 		Perfil perfil = new Perfil();
 		;
 		try {
