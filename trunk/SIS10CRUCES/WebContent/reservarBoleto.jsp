@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Asiento"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Vehiculo"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
@@ -45,17 +46,17 @@
 		String estado="";
 
 		
-		String busqueda = "REALIZADA";
+		String busqueda=(String)request.getAttribute("busqueda");
 		%>
 
-		<form action="ServletSeguridad" name="registrar" method="post">
+		<form action="ServletBoletaje" name="reservar" method="post">
 			<div class="ui-corner-bottom ui-widget-content">
 				<font style="font-family: monospace; font-size: x-large;">Detalle
 					del Reservador</font>
 			</div>
 			<table>
 				<tr>
-					<td><input type="hidden" name="tipo" value="registrar"><br></td>
+					<td><input type="hidden" name="tipo" value="<%=Constantes.ACCION_RESERVAR %>"><br></td>
 				</tr>
 				<tr>
 
@@ -73,7 +74,14 @@
 			</div>
 			<br>
 			<div>
-			<%@include file="buscar_usuario_dni.jsp"%>
+			<table>
+			<tr>
+				<td>N° de Documento:</td>
+				<td><input type="text" name="dni"></td>
+				<td><input type="submit" name="tipoSubmit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			</tr>
+					
+			</table>
 			</div>
 				<%
 					if (busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)) {
@@ -83,21 +91,21 @@
 
 				<tr>
 					<td>Nombre:</td>
-					<td><input name="nombre" disabled="disabled" /> <input
-						name="txt_dni" type="hidden" /> <input name="txt_nombre"
+					<td><input name="nombre"  value="<%=persona.getNombre() %>" disabled="disabled" /> <input
+						name="txt_dni" value="<%=persona.getDni() %>"type="hidden" /> <input name="txt_nombre" value="<%=persona.getNombre() %>"
 						type="hidden" /></td>
 				</tr>
 				<tr>
 
 					<td>Apellido Paterno:</td>
-					<td><input name="apePat" disabled="disabled" /> <input
-						name="txt_apePat" type="hidden" /></td>
+					<td><input name="apePat" value="<%=persona.getApePat() %>" disabled="disabled" /> <input
+						name="txt_apePat"  value="<%=persona.getApePat() %>" type="hidden" /></td>
 				</tr>
 				<tr>
 
 					<td>Apellido Materno:</td>
-					<td><input name="apeMat" disabled="disabled" /> <input
-						name="txt_apeMat" type="hidden" /></td>
+					<td><input name="apeMat" value="<%=persona.getApeMat() %>"  disabled="disabled" /> <input
+						name="txt_apeMat" value="<%=persona.getApeMat() %>"  type="hidden" /></td>
 				</tr>
 				</table>	
 				<%
@@ -138,12 +146,12 @@
 			<tr>
 			<td>Nombre de Viaje</td>
 			<td><input name="txt_nom" value="<%=viaje.getNomViaje() %>" disabled="disabled"/></td>
-			<td></td>
+			<td><input name="idViaje" type="hidden"  value="<%=viaje.getId() %>" /></td>
 			<td></td>
 			</tr>
 			<tr>
 			<td>Origen</td>
-			<td><input name="txt_origen" value="<%=ruta.getOrigen() %>" disabled="disabled"/></td>
+			<td><input name="idRuta" type="hidden"  value="<%=ruta.getId() %>" /><input name="txt_origen" value="<%=ruta.getOrigen() %>" disabled="disabled"/></td>
 			
 			<td width="20%">Destino</td>
 			<td><input name="txt_destino" value="<%=ruta.getDestino() %>" disabled="disabled"/></td>
@@ -175,10 +183,10 @@
 			</tr>
 			<tr>
 			<td>Nro Asiento</td>
-			<td><input name="txt_asiento" value="<%=asiento %>" disabled="disabled"/></td>
+			<td><input name="asientos" type="hidden"  value="<%=asiento %>" /><input name="txt_asiento" value="<%=asiento %>" disabled="disabled"/></td>
 			
 			<td width="20%">Piso</td>
-			<td><input name="txt_piso" value="<%=piso %>" disabled="disabled"/></td>
+			<td><input name="piso" type="hidden"  value="<%=piso %>" /><input name="txt_piso" value="<%=piso %>" disabled="disabled"/></td>
 			</tr>
 			<tr>
 			<td colspan="4"><b><font color="red">NOTA: La reserva se anulará si no es CONFIRMADA en las 8 horas posteriores </b></font>
@@ -190,9 +198,9 @@
 			</tr>
 			<tr>
 			<td></td>
-			<td><input type="submit" value="CONFIRMAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" value="CONFIRMAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td >      </td>
-			<td><input type="submit" value="CANCELAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" value="CANCELAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td></td>
 			</tr>
 			

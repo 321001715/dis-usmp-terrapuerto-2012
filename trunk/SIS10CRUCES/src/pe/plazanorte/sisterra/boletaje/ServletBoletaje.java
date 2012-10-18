@@ -20,6 +20,7 @@ import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Cliente;
 import pe.plazanorte.sisterra.entidades.Pasajero;
 import pe.plazanorte.sisterra.entidades.Perfil;
+import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Proveedor;
 import pe.plazanorte.sisterra.entidades.Reserva;
 import pe.plazanorte.sisterra.entidades.Ruta;
@@ -242,13 +243,14 @@ public class ServletBoletaje extends HttpServlet {
 					}
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
 					if(retorno&estasiento) {
+						String busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
 						request.setAttribute("usuario", usuario);
 						request.setAttribute("perfil", perfil);
 						request.setAttribute("ruta", ruta);
 						request.setAttribute("asiento", asiento);
 						request.setAttribute("piso", piso);
 						request.setAttribute("viaje", viaje);
-						mensaje = "Boleto reservado exitosamente.";
+						request.setAttribute("busqueda", busqueda);
 						rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
 					}
 				}
@@ -375,8 +377,76 @@ public class ServletBoletaje extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
 		}
 		//********************************FIN CONSULTAR VIAJE**********************************//
-		else if(tipo.equals(Constantes.ACCION_RESERVAR_BOLETO)){
+		else if(tipo.equals(Constantes.ACCION_RESERVAR)){
+			String busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
+			Reserva reserva=new Reserva();
+			Ruta ruta=new Ruta();
+			Viaje viaje=new Viaje();			
+			try {
+				
+				int idRuta=Integer.parseInt(request.getParameter("ruta"));
+				int asiento=Integer.parseInt(request.getParameter("asientos"));
+				int piso=Integer.parseInt(request.getParameter("piso"));
+				int idViaje=Integer.parseInt(request.getParameter("viaje"));
+				int dni=Integer.parseInt(request.getParameter("dni"));
+				
+				
+				
+				HttpSession session= request.getSession(true);
+				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
+				Perfil perfil = (Perfil)session.getAttribute("BPerfil");
 			
+
+				ruta=service.consultarRuta(idRuta);
+				viaje=service.consultarViajeCliente(idViaje);
+				
+				reserva=service.generarReserva(usuario.getId());
+				
+				
+				
+				String tipoSubmit = request.getParameter("tipoSubmit");
+				if(tipoSubmit.equalsIgnoreCase("Buscar")){
+					Persona persona=serviceseguridad.consultarPersona(dni);
+					
+					if(persona!=null){
+						busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
+					}
+						request.setAttribute("piso", piso);
+						request.setAttribute("usuario", usuario);
+						request.setAttribute("perfil", perfil);
+						request.setAttribute("ruta", ruta);
+						request.setAttribute("asiento", asiento);
+						request.setAttribute("busqueda", busqueda);
+						request.setAttribute("persona", persona);
+						rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
+				
+				} else if(tipoSubmit.equalsIgnoreCase("CONFIRMAR")) {
+					mensaje = "Boleto reservado exitosamente.";
+					boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento);
+					
+					boolean estasiento=service.cambiarEstado(idViaje,asiento);
+					if(retorno&estasiento) {
+						request.setAttribute("usuario", usuario);
+						request.setAttribute("perfil", perfil);
+						request.setAttribute("ruta", ruta);
+						request.setAttribute("asiento", asiento);
+						request.setAttribute("piso", piso);
+						request.setAttribute("viaje", viaje);
+						mensaje = "Boleto reservado exitosamente.";
+						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
+					}else{
+						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");	
+					}
+				}else if(tipoSubmit.equalsIgnoreCase("CANCELAR")){
+						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");
+				}
+				
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
 		}
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
