@@ -37,7 +37,7 @@
 <body>
 <div class="ui-widget">
 <form action="ServletBoletaje" method="post" name="reservar" >
-<input type="hidden" name="tipo" value="<%=Constantes.ACCION_RESERVAR_BOLETO %>">
+<input type="hidden" name="tipo" value="<%=Constantes.ACCION_SELECCIONAR_ASIENTO %>">
 <table style="width: 100%; height: 100%; position: relative;">
 <tr>
 <td>
@@ -121,7 +121,7 @@
 	   			<tr>
 	   				<td width="10%"></td>
 					<td>Origen: </td>
-					<td><input type="hidden" name="origen"  value="<%=ruta.getOrigen() %>"><input type="text" name="origen1" disabled="disabled" value="<%=ruta.getOrigen() %>"></td>
+					<td><input type="hidden" name="ruta"  value="<%=ruta.getId() %>"><input type="hidden" name="origen"  value="<%=ruta.getOrigen() %>"><input type="text" name="origen1" disabled="disabled" value="<%=ruta.getOrigen() %>"></td>
 					<td width="150px">Destino: </td>
 					<td><input type="hidden" name="destino"  value="<%=ruta.getDestino() %>"><input type="text" name="destino1" disabled="disabled" value="<%=ruta.getDestino() %>"></td>
 				</tr>

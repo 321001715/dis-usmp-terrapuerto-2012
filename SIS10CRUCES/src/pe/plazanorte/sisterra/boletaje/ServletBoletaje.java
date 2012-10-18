@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Cliente;
@@ -49,6 +50,7 @@ public class ServletBoletaje extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServiceBoletaje service = new ServiceBoletaje();
+		
 		String tipo = request.getParameter("tipo");
 		String mensaje = "Ocurrio un error";
 		RequestDispatcher rd = null;
@@ -170,6 +172,7 @@ public class ServletBoletaje extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ServiceBoletaje service = new ServiceBoletaje();
+		ServiceSeguridad serviceseguridad=new ServiceSeguridad();
 		String tipo = request.getParameter("tipo");
 		//long codViaje = Long.parseLong(request.getParameter("codViaje"));
 		// int nroAsiento = Integer.parseInt(request.getParameter("nroAsiento"));
@@ -182,11 +185,13 @@ public class ServletBoletaje extends HttpServlet {
 		
 		//********************************INICIO RESERVAR BOLETO DE VIAJE**********************************//		
 		
-		if(tipo.equals(Constantes.ACCION_RESERVAR_BOLETO)){
+		if(tipo.equals(Constantes.ACCION_SELECCIONAR_ASIENTO)){
 			Reserva reserva=new Reserva();
-			Boleto boleto = new Boleto();
 			
+			Ruta ruta=new Ruta();
+			Viaje viaje=new Viaje();			
 			try {
+				int idRuta=Integer.parseInt(request.getParameter("ruta"));
 				String codViaje = request.getParameter("codViaje");
 				String origen = request.getParameter("origen");
 				String destino = request.getParameter("destino");
@@ -195,6 +200,7 @@ public class ServletBoletaje extends HttpServlet {
 				double costo = Double.parseDouble(request.getParameter("costo"));
 				int duracion = Integer.parseInt(request.getParameter("duracion"));
 				int asiento=Integer.parseInt(request.getParameter("asientos"));
+				int piso=Integer.parseInt(request.getParameter("piso"));
 				int idViaje=Integer.parseInt(request.getParameter("viaje"));
 				System.out.print("VIAJE NUMERO"+idViaje);
 				//boleto.setIdViaje(codViaje);
@@ -203,6 +209,7 @@ public class ServletBoletaje extends HttpServlet {
 				
 				HttpSession session= request.getSession(true);
 				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
+				Perfil perfil = (Perfil)session.getAttribute("BPerfil");
 				//Usuario usuario=new Usuario();
 				//HttpSession session = request.getSession();
 				//usuario=(Usuario)session.getAttribute("BUsuario");
@@ -210,9 +217,11 @@ public class ServletBoletaje extends HttpServlet {
 				
 				
 				//system.out.print(usuario.getNombres());
+				
+				ruta=service.consultarRuta(idRuta);
+				viaje=service.consultarViajeCliente(idViaje);
+				
 				reserva=service.generarReserva(usuario.getId());
-				
-				
 				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento);
 				
 				boolean estasiento=service.cambiarEstado(idViaje,asiento);
@@ -225,7 +234,7 @@ public class ServletBoletaje extends HttpServlet {
 				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){
 					if(retorno & estasiento) {
 						mensaje = "Boleto reservado exitosamente ahora a comprar boleto.";
-						Viaje viaje = service.consultarViajeCliente(idViaje);
+						viaje = service.consultarViajeCliente(idViaje);
 						double precio = viaje.getPrecio();
 						request.setAttribute("precio", precio);
 						request.setAttribute("idReserva", reserva.getId());
@@ -233,6 +242,12 @@ public class ServletBoletaje extends HttpServlet {
 					}
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
 					if(retorno&estasiento) {
+						request.setAttribute("usuario", usuario);
+						request.setAttribute("perfil", perfil);
+						request.setAttribute("ruta", ruta);
+						request.setAttribute("asiento", asiento);
+						request.setAttribute("piso", piso);
+						request.setAttribute("viaje", viaje);
 						mensaje = "Boleto reservado exitosamente.";
 						rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
 					}
@@ -317,7 +332,7 @@ public class ServletBoletaje extends HttpServlet {
 		}
 		
 		//********************************FIN VENDER BOLETO DE VIAJE**********************************//
-		if(tipo.equals(Constantes.ACCION_CONSULTAR_VIAJE)){
+		else if(tipo.equals(Constantes.ACCION_CONSULTAR_VIAJE)){
 			//session de usuario y cliente
 			
 			
@@ -360,7 +375,9 @@ public class ServletBoletaje extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
 		}
 		//********************************FIN CONSULTAR VIAJE**********************************//
-		
+		else if(tipo.equals(Constantes.ACCION_RESERVAR_BOLETO)){
+			
+		}
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}

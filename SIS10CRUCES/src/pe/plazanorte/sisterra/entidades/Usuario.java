@@ -6,7 +6,7 @@ public class Usuario {
 	private String usuario;
 	private String clave;
 	private String estado;
-	private long idTipUsuario;
+	private int idTipUsuario;
 	private long dni;
 	private String nombres;
 	private String apePat;
@@ -48,10 +48,10 @@ public class Usuario {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public long getIdTipUsuario() {
+	public int getIdTipUsuario() {
 		return idTipUsuario;
 	}
-	public void setIdTipUsuario(long idTipUsuario) {
+	public void setIdTipUsuario(int idTipUsuario) {
 		this.idTipUsuario = idTipUsuario;
 	}
 	public long getDni() {

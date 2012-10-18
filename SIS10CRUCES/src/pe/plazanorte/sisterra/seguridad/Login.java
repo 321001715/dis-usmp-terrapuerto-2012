@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
 			uu.setClave(request.getParameter("password"));
 			uu.setIdTipUsuario(Integer.parseInt(request.getParameter("esc")));
 			MySqlSeguridadDAO du = new MySqlSeguridadDAO();
-			String idPerfil= request.getParameter("esc").toString();
+			int idPerfil= Integer.parseInt(request.getParameter("esc"));
 			perfil=du.busPerfil(idPerfil);
 			
 			if (du.validarUser(uu)) {
@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
 				uu = (Usuario) session.getAttribute("BUsuario");
 				session.setAttribute("BPerfil", perfil);
 				
-				if(idPerfil.equals("20")){
+				if(idPerfil==20){
 					Cliente cliente =new Cliente();
 				cliente = du.buscarCliente(uu.getId());
 					

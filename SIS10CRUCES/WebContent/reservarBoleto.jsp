@@ -1,3 +1,7 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Asiento"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Vehiculo"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Persona"%>
 <%@page import="java.util.Vector"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
@@ -27,7 +31,21 @@
 
 
 		<%
-			String busqueda = "REALIZADA";
+		
+		Usuario usuario=(Usuario)request.getAttribute("usuario");
+		Persona persona=(Persona)request.getAttribute("persona");
+		
+		Ruta ruta=(Ruta)request.getAttribute("ruta");
+		Perfil perfil=(Perfil)request.getAttribute("perfil");
+		
+		Viaje viaje=(Viaje)request.getAttribute("viaje");
+		
+		int asiento= (Integer)request.getAttribute("asiento");
+		int piso= (Integer)request.getAttribute("piso");
+		String estado="";
+
+		
+		String busqueda = "REALIZADA";
 		%>
 
 		<form action="ServletSeguridad" name="registrar" method="post">
@@ -42,9 +60,9 @@
 				<tr>
 
 					<td>Usuario:</td>
-					<td><input type="text" name="txt_usuario"></td>
+					<td><input type="text" name="txt_usuario" value="<%=usuario.getUsuario() %>" disabled="disabled"></td>
 					<td>Perfil:</td>
-					<td><input type="text" name="txt_usuario"></td>
+					<td><input type="text" name="txt_usuario" value="<%=perfil.getNombre() %>" disabled="disabled"></td>
 				</tr>
 
 			</table>
@@ -86,6 +104,7 @@
 					} else {
 				%>
 				<table>
+			
 				<tr>
 					<td></td>
 					<td>Nombre:</td>
@@ -106,6 +125,9 @@
 				%>
 
 			</table>
+			<b><font color="red">NOTA: Maximo 5 consultas sin confirmar por hora. Caso contrario, se suspendera su cuenta por 24 horas. </font>
+			</b>
+			<br>
 			<br>
 			<div class="ui-corner-bottom ui-widget-content">
 				<font style="font-family: monospace; font-size: x-large;">Detalle
@@ -115,55 +137,61 @@
 			<table>
 			<tr>
 			<td>Nombre de Viaje</td>
-			<td><input name="txt_nom"/></td>
+			<td><input name="txt_nom" value="<%=viaje.getNomViaje() %>" disabled="disabled"/></td>
 			<td></td>
 			<td></td>
 			</tr>
 			<tr>
 			<td>Origen</td>
-			<td><input name="txt_origen"/></td>
+			<td><input name="txt_origen" value="<%=ruta.getOrigen() %>" disabled="disabled"/></td>
 			
 			<td width="20%">Destino</td>
-			<td><input name="txt_destino"/></td>
+			<td><input name="txt_destino" value="<%=ruta.getDestino() %>" disabled="disabled"/></td>
 			</tr>
 			<tr>
 			<td>Fecha de Salida</td>
-			<td><input name="txt_salida"/></td>
+			<td><input name="txt_salida" value="<%=viaje.getFecSalida() %>" disabled="disabled"/></td>
 			
 			<td width="20%">Fecha de Llegada</td>
-			<td><input name="txt_llegada"/></td>
+			<td><input name="txt_llegada" value="<%=viaje.getFecLlegada() %>" disabled="disabled"/></td>
 			</tr>
 			<tr>
 			<td>Hora de Salida</td>
-			<td><input name="txt_origen"/></td>
+			<td><input name="txt_origen" value="<%=viaje.getHorSalida() %>" disabled="disabled"/></td>
 			
 			<td width="20%">Hora de Llegada</td>
-			<td><input name="txt_destino"/></td>
+			<td><input name="txt_destino" value="<%=viaje.getHorLlegada() %>" disabled="disabled"/></td>
 			</tr>
 			<tr>
 			<td>Costo S/.</td>
-			<td><input name="txt_costo"/></td>
+			<td><input name="txt_costo"  value="<%=viaje.getPrecio() %>" disabled="disabled"/></td>
 			
 			<td width="20%">Duracion Hrs.</td>
-			<td><input name="txt_duracion"/></td>
+			<td><input name="txt_duracion" value="<%=ruta.getDuracion() %>" disabled="disabled"/></td>
 			</tr>
 			<tr>
 			<td>Servicio</td>
-			<td colspan="3"><input name="txt_servicio"/></td>
+			<td colspan="3"><input name="txt_servicio" value="<%=viaje.getServicio() %>" disabled="disabled"/></td>
 			</tr>
 			<tr>
 			<td>Nro Asiento</td>
-			<td><input name="txt_asiento"/></td>
+			<td><input name="txt_asiento" value="<%=asiento %>" disabled="disabled"/></td>
 			
 			<td width="20%">Piso</td>
-			<td><input name="txt_piso"/></td>
+			<td><input name="txt_piso" value="<%=piso %>" disabled="disabled"/></td>
 			</tr>
 			<tr>
+			<td colspan="4"><b><font color="red">NOTA: La reserva se anulará si no es CONFIRMADA en las 8 horas posteriores </b></font>
+			</td>
+			</tr>
+			<tr>
+			<td colspan="4"><b><font color="red">de la generación del Código de Reserva</b> </font>
+			</td>
 			</tr>
 			<tr>
 			<td></td>
 			<td><input type="submit" value="CONFIRMAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
-			<td>       </td>
+			<td >      </td>
 			<td><input type="submit" value="CANCELAR" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td></td>
 			</tr>
