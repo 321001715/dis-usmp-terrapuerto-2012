@@ -384,11 +384,11 @@ public class ServletBoletaje extends HttpServlet {
 			Viaje viaje=new Viaje();			
 			try {
 				
-				int idRuta=Integer.parseInt(request.getParameter("ruta"));
+				long idRuta=Integer.parseInt(request.getParameter("idRuta"));
 				int asiento=Integer.parseInt(request.getParameter("asientos"));
 				int piso=Integer.parseInt(request.getParameter("piso"));
-				int idViaje=Integer.parseInt(request.getParameter("viaje"));
-				int dni=Integer.parseInt(request.getParameter("dni"));
+				int idViaje=Integer.parseInt(request.getParameter("idViaje"));
+				
 				
 				
 				
@@ -400,12 +400,13 @@ public class ServletBoletaje extends HttpServlet {
 				ruta=service.consultarRuta(idRuta);
 				viaje=service.consultarViajeCliente(idViaje);
 				
-				reserva=service.generarReserva(usuario.getId());
+				
 				
 				
 				
 				String tipoSubmit = request.getParameter("tipoSubmit");
-				if(tipoSubmit.equalsIgnoreCase("Buscar")){
+				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
+					int dni=Integer.parseInt(request.getParameter("dni"));
 					Persona persona=serviceseguridad.consultarPersona(dni);
 					
 					if(persona!=null){
@@ -420,8 +421,9 @@ public class ServletBoletaje extends HttpServlet {
 						request.setAttribute("persona", persona);
 						rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
 				
-				} else if(tipoSubmit.equalsIgnoreCase("CONFIRMAR")) {
+				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR_BOLETO)) {
 					mensaje = "Boleto reservado exitosamente.";
+					reserva=service.generarReserva(usuario.getId());
 					boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento);
 					
 					boolean estasiento=service.cambiarEstado(idViaje,asiento);
@@ -437,7 +439,8 @@ public class ServletBoletaje extends HttpServlet {
 					}else{
 						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");	
 					}
-				}else if(tipoSubmit.equalsIgnoreCase("CANCELAR")){
+				}else {
+						mensaje="RESERVA CANCELADA";
 						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");
 				}
 				
