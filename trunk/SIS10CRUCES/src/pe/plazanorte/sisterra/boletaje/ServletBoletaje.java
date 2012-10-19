@@ -408,7 +408,7 @@ public class ServletBoletaje extends HttpServlet {
 				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
 					int dni=Integer.parseInt(request.getParameter("dni"));
 					Persona persona=serviceseguridad.consultarPersona(dni);
-					
+					busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
 					
 						request.setAttribute("piso", piso);
 						request.setAttribute("usuario", usuario);
@@ -420,7 +420,7 @@ public class ServletBoletaje extends HttpServlet {
 						request.setAttribute("persona", persona);
 						
 						if(persona!=null){
-							busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
+							
 						
 							rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
 						}else{
@@ -457,41 +457,7 @@ public class ServletBoletaje extends HttpServlet {
 				
 			}
 			
-		}else if(tipo.equalsIgnoreCase("buscarDni")){
-			int dnipers=Integer.parseInt(request.getParameter("dni"));
-			Persona unapersona=new Persona();
-			String busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
-			long idRuta=Integer.parseInt(request.getParameter("idRuta"));
-			int asiento=Integer.parseInt(request.getParameter("asientos"));
-			int piso=Integer.parseInt(request.getParameter("piso"));
-			int idViaje=Integer.parseInt(request.getParameter("idViaje"));
-			Ruta ruta=new Ruta();
-			Viaje viaje=new Viaje();	
-			try {								
-				unapersona=serviceseguridad.consultarPersona(dnipers);
-				ruta=service.consultarRuta(idRuta);
-				viaje=service.consultarViajeCliente(idViaje);
-				
-				HttpSession session= request.getSession(true);
-				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
-				Perfil perfil = (Perfil)session.getAttribute("BPerfil");
-				
-				if(unapersona!=null){
-					busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
-				}
-				request.setAttribute("piso", piso);
-				request.setAttribute("usuario", usuario);
-				request.setAttribute("perfil", perfil);
-				request.setAttribute("ruta", ruta);
-				request.setAttribute("asiento", asiento);
-				request.setAttribute("persona", unapersona);
-				request.setAttribute("busqueda", busqueda);
-				
-				rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			}			
+		}	
 		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);

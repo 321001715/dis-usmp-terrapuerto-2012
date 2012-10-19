@@ -115,7 +115,7 @@
 			
 				<tr>
 					<td></td>
-					<td>Nombre:</td>
+					<td>NombreSinBD:</td>
 					<td><input name="txt_nombre" disabled="disabled" /></td>
 				</tr>
 				<tr>
