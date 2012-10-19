@@ -75,10 +75,10 @@ public class Constantes {
 	public static final String ACCION_CONSULTAR_PERFIL = "consultar_perfil";
 	
 	
-	public static final String ACCION_CONSULTAR_USUARIO = "consultar_usuario";
+	public static final String ACCION_CONSULTAR_USUARIO = "Buscar";
 	
 	
-	public static final String ACCION_RESERVAR_BOLETO = "reservar_boleto";
+	public static final String ACCION_RESERVAR_BOLETO = "RESERVAR";
 	public static final String ACCION_VENDER_BOLETO = "vender_boleto";
 	
 	

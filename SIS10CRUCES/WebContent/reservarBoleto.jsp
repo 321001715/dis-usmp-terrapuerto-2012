@@ -145,7 +145,7 @@
 			<table>
 			<tr>
 			<td>Nombre de Viaje</td>
-			<td><input name="txt_nom" value="<%=viaje.getNomViaje() %>" disabled="disabled"/></td>
+			<td><input name="txt_nomViaje" value="<%=viaje.getNomViaje() %>" disabled="disabled"/></td>
 			<td><input name="idViaje" type="hidden"  value="<%=viaje.getId() %>" /></td>
 			<td></td>
 			</tr>
