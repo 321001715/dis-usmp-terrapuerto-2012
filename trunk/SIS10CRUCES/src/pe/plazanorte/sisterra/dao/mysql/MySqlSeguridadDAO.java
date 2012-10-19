@@ -600,7 +600,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 			String query = "SELECT * FROM T_PERSONA WHERE numDoc = '" + dni
 					+ "';";
 			ResultSet rs = stmt.executeQuery(query);
-
+			System.out.print(query);
 			if (rs.next()) {
 				nuevo = new Persona();
 				nuevo.setId(rs.getLong("id_persona"));

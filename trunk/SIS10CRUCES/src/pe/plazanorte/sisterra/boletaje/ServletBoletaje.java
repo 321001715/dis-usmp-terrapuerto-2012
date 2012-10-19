@@ -190,7 +190,8 @@ public class ServletBoletaje extends HttpServlet {
 			Reserva reserva=new Reserva();
 			
 			Ruta ruta=new Ruta();
-			Viaje viaje=new Viaje();			
+			Viaje viaje=new Viaje();	
+			String tipoSubmit = request.getParameter("tipoSubmit");
 			try {
 				int idRuta=Integer.parseInt(request.getParameter("ruta"));
 				String codViaje = request.getParameter("codViaje");
@@ -222,27 +223,27 @@ public class ServletBoletaje extends HttpServlet {
 				ruta=service.consultarRuta(idRuta);
 				viaje=service.consultarViajeCliente(idViaje);
 				
-				reserva=service.generarReserva(usuario.getId());
-				boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento);
+				//reserva=service.generarReserva(usuario.getId());
+				//boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento);
 				
-				boolean estasiento=service.cambiarEstado(idViaje,asiento);
+				//boolean estasiento=service.cambiarEstado(idViaje,asiento);
 				
 				//PREVIO A CENTER VIAJE
 				
 				//Obtener el tipo de SUBMIT del que proviene
 				
-				String tipoSubmit = request.getParameter("tipoSubmit");
+				
 				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){
-					if(retorno & estasiento) {
+					
 						mensaje = "Boleto reservado exitosamente ahora a comprar boleto.";
-						viaje = service.consultarViajeCliente(idViaje);
+						
 						double precio = viaje.getPrecio();
 						request.setAttribute("precio", precio);
 						request.setAttribute("idReserva", reserva.getId());
 						rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");			
-					}
+					
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
-					if(retorno&estasiento) {
+					
 						String busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
 						request.setAttribute("usuario", usuario);
 						request.setAttribute("perfil", perfil);
@@ -252,7 +253,7 @@ public class ServletBoletaje extends HttpServlet {
 						request.setAttribute("viaje", viaje);
 						request.setAttribute("busqueda", busqueda);
 						rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
-					}
+					
 				}
 				
 				
@@ -382,13 +383,16 @@ public class ServletBoletaje extends HttpServlet {
 			Reserva reserva=new Reserva();
 			Ruta ruta=new Ruta();
 			Viaje viaje=new Viaje();			
+			String tipoSubmit = request.getParameter("tipoSubmit");
 			try {
 				
 				long idRuta=Integer.parseInt(request.getParameter("idRuta"));
 				int asiento=Integer.parseInt(request.getParameter("asientos"));
 				int piso=Integer.parseInt(request.getParameter("piso"));
 				int idViaje=Integer.parseInt(request.getParameter("idViaje"));
-				
+				String nombre=request.getParameter("txt_nombre");
+				String apePat=request.getParameter("txt_apePat");
+				String apeMat=request.getParameter("txt_apeMat");
 				
 				
 				
@@ -401,26 +405,27 @@ public class ServletBoletaje extends HttpServlet {
 				viaje=service.consultarViajeCliente(idViaje);
 				
 				
-				
-				
-				
-				String tipoSubmit = request.getParameter("tipoSubmit");
 				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
 					int dni=Integer.parseInt(request.getParameter("dni"));
 					Persona persona=serviceseguridad.consultarPersona(dni);
 					
-					if(persona!=null){
-						busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
-					}
+					
 						request.setAttribute("piso", piso);
 						request.setAttribute("usuario", usuario);
 						request.setAttribute("perfil", perfil);
 						request.setAttribute("ruta", ruta);
 						request.setAttribute("asiento", asiento);
 						request.setAttribute("busqueda", busqueda);
+						request.setAttribute("viaje", viaje);
 						request.setAttribute("persona", persona);
-						rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
-				
+						
+						if(persona!=null){
+							busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
+						
+							rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
+						}else{
+							rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
+						}
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR_BOLETO)) {
 					mensaje = "Boleto reservado exitosamente.";
 					reserva=service.generarReserva(usuario.getId());
@@ -448,9 +453,46 @@ public class ServletBoletaje extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally{
+				
 			}
+			
+		}else if(tipo.equalsIgnoreCase("buscarDni")){
+			int dnipers=Integer.parseInt(request.getParameter("dni"));
+			Persona unapersona=new Persona();
+			String busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
+			long idRuta=Integer.parseInt(request.getParameter("idRuta"));
+			int asiento=Integer.parseInt(request.getParameter("asientos"));
+			int piso=Integer.parseInt(request.getParameter("piso"));
+			int idViaje=Integer.parseInt(request.getParameter("idViaje"));
+			Ruta ruta=new Ruta();
+			Viaje viaje=new Viaje();	
+			try {								
+				unapersona=serviceseguridad.consultarPersona(dnipers);
+				ruta=service.consultarRuta(idRuta);
+				viaje=service.consultarViajeCliente(idViaje);
+				
+				HttpSession session= request.getSession(true);
+				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
+				Perfil perfil = (Perfil)session.getAttribute("BPerfil");
+				
+				if(unapersona!=null){
+					busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
+				}
+				request.setAttribute("piso", piso);
+				request.setAttribute("usuario", usuario);
+				request.setAttribute("perfil", perfil);
+				request.setAttribute("ruta", ruta);
+				request.setAttribute("asiento", asiento);
+				request.setAttribute("persona", unapersona);
+				request.setAttribute("busqueda", busqueda);
+				
+				rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			}			
 		
-		}
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}

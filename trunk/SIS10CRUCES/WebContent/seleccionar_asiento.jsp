@@ -113,9 +113,9 @@
 	   			</tr>
 	   			<tr>
 	   				<td width="10%"></td>
-					<td width="150px">Código de Viaje: </td>
-					<td><input type="text" name="codViaje1" disabled="disabled" value="<%=viaje.getCodViaje() %>"></td>
-					<td><input type="hidden" name="codViaje"  value="<%=viaje.getCodViaje() %>"></td>
+					<td width="150px">Nombre de Viaje: </td>
+					<td><input type="text" name="codViaje1" disabled="disabled" value="<%=viaje.getNomViaje() %>"></td>
+					<td><input type="hidden" name="codViaje"  value="<%=viaje.getNomViaje() %>"></td>
 					<td><input type="hidden" name="viaje"  value="<%=viaje.getId() %>"></td>
 				</tr>
 	   			<tr>
