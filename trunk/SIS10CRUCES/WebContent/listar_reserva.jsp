@@ -29,7 +29,7 @@ if(reservas.size() != 0){
 &nbsp;
 <form action="ServletBoletaje">
 <table align="center" id="table" class="sortable">
-	<input type="hidden" name="tipo" value="<%=Constantes.CONFIRMAR_RESERVA%>">
+	
 		<thead>
 			<tr>
 				<th><h3 align="center">Nº de Reserva</h3></th>
@@ -57,8 +57,8 @@ if(reservas.size() != 0){
 		<tr><td colspan="9"></td></tr>
 		<tr>
 			<td align="center" colspan="9">
-				<input type="submit" name="confirmar" value="CONFIRMAR">
-				<input type="submit" name="anular" value="ANULAR">
+				<input type="submit" name="tipo" value="<%=Constantes.ACCION_CONFIRMAR_RESERVA%>">
+				<input type="submit" name="tipo" value="<%=Constantes.ACCION_ANULAR_RESERVA%>">
 			</td>
 		</tr>
 		</tbody>

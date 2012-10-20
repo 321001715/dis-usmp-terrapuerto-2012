@@ -377,7 +377,7 @@ return null;
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query ="SELECT * FROM t_reserva where idUsuario= "+idUsuario+" and estado= '"+Constantes.ESTADO_RESERVADO+"';";
+			String query ="SELECT * FROM t_reserva  where idUsuario= "+idUsuario+" order by estado;";
 			System.out.println(query);
 			ResultSet rs = stmt.executeQuery(query);
 			
@@ -541,6 +541,30 @@ return null;
 			
 			String sql = "UPDATE T_RESERVA " +
 					"SET ESTADO = '" + Constantes.ESTADO_CONFIRMADO+  
+					"' WHERE idReserva = " + idReserva + " ;";		
+			System.out.println(sql);
+			filas_afectadas = stmt.executeUpdate(sql);
+			con.close();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		if(filas_afectadas == 1)
+			return true;
+		
+		return false;
+	}
+
+	@Override
+	public boolean anularReserva(int idReserva) {
+int filas_afectadas = 0;
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String sql = "UPDATE T_RESERVA " +
+					"SET ESTADO = '" + Constantes.ESTADO_ANULADO+  
 					"' WHERE idReserva = " + idReserva + " ;";		
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);

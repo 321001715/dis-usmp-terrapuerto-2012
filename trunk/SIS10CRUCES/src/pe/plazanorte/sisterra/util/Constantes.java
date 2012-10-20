@@ -50,6 +50,7 @@ public class Constantes {
 	 */	
 	public static final String ESTADO_ACTIVO = "ACTIVO";
 	public static final String ESTADO_INHABILITADO = "INHABILITADO";
+	public static final String ESTADO_ANULADO = "ANULADO";
 	
 	/*
 	 * ACCIONES
@@ -120,7 +121,8 @@ public class Constantes {
 	public static final String GESTIONAR_VIAJE = "gestionar_viaje";
 	public static final String  CONFIRMAR_RESERVA = "confirmar_reserva";
 	
-	
+	public static final String ACCION_ANULAR_RESERVA="Anular";
+	public static final String ACCION_CONFIRMAR_RESERVA="Confirmar";
 	
 	
 	public static final String SIN_CONFIRMAR="SinConfirmar";

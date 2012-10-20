@@ -31,5 +31,6 @@ public interface BoletajeDAO {
 	public Vector<Reserva> listarReservas(long idUsuario);
 	public Vector<Ruta> listarRutas();
 	public boolean confirmarReserva(int idReserva);
+	public boolean anularReserva(int idReserva);
 	
 }
