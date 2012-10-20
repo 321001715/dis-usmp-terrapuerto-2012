@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
-		if(document.registrar.nombre.value.length == 0){
+		if(document.registrarperfil.nombre.value.length == 0){
 			alert("Debe llenar el campo Nombre.");
 			document.registrar.nombre.focus();
 			return false;
 		}
-		if(document.registrar.descripcion.value.length == 0){
+		if(document.registrarperfil.descripcion.value.length == 0){
 			alert("Debe llenar el campo Descripcion.");
 			document.registrar.descripcion.focus();
 			return false;
