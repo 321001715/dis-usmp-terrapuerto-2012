@@ -35,13 +35,14 @@ function desabilitarTarjeta(accion) {
 <body>
 
 <%
-	Usuario reservador = (Usuario)request.getAttribute("reservador");
-	Reserva reserva = (Reserva)request.getAttribute("reserva");
-	Viaje viaje = (Viaje)request.getAttribute("reserva");
+	Usuario reservador = (Usuario)session.getAttribute("BUsuario");
+	Perfil usuarioPerfil = (Perfil)session.getAttribute("BPerfil");
+	//Reserva reserva = (Reserva)request.getAttribute("reserva");
+	Viaje viaje = (Viaje)request.getAttribute("viaje");
 	Ruta ruta = (Ruta)request.getAttribute("ruta");
-	Boleto boleto = (Boleto)request.getAttribute("boleto");
-	Usuario usuarioSesion = (Usuario)session.getAttribute("BUsuario");
-	Perfil usuarioPerfil = (Perfil)request.getAttribute("perfil");
+	int piso = (Integer)request.getAttribute("piso");
+	int asiento = (Integer)request.getAttribute("asiento");
+	String nombreProveedor = (String)request.getAttribute("nombreProveedor");
 %>
 
 <h2>Vender boleto de viaje</h2>
@@ -49,13 +50,13 @@ function desabilitarTarjeta(accion) {
 <form action="ServletBoletaje" name="vender" onsubmit="">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL%>">
-	<input type="hidden" name="idReserva" value="<%=reserva.getId() %>">
+	<%-- <input type="hidden" name="idReserva" value="<%=reserva.getId() %>"> --%>
 	
 	
 	<table>
 		<tr>
 			<td>Usuario</td>
-			<td><input type="text" value="<%=usuarioSesion.getUsuario() %>" disabled="disabled"></td>
+			<td><input type="text" value="<%=reservador.getUsuario() %>" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>Perfil</td>
@@ -67,7 +68,7 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Nro. Reserva</td>
-			<td><input type="text" name="idReserva" value="<%=reserva.getId() %>" disabled="disabled"></td>
+			<td><input type="text" name="idReserva" value="" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -102,7 +103,7 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Empresa</td>
-			<td><input type="text" name="empresa" value="" disabled="disabled"></td>
+			<td><input type="text" name="nombreProveedor" value="<%=nombreProveedor %>" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -120,9 +121,9 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>Nro. de Asiento</td>
-			<td><input type="text" name="nroAsientos" value="<%=boleto.getAsiento() %>" disabled="disabled"></td>
+			<td><input type="text" name="nroAsientos" value="<%=asiento %>" disabled="disabled"></td>
 			<td>Piso</td>
-			<td><input type="text" name="piso" value="2" disabled="disabled"></td>
+			<td><input type="text" name="piso" value="<%=piso %>" disabled="disabled"></td>
 		</tr>
 	</table>
 	
@@ -131,7 +132,7 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Apellidos y Nombres</td>
-			<td><input type="text" name="apellidos" value="<%=reservador.getApePat() + " " + reservador.getApeMat() %>" disabled="disabled"></td>
+			<td><input type="text" name="apellidos" value="<%=reservador.getNombres() + " " + reservador.getApePat() %>" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
