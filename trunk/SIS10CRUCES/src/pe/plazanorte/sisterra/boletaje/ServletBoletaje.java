@@ -398,6 +398,7 @@ public class ServletBoletaje extends HttpServlet {
 		else if(tipo.equals(Constantes.ACCION_RESERVAR)){
 			String busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
 			Reserva reserva=new Reserva();
+			Pasajero pasajero=new Pasajero();
 			Ruta ruta=new Ruta();
 			Viaje viaje=new Viaje();			
 			String tipoSubmit = request.getParameter("tipoSubmit");
@@ -445,8 +446,10 @@ public class ServletBoletaje extends HttpServlet {
 						}
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR_BOLETO)) {
 					mensaje = "Boleto reservado exitosamente.";
+					int dnipas=Integer.parseInt(request.getParameter("txt_dni"));
 					reserva=service.generarReserva(usuario.getId());
-					boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento);
+					pasajero=service.generarPasajero(dnipas,nombre,apePat,apeMat);
+					boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento,pasajero.getId());
 					
 					boolean estasiento=service.cambiarEstado(idViaje,asiento);
 					if(retorno&estasiento) {

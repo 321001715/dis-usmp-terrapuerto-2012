@@ -123,12 +123,12 @@ public class ServiceBoletaje {
 		}
 		return reserva;
 	}
-	public boolean reservarBoleto(int idReserva,int idViaje,int asiento){
+	public boolean reservarBoleto(int idReserva,int idViaje,int asiento,long idpasajero){
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
 		boolean retorno=false;
 		try {
-			retorno=boletajeDao.reservarBoleto(idReserva,idViaje,asiento);
+			retorno=boletajeDao.reservarBoleto(idReserva,idViaje,asiento,idpasajero);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -150,6 +150,19 @@ public class ServiceBoletaje {
 		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
 
 		return boletajeDao.listarRutas();
+	}
+	public Pasajero generarPasajero(int dnipas, String nombre, String apePat,
+			String apeMat) {
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		BoletajeDAO boletajeDao = mysqlFactory.getBoletajeDAO();
+		Pasajero pasajero=null;
+		
+		try {
+			pasajero=boletajeDao.generarPasajero(dnipas,nombre,apePat,apeMat);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pasajero;
 	}
 	
 	
