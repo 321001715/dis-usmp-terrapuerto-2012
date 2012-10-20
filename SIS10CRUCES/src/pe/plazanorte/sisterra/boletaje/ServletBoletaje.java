@@ -101,12 +101,29 @@ public class ServletBoletaje extends HttpServlet {
 			
 			}
 			
-		}else if (tipo.equals(Constantes.CONFIRMAR_RESERVA)) {
-			int idReserva = Integer.parseInt(request.getParameter("idReserva"));
+		}else if (tipo.equals(Constantes.ACCION_CONFIRMAR_RESERVA)) {
+			String [] idReservas = request.getParameterValues("idReserva");
 			
+			for (int i = 0; i < idReservas.length; i++) {
+				
+				service.confirmarReserva(Integer.parseInt(idReservas[i]));	
+			}
 			
-			service.confirmarReserva(idReserva);
+			HttpSession session = request.getSession(true);
+			Usuario usuario = (Usuario) session.getAttribute("BUsuario");
+			Vector<Reserva> reservas= new Vector<Reserva>();
 			
+			reservas= service.listarReservas(usuario.getId());
+			
+			request.setAttribute("reservas", reservas);
+			rd = getServletContext().getRequestDispatcher(
+			"/confirmar_reserva.jsp");
+		}else if (tipo.equals(Constantes.ACCION_ANULAR_RESERVA)) {
+			String [] idReservas = request.getParameterValues("idReserva");
+			for (int i = 0; i < idReservas.length; i++) {
+				
+				service.anularReserva(Integer.parseInt(idReservas[i]));	
+			}
 			HttpSession session = request.getSession(true);
 			Usuario usuario = (Usuario) session.getAttribute("BUsuario");
 			Vector<Reserva> reservas= new Vector<Reserva>();
