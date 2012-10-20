@@ -196,7 +196,7 @@ return null;
 				ruta.setOrigen(rs.getString("origen"));
 				ruta.setDestino(rs.getString("destino"));
 				ruta.setDuracion(rs.getInt("duracion"));
-				
+				ruta.setIdProveedor(rs.getInt("idProveedor"));
 				
 			}		
 			con.close();

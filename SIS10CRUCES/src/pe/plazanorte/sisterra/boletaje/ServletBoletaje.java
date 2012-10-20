@@ -27,6 +27,7 @@ import pe.plazanorte.sisterra.entidades.Ruta;
 import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.entidades.Vehiculo;
 import pe.plazanorte.sisterra.entidades.Viaje;
+import pe.plazanorte.sisterra.proveedor.ServiceProveedor;
 import pe.plazanorte.sisterra.seguridad.ServiceSeguridad;
 import pe.plazanorte.sisterra.util.Constantes;
 import sun.print.resources.serviceui;
@@ -249,14 +250,37 @@ public class ServletBoletaje extends HttpServlet {
 				
 				//Obtener el tipo de SUBMIT del que proviene
 				
-				
-				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){
-					
-						mensaje = "Boleto reservado exitosamente ahora a comprar boleto.";
+				System.out.println("ANTES DEL IF DE DECISION DE ORIGEN DE BOTON: " + tipoSubmit);
+				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){						
 						
-						double precio = viaje.getPrecio();
-						request.setAttribute("precio", precio);
-						request.setAttribute("idReserva", reserva.getId());
+						request.setAttribute("usuario", usuario);
+						request.setAttribute("perfil", perfil);
+						request.setAttribute("ruta", ruta);
+						request.setAttribute("asiento", asiento);
+						request.setAttribute("piso", piso);
+						request.setAttribute("viaje", viaje);
+						
+						reserva=service.generarReserva(usuario.getId());
+						boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento,0);
+						
+						ServiceProveedor serviceProveedor = new ServiceProveedor(); 
+						Proveedor proveedor = new Proveedor();
+						proveedor.setIdProveedor(ruta.getIdProveedor());
+						System.out.println("ID DE PROVEEDOR" + ruta.getIdProveedor());
+						String nombreProveedor = serviceProveedor.consultarProveedor(proveedor).getRazCom();
+						System.out.println("EL NOMBRE DEL PROVEEDOR ES: " + nombreProveedor);
+						boolean estasiento=service.cambiarEstado(idViaje,asiento);
+						if(retorno&estasiento) {
+							request.setAttribute("ruta", ruta);
+							request.setAttribute("asiento", asiento);
+							request.setAttribute("piso", piso);
+							request.setAttribute("viaje", viaje);
+							request.setAttribute("nombreProveedor", nombreProveedor);
+							mensaje = "Boleto reservado exitosamente.";
+							rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");		
+						}
+						mensaje = "OCURRIO UN ERROR EN LA RESERVA";
+						System.out.println("OCURRIO UN ERROR EN LA RESERVA");
 						rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");			
 					
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
