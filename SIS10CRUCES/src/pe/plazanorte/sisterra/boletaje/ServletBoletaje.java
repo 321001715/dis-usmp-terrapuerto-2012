@@ -426,23 +426,26 @@ public class ServletBoletaje extends HttpServlet {
 				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
 					int dni=Integer.parseInt(request.getParameter("dni"));
 					Persona persona=serviceseguridad.consultarPersona(dni);
-					busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
+					
 					
 						request.setAttribute("piso", piso);
 						request.setAttribute("usuario", usuario);
 						request.setAttribute("perfil", perfil);
 						request.setAttribute("ruta", ruta);
 						request.setAttribute("asiento", asiento);
-						request.setAttribute("busqueda", busqueda);
+						
 						request.setAttribute("viaje", viaje);
 						request.setAttribute("persona", persona);
 						
 						if(persona!=null){
-							
-						
+							busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
+							request.setAttribute("busqueda", busqueda);
 							rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
 						}else{
-							rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
+							busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
+							request.setAttribute("busqueda", busqueda);
+							mensaje="NO EXISTE EL REGISTRO";
+							rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
 						}
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR_BOLETO)) {
 					mensaje = "Boleto reservado exitosamente.";
