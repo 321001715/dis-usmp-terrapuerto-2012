@@ -1,3 +1,6 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Boleto"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Reserva"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
@@ -32,9 +35,11 @@ function desabilitarTarjeta(accion) {
 <body>
 
 <%
-	double precio = (Double)request.getAttribute("precio");
 	Usuario reservador = (Usuario)request.getAttribute("reservador");
 	Reserva reserva = (Reserva)request.getAttribute("reserva");
+	Viaje viaje = (Viaje)request.getAttribute("reserva");
+	Ruta ruta = (Ruta)request.getAttribute("ruta");
+	Boleto boleto = (Boleto)request.getAttribute("boleto");
 	Usuario usuarioSesion = (Usuario)session.getAttribute("BUsuario");
 	Perfil usuarioPerfil = (Perfil)request.getAttribute("perfil");
 %>
@@ -62,33 +67,33 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Nro. Reserva</td>
-			<td><input type="text" name="idReserva" value=""></td>
+			<td><input type="text" name="idReserva" value="<%=reserva.getId() %>" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>C&oacute;digo de viaje</td>
-			<td><input type="text" name="idViaje" value=""></td>
+			<td><input type="text" name="idViaje" value="<%=viaje.getId() %>" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Origen</td>
-			<td><input type="text" name="origen" value=""></td>
+			<td><input type="text" name="origen" value="<%=ruta.getOrigen() %>" disabled="disabled"></td>
 			<td>Destino</td>
-			<td><input type="text" name="destino" value=""></td>
+			<td><input type="text" name="destino" value="<%=ruta.getDestino() %>" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>Fecha de salida</td>
-			<td><input type="text" name="destino" value=""></td>
+			<td><input type="text" name="destino" value="<%=viaje.getFecSalida() %>" disabled="disabled"></td>
 			<td>Fecha de llegada</td>
-			<td><input type="text" name="destino" value=""></td>
+			<td><input type="text" name="destino" value="<%=viaje.getFecLlegada() %>" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>Hora de salida</td>
-			<td><input type="text" name="destino" value=""></td>
+			<td><input type="text" name="destino" value="<%=viaje.getHorSalida() %>" disabled="disabled"></td>
 			<td>Hora de llegada</td>
-			<td><input type="text" name="destino" value=""></td>
+			<td><input type="text" name="destino" value="<%=viaje.getHorLlegada() %>" disabled="disabled"></td>
 		</tr>
 	</table>
 	
@@ -97,27 +102,27 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Empresa</td>
-			<td><input type="text" name="empresa" value=""></td>
+			<td><input type="text" name="empresa" value="" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Servicio</td>
-			<td><input type="text" name="servicio" value=""></td>
+			<td><input type="text" name="servicio" value="" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Costo S/.</td>
-			<td><input type="text" name="empresa" value=""></td>
+			<td><input type="text" name="costo" value="<%=viaje.getPrecio()%>" disabled="disabled"></td>
 			<td>Horas</td>
-			<td><input type="text" name="horas" value=""></td>
+			<td><input type="text" name="horas" value="<%=ruta.getDuracion()%>" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>Nro. de Asiento</td>
-			<td><input type="text" name="nroAsientos" value=""></td>
+			<td><input type="text" name="nroAsientos" value="<%=boleto.getAsiento() %>" disabled="disabled"></td>
 			<td>Piso</td>
-			<td><input type="text" name="piso" value=""></td>
+			<td><input type="text" name="piso" value="2" disabled="disabled"></td>
 		</tr>
 	</table>
 	
@@ -126,19 +131,19 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Apellidos y Nombres</td>
-			<td><input type="text" name="apellidos" value=""></td>
+			<td><input type="text" name="apellidos" value="<%=reservador.getApePat() + " " + reservador.getApeMat() %>" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Reservador</td> 
-			<td><input type="text" name="reservador" value=""></td>
+			<td><input type="text" name="reservador" value="<%=reservador.getUsuario() %>" disabled="disabled"></td>
 			<td>Perfil</td>
-			<td><input type="text" name="perfil" value=""></td>
+			<td><input type="text" name="perfil" value="" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" value=""></td>
+			<td><input type="text" name="fecNac" value="" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -173,7 +178,7 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" value=""></td>
+			<td><input type="text" name="fecNac" value="" disabled="disabled"></td>
 			<td>Edad</td>
 			<td><input type="text" name="edad" value=""></td>
 		</tr>
@@ -181,7 +186,7 @@ function desabilitarTarjeta(accion) {
 	
 	<h4>Detalle de pago</h4>
 	
-	Importe a pagar: <input type="text" name="importe" value="<%=precio %>">
+	Importe a pagar: <input type="text" name="importe" value="<%=viaje.getPrecio() %>">
 	
 	<table>
 		<tr>
@@ -194,7 +199,7 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>Clave</td>
-			<td><input type="text" name="clave"></td>
+			<td><input type="password" name="clave"></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -209,7 +214,7 @@ function desabilitarTarjeta(accion) {
 			<td><input type="text" name="pagoEfectivo" disabled="disabled"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Confirmar"></td>
+			<td><input type="submit" value="Confirmar compra"></td>
 			<td><input type="submit" value="Imprimir"></td>
 		</tr>
 	</table>
