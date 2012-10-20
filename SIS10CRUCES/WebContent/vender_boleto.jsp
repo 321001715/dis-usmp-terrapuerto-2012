@@ -9,12 +9,19 @@
 
 <script type="text/javascript">
 
-function desabilitarEfectivo(accion) {
-	eval("document.formulario.campo"+a+".disabled="+accion); 
+function desabilitarEfectivo() {
+	eval("document.vender.pagoEfectivo.disabled=true");
+	
+		
+	eval("document.vender.nroTarjeta.disabled=false");
+	eval("document.vender.clave.disabled=false");
 }
 
 function desabilitarTarjeta(accion) {
-	eval("document.formulario.campo"+a+".disabled="+accion); 
+	eval("document.vender.nroTarjeta.disabled=true");
+	eval("document.vender.clave.disabled=true");
+	
+	eval("document.vender.pagoEfectivo.disabled=false");
 }
 
 </script>
@@ -24,7 +31,7 @@ function desabilitarTarjeta(accion) {
 
 <h2>Vender boleto de viaje</h2>
 
-<form action="" name="" onsubmit="">
+<form action="" name="vender" onsubmit="">
 	<input type="hidden" name="tipo" value="">
 	<input type="hidden" name="destino" value="">
 	
