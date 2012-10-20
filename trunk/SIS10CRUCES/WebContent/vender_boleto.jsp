@@ -10,6 +10,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
+<link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
+<link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Vender boleto de viaje</title>
 
@@ -37,7 +43,7 @@ function desabilitarTarjeta(accion) {
 <%
 	Usuario reservador = (Usuario)session.getAttribute("BUsuario");
 	Perfil usuarioPerfil = (Perfil)session.getAttribute("BPerfil");
-	//Reserva reserva = (Reserva)request.getAttribute("reserva");
+	int idReserva = (Integer)request.getAttribute("idReserva");
 	Viaje viaje = (Viaje)request.getAttribute("viaje");
 	Ruta ruta = (Ruta)request.getAttribute("ruta");
 	int piso = (Integer)request.getAttribute("piso");
@@ -47,10 +53,10 @@ function desabilitarTarjeta(accion) {
 
 <h2>Vender boleto de viaje</h2>
 
-<form action="ServletBoletaje" name="vender" onsubmit="">
+<form method="post" action="ServletBoletaje" name="vender" onsubmit="">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL%>">
-	<%-- <input type="hidden" name="idReserva" value="<%=reserva.getId() %>"> --%>
+	<input type="hidden" name="idReserva" value="<%=idReserva %>">
 	
 	
 	<table>
@@ -63,8 +69,11 @@ function desabilitarTarjeta(accion) {
 			<td><input type="text" value="<%=usuarioPerfil.getNombre() %>" disabled="disabled"></td>
 		</tr>
 	</table>
-		
-	<h4>Detalle de reserva</h4>
+	
+	<div class="ui-corner-bottom ui-widget-content">
+		<font style="font-family: monospace; font-size: x-large;">Detalle de reserva</font>
+	</div>
+	
 	<table>
 		<tr>
 			<td>Nro. Reserva</td>
@@ -98,7 +107,9 @@ function desabilitarTarjeta(accion) {
 		</tr>
 	</table>
 	
-	<h4>Detalle del servicio</h4>
+	<div class="ui-corner-bottom ui-widget-content">
+		<font style="font-family: monospace; font-size: x-large;">Detalle del servicio</font>
+	</div>
 	
 	<table>
 		<tr>
@@ -127,7 +138,9 @@ function desabilitarTarjeta(accion) {
 		</tr>
 	</table>
 	
-	<h4>Detalle del reservador</h4>
+	<div class="ui-corner-bottom ui-widget-content">
+		<font style="font-family: monospace; font-size: x-large;">Detalle del reservador</font>
+	</div>
 	
 	<table>
 		<tr>
@@ -215,8 +228,8 @@ function desabilitarTarjeta(accion) {
 			<td><input type="text" name="pagoEfectivo" disabled="disabled"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Confirmar compra"></td>
-			<td><input type="submit" value="Imprimir"></td>
+			<td><input type="submit" value="Confirmar compra" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" value="Imprimir" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 		</tr>
 	</table>
 </form>

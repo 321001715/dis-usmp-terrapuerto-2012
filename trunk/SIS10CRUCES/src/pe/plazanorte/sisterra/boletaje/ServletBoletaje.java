@@ -261,7 +261,7 @@ public class ServletBoletaje extends HttpServlet {
 						request.setAttribute("viaje", viaje);
 						
 						reserva=service.generarReserva(usuario.getId());
-						boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento,0);
+						boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento,1);
 						
 						ServiceProveedor serviceProveedor = new ServiceProveedor(); 
 						Proveedor proveedor = new Proveedor();
@@ -275,13 +275,18 @@ public class ServletBoletaje extends HttpServlet {
 							request.setAttribute("asiento", asiento);
 							request.setAttribute("piso", piso);
 							request.setAttribute("viaje", viaje);
+							request.setAttribute("viaidReservaje", reserva.getId());							
 							request.setAttribute("nombreProveedor", nombreProveedor);
 							mensaje = "Boleto reservado exitosamente.";
-							rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");		
-						}
-						mensaje = "OCURRIO UN ERROR EN LA RESERVA";
-						System.out.println("OCURRIO UN ERROR EN LA RESERVA");
-						rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");			
+							rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
+						}else{
+							mensaje = "OCURRIO UN ERROR EN LA RESERVA";
+							System.out.println("OCURRIO UN ERROR EN LA RESERVA");
+							System.out.println("RETORNO: "+retorno);
+							System.out.println("ESTA ASIENTO: "+estasiento);
+							System.out.println("ID RESERVA: "+reserva.getId());
+							rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
+						}								
 					
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
 					
@@ -333,13 +338,14 @@ public class ServletBoletaje extends HttpServlet {
 			
 			String clave = "";
 			String pagoEfectivo = "";
+			String nroTarjeta = "";
 			String tipoPago = request.getParameter("tipoPago");
 			
 			if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_EFECTIVO)){
 				pagoEfectivo = request.getParameter("pagoEfectivo");
 			}else if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_TARJETA)){
 				clave = request.getParameter("clave");
-				clave = request.getParameter("nroTarjeta");				
+				nroTarjeta = request.getParameter("nroTarjeta");				
 			}else{
 				mensaje = "ERROR AL SELECCIONAR EL TIPO DE PAGO: SERVLET BOLETAJE";
 			}
@@ -485,7 +491,7 @@ public class ServletBoletaje extends HttpServlet {
 						request.setAttribute("ruta", ruta);
 						request.setAttribute("asiento", asiento);
 						request.setAttribute("piso", piso);
-						request.setAttribute("viaje", viaje);
+						request.setAttribute("viaje", viaje);						
 						mensaje = "Boleto reservado exitosamente.";
 						rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");			
 					}else{
