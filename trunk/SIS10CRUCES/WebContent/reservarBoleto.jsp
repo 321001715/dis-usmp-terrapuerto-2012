@@ -44,8 +44,8 @@
 		int asiento= (Integer)request.getAttribute("asiento");
 		int piso= (Integer)request.getAttribute("piso");
 		String estado="";
-
 		
+		String mensaje=(String)request.getAttribute("mensaje");
 		String busqueda=(String)request.getAttribute("busqueda");
 		%>
 
@@ -79,6 +79,10 @@
 				<td>N° de Documento:</td>
 				<td><input type="text" name="dni" maxlength="9"></td>
 				<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_CONSULTAR_USUARIO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+				<%if(mensaje.equalsIgnoreCase("NO EXISTE EL REGISTRO")){ %>
+				
+				<td><b><font color="red"><%=mensaje %></font></b></td>
+				<%} %>		
 			</tr>
 					
 			</table>
