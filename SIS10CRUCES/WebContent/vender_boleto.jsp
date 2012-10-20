@@ -1,3 +1,6 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Reserva"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
 <%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -10,8 +13,7 @@
 <script type="text/javascript">
 
 function desabilitarEfectivo() {
-	eval("document.vender.pagoEfectivo.disabled=true");
-	
+	eval("document.vender.pagoEfectivo.disabled=true");	
 		
 	eval("document.vender.nroTarjeta.disabled=false");
 	eval("document.vender.clave.disabled=false");
@@ -29,21 +31,30 @@ function desabilitarTarjeta(accion) {
 </head>
 <body>
 
+<%
+	double precio = (Double)request.getAttribute("precio");
+	Usuario reservador = (Usuario)request.getAttribute("reservador");
+	Reserva reserva = (Reserva)request.getAttribute("reserva");
+	Usuario usuarioSesion = (Usuario)session.getAttribute("BUsuario");
+	Perfil usuarioPerfil = (Perfil)request.getAttribute("perfil");
+%>
+
 <h2>Vender boleto de viaje</h2>
 
-<form action="" name="vender" onsubmit="">
-	<input type="hidden" name="tipo" value="">
-	<input type="hidden" name="destino" value="">
+<form action="ServletBoletaje" name="vender" onsubmit="">
+	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO%>">
+	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL%>">
+	<input type="hidden" name="idReserva" value="<%=reserva.getId() %>">
 	
 	
 	<table>
 		<tr>
 			<td>Usuario</td>
-			<td><input type="text" value="" readonly="readonly"></td>
+			<td><input type="text" value="<%=usuarioSesion.getUsuario() %>" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>Perfil</td>
-			<td><input type="text" value="" readonly="readonly"></td>
+			<td><input type="text" value="<%=usuarioPerfil.getNombre() %>" disabled="disabled"></td>
 		</tr>
 	</table>
 		
@@ -170,11 +181,11 @@ function desabilitarTarjeta(accion) {
 	
 	<h4>Detalle de pago</h4>
 	
-	Importe a pagar: <input type="text" name="" value="">
+	Importe a pagar: <input type="text" name="importe" value="<%=precio %>">
 	
 	<table>
 		<tr>
-			<td><input type="radio" name="tipoPago" value="<%=Constantes.TIPO_PAGO_TARJETA%>" onclick="desabilitarEfectivo(true)">Tarjeta de cr&eacute;dito</td>
+			<td><input type="radio" name="tipoPago" value="<%=Constantes.TIPO_PAGO_TARJETA%>" onclick="desabilitarEfectivo(true)" checked="checked">Tarjeta de cr&eacute;dito</td>
 			<td></td>
 		</tr>
 		<tr>
@@ -195,7 +206,7 @@ function desabilitarTarjeta(accion) {
 		</tr>		
 		<tr>
 			<td>Pago</td>
-			<td><input type="text" name="pagoEfectivo"></td>
+			<td><input type="text" name="pagoEfectivo" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="Confirmar"></td>
