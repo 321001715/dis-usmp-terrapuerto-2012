@@ -77,7 +77,7 @@
 			<table>
 			<tr>
 				<td>N° de Documento:</td>
-				<td><input type="text" name="dni"></td>
+				<td><input type="text" name="dni" maxlength="9"></td>
 				<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_CONSULTAR_USUARIO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			</tr>
 					
@@ -115,7 +115,7 @@
 			
 				<tr>
 					<td></td>
-					<td>NombreSinBD:</td>
+					<td>Nombre:</td>
 					<td><input name="txt_nombre" disabled="disabled" /></td>
 				</tr>
 				<tr>

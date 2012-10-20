@@ -23,7 +23,7 @@ public interface BoletajeDAO {
 	public Vehiculo consultarVehiculo(int id);
 	public Reserva generarReserva(long idUsuario);
 	public boolean reservarBoleto(int idReserva, int idViaje,
-			int asiento);
+			int asiento,long idPasajero);
 	public boolean cambiarEstado(int idViaje, int asiento);
 	public Vector<Boleto> listarBoletos(long idUsuario);
 	public Pasajero buscarPasajero(int idPasajero);
@@ -32,5 +32,7 @@ public interface BoletajeDAO {
 	public Vector<Ruta> listarRutas();
 	public boolean confirmarReserva(int idReserva);
 	public boolean anularReserva(int idReserva);
+	public Pasajero generarPasajero(int dnipas, String nombre, String apePat,
+			String apeMat);
 	
 }

@@ -313,7 +313,7 @@ return null;
 
 	@Override
 	public boolean reservarBoleto(int idReserva, int idViaje,
-			int asiento) {
+			int asiento,long idPasajero) {
 		int filas_afectadas = 0;
 		String estado="RESERVADO";
 
@@ -321,9 +321,9 @@ return null;
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "insert INTO t_Boleto(idViaje,idReserva,asiento,estado) "
+			String sql = "insert INTO t_Boleto(idViaje,idReserva,asiento,estado,idPasajero) "
 					+ "values ('" + idViaje + "','" + idReserva + "','"
-					+ asiento + "','"+ estado+ "');";
+					+ asiento + "','"+ estado+ "','"+idPasajero+"');";
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			con.close();
@@ -577,6 +577,43 @@ int filas_afectadas = 0;
 			return true;
 		
 		return false;
+	}
+
+	@Override
+	public Pasajero generarPasajero(int dnipas, String nombre, String apePat,
+			String apeMat) {
+		Pasajero pasajero = null;
+		int filas_afectadas = 0;
+		
+		
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+
+			String sql = "insert INTO t_pasajero(nombres,apePat,apeMat,numDoc,tipDoc) "
+					+ "values (" + "'" + nombre + "', '"
+					+ apePat + "','"+apeMat+ "','"+dnipas+"','DNI');";
+			System.out.println(sql);
+			filas_afectadas = stmt.executeUpdate(sql);
+			
+			String query = "SELECT * FROM t_pasajero WHERE numDoc="+ dnipas +";";
+			System.out.println(query);
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				
+				pasajero=new Pasajero();
+				pasajero.setId(rs.getInt("idPasajero"));
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (filas_afectadas == 1)
+			return pasajero;
+
+		return null;
 	}
 
 	
