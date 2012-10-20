@@ -12,37 +12,37 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
-		if(document.registrarx.ruc.value.length == 0){
+		if(document.registrar.ruc.value.length == 0){
 			alert("Debe llenar el campo RUC.");
 			document.registrar.ruc.focus();
 			return false;
 		}
-		if(document.registrarx.razon_social.value.length == 0){
+		if(document.registrar.razon_social.value.length == 0){
 			alert("Debe llenar el campo Razón social.");
 			document.registrar.razon_social.focus();
 			return false;
 		}
-		if(document.registrarx.razon_comercial.value.length == 0){
+		if(document.registrar.razon_comercial.value.length == 0){
 			alert("Debe llenar el campo Razón comercial.");
 			document.registrar.razon_comercial.focus();
 			return false;
 		}
-		if(document.registrarx.direccion.value.length == 0){
+		if(document.registrar.direccion.value.length == 0){
 			alert("Debe llenar el campo Dirección.");
 			document.registrar.telefono.focus();
 			return false;
 		}
-		if(document.registrarx.telefono.value.length == 0){
+		if(document.registrar.telefono.value.length == 0){
 			alert("Debe llenar el campo Teléfono.");
 			document.registrar.telefono.focus();
 			return false;
 		}
-		if(document.registrarx.usuario.value.length == 0){
+		if(document.registrar.usuario.value.length == 0){
 			alert("Debe llenar el campo usuario.");
 			document.registrar.usuario.focus();
 			return false;
 		}
-		if(document.registrarx.clave.value.length < 5){
+		if(document.registrar.clave.value.length < 5){
 			alert("Su clave debe tener más de 5 dígitos.");
 			document.registrar.clave.focus();
 			return false;
@@ -67,7 +67,7 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Registrar Proveedor</font>
    </div>
-	<form action="ServletProveedor" method="post" name="registrarx" onsubmit="validar()">
+	<form action="ServletProveedor" method="post" name="registrar" onsubmit="validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_PROVEEDOR%>">
 		<table>	
 			<tr><td><br></td></tr>
