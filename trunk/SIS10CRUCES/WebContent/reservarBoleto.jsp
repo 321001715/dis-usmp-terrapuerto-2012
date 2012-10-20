@@ -118,7 +118,7 @@
 				<table>
 			
 				<tr>
-					<td></td>
+					<td><input value="72344" name="txt_dni" type="hidden" /></td>
 					<td>Nombre:</td>
 					<td><input name="txt_nombre" disabled="disabled" /></td>
 				</tr>
