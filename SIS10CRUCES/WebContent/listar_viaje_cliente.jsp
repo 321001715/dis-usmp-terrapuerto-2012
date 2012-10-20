@@ -34,7 +34,6 @@ if(viaje.size() != 0){
 				<th><h3 align="center">HoraLlegada</h3></th>
 				<th><h3 align="center">FechaLlegada</h3></th>
 				<th><h3 align="center">S/.</h3></th>
-				<th><h3 align="center">Hrs.</h3></th>
 				<th><h3 align="center">Servicio</h3></th>
 			</tr>
 		</thead>
@@ -53,12 +52,12 @@ if(viaje.size() != 0){
 						</div>
 			</td>	
 			<td align="center"><%=viaje.get(i).getNomViaje() %></td>
-			<td align="center"></td>
-			<td align="center"></td>
-			<td align="center"></td>
-			<td align="center"></td>
+			<td align="center"><%=viaje.get(i).getHorSalida() %></td>
+			<td align="center"><%=viaje.get(i).getFecSalida().substring(0,11) %></td>
+			<td align="center"><%=viaje.get(i).getHorLlegada() %></td>
+			<td align="center"><%=viaje.get(i).getFecLlegada().substring(0,11) %></td>
 			<td align="center"><%=viaje.get(i).getPrecio() %></td>
-			<td align="center"></td>
+
 			<td align="center"><%=viaje.get(i).getServicio() %></td>
 			<td align="right"></td>
 			
