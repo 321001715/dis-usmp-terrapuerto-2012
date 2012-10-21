@@ -353,15 +353,18 @@ public class ServletBoletaje extends HttpServlet {
 				Viaje viaje = service.consultarViajeCliente(idViaje);
 				Ruta ruta = service.consultarRuta(viaje.getIdRuta());
 				
+				String busqueda = "";
+				
 				ServiceConsultas serviceConsultas = new ServiceConsultas();
 				Persona persona = serviceConsultas.consultarPersona(documento);
 				
 				if(persona != null) {
-					
+					busqueda = Constantes.ACCION_BUSQUEDA_REALIZADA;					
 				}else{
-					
+					busqueda = Constantes.ACCION_BUSQUEDA_REALIZADA;					
+					mensaje = "NO SE ENCONTRÓ LA PERSONA";
 				}
-				
+				rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 				
 			}else{
 				
