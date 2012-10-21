@@ -77,6 +77,7 @@ public class Constantes {
 	
 	
 	public static final String ACCION_CONSULTAR_USUARIO = "Buscar";
+	public static final String ACCION_VENDER_CONSULTAR_PERSONA = "Buscar Pasajero";
 	
 	
 	public static final String ACCION_RESERVAR_BOLETO = "RESERVAR";
@@ -102,7 +103,7 @@ public class Constantes {
 	
 	
 	
-	public static final String VENDER_BOLETO = "vender_boleto";
+	public static final String VENDER_BOLETO = "Vender Boleto";
 	
 	
 	public static final String ASIENTO_DISPONIBLE = "blue";
@@ -150,4 +151,8 @@ public class Constantes {
 	public static final String ACCION_COMPRAR_BOLETO = "COMPRAR BOLETO";
 	public static final String ASIENTO_NO_DISPONIBLE="NODISPONIBLE";
 	public static final String ACCION_CANCELAR = "CANCELAR";
+	
+	
+	public static final String ACCION_IMPRIMIR_BOLETO = "Imprimir boleto";
+	
 }

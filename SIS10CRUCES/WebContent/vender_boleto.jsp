@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Persona"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Boleto"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
 <%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
@@ -49,6 +50,8 @@ function desabilitarTarjeta(accion) {
 	int piso = (Integer)request.getAttribute("piso");	
 	int asiento = (Integer)request.getAttribute("asiento");	
 	String nombreProveedor = (String)request.getAttribute("nombreProveedor");
+	String busqueda = (String)request.getAttribute("busqueda");
+	String mensaje = (String)request.getAttribute("mensaje");
 %>
 
 <h3 class="ui-corner-top ui-widget-header">
@@ -97,15 +100,15 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>Fecha de salida</td>
-			<td><input type="text" name="destino" value="<%=viaje.getFecSalida() %>" disabled="disabled"></td>
+			<td><input type="text" name="fecSalida" value="<%=viaje.getFecSalida() %>" disabled="disabled"></td>
 			<td>Fecha de llegada</td>
-			<td><input type="text" name="destino" value="<%=viaje.getFecLlegada() %>" disabled="disabled"></td>
+			<td><input type="text" name="fecLlegada" value="<%=viaje.getFecLlegada() %>" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>Hora de salida</td>
-			<td><input type="text" name="destino" value="<%=viaje.getHorSalida() %>" disabled="disabled"></td>
+			<td><input type="text" name="horSalida" value="<%=viaje.getHorSalida() %>" disabled="disabled"></td>
 			<td>Hora de llegada</td>
-			<td><input type="text" name="destino" value="<%=viaje.getHorLlegada() %>" disabled="disabled"></td>
+			<td><input type="text" name="horLlegada" value="<%=viaje.getHorLlegada() %>" disabled="disabled"></td>
 		</tr>
 	</table>
 	
@@ -159,42 +162,101 @@ function desabilitarTarjeta(accion) {
 		</tr>		
 	</table>
 	
-	<h4>Datos del viajero</h4>
+	<div class="ui-corner-bottom ui-widget-content">
+		<font style="font-family: monospace; font-size: x-large;">Datos del viajero</font>
+	</div>
+	<%
+	if(busqueda != null){
+		if(busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)){
+			Persona pasajero = (Persona)request.getAttribute("pasajero");
+	%>
 	
 	<table>
 		<tr>
 			<td>Nro. Documento</td>
 			<td><input type="text" name="documento"></td>
-			<td><input type="submit" value="<%=Constantes.ACCION_CONSULTAR_USUARIO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
-			<td></td>
+			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td>
+				<%
+					if(mensaje != null){					
+				%>
+				<b><font color="red"><%=mensaje %></font></b>
+				<%
+					}
+				%>
+			</td>
 		</tr>
 		<tr>
 			<td>Nombre</td>
-			<td><input type="text" name="nombre" disabled="disabled"></td>
+			<td><input type="text" name="nombre" value="<%=pasajero.getNombre() %>" readonly="readonly"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
-			<td><input type="text" name="apePat" disabled="disabled"></td>
+			<td><input type="text" name="apePat" value="<%=pasajero.getApePat() %>" readonly="readonly"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Materno</td>
-			<td><input type="text" name="apeMat" disabled="disabled"></td>
+			<td><input type="text" name="apeMat" value="<%=pasajero.getApeMat() %>" readonly="readonly"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" disabled="disabled"></td>
-			<td>Edad</td>
-			<td><input type="text" name="edad" disabled="disabled"></td>
+			<td><input type="text" name="fecNac" value="<%=pasajero.getFecNac() %>" readonly="readonly"></td>
+			<td></td>
+			<td></td>
 		</tr>
 	</table>
 	
-	<h4>Detalle de pago</h4>
+	<%
+		}
+	}else if(busqueda == null || busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_NO_REALIZADA)){
+	%>
+	
+	<table>
+		<tr>
+			<td>Nro. Documento</td>
+			<td><input type="text" name="documento"></td>
+			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Nombre</td>
+			<td><input type="text" name="nombre" readonly="readonly"></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Apellido Paterno</td>
+			<td><input type="text" name="apePat" readonly="readonly"></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Apellido Materno</td>
+			<td><input type="text" name="apeMat" readonly="readonly"></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Fec. Nacimiento</td>
+			<td><input type="text" name="fecNac" readonly="readonly"></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+		
+	<%	
+	}
+	%>
+	
+	<div class="ui-corner-bottom ui-widget-content">
+		<font style="font-family: monospace; font-size: x-large;">Detalle de pago</font>
+	</div>
 	
 	Importe a pagar: <input type="text" name="importe" value="<%=viaje.getPrecio() %>">
 	
@@ -224,8 +286,8 @@ function desabilitarTarjeta(accion) {
 			<td><input type="text" name="pagoEfectivo" disabled="disabled"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="Confirmar compra" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
-			<td><input type="submit" value="Imprimir" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_BOLETO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_IMPRIMIR_BOLETO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 		</tr>
 	</table>
 </form>
