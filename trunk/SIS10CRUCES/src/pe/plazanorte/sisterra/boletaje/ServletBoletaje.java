@@ -251,17 +251,10 @@ public class ServletBoletaje extends HttpServlet {
 				//Obtener el tipo de SUBMIT del que proviene
 				
 				System.out.println("ANTES DEL IF DE DECISION DE ORIGEN DE BOTON: " + tipoSubmit);
-				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){						
-						
-						request.setAttribute("usuario", usuario);
-						request.setAttribute("perfil", perfil);
-						request.setAttribute("ruta", ruta);
-						request.setAttribute("asiento", asiento);
-						request.setAttribute("piso", piso);
-						request.setAttribute("viaje", viaje);
+				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){							
 						
 						reserva=service.generarReserva(usuario.getId());
-						boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento,1);
+						//boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento,1);
 						
 						ServiceProveedor serviceProveedor = new ServiceProveedor(); 
 						Proveedor proveedor = new Proveedor();
@@ -270,22 +263,24 @@ public class ServletBoletaje extends HttpServlet {
 						String nombreProveedor = serviceProveedor.consultarProveedor(proveedor).getRazCom();
 						System.out.println("EL NOMBRE DEL PROVEEDOR ES: " + nombreProveedor);
 						boolean estasiento=service.cambiarEstado(idViaje,asiento);
-						if(retorno&estasiento) {
+						
+						System.out.println("ANTES DEL IF DE ESTAASIENTO: " + estasiento);
+						System.out.println("IDRUTA: "+ ruta.getId());
+						if(estasiento) {
 							request.setAttribute("ruta", ruta);
 							request.setAttribute("asiento", asiento);
 							request.setAttribute("piso", piso);
 							request.setAttribute("viaje", viaje);
-							request.setAttribute("viaidReservaje", reserva.getId());							
+							request.setAttribute("idReserva", reserva.getId());							
 							request.setAttribute("nombreProveedor", nombreProveedor);
 							mensaje = "Boleto reservado exitosamente.";
 							rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 						}else{
 							mensaje = "OCURRIO UN ERROR EN LA RESERVA";
-							System.out.println("OCURRIO UN ERROR EN LA RESERVA");
-							System.out.println("RETORNO: "+retorno);
+							System.out.println("OCURRIO UN ERROR EN LA RESERVA");						
 							System.out.println("ESTA ASIENTO: "+estasiento);
 							System.out.println("ID RESERVA: "+reserva.getId());
-							rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
+							rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");
 						}								
 					
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR)) {
