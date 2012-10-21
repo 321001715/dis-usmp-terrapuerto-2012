@@ -88,7 +88,10 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>C&oacute;digo de viaje</td>
-			<td><input type="text" name="idViaje" value="<%=viaje.getId() %>" disabled="disabled"></td>
+			<td>
+				<input type="text" name="idViaje" value="<%=viaje.getId() %>" disabled="disabled">
+				<input type="hidden" name="idViaje" value="<%=viaje.getId() %>">
+			</td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -119,7 +122,10 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Empresa</td>
-			<td><input type="text" name="nombreProveedor" value="<%=nombreProveedor %>" disabled="disabled"></td>
+			<td>
+				<input type="text" name="nombreProveedor" value="<%=nombreProveedor %>" disabled="disabled">
+				<input type="hidden" name="nombreProveedor" value="<%=nombreProveedor %>">
+			</td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -137,9 +143,15 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>Nro. de Asiento</td>
-			<td><input type="text" name="nroAsientos" value="<%=asiento %>" disabled="disabled"></td>
+			<td>
+				<input type="text" name="nroAsientos" value="<%=asiento %>" disabled="disabled">			
+				<input type="hidden" name="asiento" value="<%=asiento %>">
+			</td>
 			<td>Piso</td>
-			<td><input type="text" name="piso" value="<%=piso %>" disabled="disabled"></td>
+			<td>
+				<input type="text" name="piso" value="<%=piso %>" disabled="disabled">
+				<input type="hidden" name="piso" value="<%=piso %>">
+			</td>
 		</tr>
 	</table>
 	

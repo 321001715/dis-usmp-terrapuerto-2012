@@ -364,6 +364,14 @@ public class ServletBoletaje extends HttpServlet {
 					busqueda = Constantes.ACCION_BUSQUEDA_REALIZADA;					
 					mensaje = "NO SE ENCONTRÓ LA PERSONA";
 				}
+				request.setAttribute("idReserva", idReserva);
+				request.setAttribute("viaje", viaje);
+				request.setAttribute("nombreProveedor", nombreProveedor);
+				request.setAttribute("asiento", asiento);
+				request.setAttribute("piso", piso);
+				request.setAttribute("ruta", ruta);
+				request.setAttribute("busqueda", busqueda);
+								
 				rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 				
 			}else{
