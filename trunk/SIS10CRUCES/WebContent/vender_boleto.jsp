@@ -41,17 +41,19 @@ function desabilitarTarjeta(accion) {
 <body>
 
 <%
-	Usuario reservador = (Usuario)session.getAttribute("BUsuario");
-	Perfil usuarioPerfil = (Perfil)session.getAttribute("BPerfil");
-	int idReserva = (Integer)request.getAttribute("idReserva");
-	Viaje viaje = (Viaje)request.getAttribute("viaje");
-	Ruta ruta = (Ruta)request.getAttribute("ruta");
-	int piso = (Integer)request.getAttribute("piso");
-	int asiento = (Integer)request.getAttribute("asiento");
+	Usuario reservador = (Usuario)session.getAttribute("BUsuario");	
+	Perfil usuarioPerfil = (Perfil)session.getAttribute("BPerfil");	
+	int idReserva = (Integer)request.getAttribute("idReserva");	
+	Viaje viaje = (Viaje)request.getAttribute("viaje");	
+	Ruta ruta = (Ruta)request.getAttribute("ruta");	
+	int piso = (Integer)request.getAttribute("piso");	
+	int asiento = (Integer)request.getAttribute("asiento");	
 	String nombreProveedor = (String)request.getAttribute("nombreProveedor");
 %>
 
-<h2>Vender boleto de viaje</h2>
+<h3 class="ui-corner-top ui-widget-header">
+	<font style="font-family: monospace; font-size: x-large;">Vender Boleto de Viaje</font>
+</h3>
 
 <form method="post" action="ServletBoletaje" name="vender" onsubmit="">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO%>">
@@ -77,7 +79,7 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Nro. Reserva</td>
-			<td><input type="text" name="idReserva" value="" disabled="disabled"></td>
+			<td><input type="text" name="idReserva" value="<%=idReserva %>" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -154,13 +156,7 @@ function desabilitarTarjeta(accion) {
 			<td><input type="text" name="reservador" value="<%=reservador.getUsuario() %>" disabled="disabled"></td>
 			<td>Perfil</td>
 			<td><input type="text" name="perfil" value="" disabled="disabled"></td>
-		</tr>
-		<tr>
-			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" value="" disabled="disabled"></td>
-			<td></td>
-			<td></td>
-		</tr>
+		</tr>		
 	</table>
 	
 	<h4>Datos del viajero</h4>
@@ -168,33 +164,33 @@ function desabilitarTarjeta(accion) {
 	<table>
 		<tr>
 			<td>Nro. Documento</td>
-			<td><input type="text" name="documento" value=""></td>
-			<td></td>
+			<td><input type="text" name="documento"></td>
+			<td><input type="submit" value="<%=Constantes.%>"></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Nombre</td>
-			<td><input type="text" name="nombre" value=""></td>
+			<td><input type="text" name="nombre"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
-			<td><input type="text" name="apePat" value=""></td>
+			<td><input type="text" name="apePat"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Materno</td>
-			<td><input type="text" name="apeMat" value=""></td>
+			<td><input type="text" name="apeMat"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" value="" disabled="disabled"></td>
+			<td><input type="text" name="fecNac" disabled="disabled"></td>
 			<td>Edad</td>
-			<td><input type="text" name="edad" value=""></td>
+			<td><input type="text" name="edad"></td>
 		</tr>
 	</table>
 	
