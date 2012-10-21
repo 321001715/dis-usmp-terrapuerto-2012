@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pe.plazanorte.sisterra.consultas.ServiceConsultas;
 import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
@@ -336,26 +337,57 @@ public class ServletBoletaje extends HttpServlet {
 			String nroTarjeta = "";
 			String tipoPago = request.getParameter("tipoPago");
 			
-			if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_EFECTIVO)){
-				pagoEfectivo = request.getParameter("pagoEfectivo");
-			}else if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_TARJETA)){
-				clave = request.getParameter("clave");
-				nroTarjeta = request.getParameter("nroTarjeta");				
+			
+			//Obtenemos el tipo de boton del que proviene
+			String tipoSubmit = request.getParameter("tipoSubmit");
+			
+			if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_VENDER_CONSULTAR_PERSONA)) {
+
+
+				//String idReserva = request.getParameter("idReserva"); 
+				int idViaje = Integer.parseInt(request.getParameter("idViaje")); 				
+				String nombreProveedor = request.getParameter("nombreProveedor");				
+				int asiento = Integer.parseInt(request.getParameter("asiento"));
+				int piso = Integer.parseInt(request.getParameter("piso"));
+				
+				Viaje viaje = service.consultarViajeCliente(idViaje);
+				Ruta ruta = service.consultarRuta(viaje.getIdRuta());
+				
+				ServiceConsultas serviceConsultas = new ServiceConsultas();
+				Persona persona = serviceConsultas.consultarPersona(documento);
+				
+				if(persona != null) {
+					
+				}else{
+					
+				}
+				
+				
 			}else{
-				mensaje = "ERROR AL SELECCIONAR EL TIPO DE PAGO: SERVLET BOLETAJE";
+				
+				if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_EFECTIVO)){
+					pagoEfectivo = request.getParameter("pagoEfectivo");
+				}else if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_TARJETA)){
+					clave = request.getParameter("clave");
+					nroTarjeta = request.getParameter("nroTarjeta");				
+				}else{
+					mensaje = "ERROR AL SELECCIONAR EL TIPO DE PAGO: SERVLET BOLETAJE";
+				}				
+				try {
+					boolean retorno = service.venderBoleto(idReserva, pasajero);
+					
+					if(retorno) mensaje = "VENTA DE BOLETO EXITOSA";
+					else mensaje = "OCURRIO UN ERROR DURANTE LA VENTA DE BOLETO";
+					
+					rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");	
+						
+				} catch (Exception e) {
+					e.printStackTrace();
+				}		
+				
 			}
 			
-			try {
-				boolean retorno = service.venderBoleto(idReserva, pasajero);
-				
-				if(retorno) mensaje = "VENTA DE BOLETO EXITOSA";
-				else mensaje = "OCURRIO UN ERROR DURANTE LA VENTA DE BOLETO";
-				
-				rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");	
-					
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			
+			
 		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_VENDER_BOLETO)){
 			int idViaje = Integer.parseInt(request.getParameter("idViaje"));
 			int idReserva = Integer.parseInt(request.getParameter("idReserva"));
@@ -435,9 +467,7 @@ public class ServletBoletaje extends HttpServlet {
 				int idViaje=Integer.parseInt(request.getParameter("idViaje"));
 				String nombre=request.getParameter("txt_nombre");
 				String apePat=request.getParameter("txt_apePat");
-				String apeMat=request.getParameter("txt_apeMat");
-				
-				
+				String apeMat=request.getParameter("txt_apeMat");				
 				
 				HttpSession session= request.getSession(true);
 				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
@@ -448,7 +478,9 @@ public class ServletBoletaje extends HttpServlet {
 				viaje=service.consultarViajeCliente(idViaje);
 				
 				
-				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)){
+				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO) || 
+						tipoSubmit.equalsIgnoreCase(Constantes.ACCION_VENDER_CONSULTAR_PERSONA)){	
+					
 					int dni=Integer.parseInt(request.getParameter("dni"));
 					Persona persona=serviceseguridad.consultarPersona(dni);
 					
@@ -461,16 +493,28 @@ public class ServletBoletaje extends HttpServlet {
 						
 						request.setAttribute("viaje", viaje);
 						request.setAttribute("persona", persona);
-						
+																
 						if(persona!=null){
 							busqueda=Constantes.ACCION_BUSQUEDA_REALIZADA;
-							request.setAttribute("busqueda", busqueda);
-							rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
+							request.setAttribute("busqueda", busqueda);							
+							if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO))
+								rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");
+							if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_VENDER_CONSULTAR_PERSONA))
+								rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 						}else{
 							busqueda=Constantes.ACCION_BUSQUEDA_NO_REALIZADA;
 							request.setAttribute("busqueda", busqueda);
 							mensaje="NO EXISTE EL REGISTRO";
-							rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");			
+							if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_USUARIO)) {
+								rd = getServletContext().getRequestDispatcher("/reservarBoleto.jsp");
+							}
+							if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_VENDER_CONSULTAR_PERSONA)) {
+								int idReserva = Integer.parseInt(request.getParameter("idReserva"));					
+								String nombreProveedor =  request.getParameter("nombreProveedor");
+								request.setAttribute("idReserva", idReserva);					
+								request.setAttribute("nombreProveedor", nombreProveedor);
+								rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
+							}
 						}
 				} else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_RESERVAR_BOLETO)) {
 					mensaje = "Boleto reservado exitosamente.";

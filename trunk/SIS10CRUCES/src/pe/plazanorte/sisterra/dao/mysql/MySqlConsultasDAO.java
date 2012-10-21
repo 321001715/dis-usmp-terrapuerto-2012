@@ -7,6 +7,7 @@ import java.util.List;
 
 import pe.plazanorte.sisterra.dao.iface.ConsultasDAO;
 import pe.plazanorte.sisterra.daofactory.MySqlDAOFactory;
+import pe.plazanorte.sisterra.entidades.Persona;
 import pe.plazanorte.sisterra.entidades.Viaje;
 
 public class MySqlConsultasDAO implements ConsultasDAO {
@@ -41,6 +42,31 @@ public class MySqlConsultasDAO implements ConsultasDAO {
 			e.printStackTrace();
 		} 
 		return viaje;
+	}
+	
+	public Persona consultarPersona(int dni) {
+		Persona persona = null;
+				
+		try {
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM T_PERSONA WHERE idPersona = "+ dni + ";";
+			ResultSet rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				persona = new Persona();
+				persona.setNombre(rs.getString("nombre"));
+				persona.setApeMat(rs.getString("apeMat"));
+				persona.setApePat(rs.getString("apePat"));
+				persona.setFecNac(rs.getString("fechaNacimiento"));
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		
+		return persona;
 	}
 
 }
