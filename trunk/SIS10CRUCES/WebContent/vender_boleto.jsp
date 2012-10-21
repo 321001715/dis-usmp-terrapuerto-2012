@@ -165,24 +165,24 @@ function desabilitarTarjeta(accion) {
 		<tr>
 			<td>Nro. Documento</td>
 			<td><input type="text" name="documento"></td>
-			<td><input type="submit" value="<%=Constantes.%>"></td>
+			<td><input type="submit" value="<%=Constantes.ACCION_CONSULTAR_USUARIO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Nombre</td>
-			<td><input type="text" name="nombre"></td>
+			<td><input type="text" name="nombre" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
-			<td><input type="text" name="apePat"></td>
+			<td><input type="text" name="apePat" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Materno</td>
-			<td><input type="text" name="apeMat"></td>
+			<td><input type="text" name="apeMat" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -190,7 +190,7 @@ function desabilitarTarjeta(accion) {
 			<td>Fec. Nacimiento</td>
 			<td><input type="text" name="fecNac" disabled="disabled"></td>
 			<td>Edad</td>
-			<td><input type="text" name="edad"></td>
+			<td><input type="text" name="edad" disabled="disabled"></td>
 		</tr>
 	</table>
 	
