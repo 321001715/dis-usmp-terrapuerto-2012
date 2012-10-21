@@ -44,6 +44,7 @@ public class MySqlBoletajeDAO implements BoletajeDAO {
 		}
 		
 		//En el UPDATE de este metodo se modifican 2 filas, en la tabla Reserva y en Boleto y se añade 1 en Pasajero
+		System.out.println("FILAS AFECTADAS: "+filas_afectadas);
 		if(filas_afectadas == 3)
 			return true;
 		
