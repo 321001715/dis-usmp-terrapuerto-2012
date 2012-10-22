@@ -55,7 +55,7 @@ public class ServletBoletaje extends HttpServlet {
 		ServiceBoletaje service = new ServiceBoletaje();
 		
 		String tipo = request.getParameter("tipo");
-		String mensaje = "Ocurrio un error";
+		String mensaje = "";
 		RequestDispatcher rd = null;
 		
 		//********************************INICIO SELECCIONAR ASIENTO**********************************//	
@@ -196,7 +196,7 @@ public class ServletBoletaje extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		//long codViaje = Long.parseLong(request.getParameter("codViaje"));
 		// int nroAsiento = Integer.parseInt(request.getParameter("nroAsiento"));
-		String mensaje = "Ocurrio un error";
+		String mensaje = "";
 	
 		RequestDispatcher rd = null;
 		
@@ -386,9 +386,15 @@ public class ServletBoletaje extends HttpServlet {
 					mensaje = "ERROR AL SELECCIONAR EL TIPO DE PAGO: SERVLET BOLETAJE";
 				}				
 				try {
-					boolean retorno = service.venderBoleto(idReserva, pasajero);
+					Boleto boleto = new Boleto();
+					//boleto.setIdPasajero(pasajero.getDni());
 					
-					if(retorno) mensaje = "VENTA DE BOLETO EXITOSA";
+					//AQUI FALTA ASIGNAR EL PASAJERO PARA INSERTARLO AL BOLETO
+					
+					boolean retornoBoleto = service.reservarBoleto(boleto);
+					boolean retornoVenta = service.venderBoleto(idReserva, pasajero);
+					
+					if(retornoVenta && retornoBoleto) mensaje = "VENTA DE BOLETO EXITOSA";
 					else mensaje = "OCURRIO UN ERROR DURANTE LA VENTA DE BOLETO";
 					
 					rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");	
