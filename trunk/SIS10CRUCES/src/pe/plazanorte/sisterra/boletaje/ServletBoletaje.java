@@ -315,13 +315,15 @@ public class ServletBoletaje extends HttpServlet {
 			
 			String destino = request.getParameter("destino");
 			int idReserva = Integer.parseInt(request.getParameter("idReserva"));
+			int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+			int asiento = Integer.parseInt(request.getParameter("asiento"));
 			
 			//Obteniendo los datos del Pasajero
 			int documento = Integer.parseInt(request.getParameter("documento"));
 			String apePat = request.getParameter("apePat");
 			String apeMat = request.getParameter("apeMat");
 			String nombre = request.getParameter("nombre");
-			String edad = request.getParameter("edad");
+			String fecNac = request.getParameter("fecNac");
 			
 			//Almacenando los datos del pasajero en la entidad Pasajero
 			Pasajero pasajero = new Pasajero();
@@ -329,7 +331,7 @@ public class ServletBoletaje extends HttpServlet {
 			pasajero.setApellidoMat(apeMat);
 			pasajero.setApellidoPat(apePat);
 			pasajero.setDni(documento);
-			//pasajero.setEdad(edad);
+			
 			
 			String clave = "";
 			String pagoEfectivo = "";
@@ -342,9 +344,9 @@ public class ServletBoletaje extends HttpServlet {
 			
 			if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_VENDER_CONSULTAR_PERSONA)) {
 				
-				int idViaje = Integer.parseInt(request.getParameter("idViaje")); 				
+				//int idViaje = Integer.parseInt(request.getParameter("idViaje")); 				
 				String nombreProveedor = request.getParameter("nombreProveedor");				
-				int asiento = Integer.parseInt(request.getParameter("asiento"));
+				//int asiento = Integer.parseInt(request.getParameter("asiento"));
 				int piso = Integer.parseInt(request.getParameter("piso"));
 				
 				Viaje viaje = service.consultarViajeCliente(idViaje);
@@ -383,13 +385,11 @@ public class ServletBoletaje extends HttpServlet {
 					mensaje = "ERROR AL SELECCIONAR EL TIPO DE PAGO: SERVLET BOLETAJE";
 				}				
 				try {
-					Boleto boleto = new Boleto();
-					//boleto.setIdPasajero(pasajero.getDni());
 					
-					//AQUI FALTA ASIGNAR EL PASAJERO PARA INSERTARLO AL BOLETO
+					Pasajero retornoPasajero = service.generarPasajero(documento, pasajero.getNombres(), pasajero.getApellidoPat(), pasajero.getApellidoMat());
+					boolean retornoBoleto = service.reservarBoleto(idReserva, idViaje, asiento, retornoPasajero.getId());
+					boolean retornoVenta = service.venderBoleto(idReserva, retornoPasajero);					
 					
-					boolean retornoBoleto = service.reservarBoleto(boleto);
-					boolean retornoVenta = service.venderBoleto(idReserva, pasajero);
 					
 					if(retornoVenta && retornoBoleto) mensaje = "VENTA DE BOLETO EXITOSA";
 					else mensaje = "OCURRIO UN ERROR DURANTE LA VENTA DE BOLETO";
