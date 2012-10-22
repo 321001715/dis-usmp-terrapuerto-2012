@@ -34,10 +34,10 @@ public class MySqlBoletajeDAO implements BoletajeDAO {
 					"SET B.ESTADO = '" + Constantes.ESTADO_VENDIDO + "', R.ESTADO = '" + Constantes.ESTADO_CONFIRMADO + "' " + 
 					"WHERE B.IDRESERVA = " + idReserva + " AND R.IDRESERVA = B.IDRESERVA;";		
 			
-			String insertPasajero = "INSERT INTO T_PASAJERO(NOMBRES, APEPAT, APEMAT, NUMDOC, TIPDOC, ESTADO) VALUES ('"+pasajero.getNombres()+"', '"+pasajero.getApellidoPat()+"', '"+pasajero.getApellidoMat()+"', '"+pasajero.getDni()+"', 'DNI','"+Constantes.ESTADO_ACTIVO+"');";
+			//String insertPasajero = "INSERT INTO T_PASAJERO(NOMBRES, APEPAT, APEMAT, NUMDOC, TIPDOC, ESTADO) VALUES ('"+pasajero.getNombres()+"', '"+pasajero.getApellidoPat()+"', '"+pasajero.getApellidoMat()+"', '"+pasajero.getDni()+"', 'DNI','"+Constantes.ESTADO_ACTIVO+"');";
 			
 			filas_afectadas = stmt.executeUpdate(sql);
-			filas_afectadas += stmt.executeUpdate(insertPasajero);
+			//filas_afectadas += stmt.executeUpdate(insertPasajero);
 			con.close();
 		} catch (Exception e) {			
 			e.printStackTrace();
@@ -45,7 +45,7 @@ public class MySqlBoletajeDAO implements BoletajeDAO {
 		
 		//En el UPDATE de este metodo se modifican 2 filas, en la tabla Reserva y en Boleto y se añade 1 en Pasajero
 		System.out.println("FILAS AFECTADAS: "+filas_afectadas);
-		if(filas_afectadas == 3)
+		if(filas_afectadas == 2)
 			return true;
 		
 		return false;
@@ -591,9 +591,9 @@ int filas_afectadas = 0;
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 
-			String sql = "insert INTO t_pasajero(nombres,apePat,apeMat,numDoc,tipDoc) "
+			String sql = "insert INTO t_pasajero(nombres,apePat,apeMat,numDoc,tipDoc, estado) "
 					+ "values (" + "'" + nombre + "', '"
-					+ apePat + "','"+apeMat+ "','"+dnipas+"','DNI');";
+					+ apePat + "','"+apeMat+ "','"+dnipas+"','DNI', "+Constantes.ESTADO_ACTIVO+");";
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			
