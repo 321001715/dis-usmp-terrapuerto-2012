@@ -36,6 +36,16 @@ function desabilitarTarjeta(accion) {
 	eval("document.vender.pagoEfectivo.disabled=false");
 }
 
+function validar(){
+	
+	if(document.vender.documento.value.length == 0){		
+		alert("Debe ingresar un un número de documento.");
+		document.vender.documento.focus();	
+		return false;
+	}	
+	return true;
+}
+
 </script>
 
 </head>
@@ -59,7 +69,7 @@ function desabilitarTarjeta(accion) {
 	<font style="font-family: monospace; font-size: x-large;">Vender Boleto de Viaje</font>
 </h3>
 
-<form method="post" action="ServletBoletaje" name="vender" onsubmit="">
+<form method="post" action="ServletBoletaje" name="vender" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL%>">
 	<input type="hidden" name="idReserva" value="<%=idReserva %>">
@@ -201,25 +211,25 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>Nombre</td>
-			<td><input type="text" name="nombre" value="<%=persona.getNombre() %>" readonly="readonly"></td>
+			<td><input type="text" name="nombre" value="<%=persona.getNombre() %>"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
-			<td><input type="text" name="apePat" value="<%=persona.getApePat() %>" readonly="readonly"></td>
+			<td><input type="text" name="apePat" value="<%=persona.getApePat() %>"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Materno</td>
-			<td><input type="text" name="apeMat" value="<%=persona.getApeMat() %>" readonly="readonly"></td>
+			<td><input type="text" name="apeMat" value="<%=persona.getApeMat() %>"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" value="<%=persona.getFecNac() %>" readonly="readonly"></td>
+			<td><input type="text" name="fecNac" value="<%=persona.getFecNac() %>"></td>
 			<td></td>
 			<td></td>
 		</tr>
