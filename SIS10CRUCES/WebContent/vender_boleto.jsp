@@ -42,6 +42,16 @@ function validar(){
 		alert("Debe ingresar un un número de documento.");
 		document.vender.documento.focus();	
 		return false;
+	}
+	if(document.vender.documento.value.length == 0){		
+		alert("Debe ingresar un un número de documento.");
+		document.vender.documento.focus();	
+		return false;
+	}	
+	if(document.vender.documento.value.length == 0){		
+		alert("Debe ingresar un un número de documento.");
+		document.vender.documento.focus();	
+		return false;
 	}	
 	return true;
 }
