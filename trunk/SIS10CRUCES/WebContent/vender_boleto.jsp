@@ -52,7 +52,7 @@ function desabilitarTarjeta(accion) {
 	String nombreProveedor = (String)request.getAttribute("nombreProveedor");
 	String busqueda = (String)request.getAttribute("busqueda");
 	String mensaje = (String)request.getAttribute("mensaje");
-	out.print("TERMINO DE ASIGNAR TODAS LAS VARIABLES");
+	Persona persona = (Persona)request.getAttribute("persona");	
 %>
 
 <h3 class="ui-corner-top ui-widget-header">
@@ -179,10 +179,9 @@ function desabilitarTarjeta(accion) {
 		<font style="font-family: monospace; font-size: x-large;">Datos del viajero</font>
 	</div>
 	<%
-	if(busqueda != null){
+	if(busqueda != null || persona != null){
 		if(busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)){
-			Persona persona = (Persona)request.getAttribute("persona");
-			out.print("ANTES DE LA BUSQUEDA DESPUES DE HABER OBTENIDO LA INFORMACION");
+						
 	%>
 	
 	<table>
@@ -236,7 +235,15 @@ function desabilitarTarjeta(accion) {
 			<td>Nro. Documento</td>
 			<td><input type="text" name="documento"></td>
 			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
-			<td></td>
+			<td>
+				<%
+					if(mensaje != null){					
+				%>
+				<b><font color="red"><%=mensaje %></font></b>
+				<%
+					}
+				%>
+			</td>
 		</tr>
 		<tr>
 			<td>Nombre</td>

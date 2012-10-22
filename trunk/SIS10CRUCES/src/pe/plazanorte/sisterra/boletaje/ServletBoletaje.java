@@ -273,8 +273,7 @@ public class ServletBoletaje extends HttpServlet {
 							request.setAttribute("piso", piso);
 							request.setAttribute("viaje", viaje);
 							request.setAttribute("idReserva", reserva.getId());							
-							request.setAttribute("nombreProveedor", nombreProveedor);
-							mensaje = "Boleto reservado exitosamente.";
+							request.setAttribute("nombreProveedor", nombreProveedor);							
 							rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 						}else{
 							mensaje = "OCURRIO UN ERROR EN LA RESERVA";
@@ -342,9 +341,7 @@ public class ServletBoletaje extends HttpServlet {
 			String tipoSubmit = request.getParameter("tipoSubmit");
 			
 			if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_VENDER_CONSULTAR_PERSONA)) {
-
-
-				//String idReserva = request.getParameter("idReserva"); 
+				
 				int idViaje = Integer.parseInt(request.getParameter("idViaje")); 				
 				String nombreProveedor = request.getParameter("nombreProveedor");				
 				int asiento = Integer.parseInt(request.getParameter("asiento"));
@@ -362,7 +359,7 @@ public class ServletBoletaje extends HttpServlet {
 					busqueda = Constantes.ACCION_BUSQUEDA_REALIZADA;					
 				}else{
 					busqueda = Constantes.ACCION_BUSQUEDA_REALIZADA;					
-					mensaje = "NO SE ENCONTRÓ LA PERSONA";
+					mensaje = "NO SE ENCONTRO A LA PERSONA";
 				}
 				request.setAttribute("idReserva", idReserva);
 				request.setAttribute("viaje", viaje);
@@ -530,7 +527,7 @@ public class ServletBoletaje extends HttpServlet {
 								int idReserva = Integer.parseInt(request.getParameter("idReserva"));					
 								String nombreProveedor =  request.getParameter("nombreProveedor");
 								request.setAttribute("idReserva", idReserva);					
-								request.setAttribute("nombreProveedor", nombreProveedor);
+								request.setAttribute("nombreProveedor", nombreProveedor);								
 								rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 							}
 						}
