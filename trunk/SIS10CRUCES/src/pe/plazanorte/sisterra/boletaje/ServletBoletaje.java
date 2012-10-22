@@ -371,7 +371,8 @@ public class ServletBoletaje extends HttpServlet {
 				request.setAttribute("piso", piso);
 				request.setAttribute("ruta", ruta);
 				request.setAttribute("busqueda", busqueda);
-								
+				request.setAttribute("persona", persona);
+				
 				rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 				
 			}else{

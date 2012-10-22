@@ -52,6 +52,7 @@ function desabilitarTarjeta(accion) {
 	String nombreProveedor = (String)request.getAttribute("nombreProveedor");
 	String busqueda = (String)request.getAttribute("busqueda");
 	String mensaje = (String)request.getAttribute("mensaje");
+	out.print("TERMINO DE ASIGNAR TODAS LAS VARIABLES");
 %>
 
 <h3 class="ui-corner-top ui-widget-header">
@@ -180,13 +181,14 @@ function desabilitarTarjeta(accion) {
 	<%
 	if(busqueda != null){
 		if(busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)){
-			Persona pasajero = (Persona)request.getAttribute("pasajero");
+			Persona persona = (Persona)request.getAttribute("persona");
+			out.print("ANTES DE LA BUSQUEDA DESPUES DE HABER OBTENIDO LA INFORMACION");
 	%>
 	
 	<table>
 		<tr>
 			<td>Nro. Documento</td>
-			<td><input type="text" name="documento"></td>
+			<td><input type="text" name="documento" value="<%=persona.getDni() %>"></td>
 			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td>
 				<%
@@ -200,25 +202,25 @@ function desabilitarTarjeta(accion) {
 		</tr>
 		<tr>
 			<td>Nombre</td>
-			<td><input type="text" name="nombre" value="<%=pasajero.getNombre() %>" readonly="readonly"></td>
+			<td><input type="text" name="nombre" value="<%=persona.getNombre() %>" readonly="readonly"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
-			<td><input type="text" name="apePat" value="<%=pasajero.getApePat() %>" readonly="readonly"></td>
+			<td><input type="text" name="apePat" value="<%=persona.getApePat() %>" readonly="readonly"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Materno</td>
-			<td><input type="text" name="apeMat" value="<%=pasajero.getApeMat() %>" readonly="readonly"></td>
+			<td><input type="text" name="apeMat" value="<%=persona.getApeMat() %>" readonly="readonly"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" value="<%=pasajero.getFecNac() %>" readonly="readonly"></td>
+			<td><input type="text" name="fecNac" value="<%=persona.getFecNac() %>" readonly="readonly"></td>
 			<td></td>
 			<td></td>
 		</tr>
