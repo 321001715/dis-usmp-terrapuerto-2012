@@ -179,7 +179,7 @@ function desabilitarTarjeta(accion) {
 		<font style="font-family: monospace; font-size: x-large;">Datos del viajero</font>
 	</div>
 	<%
-	if(busqueda != null || persona != null){
+	if(busqueda != null && persona != null){
 		if(busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)){
 						
 	%>
@@ -227,7 +227,7 @@ function desabilitarTarjeta(accion) {
 	
 	<%
 		}
-	}else if(busqueda == null || busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_NO_REALIZADA)){
+	} else {
 	%>
 	
 	<table>
