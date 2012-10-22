@@ -81,7 +81,7 @@ public class Constantes {
 	
 	
 	public static final String ACCION_RESERVAR_BOLETO = "RESERVAR";
-	public static final String ACCION_VENDER_BOLETO = "vender_boleto";
+	public static final String ACCION_VENDER_BOLETO = "Vender boleto";
 	
 	
 	public static final String ACCION_CONSULTAR_RUTA = "consultar_ruta";
