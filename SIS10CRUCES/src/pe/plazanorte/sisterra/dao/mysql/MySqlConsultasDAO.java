@@ -50,20 +50,21 @@ public class MySqlConsultasDAO implements ConsultasDAO {
 		try {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM T_PERSONA WHERE idPersona = "+ dni + ";";
+			String query = "SELECT * FROM T_PERSONA WHERE numDoc = "+ dni + ";";
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
 				persona = new Persona();
-				persona.setNombre(rs.getString("nombre"));
+				persona.setDni(rs.getInt("numDoc"));
+				persona.setNombre(rs.getString("nombres"));
 				persona.setApeMat(rs.getString("apeMat"));
 				persona.setApePat(rs.getString("apePat"));
 				persona.setFecNac(rs.getString("fechaNacimiento"));
 			}
+			System.out.println(query);
 			con.close();
 		} catch (Exception e) {
-			e.printStackTrace();
-			
+			e.printStackTrace();			
 		}
 		
 		return persona;
