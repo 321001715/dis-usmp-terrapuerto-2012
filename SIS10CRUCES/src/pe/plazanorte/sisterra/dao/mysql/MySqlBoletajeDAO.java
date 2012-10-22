@@ -593,7 +593,7 @@ int filas_afectadas = 0;
 
 			String sql = "insert INTO t_pasajero(nombres,apePat,apeMat,numDoc,tipDoc, estado) "
 					+ "values (" + "'" + nombre + "', '"
-					+ apePat + "','"+apeMat+ "','"+dnipas+"','DNI', "+Constantes.ESTADO_ACTIVO+");";
+					+ apePat + "','"+apeMat+ "','"+dnipas+"','DNI', '"+Constantes.ESTADO_ACTIVO+"');";
 			System.out.println(sql);
 			filas_afectadas = stmt.executeUpdate(sql);
 			
