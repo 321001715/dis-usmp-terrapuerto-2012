@@ -39,20 +39,30 @@ function desabilitarTarjeta(accion) {
 function validar(){
 	
 	if(document.vender.documento.value.length == 0){		
-		alert("Debe ingresar un un número de documento.");
+		alert("Debe ingresar un número de documento de identidad.");
 		document.vender.documento.focus();	
 		return false;
 	}
-	if(document.vender.documento.value.length == 0){		
-		alert("Debe ingresar un un número de documento.");
-		document.vender.documento.focus();	
+	if(document.vender.nombre.value.length == 0){		
+		alert("Debe ingresar el nombre del pasajero.");
+		document.vender.nombre.focus();	
 		return false;
 	}	
-	if(document.vender.documento.value.length == 0){		
-		alert("Debe ingresar un un número de documento.");
+	if(document.vender.apePat.value.length == 0){		
+		alert("Debe ingresar el apellido paterno del pasajero.");
 		document.vender.documento.focus();	
 		return false;
-	}	
+	}
+	if(document.vender.apeMat.value.length == 0){		
+		alert("Debe ingresar el apellido materno del pasajero.");
+		document.vender.documento.focus();	
+		return false;
+	}
+	if(document.vender.fecNac.value.length == 0){		
+		alert("Debe ingresar la fecha de nacimiento del pasajero.");
+		document.vender.documento.focus();	
+		return false;
+	}
 	return true;
 }
 
