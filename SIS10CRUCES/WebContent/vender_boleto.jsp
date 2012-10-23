@@ -22,11 +22,15 @@
 
 <script type="text/javascript">
 
+var efectivo = 1;
+
 function desabilitarEfectivo() {
 	eval("document.vender.pagoEfectivo.disabled=true");	
 		
 	eval("document.vender.nroTarjeta.disabled=false");
 	eval("document.vender.clave.disabled=false");
+	
+	efectivo = 1;	
 }
 
 function desabilitarTarjeta(accion) {
@@ -34,6 +38,8 @@ function desabilitarTarjeta(accion) {
 	eval("document.vender.clave.disabled=true");
 	
 	eval("document.vender.pagoEfectivo.disabled=false");
+	
+	efectivo = 2;
 }
 
 function validar(){
@@ -42,24 +48,58 @@ function validar(){
 		alert("Debe ingresar un número de documento de identidad.");
 		document.vender.documento.focus();	
 		return false;
-	}
+	}	
+	
 	if(document.vender.nombre.value.length == 0){		
-		alert("Debe ingresar el nombre del pasajero.");
+		alert("Debe realizar la búsqueda del pasajero.");
 		document.vender.nombre.focus();	
 		return false;
 	}	
 	if(document.vender.apePat.value.length == 0){		
-		alert("Debe ingresar el apellido paterno del pasajero.");
+		alert("Debe realizar la búsqueda del pasajero.");
 		document.vender.documento.focus();	
 		return false;
 	}
 	if(document.vender.apeMat.value.length == 0){		
-		alert("Debe ingresar el apellido materno del pasajero.");
+		alert("Debe realizar la búsqueda del pasajero.");
 		document.vender.documento.focus();	
 		return false;
 	}
 	if(document.vender.fecNac.value.length == 0){		
-		alert("Debe ingresar la fecha de nacimiento del pasajero.");
+		alert("Debe realizar la búsqueda del pasajero.");
+		document.vender.documento.focus();	
+		return false;
+	}
+
+	function validarTipoPago() {
+		if(efectivo == 1){
+			if(document.vender.nroTarjeta.value.length == 0){		
+				alert("Debe ingresar su número de tarjeta.");
+				document.vender.nroTarjeta.focus();	
+				return false;
+			}			
+			if(document.vender.clave.value.length == 0){		
+				alert("Debe ingresar su clave.");
+				document.vender.clave.focus();	
+				return false;
+			}
+			return true;
+		}else if(efectivo == 2){
+			if(document.vender.pagoEfectivo.value.length == 0){		
+				alert("Debe ingresar la cantidad a pagar.");
+				document.vender.pagoEfectivo.focus();	
+				return false;
+			}
+			return true;
+		}
+	}		
+	
+	return true;
+}
+
+function validarDocumento(){
+	if(document.vender.documento.value.length == 0){		
+		alert("Debe ingresar un número de documento de identidad.");
 		document.vender.documento.focus();	
 		return false;
 	}
@@ -89,7 +129,7 @@ function validar(){
 	<font style="font-family: monospace; font-size: x-large;">Vender Boleto de Viaje</font>
 </h3>
 
-<form method="post" action="ServletBoletaje" name="vender" onsubmit="return validar()">
+<form method="post" action="ServletBoletaje" name="vender">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_VENDER_BOLETO%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MENU_PRINCIPAL%>">
 	<input type="hidden" name="idReserva" value="<%=idReserva %>">
@@ -210,15 +250,13 @@ function validar(){
 	</div>
 	<%
 	if(busqueda != null && persona != null){
-		if(busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)){
-						
-	%>
-	
+		if(busqueda.equalsIgnoreCase(Constantes.ACCION_BUSQUEDA_REALIZADA)){						
+	%>		
 	<table>
 		<tr>
 			<td>Nro. Documento</td>
 			<td><input type="text" name="documento" value="<%=persona.getDni() %>"></td>
-			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" onclick="return validarDocumento()" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td>
 				<%
 					if(mensaje != null){					
@@ -231,40 +269,38 @@ function validar(){
 		</tr>
 		<tr>
 			<td>Nombre</td>
-			<td><input type="text" name="nombre" value="<%=persona.getNombre() %>"></td>
-			<td></td>
+			<td><input type="text" name="nombre" value="<%=persona.getNombre() %>" disabled="disabled"></td>
+			<td><input type="hidden" name="nombre" value="<%=persona.getNombre() %>"></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
-			<td><input type="text" name="apePat" value="<%=persona.getApePat() %>"></td>
-			<td></td>
+			<td><input type="text" name="apePat" value="<%=persona.getApePat() %>" disabled="disabled"></td>
+			<td><input type="hidden" name="apePat" value="<%=persona.getApePat() %>"></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Materno</td>
-			<td><input type="text" name="apeMat" value="<%=persona.getApeMat() %>"></td>
-			<td></td>
+			<td><input type="text" name="apeMat" value="<%=persona.getApeMat() %>" disabled="disabled"></td>
+			<td><input type="hidden" name="apeMat" value="<%=persona.getApeMat() %>"></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" value="<%=persona.getFecNac() %>"></td>
-			<td></td>
+			<td><input type="text" name="fecNac" value="<%=persona.getFecNac() %>" disabled="disabled"></td>
+			<td><input type="hidden" name="fecNac" value="<%=persona.getFecNac() %>"></td>
 			<td></td>
 		</tr>
-	</table>
-	
+	</table>	
 	<%
 		}
-	} else {
-	%>
-	
+	} else {	
+	%>	
 	<table>
 		<tr>
 			<td>Nro. Documento</td>
 			<td><input type="text" name="documento"></td>
-			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" onclick="return validarDocumento()" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td>
 				<%
 					if(mensaje != null){					
@@ -277,25 +313,25 @@ function validar(){
 		</tr>
 		<tr>
 			<td>Nombre</td>
-			<td><input type="text" name="nombre" readonly="readonly"></td>
+			<td><input type="text" name="nombre" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
-			<td><input type="text" name="apePat" readonly="readonly"></td>
+			<td><input type="text" name="apePat" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Apellido Materno</td>
-			<td><input type="text" name="apeMat" readonly="readonly"></td>
+			<td><input type="text" name="apeMat" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Fec. Nacimiento</td>
-			<td><input type="text" name="fecNac" readonly="readonly"></td>
+			<td><input type="text" name="fecNac" disabled="disabled"></td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -309,7 +345,7 @@ function validar(){
 		<font style="font-family: monospace; font-size: x-large;">Detalle de pago</font>
 	</div>
 	
-	Importe a pagar: <input type="text" name="importe" value="<%=viaje.getPrecio() %>">
+	Importe a pagar: <input type="text" name="importe" value="<%=viaje.getPrecio() %>" disabled="disabled">
 	
 	<table>
 		<tr>
@@ -337,10 +373,11 @@ function validar(){
 			<td><input type="text" name="pagoEfectivo" disabled="disabled"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_BOLETO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_VENDER_BOLETO %>" onclick=" return validar()" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td><input type="submit" name="tipoSubmit" value="<%=Constantes.ACCION_IMPRIMIR_BOLETO %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 		</tr>
 	</table>
+	
 </form>
 
 </body>
