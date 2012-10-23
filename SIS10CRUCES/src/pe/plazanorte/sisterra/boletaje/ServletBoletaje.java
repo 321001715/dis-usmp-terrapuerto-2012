@@ -360,7 +360,7 @@ public class ServletBoletaje extends HttpServlet {
 				if(persona != null) {
 					busqueda = Constantes.ACCION_BUSQUEDA_REALIZADA;					
 				}else{
-					busqueda = Constantes.ACCION_BUSQUEDA_REALIZADA;					
+					busqueda = Constantes.ACCION_BUSQUEDA_NO_REALIZADA;					
 					mensaje = "NO SE ENCONTRO A LA PERSONA";
 				}
 				request.setAttribute("idReserva", idReserva);
