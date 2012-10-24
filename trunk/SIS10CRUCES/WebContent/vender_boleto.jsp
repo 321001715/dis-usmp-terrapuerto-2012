@@ -30,7 +30,7 @@ function desabilitarEfectivo() {
 	eval("document.vender.nroTarjeta.disabled=false");
 	eval("document.vender.clave.disabled=false");
 	
-	efectivo = 1;	
+	eleccionValidacionTipoPago(1);
 }
 
 function desabilitarTarjeta(accion) {
@@ -39,7 +39,14 @@ function desabilitarTarjeta(accion) {
 	
 	eval("document.vender.pagoEfectivo.disabled=false");
 	
-	efectivo = 2;
+	eleccionValidacionTipoPago(2);
+}
+
+function eleccionValidacionTipoPago(tipoPago){
+	if(tipoPago == 1)
+		efectivo = 1;
+	else
+		efectivo = 2;
 }
 
 function validar(){
@@ -70,30 +77,25 @@ function validar(){
 		document.vender.documento.focus();	
 		return false;
 	}
-
-	function validarTipoPago() {
-		if(efectivo == 1){
-			if(document.vender.nroTarjeta.value.length == 0){		
-				alert("Debe ingresar su número de tarjeta.");
-				document.vender.nroTarjeta.focus();	
-				return false;
-			}			
-			if(document.vender.clave.value.length == 0){		
-				alert("Debe ingresar su clave.");
-				document.vender.clave.focus();	
-				return false;
-			}
-			return true;
-		}else if(efectivo == 2){
-			if(document.vender.pagoEfectivo.value.length == 0){		
-				alert("Debe ingresar la cantidad a pagar.");
-				document.vender.pagoEfectivo.focus();	
-				return false;
-			}
-			return true;
-		}
-	}		
 	
+	if(efectivo == 1){
+		if(document.vender.nroTarjeta.value.length == 0){		
+			alert("Debe ingresar su número de tarjeta.");
+			document.vender.nroTarjeta.focus();	
+			return false;
+		}			
+		if(document.vender.clave.value.length == 0){		
+			alert("Debe ingresar su clave.");
+			document.vender.clave.focus();	
+			return false;
+		}		
+	}else if(efectivo == 2){
+		if(document.vender.pagoEfectivo.value.length == 0){		
+			alert("Debe ingresar la cantidad a pagar.");
+			document.vender.pagoEfectivo.focus();	
+			return false;
+		}		
+	}		
 	return true;
 }
 
@@ -255,7 +257,7 @@ function validarDocumento(){
 	<table>
 		<tr>
 			<td>Nro. Documento</td>
-			<td><input type="text" name="documento" value="<%=persona.getDni() %>"></td>
+			<td><input type="text" value="<%=persona.getDni() %>"></td>
 			<td><input type="submit" name="tipoSubmit" onclick="return validarDocumento()" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td>
 				<%
@@ -271,7 +273,7 @@ function validarDocumento(){
 			<td>Nombre</td>
 			<td><input type="text" name="nombre" value="<%=persona.getNombre() %>" disabled="disabled"></td>
 			<td><input type="hidden" name="nombre" value="<%=persona.getNombre() %>"></td>
-			<td></td>
+			<td><input type="hidden" name="documento" value="<%=persona.getDni() %>"></td>
 		</tr>
 		<tr>
 			<td>Apellido Paterno</td>
