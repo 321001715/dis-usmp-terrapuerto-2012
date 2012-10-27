@@ -67,7 +67,7 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Registrar Proveedor</font>
    </div>
-	<form action="ServletProveedor" method="post" name="registrar" onsubmit="validar()">
+	<form action="ServletProveedor" method="post" name="registrar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_PROVEEDOR%>">
 		<table>	
 			<tr><td><br></td></tr>
