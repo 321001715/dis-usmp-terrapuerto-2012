@@ -88,6 +88,8 @@ function redirect()
 	if(perfil.getNombre().equals("PROVEEDOR")){
 %>
 		<b>Razón Social: <%=proveedor.getRazSocial()%></b>
+		<br/>
+		<a href="Login?">Cerrar sesión</a>
 <%	
 	}
 %>

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import pe.plazanorte.sisterra.consultas.ServiceConsultas;
 import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
+import pe.plazanorte.sisterra.embarque.ServiceEmbarque;
 import pe.plazanorte.sisterra.entidades.Asiento;
 import pe.plazanorte.sisterra.entidades.Boleto;
 import pe.plazanorte.sisterra.entidades.Cliente;
@@ -560,10 +561,7 @@ public class ServletBoletaje extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}finally{
-				
-			}
-			
+			}			
 		}	
 		
 		request.setAttribute("mensaje", mensaje);		

@@ -88,17 +88,17 @@
 			<tr>
 				<td></td>
 				<td>Razón Social:</td>
-				<td><input type="text" name="razon_social" value="<%=proveedor.getRazSocial()%>"></td>			
+				<td><input type="text" name="razon_social" value="<%=proveedor.getRazSocial()%>" style="width: 240px"></td>			
 			</tr>
 			<tr>
 				<td></td>
 				<td>Razón Comercial:</td>
-				<td><input type="text" name="razon_comercial" value="<%=proveedor.getRazCom()%>"></td>			
+				<td><input type="text" name="razon_comercial" value="<%=proveedor.getRazCom()%>" style="width: 240px"></td>			
 			</tr>
 			<tr>
 				<td></td>
 				<td>Dirección:</td>
-				<td><input type="text" name="direccion" value="<%=proveedor.getDireccion()%>"></td>				
+				<td><input type="text" name="direccion" value="<%=proveedor.getDireccion()%>" style="width: 240px"></td>				
 			</tr>
 			<tr>
 				<td></td>
