@@ -17,6 +17,16 @@
 			document.registrar.ruc.focus();
 			return false;
 		}
+		if(document.registrar.ruc.value.length < 11){
+			alert("Debe ingresar un número de RUC válido.");
+			document.registrar.ruc.focus();
+			return false;
+		}
+		if(NaN(document.registrar.ruc.value)){
+			alert("Debe ingresar un número de RUC válido.");
+			document.registrar.ruc.focus();
+			return false;
+		}
 		if(document.registrar.razon_social.value.length == 0){
 			alert("Debe llenar el campo Razón social.");
 			document.registrar.razon_social.focus();
@@ -37,16 +47,15 @@
 			document.registrar.telefono.focus();
 			return false;
 		}
-		if(document.registrar.usuario.value.length == 0){
-			alert("Debe llenar el campo usuario.");
-			document.registrar.usuario.focus();
+		if(NaN(document.registrar.telefono.value)){
+			alert("Debe ingresar un número de teléfono válido.");
+			document.registrar.telefono.focus();
 			return false;
-		}
-		if(document.registrar.clave.value.length < 5){
-			alert("Su clave debe tener más de 5 dígitos.");
-			document.registrar.clave.focus();
+		}	
+		if(document.registrar.idUsuario.selectedIndex==0){		
+			window.alert("Debe seleccionar un usuario. Si no existen usuarios deberá primero registrar uno con el perfil PROVEEDOR.");						
 			return false;
-		}
+		}			
 		return true;
 	}	
 </script>
@@ -79,17 +88,17 @@
 			<tr>
 				<td></td>
 				<td>Razón Social:</td>
-				<td><input type="text" name="razon_social"></td>			
+				<td><input type="text" name="razon_social" style="width: 240px"></td>			
 			</tr>
 			<tr>
 				<td></td>
 				<td>Razón Comercial:</td>
-				<td><input type="text" name="razon_comercial"></td>			
+				<td><input type="text" name="razon_comercial" style="width: 240px"></td>			
 			</tr>
 			<tr>
 				<td></td>
 				<td>Dirección:</td>
-				<td><input type="text" name="direccion"></td>			
+				<td><input type="text" name="direccion" style="width: 240px"></td>			
 			</tr>
 			<tr>
 				<td></td>
@@ -109,6 +118,7 @@ Vector<Usuario> usuarios = servicioSeguridad.listarUsuariosProveedores();
 if(usuarios != null){
 %>
 					<select name="idUsuario">
+						<option value="0">Seleccione</option>
 <%
 	for(int i=0; i<=usuarios.size()-1;i++){
 %>

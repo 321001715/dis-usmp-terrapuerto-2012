@@ -155,4 +155,9 @@ public class Constantes {
 	
 	public static final String ACCION_IMPRIMIR_BOLETO = "Imprimir boleto";
 	
+	
+	//MANIFIESTO DE PASAJEROS
+	public static final String ACCION_PREPARAR_LISTA_PASAJEROS = "preparar_manifiesto";	
+	public static final String MANIFIESTO_DE_PASAJEROS = "manifiesto_pasajeros";
+	
 }

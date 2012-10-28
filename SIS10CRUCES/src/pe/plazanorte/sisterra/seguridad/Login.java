@@ -80,7 +80,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException,
 			java.io.IOException {
-		processRequest(request, response);
+		processRequest(request, response);	
 	}
 
 	protected void doPost(HttpServletRequest request,

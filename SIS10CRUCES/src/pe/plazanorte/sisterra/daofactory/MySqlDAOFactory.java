@@ -6,11 +6,13 @@ import java.sql.DriverManager;
 import pe.plazanorte.sisterra.dao.iface.BoletajeDAO;
 import pe.plazanorte.sisterra.dao.iface.ClasificacionDAO;
 import pe.plazanorte.sisterra.dao.iface.ConsultasDAO;
+import pe.plazanorte.sisterra.dao.iface.EmbarqueDAO;
 import pe.plazanorte.sisterra.dao.iface.ProveedorDAO;
 import pe.plazanorte.sisterra.dao.iface.SeguridadDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlBoletajeDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlClasificacionDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlConsultasDAO;
+import pe.plazanorte.sisterra.dao.mysql.MySqlEmbarqueDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlProveedorDAO;
 import pe.plazanorte.sisterra.dao.mysql.MySqlSeguridadDAO;
 
@@ -49,6 +51,10 @@ public class MySqlDAOFactory extends DAOFactory{
 
 	public ConsultasDAO getConsultasDAO() {
 		return new MySqlConsultasDAO();
+	}
+
+	public EmbarqueDAO getEmbarqueDAO() {
+		return new MySqlEmbarqueDAO();
 	}
 
 }
