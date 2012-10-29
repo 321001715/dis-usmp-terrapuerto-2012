@@ -134,6 +134,7 @@ public class Constantes {
 	//ESTADOS DE BOLETO
 	public static final String ESTADO_RESERVADO = "RESERVADO";
 	public static final String ESTADO_VENDIDO = "VENDIDO";
+	public static final String ESTADO_ABORDADO = "ABORDADO";
 	
 	//ESTADO DE RESERVA
 	public static final String ESTADO_PENDIENTE = "PENDIENTE";
@@ -159,5 +160,6 @@ public class Constantes {
 	//MANIFIESTO DE PASAJEROS
 	public static final String ACCION_PREPARAR_LISTA_PASAJEROS = "preparar_manifiesto";	
 	public static final String MANIFIESTO_DE_PASAJEROS = "manifiesto_pasajeros";
-	
+	public static final String LISTAR_PASAJEROS = "listar_pasajeros_viaje";
+	public static final String REGISTRAR_EMBARQUE = "registrar_embarque";
 }
