@@ -100,8 +100,27 @@ if (history.forward(1))
 			<br>
 			</font>
   		</td>
-		<td>
-		</td>
+<%
+ 	}
+%>
+<%
+ 	if(perfil.getNombre().equals("ANFITRION") || perfil.getNombre().equals("ADMINISTRADOR")){
+%>
+  		<td align="center" style="width: 45%">
+  			<font color="white" style="font-family: monospace; font-size: x-large;">
+  			<br> <b>Módulo de Embarque</b> <br><br>
+  			</font>
+  			<a href="<%=request.getContextPath()%>/index_embarque.jsp" target="_self" class = "menu2">
+				<img title="Entrar a Módulo de Seguridad"
+				src="<%=request.getContextPath()%>/images/boton_menu.png">
+			</a><br><br>
+			<font color="white" style="font-family: 'Trebuchet MS'; font-size: small;">
+			Este módulo permite controlar el embarque de pasajeros a los vehículos, imprimir reportes y
+			boletos necesarios para el anfitrión. Ayudará a controlar, verificar y reportar la información 
+			generada por los otros módulos de la aplicación en el momento oportuno.
+			<br>
+			</font>
+  		</td>
   	</tr>
 <%
  	}
