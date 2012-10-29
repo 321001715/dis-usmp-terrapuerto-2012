@@ -6,6 +6,7 @@ public class Pasajero {
 	private String apellidoPat;
 	private String apellidoMat;
 	private long dni;
+	private int idBoleto;
 	
 	
 	public long getId() {
@@ -37,6 +38,12 @@ public class Pasajero {
 	}
 	public void setDni(long dni) {
 		this.dni = dni;
+	}
+	public int getIdBoleto() {
+		return idBoleto;
+	}
+	public void setIdBoleto(int idBoleto) {
+		this.idBoleto = idBoleto;
 	}
 	
 
