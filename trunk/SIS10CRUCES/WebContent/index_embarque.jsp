@@ -10,44 +10,34 @@
 	String mensaje = (String)request.getAttribute("mensaje");
 	
 %>
-<body bgcolor="#FFCCCC">
+<body bgcolor="#996666">
 <table width="100%">
 	<tr>
 		<td width="20%"></td>
 		<td>
 			<font style="font-family: monospace; font-size: x-large;">
-  			<br> <b>Módulo de Ventas</b> <br><br><br><br>
+  			<br> <b>Módulo de Embarque</b> <br><br><br><br>
   			</font>
   			<table cellpadding="2">
   				<tr>
-<!-- 					<td align="center"> -->
-<%-- 						<a href="<%=application.getContextPath() %>/ServletBoletaje?tipo=<%=Constantes.VENDER_BOLETO %>"> --%>
-<%-- 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_boleto.png"> --%>
-<!-- 						</a> -->
-<!-- 						<br> -->
-<!-- 			  			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;"> -->
-<!-- 			  			Compre sus Boletos -->
-<!-- 						</font> -->
-<!-- 					</td>  -->
-<!-- 					<td width="5%"></td> 				 -->
 					<td align="center">
 						
 		            <a href="ServletBoletaje?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>" > 
-							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_reserva.png">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/embarque_registro.png">
 						</a>
 						<br>
 						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
-						Reserve sus Boletos
+						Registre su Embarque
 						</font>
 					</td>  	
 					<td width="5%"></td> 		
   					<td align="center">
   						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_LISTAR_RESERVA%>&destino=<%=Constantes.CONFIRMAR_RESERVA%>">
-							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/venta_confirmar.png">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/embarque_boleto.png">
 						</a>
 						<br>
 						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
-							Confirme sus Reservas
+						Imprima sus Boletos (opcional)
 						</font>
   					</td>
   					
@@ -60,7 +50,7 @@
 	<tr>
 		<td colspan="2"></td>
 		<td>
-			<img src="<%=request.getContextPath()%>/images/ventas.png">
+			<img src="<%=request.getContextPath()%>/images/embarque.png">
 		</td>
 	</tr>     
 </table>        
