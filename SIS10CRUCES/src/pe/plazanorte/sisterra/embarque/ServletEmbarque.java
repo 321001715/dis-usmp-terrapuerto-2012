@@ -46,9 +46,10 @@ public class ServletEmbarque extends HttpServlet {
 				Vector<Pasajero> listaPasajeros = serviceEmbarque.listarPasajerosXViaje(idViaje);
 				
 				request.setAttribute("listaPasajeros", listaPasajeros);
-				
+				request.setAttribute("idViaje", idViaje);
+				System.out.println(destino);
 				if(destino.equalsIgnoreCase(Constantes.MANIFIESTO_DE_PASAJEROS)) {
-					rd = getServletContext().getRequestDispatcher("/index_ventas.jsp");
+					rd = getServletContext().getRequestDispatcher("/registrar_embarque.jsp");
 				}		
 			} catch (Exception e) {
 				System.out.println("ERROR EN NRO1: PREPARAR LISTA DE PASAJEROS");
