@@ -50,4 +50,10 @@ public class MySqlEmbarqueDAO implements EmbarqueDAO {
 		return pasajeros;
 	}
 
+	@Override
+	public boolean registrarEmbarque(int idBoleto, int idViaje) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
