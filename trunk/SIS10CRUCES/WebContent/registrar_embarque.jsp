@@ -25,11 +25,14 @@ if(listaPasajeros.size() != 0){
 	</div>
 &nbsp;
 &nbsp;
+
+<form action="ServletEmbarque">
+<input type="hidden" name="idViaje" value="<%=idViaje%>">
+<input type="hidden" name="tipo" value="<%=Constantes.REGISTRAR_EMBARQUE%>">
 <table align="center" id="table" class="sortable">
 		<thead>
-			<tr>
-				<th><h3 align="center"></h3></th>
-				<th><h3 align="center">Boleto Nro.</h3></th>
+			<tr>			
+				<th><h3 align="center">Boleto Nro.</h3></th>				
 				<th><h3 align="center">DNI</h3></th>
 				<th><h3 align="center">Nombres</h3></th>
 				<th><h3 align="center">Apellido Paterno</h3></th>
@@ -43,24 +46,22 @@ if(listaPasajeros.size() != 0){
 	for(Pasajero pasajero : listaPasajeros){ 
 %> 
 
-		<tr>
-			<td align="center">
-						<div class="ui-state-default ui-corner-all ui-state-hover">
-							<a href="ServletEmbarque?tipo=<%=Constantes.REGISTRAR_EMBARQUE %>&idBoleto=<%=pasajero.getIdBoleto() %>&destino=<%=Constantes.MANIFIESTO_DE_PASAJEROS%>">
-								<span class="ui-icon ui-icon-check"></span>
-							</a>
-						</div>
-			</td>	
+		<tr>			
 			<td align="center"><%=pasajero.getIdBoleto() %></td>
 			<td align="center"><%=pasajero.getDni() %></td>
 			<td align="center"><%=pasajero.getNombres() %></td>
 			<td align="center"><%=pasajero.getApellidoPat() %></td>
 			<td align="center"><%=pasajero.getApellidoMat() %></td>
 			<td align="center"><input type="checkbox" name="abordaron"></td>			
-			
+		</tr>
+		<tr>
+			<input type="submit" value="Registrar Abordaje">
+		</tr>
 <%} %>
 		</tbody>
 	</table>
+	
+	</form>
 </div>
 	<div id="controls">
 		<div id="perpage">

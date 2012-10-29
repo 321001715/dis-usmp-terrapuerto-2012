@@ -9,8 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pe.plazanorte.sisterra.entidades.Pasajero;
+import pe.plazanorte.sisterra.entidades.Reserva;
+import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.util.Constantes;
 
 /**
@@ -35,13 +38,13 @@ public class ServletEmbarque extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		String destino = request.getParameter("destino");
 		String mensaje = "";
+		ServiceEmbarque serviceEmbarque = new ServiceEmbarque();
+		
 		RequestDispatcher rd = null;
 		//NRO 1
 		if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_LISTA_PASAJEROS)) {
 			try {
-				long idViaje = Long.parseLong(request.getParameter("idViaje"));
-				
-				ServiceEmbarque serviceEmbarque = new ServiceEmbarque();
+				long idViaje = Long.parseLong(request.getParameter("idViaje"));		
 				
 				Vector<Pasajero> listaPasajeros = serviceEmbarque.listarPasajerosXViaje(idViaje);
 				
@@ -57,6 +60,7 @@ public class ServletEmbarque extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
 		request.setAttribute("mensaje", mensaje);		
 		rd.forward(request, response);
 	}
@@ -65,7 +69,43 @@ public class ServletEmbarque extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String tipo = request.getParameter("tipo");
+		String destino = request.getParameter("destino");
+		String mensaje = "";
+		RequestDispatcher rd = null;
+		ServiceEmbarque serviceEmbarque = new ServiceEmbarque();
+		
+		//NRO 2
+		 if(tipo.equalsIgnoreCase(Constantes.REGISTRAR_EMBARQUE)) {
+			try {
+				String[] idPasajeros = request.getParameterValues("idPasajeros");
+				int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+				
+				for (int i = 0; i < idPasajeros.length; i++) {
+					
+					serviceEmbarque.registrarEmbarque(Integer.parseInt(idPasajeros[i]), idViaje);	
+				}
+				
+				HttpSession session = request.getSession(true);
+				Usuario usuario = (Usuario) session.getAttribute("BUsuario");
+				Vector<Pasajero> pasajeros = new Vector<Pasajero>();
+				
+				pasajeros = serviceEmbarque.listarPasajerosXViaje(idViaje);
+				
+				request.setAttribute("pasajeros", pasajeros);
+				rd = getServletContext().getRequestDispatcher(
+				"/confirmar_reserva.jsp");
+			} catch (Exception e) {
+				System.out.println("ERROR EN NRO2: REGISTRAR EMBARQUE");
+				mensaje="OCURRIO UN ERROR";
+				e.printStackTrace();
+			}
+		}
+		 
+		request.setAttribute("mensaje", mensaje);		
+		rd.forward(request, response);
+		
+		
 	}
 
 }
