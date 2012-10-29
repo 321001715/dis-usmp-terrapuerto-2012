@@ -162,4 +162,7 @@ public class Constantes {
 	public static final String MANIFIESTO_DE_PASAJEROS = "manifiesto_pasajeros";
 	public static final String LISTAR_PASAJEROS = "listar_pasajeros_viaje";
 	public static final String REGISTRAR_EMBARQUE = "registrar_embarque";
+	
+	
+	public static final String CERRAR_SESION = "cerrar_sesion";
 }

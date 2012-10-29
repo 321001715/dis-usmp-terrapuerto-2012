@@ -1,3 +1,4 @@
+<%@page import="pe.plazanorte.sisterra.util.Constantes"%>
 <%@ page import="pe.plazanorte.sisterra.entidades.*" %>
 <%@ page import="pe.plazanorte.sisterra.entidades.Proveedor" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -78,7 +79,7 @@ function redirect()
     <td align="left">
 		<font style="font-family: monospace; font-size: medium; color: white;">
 			<b>Bienvenido, Sr. <br>
-			<%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%><input type="hidden" name="usuario"  value="<%=uu.getId() %>"></b>
+			<%=uu.getApePat()%> <%=uu.getApeMat()%>, <%=uu.getNombres()%><input type="hidden" name="usuario"  value="<%=uu.getId() %>"></b>			
 		</font>
 	</td>
 	<td align="right" style="width: 55%">
@@ -88,12 +89,12 @@ function redirect()
 	if(perfil.getNombre().equals("PROVEEDOR")){
 %>
 		<b>Razón Social: <%=proveedor.getRazSocial()%></b>
-		<br/>
-		<a href="Login?">Cerrar sesión</a>
+		<br/>		
 <%	
 	}
 %>
 		</font>
+		<a href="Login?tipo=<%=Constantes.CERRAR_SESION%>"  style="">Cerrar sesi&oacute;n</a>
 	</td>
   </tr>
   </table>

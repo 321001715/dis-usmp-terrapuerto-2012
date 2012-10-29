@@ -81,6 +81,12 @@ public class Login extends HttpServlet {
 			HttpServletResponse response) throws ServletException,
 			java.io.IOException {
 		processRequest(request, response);	
+		String tipo = request.getParameter("tipo");
+		
+		if(tipo != null) {
+			response.sendRedirect("/SIS10CRUCES/home.jsp");
+		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request,
