@@ -22,7 +22,7 @@
   				<tr>
 					<td align="center">
 						
-		            <a href="ServletBoletaje?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>" > 
+		            <a href="ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VIAJE %>&destino=<%=Constantes.LISTAR_PASAJEROS%> "> 
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/embarque_registro.png">
 						</a>
 						<br>

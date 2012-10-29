@@ -46,8 +46,9 @@ if(viaje.size() != 0){
 		<tr>
 			<td align="center">
 						<div class="ui-state-default ui-corner-all ui-state-hover">
-							<a href="ServletEmbarque?tipo=<%=Constantes.ACCION_PREPARAR_LISTA_PASAJEROS %>&idViaje=<%=viaje.get(i).getId() %>">
+							<a href="ServletEmbarque?tipo=<%=Constantes.ACCION_PREPARAR_LISTA_PASAJEROS %>&destino=<%=Constantes.MANIFIESTO_DE_PASAJEROS %>&idViaje=<%=viaje.get(i).getId() %>">
 								<span class="ui-icon ui-icon-check"></span>
+								
 							</a>
 						</div>
 			</td>	
