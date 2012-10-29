@@ -23,10 +23,9 @@ if(listaPasajeros.size() != 0){
 	<div class="ui-corner-bottom ui-widget-content">
 		<font style="font-family: monospace; font-size: x-large;">Resultado de Búsqueda</font>
 	</div>
-&nbsp;
-&nbsp;
 
-<form action="ServletEmbarque">
+
+<form action="ServletEmbarque" method="post">
 <input type="hidden" name="idViaje" value="<%=idViaje%>">
 <input type="hidden" name="tipo" value="<%=Constantes.REGISTRAR_EMBARQUE%>">
 <table align="center" id="table" class="sortable">

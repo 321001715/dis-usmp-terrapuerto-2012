@@ -52,8 +52,24 @@ public class MySqlEmbarqueDAO implements EmbarqueDAO {
 
 	@Override
 	public boolean registrarEmbarque(int idBoleto, int idViaje) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean retorno = false;
+		try {			
+			Connection con = MySqlDAOFactory.abrirConexion();
+			Statement stmt = con.createStatement();
+			
+			String query = "UPDATE T_BOLETO SET ESTADO = '"+Constantes.ESTADO_ABORDADO+"' AND IDBOLETO = "+idBoleto+";";
+			
+			int filas_afectadas = stmt.executeUpdate(query);			
+			
+			con.close();
+			
+			if(filas_afectadas == 1)
+				retorno = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return retorno;
 	}
 
 }
