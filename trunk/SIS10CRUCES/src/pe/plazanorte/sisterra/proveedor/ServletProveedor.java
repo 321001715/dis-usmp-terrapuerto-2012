@@ -220,8 +220,9 @@ public class ServletProveedor extends HttpServlet {
 			// *****************************INICIO GESTIONAR VIAJE *****************************//
 			
 		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
-
+			String destino = request.getParameter("destino");
 		try {
+			
 			Vector<Viaje> viaje = new Vector<Viaje>();
 			HttpSession session = request.getSession(true);
 			Proveedor proveedor = (Proveedor) session.getAttribute("BProveedor");
@@ -243,7 +244,11 @@ public class ServletProveedor extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (tipo.equalsIgnoreCase("listar_viajes")) {
+		
+		if(destino.equalsIgnoreCase(Constantes.LISTAR_PASAJEROS)){
+			rd = getServletContext().getRequestDispatcher(
+					"/embarque_pasajeros.jsp");
+		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
 			rd = getServletContext().getRequestDispatcher(
 				"/mantener_viaje.jsp");
 		}
