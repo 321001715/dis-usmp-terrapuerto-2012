@@ -14,7 +14,7 @@
 <body>
 <%
 Vector<Pasajero> listaPasajeros = (Vector<Pasajero>)request.getAttribute("listaPasajeros");
-int idViaje = (Integer)request.getAttribute("idViaje");
+long idViaje = (Long)request.getAttribute("idViaje");
 
 if(listaPasajeros.size() != 0){
 %> 

@@ -245,9 +245,12 @@ public class ServletProveedor extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if(destino.equalsIgnoreCase(Constantes.LISTAR_PASAJEROS)){
-			rd = getServletContext().getRequestDispatcher(
-					"/embarque_pasajeros.jsp");
+		if(destino != null){
+			if(destino.equalsIgnoreCase(Constantes.LISTAR_PASAJEROS)){
+				rd = getServletContext().getRequestDispatcher(
+						"/embarque_pasajeros.jsp");
+		}
+		
 		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
 			rd = getServletContext().getRequestDispatcher(
 				"/mantener_viaje.jsp");
