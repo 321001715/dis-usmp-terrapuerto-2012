@@ -78,23 +78,21 @@ public class ServletEmbarque extends HttpServlet {
 		//NRO 2
 		 if(tipo.equalsIgnoreCase(Constantes.REGISTRAR_EMBARQUE)) {
 			try {
-				String[] idPasajeros = request.getParameterValues("idPasajeros");
+				String[] idBoleto = request.getParameterValues("idBoleto");
 				int idViaje = Integer.parseInt(request.getParameter("idViaje"));
 				
-				for (int i = 0; i < idPasajeros.length; i++) {
+				for (int i = 0; i < idBoleto.length; i++) {
 					
-					serviceEmbarque.registrarEmbarque(Integer.parseInt(idPasajeros[i]), idViaje);	
-				}
+					serviceEmbarque.registrarEmbarque(Integer.parseInt(idBoleto[i]), idViaje);	
+				}				
 				
-				HttpSession session = request.getSession(true);
-				Usuario usuario = (Usuario) session.getAttribute("BUsuario");
 				Vector<Pasajero> pasajeros = new Vector<Pasajero>();
 				
 				pasajeros = serviceEmbarque.listarPasajerosXViaje(idViaje);
 				
 				request.setAttribute("pasajeros", pasajeros);
 				rd = getServletContext().getRequestDispatcher(
-				"/confirmar_reserva.jsp");
+				"/index_embarque.jsp");
 			} catch (Exception e) {
 				System.out.println("ERROR EN NRO2: REGISTRAR EMBARQUE");
 				mensaje="OCURRIO UN ERROR";

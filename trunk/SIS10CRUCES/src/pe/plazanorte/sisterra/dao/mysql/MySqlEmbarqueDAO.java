@@ -57,7 +57,7 @@ public class MySqlEmbarqueDAO implements EmbarqueDAO {
 			Connection con = MySqlDAOFactory.abrirConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "UPDATE T_BOLETO SET ESTADO = '"+Constantes.ESTADO_ABORDADO+"' AND IDBOLETO = "+idBoleto+";";
+			String query = "UPDATE T_BOLETO SET ESTADO = '"+Constantes.ESTADO_ABORDADO+"' WHERE IDBOLETO = "+idBoleto+";";
 			
 			int filas_afectadas = stmt.executeUpdate(query);			
 			

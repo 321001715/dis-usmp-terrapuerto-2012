@@ -51,7 +51,7 @@ if(listaPasajeros.size() != 0){
 			<td align="center"><%=pasajero.getNombres() %></td>
 			<td align="center"><%=pasajero.getApellidoPat() %></td>
 			<td align="center"><%=pasajero.getApellidoMat() %></td>
-			<td align="center"><input type="checkbox" name="abordaron"></td>			
+			<td align="center"><input type="checkbox" name="idBoleto" value="<%=pasajero.getIdBoleto()%>"></td>			
 		</tr>
 		<tr>
 			<input type="submit" value="Registrar Abordaje">
