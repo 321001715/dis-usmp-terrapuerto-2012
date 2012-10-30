@@ -91,6 +91,10 @@ function redirect()
 		<b>Razón Social: <%=proveedor.getRazSocial()%></b>
 		<br/>		
 <%	
+	}else{
+%>
+	<br>		
+<%
 	}
 %>
 		</font>
