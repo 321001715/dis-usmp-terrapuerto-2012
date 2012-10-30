@@ -15,9 +15,9 @@
 <div id="barra_cabecera">
 	<div id="barra_cabecera_contenido">
 		<span>S&iacute;guenos en:</span>
-		<a href="http://www.facebook.com/PlazaNorteOficial"><img align="right" src="images/principal/logo_facebook.png"></a>	
-		<a href="https://twitter.com/#!/PlazaNortePeru"><img align="right" src="images/principal/logo_twitter.png"></a>
-		<a href="http://www.youtube.com/user/CCplazanorte?ob=5"><img align="right" src="images/principal/logo_youtube.png"></a>
+		<a target="_blank" href="http://www.facebook.com/PlazaNorteOficial"><img align="right" src="images/principal/logo_facebook.png"></a>	
+		<a target="_blank" href="https://twitter.com/#!/PlazaNortePeru"><img align="right" src="images/principal/logo_twitter.png"></a>
+		<a target="_blank" href="http://www.youtube.com/user/CCplazanorte?ob=5"><img align="right" src="images/principal/logo_youtube.png"></a>
 	</div>	
 </div>
 <div id="cabecera">
