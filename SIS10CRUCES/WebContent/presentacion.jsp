@@ -4,6 +4,7 @@
 <meta http-equiv="cache-control" content="no-cache">
 <head>
 <title>:: SIS10C+ ::</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/principal/favicon.ico">
 </head>
 <frameset framespacing="0" border="0" rows="120,*" frameborder="0">
 	<frame name="pressup" scrolling="no" noresize target="presinf" src="<%=request.getContextPath()%>/barra_menu_principal.jsp">
