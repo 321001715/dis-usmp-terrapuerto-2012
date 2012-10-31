@@ -13,11 +13,6 @@
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
  
-  <servlet>
-    <servlet-name>ServletInicial</servlet-name>
-    <servlet-class>pe.plazanorte.sisterra.seguridad.ServletInicial</servlet-class>
-	<load-on-startup>1</load-on-startup>
-  </servlet>
  
   <servlet>
     <servlet-name>servletProveedor</servlet-name>
@@ -45,4 +40,20 @@
     <servlet-name>servletBoletaje</servlet-name>
     <url-pattern>/ServletBoletaje</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  
+  
+    <servlet>
+    <servlet-name>ServletInicial</servlet-name>
+    <servlet-class>pe.plazanorte.sisterra.seguridad.ServletInicial</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInicial</servlet-name>
+    <url-pattern>/ServletInicial</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>
