@@ -40,7 +40,15 @@
 						Imprima sus Boletos (opcional)
 						</font>
   					</td>
-  					
+  					<td align="center">
+  						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_LISTAR_RESERVA%>&destino=<%=Constantes.CONFIRMAR_RESERVA%>">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/pasajeros.png">
+						</a>
+						<br>
+						<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique;">
+						Manifiesto de Pasajeros
+						</font>
+  					</td>
   				</tr>
   			</table>
   			
