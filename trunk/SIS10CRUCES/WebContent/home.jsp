@@ -24,7 +24,9 @@
 	<img align="right" src="images/principal/banner_logo.png">
 </div>
 <div id="contenido">
-	<%@include file="login.jsp" %>
+	<a href="<%=request.getContextPath() %>/ServletInicial" target="_blank">
+	<img src="images/ingresarintranet.gif" style="border:none">
+	</a>
 </div>
 <div id="pie">
 	<img align="right" src="images/principal/banner_pie.png">
