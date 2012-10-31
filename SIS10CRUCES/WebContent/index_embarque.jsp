@@ -41,7 +41,7 @@
 						</font>
   					</td>
   					<td align="center">
-  						<a href="ServletBoletaje?tipo=<%=Constantes.ACCION_LISTAR_RESERVA%>&destino=<%=Constantes.CONFIRMAR_RESERVA%>">
+  						<a href="generar_manifiesto.jsp">
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/pasajeros.png">
 						</a>
 						<br>
