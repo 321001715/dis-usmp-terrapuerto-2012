@@ -102,7 +102,7 @@ public class Login extends HttpServlet {
 					session.removeAttribute("BProveedor");					 
 				}
 				//Redireccion a home
-				response.sendRedirect("/SIS10CRUCES/home.jsp");
+				getServletContext().getRequestDispatcher("/homeLogin.jsp").forward(request, response);				
 			} catch (Exception e) {
 				System.out.println("HA OCURRIDO UN ERROR MIENTRAS SE CERRABA LA SESION");
 			}			

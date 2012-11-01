@@ -24,7 +24,7 @@
 	<img align="right" src="images/principal/banner_logo.png">
 </div>
 <div id="contenido">
-	<a href="<%=request.getContextPath() %>/ServletInicial" target="_blank">
+	<a href="<%=request.getContextPath() %>/ServletInicial">
 	<img src="images/ingresarintranet.gif" style="border:none">
 	</a>
 </div>
