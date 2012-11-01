@@ -73,7 +73,7 @@ public class ServletInicial extends HttpServlet {
 		HttpServletRequest request,
 		HttpServletResponse response)
 		throws ServletException, java.io.IOException {
-		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/homeLogin.jsp").forward(request, response);
 	}
 
 	/** Handles the HTTP <code>GET</code> method.

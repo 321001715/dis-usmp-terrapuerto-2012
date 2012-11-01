@@ -1,59 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>SIS10CRUCES</display-name>
-  <welcome-file-list>
-    <welcome-file>home.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>pe.plazanorte.sisterra.seguridad.Login</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/Login</url-pattern>
-  </servlet-mapping>
- 
- 
-  <servlet>
-    <servlet-name>servletProveedor</servlet-name>
-    <servlet-class>pe.plazanorte.sisterra.proveedor.ServletProveedor</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>servletProveedor</servlet-name>
-    <url-pattern>/ServletProveedor</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>servletSeguridad</servlet-name>
-    <servlet-class>pe.plazanorte.sisterra.seguridad.ServletSeguridad</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>servletSeguridad</servlet-name>
-    <url-pattern>/ServletSeguridad</url-pattern>
-  </servlet-mapping>
-  
-    <servlet>
-    <servlet-name>servletBoletaje</servlet-name>
-    <servlet-class>pe.plazanorte.sisterra.seguridad.ServletBoletaje</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>servletBoletaje</servlet-name>
-    <url-pattern>/ServletBoletaje</url-pattern>
-  </servlet-mapping>
-  
-  
-  
-  
-  
-    <servlet>
-    <servlet-name>ServletInicial</servlet-name>
-    <servlet-class>pe.plazanorte.sisterra.seguridad.ServletInicial</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServletInicial</servlet-name>
-    <url-pattern>/ServletInicial</url-pattern>
-  </servlet-mapping>
-  
-  
-  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>SIS10CRUCES</display-name>
+	<welcome-file-list>
+		<welcome-file>home.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>pe.plazanorte.sisterra.seguridad.Login</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>servletProveedor</servlet-name>
+		<servlet-class>pe.plazanorte.sisterra.proveedor.ServletProveedor</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletProveedor</servlet-name>
+		<url-pattern>/ServletProveedor</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servletSeguridad</servlet-name>
+		<servlet-class>pe.plazanorte.sisterra.seguridad.ServletSeguridad</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletSeguridad</servlet-name>
+		<url-pattern>/ServletSeguridad</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servletBoletaje</servlet-name>
+		<servlet-class>pe.plazanorte.sisterra.seguridad.ServletBoletaje</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletBoletaje</servlet-name>
+		<url-pattern>/ServletBoletaje</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ServletInicial</servlet-name>
+		<servlet-class>pe.plazanorte.sisterra.seguridad.ServletInicial</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletInicial</servlet-name>
+		<url-pattern>/ServletInicial</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error500.jsp</location>
+	</error-page>
+
 </web-app>
