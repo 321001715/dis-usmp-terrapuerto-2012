@@ -112,9 +112,7 @@
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td><form id="form1" name="form1" method="post" action="">
-      <label>
-        <input type="submit" name="button" id="button" value="Imprimir" />
-      </label>
+      <a href="javascript:print()" _fcksavedurl="javascript:print()">Imprimir</a>
     </form></td>
     <td>&nbsp;</td>
   </tr>
