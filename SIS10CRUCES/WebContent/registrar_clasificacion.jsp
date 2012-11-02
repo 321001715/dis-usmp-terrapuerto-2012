@@ -18,9 +18,12 @@
 			document.registrar.descripcion.focus();
 			return false;
 		}
-		
+		alert("Registro Exitoso.");
 		return true;
 	}	
+	
+
+	
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
@@ -39,7 +42,7 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Registrar Clasificación</font>
    </div>
-	<form action="ServletClasificacion" method="post" name="registrar" onsubmit="validar()">
+	<form action="ServletClasificacion" method="post" name="registrar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_CLASIFICACION%>">
 		<table>	
 			<tr><td><br></td></tr>

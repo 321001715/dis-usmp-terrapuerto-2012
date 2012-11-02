@@ -38,7 +38,7 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Registrar Perfil</font>
    </div>
-	<form action="ServletSeguridad" method="post" name="registrarperfil" onsubmit="validar()">
+	<form action="ServletSeguridad" method="post" name="registrarperfil" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="registrarPerfil">
 		<table>	
 			<tr><td><br></td></tr>

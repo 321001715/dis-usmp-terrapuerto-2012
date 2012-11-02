@@ -10,6 +10,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript">
+	function validar(){
+		if(document.regis.nombre.value.length == 0 
+				|| document.regis.fecSalida.value.length == 0 
+				|| document.regis.fecLlegada.value.length == 0
+				|| document.regis.horSalida.value.length == 0
+				|| document.regis.horLegada.value.length == 0
+				|| document.regis.precio.value.length == 0){		
+			alert("Debe llenar alguna condición para el registro.");
+			document.regis.nombre.focus();				
+			return false;
+		}
+		return true;
+	}
+</script>
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
 <link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
 <link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
@@ -61,7 +76,7 @@ $(document).ready(function(){
    		<font style="font-family: monospace; font-size: x-large;">Registrar Viaje</font>
    </div>
 
-<form method="post" action="ServletProveedor">
+<form method="post" action="ServletProveedor" name="regis" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_VIAJE %>">
 	<table border="0">
 			<tr><td><br></td></tr>
