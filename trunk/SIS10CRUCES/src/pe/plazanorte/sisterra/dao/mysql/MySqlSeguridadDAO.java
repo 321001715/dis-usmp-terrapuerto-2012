@@ -750,10 +750,21 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 
 	@Override
 	public int obtenerEdad(int dni) {
-			
-		String query="SELECT fechaNacimiento, CURDATE(), (YEAR(CURDATE())-YEAR(fechaNacimiento)) - (RIGHT(CURDATE(),5)<RIGHT(fechaNacimiento,5)) AS age FROM t_persona;";
-		// TODO Auto-generated method stub
-		return 0;
+		int edad=0;
+		try {
+		Connection con = MySqlDAOFactory.abrirConexion();
+		Statement stmnt = con.createStatement();	
+		String query="SELECT fechaNacimiento, CURDATE(), (YEAR(CURDATE())-YEAR(fechaNacimiento)) - (RIGHT(CURDATE(),5)<RIGHT(fechaNacimiento,5)) AS age FROM t_persona WHERE numDoc='"+dni+"';";
+		ResultSet rs = stmnt.executeQuery(query);
+		
+		while (rs.next()) {
+			edad=rs.getInt("age");
+		}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return edad;
 	}
 
 }
