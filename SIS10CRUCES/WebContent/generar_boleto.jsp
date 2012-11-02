@@ -1,3 +1,8 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Persona"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Ruta"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Perfil"%>
+<%@page import="pe.plazanorte.sisterra.entidades.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,6 +40,19 @@ ventimp.close();
 }
 
 </script>
+<%
+	Usuario reservador = (Usuario)session.getAttribute("BUsuario");	
+	Perfil usuarioPerfil = (Perfil)session.getAttribute("BPerfil");	
+	int idReserva = (Integer)request.getAttribute("idReserva");	
+	Viaje viaje = (Viaje)request.getAttribute("viaje");	
+	Ruta ruta = (Ruta)request.getAttribute("ruta");	
+	int piso = (Integer)request.getAttribute("piso");	
+	int asiento = (Integer)request.getAttribute("asiento");	
+	String nombreProveedor = (String)request.getAttribute("nombreProveedor");
+	String busqueda = (String)request.getAttribute("busqueda");
+	String mensaje = (String)request.getAttribute("mensaje");
+	Persona persona = (Persona)request.getAttribute("persona");	
+%>
 <body>
 <div id="seleccion">
 <div class="ui-corner-bottom ui-widget-content">
@@ -44,7 +62,10 @@ ventimp.close();
 <table width="559" height="318" border="0">
   <tr>
     <td width="138">Fecha</td>
-    <td colspan="3">&nbsp;</td>
+    <td colspan="3"><script>
+var f = new Date();
+document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+</script> </td>
   </tr>
   <tr>
     <td>N° Reserva:</td>
@@ -54,7 +75,7 @@ ventimp.close();
   </tr>
   <tr>
     <td>Cod Viaje:</td>
-    <td>&nbsp;</td>
+    <td></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
@@ -90,7 +111,7 @@ ventimp.close();
   </tr>
   <tr>
     <td>Costo:</td>
-    <td>&nbsp;</td>
+    <td><%=viaje.getPrecio() %></td>
     <td>Nro Asiento:</td>
     <td>&nbsp;</td>
   </tr>
