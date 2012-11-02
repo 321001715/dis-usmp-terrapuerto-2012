@@ -55,13 +55,6 @@
 	</table>
 <table border="0" >
       <tr>
-        <td >Pasajeros confirmados</td>
-        <td ><form name="form3" method="post" action="">
-          <input type="text" name="textfield" id="textfield">
-        </form></td>
-        <td >&nbsp;</td>
-      </tr>
-      <tr>
         <td>Total Pasajeros</td>
         <td><form name="form4" method="post" action="">
           <input type="text" name="textfield2" id="textfield2">
