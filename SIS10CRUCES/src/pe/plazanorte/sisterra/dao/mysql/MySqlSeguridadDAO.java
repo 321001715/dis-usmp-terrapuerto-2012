@@ -748,4 +748,10 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 		return cliente;
 	}
 
+	@Override
+	public int obtenerEdad(int dni) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

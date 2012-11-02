@@ -16,7 +16,7 @@ public interface SeguridadDAO {
 	public Persona consultarPersona(int dni);
 	public Vector<Usuario> buscarUsuarios(String user, String perfil,String ape,String dni);
 	public boolean registrarCliente(Cliente cliente);
-	
+	public int obtenerEdad(int dni );
 	public Vector<Perfil> listarPerfil () throws Exception;
 	public boolean registrarPerfil(Perfil perfil);
 	public boolean modificarPerfil(Perfil perfil);
