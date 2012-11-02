@@ -376,6 +376,24 @@ public class ServletBoletaje extends HttpServlet {
 				rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 				
 			}else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_IMPRIMIR_BOLETO)){
+				String nombreProveedor = request.getParameter("nombreProveedor");				
+				//int asiento = Integer.parseInt(request.getParameter("asiento"));
+				int piso = Integer.parseInt(request.getParameter("piso"));
+				Viaje viaje = service.consultarViajeCliente(idViaje);
+				Ruta ruta = service.consultarRuta(viaje.getIdRuta());
+				
+				ServiceConsultas serviceConsultas = new ServiceConsultas();
+				Persona persona = serviceConsultas.consultarPersona(documento);
+				
+				
+				request.setAttribute("idReserva", idReserva);
+				request.setAttribute("viaje", viaje);
+				request.setAttribute("nombreProveedor", nombreProveedor);
+				request.setAttribute("asiento", asiento);
+				request.setAttribute("piso", piso);
+				request.setAttribute("ruta", ruta);
+				
+				request.setAttribute("persona", persona);
 				rd = getServletContext().getRequestDispatcher("/generar_boleto.jsp");
 			
 			}else{
