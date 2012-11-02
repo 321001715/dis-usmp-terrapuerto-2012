@@ -1,3 +1,5 @@
+<%@page import="pe.plazanorte.sisterra.entidades.Viaje"%>
+<%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,6 +14,10 @@
 <script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%
+
+Vector<Viaje> listaViajes=(Vector<Viaje>)request.getAttribute("viaje");
+%>
 <title>Generar Manifiesto</title>
 
 </head>
@@ -26,8 +32,12 @@
 </div>
 	<table>
 	<tr>
-	<td>Codigo de Viaje:</td>
-	<td><input type="text" name="txt_viaje" ></td>
+	<td>Nombre de Viaje:</td>
+	<td><select name="sel_viaje">
+						<% for (int i=0;i<listaViajes.size();i++){ %>
+							<option value="<%=listaViajes.get(i).getId() %>"> <%=listaViajes.get(i).getNomViaje() %> </option>
+						<%} %>
+					</select></td>
 	<td>Numero de Reserva</td>
 	<td><input type="text" name="txt_reserva"></td>
 	<td><input type="submit" name="tipoSubmit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>

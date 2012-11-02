@@ -35,6 +35,12 @@
 	
 %>
 <body>
+<script type="text/javascript">
+var piso=1;
+function capturarPiso() {
+	
+}
+</script>
 <div class="ui-widget">
 <form action="ServletBoletaje" method="post" name="reservar" >
 <input type="hidden" name="tipo" value="<%=Constantes.ACCION_SELECCIONAR_ASIENTO %>">
@@ -162,7 +168,7 @@
 	   				<td width="10%"></td>
 					<td width="150px">Nº de Asiento: </td>
 					<td>
-						<select name="asientos">
+						<select name="asientos" onclick="capturarPiso()">
 							<option></option>
 							<%for(int i=0;i<40;i++){ 
 							if(asientos.get(i).getEstado().equals("DISPONIBLE")){

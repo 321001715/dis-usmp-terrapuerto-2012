@@ -40,6 +40,19 @@ ventimp.close();
 }
 
 </script>
+<style type="text/css">
+<!--
+#apDiv1 {
+
+	left:18px;
+	top:28px;
+	width:700px;
+	height:300px;
+	z-index:1;
+	background-image: url(images/principal/banner_logo.png);
+}
+-->
+</style>
 <%
 	Usuario reservador = (Usuario)session.getAttribute("BUsuario");	
 	Perfil usuarioPerfil = (Perfil)session.getAttribute("BPerfil");	
@@ -156,11 +169,14 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td><form id="form1" name="form1" method="post" action="">
-      <a href="javascript:imprSelec('seleccion')" >Imprimir</a>
+      <a href="javascript:imprSelec('apDiv1')" >Imprimir</a>
     </form></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 </div>
+<div id="apDiv1"></div>
+<br>
+<br>
 </body>
 </html>
