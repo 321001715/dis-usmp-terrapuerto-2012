@@ -69,13 +69,13 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
   </tr>
   <tr>
     <td>N° Reserva:</td>
-    <td width="92">&nbsp;</td>
+    <td width="92"><%=idReserva %></td>
     <td width="125">&nbsp;</td>
     <td width="176">&nbsp;</td>
   </tr>
   <tr>
-    <td>Cod Viaje:</td>
-    <td></td>
+    <td>Nombre Viaje:</td>
+    <td><%=viaje.getNomViaje() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>

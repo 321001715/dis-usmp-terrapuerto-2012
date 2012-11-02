@@ -27,6 +27,7 @@ public interface BoletajeDAO {
 	public boolean cambiarEstado(int idViaje, int asiento);
 	public Vector<Boleto> listarBoletos(long idUsuario);
 	public Pasajero buscarPasajero(int idPasajero);
+	
 	public Viaje buscarViaje(int idViaje);
 	public Vector<Reserva> listarReservas(long idUsuario);
 	public Vector<Ruta> listarRutas();
