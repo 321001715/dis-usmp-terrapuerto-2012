@@ -5,6 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript">
+	function validar(){
+		if(document.regis.codVehiculo.value.length == 0 || document.regis.marca.value.length == 0 || document.regis.modelo.value.length == 0 || document.regis.placa.value.length == 0 || document.regis.numAsientos.value.length == 0|| document.regis.asientosPorPiso.value.length == 0){		
+			alert("Debe llenar alguna condición para el registro.");
+			document.regis.codVehiculo.focus();				
+			return false;
+		}
+		alert("Registro Exitoso.");
+		return true;
+	}
+</script>
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
 <link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
 <link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
@@ -21,7 +32,7 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Registrar Vehículo</font>
    </div>
-<form action="ServletProveedor" method="post">
+<form action="ServletProveedor" name="regis" method="post"  onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_REGISTRAR_VEHICULO %>">
 	<table border="0">
 			<tr><td><br></td></tr>

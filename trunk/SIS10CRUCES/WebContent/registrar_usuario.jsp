@@ -8,6 +8,19 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
+<script type="text/javascript">
+	function validar(){
+		if(		document.registrar.nombre.value.length == 0|| 
+				document.registrar.apePat.value.length == 0 || 
+				document.registrar.apeMat.value.length == 0){		
+			alert("Debe llenar alguna condición para el registro.");
+			document.registrar.txt_usuario.focus();				
+			return false;
+		}
+		alert("Registro Exitoso.");
+		return true;
+	}
+</script>
 <link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
 <link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
 <link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
@@ -33,7 +46,7 @@
 %>
 <br>
 <%@include file="buscar_usuario_dni.jsp" %>
-<form action="ServletSeguridad" name="registrar" method="post">
+<form action="ServletSeguridad" name="registrar" method="post"  onsubmit="return validar()">
 <table>	
 	<tr><td><input type="hidden" name="tipo" value="registrar"><br></td></tr>
 			<tr>
