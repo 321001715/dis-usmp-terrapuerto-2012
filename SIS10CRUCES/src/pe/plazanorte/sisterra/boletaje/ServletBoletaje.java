@@ -375,6 +375,9 @@ public class ServletBoletaje extends HttpServlet {
 				
 				rd = getServletContext().getRequestDispatcher("/vender_boleto.jsp");
 				
+			}else if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_IMPRIMIR_BOLETO)){
+				rd = getServletContext().getRequestDispatcher("/generar_boleto.jsp");
+			
 			}else{
 				
 				if(tipoPago.equalsIgnoreCase(Constantes.TIPO_PAGO_EFECTIVO)){
