@@ -41,7 +41,7 @@
 						</font>
   					</td>
   					<td align="center">
-  						<a href="generar_manifiesto.jsp">
+  						 <a href="ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_VIAJE %>&destino=<%=Constantes.GENERAR_MANIFIESTO_DE_PASAJEROS %>"> 
 							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/pasajeros.png">
 						</a>
 						<br>

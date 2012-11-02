@@ -55,10 +55,11 @@ public class ServletProveedor extends HttpServlet {
 
 		String tipo = request.getParameter("tipo");
 		String mensaje = "Ocurri� un error.";
-		
+
 		RequestDispatcher rd = null;
 
-		// *****************************INICIO MANTENER PROVEEDOR*****************************//
+		// *****************************INICIO MANTENER
+		// PROVEEDOR*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_PROVEEDOR)) {
 
@@ -116,9 +117,11 @@ public class ServletProveedor extends HttpServlet {
 			 */
 		}
 
-		// *****************************FIN MANTENER PROVEEDOR*****************************//
+		// *****************************FIN MANTENER
+		// PROVEEDOR*****************************//
 
-		// *****************************INICIO GESTIONAR VEHICULO*****************************//
+		// *****************************INICIO GESTIONAR
+		// VEHICULO*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VEHICULO)) {
 
@@ -148,10 +151,11 @@ public class ServletProveedor extends HttpServlet {
 			Vehiculo vehiculo = new Vehiculo();
 			int destino = Integer.parseInt(request.getParameter("destino"));
 			try {
-				vehiculo.setIdVehiculo(Integer.parseInt(request.getParameter("idVehiculo")));
+				vehiculo.setIdVehiculo(Integer.parseInt(request
+						.getParameter("idVehiculo")));
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
-				vehiculo = service.consultarVehiculo(vehiculo,uu);
+				vehiculo = service.consultarVehiculo(vehiculo, uu);
 				request.setAttribute("vehiculo", vehiculo);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -165,9 +169,11 @@ public class ServletProveedor extends HttpServlet {
 
 		}
 
-		// *****************************FIN GESTIONAR VEHICULO*****************************//
+		// *****************************FIN GESTIONAR
+		// VEHICULO*****************************//
 
-		// ****************************INICIO GESTIONAR RUTA*****************************//
+		// ****************************INICIO GESTIONAR
+		// RUTA*****************************//
 
 		if (tipo.equalsIgnoreCase("listar_ruta")) {
 
@@ -202,7 +208,7 @@ public class ServletProveedor extends HttpServlet {
 				System.out.println((request.getParameter("id")));
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
-				ruta = service.consultarRuta(ruta,uu);
+				ruta = service.consultarRuta(ruta, uu);
 
 				request.setAttribute("ruta", ruta);
 
@@ -214,84 +220,107 @@ public class ServletProveedor extends HttpServlet {
 						"/modificar_ruta.jsp");
 
 			}
-			
-			// ****************************FIN GESTIONAR RUTA*****************************//
-			
-			// *****************************INICIO GESTIONAR VIAJE *****************************//
-			
-		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
+
+			// ****************************FIN GESTIONAR
+			// RUTA*****************************//
+
+			// *****************************INICIO GESTIONAR VIAJE
+			// *****************************//
+
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
 			String destino = request.getParameter("destino");
-		try {
-			
-			Vector<Viaje> viaje = new Vector<Viaje>();
-			HttpSession session = request.getSession(true);
-			Proveedor proveedor = (Proveedor) session.getAttribute("BProveedor");
-			viaje = service.listarViaje(proveedor);
-			request.setAttribute("viaje", viaje);
-			
-			ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
-			Vector<Ruta> listaRutas = service.listarRuta(proveedor);
-			Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
-			Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
-			Vector<Viaje> listaViajes = service.listarViaje(proveedor);
-			request.setAttribute("listaRutas", listaRutas);
-			request.setAttribute("listaVehiculos", listaVehiculos);
-			request.setAttribute("listaClasificaciones", listaClasificaciones);
-			request.setAttribute("listaViajes", listaViajes);
-			
-			rd = getServletContext().getRequestDispatcher(
-					"/mantener_viaje.jsp");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if(destino != null){
-			if(destino.equalsIgnoreCase(Constantes.LISTAR_PASAJEROS)){
+			try {
+
+				Vector<Viaje> viaje = new Vector<Viaje>();
+				HttpSession session = request.getSession(true);
+				Proveedor proveedor = (Proveedor) session
+						.getAttribute("BProveedor");
+				viaje = service.listarViaje(proveedor);
+				request.setAttribute("viaje", viaje);
+
+				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
+				Vector<Vehiculo> listaVehiculos = service
+						.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion
+						.listarClasificaciones();
+				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+				request.setAttribute("listaRutas", listaRutas);
+				request.setAttribute("listaVehiculos", listaVehiculos);
+				request.setAttribute("listaClasificaciones",
+						listaClasificaciones);
+				request.setAttribute("listaViajes", listaViajes);
+
 				rd = getServletContext().getRequestDispatcher(
-						"/embarque_pasajeros.jsp");
+						"/mantener_viaje.jsp");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			if (destino != null) {
+				if (destino.equalsIgnoreCase(Constantes.LISTAR_PASAJEROS)) {
+					rd = getServletContext().getRequestDispatcher(
+							"/embarque_pasajeros.jsp");
+				} else if (destino
+						.equalsIgnoreCase(Constantes.GENERAR_MANIFIESTO_DE_PASAJEROS)) {
+					rd = getServletContext().getRequestDispatcher(
+							"/generar_manifiesto.jsp");
+
+				}
+
+			} else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
+				rd = getServletContext().getRequestDispatcher(
+						"/mantener_viaje.jsp");
+			} else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
+
+			}
+
+		} else if (tipo
+				.equalsIgnoreCase(Constantes.ACCION_PREPARAR_REGISTRO_VIAJE)) {
+			ServiceProveedor serviceProveedor = new ServiceProveedor();
+			ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
+			String destino = request.getParameter("destino");
+
+			HttpSession session = request.getSession(true);
+			Proveedor proveedor = (Proveedor) session
+					.getAttribute("BProveedor");
+			proveedor.setIdProveedor(proveedor.getIdProveedor());
+			try {
+				Vector<Ruta> listaRutas = serviceProveedor
+						.listarRuta(proveedor);
+				Vector<Vehiculo> listaVehiculos = serviceProveedor
+						.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion
+						.listarClasificaciones();
+				Vector<Chofer> listaChoferes = serviceProveedor
+						.listarChoferes(proveedor);
+
+				request.setAttribute("listaRutas", listaRutas);
+				request.setAttribute("listaVehiculos", listaVehiculos);
+				request.setAttribute("listaClasificaciones",
+						listaClasificaciones);
+				request.setAttribute("listaChoferes", listaChoferes);
+
+				if (destino.equalsIgnoreCase(Constantes.REGISTRAR_VIAJE))
+					;
+				rd = getServletContext().getRequestDispatcher(
+						"/registrar_viaje.jsp");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VIAJE)) {
+			String destino = request.getParameter("destino");
+			ServiceConsultas serviceConsultas = new ServiceConsultas();
+			int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+
+			serviceConsultas.consultarViaje(idViaje);
+
+			if (destino.equalsIgnoreCase(Constantes.MODIFICAR_VIAJE))
+				rd = getServletContext().getRequestDispatcher(
+						"/registrar_viaje.jsp");
 		}
-		
-		}else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
-			rd = getServletContext().getRequestDispatcher(
-				"/mantener_viaje.jsp");
-		}
-		
-	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_PREPARAR_REGISTRO_VIAJE)){
-		ServiceProveedor serviceProveedor = new ServiceProveedor();
-		ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
-		String destino = request.getParameter("destino");
-		
-		HttpSession session = request.getSession(true);
-		Proveedor proveedor = (Proveedor) session.getAttribute("BProveedor");
-		proveedor.setIdProveedor(proveedor.getIdProveedor()); 
-		try {
-			Vector<Ruta> listaRutas = serviceProveedor.listarRuta(proveedor);
-			Vector<Vehiculo> listaVehiculos = serviceProveedor.listarVehiculos(proveedor);
-			Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
-			Vector<Chofer> listaChoferes = serviceProveedor.listarChoferes(proveedor);
-			
-			request.setAttribute("listaRutas", listaRutas);
-			request.setAttribute("listaVehiculos", listaVehiculos);
-			request.setAttribute("listaClasificaciones", listaClasificaciones);
-			request.setAttribute("listaChoferes", listaChoferes);
-			
-			if(destino.equalsIgnoreCase(Constantes.REGISTRAR_VIAJE));
-				rd = getServletContext().getRequestDispatcher("/registrar_viaje.jsp");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}			
-	}else if(tipo.equalsIgnoreCase(Constantes.ACCION_CONSULTAR_VIAJE)) {
-		String destino = request.getParameter("destino");
-		ServiceConsultas serviceConsultas = new ServiceConsultas();
-		int idViaje = Integer.parseInt(request.getParameter("idViaje"));
-		
-		serviceConsultas.consultarViaje(idViaje);
-		
-		if(destino.equalsIgnoreCase(Constantes.MODIFICAR_VIAJE))
-			rd = getServletContext().getRequestDispatcher("/registrar_viaje.jsp");
-	}
-	
+
 		request.setAttribute("mensaje", mensaje);
 		rd.forward(request, response);
 	}
@@ -311,7 +340,8 @@ public class ServletProveedor extends HttpServlet {
 
 		RequestDispatcher rd = null;
 
-		// *****************************INICIO MANTENER PROVEEDOR*****************************//
+		// *****************************INICIO MANTENER
+		// PROVEEDOR*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_PROVEEDOR)) {
 
@@ -323,7 +353,7 @@ public class ServletProveedor extends HttpServlet {
 			int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 			ServiceSeguridad servicSeguridad = new ServiceSeguridad();
 			boolean retorno = false;
-			
+
 			try {
 				Proveedor proveedor = new Proveedor();
 				proveedor.setRuc(ruc);
@@ -332,15 +362,15 @@ public class ServletProveedor extends HttpServlet {
 				proveedor.setTel(telefono);
 				proveedor.setDireccion(direccion);
 				proveedor.setIdUsuario(idUsuario);
-				
+
 				Usuario usuario = new Usuario();
 				usuario.setId(idUsuario);
-				
-				if(serviceUsuario.consultarUsuario(usuario) != null){
+
+				if (serviceUsuario.consultarUsuario(usuario) != null) {
 					retorno = service.agregarProveedor(proveedor);
-					//usuario.setRelacion(Constantes.RELACION_PROVEEDOR_USUARIO);
+					// usuario.setRelacion(Constantes.RELACION_PROVEEDOR_USUARIO);
 					serviceUsuario.modificarUsuario(usuario);
-				}			
+				}
 
 				if (retorno)
 					mensaje = "Proveedor agregado con exito.";
@@ -471,9 +501,11 @@ public class ServletProveedor extends HttpServlet {
 			}
 		}
 
-		// *****************************FIN MANTENER PROVEEDOR*****************************//
+		// *****************************FIN MANTENER
+		// PROVEEDOR*****************************//
 
-		// *****************************INICIO GESTIONAR VEHICULO*****************************//
+		// *****************************INICIO GESTIONAR
+		// VEHICULO*****************************//
 
 		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VEHICULO)) {
 			HttpSession session = request.getSession(true);
@@ -491,7 +523,7 @@ public class ServletProveedor extends HttpServlet {
 			String asientosPorPiso = request.getParameter("asientosPorPiso");
 
 			String estado = request.getParameter("estado");
-		
+
 			try {
 				Vehiculo vehiculo = new Vehiculo();
 				vehiculo.setCodVehiculo(codigoVehiculo);
@@ -499,7 +531,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setModelo(modelo);
 				vehiculo.setPlaca(placa);
 				vehiculo.setNumPiso(numPiso);
-			
+
 				vehiculo.setNumAsientos(numAsientos);
 				vehiculo.setIdProveedor(idProveedor);
 				vehiculo.setAsientosPorPiso(asientosPorPiso);
@@ -508,18 +540,18 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setObs(obs);
 
 				long retorno = service.agregarVehiculo(vehiculo);
-				boolean retorno1=service.actualizarEstado(vehiculo.getNumAsientos(),vehiculo.getIdVehiculo());
-				
-				if (retorno1&retorno!=0)
+				boolean retorno1 = service.actualizarEstado(
+						vehiculo.getNumAsientos(), vehiculo.getIdVehiculo());
+
+				if (retorno1 & retorno != 0)
 					mensaje = "Veh�culo agregado con �xito.";
 				else
 					mensaje = "Error, no se pudo registrar el veh�culo.";
-				
+
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos(uu);
-				
-				
+
 				request.setAttribute("vehiculos", vehiculos);
 
 				rd = getServletContext().getRequestDispatcher(
@@ -535,14 +567,15 @@ public class ServletProveedor extends HttpServlet {
 					.getParameter("codVehiculo"));
 			String estado = request.getParameter("estado");
 			String marca = request.getParameter("marca");
-			String modelo= request.getParameter("modelo");
-			String placa= request.getParameter("placa");
-			int numPiso= Integer.parseInt(request.getParameter("numPiso"));
-			int numAsientos= Integer.parseInt(request.getParameter("numAsientos"));
-			String asientosPorPiso= request.getParameter("asientosPorPiso");
-			
+			String modelo = request.getParameter("modelo");
+			String placa = request.getParameter("placa");
+			int numPiso = Integer.parseInt(request.getParameter("numPiso"));
+			int numAsientos = Integer.parseInt(request
+					.getParameter("numAsientos"));
+			String asientosPorPiso = request.getParameter("asientosPorPiso");
+
 			String obs = request.getParameter("obs");
-			
+
 			String asientoNoDisponible = formatoAsientosNoDisponibles(request
 					.getParameterValues("asientosNoDisponibles"));
 
@@ -560,15 +593,15 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setAsientosNoDisponibles(asientoNoDisponible);
 
 				boolean retorno = service.modificarVehiculo(vehiculo);
-				
-					if (retorno) {
-						String[] s=request.getParameterValues("asientosNoDisponibles");
-						for (int i = 0; i < s.length; i++) {
-							service.actulizarAsientos(s[i],idVehiculo);
-						}
+
+				if (retorno) {
+					String[] s = request
+							.getParameterValues("asientosNoDisponibles");
+					for (int i = 0; i < s.length; i++) {
+						service.actulizarAsientos(s[i], idVehiculo);
 					}
-				
-				
+				}
+
 				if (retorno)
 					mensaje = "Veh�culo modificado con �xito.";
 				else
@@ -578,7 +611,7 @@ public class ServletProveedor extends HttpServlet {
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Vehiculo> vehiculos = new Vector<Vehiculo>();
 				vehiculos = service.listarVehiculos(uu);
-				
+
 				request.setAttribute("vehiculos", vehiculos);
 
 				rd = getServletContext().getRequestDispatcher(
@@ -597,7 +630,7 @@ public class ServletProveedor extends HttpServlet {
 				vehiculo.setIdVehiculo(id);
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
-				vehiculo = service.consultarVehiculo(vehiculo,uu);
+				vehiculo = service.consultarVehiculo(vehiculo, uu);
 				if (vehiculo == null)
 					mensaje = "No se encontraron resultados para su consulta. [Vehiculo cod."
 							+ id + "]";
@@ -645,7 +678,7 @@ public class ServletProveedor extends HttpServlet {
 			try {
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
-				vehiculos = service.buscarVehiculo(vehiculo,uu);
+				vehiculos = service.buscarVehiculo(vehiculo, uu);
 				request.setAttribute("vehiculos", vehiculos);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -657,9 +690,11 @@ public class ServletProveedor extends HttpServlet {
 			}
 		}
 
-		// *****************************FIN GESTIONAR VEHICULO*****************************//
+		// *****************************FIN GESTIONAR
+		// VEHICULO*****************************//
 
-		// *****************************INICIO GESTIONAR RUTA*****************************//
+		// *****************************INICIO GESTIONAR
+		// RUTA*****************************//
 
 		if (tipo.equalsIgnoreCase("registrarRuta")) {
 
@@ -705,8 +740,8 @@ public class ServletProveedor extends HttpServlet {
 			String destino = request.getParameter("destino");
 			int km = Integer.parseInt(request.getParameter("km"));
 			int duracion = Integer.parseInt(request.getParameter("duracion"));
-			String estado=request.getParameter("estado");
-			long idruta=Long.parseLong(request.getParameter("codRuta"));
+			String estado = request.getParameter("estado");
+			long idruta = Long.parseLong(request.getParameter("codRuta"));
 			try {
 				Ruta ruta = new Ruta();
 				ruta.setNomRuta(nomRuta);
@@ -717,21 +752,20 @@ public class ServletProveedor extends HttpServlet {
 				ruta.setEstado(estado);
 				ruta.setId(idruta);
 				boolean retorno = service.modificarRuta(ruta);
-				
+
 				if (retorno)
 					mensaje = "Clasificacion modificado con �xito.";
 				else
 					mensaje = "Error, no se pudo modificar la clasificacion.";
-				
+
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
 				Vector<Ruta> rutas = new Vector<Ruta>();
-				rutas=service.listarRuta(uu);
+				rutas = service.listarRuta(uu);
 				request.setAttribute("ruta", rutas);
 				rd = getServletContext().getRequestDispatcher(
 						"/mantener_ruta.jsp");
 
-				
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -757,7 +791,7 @@ public class ServletProveedor extends HttpServlet {
 			try {
 				HttpSession session = request.getSession(true);
 				Proveedor uu = (Proveedor) session.getAttribute("BProveedor");
-				vec = service.buscarRuta(ruta,uu);
+				vec = service.buscarRuta(ruta, uu);
 				request.setAttribute("ruta", vec);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -774,13 +808,15 @@ public class ServletProveedor extends HttpServlet {
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_RUTA)) {
 
 		}
-		
-		// *****************************FIN GESTIONAR RUTA*****************************//
-		
-		//******************************INICIO GESTIONAR VIAJE******************************//
-		
-		if(tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VIAJE)) {			
-			
+
+		// *****************************FIN GESTIONAR
+		// RUTA*****************************//
+
+		// ******************************INICIO GESTIONAR
+		// VIAJE******************************//
+
+		if (tipo.equalsIgnoreCase(Constantes.ACCION_REGISTRAR_VIAJE)) {
+
 			String nombre = request.getParameter("nombre");
 			String fecSalida = request.getParameter("fecSalida");
 			String fecLlegada = request.getParameter("fecLlegada");
@@ -789,12 +825,14 @@ public class ServletProveedor extends HttpServlet {
 			double precio = Double.parseDouble(request.getParameter("precio"));
 			int idRuta = Integer.parseInt(request.getParameter("idRuta"));
 			String servicio = request.getParameter("servicio");
-			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+			int idVehiculo = Integer.parseInt(request
+					.getParameter("idVehiculo"));
 			int idChofer = Integer.parseInt(request.getParameter("idChofer"));
-			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
-			
+			int idClasificacion = Integer.parseInt(request
+					.getParameter("idClasificacion"));
+
 			try {
-				
+
 				Viaje viaje = new Viaje();
 				viaje.setNomViaje(nombre);
 				viaje.setFecSalida(fecSalida);
@@ -807,42 +845,43 @@ public class ServletProveedor extends HttpServlet {
 				viaje.setIdVehiculo(idVehiculo);
 				viaje.setIdClasificacion(idClasificacion);
 				viaje.setIdChofer(idChofer);
-				
+
 				boolean retorno = service.registrarViaje(viaje);
-				
-				
+
 				if (retorno)
 					mensaje = "Viaje agregado con exito.";
 				else
-					mensaje = "Error, no se pudo registrar el viaje.";			
-				
+					mensaje = "Error, no se pudo registrar el viaje.";
+
 				Proveedor proveedor = new Proveedor();
 				HttpSession session = request.getSession(true);
-				proveedor = (Proveedor)session.getAttribute("BProveedor");
-				//Vector<Viaje> listaViajes = service.listarViaje(proveedor);
-				
-				Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+				proveedor = (Proveedor) session.getAttribute("BProveedor");
+				// Vector<Viaje> listaViajes = service.listarViaje(proveedor);
+
+				Vector<Viaje> listaViajes = service.buscarViaje(viaje,
+						proveedor);
 				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
 				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
-				Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
-				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
-				
+				Vector<Vehiculo> listaVehiculos = service
+						.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion
+						.listarClasificaciones();
+
 				request.setAttribute("listaRutas", listaRutas);
 				request.setAttribute("listaVehiculos", listaVehiculos);
-				request.setAttribute("listaClasificaciones", listaClasificaciones);
+				request.setAttribute("listaClasificaciones",
+						listaClasificaciones);
 				request.setAttribute("listaViajes", listaViajes);
 				request.setAttribute("viaje", listaViajes);
-				
-				
-				
-				
-				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
-				
+
+				rd = getServletContext().getRequestDispatcher(
+						"/mantener_viaje.jsp");
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VIAJE)) {
+
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_MODIFICAR_VIAJE)) {
 			long idViaje = Long.parseLong(request.getParameter("idViaje"));
 			String nombre = request.getParameter("nombre");
 			String fecSalida = request.getParameter("fecSalida");
@@ -852,14 +891,16 @@ public class ServletProveedor extends HttpServlet {
 			double precio = Double.parseDouble(request.getParameter("precio"));
 			int idRuta = Integer.parseInt(request.getParameter("idRuta"));
 			String servicio = request.getParameter("servicio");
-			int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+			int idVehiculo = Integer.parseInt(request
+					.getParameter("idVehiculo"));
 			int idChofer = Integer.parseInt(request.getParameter("idChofer"));
-			int idClasificacion = Integer.parseInt(request.getParameter("idClasificacion"));
-			
+			int idClasificacion = Integer.parseInt(request
+					.getParameter("idClasificacion"));
+
 			String estado = request.getParameter("estado");
-			
+
 			try {
-				
+
 				Viaje viaje = new Viaje();
 				viaje.setId(idViaje);
 				viaje.setNomViaje(nombre);
@@ -874,98 +915,109 @@ public class ServletProveedor extends HttpServlet {
 				viaje.setIdClasificacion(idClasificacion);
 				viaje.setIdChofer(idChofer);
 				viaje.setEstado(estado);
-				
-				boolean retorno = service.modificarViaje(viaje);				
-				
+
+				boolean retorno = service.modificarViaje(viaje);
+
 				if (retorno)
 					mensaje = "Viaje agregado con exito.";
 				else
-					mensaje = "Error, no se pudo registrar el viaje.";			
-				
+					mensaje = "Error, no se pudo registrar el viaje.";
+
 				Proveedor proveedor = new Proveedor();
 				proveedor.setIdProveedor(24);
 				Vector<Viaje> listaViajes = service.listarViaje(proveedor);
-				
-		
+
 				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
 				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
-				Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
-				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
-				
+				Vector<Vehiculo> listaVehiculos = service
+						.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion
+						.listarClasificaciones();
+
 				request.setAttribute("listaRutas", listaRutas);
 				request.setAttribute("listaVehiculos", listaVehiculos);
-				request.setAttribute("listaClasificaciones", listaClasificaciones);
+				request.setAttribute("listaClasificaciones",
+						listaClasificaciones);
 				request.setAttribute("listaViajes", listaViajes);
 				request.setAttribute("viaje", listaViajes);
-				
+
 				request.setAttribute("viaje", listaViajes);
-				rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
-				
+				rd = getServletContext().getRequestDispatcher(
+						"/mantener_viaje.jsp");
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_VIAJE)) {
-			
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_FILTRO_VIAJE)) {
+
 			String idRuta = request.getParameter("idRuta");
 			String idViaje = request.getParameter("idViaje");
 			String idClasificacion = request.getParameter("idClasificacion");
-			String idVehiculo = request.getParameter("idVehiculo");			
-			System.out.println(idRuta +", " + idVehiculo +", " + idClasificacion +", " + idViaje);
-			//int idProveedor = Integer.parseInt(request.getParameter("idProveedor"));
+			String idVehiculo = request.getParameter("idVehiculo");
+			System.out.println(idRuta + ", " + idVehiculo + ", "
+					+ idClasificacion + ", " + idViaje);
+			// int idProveedor =
+			// Integer.parseInt(request.getParameter("idProveedor"));
 			String destino = request.getParameter("destino");
-			
+
 			try {
 				Viaje viaje = new Viaje();
 				Proveedor proveedor = new Proveedor();
 				HttpSession session = request.getSession(true);
-				proveedor = (Proveedor)session.getAttribute("BProveedor");
-				
-				if(idRuta.length() != 0)
+				proveedor = (Proveedor) session.getAttribute("BProveedor");
+
+				if (idRuta.length() != 0)
 					viaje.setIdRuta(Integer.parseInt(idRuta));
-				if(idViaje.length() != 0)
+				if (idViaje.length() != 0)
 					viaje.setId(Integer.parseInt(idViaje));
-				if(idClasificacion.length() != 0)
+				if (idClasificacion.length() != 0)
 					viaje.setIdClasificacion(Integer.parseInt(idClasificacion));
-				if(idVehiculo.length() != 0)
+				if (idVehiculo.length() != 0)
 					viaje.setIdVehiculo(Integer.parseInt(idVehiculo));
-				
-				Vector<Viaje> listaViajes = service.buscarViaje(viaje, proveedor);
+
+				Vector<Viaje> listaViajes = service.buscarViaje(viaje,
+						proveedor);
 				ServiceClasificacion serviceClasificacion = new ServiceClasificacion();
 				Vector<Ruta> listaRutas = service.listarRuta(proveedor);
-				Vector<Vehiculo> listaVehiculos = service.listarVehiculos(proveedor);
-				Vector<Clasificacion> listaClasificaciones = serviceClasificacion.listarClasificaciones();
-				
+				Vector<Vehiculo> listaVehiculos = service
+						.listarVehiculos(proveedor);
+				Vector<Clasificacion> listaClasificaciones = serviceClasificacion
+						.listarClasificaciones();
+
 				request.setAttribute("listaRutas", listaRutas);
 				request.setAttribute("listaVehiculos", listaVehiculos);
-				request.setAttribute("listaClasificaciones", listaClasificaciones);
+				request.setAttribute("listaClasificaciones",
+						listaClasificaciones);
 				request.setAttribute("listaViajes", listaViajes);
-				
+
 				request.setAttribute("viaje", listaViajes);
-				if(destino.equalsIgnoreCase(Constantes.GESTIONAR_VIAJE))
-					rd = getServletContext().getRequestDispatcher("/mantener_viaje.jsp");
+				if (destino.equalsIgnoreCase(Constantes.GESTIONAR_VIAJE))
+					rd = getServletContext().getRequestDispatcher(
+							"/mantener_viaje.jsp");
 			} catch (Exception e) {
 				e.printStackTrace();
-			}			
-		}	
-		
-		//******************************FIN GESTIONAR VIAJE******************************//
-		
+			}
+		}
+
+		// ******************************FIN GESTIONAR
+		// VIAJE******************************//
+
 		request.setAttribute("mensaje", mensaje);
 		rd.forward(request, response);
-	}	
-	
+	}
+
 	public String formatoAsientosNoDisponibles(String[] asientosNoDisponibles) {
 		String AsientosNoDisponiblesConFormato = "";
-		if (asientosNoDisponibles!=null) {
+		if (asientosNoDisponibles != null) {
 			for (int i = 0; i < asientosNoDisponibles.length; i++) {
-				AsientosNoDisponiblesConFormato += asientosNoDisponibles[i] + "&";
+				AsientosNoDisponiblesConFormato += asientosNoDisponibles[i]
+						+ "&";
 			}
 
-			return AsientosNoDisponiblesConFormato;	
+			return AsientosNoDisponiblesConFormato;
 		}
-		
+
 		return "0";
 	}
 
-	
 }

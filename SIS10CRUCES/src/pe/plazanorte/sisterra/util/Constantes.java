@@ -160,6 +160,7 @@ public class Constantes {
 	//MANIFIESTO DE PASAJEROS
 	public static final String ACCION_PREPARAR_LISTA_PASAJEROS = "preparar_manifiesto";	
 	public static final String MANIFIESTO_DE_PASAJEROS = "manifiesto_pasajeros";
+	public static final String GENERAR_MANIFIESTO_DE_PASAJEROS = "generar manifiesto_pasajeros";
 	public static final String LISTAR_PASAJEROS = "listar_pasajeros_viaje";
 	public static final String REGISTRAR_EMBARQUE = "registrar_embarque";
 	
