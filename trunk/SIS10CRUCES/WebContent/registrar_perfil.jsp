@@ -7,17 +7,13 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function validar(){
-		if(document.registrarperfil.nombre.value.length == 0){
-			alert("Debe llenar el campo Nombre.");
-			document.registrar.nombre.focus();
+		if(		document.registrarperfil.nombre.value.length == 0|| 
+				document.registrarperfil.descripcion.value.length == 0 ){		
+			alert("Debe llenar alguna condición para el registro.");
+			document.registrarperfil.nombre.focus();				
 			return false;
 		}
-		if(document.registrarperfil.descripcion.value.length == 0){
-			alert("Debe llenar el campo Descripcion.");
-			document.registrar.descripcion.focus();
-			return false;
-		}
-		
+		alert("Registro Exitoso.");
 		return true;
 	}	
 </script>
@@ -38,7 +34,7 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Registrar Perfil</font>
    </div>
-	<form action="ServletSeguridad" method="post" name="registrarperfil" onsubmit="return validar()">
+	<form action="ServletSeguridad" name="registrarperfil" method="post"  onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="registrarPerfil">
 		<table>	
 			<tr><td><br></td></tr>
