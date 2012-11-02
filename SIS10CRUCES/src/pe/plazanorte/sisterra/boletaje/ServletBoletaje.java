@@ -384,7 +384,7 @@ public class ServletBoletaje extends HttpServlet {
 				
 				ServiceConsultas serviceConsultas = new ServiceConsultas();
 				Persona persona = serviceConsultas.consultarPersona(documento);
-				
+				int edad=serviceseguridad.obtenerEdad(documento);
 				
 				request.setAttribute("idReserva", idReserva);
 				request.setAttribute("viaje", viaje);
@@ -392,7 +392,7 @@ public class ServletBoletaje extends HttpServlet {
 				request.setAttribute("asiento", asiento);
 				request.setAttribute("piso", piso);
 				request.setAttribute("ruta", ruta);
-				
+				request.setAttribute("edad", edad);
 				request.setAttribute("persona", persona);
 				rd = getServletContext().getRequestDispatcher("/generar_boleto.jsp");
 			

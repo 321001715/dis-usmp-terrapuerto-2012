@@ -46,6 +46,7 @@ ventimp.close();
 	int idReserva = (Integer)request.getAttribute("idReserva");	
 	Viaje viaje = (Viaje)request.getAttribute("viaje");	
 	Ruta ruta = (Ruta)request.getAttribute("ruta");	
+	int edad = (Integer)request.getAttribute("edad");	
 	int piso = (Integer)request.getAttribute("piso");	
 	int asiento = (Integer)request.getAttribute("asiento");	
 	String nombreProveedor = (String)request.getAttribute("nombreProveedor");
@@ -149,7 +150,7 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     <td>Fecha Nacimiento:</td>
     <td><%=persona.getFecNac() %></td>
     <td>Edad:</td>
-    <td></td>
+    <td><%=edad %></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
