@@ -81,15 +81,15 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
   </tr>
   <tr>
     <td>Origen:</td>
-    <td>&nbsp;</td>
+    <td><%=ruta.getOrigen() %></td>
     <td>Destino:</td>
-    <td>&nbsp;</td>
+    <td><%=ruta.getDestino() %></td>
   </tr>
   <tr>
     <td>Fecha de Salida:</td>
-    <td>&nbsp;</td>
+    <td><%=viaje.getFecSalida() %></td>
     <td>Hora de Salida:</td>
-    <td>&nbsp;</td>
+    <td><%=viaje.getHorSalida() %></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -99,13 +99,13 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
   </tr>
   <tr>
     <td>Empresa:</td>
-    <td>&nbsp;</td>
+    <td><%=nombreProveedor %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>Servicio:</td>
-    <td>&nbsp;</td>
+    <td><%=viaje.getServicio() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
@@ -113,7 +113,7 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     <td>Costo:</td>
     <td><%=viaje.getPrecio() %></td>
     <td>Nro Asiento:</td>
-    <td>&nbsp;</td>
+    <td><%=asiento %></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -123,33 +123,33 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
   </tr>
   <tr>
     <td>N° Documento:</td>
-    <td>&nbsp;</td>
+    <td><%=persona.getDni() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>Nombre:</td>
-    <td>&nbsp;</td>
+    <td><%=persona.getNombre() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>Apellido Pat.:</td>
-    <td>&nbsp;</td>
+    <td><%=persona.getApePat() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>Apellido Mat.:</td>
-    <td>&nbsp;</td>
+    <td><%=persona.getApeMat() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>Fecha Nacimiento:</td>
-    <td>&nbsp;</td>
+    <td><%=persona.getFecNac() %></td>
     <td>Edad:</td>
-    <td>&nbsp;</td>
+    <td></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
