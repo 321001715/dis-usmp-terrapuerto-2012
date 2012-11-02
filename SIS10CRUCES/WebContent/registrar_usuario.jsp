@@ -10,11 +10,12 @@
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
 <script type="text/javascript">
 	function validar(){
-		if(		document.registrar.nombre.value.length == 0|| 
-				document.registrar.apePat.value.length == 0 || 
-				document.registrar.apeMat.value.length == 0){		
+		if(		document.registrar.txt_nombre.value.length == 0|| 
+				document.registrar.txt_apePat.value.length == 0 || 
+				document.registrar.txt_apeMat.value.length == 0|| 
+				document.registrar.txt_dni.value.length == 0){		
 			alert("Debe llenar alguna condición para el registro.");
-			document.registrar.txt_usuario.focus();				
+			document.registrar.txt_nombre.focus();				
 			return false;
 		}
 		alert("Registro Exitoso.");
