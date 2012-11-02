@@ -751,10 +751,7 @@ public class MySqlSeguridadDAO implements SeguridadDAO {
 	@Override
 	public int obtenerEdad(int dni) {
 			
-		String query="SELECT CASE WHEN (MONTH(fecha_nacimiento) < MONTH(current_date)) THEN YEAR(current_date) - YEAR(fecha_nacimiento) " +
-					"WHEN (MONTH(fecha_nacimiento) = MONTH(current_date)) AND (DAY(fecha_nacimiento) <= DAY(current_date))" +
-					" THEN YEAR(current_date) - YEAR(fecha_nacimiento) ELSE (YEAR(current_date) - YEAR(fecha_nacimiento)) - 1 END AS edad " +
-					"FROM t_persona where ";
+		String query="SELECT fechaNacimiento, CURDATE(), (YEAR(CURDATE())-YEAR(fechaNacimiento)) - (RIGHT(CURDATE(),5)<RIGHT(fechaNacimiento,5)) AS age FROM t_persona;";
 		// TODO Auto-generated method stub
 		return 0;
 	}
