@@ -163,5 +163,11 @@ public class ServiceSeguridad {
 		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO();
 		return seguridadDao.buscarUsuario(usuario);
 	}
+	public int obtenerEdad(int dni){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		SeguridadDAO seguridadDao=mysqlFactory.getSeguridadDAO();
+		return seguridadDao.obtenerEdad(dni);
+	}
+	
 	
 }
