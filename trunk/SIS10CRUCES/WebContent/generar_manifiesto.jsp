@@ -13,10 +13,7 @@
 <script type="text/javascript" src="js/script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Generar Manifiesto</title>
-<script>
-var f = new Date();
-document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-</script> 
+
 </head>
 <body>
 <div class="ui-widget">
@@ -24,14 +21,67 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
 			<font style="font-family: monospace; font-size: x-large;">Generar Manifiesto de Pasajeros</font>
 		</h3>
 		
-	<br> Fecha 
+<div class="ui-corner-bottom ui-widget-content">
+				<font style="font-family: monospace; font-size: x-large;">Filtros de Busqueda</font>
+</div>
+	<table>
+	<tr>
+	<td>Codigo de Viaje:</td>
+	<td><input type="text" name="txt_viaje" ></td>
+	<td>Numero de Reserva</td>
+	<td><input type="text" name="txt_reserva"></td>
+	<td><input type="submit" name="tipoSubmit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+	</tr>
+	</table>
 	
-	<br> Codigo de Ruta 
-	<br> Codigo de Viaje
-	
-	
-		
-		
-
+	<br>
+	<br>
+	<br>
+<table  id="table" class="sortable">
+		<thead>
+			<tr>
+				<th><h3 align="center">N° Reserva</h3></th>
+				<th><h3 align="center">Cod Viaje</h3></th>
+				<th><h3 align="center">N° Boleto</h3></th>
+				<th><h3 align="center">N° Documento</h3></th>
+				<th><h3 align="center">Apellido Paterno</h3></th>
+				<th><h3 align="center">Apellido Materno</h3></th>
+				<th><h3 align="center">Nombres</h3></th>
+				<th><h3 align="center"></h3></th>
+			</tr>
+		</thead>
+		<tbody>
+	</tbody>
+	</table>
+<table border="0" >
+      <tr>
+        <td >Pasajeros confirmados</td>
+        <td ><form name="form3" method="post" action="">
+          <input type="text" name="textfield" id="textfield">
+        </form></td>
+        <td >&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Total Pasajeros</td>
+        <td><form name="form4" method="post" action="">
+          <input type="text" name="textfield2" id="textfield2">
+        </form></td>
+        <td>&nbsp;</td>
+      </tr>
+</table>
+<table width="656" border="0" align="center">
+      <tr>
+        <td width="173">&nbsp;</td>
+        <td width="96"><form name="form1" method="post" action="">
+             
+        </form></td>
+        <td width="90"><form name="form2" method="post" action="">
+          <label>
+            <input type="submit" name="button2" id="button2" value="Imprimir">
+          </label>
+        </form></td>
+        <td width="169">&nbsp;</td>
+      </tr>
+</table>
 </body>
 </html>
