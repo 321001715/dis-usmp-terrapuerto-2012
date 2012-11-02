@@ -15,10 +15,32 @@
 <title>Generar Boleto</title>
 
 </head>
+<script type="text/javascript">
+function imprSelec(nombre)
+
+{
+
+var ficha = document.getElementById(nombre);
+
+var ventimp = window.open(' ', 'popimpr');
+
+ventimp.document.write( ficha.innerHTML );
+
+ventimp.document.close();
+
+ventimp.print( );
+
+ventimp.close();
+
+}
+
+</script>
 <body>
+<div id="seleccion">
 <div class="ui-corner-bottom ui-widget-content">
 				<font style="font-family: monospace; font-size: x-large;" >BOLETO DE VIAJE</font>
 </div>
+
 <table width="559" height="318" border="0">
   <tr>
     <td width="138">Fecha</td>
@@ -112,10 +134,11 @@
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td><form id="form1" name="form1" method="post" action="">
-      <a href="javascript:print()" _fcksavedurl="javascript:print()">Imprimir</a>
+      <a href="javascript:imprSelec('seleccion')" >Imprimir</a>
     </form></td>
     <td>&nbsp;</td>
   </tr>
 </table>
+</div>
 </body>
 </html>
