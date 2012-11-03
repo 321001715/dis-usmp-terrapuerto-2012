@@ -17,12 +17,8 @@
 			document.registrar.ruc.focus();
 			return false;
 		}
-		if(document.registrar.ruc.value.length < 11){
-			alert("Debe ingresar un número de RUC válido.");
-			document.registrar.ruc.focus();
-			return false;
-		}
-		if(NaN(document.registrar.ruc.value)){
+		
+		if( !(/^\d{11}$/.test(document.registrar.ruc.value))){
 			alert("Debe ingresar un número de RUC válido.");
 			document.registrar.ruc.focus();
 			return false;
