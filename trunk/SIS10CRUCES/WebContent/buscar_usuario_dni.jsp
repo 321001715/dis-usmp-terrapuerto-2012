@@ -5,35 +5,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript">
-function validar(){
-	if( document.buscar.dni.value.lengt =! '8' ){		
-		alert("Complete los datos de busqueda para el DNI");
-		document.buscar.dni.focus();				
-		return false;
-		}else if( isNaN(document.buscar.dni.value) ){		
-		alert("DNI no válido.");
-		document.buscar.dni.focus();	
-		return false;
-	}	
-		
-		
-		
-	return true;
-}
 
-</script>
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
 <link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
 <link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
 <link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
 <script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
+<script type="text/javascript">
+
+function validar1(){
+		if(		document.buscar.dni.value.length == 0||document.buscar.dni.value.length != 8 ){		
+			alert("Debe llenar alguna condición para el registro.");
+			document.buscar.dni.focus();				
+			return false;
+		}else {if( !(/^\d{8}$/.test(document.buscar.dni.value)) ) {
+		 alert("Solo se permiten numeros.");
+ 		 return false;
+ 		
+				}}
+		
+		return true;
+	}	
+	
+
+</script>
+
+
+
 </head>
 <body>	
 <div class="ui-widget">
    
-<form name="buscar" action="ServletSeguridad" method="post" onsubmit="return validar()">
+<form action="ServletSeguridad"  name="buscar"  method="post" onsubmit="return validar1()">
 	<input type="hidden" name="tipo" value="buscarDni">
 	<table>
 			<tr>
