@@ -12,7 +12,7 @@ function validar(){
 		alert("Debe llenar alguna condición de búsqueda.");
 		document.buscar.ruc.focus();				
 		return false;
-	}else if(isNaN(document.buscar.ruc.value)){		
+	}else if(!(/^\d{11}$/.test(document.buscar.ruc.value))){		
 		alert("Número de RUC no válido.");
 		document.buscar.ruc.focus();	
 		return false;
@@ -33,7 +33,7 @@ function validar(){
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
    </div>
 &nbsp;   
-<form name="buscar" action="ServletProveedor" method="post" onsubmit="validar()">
+<form name="buscar" action="ServletProveedor" method="post" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="<%=Constantes.ACCION_FILTRO_PROVEEDOR%>">
 	<input type="hidden" name="destino" value="<%=Constantes.MANTENER_PROVEEDOR%>">
 	<table>
