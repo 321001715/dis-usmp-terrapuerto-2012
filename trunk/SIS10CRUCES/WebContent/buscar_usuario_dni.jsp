@@ -7,17 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript">
 function validar(){
-	if(document.buscar.ruc.value.length == 0 && document.buscar.razSocial.value.length == 0){		
-		alert("Debe llenar alguna condición de búsqueda.");
-		document.buscar.ruc.focus();				
+	if( document.buscar.dni.value.lengt =! '8' ){		
+		alert("Complete los datos de busqueda para el DNI");
+		document.buscar.dni.focus();				
 		return false;
-	}else if(isNaN(document.buscar.ruc.value)){		
-		alert("Número de RUC no válido.");
-		document.buscar.ruc.focus();	
+		}else if( isNaN(document.buscar.dni.value) ){		
+		alert("DNI no válido.");
+		document.buscar.dni.focus();	
 		return false;
 	}	
+		
+		
+		
 	return true;
 }
+
 </script>
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
 <link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
@@ -29,7 +33,7 @@ function validar(){
 <body>	
 <div class="ui-widget">
    
-<form name="buscar" action="ServletSeguridad" method="post" >
+<form name="buscar" action="ServletSeguridad" method="post" onsubmit="return validar()">
 	<input type="hidden" name="tipo" value="buscarDni">
 	<table>
 			<tr>
