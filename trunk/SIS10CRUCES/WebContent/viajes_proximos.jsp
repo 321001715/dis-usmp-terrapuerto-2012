@@ -31,6 +31,14 @@
 	<img align="right" src="images/principal/banner_logo.png">
 </div>
 <div id="contenido">
+<div id="menu_web">
+		<ul class="menu">
+			<li><a href="home.jsp">Inicio</a></li>
+			<li><a href="ServletBoletaje?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>">Consultar viajes</a></li>
+			<li><a href="<%=request.getContextPath() %>/ServletInicial">Ingresar al sistema</a></li>
+		</ul>
+	</div>
+
 <div class="ui-widget">
    <h3 class="ui-corner-top ui-widget-header"> 
    	<font style="font-family: monospace; font-size: x-large;">Consulte su Viaje</font>

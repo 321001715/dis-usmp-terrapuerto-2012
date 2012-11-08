@@ -1,9 +1,15 @@
 @CHARSET "ISO-8859-1";
 
+html {
+	font-family: verdana;
+	font-size: 0.9em;
+}
+
 #barra_cabecera {
 	background-color: #244661;
 	padding-left: 15px;
 	padding-right: 15px;
+	padding-bottom: 0;
 	width: 970px;
 	height: 40px;
 	margin: 0 auto 0 auto;
@@ -35,6 +41,7 @@ body {
 #cabecera {
 	width: 1000px;
 	margin: 0 auto 0 auto;
+	padding: 0px;
 	background-color: #244661;
 	height: 208px;
 }
@@ -43,7 +50,7 @@ body {
 	width: 970px;
 	height: auto;
 	margin: 0 auto 0 auto;
-	padding: 15px 15px 15px 15px;
+	padding: 0 15px 15px 15px;
 }
 
 #pie {
@@ -75,26 +82,29 @@ body {
 	float: left;
 }
 
-ul.menu {
+#menu_web {
+	text-align: center;
+	
+}
+
+ul.menu {	
 	clear: both;
 	float: left;
 	width: 100%;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	border-left: 1px solid #7C7C7C;
+	background-color: #244661;
 }
 
-ul.menu li {
+ul.menu li {	
 	float: left;
+	margin: 0 15px 0 15px;
 }
 
 ul.menu li a {
 	display: block;
 	text-decoration: none;
-	color: #333;
-	background: #F4F4F4;
-	border-top: 1px solid #7C7C7C;
-	border-right: 1px solid #7C7C7C;
-	border-bottom: 1px solid #9C9C9C;
+	background-color: #244661;
+	color: white;
 }
