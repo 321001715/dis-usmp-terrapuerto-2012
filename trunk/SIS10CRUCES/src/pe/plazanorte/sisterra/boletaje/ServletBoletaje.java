@@ -66,7 +66,7 @@ public class ServletBoletaje extends HttpServlet {
 			Ruta unaruta= new Ruta();
 			Vehiculo carro=new Vehiculo();
 			Vector<Asiento> asientos=new Vector<Asiento>();
-			System.out.print("hasta aqui");
+			
 			try {
 				
 				unviaje=service.consultarViajeCliente(id);
@@ -84,7 +84,17 @@ public class ServletBoletaje extends HttpServlet {
 			request.setAttribute("unaruta", unaruta);
 			request.setAttribute("carro", carro);
 			request.setAttribute("asientos", asientos);
-			rd = getServletContext().getRequestDispatcher("/seleccionar_asiento.jsp");
+			
+			HttpSession session = request.getSession(true);
+			Usuario usuario = (Usuario) session.getAttribute("BUsuario");
+			
+			if(usuario == null) {
+				rd = getServletContext().getRequestDispatcher("/consultar_asientos.jsp");
+			} else {
+				rd = getServletContext().getRequestDispatcher("/seleccionar_asiento.jsp");
+			}
+			
+			
 
 		}else if (tipo.equals(Constantes.ACCION_LISTAR_RESERVA)) {
 			System.out.println("entro");
@@ -170,7 +180,8 @@ public class ServletBoletaje extends HttpServlet {
 			}
 		}else if (tipo.equals(Constantes.ACCION_CONSULTAR_VIAJE)) {
 			Vector<Ruta> rutas=null;
-						
+			HttpSession session = request.getSession(true);
+			Usuario usuario = (Usuario) session.getAttribute("BUsuario");
 			try {
 					
 				rutas = service.listarRutas();				
@@ -179,8 +190,11 @@ public class ServletBoletaje extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+			if(usuario == null){
+				rd = getServletContext().getRequestDispatcher("/viajes_proximos.jsp");
+			}else{
 				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
-		
+			}
 			
 		}
 		request.setAttribute("mensaje", mensaje);		
@@ -486,7 +500,16 @@ public class ServletBoletaje extends HttpServlet {
 				
 				request.setAttribute("viajes", viajes);	
 				request.setAttribute("rutas", rutas);	
-				rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
+				
+				HttpSession session = request.getSession(true);
+				Usuario usuario = (Usuario) session.getAttribute("BUsuario");
+				
+				if(usuario == null){
+					rd = getServletContext().getRequestDispatcher("/viajes_proximos.jsp");
+				}else{
+					rd = getServletContext().getRequestDispatcher("/consultar_viaje.jsp");
+				}				
+				
 		}
 		//********************************FIN CONSULTAR VIAJE**********************************//
 		else if(tipo.equals(Constantes.ACCION_RESERVAR)){

@@ -229,6 +229,7 @@ public class ServletProveedor extends HttpServlet {
 
 		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_VIAJE)) {
 			String destino = request.getParameter("destino");
+			
 			try {
 
 				Vector<Viaje> viaje = new Vector<Viaje>();
@@ -250,7 +251,7 @@ public class ServletProveedor extends HttpServlet {
 				request.setAttribute("listaClasificaciones",
 						listaClasificaciones);
 				request.setAttribute("listaViajes", listaViajes);
-
+				
 				rd = getServletContext().getRequestDispatcher(
 						"/mantener_viaje.jsp");
 			} catch (Exception e) {

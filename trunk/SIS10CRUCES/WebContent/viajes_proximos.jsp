@@ -7,8 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Plaza Norte - Gran Terminal Terrestre</title>
 <link rel="shortcut icon" type="image/x-icon" href="images/principal/favicon.ico">
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/humanity.datepick.css" type="text/css"/>
+<link rel="stylesheet" href="css/jquery.datepick.css" type="text/css"/> 
+<link rel="stylesheet" href="jquery/css/dark-hive/jquery-ui-1.7.3.custom.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 <style type="text/css">
-@import url("css/estilos_principal.css");
+@import url("<%=request.getContextPath()%>/css/estilos_principal.css");
 </style>
 </head>
 <body>
@@ -25,17 +31,30 @@
 	<img align="right" src="images/principal/banner_logo.png">
 </div>
 <div id="contenido">
-
-	<div id="menu_izquierda">
-		<ul>
-			<li><a href="home.jsp">Inicio</a></li>
-			<li><a href="ServletBoletaje?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>">Consultar viajes</a></li>
-			<li><a href="">Ingresar al sistema</a></li>
-		</ul>
-	</div>
-	<a href="<%=request.getContextPath() %>/ServletInicial">
-	<img src="images/ingresarintranet.gif" style="border:none">
-	</a>
+<div class="ui-widget">
+   <h3 class="ui-corner-top ui-widget-header"> 
+   	<font style="font-family: monospace; font-size: x-large;">Consulte su Viaje</font>
+   </h3>
+	<%
+	String mensaje = (String)request.getParameter("mensaje");
+	Vector<Viaje> viajes= (Vector<Viaje>)request.getAttribute("viajes");
+	%>
+	<%@include file="buscar_viaje_cliente.jsp" %>
+	
+	<br><hr><br>
+	<% if(mensaje != null){ %>	
+		<font color="red"><%= mensaje%></font>
+		<br>
+	<%} %>	
+	<% if(viajes != null){ %>	
+	
+	<%@include file="listar_viaje_cliente.jsp" %>
+	<%} %>
+	<br><br><a href="index_ventas.jsp">
+			<img alt="" src="<%=request.getContextPath()%>/images/atras.jpg"> 
+		</a> Atrás X...
+	&nbsp;
+</div>
 </div>
 <div id="pie">
 	<img align="right" src="images/principal/banner_pie.png">
