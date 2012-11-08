@@ -34,7 +34,7 @@
 		</ul>
 	</div>	
 	
-	<div id="contenido">
+	<div id="texto">
 	<h3>La empresa</h3>
 		<p>El nuevo y moderno Gran Terminal Terrestre Plaza Norte se ha convertido en un pilar de cambio en servicios de transporte terrestre interprovincial e internacional que merece nuestro país, no solo por su diseño e innovación en cada una de sus instalaciones, sino por el sinnúmero de beneficios, debido a que es el primer terminal que coexiste con el centro comercial más grande del país: C.C. Plaza Norte.</p>
 		<p style="text-align: center;"><img alt="imgPrincipal.jpg" src="<%=request.getContextPath() %>/images/imgPrincipal.jpg"></p>

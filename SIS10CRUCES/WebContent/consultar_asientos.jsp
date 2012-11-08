@@ -37,7 +37,13 @@
 	<img align="right" src="images/principal/banner_logo.png">
 </div>
 <div id="contenido">
-
+	<div id="menu_web">
+		<ul class="menu">
+			<li><a href="home.jsp">Inicio</a></li>
+			<li><a href="ServletBoletaje?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>">Consultar viajes</a></li>
+			<li><a href="<%=request.getContextPath() %>/ServletInicial">Ingresar al sistema</a></li>
+		</ul>
+	</div>
 	<%
 	Viaje viaje=(Viaje)request.getAttribute("unviaje");
 	
@@ -54,7 +60,7 @@
 	int contador=4;
 	
 %>
-<body>
+
 <script type="text/javascript">
 var piso=1;
 function capturarPiso() {
