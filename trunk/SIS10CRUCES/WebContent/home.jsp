@@ -26,16 +26,19 @@
 </div>
 <div id="contenido">
 
-	<div id="menu_izquierda">
-		<ul>
+	<div id="menu_web">
+		<ul class="menu">
 			<li><a href="home.jsp">Inicio</a></li>
 			<li><a href="ServletBoletaje?tipo=<%=Constantes.ACCION_CONSULTAR_VIAJE %>">Consultar viajes</a></li>
-			<li><a href="">Ingresar al sistema</a></li>
+			<li><a href="<%=request.getContextPath() %>/ServletInicial">Ingresar al sistema</a></li>
 		</ul>
+	</div>	
+	
+	<div id="contenido">
+	<h3>La empresa</h3>
+		<p>El nuevo y moderno Gran Terminal Terrestre Plaza Norte se ha convertido en un pilar de cambio en servicios de transporte terrestre interprovincial e internacional que merece nuestro país, no solo por su diseño e innovación en cada una de sus instalaciones, sino por el sinnúmero de beneficios, debido a que es el primer terminal que coexiste con el centro comercial más grande del país: C.C. Plaza Norte.</p>
+		<p style="text-align: center;"><img alt="imgPrincipal.jpg" src="<%=request.getContextPath() %>/images/imgPrincipal.jpg"></p>
 	</div>
-	<a href="<%=request.getContextPath() %>/ServletInicial">
-	<img src="images/ingresarintranet.gif" style="border:none">
-	</a>
 </div>
 <div id="pie">
 	<img align="right" src="images/principal/banner_pie.png">
