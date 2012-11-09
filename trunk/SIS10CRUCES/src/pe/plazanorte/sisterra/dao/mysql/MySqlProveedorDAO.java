@@ -516,7 +516,7 @@ public class MySqlProveedorDAO implements ProveedorDAO {
 				nuevo = new Ruta();
 				nuevo.setId(id);
 				nuevo.setNomRuta(rs.getString("nomRuta"));
-				nuevo.setOrigen(rs.getString("destino"));
+				nuevo.setOrigen(rs.getString("origen"));
 				nuevo.setDestino(rs.getString("destino"));
 				nuevo.setKm(rs.getInt("km"));
 				nuevo.setDuracion(rs.getInt("duracion"));
