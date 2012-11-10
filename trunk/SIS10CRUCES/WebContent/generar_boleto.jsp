@@ -168,14 +168,15 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td><form id="form1" name="form1" method="post" action="">
-      <a href="javascript:imprSelec('apDiv1')" >Imprimir</a>
-    </form></td>
+    <td>
+   </td>
     <td>&nbsp;</td>
   </tr>
 </table>
 </div>
-<div id="apDiv1"></div>
+<form id="form1" name="form1" method="post" action="">
+      <p align="Center"><a href="javascript:imprSelec('seleccion')" >Imprimir</a></p> </form>
+
 <br>
 <br>
 </body>

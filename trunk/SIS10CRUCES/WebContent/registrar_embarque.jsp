@@ -53,13 +53,15 @@ if(listaPasajeros.size() != 0){
 			<td align="center"><%=pasajero.getApellidoMat() %></td>
 			<td align="center"><input type="checkbox" name="idBoleto" value="<%=pasajero.getIdBoleto()%>"></td>			
 		</tr>
-		<tr>
-			<input type="submit" value="Registrar Abordaje">
-		</tr>
+		
 <%} %>
+
+
+			
+
 		</tbody>
 	</table>
-	
+	<p align="center"><input type="submit" value="Registrar Abordaje" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></p>
 	</form>
 </div>
 	<div id="controls">

@@ -82,7 +82,7 @@ public class ServletEmbarque extends HttpServlet {
 				int idViaje = Integer.parseInt(request.getParameter("idViaje"));
 				
 				for (int i = 0; i < idBoleto.length; i++) {
-					
+					System.out.println(idBoleto[i]);
 					serviceEmbarque.registrarEmbarque(Integer.parseInt(idBoleto[i]), idViaje);	
 				}				
 				
