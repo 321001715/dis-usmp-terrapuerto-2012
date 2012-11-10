@@ -220,10 +220,18 @@ public class ServletProveedor extends HttpServlet {
 						"/modificar_ruta.jsp");
 
 			}
-
+			
 			// ****************************FIN GESTIONAR
-			// RUTA*****************************//
+						// RUTA*****************************//
+			
 
+			// **************************** BETA: REGISTRAR ENCOMIENDA *****************************//
+			
+		} else if (tipo.equalsIgnoreCase(Constantes.ACCION_LISTAR_ENCOMIENDA)) {
+			
+			rd = getServletContext().getRequestDispatcher(
+					"/registrar_encomienda.jsp");
+				
 			// *****************************INICIO GESTIONAR VIAJE
 			// *****************************//
 
