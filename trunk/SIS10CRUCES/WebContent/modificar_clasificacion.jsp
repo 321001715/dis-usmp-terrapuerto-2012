@@ -10,49 +10,20 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	function validar(){
-		if(document.registrar.ruc.value.length == 0){
-			alert("Debe llenar el campo RUC.");
-			document.registrar.ruc.focus();
-			return false;
-		}
-		if(document.registrar.razon_social.value.length == 0){
-			alert("Debe llenar el campo Razón social.");
-			document.registrar.razon_social.focus();
-			return false;
-		}
-		if(document.registrar.razon_comercial.value.length == 0){
-			alert("Debe llenar el campo Razón comercial.");
-			document.registrar.razon_comercial.focus();
-			return false;
-		}
-		if(document.registrar.direccion.value.length == 0){
-			alert("Debe llenar el campo Dirección.");
-			document.registrar.telefono.focus();
-			return false;
-		}
-		if(document.registrar.telefono.value.length == 0){
-			alert("Debe llenar el campo Teléfono.");
-			document.registrar.telefono.focus();
-			return false;
-		}
-		if(document.registrar.usuario.value.length == 0){
-			alert("Debe llenar el campo usuario.");
-			document.registrar.usuario.focus();
-			return false;
-		}
-		if(document.registrar.clave.value.length == 0){
-			alert("Debe escribir una clave.");
-			document.registrar.clave.focus();
-			return false;
-		}
-		if(document.registrar.clave.value.length < 5){
-			alert("Su clave debe tener más de 5 dígitos.");
-			document.registrar.clave.focus();
-			return false;
-		}
-		return true;
-	}	
+function validar(){
+	if(document.modificar.nombre.value.length == 0){
+		alert("Debe llenar el campo nombre.");
+		document.modificar.nombre.focus();
+		return false;
+	}
+	if(document.modificar.descripcion.value.length == 0){
+		alert("Debe llenar el campo descripcion.");
+		document.modificar.descripcion.focus();
+		return false;
+	}
+	alert("Modificación Exitoso.");
+	return true;
+}	
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/style.css" type="text/css"/>
@@ -76,7 +47,7 @@
    <div class="ui-corner-bottom ui-widget-content">   
    		<font style="font-family: monospace; font-size: x-large;">Modificar Clasificación</font>
    </div>
-	<form action="ServletClasificacion" method="post">
+	<form action="ServletClasificacion" method="post" name="modificar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value="<%=Constantes.ACCION_MODIFICAR_CLASIFICACION%>">
 		<%if(clasificacion != null){ %>
 		<table>	
@@ -94,7 +65,7 @@
 			<tr>
 				<td></td>
 				<td>Descripción:</td>
-				<td><input type="text" name="descripcion" maxlength="11" value="<%=clasificacion.getDescripcion() %>" ></td>				
+				<td><input type="text" name="descripcion" maxlength="30" value="<%=clasificacion.getDescripcion() %>" ></td>				
 			</tr>
 			<tr>
 				<td colspan="3" align="right">
