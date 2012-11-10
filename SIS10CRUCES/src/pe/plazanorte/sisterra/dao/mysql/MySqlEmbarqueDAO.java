@@ -30,11 +30,12 @@ public class MySqlEmbarqueDAO implements EmbarqueDAO {
 							" V.ESTADO = '"+Constantes.ESTADO_ACTIVO+"';";
 			Pasajero pasajero = null;		
 			ResultSet rs = stmt.executeQuery(query);
-
+			System.out.println(query);
 			while (rs.next()) {
 				pasajero = new Pasajero();
 
-				pasajero.setId(rs.getInt("idBoleto"));
+				pasajero.setIdBoleto(rs.getInt("idBoleto"));
+				//System.out.println(rs.getInt("idBoleto"));
 				pasajero.setId(rs.getLong("idPasajero"));
 				pasajero.setDni(rs.getInt("numDoc"));
 				pasajero.setNombres(rs.getString("nombres"));
@@ -58,7 +59,7 @@ public class MySqlEmbarqueDAO implements EmbarqueDAO {
 			Statement stmt = con.createStatement();
 			
 			String query = "UPDATE T_BOLETO SET ESTADO = '"+Constantes.ESTADO_ABORDADO+"' WHERE IDBOLETO = "+idBoleto+";";
-			
+			System.out.println(query);
 			int filas_afectadas = stmt.executeUpdate(query);			
 			
 			con.close();
