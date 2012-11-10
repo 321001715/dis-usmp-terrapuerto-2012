@@ -98,6 +98,25 @@ public class ServletEmbarque extends HttpServlet {
 				mensaje="OCURRIO UN ERROR";
 				e.printStackTrace();
 			}
+		} if(tipo.equalsIgnoreCase(Constantes.GENERAR_MANIFIESTO_DE_PASAJEROS)) {
+			try {
+				
+				int idViaje = Integer.parseInt(request.getParameter("sel_viaje"));
+				
+								
+				
+				Vector<Pasajero> pasajeros = new Vector<Pasajero>();
+				
+				pasajeros = serviceEmbarque.generarManifiesto(idViaje);
+				
+				request.setAttribute("pasajeros", pasajeros);
+				rd = getServletContext().getRequestDispatcher(
+				"/generar_manifiesto.jsp");
+			} catch (Exception e) {
+				System.out.println("ERROR EN NRO2: REGISTRAR EMBARQUE");
+				mensaje="OCURRIO UN ERROR";
+				e.printStackTrace();
+			}
 		}
 		 
 		request.setAttribute("mensaje", mensaje);		

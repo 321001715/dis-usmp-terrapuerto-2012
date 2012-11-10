@@ -7,8 +7,15 @@ public class Pasajero {
 	private String apellidoMat;
 	private long dni;
 	private int idBoleto;
+	private int idReserva;
 	
 	
+	public int getIdReserva() {
+		return idReserva;
+	}
+	public void setIdReserva(int idReserva) {
+		this.idReserva = idReserva;
+	}
 	public long getId() {
 		return id;
 	}

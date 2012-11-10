@@ -21,5 +21,11 @@ public class ServiceEmbarque {
 		EmbarqueDAO embarqueDao = mysqlFactory.getEmbarqueDAO();		
 		return embarqueDao.registrarEmbarque(idBoleto, idViaje);
 	}
+	public Vector<Pasajero> generarManifiesto(int idViaje){
+		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		EmbarqueDAO embarqueDao = mysqlFactory.getEmbarqueDAO();		
+		
+		return embarqueDao.generarManifiesto(idViaje);
+	}
 
 }
