@@ -1,0 +1,79 @@
+.cajaicono {
+	  float:none;
+	  margin: 0px auto;
+	  padding:4px 0 4px 4px;
+	  width:20px;
+	  body{text-align:center;}
+}
+BODY {
+	FONT: 0.9em Verdana, Arial;  #fff repeat-x; COLOR: #091f30
+}
+.sortable {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: #c6d5e1 1px solid; MARGIN: 0px auto 15px; WIDTH: 980px; BORDER-TOP: #c6d5e1 1px solid
+}
+.sortable TH {
+	BORDER-BOTTOM: #fff 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #fff 1px solid; BACKGROUND: url(../images/header-bg.gif); COLOR: #cfdce7; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: medium none
+}
+.sortable TH H3 {
+	PADDING-BOTTOM: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; FONT-SIZE: 10px; PADDING-TOP: 6px
+}
+.sortable TD {
+	BORDER-BOTTOM: #c6d5e1 1px solid; PADDING-BOTTOM: 6px; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; BORDER-RIGHT: #c6d5e1 1px solid; PADDING-TOP: 4px
+}
+.sortable .head H3 {
+	PADDING-LEFT: 18px; BACKGROUND: url(../images/sort.gif) no-repeat 7px center; CURSOR: pointer
+}
+.sortable .desc {
+	BACKGROUND: url(../images/header-selected-bg.gif)
+}
+.sortable .asc {
+	BACKGROUND: url(../images/header-selected-bg.gif)
+}
+.sortable .desc H3 {
+	PADDING-LEFT: 18px; BACKGROUND: url(../images/desc.gif) no-repeat 7px center; CURSOR: pointer
+}
+.sortable .asc H3 {
+	PADDING-LEFT: 18px; BACKGROUND: url(../images/asc.gif) no-repeat 7px center; CURSOR: pointer
+}
+.sortable .head:hover {
+	COLOR: #fff
+}
+.sortable .desc:hover {
+	COLOR: #fff
+}
+.sortable .asc:hover {
+	COLOR: #fff
+}
+.sortable .evenrow TD {
+	BACKGROUND: #fff
+}
+.sortable .oddrow TD {
+	BACKGROUND: #ecf2f6
+}
+.sortable TD.evenselected {
+	BACKGROUND: #ecf2f6
+}
+.sortable TD.oddselected {
+	BACKGROUND: #dce6ee
+}
+#controls {
+	MARGIN: 0px auto; WIDTH: 980px; HEIGHT: 20px
+}
+#perpage {
+	WIDTH: 200px; FLOAT: left
+}
+#perpage SELECT {
+	FLOAT: left; FONT-SIZE: 11px
+}
+#perpage SPAN {
+	MARGIN: 2px 0px 0px 5px; FLOAT: left
+}
+#navigation {
+	TEXT-ALIGN: center; WIDTH: 580px; FLOAT: left
+}
+#navigation IMG {
+	CURSOR: pointer
+}
+#text {
+	TEXT-ALIGN: right; MARGIN-TOP: 2px; WIDTH: 200px; FLOAT: left
+}

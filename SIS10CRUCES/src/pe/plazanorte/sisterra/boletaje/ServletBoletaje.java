@@ -221,6 +221,19 @@ public class ServletBoletaje extends HttpServlet {
 		//********************************INICIO RESERVAR BOLETO DE VIAJE**********************************//		
 		
 		if(tipo.equals(Constantes.ACCION_SELECCIONAR_ASIENTO)){
+			
+			HttpSession session= request.getSession(true);
+			Usuario usuario=(Usuario)session.getAttribute("BUsuario");
+			Perfil perfil = (Perfil)session.getAttribute("BPerfil");
+			
+			if(usuario == null) {
+				mensaje = "Debe iniciar sesión o registrarse en el sistema antes de poder realizar reservar o comprar un boleto";
+				request.setAttribute("mensaje", mensaje);		
+				rd = getServletContext().getRequestDispatcher("/home.jsp");	
+				rd.forward(request, response);
+				return;
+			}
+			
 			Reserva reserva=new Reserva();
 			
 			Ruta ruta=new Ruta();
@@ -240,12 +253,8 @@ public class ServletBoletaje extends HttpServlet {
 				int idViaje=Integer.parseInt(request.getParameter("viaje"));
 				System.out.print("VIAJE NUMERO"+idViaje);
 				//boleto.setIdViaje(codViaje);
-				//boleto.setAsiento(nroAsiento);
+				//boleto.setAsiento(nroAsiento);				
 				
-				
-				HttpSession session= request.getSession(true);
-				Usuario usuario=(Usuario)session.getAttribute("BUsuario");
-				Perfil perfil = (Perfil)session.getAttribute("BPerfil");
 				//Usuario usuario=new Usuario();
 				//HttpSession session = request.getSession();
 				//usuario=(Usuario)session.getAttribute("BUsuario");
@@ -267,8 +276,8 @@ public class ServletBoletaje extends HttpServlet {
 				//Obtener el tipo de SUBMIT del que proviene
 				
 				System.out.println("ANTES DEL IF DE DECISION DE ORIGEN DE BOTON: " + tipoSubmit);
-				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){							
-						
+				if(tipoSubmit.equalsIgnoreCase(Constantes.ACCION_COMPRAR_BOLETO)){
+											
 						reserva=service.generarReserva(usuario.getId());
 						//boolean retorno = service.reservarBoleto(reserva.getId(),idViaje,asiento,1);
 						

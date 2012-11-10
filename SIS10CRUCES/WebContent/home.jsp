@@ -13,6 +13,10 @@
 </head>
 <body>
 
+<%
+	String mensaje = (String)request.getAttribute("mensaje");
+%>
+
 <div id="barra_cabecera">
 	<div id="barra_cabecera_contenido">
 		<span>S&iacute;guenos en:</span>
@@ -25,7 +29,7 @@
 	<img align="right" src="images/principal/banner_logo.png">
 </div>
 <div id="contenido">
-
+<br>
 	<div id="menu_web">
 		<ul class="menu">
 			<li><a href="home.jsp">Inicio</a></li>
@@ -33,6 +37,14 @@
 			<li><a href="<%=request.getContextPath() %>/ServletInicial">Ingresar al sistema</a></li>
 		</ul>
 	</div>	
+	<br>
+	<%
+		if(mensaje != null) {
+	%>
+		<p><font color="red"><b><%=mensaje %></b></font></p>
+	<%
+		}
+	%>
 	
 	<div id="texto">
 	<h3>La empresa</h3>
