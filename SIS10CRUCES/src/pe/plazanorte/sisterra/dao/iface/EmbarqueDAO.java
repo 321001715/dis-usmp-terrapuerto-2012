@@ -8,5 +8,6 @@ public interface EmbarqueDAO {
 	
 	public Vector<Pasajero> listarPasajerosXViaje(long idViaje);
 	public boolean registrarEmbarque(int idBoleto, int idViaje);
+	public Vector<Pasajero> generarManifiesto(int idViaje);
 
 }
