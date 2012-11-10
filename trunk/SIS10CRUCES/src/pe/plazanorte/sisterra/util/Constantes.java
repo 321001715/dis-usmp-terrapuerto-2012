@@ -164,6 +164,10 @@ public class Constantes {
 	public static final String LISTAR_PASAJEROS = "listar_pasajeros_viaje";
 	public static final String REGISTRAR_EMBARQUE = "registrar_embarque";
 	
+	// BETA: ENCOMIENDA
+	public static final String ACCION_CONSULTAR_ENCOMIENDA = "consultar_encomienda";
+	public static final String ACCION_LISTAR_ENCOMIENDA = "listar_encomienda";
+	public static final String ACCION_REGISTRAR_ENCOMIENDA  = "registrar_encomienda";
 	
 	public static final String CERRAR_SESION = "cerrar_sesion";
 }

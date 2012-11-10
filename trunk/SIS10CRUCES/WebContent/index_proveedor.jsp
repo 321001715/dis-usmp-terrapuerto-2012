@@ -46,6 +46,17 @@
 						</font>
 					</td>  				
   				</tr>
+  				<tr>
+  					<td align="center">
+						<a href="<%=application.getContextPath() %>/ServletProveedor?tipo=<%=Constantes.ACCION_LISTAR_ENCOMIENDA %>&destino=<%=Constantes.ACCION_CONSULTAR_ENCOMIENDA%>">
+							<img style="width: 50%" alt="" src="<%=request.getContextPath()%>/images/proveedor_encomienda.png">
+						</a>
+						<br>
+			  			<font style="font-family: 'Trebuchet MS'; font-size: small; font-style: oblique; color: red">
+							<b>BETA: * Registre las Encomiendas *</b>
+						</font>
+					</td> 
+  				</tr>
   			</table>
   			
 		</td>
