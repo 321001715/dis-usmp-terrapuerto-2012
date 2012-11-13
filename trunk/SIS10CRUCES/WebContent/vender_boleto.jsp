@@ -57,6 +57,12 @@ function validar(){
 		return false;
 	}	
 	
+	if( !(/^\d{8}$/.test(document.vender.documento.value))){	
+		alert("Debe ingresar un número de documento de identidad válido.");
+		document.vender.documento.focus();	
+		return false;
+	}	
+	
 	if(document.vender.nombre.value.length == 0){		
 		alert("Debe realizar la búsqueda del pasajero.");
 		document.vender.nombre.focus();	
@@ -105,6 +111,13 @@ function validarDocumento(){
 		document.vender.documento.focus();	
 		return false;
 	}
+	
+	if( !(/^\d{8}$/.test(document.vender.documento.value))){	
+		alert("Debe ingresar un número de documento de identidad válido.");
+		document.vender.documento.focus();	
+		return false;
+	}
+	
 	return true;
 }
 
@@ -258,7 +271,7 @@ function validarDocumento(){
 		<tr>
 			<td>Nro. Documento</td>
 			<td><input type="text" value="<%=persona.getDni() %>"></td>
-			<td><input type="submit" name="tipoSubmit" onclick="return validarDocumento()" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" maxlength="8" name="tipoSubmit" onclick="return validarDocumento()" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td>
 				<%
 					if(mensaje != null){					
@@ -302,7 +315,7 @@ function validarDocumento(){
 		<tr>
 			<td>Nro. Documento</td>
 			<td><input type="text" name="documento"></td>
-			<td><input type="submit" name="tipoSubmit" onclick="return validarDocumento()" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
+			<td><input type="submit" maxlength="8" name="tipoSubmit" onclick="return validarDocumento()" value="<%=Constantes.ACCION_VENDER_CONSULTAR_PERSONA %>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 			<td>
 				<%
 					if(mensaje != null){					
