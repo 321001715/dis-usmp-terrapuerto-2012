@@ -73,6 +73,10 @@ ventimp.close();
 				<font style="font-family: monospace; font-size: x-large;" >BOLETO DE VIAJE</font>
 </div>
 
+<h1 align="center">Sistema 10 Cruces Gracias por utilizar este servicio</h1>
+<div align="center">
+	<img align="top" src="images/logo_terra.png">
+</div>
 <table width="559" height="318" border="0">
   <tr>
     <td width="138">Fecha</td>
@@ -173,6 +177,9 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     <td>&nbsp;</td>
   </tr>
 </table>
+</div>
+<div align="center">
+	<img align="top" src="images/principal/banner_logo.png">
 </div>
 <form id="form1" name="form1" method="post" action="">
       <p align="Center"><a href="javascript:imprSelec('seleccion')" >Imprimir</a></p> </form>
