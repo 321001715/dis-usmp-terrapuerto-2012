@@ -9,11 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import pe.plazanorte.sisterra.entidades.Pasajero;
-import pe.plazanorte.sisterra.entidades.Reserva;
-import pe.plazanorte.sisterra.entidades.Usuario;
 import pe.plazanorte.sisterra.util.Constantes;
 
 /**
@@ -70,7 +68,7 @@ public class ServletEmbarque extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipo = request.getParameter("tipo");
-		String destino = request.getParameter("destino");
+		//String destino = request.getParameter("destino");
 		String mensaje = "";
 		RequestDispatcher rd = null;
 		ServiceEmbarque serviceEmbarque = new ServiceEmbarque();
