@@ -70,43 +70,49 @@ ventimp.close();
 <body>
 <div id="seleccion">
 <div class="ui-corner-bottom ui-widget-content">
-				<font style="font-family: monospace; font-size: x-large;" >BOLETO DE VIAJE</font>
+				<font  style="font-family: monospace; font-size: x-large;" >BOLETO DE VIAJE</font>
 </div>
 
 <h1 align="center">Sistema 10 Cruces Gracias por utilizar este servicio</h1>
 <div align="center">
 	<img align="top" src="images/logo_terra.png">
 </div>
-<table width="559" height="318" border="0">
+<table width="559" height="318" border="0" align="center">
   <tr>
-    <td width="138">Fecha</td>
-    <td colspan="3"><script>
+    <td colspan="4"><h3 >
+    DATOS DEL VIAJE</h3></td>
+  </tr>
+  <tr>
+    <td width="138"><b><font color="#243960">Fecha</font></b></td>
+    <td width="92"><script>
 var f = new Date();
 document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
 </script> </td>
-  </tr>
-  <tr>
-    <td>N° Reserva:</td>
-    <td width="92"><%=idReserva %></td>
     <td width="125">&nbsp;</td>
     <td width="176">&nbsp;</td>
   </tr>
   <tr>
-    <td>Nombre Viaje:</td>
+    <td><b><font color="#243960">N° Reserva:</font></b></td>
+    <td><%=idReserva %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#243960">Nombre Viaje:</font></b></td>
     <td><%=viaje.getNomViaje() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Origen:</td>
+    <td><b><font color="#243960">Origen:</font></b></td>
     <td><%=ruta.getOrigen() %></td>
-    <td>Destino:</td>
+    <td><b><font color="#243960">Destino:</font></b></td>
     <td><%=ruta.getDestino() %></td>
   </tr>
   <tr>
-    <td>Fecha de Salida:</td>
+    <td><b><font color="#243960">Fecha de Salida:</font></b></td>
     <td><%=viaje.getFecSalida() %></td>
-    <td>Hora de Salida:</td>
+    <td><b><font color="#243960">Hora de Salida:</font></b></td>
     <td><%=viaje.getHorSalida() %></td>
   </tr>
   <tr>
@@ -116,21 +122,24 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Empresa:</td>
+    <td colspan="4"><h3>DATOS DE LA EMPRESA</h3></td>
+  </tr>
+  <tr>
+    <td><b><font color="#243960">Empresa:</font></b></td>
     <td><%=nombreProveedor %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Servicio:</td>
+    <td><b><font color="#243960">Servicio:</font></b></td>
     <td><%=viaje.getServicio() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Costo:</td>
+    <td><b><font color="#243960">Costo:</font></b></td>
     <td><%=viaje.getPrecio() %></td>
-    <td>Nro Asiento:</td>
+    <td><b><font color="#243960">Nro Asiento:</font></b></td>
     <td><%=asiento %></td>
   </tr>
   <tr>
@@ -140,46 +149,49 @@ document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>N° Documento:</td>
+    <td colspan="4"><h3>DATOS DEL PASAJERO</h3></td>
+  </tr>
+  <tr>
+    <td><b><font color="#243960">N° Documento:</font></b></td>
     <td><%=persona.getDni() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Nombre:</td>
+    <td><b><font color="#243960">Nombre:</font></b></td>
     <td><%=persona.getNombre() %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Apellido Pat.:</td>
+    <td><b><font color="#243960">Apellido Pat.:</font></b></td>
     <td><%=persona.getApePat() %></td>
-    <td>&nbsp;</td>
+    <td>
+   </td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Apellido Mat.:</td>
+    <td><b><font color="#243960">Apellido Mat.:</font></b></td>
     <td><%=persona.getApeMat() %></td>
-    <td>&nbsp;</td>
+    <td></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Fecha Nacimiento:</td>
+    <td><b><font color="#243960">Fecha Nacimiento:</font></b></td>
     <td><%=persona.getFecNac() %></td>
-    <td>Edad:</td>
+    <td><b><font color="#243960">Edad:</font></b></td>
     <td><%=edad %></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td>
-   </td>
+    <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
 </table>
 </div>
 <div align="center">
-	<img align="top" src="images/principal/banner_logo.png">
+	<img align="middle" src="images/principal/banner_logo.png" width="550" height="150">
 </div>
 <form id="form1" name="form1" method="post" action="">
       <p align="Center"><a href="javascript:imprSelec('seleccion')" >Imprimir</a></p> </form>
