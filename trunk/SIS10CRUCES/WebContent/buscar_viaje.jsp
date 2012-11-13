@@ -39,7 +39,7 @@
    <font style="font-family: monospace; font-size: x-large;">Filtros de Búsqueda</font>
    </div>
 &nbsp;   
-	<form action="ServletProveedor" method="post" name="buscar" onsubmit="validar()">
+	<form action="ServletProveedor" method="post" name="buscar" onsubmit="return validar()">
 		<input type="hidden" name="tipo" value=<%=Constantes.ACCION_FILTRO_VIAJE %>>
 		<input type="hidden" name="destino" value=<%=Constantes.GESTIONAR_VIAJE %>>
 		<table>
