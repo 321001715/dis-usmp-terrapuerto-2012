@@ -43,7 +43,12 @@
 			document.registrar.telefono.focus();
 			return false;
 		}
-		if(NaN(document.registrar.telefono.value)){
+		if(isNaN(document.registrar.telefono.value)){
+			alert("Debe ingresar un número de teléfono válido.");
+			document.registrar.telefono.focus();
+			return false;
+		}	
+		if((document.registrar.telefono.value.length) < 6){
 			alert("Debe ingresar un número de teléfono válido.");
 			document.registrar.telefono.focus();
 			return false;
