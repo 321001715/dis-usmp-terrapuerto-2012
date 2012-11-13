@@ -23,7 +23,26 @@ Vector<Pasajero> listaPasajero=(Vector<Pasajero>)request.getAttribute("pasajeros
 
 %>
 <title>Generar Manifiesto</title>
+<script type="text/javascript">
+function imprSelec(nombre)
 
+{
+
+var ficha = document.getElementById(nombre);
+
+var ventimp = window.open(' ', 'popimpr');
+
+ventimp.document.write( ficha.innerHTML );
+
+ventimp.document.close();
+
+ventimp.print( );
+
+ventimp.close();
+
+}
+
+</script>
 </head>
 <body>
 <div class="ui-widget">
@@ -56,6 +75,7 @@ Vector<Pasajero> listaPasajero=(Vector<Pasajero>)request.getAttribute("pasajeros
 	<br>
 	<br>
 	<%if(listaPasajero!=null){ %>
+<div id="seleccion">
 <table  id="table" class="sortable">
 		<thead>
 			<tr>
@@ -92,23 +112,13 @@ Vector<Pasajero> listaPasajero=(Vector<Pasajero>)request.getAttribute("pasajeros
       <tr>
         <td>Total Pasajeros</td>
         <td><form name="form4" method="post" action="">
-          <input type="text" name="textfield2" id="textfield2" value="<%=listaPasajero.size() %>">
+          <input type="text" name="textfield2" id="textfield2" value="<%=listaPasajero.size() %> " disabled="disabled">
         </form></td>
         <td>&nbsp;</td>
       </tr>
 </table>
-<table width="656" border="0" align="center">
-      <tr>
-        <td width="173">&nbsp;</td>
-        <td width="96"><form name="form1" method="post" action="">
-             
-        </form></td>
-        <td width="90"><form name="form2" method="post" action="">
-           <a href="javascript:print()" _fcksavedurl="javascript:print()">Imprimir</a>
-        </form></td>
-        <td width="169">&nbsp;</td>
-      </tr>
-</table>
+</div>
+ <p align="Center"><a href="javascript:imprSelec('seleccion')" >Imprimir</a></p> </form>
 <%} %>
 </body>
 </html>
