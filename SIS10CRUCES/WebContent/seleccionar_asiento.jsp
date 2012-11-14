@@ -65,6 +65,7 @@ function capturarPiso() {
 							
 							<% for(int j=0;j<(Integer.parseInt(carro.getAsientosPorPiso())/4);j++){ %>
 							<tr>
+								
 								<% if(Integer.parseInt(carro.getAsientosPorPiso())>=contador){ %>
 								<% for(int i=(contador-4);i<contador;i++){ %>
 								<td align="center" <%if(asientos.get(i).getEstado().equals("DISPONIBLE"))estado=Constantes.ASIENTO_DISPONIBLE;
@@ -75,7 +76,7 @@ function capturarPiso() {
 								<%}contador+=4;} %>
 								
 							</tr>
-							<%} %>
+							<%} out.print("");%>
 							<!-- FIN DE FOR PARA PISO 1 -->
 							</table>
 							</td>
