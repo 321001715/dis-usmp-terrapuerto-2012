@@ -64,8 +64,6 @@ ventimp.close();
 							<option value="<%=listaViajes.get(i).getId() %>"> <%=listaViajes.get(i).getNomViaje() %> </option>
 						<%} %>
 					</select></td>
-	<td>Numero de Reserva</td>
-	<td><input type="text" name="txt_reserva"></td>
 	<td><input type="submit" name="tipoSubmit" value="Buscar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"></td>
 	</tr>
 	</table>
@@ -79,10 +77,10 @@ ventimp.close();
 <table  id="table" class="sortable">
 		<thead>
 			<tr>
-				<th><h3 align="center">N° Reserva</h3></th>
+				<th><h3 align="center">NÂ° Reserva</h3></th>
 				<th><h3 align="center">Cod Viaje</h3></th>
-				<th><h3 align="center">N° Boleto</h3></th>
-				<th><h3 align="center">N° Documento</h3></th>
+				<th><h3 align="center">NÂ° Boleto</h3></th>
+				<th><h3 align="center">NÂ° Documento</h3></th>
 				<th><h3 align="center">Apellido Paterno</h3></th>
 				<th><h3 align="center">Apellido Materno</h3></th>
 				<th><h3 align="center">Nombres</h3></th>
